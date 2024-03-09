@@ -12,19 +12,20 @@
 <body>
 
     <!-- Navbar -->
-    <div class="navbar bg-transparent fixed top-0 z-40" id="navbar">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost md:hidden lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:hidden lg:hidden" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
+    <div class="navbar backdrop-blur-sm fixed top-0 z-40" id="navbar">
+        <div class="grid grid-cols-7 gap-1 w-full lg:place-items-center sm:place-items-end">
+            <div class="lg:col-span-1 col-end-7">
+                <div class="avatar-group -space-x-6 rtl:space-x-reverse flex items-center md:ml-auto sm:ml-0">
+                    <div class="avatar lg:mx-auto">
+                        <div class="w-12">
+                            <img src="..." alt="Logo" />
+                        </div>
+                    </div>
                 </div>
-                <ul tabindex="0"
-                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>Beranda</a></li>
+            </div>
+            <div class="col-span-6 w-full font-bold hidden lg:flex" id="nav-text">
+                <ul class="menu menu-horizontal px-1">
+                    <li class="bg-celadon rounded-md"><a>Beranda</a></li>
                     <li><a>Profile Sekolah</a></li>
                     <li><a>PPDB</a></li>
                     <li><a>Direktori</a></li>
@@ -36,72 +37,36 @@
                     <li><a>Media Sosial</a></li>
                 </ul>
             </div>
-            <a class="btn btn-ghost text-xl">
-                <div class="avatar-group -space-x-6 rtl:space-x-reverse">
-                    <div class="avatar">
-                        <div class="w-12">
-                            <img src="..." alt="Logo" />
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="navbar-center hidden lg:flex -translate-x-36">
-            <ul class="menu menu-horizontal px-1">
-                <li><a>Beranda</a></li>
-                <li><a>Profile Sekolah</a></li>
-                <li><a>PPDB</a></li>
-                <li><a>Direktori</a></li>
-                <li><a>Galeri</a></li>
-                <li><a>Sarana & Prasarana</a></li>
-                <li><a>Prestasi Siswa</a></li>
-                <li><a>Berita</a></li>
-                <li><a>Ekstrakulikuler</a></li>
-                <li><a>Media Sosial</a></li>
-            </ul>
-        </div>
-        <div class="navbar-end hidden">
-            <a class="btn">Button</a>
         </div>
     </div>
     <!-- Navbar -->
 
     <!-- Carousel -->
-    <div class="carousel w-full">
-        <div id="slide1" class="carousel-item relative w-full">
-            <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide4" class="btn btn-circle">❮</a>
-                <a href="#slide2" class="btn btn-circle">❯</a>
+    <div class="flex justify-center items-center">
+        <div class="carousel w-full relative overflow-hidden">
+            <div id="slide1" class="carousel-item relative w-full">
+                <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
+                    class="w-full transition-transform duration-500 transform" />
             </div>
-        </div>
-        <div id="slide2" class="carousel-item relative w-full">
-            <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide1" class="btn btn-circle">❮</a>
-                <a href="#slide3" class="btn btn-circle">❯</a>
+            <div id="slide2" class="carousel-item relative w-full hidden">
+                <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
+                    class="w-full transition-transform duration-500 transform" />
             </div>
-        </div>
-        <div id="slide3" class="carousel-item relative w-full">
-            <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide2" class="btn btn-circle">❮</a>
-                <a href="#slide4" class="btn btn-circle">❯</a>
+            <div id="slide3" class="carousel-item relative w-full hidden">
+                <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
+                    class="w-full transition-transform duration-500 transform" />
             </div>
-        </div>
-        <div id="slide4" class="carousel-item relative w-full">
-            <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" class="w-full" />
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide3" class="btn btn-circle">❮</a>
-                <a href="#slide1" class="btn btn-circle">❯</a>
+            <div id="slide4" class="carousel-item relative w-full hidden">
+                <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
+                    class="w-full transition-transform duration-500 transform" />
             </div>
         </div>
     </div>
     <!-- Carousel -->
 
     <!-- Main -->
-    <div class="container bg-blue-800 mx-auto h-96 w-11/12 my-10">
-        @yield('main')
+    <div class="container bg-blue-800 mx-auto h-max w-11/12 my-10">
+        @yield('Main')
     </div>
     <!-- Main -->
 
