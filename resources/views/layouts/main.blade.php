@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    @vite('resources/js/script.js')
+    <script src="{{ asset('js/script.js') }}"></script>
     <title>SMK Muhammadiyah Plus Kota Batam | Home</title>
 </head>
 
@@ -13,9 +13,34 @@
 
     <!-- Navbar -->
     <div class="navbar backdrop-blur-sm fixed top-0 z-40" id="navbar">
-        <div class="grid grid-cols-7 gap-1 w-full lg:place-items-center sm:place-items-end">
+        <div class="navbar-start lg:hidden">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                </div>
+                <ul tabindex="0"
+                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li class="bg-celadon rounded-md"><a>Beranda</a></li>
+                    <li><a>Profile Sekolah</a></li>
+                    <li><a>PPDB</a></li>
+                    <li><a>Direktori</a></li>
+                    <li><a>Galeri</a></li>
+                    <li><a>Sarana & Prasarana</a></li>
+                    <li><a>Prestasi Siswa</a></li>
+                    <li><a>Berita</a></li>
+                    <li><a>Ekstrakulikuler</a></li>
+                    <li><a>Media Sosial</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid grid-cols-7 gap-1 w-full lg:place-items-center place-items-end">
             <div class="lg:col-span-1 col-end-7">
-                <div class="avatar-group -space-x-6 rtl:space-x-reverse flex items-center md:ml-auto sm:ml-0">
+                <div
+                    class="avatar-group -space-x-6 rtl:space-x-reverse flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
                         <div class="w-12">
                             <img src="..." alt="Logo" />
@@ -43,7 +68,7 @@
 
     <!-- Carousel -->
     <div class="flex justify-center items-center">
-        <div class="carousel w-full relative overflow-hidden">
+        <div class="carousel w-full h-[50vh] relative overflow-hidden">
             <div id="slide1" class="carousel-item relative w-full">
                 <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
                     class="w-full transition-transform duration-500 transform" />

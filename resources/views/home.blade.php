@@ -3,25 +3,23 @@
 @section('Main')
 
 <!-- First Content -->
-<div class="grid grid-rows-3 grid-cols-4 grid-flow-col gap-4 mt-8">
-    <div class="row-span-3 col-span-2">
-        <iframe class="w-full aspect-video ..." src="https://www.youtube.com/..."></iframe>
+<div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
+    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0 bg-black">
+        <iframe class="w-full aspect-video" src="https://www.youtube.com/..."></iframe>
     </div>
     <!-- Title -->
     <div class="col-span-2 overflow-x-auto">
         <div class="card w-full text-primary-content">
             <div class="card-body">
-                <h1 class="card-title">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, error fugiat? Repellendus
-                    consequuntur provident iure at. Aut nobis quasi amet. Iure dolorum placeat corporis eaque tenetur
-                    distinctio id voluptatum maxime.
+                <h1 class="card-title text-lg">
+                    Lorem
                 </h1>
             </div>
         </div>
     </div>
     <!-- Title -->
     <!-- Description & Other -->
-    <div class="row-span-2 col-span-2">
+    <div class="lg:row-span-2 col-span-2 -mt-10 lg:-mt-0">
         <div class="card w-full text-primary-content">
             <div class="card-body">
                 <p>
@@ -29,7 +27,7 @@
                     consequuntur provident iure at. Aut nobis quasi amet. Iure dolorum placeat corporis eaque tenetur
                     distinctio id voluptatum maxime.
                 </p>
-                <div class="card-actions justify-start sticky bottom-0">
+                <div class="card-actions justify-start sticky mt-7 lg:bottom-0">
                     <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
                         Lanjut</button>
                 </div>
@@ -41,10 +39,10 @@
 <!-- First Content -->
 
 <!-- Second Content -->
-<div class="grid grid-rows-1 grid-flow-col grid-cols-5 gap-4 w-full mx-auto bg-slate-100">
+<div class="grid grid-rows-1 lg:grid-flow-col grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto bg-slate-100">
     <!-- School Profile -->
-    <div class="row-span-1 col-span-2 py-8 px-12 h-max ">
-        <div class="card w-full rounded-sm my-48 mx-10 border-r-2 border-gray-400">
+    <div class="lg:row-span-1 col-span-2 py-8 px-12 h-max ">
+        <div class="card w-full rounded-sm my-24 lg:my-48 mx-auto lg:mx-10 lg:border-r-2 border-gray-400">
             <div class="card-body">
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum nihil, fuga
@@ -59,7 +57,7 @@
     </div>
     <!-- School Profile -->
 
-    <div class="col-span-3 grid grid-cols-2 grid-rows-1 py-20 px-10">
+    <div class="lg:col-span-3 grid lg:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 lg:gap-y-0 -mt-16 lg:-mt-0">
 
         <div class="col-span-1">
             <!-- Facility School -->
@@ -157,8 +155,8 @@
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="grid grid-rows-4 grid-cols-2 grid-flow-col">
-    <div class="col-span-2">
+<div class="grid lg:grid-rows-4 lg:grid-cols-2 lg:grid-flow-col">
+    <div class="lg:col-span-2">
         <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
         <label class="input input-bordered mx-auto my-10 flex items-center w-72">
             <input type="text" class="grow" placeholder="Search" />
@@ -170,15 +168,16 @@
         </label>
     </div>
 
-    <div class="mx-auto">
-        <div class="card card-side bg-base-100 shadow-xl h-60">
+    <div class=" mx-auto">
+        <div class="card card-side bg-base-100 shadow-xl h-32 lg:h-60">
             <figure>
-                <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" />
+                <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-24 lg:w-auto" />
             </figure>
-            <div class="card-body">
-                <h2 class="card-title">Kegiatan Belajar mengajar di
+            <div class="card-body w-60 lg:w-full">
+                <h2 class="lg:card-title text-sm font-bold -mt-5 lg:-mt-0">Kegiatan Belajar mengajar di
                     Rumah</h2>
-                <p class="w-72 truncate">
+                <p class="w-28 py-5 -my-3 lg:py-0 lg:-my-0 lg:w-72 truncate text-xs">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi,
                     omnis ut, Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quo atque blanditiis
                     iusto accusantium. Nobis rem illo exercitationem quam. Debitis voluptate amet incidunt esse officia
@@ -202,18 +201,24 @@
 <!-- Third Content -->
 
 <!-- Fourth Content -->
-<div class="grid grid-rows-3 grid-cols-3 grid-flow-col">
-    <div class="col-span-3 mx-auto">
+<div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-3 lg:grid-flow-col mt-10 lg:mt-0">
+    <div class="col-span-2 lg:col-span-3 mx-auto">
         <h1 class="font-bold text-xl text-center my-5">Galeri</h1>
     </div>
-    <div class="mx-auto bg-black w-full">
+    <div class="mx-auto  lg:w-full h-min">
         <div class="avatar">
-            <div class="w-64 rounded-sm">
+            <div class="lg:w-64 rounded-sm">
                 <img src="{{ asset('assets/Group 30.svg') }}" class="object-contain w-5 h-5" />
             </div>
         </div>
     </div>
-    <div class="mx-auto">01</div>
+    <div class="mx-auto lg:w-full h-min">
+        <div class="avatar">
+            <div class="lg:w-64 rounded-sm">
+                <img src="{{ asset('assets/Group 30.svg') }}" class="object-contain w-5 h-5" />
+            </div>
+        </div>
+    </div>
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
