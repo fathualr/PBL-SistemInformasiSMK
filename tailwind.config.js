@@ -20,7 +20,7 @@ export default {
                 "blue-lagoon": "#036666",
             },
             screens: {
-                smartphone: "500px",
+                smartphone: "320px",
                 tablet: "640px",
                 laptop: "1024px",
                 desktop: "1280px",

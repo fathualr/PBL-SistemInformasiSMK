@@ -14,7 +14,7 @@ use App\Http\Controllers\webController;
 |
 */
 
- Route::get('/', function () {
-     return view('welcome');
- });
-Route::get('/home', [webController::class, 'show']);
+//  Route::get('/', function () {
+//      return view('welcome');
+//  });
+Route::get('/', [webController::class, 'show']);

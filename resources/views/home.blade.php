@@ -4,7 +4,7 @@
 
 <!-- First Content -->
 <div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
-    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0 bg-black">
+    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0 ">
         <iframe class="w-full aspect-video" src="https://www.youtube.com/..."></iframe>
     </div>
     <!-- Title -->
@@ -39,7 +39,8 @@
 <!-- First Content -->
 
 <!-- Second Content -->
-<div class="grid grid-rows-1 lg:grid-flow-col grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto bg-slate-100">
+<div
+    class="grid grid-rows-1 lg:grid-flow-col smartphone:grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100">
     <!-- School Profile -->
     <div class="lg:row-span-1 col-span-2 py-8 px-12 h-max ">
         <div class="card w-full rounded-sm my-24 lg:my-48 mx-auto lg:mx-10 lg:border-r-2 border-gray-400">
@@ -48,8 +49,9 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum nihil, fuga
                     ratione facere ducimus eaque, commodi quae odio sequi eveniet enim corrupti adipisci repellendus
                     ipsam. Nulla, sapiente!</p>
-                <div class="card-actions justify-start">
-                    <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
+                <div class="card-actions justify-center md:justify-start">
+                    <button
+                        class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
                         Lanjut</button>
                 </div>
             </div>
@@ -57,11 +59,12 @@
     </div>
     <!-- School Profile -->
 
-    <div class="lg:col-span-3 grid lg:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 lg:gap-y-0 -mt-16 lg:-mt-0">
+    <div
+        class="md:col-span-3 grid smartphone:grid-cols-1 md:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 lg:gap-y-0 -mt-16 lg:-mt-0">
 
         <div class="col-span-1">
             <!-- Facility School -->
-            <div class="card w-72 h-72 bg-base-100 shadow-xl mx-auto rounded-sm">
+            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
                 <figure class="px-5 pt-5 -translate-x-16">
                     <div class="avatar rounded-full shadow-md">
                         <div class="size-20 p-5  rounded-full">
@@ -84,7 +87,7 @@
 
         <div class="col-span-1">
             <!-- School Location -->
-            <div class="card w-72 h-72  bg-base-100 shadow-xl mx-auto rounded-sm">
+            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
                 <figure class="px-5 pt-5 -translate-x-16">
                     <div class="avatar rounded-full">
                         <div class="size-20 p-5 shadow-md rounded-full">
@@ -106,7 +109,7 @@
 
         <div class="col-span-1">
             <!-- School History -->
-            <div class="card w-72 h-72 bg-base-100 shadow-xl mx-auto rounded-sm">
+            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
                 <figure class="px-5 pt-5 -translate-x-16">
                     <div class="avatar rounded-full shadow-md">
                         <div class="size-20 p-5  rounded-full">
@@ -129,7 +132,7 @@
 
         <div class="col-span-1">
             <!-- School Achievement -->
-            <div class="card w-72 h-72 bg-base-100 shadow-xl mx-auto rounded-sm">
+            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
                 <figure class="px-5 pt-5 -translate-x-16">
                     <div class="avatar rounded-full shadow-md">
                         <div class="size-20 p-5  rounded-full">
@@ -155,10 +158,10 @@
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="grid lg:grid-rows-4 lg:grid-cols-2 lg:grid-flow-col">
-    <div class="lg:col-span-2">
+<div class="grid lg:grid-rows-4 smartphone:grid-cols-1 lg:grid-cols-2 lg:grid-flow-col">
+    <div class="smartphone:col-span-1 lg:col-span-2">
         <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
-        <label class="input input-bordered mx-auto my-10 flex items-center w-72">
+        <label class="input input-bordered mx-auto my-10 flex items-center smartphone:w-52 md:w-72">
             <input type="text" class="grow" placeholder="Search" />
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                 <path fill-rule="evenodd"
@@ -168,7 +171,7 @@
         </label>
     </div>
 
-    <div class=" mx-auto">
+    <div class="smartphone:col-span-1 md:mx-auto">
         <div class="card card-side bg-base-100 shadow-xl h-32 lg:h-60">
             <figure>
                 <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
