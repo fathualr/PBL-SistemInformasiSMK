@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", function () {
         if (window.scrollY > document.querySelector(".carousel").offsetHeight) {
             navbar.classList.remove("bg-transparent");
-            navbar.classList.add("bg-lochinvar");
+            navbar.classList.add("bg-dark-lochinvar");
 
             navbarText.classList.add("text-white");
         } else {
-            navbar.classList.remove("bg-lochinvar");
+            navbar.classList.remove("bg-dark-lochinvar");
             navbar.classList.add("bg-transparent");
 
             navbarText.classList.remove("text-white");
@@ -20,26 +20,29 @@ document.addEventListener("DOMContentLoaded", function () {
 // Navbar
 
 // Carousel
-let currentSlide = 0;
-const slides = document.querySelectorAll(".carousel-item");
-const totalSlides = slides.length;
+document.addEventListener("DOMContentLoaded", function () {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".carousel-item");
+    const totalSlides = slides.length;
 
-function showSlide(n) {
-    slides.forEach((slide) => {
-        slide.classList.add("hidden");
-    });
-    slides[n].classList.remove("hidden");
-}
+    function showSlide(n) {
+        slides.forEach((slide) => {
+            slide.classList.add("hidden");
+        });
+        slides[n].classList.remove("hidden");
+    }
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    showSlide(currentSlide);
-}
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
 
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(currentSlide);
-}
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
 
-setInterval(nextSlide, 4000);
+    setInterval(nextSlide, 4000);
+});
+
 // Carousel

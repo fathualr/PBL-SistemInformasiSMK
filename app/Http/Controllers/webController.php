@@ -6,7 +6,15 @@ use Illuminate\Http\Request;
 
 class webController extends Controller
 {
-    public function show(){
-        return view('home');
+    public function home(){
+        return view('home', [
+            "title" => "Home"
+        ]);
+    }
+
+    public function profile(){
+        return view('profile', [
+            "title" => "Profile"
+        ]);
     }
 }

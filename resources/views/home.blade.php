@@ -29,7 +29,7 @@
                     consequuntur provident iure at. Aut nobis quasi amet. Iure dolorum placeat corporis eaque tenetur
                     distinctio id voluptatum maxime.
                 </p>
-                <div class="card-actions justify-start sticky mt-7 lg:bottom-0">
+                <div class="card-actions justify-start mt-7">
                     <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
                         Lanjut</button>
                 </div>
@@ -160,7 +160,7 @@
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="grid md:grid-rows-4 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col">
+<div class="grid md:grid-rows-4 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-6">
     <div class="smartphone:col-span-1 md:col-span-2">
         <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
         <label class="input input-bordered mx-auto my-10 flex items-center smartphone:w-52 md:w-72">
@@ -206,7 +206,7 @@
 <!-- Third Content -->
 
 <!-- Fourth Content -->
-<div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-3 lg:grid-flow-col mt-10 lg:mt-0">
+<div class="grid lg:grid-rows-4 grid-cols-2 lg:grid-cols-3 lg:grid-flow-row mt-10 lg:mt-0">
     <div class="col-span-2 lg:col-span-3 mx-auto">
         <h1 class="font-bold text-xl text-center my-5">Galeri</h1>
     </div>
@@ -228,6 +228,11 @@
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
+    <div class="col-span-2 lg:col-span-3 mx-auto">
+        <button
+            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
+            Lanjut</button>
+    </div>
 </div>
 <!-- Fourth Content -->
 

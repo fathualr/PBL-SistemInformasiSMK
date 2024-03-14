@@ -17,4 +17,6 @@ use App\Http\Controllers\webController;
 //  Route::get('/', function () {
 //      return view('welcome');
 //  });
-Route::get('/', [webController::class, 'show']);
+
+Route::get('/', [webController::class, 'home']);
+Route::get('/profile', [webController::class, 'profile']);

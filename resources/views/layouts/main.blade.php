@@ -11,13 +11,13 @@
         display: none;
     }
     </style>
-    <title>SMK Muhammadiyah Plus Kota Batam | Home</title>
+    <title>SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <div class="navbar backdrop-blur-sm bg-transparent fixed top-0 z-40" id="navbar">
+    <div class="navbar bg-transparent fixed top-0 z-40" id="navbar">
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -29,8 +29,9 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li class="bg-celadon rounded-md"><a>Beranda</a></li>
-                    <li><a>Profile Sekolah</a></li>
+                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
+                            Sekolah</a></li>
                     <li><a>PPDB</a></li>
                     <li>
                         <details>
@@ -73,8 +74,9 @@
             </div>
             <div class="col-span-6 w-full font-bold hidden lg:flex" id="nav-text">
                 <ul class="menu menu-horizontal px-1">
-                    <li class="bg-celadon rounded-md"><a>Beranda</a></li>
-                    <li><a>Profile Sekolah</a></li>
+                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
+                            Sekolah</a></li>
                     <li><a>PPDB</a></li>
                     <li>
                         <details>
