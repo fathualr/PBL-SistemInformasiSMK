@@ -20,3 +20,15 @@ use App\Http\Controllers\webController;
 
 Route::get('/', [webController::class, 'home']);
 Route::get('/profile', [webController::class, 'profile']);
+Route::get('/ppdb', [webController::class, 'ppdb']);
+Route::get('/direktori-guru', [webController::class, 'guru']);
+Route::get('/direktori-pegawai', [webController::class, 'pegawai']);
+Route::get('/direktori-siswa', [webController::class, 'siswa']);
+Route::get('/direktori-alumni', [webController::class, 'alumni']);
+Route::get('/galeri-foto', [webController::class, 'foto']);
+Route::get('/galeri-video', [webController::class, 'video']);
+Route::get('/sarana-prasarana', [webController::class, 'saranaPrasarana']);
+Route::get('/prestasi-siswa', [webController::class, 'prestasi']);
+Route::get('/berita', [webController::class, 'berita']);
+Route::get('/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
+Route::get('/media-sosial', [webController::class, 'mediaSosial']);

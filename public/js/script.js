@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", function () {
         if (window.scrollY > document.querySelector(".carousel").offsetHeight) {
             navbar.classList.remove("bg-transparent");
-            navbar.classList.add("bg-dark-lochinvar");
+            navbar.classList.add("bg-blue-lagoon");
 
             navbarText.classList.add("text-white");
         } else {
-            navbar.classList.remove("bg-dark-lochinvar");
+            navbar.classList.remove("bg-blue-lagoon");
             navbar.classList.add("bg-transparent");
 
             navbarText.classList.remove("text-white");
