@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/script.js') }}"></script>
+    <style>
+    .overflow-y-auto::-webkit-scrollbar {
+        display: none;
+    }
+    </style>
     <title>SMK Muhammadiyah Plus Kota Batam | Home</title>
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <div class="navbar backdrop-blur-sm fixed top-0 z-40" id="navbar">
+    <div class="navbar backdrop-blur-sm bg-transparent fixed top-0 z-40" id="navbar">
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -27,8 +32,26 @@
                     <li class="bg-celadon rounded-md"><a>Beranda</a></li>
                     <li><a>Profile Sekolah</a></li>
                     <li><a>PPDB</a></li>
-                    <li><a>Direktori</a></li>
-                    <li><a>Galeri</a></li>
+                    <li>
+                        <details>
+                            <summary>Direktori</summary>
+                            <ul class="p-2">
+                                <li class="text-black"><a>Guru</a></li>
+                                <li class="text-black"><a>Jumlah Siswa</a></li>
+                                <li class="text-black"><a>Data Ruang Kelas</a></li>
+                                <li class="text-black"><a>Data Tenaga Pendidik & Kependidikan</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Galeri</summary>
+                            <ul class="p-2">
+                                <li><a>Foto</a></li>
+                                <li><a>Video</a></li>
+                            </ul>
+                        </details>
+                    </li>
                     <li><a>Sarana & Prasarana</a></li>
                     <li><a>Prestasi Siswa</a></li>
                     <li><a>Berita</a></li>
@@ -53,8 +76,26 @@
                     <li class="bg-celadon rounded-md"><a>Beranda</a></li>
                     <li><a>Profile Sekolah</a></li>
                     <li><a>PPDB</a></li>
-                    <li><a>Direktori</a></li>
-                    <li><a>Galeri</a></li>
+                    <li>
+                        <details>
+                            <summary>Direktori</summary>
+                            <ul class="p-2">
+                                <li class="text-black"><a>Guru</a></li>
+                                <li class="text-black"><a>Jumlah Siswa</a></li>
+                                <li class="text-black"><a>Data Ruang Kelas</a></li>
+                                <li class="text-black"><a>Data Tenaga Pendidik & Kependidikan</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Galeri</summary>
+                            <ul class="p-2">
+                                <li class="text-black"><a>Foto</a></li>
+                                <li class="text-black"><a>Video</a></li>
+                            </ul>
+                        </details>
+                    </li>
                     <li><a>Sarana & Prasarana</a></li>
                     <li><a>Prestasi Siswa</a></li>
                     <li><a>Berita</a></li>
@@ -90,7 +131,7 @@
     <!-- Carousel -->
 
     <!-- Main -->
-    <div class="container bg-blue-800 mx-auto h-max w-11/12 my-10">
+    <div class="container  mx-auto h-max w-11/12 my-10">
         @yield('Main')
     </div>
     <!-- Main -->

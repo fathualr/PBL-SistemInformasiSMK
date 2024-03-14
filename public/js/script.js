@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", function () {
         if (window.scrollY > document.querySelector(".carousel").offsetHeight) {
-            navbar.classList.remove("backdrop-blur-sm");
+            navbar.classList.remove("bg-transparent");
             navbar.classList.add("bg-lochinvar");
 
             navbarText.classList.add("text-white");
         } else {
             navbar.classList.remove("bg-lochinvar");
-            navbar.classList.add("backdrop-blur-sm");
+            navbar.classList.add("bg-transparent");
 
             navbarText.classList.remove("text-white");
         }
