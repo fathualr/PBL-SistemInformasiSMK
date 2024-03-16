@@ -24,6 +24,12 @@ class webController extends Controller
         ]);
     }
 
+    public function pengumuman(){
+        return view('pengumuman-ppdb', [
+            "title" => "Pengumuman PPDB"
+        ]);
+    }
+
     public function guru(){
         return view('guru', [
             "title" => "Direktori Guru"

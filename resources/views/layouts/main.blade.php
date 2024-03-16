@@ -32,17 +32,27 @@
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
-                            <li class="@if($title == 'PPDB') bg-celadon rounded-md @endif"><a href="/ppdb">PPDB</a></li>
+                    <li class="@if($title == 'PPDB') bg-celadon rounded-md @endif"><a href="/ppdb">PPDB</a></li>
                     <li>
                         <details>
                             <summary>Direktori</summary>
                             <ul class="bg-blue-lagoon">
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
                                     <a href="/direktori-guru">Guru</a>
                                 </li>
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif"><a href="/direktori-pegawai">Pegawai</a></li>
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif"><a href="/direktori-siswa">Siswa</a></li>
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif"><a href="/direktori-alumni">Alumni</a></li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-pegawai">Pegawai</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-siswa">Siswa</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-alumni">Alumni</a>
+                                </li>
                             </ul>
                         </details>
                     </li>
@@ -50,16 +60,22 @@
                         <details>
                             <summary>Galeri</summary>
                             <ul class="p-2">
-                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a href="/galeri-foto">Foto</a></li>
-                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a href="/galeri-video">Video</a></li>
+                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-foto">Foto</a></li>
+                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-video">Video</a></li>
                             </ul>
                         </details>
                     </li>
-                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a href="/sarana-prasarana">Sarana & Prasarana</a></li>
-                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a href="/prestasi-siswa">Prestasi Siswa</a></li>
+                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a
+                            href="/sarana-prasarana">Sarana & Prasarana</a></li>
+                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
+                            href="/prestasi-siswa">Prestasi Siswa</a></li>
                     <li class="@if($title == 'Berita') bg-celadon rounded-md @endif"><a href="/berita">Berita</a></li>
-                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a href="/ekstrakulikuler">Ekstrakulikuler</a></li>
-                    <li class="@if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a href="/media-sosial">Media Sosial</a></li>
+                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
+                            href="/ekstrakulikuler">Ekstrakulikuler</a></li>
+                    <li class="@if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a href="/media-sosial">Media
+                            Sosial</a></li>
                 </ul>
             </div>
         </div>
@@ -84,12 +100,22 @@
                         <details>
                             <summary>Direktori</summary>
                             <ul class="bg-blue-lagoon">
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
                                     <a href="/direktori-guru">Guru</a>
                                 </li>
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif"><a href="/direktori-pegawai">Pegawai</a></li>
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif"><a href="/direktori-siswa">Siswa</a></li>
-                                <li class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif"><a href="/direktori-alumni">Alumni</a></li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-pegawai">Pegawai</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-siswa">Siswa</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-alumni">Alumni</a>
+                                </li>
                             </ul>
                         </details>
                     </li>
@@ -97,16 +123,22 @@
                         <details>
                             <summary>Galeri</summary>
                             <ul class="p-2">
-                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a href="/galeri-foto">Foto</a></li>
-                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a href="/galeri-video">Video</a></li>
+                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-foto">Foto</a></li>
+                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-video">Video</a></li>
                             </ul>
                         </details>
                     </li>
-                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a href="/sarana-prasarana">Sarana & Prasarana</a></li>
-                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a href="/prestasi-siswa">Prestasi Siswa</a></li>
+                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a
+                            href="/sarana-prasarana">Sarana & Prasarana</a></li>
+                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
+                            href="/prestasi-siswa">Prestasi Siswa</a></li>
                     <li class="@if($title == 'Berita') bg-celadon rounded-md @endif"><a href="/berita">Berita</a></li>
-                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a href="/ekstrakulikuler">Ekstrakulikuler</a></li>
-                    <li class="@if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a href="/media-sosial">Media Sosial</a></li>
+                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
+                            href="/ekstrakulikuler">Ekstrakulikuler</a></li>
+                    <li class="@if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a href="/media-sosial">Media
+                            Sosial</a></li>
                 </ul>
             </div>
         </div>
@@ -175,9 +207,29 @@
         </nav>
         <nav>
             <h6 class="footer-title">Media Sosial</h6>
-            <a class="link link-hover">Terms of use</a>
-            <a class="link link-hover">Privacy policy</a>
-            <a class="link link-hover">Cookie policy</a>
+            <ul class="flex gap-4">
+                <li>
+                    <a class="link link-hover">
+                        <button class="btn btn-outline hover:bg-transparent">
+                            <img src="{{ asset('assets/Facebook.svg') }}" alt="">
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a class="link link-hover">
+                        <button class="btn btn-outline hover:bg-transparent">
+                            <img src="{{ asset('assets/Instagram.svg') }}" alt="">
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a class="link link-hover">
+                        <button class="btn btn-outline hover:bg-transparent">
+                            <img src="{{ asset('assets/Youtube.svg') }}" alt="">
+                        </button>
+                    </a>
+                </li>
+            </ul>
         </nav>
     </footer>
     <!-- Footer -->
