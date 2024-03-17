@@ -69,3 +69,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Navbar Dropdown
+
+var inputPenghasilanWali = document.getElementById('penghasilan_wali');
+
+// Menambahkan event listener untuk mengubah format saat nilai diubah
+inputPenghasilanWali.addEventListener('input', function(e) {
+    // Menghapus karakter non-digit dan mengonversi ke integer
+    var angka = parseInt(this.value.replace(/[^\d]/g, ''), 10);
+    // Memastikan angka tidak kurang dari 0
+    if (angka < 0) {
+        angka = 0;
+    }
+    // Memformat nilai menjadi Rupiah
+    this.value = formatRupiah(angka);
+});
+
+// Fungsi untuk memformat angka menjadi Rupiah
+function formatRupiah(angka) {
+    var rupiah = '';
+    var angkarev = angka.toString().split('').reverse().join('');
+    for (var i = 0; i < angkarev.length; i++)
+        if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+    return 'Rp ' + rupiah.split('', rupiah.length - 1).reverse().join('');
+}
+
+  // PPDB Format Rupaiah Penghasilan Wali
+

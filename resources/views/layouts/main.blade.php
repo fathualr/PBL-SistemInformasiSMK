@@ -109,7 +109,7 @@
                             <ul class="p-2 bg-blue-lagoon">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-celadon rounded-md @endif">
-                                    <a href="/ppdb">Pendaftaran</a>
+                                    <a href="/ppdb">Informasi & Pendaftaran</a>
                                 </li>
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
@@ -261,5 +261,5 @@
     <!-- Footer -->
 
 </body>
-
+<script src="{{ asset('js/script.js') }}"></script>
 </html>
