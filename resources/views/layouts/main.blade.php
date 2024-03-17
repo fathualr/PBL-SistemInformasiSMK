@@ -32,25 +32,33 @@
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
-                    <li class="@if($title == 'PPDB') bg-celadon rounded-md @endif"><a href="/ppdb">PPDB</a></li>
+                    <li>
+                        <details>
+                            <summary>PPDB</summary>
+                            <ul class="p-2">
+                                <li class="text-black @if($title == 'PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/ppdb">Pendaftaran</a>
+                                </li>
+                                <li class="text-black @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/pengumuman-ppdb">Pengumuman</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
                     <li>
                         <details>
                             <summary>Direktori</summary>
-                            <ul class="bg-blue-lagoon">
-                                <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                            <ul class="">
+                                <li class="text-black @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
                                     <a href="/direktori-guru">Guru</a>
                                 </li>
-                                <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                <li class="text-black @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
                                     <a href="/direktori-pegawai">Pegawai</a>
                                 </li>
-                                <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                <li class="text-black @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
                                     <a href="/direktori-siswa">Siswa</a>
                                 </li>
-                                <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                <li class="text-black @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
                                     <a href="/direktori-alumni">Alumni</a>
                                 </li>
                             </ul>
@@ -95,7 +103,21 @@
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
-                    <li class="@if($title == 'PPDB') bg-celadon rounded-md @endif"><a href="/ppdb">PPDB</a></li>
+                    <li>
+                        <details>
+                            <summary>PPDB</summary>
+                            <ul class="p-2 bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/ppdb">Pendaftaran</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/pengumuman-ppdb">Pengumuman</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
                     <li>
                         <details>
                             <summary>Direktori</summary>
@@ -122,11 +144,15 @@
                     <li>
                         <details>
                             <summary>Galeri</summary>
-                            <ul class="p-2">
-                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a
-                                        href="/galeri-foto">Foto</a></li>
-                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a
-                                        href="/galeri-video">Video</a></li>
+                            <ul class="p-2 bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Foto') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-foto">Foto</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Video') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-video">Video</a>
+                                </li>
                             </ul>
                         </details>
                     </li>

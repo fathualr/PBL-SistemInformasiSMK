@@ -46,3 +46,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Carousel
+
+// Navbar Dropdown
+document.addEventListener("DOMContentLoaded", function () {
+    const detailsElements = document.querySelectorAll("details");
+
+    detailsElements.forEach(function (detailsElement) {
+        detailsElement.addEventListener("toggle", function () {
+            if (detailsElement.open) {
+                closeOtherDetails(detailsElement);
+            }
+        });
+    });
+
+    function closeOtherDetails(currentDetails) {
+        detailsElements.forEach(function (details) {
+            if (details !== currentDetails && details.open) {
+                details.open = false;
+            }
+        });
+    }
+});
+
+// Navbar Dropdown
