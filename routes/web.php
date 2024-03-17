@@ -21,6 +21,7 @@ use App\Http\Controllers\webController;
 Route::get('/', [webController::class, 'home']);
 Route::get('/profile', [webController::class, 'profile']);
 Route::get('/ppdb', [webController::class, 'ppdb']);
+Route::get('/pengunguman-ppdb', [webController::class, 'pengunguman']);
 Route::get('/direktori-guru', [webController::class, 'guru']);
 Route::get('/direktori-pegawai', [webController::class, 'pegawai']);
 Route::get('/direktori-siswa', [webController::class, 'siswa']);
