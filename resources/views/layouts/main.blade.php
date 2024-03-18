@@ -100,10 +100,10 @@
         </div>
 
         <!--Normal-->
-        <div class="grid grid-cols-8 gap-1 w-full lg:place-items-center place-items-end">
-            <div class="lg:col-span-1 col-end-8">
+        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start place-items-end">
+            <div class="">
                 <div
-                    class="avatar-group -space-x-6 rtl:space-x-reverse hidden md:flex translate-x-7 items-center md:ml-auto sm:ml-0">
+                    class="avatar-group -space-x-6 rtl:space-x-reverse hidden laptop:flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
                         <div class="w-12">
                             <img src="..." alt="Logo" />
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-7 w-full font-bold hidden lg:flex" id="nav-text">
+            <div class="col-span-9 w-full font-bold hidden lg:flex " id="nav-text">
                 <ul class="menu menu-horizontal px-1">
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
@@ -121,7 +121,7 @@
                     <li>
                         <details>
                             <summary>PPDB</summary>
-                            <ul class="p-2 bg-blue-lagoon">
+                            <ul class="p-2 bg-blue-lagoon w-60">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-celadon rounded-md @endif">
                                     <a href="/ppdb">Informasi & Pendaftaran</a>
