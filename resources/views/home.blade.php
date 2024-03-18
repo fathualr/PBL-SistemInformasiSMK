@@ -4,12 +4,14 @@
 
 <!-- First Content -->
 <div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
-    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0 ">
-        <iframe class="w-full aspect-video" src="https://www.youtube.com/..."></iframe>
+    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
+        <div class="aspect-w-16 aspect-h-9">
+            <iframe class="w-full h-full lg:h-96" src="https://www.youtube.com/embed/Tc_JWD9NhKY"></iframe>
+        </div>
     </div>
     <!-- Title -->
     <div class="col-span-2 overflow-x-auto">
-        <div class="card w-full text-primary-content">
+        <div class="card w-full ">
             <div class="card-body">
                 <h1 class="card-title text-lg">
                     Lorem
@@ -20,14 +22,14 @@
     <!-- Title -->
     <!-- Description & Other -->
     <div class="lg:row-span-2 col-span-2 -mt-10 lg:-mt-0">
-        <div class="card w-full text-primary-content">
+        <div class="card w-full">
             <div class="card-body">
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, error fugiat? Repellendus
                     consequuntur provident iure at. Aut nobis quasi amet. Iure dolorum placeat corporis eaque tenetur
                     distinctio id voluptatum maxime.
                 </p>
-                <div class="card-actions justify-start sticky mt-7 lg:bottom-0">
+                <div class="card-actions justify-start mt-7">
                     <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
                         Lanjut</button>
                 </div>
@@ -40,7 +42,7 @@
 
 <!-- Second Content -->
 <div
-    class="grid grid-rows-1 lg:grid-flow-col smartphone:grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100">
+    class="grid grid-rows-1 lg:grid-flow-col smartphone:grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100 my-10">
     <!-- School Profile -->
     <div class="lg:row-span-1 col-span-2 py-8 px-12 h-max ">
         <div class="card w-full rounded-sm my-24 lg:my-48 mx-auto lg:mx-10 lg:border-r-2 border-gray-400">
@@ -158,8 +160,8 @@
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="grid lg:grid-rows-4 smartphone:grid-cols-1 lg:grid-cols-2 lg:grid-flow-col">
-    <div class="smartphone:col-span-1 lg:col-span-2">
+<div class="grid md:grid-rows-4 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-6">
+    <div class="smartphone:col-span-1 md:col-span-2">
         <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
         <label class="input input-bordered mx-auto my-10 flex items-center smartphone:w-52 md:w-72">
             <input type="text" class="grow" placeholder="Search" />
@@ -204,7 +206,7 @@
 <!-- Third Content -->
 
 <!-- Fourth Content -->
-<div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-3 lg:grid-flow-col mt-10 lg:mt-0">
+<div class="grid lg:grid-rows-4 grid-cols-2 lg:grid-cols-3 lg:grid-flow-row mt-10 lg:mt-0">
     <div class="col-span-2 lg:col-span-3 mx-auto">
         <h1 class="font-bold text-xl text-center my-5">Galeri</h1>
     </div>
@@ -226,6 +228,11 @@
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
+    <div class="col-span-2 lg:col-span-3 mx-auto">
+        <button
+            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
+            Lanjut</button>
+    </div>
 </div>
 <!-- Fourth Content -->
 

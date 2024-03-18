@@ -13,7 +13,7 @@ export default {
                 "monte-carlo": "#78C6A3",
                 keppel: "#67B99A",
                 "dark-kepple": "#56AB91",
-                lochinvar: "#469D89",
+                "dark-lochinvar": "#469D89",
                 gossamer: "#358F80",
                 elm: "#248277",
                 "deep-sea": "#14746F",

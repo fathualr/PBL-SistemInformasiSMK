@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/script.js') }}"></script>
-    <title>SMK Muhammadiyah Plus Kota Batam | Home</title>
+    <style>
+    .overflow-y-auto::-webkit-scrollbar {
+        display: none;
+    }
+    </style>
+    <title>SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
 </head>
 
 <body>
 
     <!-- Navbar -->
-    <div class="navbar backdrop-blur-sm fixed top-0 z-40" id="navbar">
+    <div class="navbar bg-transparent fixed top-0 z-40" id="navbar">
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -24,21 +29,79 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li class="bg-celadon rounded-md"><a>Beranda</a></li>
-                    <li><a>Profile Sekolah</a></li>
-                    <li><a>PPDB</a></li>
-                    <li><a>Direktori</a></li>
-                    <li><a>Galeri</a></li>
-                    <li><a>Sarana & Prasarana</a></li>
-                    <li><a>Prestasi Siswa</a></li>
-                    <li><a>Berita</a></li>
-                    <li><a>Ekstrakulikuler</a></li>
-                    <li><a>Media Sosial</a></li>
+                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
+                            Sekolah</a></li>
+                    <li>
+                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a href="/program-keahlian">
+                        Program Keahlian</a></li>
+                    <li>
+                        <details>
+                            <summary>PPDB</summary>
+                            <ul class="p-2">
+                                <li class="text-black @if($title == 'PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/ppdb">Pendaftaran</a>
+                                </li>
+                                <li class="text-black @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/pengumuman-ppdb">Pengumuman</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Direktori</summary>
+                            <ul class="">
+                                <li class="text-black @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-guru">Guru</a>
+                                </li>
+                                <li class="text-black @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-pegawai">Pegawai</a>
+                                </li>
+                                <li class="text-black @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-siswa">Siswa</a>
+                                </li>
+                                <li class="text-black @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-alumni">Alumni</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Galeri</summary>
+                            <ul class="p-2">
+                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-foto">Foto</a></li>
+                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-video">Video</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a
+                            href="/sarana-prasarana">Sarana & Prasarana</a></li>
+                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
+                            href="/prestasi-siswa">Prestasi Siswa</a></li>
+                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
+                            href="/ekstrakulikuler">Ekstrakulikuler</a></li>
+                    <li>
+                        <details>
+                            <summary>Lainnya</summary>
+                            <ul class="p-2">
+                                <li class="text-black @if($title == 'Berita') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-foto">Berita</a></li>
+                                <li class="text-black @if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-video">Media Sosial</a></li>
+                            </ul>
+                        </details>
+                    </li>
                 </ul>
             </div>
         </div>
-        <div class="grid grid-cols-7 gap-1 w-full lg:place-items-center place-items-end">
-            <div class="lg:col-span-1 col-end-7">
+
+        <!--Normal-->
+        <div class="grid grid-cols-8 gap-1 w-full lg:place-items-center place-items-end">
+            <div class="lg:col-span-1 col-end-8">
                 <div
                     class="avatar-group -space-x-6 rtl:space-x-reverse flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
@@ -48,18 +111,87 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-6 w-full font-bold hidden lg:flex" id="nav-text">
+            <div class="col-span-7 w-full font-bold hidden lg:flex" id="nav-text">
                 <ul class="menu menu-horizontal px-1">
-                    <li class="bg-celadon rounded-md"><a>Beranda</a></li>
-                    <li><a>Profile Sekolah</a></li>
-                    <li><a>PPDB</a></li>
-                    <li><a>Direktori</a></li>
-                    <li><a>Galeri</a></li>
-                    <li><a>Sarana & Prasarana</a></li>
-                    <li><a>Prestasi Siswa</a></li>
-                    <li><a>Berita</a></li>
-                    <li><a>Ekstrakulikuler</a></li>
-                    <li><a>Media Sosial</a></li>
+                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
+                            Sekolah</a></li>
+                    <li>
+                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a href="/program-keahlian">Program Keahlian</a></li>
+                    <li>
+                        <details>
+                            <summary>PPDB</summary>
+                            <ul class="p-2 bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/ppdb">Informasi & Pendaftaran</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
+                                    <a href="/pengumuman-ppdb">Pengumuman</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Direktori</summary>
+                            <ul class="bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-guru">Guru</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-pegawai">Pegawai</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-siswa">Siswa</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                    <a href="/direktori-alumni">Alumni</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Galeri</summary>
+                            <ul class="p-2 bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Foto') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-foto">Foto</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Video') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-video">Video</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a
+                            href="/sarana-prasarana">Sarana & Prasarana</a></li>
+                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
+                            href="/prestasi-siswa">Prestasi Siswa</a></li>
+                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
+                            href="/ekstrakulikuler">Ekstrakulikuler</a></li>
+                    <li>
+                        <details>
+                            <summary>Lainnya</summary>
+                            <ul class="p-2 bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-foto">Berita</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Media Sosial') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-video">Media Sosial</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -68,7 +200,7 @@
 
     <!-- Carousel -->
     <div class="flex justify-center items-center">
-        <div class="carousel w-full h-[50vh] relative overflow-hidden">
+        <div class="carousel w-full h-[30vh] lg:h-[50vh] relative overflow-hidden">
             <div id="slide1" class="carousel-item relative w-full">
                 <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
                     class="w-full transition-transform duration-500 transform" />
@@ -90,7 +222,7 @@
     <!-- Carousel -->
 
     <!-- Main -->
-    <div class="container bg-blue-800 mx-auto h-max w-11/12 my-10">
+    <div class="container  mx-auto h-max w-11/12 my-10">
         @yield('Main')
     </div>
     <!-- Main -->
@@ -128,13 +260,33 @@
         </nav>
         <nav>
             <h6 class="footer-title">Media Sosial</h6>
-            <a class="link link-hover">Terms of use</a>
-            <a class="link link-hover">Privacy policy</a>
-            <a class="link link-hover">Cookie policy</a>
+            <ul class="flex gap-4">
+                <li>
+                    <a class="link link-hover">
+                        <button class="btn btn-outline hover:bg-transparent">
+                            <img src="{{ asset('assets/Facebook.svg') }}" alt="">
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a class="link link-hover">
+                        <button class="btn btn-outline hover:bg-transparent">
+                            <img src="{{ asset('assets/Instagram.svg') }}" alt="">
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a class="link link-hover">
+                        <button class="btn btn-outline hover:bg-transparent">
+                            <img src="{{ asset('assets/Youtube.svg') }}" alt="">
+                        </button>
+                    </a>
+                </li>
+            </ul>
         </nav>
     </footer>
     <!-- Footer -->
 
 </body>
-
+<script src="{{ asset('js/script.js') }}"></script>
 </html>
