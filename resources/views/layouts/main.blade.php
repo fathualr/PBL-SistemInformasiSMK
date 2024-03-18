@@ -90,7 +90,7 @@
         <div class="grid grid-cols-7 gap-1 w-full lg:place-items-center place-items-end">
             <div class="lg:col-span-1 col-end-7">
                 <div
-                    class="avatar-group -space-x-6 rtl:space-x-reverse flex translate-x-7 items-center md:ml-auto sm:ml-0">
+                    class="avatar-group -space-x-6 rtl:space-x-reverse hidden md:flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
                         <div class="w-12">
                             <img src="..." alt="Logo" />
