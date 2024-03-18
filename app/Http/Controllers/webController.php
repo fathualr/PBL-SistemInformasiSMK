@@ -31,25 +31,25 @@ class webController extends Controller
     }
 
     public function guru(){
-        return view('guru', [
+        return view('direktori-guru', [
             "title" => "Direktori Guru"
         ]);
     }
 
     public function pegawai(){
-        return view('pegawai', [
+        return view('direktori-pegawai', [
             "title" => "Direktori Pegawai"
         ]);
     }
     
     public function siswa(){
-        return view('siswa', [
+        return view('direktori-siswa', [
             "title" => "Direktori Siswa"
         ]);
     }
 
     public function alumni(){
-        return view('alumni', [
+        return view('direktori-alumni', [
             "title" => "Direktori Alumni"
         ]);
     }

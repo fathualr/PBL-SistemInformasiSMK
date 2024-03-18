@@ -33,6 +33,9 @@
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
                     <li>
+                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a href="/program-keahlian">
+                        Program Keahlian</a></li>
+                    <li>
                         <details>
                             <summary>PPDB</summary>
                             <ul class="p-2">
@@ -79,16 +82,26 @@
                             href="/sarana-prasarana">Sarana & Prasarana</a></li>
                     <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
                             href="/prestasi-siswa">Prestasi Siswa</a></li>
-                    <li class="@if($title == 'Berita') bg-celadon rounded-md @endif"><a href="/berita">Berita</a></li>
                     <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
                             href="/ekstrakulikuler">Ekstrakulikuler</a></li>
-                    <li class="@if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a href="/media-sosial">Media
-                            Sosial</a></li>
+                    <li>
+                        <details>
+                            <summary>Lainnya</summary>
+                            <ul class="p-2">
+                                <li class="text-black @if($title == 'Berita') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-foto">Berita</a></li>
+                                <li class="text-black @if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a
+                                        href="/galeri-video">Media Sosial</a></li>
+                            </ul>
+                        </details>
+                    </li>
                 </ul>
             </div>
         </div>
-        <div class="grid grid-cols-7 gap-1 w-full lg:place-items-center place-items-end">
-            <div class="lg:col-span-1 col-end-7">
+
+        <!--Normal-->
+        <div class="grid grid-cols-8 gap-1 w-full lg:place-items-center place-items-end">
+            <div class="lg:col-span-1 col-end-8">
                 <div
                     class="avatar-group -space-x-6 rtl:space-x-reverse hidden md:flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
@@ -98,11 +111,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-6 w-full font-bold hidden lg:flex" id="nav-text">
+            <div class="col-span-7 w-full font-bold hidden lg:flex" id="nav-text">
                 <ul class="menu menu-horizontal px-1">
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
+                    <li>
+                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a href="/program-keahlian">Program Keahlian</a></li>
                     <li>
                         <details>
                             <summary>PPDB</summary>
@@ -160,11 +175,23 @@
                             href="/sarana-prasarana">Sarana & Prasarana</a></li>
                     <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
                             href="/prestasi-siswa">Prestasi Siswa</a></li>
-                    <li class="@if($title == 'Berita') bg-celadon rounded-md @endif"><a href="/berita">Berita</a></li>
                     <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
                             href="/ekstrakulikuler">Ekstrakulikuler</a></li>
-                    <li class="@if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a href="/media-sosial">Media
-                            Sosial</a></li>
+                    <li>
+                        <details>
+                            <summary>Lainnya</summary>
+                            <ul class="p-2 bg-blue-lagoon">
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-foto">Berita</a>
+                                </li>
+                                <li
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Media Sosial') bg-celadon rounded-md @endif">
+                                    <a href="/galeri-video">Media Sosial</a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
                 </ul>
             </div>
         </div>
