@@ -247,20 +247,6 @@
             <div class="card-body rounded-b-xl h-28 bg-base-100">
                 <h2 class="card-title text-center my-3 h-14">Teknik Komputer dan Jaringan</h2>
                 <p class="text-center truncate">If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-center">
-                    <!-- Modal -->
-                    <button class="btn bottom-0" onclick="my_modal_4.showModal()">Lihat Selengkapnya</button>
-                    <dialog id="my_modal_4" class="modal">
-                        <div class="modal-box">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Hello!</h3>
-                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-                        </div>
-                    </dialog>
-                    <!-- Modal -->
-                </div>
             </div>
         </div>
     </div>
@@ -277,20 +263,6 @@
             <div class="card-body rounded-b-xl h-28 bg-base-100">
                 <h2 class="card-title justify-center my-3 h-14">Rekayasa Perangkat Lunak</h2>
                 <p class="text-center truncate">If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-center">
-                    <!-- Modal -->
-                    <button class="btn bottom-0" onclick="my_modal_4.showModal()">Lihat Selengkapnya</button>
-                    <dialog id="my_modal_4" class="modal">
-                        <div class="modal-box">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Hello!</h3>
-                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-                        </div>
-                    </dialog>
-                    <!-- Modal -->
-                </div>
             </div>
         </div>
     </div>
@@ -307,20 +279,6 @@
             <div class="card-body rounded-b-xl h-28 bg-base-100">
                 <h2 class="card-title justify-center my-3 h-14">Animasi</h2>
                 <p class="text-center truncate">If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-center">
-                    <!-- Modal -->
-                    <button class="btn bottom-0" onclick="my_modal_4.showModal()">Lihat Selengkapnya</button>
-                    <dialog id="my_modal_4" class="modal">
-                        <div class="modal-box">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Hello!</h3>
-                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-                        </div>
-                    </dialog>
-                    <!-- Modal -->
-                </div>
             </div>
         </div>
     </div>
@@ -337,20 +295,6 @@
             <div class="card-body rounded-b-xl h-28 bg-base-100">
                 <h2 class="card-title justify-center my-3 h-14">Teknik Mesin</h2>
                 <p class="text-center truncate">If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-center">
-                    <!-- Modal -->
-                    <button class="btn bottom-0" onclick="my_modal_4.showModal()">Lihat Selengkapnya</button>
-                    <dialog id="my_modal_4" class="modal">
-                        <div class="modal-box">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Hello!</h3>
-                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-                        </div>
-                    </dialog>
-                    <!-- Modal -->
-                </div>
             </div>
         </div>
     </div>

@@ -33,8 +33,9 @@
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
                     <li>
-                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a href="/program-keahlian">
-                        Program Keahlian</a></li>
+                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a
+                            href="/program-keahlian">
+                            Program Keahlian</a></li>
                     <li>
                         <details>
                             <summary>PPDB</summary>
@@ -100,7 +101,7 @@
         </div>
 
         <!--Normal-->
-        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start place-items-end">
+        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start place-items-end ">
             <div class="">
                 <div
                     class="avatar-group -space-x-6 rtl:space-x-reverse hidden laptop:flex translate-x-7 items-center md:ml-auto sm:ml-0">
@@ -111,17 +112,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-9 w-full font-bold hidden lg:flex " id="nav-text">
-                <ul class="menu menu-horizontal px-1">
+            <div class="col-span-9 w-full font-bold hidden laptop:flex" id="nav-text">
+                <ul class="menu menu-horizontal px-1 justify-center items-center">
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
                     <li>
-                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a href="/program-keahlian">Program Keahlian</a></li>
+                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a
+                            href="/program-keahlian">Program Keahlian</a></li>
                     <li>
                         <details>
                             <summary>PPDB</summary>
-                            <ul class="p-2 bg-blue-lagoon w-60">
+                            <ul class="p-2 bg-blue-lagoon w-60 z-40">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-celadon rounded-md @endif">
                                     <a href="/ppdb">Informasi & Pendaftaran</a>
@@ -136,7 +138,7 @@
                     <li>
                         <details>
                             <summary>Direktori</summary>
-                            <ul class="bg-blue-lagoon">
+                            <ul class="bg-blue-lagoon z-40">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
                                     <a href="/direktori-guru">Guru</a>
@@ -159,7 +161,7 @@
                     <li>
                         <details>
                             <summary>Galeri</summary>
-                            <ul class="p-2 bg-blue-lagoon">
+                            <ul class="p-2 bg-blue-lagoon z-40">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Foto') bg-celadon rounded-md @endif">
                                     <a href="/galeri-foto">Foto</a>
@@ -180,7 +182,7 @@
                     <li>
                         <details>
                             <summary>Lainnya</summary>
-                            <ul class="p-2 bg-blue-lagoon">
+                            <ul class="p-2 bg-blue-lagoon w-40">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-celadon rounded-md @endif">
                                     <a href="/galeri-foto">Berita</a>
@@ -200,20 +202,20 @@
 
     <!-- Carousel -->
     <div class="flex justify-center items-center">
-        <div class="carousel w-full h-[30vh] lg:h-[50vh] relative overflow-hidden">
-            <div id="slide1" class="carousel-item relative w-full">
+        <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
+            <div id="slide1" class="carousel-item relative w-full transition ">
                 <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
                     class="w-full transition-transform duration-500 transform" />
             </div>
-            <div id="slide2" class="carousel-item relative w-full hidden">
+            <div id="slide2" class="carousel-item relative w-full transition  hidden">
                 <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
                     class="w-full transition-transform duration-500 transform" />
             </div>
-            <div id="slide3" class="carousel-item relative w-full hidden">
+            <div id="slide3" class="carousel-item relative w-full transition  hidden">
                 <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
                     class="w-full transition-transform duration-500 transform" />
             </div>
-            <div id="slide4" class="carousel-item relative w-full hidden">
+            <div id="slide4" class="carousel-item relative w-full transition  hidden">
                 <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
                     class="w-full transition-transform duration-500 transform" />
             </div>
@@ -289,4 +291,5 @@
 
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
+
 </html>

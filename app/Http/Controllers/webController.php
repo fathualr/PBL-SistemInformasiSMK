@@ -18,6 +18,12 @@ class webController extends Controller
         ]);
     }
 
+    public function program(){
+        return view('program-keahlian', [
+            "title" => "Program Keahlian"
+        ]);
+    }
+
     public function ppdb(){
         return view('ppdb', [
             "title" => "PPDB"

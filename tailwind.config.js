@@ -25,6 +25,9 @@ export default {
                 laptop: "1024px",
                 desktop: "1280px",
             },
+            fontFamily: {
+                poppins: ["Poppins", "sans"],
+            },
         },
     },
     plugins: [require("daisyui")],

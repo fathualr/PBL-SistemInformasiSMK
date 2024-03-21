@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Carousel
 document.addEventListener("DOMContentLoaded", function () {
     let currentSlide = 0;
-    const slides = document.querySelectorAll(".carousel-item");
+    const slides = document.querySelectorAll(".transition ");
     const totalSlides = slides.length;
 
     function showSlide(n) {
@@ -70,12 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Navbar Dropdown
 
-var inputPenghasilanWali = document.getElementById('penghasilan_wali');
+var inputPenghasilanWali = document.getElementById("penghasilan_wali");
 
 // Menambahkan event listener untuk mengubah format saat nilai diubah
-inputPenghasilanWali.addEventListener('input', function(e) {
+inputPenghasilanWali.addEventListener("input", function (e) {
     // Menghapus karakter non-digit dan mengonversi ke integer
-    var angka = parseInt(this.value.replace(/[^\d]/g, ''), 10);
+    var angka = parseInt(this.value.replace(/[^\d]/g, ""), 10);
     // Memastikan angka tidak kurang dari 0
     if (angka < 0) {
         angka = 0;
@@ -86,12 +86,17 @@ inputPenghasilanWali.addEventListener('input', function(e) {
 
 // Fungsi untuk memformat angka menjadi Rupiah
 function formatRupiah(angka) {
-    var rupiah = '';
-    var angkarev = angka.toString().split('').reverse().join('');
+    var rupiah = "";
+    var angkarev = angka.toString().split("").reverse().join("");
     for (var i = 0; i < angkarev.length; i++)
-        if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
-    return 'Rp ' + rupiah.split('', rupiah.length - 1).reverse().join('');
+        if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + ".";
+    return (
+        "Rp " +
+        rupiah
+            .split("", rupiah.length - 1)
+            .reverse()
+            .join("")
+    );
 }
 
-  // PPDB Format Rupaiah Penghasilan Wali
-
+// PPDB Format Rupaiah Penghasilan Wali

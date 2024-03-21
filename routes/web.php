@@ -20,6 +20,7 @@ use App\Http\Controllers\webController;
 
 Route::get('/', [webController::class, 'home']);
 Route::get('/profile', [webController::class, 'profile']);
+Route::get('/program-keahlian', [webController::class, 'program']);
 Route::get('/ppdb', [webController::class, 'ppdb']);
 Route::get('/pengumuman-ppdb', [webController::class, 'pengumuman']);
 Route::get('/direktori-guru', [webController::class, 'guru']);
