@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 4000);
+    setInterval(nextSlide, 5000);
 });
 
 // Carousel

@@ -34,3 +34,5 @@ Route::get('/prestasi-siswa', [webController::class, 'prestasi']);
 Route::get('/berita', [webController::class, 'berita']);
 Route::get('/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
 Route::get('/media-sosial', [webController::class, 'mediaSosial']);
+Route::get('/sejarah', [webController::class, 'sejarah']);
+Route::get('/detail-program', [webController::class, 'detailProgram']);

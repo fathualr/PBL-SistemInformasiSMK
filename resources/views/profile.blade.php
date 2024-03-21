@@ -2,6 +2,35 @@
 
 @section('Main')
 
+<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">SEJARAH SEKOLAH</h1>
+
+<div class="grid grid-rows-3 grid-cols-4 grid-flow-col gap-4">
+    <div class="col-span-2">
+        <h1 class="font-bold text-2xl">SMK MUHAMMADIYAH PLUS BATAM KOTA</h1>
+    </div>
+    <div class="col-span-2">
+        <p class="-mt-10">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error cum quaerat mollitia impedit fugit, repellat
+            vitae odit quam totam quasi laboriosam laborum necessitatibus esse qui blanditiis incidunt dolorum id
+            ratione. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur officiis, rerum laboriosam nemo
+            esse consequuntur voluptatibus incidunt eum eaque ut? Quia, esse odit illum deserunt impedit ratione optio
+            saepe necessitatibus.
+        </p>
+    </div>
+    <div class="col-span-2 mt-10">
+        <a href="/sejarah">
+            <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
+                Lanjut
+            </button>
+        </a>
+    </div>
+    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
+        <div class="aspect-w-16 aspect-h-9">
+            <iframe class="w-full h-full lg:h-96" src="https://www.youtube.com/embed/Tc_JWD9NhKY"></iframe>
+        </div>
+    </div>
+</div>
+
 <h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">SMK MUHAMMADIYAH PLUS KOTA BATAM</h1>
 
 <div class="grid tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">

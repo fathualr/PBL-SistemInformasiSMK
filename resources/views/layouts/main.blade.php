@@ -205,7 +205,12 @@
         <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
             <div id="slide1" class="carousel-item relative w-full transition ">
                 <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
-                    class="w-full transition-transform duration-500 transform" />
+                    class="w-full transition-transform duration-500 transform filter brightness-50" />
+                <div class="absolute inset-0 flex justify-center items-center">
+                    <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
+                        <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
+                    </div>
+                </div>
             </div>
             <div id="slide2" class="carousel-item relative w-full transition  hidden">
                 <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"

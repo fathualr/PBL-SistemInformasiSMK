@@ -8,7 +8,7 @@ class webController extends Controller
 {
     public function home(){
         return view('home', [
-            "title" => "Home"
+            "title" => "Beranda"
         ]);
     }
 
@@ -99,6 +99,18 @@ class webController extends Controller
     public function mediaSosial(){
         return view('media-sosial', [
             "title" => "Media Sosial"
+        ]);
+    }
+
+    public function sejarah(){
+        return view('sejarah', [
+            "title" => "Sejarah"
+        ]);
+    }
+
+    public function detailProgram(){
+        return view('detail-program', [
+            "title" => "Detail Program Keahlian"
         ]);
     }
 }

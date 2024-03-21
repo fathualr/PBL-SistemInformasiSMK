@@ -45,19 +45,24 @@
     class="grid grid-rows-1 lg:grid-flow-col smartphone:grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100 my-10">
     <!-- School Profile -->
     <div class="lg:row-span-1 col-span-2 py-8 px-12 h-max ">
+
         <div class="card w-full rounded-sm my-24 lg:my-48 mx-auto lg:mx-10 lg:border-r-2 border-gray-400">
             <div class="card-body">
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum nihil, fuga
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum nihil,
+                    fuga
                     ratione facere ducimus eaque, commodi quae odio sequi eveniet enim corrupti adipisci repellendus
                     ipsam. Nulla, sapiente!</p>
                 <div class="card-actions justify-center md:justify-start">
-                    <button
-                        class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
-                        Lanjut</button>
+                    <a href="/profile">
+                        <button
+                            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
+                            Lanjut</button>
+                    </a>
                 </div>
             </div>
         </div>
+
     </div>
     <!-- School Profile -->
 
@@ -66,92 +71,105 @@
 
         <div class="col-span-1">
             <!-- Facility School -->
-            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
-                <figure class="px-5 pt-5 -translate-x-16">
-                    <div class="avatar rounded-full shadow-md">
-                        <div class="size-20 p-5  rounded-full">
-                            <img src="{{ asset('assets/Group 30.svg') }}" alt="Fasilitas"
-                                class="object-contain rounded-full w-5 h-5" />
+            <a href="/sarana-prasarana">
+                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                    <figure class="px-5 pt-5 -translate-x-16">
+                        <div class="avatar rounded-full shadow-md">
+                            <div class="size-20 p-5  rounded-full">
+                                <img src="{{ asset('assets/Group 30.svg') }}" alt="Fasilitas"
+                                    class="object-contain rounded-full w-5 h-5" />
+                            </div>
                         </div>
+                    </figure>
+                    <div class="card-body text-start">
+                        <h2 class="card-title">Fasilitas</h2>
+                        <p class="overflow-y-auto h-20">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
+                            molestiae voluptatem eum
+                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
+                            optio
+                            inventore qui sequi enim eaque neque?</p>
                     </div>
-                </figure>
-                <div class="card-body text-start">
-                    <h2 class="card-title">Fasilitas</h2>
-                    <p class="overflow-y-auto h-20">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                        molestiae voluptatem eum
-                        molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam optio
-                        inventore qui sequi enim eaque neque?</p>
                 </div>
-            </div>
+            </a>
             <!-- Facility School -->
         </div>
 
         <div class="col-span-1">
             <!-- School Location -->
-            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
-                <figure class="px-5 pt-5 -translate-x-16">
-                    <div class="avatar rounded-full">
-                        <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 31.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+            <a href="/media-sosial">
+                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                    <figure class="px-5 pt-5 -translate-x-16">
+                        <div class="avatar rounded-full">
+                            <div class="size-20 p-5 shadow-md rounded-full">
+                                <img src="{{ asset('assets/Group 31.svg') }}" alt="Lokasi"
+                                    class="rounded-full size-5" />
+                            </div>
                         </div>
+                    </figure>
+                    <div class="card-body text-start">
+                        <h2 class="card-title">Lokasi</h2>
+                        <p class="overflow-y-auto h-20">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
+                            molestiae voluptatem eum
+                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
+                            optio
+                            inventore qui sequi enim eaque neque?</p>
                     </div>
-                </figure>
-                <div class="card-body text-start">
-                    <h2 class="card-title">Lokasi</h2>
-                    <p class="overflow-y-auto h-20">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                        molestiae voluptatem eum
-                        molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam optio
-                        inventore qui sequi enim eaque neque?</p>
                 </div>
-            </div>
+            </a>
             <!-- School Location -->
         </div>
 
         <div class="col-span-1">
             <!-- School History -->
-            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
-                <figure class="px-5 pt-5 -translate-x-16">
-                    <div class="avatar rounded-full shadow-md">
-                        <div class="size-20 p-5  rounded-full">
-                            <img src="{{ asset('assets/Group 32.svg') }}" alt="Sejarah"
-                                class="object-cover rounded-full w-5 h-5" />
+            <a href="/profile">
+                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                    <figure class="px-5 pt-5 -translate-x-16">
+                        <div class="avatar rounded-full shadow-md">
+                            <div class="size-20 p-5  rounded-full">
+                                <img src="{{ asset('assets/Group 32.svg') }}" alt="Sejarah"
+                                    class="object-cover rounded-full w-5 h-5" />
+                            </div>
                         </div>
+                    </figure>
+                    <div class="card-body text-start">
+                        <h2 class="card-title">Sejarah</h2>
+                        <p class="overflow-y-auto h-20">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
+                            molestiae voluptatem eum
+                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
+                            optio
+                            inventore qui sequi enim eaque neque?</p>
                     </div>
-                </figure>
-                <div class="card-body text-start">
-                    <h2 class="card-title">Sejarah</h2>
-                    <p class="overflow-y-auto h-20">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                        molestiae voluptatem eum
-                        molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam optio
-                        inventore qui sequi enim eaque neque?</p>
                 </div>
-            </div>
+            </a>
             <!-- School History -->
         </div>
 
         <div class="col-span-1">
             <!-- School Achievement -->
-            <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
-                <figure class="px-5 pt-5 -translate-x-16">
-                    <div class="avatar rounded-full shadow-md">
-                        <div class="size-20 p-5  rounded-full">
-                            <img src="{{ asset('assets/Group 33.svg') }}" alt="Prestasi"
-                                class="object-cover rounded-full w-5 h-5" />
+            <a href="/prestasi-siswa">
+                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                    <figure class="px-5 pt-5 -translate-x-16">
+                        <div class="avatar rounded-full shadow-md">
+                            <div class="size-20 p-5  rounded-full">
+                                <img src="{{ asset('assets/Group 33.svg') }}" alt="Prestasi"
+                                    class="object-cover rounded-full w-5 h-5" />
+                            </div>
                         </div>
+                    </figure>
+                    <div class="card-body text-start">
+                        <h2 class="card-title">Prestasi</h2>
+                        <p class="overflow-y-auto h-20">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
+                            molestiae voluptatem eum
+                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
+                            optio
+                            inventore qui sequi enim eaque neque?</p>
                     </div>
-                </figure>
-                <div class="card-body text-start">
-                    <h2 class="card-title">Prestasi</h2>
-                    <p class="overflow-y-auto h-20">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                        molestiae voluptatem eum
-                        molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam optio
-                        inventore qui sequi enim eaque neque?</p>
                 </div>
-            </div>
+            </a>
             <!-- School Achievement -->
         </div>
 
@@ -229,9 +247,12 @@
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
     <div class="col-span-2 lg:col-span-3 mx-auto">
-        <button
-            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
-            Lanjut</button>
+        <a href="/galeri-foto">
+            <button
+                class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
+                Lanjut
+            </button>
+        </a>
     </div>
 </div>
 <!-- Fourth Content -->

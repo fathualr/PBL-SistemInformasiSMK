@@ -15,7 +15,9 @@
                 <h2 class="card-title justify-center text-center my-3 h-14">Teknik Komputer dan Jaringan</h2>
                 <p class="text-center truncate">If a dog chews shoes whose shoes does he choose?</p>
                 <div class="card-actions justify-center">
-                    <button class="btn bottom-0">Lihat Selengkapnya</button>
+                    <a href="/detail-program">
+                        <button class="btn bottom-0">Lihat Selengkapnya</button>
+                    </a>
                 </div>
             </div>
         </div>
