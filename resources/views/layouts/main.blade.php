@@ -90,9 +90,9 @@
                             <summary>Lainnya</summary>
                             <ul class="p-2">
                                 <li class="text-black @if($title == 'Berita') bg-celadon rounded-md @endif"><a
-                                        href="/galeri-foto">Berita</a></li>
+                                        href="/berita">Berita</a></li>
                                 <li class="text-black @if($title == 'Media Sosial') bg-celadon rounded-md @endif"><a
-                                        href="/galeri-video">Media Sosial</a></li>
+                                        href="/media-sosial">Media Sosial</a></li>
                             </ul>
                         </details>
                     </li>
@@ -185,11 +185,11 @@
                             <ul class="p-2 bg-blue-lagoon w-40">
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-celadon rounded-md @endif">
-                                    <a href="/galeri-foto">Berita</a>
+                                    <a href="/berita">Berita</a>
                                 </li>
                                 <li
                                     class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Media Sosial') bg-celadon rounded-md @endif">
-                                    <a href="/galeri-video">Media Sosial</a>
+                                    <a href="/media-sosial">Media Sosial</a>
                                 </li>
                             </ul>
                         </details>
