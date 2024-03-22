@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
     <style>
     .overflow-y-auto::-webkit-scrollbar {
         display: none;
@@ -114,7 +115,7 @@
             </div>
             <div class="col-span-9 w-full font-bold hidden laptop:flex" id="nav-text">
                 <ul class="menu menu-horizontal px-1 justify-center items-center">
-                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Beranda') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
                     <li>
@@ -203,7 +204,7 @@
     <!-- Carousel -->
     <div class="flex justify-center items-center">
         <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
-            <div id="slide1" class="carousel-item relative w-full transition ">
+            <div id="slide1" class="carousel-item relative w-full transition">
                 <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
                     class="w-full transition-transform duration-500 transform filter brightness-50" />
                 <div class="absolute inset-0 flex justify-center items-center">
@@ -235,7 +236,7 @@
     <!-- Main -->
 
     <!-- Footer -->
-    <footer class="footer p-10 bg-base-200 text-base-content bottom-0">
+    <footer class="footer p-10 bottom-0 bg-blue-lagoon text-white">
         <aside>
             <div class="avatar-group -space-x-6 rtl:space-x-reverse">
                 <div class="avatar">

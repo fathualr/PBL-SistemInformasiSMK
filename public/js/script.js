@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Carousel
 document.addEventListener("DOMContentLoaded", function () {
     let currentSlide = 0;
-    const slides = document.querySelectorAll(".transition ");
+    const slides = document.querySelectorAll(".carousel-item ");
     const totalSlides = slides.length;
 
     function showSlide(n) {
@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(nextSlide, 5000);
 });
-
 // Carousel
 
 // Navbar Dropdown

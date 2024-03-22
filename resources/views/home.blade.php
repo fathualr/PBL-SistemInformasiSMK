@@ -42,11 +42,11 @@
 
 <!-- Second Content -->
 <div
-    class="grid grid-rows-1 lg:grid-flow-col smartphone:grid-cols-2 lg:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100 my-10">
+    class="grid grid-rows-1 desktop:grid-flow-col smartphone:grid-cols-2 desktop:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100 my-10">
     <!-- School Profile -->
-    <div class="lg:row-span-1 col-span-2 py-8 px-12 h-max ">
+    <div class="desktop:row-span-1 col-span-2 py-8 px-12 h-max ">
 
-        <div class="card w-full rounded-sm my-24 lg:my-48 mx-auto lg:mx-10 lg:border-r-2 border-gray-400">
+        <div class="card w-full rounded-sm my-24 desktop:my-48 mx-auto lg:mx-10 desktop:border-r-2 border-gray-400">
             <div class="card-body">
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum nihil,
@@ -67,12 +67,13 @@
     <!-- School Profile -->
 
     <div
-        class="md:col-span-3 grid smartphone:grid-cols-1 md:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 lg:gap-y-0 -mt-16 lg:-mt-0">
+        class="tablet:col-span-3 grid smartphone:grid-cols-1 tablet:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 desktop:gap-y-0 -mt-16 desktop:-mt-0">
 
         <div class="col-span-1">
             <!-- Facility School -->
             <a href="/sarana-prasarana">
-                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -98,7 +99,8 @@
         <div class="col-span-1">
             <!-- School Location -->
             <a href="/media-sosial">
-                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full">
                             <div class="size-20 p-5 shadow-md rounded-full">
@@ -124,7 +126,8 @@
         <div class="col-span-1">
             <!-- School History -->
             <a href="/profile">
-                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -150,7 +153,8 @@
         <div class="col-span-1">
             <!-- School Achievement -->
             <a href="/prestasi-siswa">
-                <div class="card smartphone:w-60 lg:w-72 h-72 bg-base-100 shadow-xl md:mx-auto rounded-sm">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
