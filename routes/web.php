@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\webController;
+use App\Http\Controllers\adminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ use App\Http\Controllers\webController;
 //      return view('welcome');
 //  });
 
+
+// Public
 Route::get('/', [webController::class, 'home']);
 Route::get('/profile', [webController::class, 'profile']);
 Route::get('/program-keahlian', [webController::class, 'program']);
@@ -36,3 +39,11 @@ Route::get('/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
 Route::get('/media-sosial', [webController::class, 'mediaSosial']);
 Route::get('/sejarah', [webController::class, 'sejarah']);
 Route::get('/detail-program', [webController::class, 'detailProgram']);
+// Public
+
+// Admin
+Route::get('admin/login', [adminController::class, 'login']);
+Route::get('admin/dashboard', [adminController::class, 'dashboard']);
+Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
+Route::get('admin/profile', [adminController::class, 'adminProfile']);
+// Admin
