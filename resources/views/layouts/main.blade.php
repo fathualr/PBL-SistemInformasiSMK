@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
     <style>
     .overflow-y-auto::-webkit-scrollbar {
         display: none;

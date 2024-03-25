@@ -95,3 +95,10 @@ function formatRupiah(angka) {
 }
 
 // PPDB Format Rupaiah Penghasilan Wali
+
+// Sidebar
+document.getElementById("toggleButton").addEventListener("click", function () {
+    document.querySelector(".bg-gray-800").classList.toggle("w-16");
+    document.querySelector(".bg-gray-800").classList.toggle("w-32");
+});
+// Sidebar
