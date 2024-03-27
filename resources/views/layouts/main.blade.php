@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <script src="{{ asset('js/script.js') }}"></script>
     <style>
     .overflow-y-auto::-webkit-scrollbar {
@@ -101,7 +102,7 @@
         </div>
 
         <!--Normal-->
-        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start place-items-end ">
+        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start  place-items-end">
             <div class="">
                 <div
                     class="avatar-group -space-x-6 rtl:space-x-reverse hidden laptop:flex translate-x-7 items-center md:ml-auto sm:ml-0">
@@ -112,24 +113,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-9 w-full font-bold hidden laptop:flex" id="nav-text">
+            <div class="col-span-9 w-full font-bold hidden laptop:flex desktop:justify-center desktop:items-center"
+                id="nav-text">
                 <ul class="menu menu-horizontal px-1 justify-center items-center">
-                    <li class="@if($title == 'Beranda') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
-                    <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/profile">Profile
+                    <li class="@if($title == 'Beranda') bg-deep-sea rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Profile') bg-deep-sea rounded-md @endif"><a href="/profile">Profile
                             Sekolah</a></li>
                     <li>
-                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Program Keahlian') bg-deep-sea rounded-md @endif"><a
                             href="/program-keahlian">Program Keahlian</a></li>
                     <li>
                         <details>
                             <summary>PPDB</summary>
                             <ul class="p-2 bg-blue-lagoon w-60 z-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-deep-sea rounded-md @endif">
                                     <a href="/ppdb">Informasi & Pendaftaran</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'Pengumuman PPDB') bg-deep-sea rounded-md @endif">
                                     <a href="/pengumuman-ppdb">Pengumuman</a>
                                 </li>
                             </ul>
@@ -140,19 +142,19 @@
                             <summary>Direktori</summary>
                             <ul class="bg-blue-lagoon z-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-deep-sea rounded-md @endif">
                                     <a href="/direktori-guru">Guru</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-deep-sea rounded-md @endif">
                                     <a href="/direktori-pegawai">Pegawai</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-deep-sea rounded-md @endif">
                                     <a href="/direktori-siswa">Siswa</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-deep-sea rounded-md @endif">
                                     <a href="/direktori-alumni">Alumni</a>
                                 </li>
                             </ul>
@@ -163,33 +165,33 @@
                             <summary>Galeri</summary>
                             <ul class="p-2 bg-blue-lagoon z-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Foto') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Foto') bg-deep-sea rounded-md @endif">
                                     <a href="/galeri-foto">Foto</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Video') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Video') bg-deep-sea rounded-md @endif">
                                     <a href="/galeri-video">Video</a>
                                 </li>
                             </ul>
                         </details>
                     </li>
-                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Sarana & Prasarana') bg-deep-sea rounded-md @endif"><a
                             href="/sarana-prasarana">Sarana & Prasarana</a></li>
-                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Prestasi Siswa') bg-deep-sea rounded-md @endif"><a
                             href="/prestasi-siswa">Prestasi Siswa</a></li>
-                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Ekstrakulikuler') bg-deep-sea rounded-md @endif"><a
                             href="/ekstrakulikuler">Ekstrakulikuler</a></li>
                     <li>
                         <details>
                             <summary>Lainnya</summary>
                             <ul class="p-2 bg-blue-lagoon w-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-celadon rounded-md @endif">
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-deep-sea rounded-md @endif">
                                     <a href="/berita">Berita</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Media Sosial') bg-celadon rounded-md @endif">
-                                    <a href="/media-sosial">Media Sosial</a>
+                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Media Sosial') bg-deep-sea rounded-md @endif">
+                                    <a href="/media-sosial">Informasi Lainnya</a>
                                 </li>
                             </ul>
                         </details>
@@ -271,21 +273,21 @@
                 <li>
                     <a class="link link-hover">
                         <button class="btn btn-outline hover:bg-transparent">
-                            <img src="{{ asset('assets/Facebook.svg') }}" alt="">
+                            <i class="fa-brands fa-facebook text-2xl"></i>
                         </button>
                     </a>
                 </li>
                 <li>
                     <a class="link link-hover">
                         <button class="btn btn-outline hover:bg-transparent">
-                            <img src="{{ asset('assets/Instagram.svg') }}" alt="">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
                         </button>
                     </a>
                 </li>
                 <li>
                     <a class="link link-hover">
                         <button class="btn btn-outline hover:bg-transparent">
-                            <img src="{{ asset('assets/Youtube.svg') }}" alt="">
+                            <i class="fa-brands fa-youtube text-2xl"></i>
                         </button>
                     </a>
                 </li>

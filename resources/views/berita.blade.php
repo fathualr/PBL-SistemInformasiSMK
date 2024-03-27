@@ -6,30 +6,47 @@
 </div>
 
 <div class="grid grid-cols-2">
-<p class="font-bold " style="font-size: larger;">BERITA</p>
+    <p class="font-bold text-lg">BERITA BARU</p>
+    <a class="link link-primary text-end">see all</a>
 </div>
 
 <div class="grid grid-cols-3 gap-2 gap-y-20 my-10">
-<div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">lele asiq asiq lele</h2>
-    <p>Tentang juara ternak lele</p>
-  </div>
-</div>
-<div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-  </div>
-</div><div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-  </div>
-</div>
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">lele asiq asiq lele</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="/berita-template" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
 </div>
 
 
@@ -37,7 +54,7 @@
 <div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96" src="https://www.youtube.com/watch?v=zwD5Qpnhnx0"></iframe>
+            <iframe class="w-full h-full lg:h-96" src="https://www.youtube.com/embed/Tc_JWD9NhKY"></iframe>
         </div>
     </div>
     <!-- Title -->
@@ -66,53 +83,75 @@
         </div>
     </div>
 </div>
-<br>
 
-<br>
-    <div class="grid grid-cols-3 gap-2 gap-y-20 my-30">
-<div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">lele asiq asiq lele</h2>
-    <p>Tentang juara ternak lele</p>
-  </div>
-</div>
-<div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-  </div>
-</div><div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-  </div>
-</div>
-</div>
-<div class="card w-80 bg-base-100">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div class="card-body">
-    <h2 class="card-title">lele asiq asiq lele</h2>
-    <p>Tentang juara ternak lele</p>
-  </div>
+<div class="grid grid-cols-3 gap-2 gap-y-20 my-24">
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
+    <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
+        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+            <h2 class="card-title">Shoes!</h2>
+            <p class="truncate text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum tenetur enim consequuntur fugiat impedit!
+                Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
+                nobis.
+            </p>
+            <a href="#" class="text-blue-500 hover:underline">Read more</a>
+        </div>
+    </div>
 </div>
 
 
 <div class="grid grid-cols-2">
-<p class="font-bold " style="font-size: larger;">recent post</p>
-  </div>
+    <p class="font-bold " style="font-size: larger;">Recent post</p>
+</div>
 
-<div class="badge badge-outline">default</div>
-<div class="badge badge-primary badge-outline">primary</div>
-<div class="badge badge-secondary badge-outline">secondary</div>
-<div class="badge badge-accent badge-outline">accent</div>
-<p></p>
-<div class="badge badge-outline">default</div>
-<div class="badge badge-primary badge-outline">primary</div>
-<div class="badge badge-secondary badge-outline">secondary</div>
-<div class="badge badge-accent badge-outline">accent</div>
+<button class="btn btn-outline btn-xs w-20 rounded-full">
+    Default
+</button>
+<button class="btn btn-outline btn-primary btn-xs w-20 rounded-full">
+    Primary
+</button>
+<button class="btn btn-outline btn-success btn-xs w-20 rounded-full">
+    Success
+</button>
+<button class="btn btn-outline btn-info btn-xs w-20 rounded-full">
+    Info
+</button>
 </div>
 
 @endsection

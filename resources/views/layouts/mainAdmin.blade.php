@@ -24,7 +24,7 @@
         <div class="w-20 bg-elm text-white flex-none transition-all duration-300">
             <div class="flex flex-col py-4">
                 <button id="toggleButton"
-                    class="focus:outline-none absolute left-[0.85rem] text-xl text-center btn rounded-full transition-all duration-300">
+                    class="focus:outline-none absolute left-[0.85rem] text-xl text-center btn rounded-full transition-all duration-300 z-50">
                     <i id="toggleIcon" class="fas fa-bars transition-all duration-500"></i>
                 </button>
             </div>
@@ -74,8 +74,30 @@
                         </div>
                     </div>
                     <ul tabindex="0" class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Guru</h1>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Staff</h1>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Siswa</h1>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Alumni</h1>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- W-20 -->
@@ -87,8 +109,30 @@
                         <h1 class="font-bold mx-10 hidden" id="navTitle">Direktori</h1>
                     </summary>
                     <ul>
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Guru</h1>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Staff</h1>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Siswa</h1>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="fas fa-image"></i>
+                                <h1 class="font-bold mx-5">Alumni</h1>
+                            </a>
+                        </li>
                     </ul>
                 </details>
             </li>

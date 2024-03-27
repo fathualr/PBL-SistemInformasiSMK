@@ -2,11 +2,11 @@
 @section('Main')
 
 <style>
-    .social-media-icon {
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-    }
+.social-media-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
 </style>
 
 <div class="container mx-auto p-8">
@@ -18,7 +18,8 @@
     <div class="grid grid-cols-2 grid-flow-col grid-rows-4 gap-5 my-10">
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -28,7 +29,8 @@
         </div>
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -38,7 +40,8 @@
         </div>
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -48,7 +51,8 @@
         </div>
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -58,7 +62,8 @@
         </div>
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -68,7 +73,8 @@
         </div>
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -78,7 +84,8 @@
         </div>
 
         <div class="card card-side bg-base-100 shadow-xl h-32 ">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" class="w-32" /></figure>
+            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
+                    class="w-32" /></figure>
             <div class="card-body">
                 <h2 class="card-title">New movie is released!</h2>
                 <div class="card-actions justify-end">
@@ -90,7 +97,7 @@
     </div>
 
 
-    <h2 class="text-2xl font-bold mb-8 text-center divider">Hubungi Kami</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center divider">Umpan Balik</h2>
     <div class="grid grid-cols-2 gap-5">
         <div class="col-span-1">
             <label class="form-control w-full">
@@ -131,7 +138,8 @@
     </div>
 
     <div class="col-span-2 flex justify-center">
-        <button class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Kirim</button>
+        <button
+            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Kirim</button>
     </div>
 
 </div>

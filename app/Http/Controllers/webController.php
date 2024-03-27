@@ -72,8 +72,20 @@ class webController extends Controller
         ]);
     }
 
+    public function galeriTemplate(){
+        return view('galeri-template', [
+            "title" => "Galeri Foto"
+        ]);
+    }
+
     public function saranaPrasarana(){
         return view('sarana-prasarana', [
+            "title" => "Sarana & Prasarana"
+        ]);
+    }
+
+    public function saranaPrasaranaTemplate(){
+        return view('sarana-prasarana-template', [
             "title" => "Sarana & Prasarana"
         ]);
     }
@@ -84,8 +96,20 @@ class webController extends Controller
         ]);
     }
 
+    public function prestasiTemplate(){
+        return view('prestasi-template', [
+            "title" => "Prestasi Siswa"
+        ]);
+    }
+
     public function berita(){
         return view('berita', [
+            "title" => "Berita"
+        ]);
+    }
+
+    public function beritaTemplate(){
+        return view('berita-template', [
             "title" => "Berita"
         ]);
     }
