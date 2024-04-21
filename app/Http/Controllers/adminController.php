@@ -18,6 +18,12 @@ class adminController extends Controller
         ]);
     }
 
+    public function admin(){
+        return view('admin/admin', [
+            "title" => "Admin"
+        ]);
+    }
+
     public function adminBeranda(){
         return view('admin/beranda', [
             "title" => "Admin Beranda"

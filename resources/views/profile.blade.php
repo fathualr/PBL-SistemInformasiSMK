@@ -290,7 +290,7 @@
                 </div>
             </div>
             <div class="card-body rounded-b-xl h-28 bg-base-100">
-                <h2 class="card-title justify-center my-3 h-14">Rekayasa Perangkat Lunak</h2>
+                <h2 class="card-title text-center justify-center my-3 h-14">Rekayasa Perangkat Lunak</h2>
                 <p class="text-center truncate">If a dog chews shoes whose shoes does he choose?</p>
             </div>
         </div>

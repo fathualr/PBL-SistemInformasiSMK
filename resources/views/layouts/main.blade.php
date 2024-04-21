@@ -15,7 +15,7 @@
     <title>SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
 </head>
 
-<body>
+<body class="font-poppins">
 
     <!-- Navbar -->
     <div class="navbar bg-transparent fixed top-0 z-40" id="navbar">
@@ -292,6 +292,17 @@
                     </a>
                 </li>
             </ul>
+            <a class="link link-hover w-full">
+                <button class="btn btn-outline hover:bg-transparent w-full h-max">
+                    <ul class="flex justify-center items-center font-bold">
+                        <li>Made by : </li>
+                        <li>
+                            <img src="{{ asset('image/watermark.png') }}" alt=""
+                                class="w-20 transition-all duration-500 hover:animate-spin">
+                        </li>
+                    </ul>
+                </button>
+            </a>
         </nav>
     </footer>
     <!-- Footer -->

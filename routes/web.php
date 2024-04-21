@@ -47,6 +47,7 @@ Route::get('/detail-program', [webController::class, 'detailProgram']);
 // Admin
 Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
+Route::get('admin/admin', [adminController::class, 'admin']);
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
 // Admin
