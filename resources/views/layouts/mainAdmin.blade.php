@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Admin SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     @vite('resources/css/app.css')
@@ -308,7 +313,7 @@
         <!-- Content -->
         <div class="flex-1 p-4">
 
-            <div class="card card-compact bg-transparent w-[60rem] h-72 shadow-xl mx-auto image-full">
+            <div class="card card-compact bg-transparent w-full h-72 shadow-xl mx-auto image-full">
                 <figure>
                     <div class="avatar z-50 absolute top-12 left-5">
                         <div class="w-24 rounded-full">

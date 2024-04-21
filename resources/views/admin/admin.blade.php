@@ -256,7 +256,7 @@
                 <a href="" class="">
                     <button type="submit"
                         class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class="fas fa-plus"></i>
+                        <i class=" fas fa-plus"></i>
                         Tambah
                     </button>
                 </a>
@@ -266,7 +266,6 @@
         </form>
     </div>
 </dialog>
-
 
 <dialog id="my_modal_edit" class="modal">
     <div class="modal-box">
