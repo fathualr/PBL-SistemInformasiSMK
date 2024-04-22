@@ -26,7 +26,7 @@ export default {
                 desktop: "1280px",
             },
             fontFamily: {
-                poppins: ["Poppins", "sans"],
+                poppins: ["Poppins", "mono"],
             },
         },
     },

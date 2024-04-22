@@ -14,11 +14,6 @@
     @vite('resources/css/app.css')
 </head>
 <style>
-#cardBG {
-    background-image: url('{{ asset("assets/wave.svg") }}');
-    background-size: cover;
-}
-
 .overflow-x-auto::-webkit-scrollbar {
     display: none;
 }
@@ -48,7 +43,7 @@
                 <!-- Title -->
 
                 <!-- Nav -->
-                <ul class="menu p-4 w-72 translate-y-3 text-white flex justify-center items-center" id="menu">
+                <ul class="menu p-4 w-72 translate-y-3 text-white flex justify-center items-center z-50" id="menu">
                     <!-- Sidebar content here -->
                     <li class="hover:translate-y-0 @if($title == 'Dashboard') bg-blue-lagoon rounded-md @endif"">
                         <a href=" /admin/dashboard">
@@ -66,24 +61,25 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Admin</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
+                    <li class="hover:translate-y-0 @if($title == 'Admin Beranda') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/beranda">
                             <div class=" w-3 flex justify-center items-center">
                                 <i class="fas fa-house text-2xl font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Beranda</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a href="">
+                    <li class="hover:translate-y-0 @if($title == 'Admin Profile') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/profile">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-school text-2xl text-center font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Profile Sekolah</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a href="">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Program Keahlian') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/program-keahlian">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-pen-ruler text-2xl text-center font-bold"></i>
                             </div>
@@ -99,27 +95,27 @@
                                 </div>
                             </div>
                             <ul tabindex="0"
-                                class="dropdown-content menu p-2 z-[1] text-white shadow bg-elm rounded-box w-52">
-                                <li>
-                                    <a>
+                                class="dropdown-content menu p-2 text-white shadow bg-elm rounded-box w-52">
+                                <li class="@if($title == 'Admin Guru') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/guru">
                                         <i class="fas fa-chalkboard-user"></i>
                                         <h1 class="font-bold mx-5">Guru</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Staff') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/staff">
                                         <i class="fas fa-clipboard-user"></i>
                                         <h1 class="font-bold mx-5">Staff</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Siswa') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/siswa">
                                         <i class="fas fa-users"></i>
                                         <h1 class="font-bold mx-5">Siswa</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Alumni') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/alumni">
                                         <i class="fa-solid fa-graduation-cap"></i>
                                         <h1 class="font-bold mx-5">Alumni</h1>
                                     </a>
@@ -135,26 +131,26 @@
                                 <h1 class="font-bold mx-10 hidden" id="navTitle">Direktori</h1>
                             </summary>
                             <ul>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Guru') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/guru">
                                         <i class="fas fa-chalkboard-user"></i>
                                         <h1 class="font-bold mx-5">Guru</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Staff') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/staff">
                                         <i class="fas fa-clipboard-user"></i>
                                         <h1 class="font-bold mx-5">Staff</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Siswa') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/siswa">
                                         <i class="fas fa-users"></i>
                                         <h1 class="font-bold mx-5">Siswa</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Alumni') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/alumni">
                                         <i class="fas fa-graduation-cap"></i>
                                         <h1 class="font-bold mx-5">Alumni</h1>
                                     </a>
@@ -172,14 +168,14 @@
                             </div>
                             <ul tabindex="0"
                                 class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-52">
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Foto') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/foto">
                                         <i class="fas fa-image"></i>
                                         <h1 class="font-bold mx-5">Foto</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Video') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/video">
                                         <i class="fas fa-film"></i>
                                         <h1 class="font-bold mx-5">Video</h1>
                                     </a>
@@ -195,14 +191,14 @@
                                 <h1 class="font-bold mx-10 hidden" id="navTitle">Galeri</h1>
                             </summary>
                             <ul>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Foto') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/foto">
                                         <i class="fas fa-image"></i>
                                         <h1 class="font-bold mx-5">Foto</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Video') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/video">
                                         <i class="fas fa-film"></i>
                                         <h1 class="font-bold mx-5">Video</h1>
                                     </a>
@@ -220,14 +216,20 @@
                             </div>
                             <ul tabindex="0"
                                 class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-max">
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Informasi PPDB') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/informasiPPDB">
                                         <i class="fas fa-circle-info"></i>
-                                        <h1 class="font-bold mx-5">Informasi & Pendaftaran</h1>
+                                        <h1 class="font-bold mx-5">Informasi PPDB</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Pendaftaran PPDB') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/pendaftaranPPDB">
+                                        <i class="fas fa-clipboard"></i>
+                                        <h1 class="font-bold mx-5">Pendaftaran PPDB</h1>
+                                    </a>
+                                </li>
+                                <li class="@if($title == 'Admin Pengumuman PPDB') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/pengumumanPPDB">
                                         <i class="fas fa-bullhorn"></i>
                                         <h1 class="font-bold mx-5">Pengumuman PPDB</h1>
                                     </a>
@@ -243,14 +245,20 @@
                                 <h1 class="font-bold mx-10 hidden" id="navTitle">PPDB</h1>
                             </summary>
                             <ul>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Informasi PPDB') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/informasiPPDB">
                                         <i class="fas fa-circle-info"></i>
-                                        <h1 class="font-bold mx-5">Informasi & Pendaftaran</h1>
+                                        <h1 class="font-bold mx-5">Informasi PPDB</h1>
                                     </a>
                                 </li>
-                                <li>
-                                    <a>
+                                <li class="@if($title == 'Admin Pendaftaran PPDB') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/pendaftaranPPDB">
+                                        <i class="fas fa-clipboard"></i>
+                                        <h1 class="font-bold mx-5">Pendaftaran PPDB</h1>
+                                    </a>
+                                </li>
+                                <li class="@if($title == 'Admin Pengumuman PPDB') bg-blue-lagoon rounded-md @endif">
+                                    <a href="/admin/pengumumanPPDB">
                                         <i class="fas fa-bullhorn"></i>
                                         <h1 class="font-bold mx-5">Pengumuman PPDB</h1>
                                     </a>
@@ -258,52 +266,55 @@
                             </ul>
                         </details>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
-                            <div class="w-3 flex justify-center items-center">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/saranaPrasarana">
+                            <div class="w-3 flex justify-center items-center -z-50">
                                 <i class="fas fa-building text-2xl text-center font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Sarana & Prasarana</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
+                    <li class="hover:translate-y-0 @if($title == 'Admin Prestasi') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/prestasi">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-trophy text-2xl text-center font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Prestasi Siswa</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
+                    <li class="hover:translate-y-0 @if($title == 'Admin Berita') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/berita">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-bullhorn text-2xl text-center font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Berita</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Ekstrakulikuler') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/ekstrakulikuler">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-baseball-bat-ball text-2xl text-center font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Ekstrakulikuler</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Sosial Media') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/sosialMedia">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-link text-2xl text-center font-bold"></i>
                             </div>
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Sosial Media</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0">
-                        <a>
+                    <li class="hover:translate-y-0 @if($title == 'Admin Umpan Balik') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/umpanBalik">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-message text-2xl text-center font-bold"></i>
                             </div>
-                            <h1 class="font-bold mx-10 hidden" id="navTitle">Feedback</h1>
+                            <h1 class="font-bold mx-10 hidden" id="navTitle">Umpan Balik</h1>
                         </a>
                     </li>
                 </ul>
@@ -313,7 +324,7 @@
         <!-- Content -->
         <div class="flex-1 p-4">
 
-            <div class="card card-compact bg-transparent w-full h-72 shadow-xl mx-auto image-full">
+            <div class="card card-compact bg-slate-600 w-full h-72 shadow-xl mx-auto">
                 <figure>
                     <div class="avatar z-50 absolute top-12 left-5">
                         <div class="w-24 rounded-full">
@@ -321,12 +332,13 @@
                         </div>
                     </div>
                 </figure>
-                <div class="card-body h-60 sticky top-16 rounded-lg" id="cardBG">
+                <div class="card-body h-60 sticky top-16 rounded-lg wave-effect">
+                    @include('layouts.wave')
                     <h1 class="card-title font-bold text-xl uppercase absolute bottom-10 left-5 text-white">welcome
                         admin
                     </h1>
 
-                    <div class="card-actions text-xl absolute right-5 -top-10 gap-6">
+                    <div class="card-actions text-xl absolute right-12 top-5 gap-6 text-white">
                         <a href="/admin/login" class="hover:animate-pulse transition-all duration-300">
                             <i class="fas fa-arrow-right-from-bracket"></i>
                         </a>
@@ -452,6 +464,23 @@
             });
         });
         // Password
+
+        // Obeject Load
+        window.addEventListener('scroll', function() {
+            var section = document.getElementById('.section');
+            var button = document.getElementById('button');
+
+            var sectionRect = section.getBoundingClientRect();
+
+            if (sectionRect.top <= window.innerHeight) {
+                button.classList.remove('hidden');
+                button.classList.add('animate-slideInFromTop');
+            } else {
+                button.classList.add('hidden');
+            }
+        });
+
+        // Obeject Load
         </script>
 </body>
 
