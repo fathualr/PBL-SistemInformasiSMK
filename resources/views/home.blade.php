@@ -54,7 +54,7 @@
                     ratione facere ducimus eaque, commodi quae odio sequi eveniet enim corrupti adipisci repellendus
                     ipsam. Nulla, sapiente!</p>
                 <div class="card-actions justify-center md:justify-start">
-                    <a href="/profile">
+                    <a href="/guest/profile">
                         <button
                             class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
                             Lanjut</button>
@@ -71,7 +71,7 @@
 
         <div class="col-span-1">
             <!-- Facility School -->
-            <a href="/sarana-prasarana">
+            <a href="/guest/sarana-prasarana">
                 <div
                     class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
@@ -98,7 +98,7 @@
 
         <div class="col-span-1">
             <!-- School Location -->
-            <a href="/media-sosial">
+            <a href="/guest/media-sosial">
                 <div
                     class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
@@ -125,7 +125,7 @@
 
         <div class="col-span-1">
             <!-- School History -->
-            <a href="/profile">
+            <a href="/guest/profile">
                 <div
                     class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
@@ -152,7 +152,7 @@
 
         <div class="col-span-1">
             <!-- School Achievement -->
-            <a href="/prestasi-siswa">
+            <a href="/guest/prestasi-siswa">
                 <div
                     class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
@@ -251,7 +251,7 @@
     <div class="mx-auto">01</div>
     <div class="mx-auto">01</div>
     <div class="col-span-2 lg:col-span-3 mx-auto">
-        <a href="/galeri-foto">
+        <a href="/guest/galeri-foto">
             <button
                 class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
                 Lanjut

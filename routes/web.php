@@ -21,7 +21,7 @@ use App\Http\Controllers\adminController;
 
 
 // Public
-Route::get('guest/', [webController::class, 'home']);
+Route::get('/', [webController::class, 'home']);
 Route::get('guest/profile', [webController::class, 'profile']);
 Route::get('guest/program-keahlian', [webController::class, 'program']);
 Route::get('guest/ppdb', [webController::class, 'ppdb']);
@@ -32,6 +32,7 @@ Route::get('guest/direktori-siswa', [webController::class, 'siswa']);
 Route::get('guest/direktori-alumni', [webController::class, 'alumni']);
 Route::get('guest/galeri-foto', [webController::class, 'foto']);
 Route::get('guest/galeri-video', [webController::class, 'video']);
+Route::get('guest/galeri-template', [webController::class, 'galeriTemplate']);
 Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
 Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPrasaranaTemplate']);
 Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
@@ -49,6 +50,7 @@ Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
 Route::get('admin/admin', [adminController::class, 'admin']);
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
+Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
 Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian']);
 Route::get('admin/guru', [adminController::class, 'adminGuru']);
@@ -66,4 +68,5 @@ Route::get('admin/berita', [adminController::class, 'adminIBerita']);
 Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
 Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
+Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
 // Admin

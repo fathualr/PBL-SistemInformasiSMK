@@ -8,7 +8,7 @@
 <div class="grid grid-cols-3 gap-5 gap-y-20 my-24">
 
     <div class="mx-auto">
-        <a href="/sarana-prasarana-template">
+        <a href="/guest/sarana-prasarana-template">
             <div class="card card-compact w-full bg-base-100 shadow-xl">
                 <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
                 <div class="card-body bg-dark-lochinvar/70 rounded-none rounded-b-xl">

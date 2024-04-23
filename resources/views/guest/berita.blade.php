@@ -20,7 +20,7 @@
                 Veritatis, alias. Libero harum eum cupiditate ex tenetur unde veritatis nihil, totam non amet reiciendis
                 nobis.
             </p>
-            <a href="/berita-template" class="text-blue-500 hover:underline">Read more</a>
+            <a href="/guest/berita-template" class="text-blue-500 hover:underline">Read more</a>
         </div>
     </div>
     <div class="card w-96 bg-base-100 rounded-sm shadow-lg">

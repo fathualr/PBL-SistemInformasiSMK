@@ -18,7 +18,7 @@
         </p>
     </div>
     <div class="col-span-2 mt-10">
-        <a href="/sejarah">
+        <a href="/guest/sejarah">
             <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
                 Lanjut
             </button>
@@ -195,11 +195,11 @@
                     </div>
                 </figure>
                 <div class="card-body text-center">
-                    <h2 class="text-md mx-auto mb-3 font-bold">No. Pendirian Sekolah</h2>
-                    <p class="">92568787</p>
+                    <h2 class="text-md mx-auto mb-3 font-bold">Jumlah Staff</h2>
+                    <p class="">30 Orang</p>
 
-                    <h2 class="text-md mx-auto mb-3 font-bold">No. Sertifikat</h2>
-                    <p class="">421 / 997 / 2005</p>
+                    <h2 class="text-md mx-auto mb-3 font-bold">Jumlah Siswa</h2>
+                    <p class="">200 Orang</p>
                 </div>
             </div>
         </div>

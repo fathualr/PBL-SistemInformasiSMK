@@ -9,9 +9,9 @@
             <h2 class="card-title px-5 text-white">Life hack</h2>
             <p class="px-5 text-white">How to park your car at your garage?</p>
             <div class="card-actions justify-end">
-                <button class="btn bg-transparent hover:bg-transparent border-none"><img
-                        src="{{ asset('assets/Arrow-Foto.svg') }}"
-                        class="object-cover rounded-full w-8 h-8 mt-8" /></button>
+                <a href="/guest/galeri-template" class="btn bg-transparent hover:bg-transparent border-none">
+                    <img src="{{ asset('assets/Arrow-Foto.svg') }}" class="object-cover rounded-full w-8 h-8 mt-8" />
+                </a>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class webController extends Controller
 {
     public function home(){
-        return view('guest/home', [
+        return view('/home', [
             "title" => "Beranda"
         ]);
     }

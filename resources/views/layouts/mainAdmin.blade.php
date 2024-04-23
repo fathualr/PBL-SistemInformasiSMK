@@ -69,6 +69,15 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Beranda</h1>
                         </a>
                     </li>
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Sejarah Sekolah') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/sejarah">
+                            <div class=" w-3 flex justify-center items-center">
+                                <i class="fas fa-timeline text-2xl font-bold"></i>
+                            </div>
+                            <h1 class="font-bold mx-10 hidden" id="navTitle">Sejarah Sekolah</h1>
+                        </a>
+                    </li>
                     <li class="hover:translate-y-0 @if($title == 'Admin Profile') bg-blue-lagoon rounded-md @endif">
                         <a href="/admin/profile">
                             <div class="w-3 flex justify-center items-center">
@@ -104,7 +113,7 @@
                                 </li>
                                 <li class="@if($title == 'Admin Staff') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/staff">
-                                        <i class="fas fa-clipboard-user"></i>
+                                        <i class="fas fa-clipboard-user text-2xl"></i>
                                         <h1 class="font-bold mx-5">Staff</h1>
                                     </a>
                                 </li>
@@ -140,7 +149,7 @@
                                 <li class="@if($title == 'Admin Staff') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/staff">
                                         <i class="fas fa-clipboard-user"></i>
-                                        <h1 class="font-bold mx-5">Staff</h1>
+                                        <h1 class="font-bold mx-5 text-2xl">Staff</h1>
                                     </a>
                                 </li>
                                 <li class="@if($title == 'Admin Siswa') bg-blue-lagoon rounded-md @endif">

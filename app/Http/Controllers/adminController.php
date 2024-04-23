@@ -30,6 +30,12 @@ class adminController extends Controller
         ]);
     }
 
+    public function adminSejarah(){
+        return view('admin/sejarah', [
+            "title" => "Admin Sejarah Sekolah"
+        ]);
+    }
+
     public function adminProfile(){
         return view('admin/profile', [
             "title" => "Admin Profile"
@@ -129,6 +135,12 @@ class adminController extends Controller
     public function adminUmpanBalik(){
         return view('admin/umpanBalik', [
             "title" => "Admin Umpan Balik"
+        ]);
+    }
+
+    public function adminPengaturan(){
+        return view('admin/pengaturan', [
+            "title" => "Admin Pengaturan"
         ]);
     }
 }

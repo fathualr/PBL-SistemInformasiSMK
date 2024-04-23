@@ -35,7 +35,7 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/guest/">Beranda</a></li>
+                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/guest/profile">Profile
                             Sekolah</a></li>
                     <li>
@@ -122,7 +122,7 @@
             <div class="col-span-9 w-full font-bold hidden laptop:flex desktop:justify-center desktop:items-center"
                 id="nav-text">
                 <ul class="menu menu-horizontal px-1 justify-center items-center">
-                    <li class="@if($title == 'Beranda') bg-deep-sea rounded-md @endif"><a href="/guest/">Beranda</a>
+                    <li class="@if($title == 'Beranda') bg-deep-sea rounded-md @endif"><a href="/">Beranda</a>
                     </li>
                     <li class="@if($title == 'Profile') bg-deep-sea rounded-md @endif"><a href="/guest/profile">Profile
                             Sekolah</a></li>
@@ -238,7 +238,7 @@
     <!-- Carousel -->
 
     <!-- Main -->
-    <div class="container  mx-auto h-max w-11/12 my-10">
+    <div class="container mx-auto h-max w-11/12 my-10">
         @yield('Main')
     </div>
     <!-- Main -->

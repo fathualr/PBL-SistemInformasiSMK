@@ -38,6 +38,7 @@
                         </th>
                         <th>No.</th>
                         <th>Nama</th>
+                        <th>Role</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -51,6 +52,7 @@
                         </th>
                         <th>1</th>
                         <td>Cy Ganderton</td>
+                        <td>Master</td>
                         <td>
                             <details class="dropdown dropdown-right">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -103,6 +105,7 @@
                         </th>
                         <th>2</th>
                         <td>Hart Hagerty</td>
+                        <td>Admin PPDB</td>
                         <td>
                             <details class="dropdown dropdown-right">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -155,6 +158,7 @@
                         </th>
                         <th>3</th>
                         <td>Brice Swyre</td>
+                        <td>Admin Direktori</td>
                         <td>
                             <details class="dropdown dropdown-right">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -208,6 +212,7 @@
                         </th>
                         <th>No.</th>
                         <th>Nama</th>
+                        <th>Role</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -233,17 +238,28 @@
         <form action="">
 
             <label
-                class="input bg-transparent border-none flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="fas fa-user"></i>
-                <input type="text" class="grow bg-transparent border-b-2 border-elm py-2" placeholder="Username" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="Username" />
             </label>
 
-            <label class="input bg-transparent border-none flex items-center gap-2 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="fas fa-lock"></i>
-                <input type="password" class="grow border-b-2 border-elm py-2" id="passwordInput" placeholder="Password"
-                    value="" />
+                <input type="password" class="grow py-2" id="passwordInput" placeholder="Password" value="" />
                 <i class="fas fa-eye absolute right-10" id="togglePassword"></i>
             </label>
+
+            <select class="select border-b-2 border-elm w-full focus-within:outline-none px-10">
+                <option disabled selected>
+                    Pilih Role Untuk Admin
+                </option>
+                <option>Master</option>
+                <option>Admin PPDB</option>
+                <option>Admin Direktori</option>
+                <option>Admin Program Keahlian</option>
+                <option>Admin Ekstrakulikuler</option>
+            </select>
 
             <div class="flex justify-end items-end mt-20 gap-4">
 
@@ -272,8 +288,49 @@
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="font-bold text-lg">Edit Data</h3>
-        <form action="">
+        <h3 class="font-bold text-lg">Edit Data Administrator</h3>
+
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="" method="dialog">
+
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="fas fa-user"></i>
+                <input type="text" class="grow bg-transparent py-2" placeholder="Username" />
+            </label>
+
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="fas fa-lock"></i>
+                <input type="password" class="grow py-2" placeholder="Password" value="" />
+            </label>
+
+            <select class="select border-b-2 border-elm w-full focus-within:outline-none px-10">
+                <option disabled selected>
+                    Pilih Role Untuk Admin
+                </option>
+                <option>Master</option>
+                <option>Admin PPDB</option>
+                <option>Admin Direktori</option>
+                <option>Admin Program Keahlian</option>
+                <option>Admin Ekstrakulikuler</option>
+            </select>
+
+            <div class="flex justify-end items-end mt-20 gap-4">
+
+                <a href="" class="">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                        <i class=" fas fa-pen-to-square"></i>
+                        Edit
+                    </button>
+                </a>
+
+            </div>
 
         </form>
     </div>
@@ -284,9 +341,26 @@
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="font-bold text-lg">Info Detail Data</h3>
-        <form action="">
+        <h3 class="font-bold text-lg">Info Detail Data Administrator</h3>
 
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="">
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="fas fa-user"></i>
+                <input type="text" class="grow bg-transparent py-2" placeholder="Username" />
+            </label>
+
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="fas fa-lock"></i>
+                <input type="password" class="grow py-2" id="passwordInput" placeholder="Password" value="asdfd" />
+                <i class="fas fa-eye absolute right-10" id="togglePassword"></i>
+            </label>
         </form>
     </div>
 </dialog>
@@ -296,9 +370,27 @@
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="font-bold text-lg">Hapus Data</h3>
-        <form action="">
+        <h3 class="font-bold text-lg">Hapus Data Administrator</h3>
 
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="">
+            Apakah Anda Yakin Ingin Menghapus Data Ini ?
+
+            <div class="flex justify-end items-end mt-20 gap-4">
+
+                <a href="" class="">
+                    <button type="submit"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                        <i class=" fas fa-trash"></i>
+                        Hapus
+                    </button>
+                </a>
+
+            </div>
         </form>
     </div>
 </dialog>
