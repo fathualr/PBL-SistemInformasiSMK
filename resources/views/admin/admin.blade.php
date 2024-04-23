@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9">
+<div class="grid grid-cols-9 shadow-xl rounded-md">
 
     <!-- Modal -->
     <div class="col-span-2 col-start-2">

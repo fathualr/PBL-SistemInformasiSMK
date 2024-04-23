@@ -21,27 +21,27 @@ use App\Http\Controllers\adminController;
 
 
 // Public
-Route::get('/', [webController::class, 'home']);
-Route::get('/profile', [webController::class, 'profile']);
-Route::get('/program-keahlian', [webController::class, 'program']);
-Route::get('/ppdb', [webController::class, 'ppdb']);
-Route::get('/pengumuman-ppdb', [webController::class, 'pengumuman']);
-Route::get('/direktori-guru', [webController::class, 'guru']);
-Route::get('/direktori-pegawai', [webController::class, 'pegawai']);
-Route::get('/direktori-siswa', [webController::class, 'siswa']);
-Route::get('/direktori-alumni', [webController::class, 'alumni']);
-Route::get('/galeri-foto', [webController::class, 'foto']);
-Route::get('/galeri-video', [webController::class, 'video']);
-Route::get('/sarana-prasarana', [webController::class, 'saranaPrasarana']);
-Route::get('/sarana-prasarana-template', [webController::class, 'saranaPrasaranaTemplate']);
-Route::get('/prestasi-siswa', [webController::class, 'prestasi']);
-Route::get('/prestasi-template', [webController::class, 'prestasiTemplate']);
-Route::get('/berita', [webController::class, 'berita']);
-Route::get('/berita-template', [webController::class, 'beritaTemplate']);
-Route::get('/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
-Route::get('/media-sosial', [webController::class, 'mediaSosial']);
-Route::get('/sejarah', [webController::class, 'sejarah']);
-Route::get('/detail-program', [webController::class, 'detailProgram']);
+Route::get('guest/', [webController::class, 'home']);
+Route::get('guest/profile', [webController::class, 'profile']);
+Route::get('guest/program-keahlian', [webController::class, 'program']);
+Route::get('guest/ppdb', [webController::class, 'ppdb']);
+Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman']);
+Route::get('guest/direktori-guru', [webController::class, 'guru']);
+Route::get('guest/direktori-pegawai', [webController::class, 'pegawai']);
+Route::get('guest/direktori-siswa', [webController::class, 'siswa']);
+Route::get('guest/direktori-alumni', [webController::class, 'alumni']);
+Route::get('guest/galeri-foto', [webController::class, 'foto']);
+Route::get('guest/galeri-video', [webController::class, 'video']);
+Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
+Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPrasaranaTemplate']);
+Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
+Route::get('guest/prestasi-template', [webController::class, 'prestasiTemplate']);
+Route::get('guest/berita', [webController::class, 'berita']);
+Route::get('guest/berita-template', [webController::class, 'beritaTemplate']);
+Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
+Route::get('guest/media-sosial', [webController::class, 'mediaSosial']);
+Route::get('guest/sejarah', [webController::class, 'sejarah']);
+Route::get('guest/detail-program', [webController::class, 'detailProgram']);
 // Public
 
 // Admin

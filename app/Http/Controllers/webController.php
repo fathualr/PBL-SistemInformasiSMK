@@ -7,133 +7,133 @@ use Illuminate\Http\Request;
 class webController extends Controller
 {
     public function home(){
-        return view('home', [
+        return view('guest/home', [
             "title" => "Beranda"
         ]);
     }
 
     public function profile(){
-        return view('profile', [
+        return view('guest/profile', [
             "title" => "Profile"
         ]);
     }
 
     public function program(){
-        return view('program-keahlian', [
+        return view('guest/program-keahlian', [
             "title" => "Program Keahlian"
         ]);
     }
 
     public function ppdb(){
-        return view('ppdb', [
+        return view('guest/ppdb', [
             "title" => "PPDB"
         ]);
     }
 
     public function pengumuman(){
-        return view('pengumuman-ppdb', [
+        return view('guest/pengumuman-ppdb', [
             "title" => "Pengumuman PPDB"
         ]);
     }
 
     public function guru(){
-        return view('direktori-guru', [
+        return view('guest/direktori-guru', [
             "title" => "Direktori Guru"
         ]);
     }
 
     public function pegawai(){
-        return view('direktori-pegawai', [
+        return view('guest/guest/direktori-pegawai', [
             "title" => "Direktori Pegawai"
         ]);
     }
     
     public function siswa(){
-        return view('direktori-siswa', [
+        return view('guest/direktori-siswa', [
             "title" => "Direktori Siswa"
         ]);
     }
 
     public function alumni(){
-        return view('direktori-alumni', [
+        return view('guest/direktori-alumni', [
             "title" => "Direktori Alumni"
         ]);
     }
 
     public function foto(){
-        return view('foto', [
+        return view('guest/foto', [
             "title" => "Galeri Foto"
         ]);
     }
 
     public function video(){
-        return view('video', [
+        return view('guest/video', [
             "title" => "Galeri Video"
         ]);
     }
 
     public function galeriTemplate(){
-        return view('galeri-template', [
+        return view('guest/galeri-template', [
             "title" => "Galeri Foto"
         ]);
     }
 
     public function saranaPrasarana(){
-        return view('sarana-prasarana', [
+        return view('guest/sarana-prasarana', [
             "title" => "Sarana & Prasarana"
         ]);
     }
 
     public function saranaPrasaranaTemplate(){
-        return view('sarana-prasarana-template', [
+        return view('guest/sarana-prasarana-template', [
             "title" => "Sarana & Prasarana"
         ]);
     }
 
     public function prestasi(){
-        return view('prestasi', [
+        return view('guest/prestasi', [
             "title" => "Prestasi Siswa"
         ]);
     }
 
     public function prestasiTemplate(){
-        return view('prestasi-template', [
+        return view('guest/prestasi-template', [
             "title" => "Prestasi Siswa"
         ]);
     }
 
     public function berita(){
-        return view('berita', [
+        return view('guest/berita', [
             "title" => "Berita"
         ]);
     }
 
     public function beritaTemplate(){
-        return view('berita-template', [
+        return view('guest/berita-template', [
             "title" => "Berita"
         ]);
     }
 
     public function ekstrakulikuler(){
-        return view('ekstrakulikuler', [
+        return view('guest/ekstrakulikuler', [
             "title" => "Ekstrakulikuler"
         ]);
     }
 
     public function mediaSosial(){
-        return view('media-sosial', [
+        return view('guest/media-sosial', [
             "title" => "Media Sosial"
         ]);
     }
 
     public function sejarah(){
-        return view('sejarah', [
+        return view('guest/sejarah', [
             "title" => "Sejarah"
         ]);
     }
 
     public function detailProgram(){
-        return view('detail-program', [
+        return view('guest/detail-program', [
             "title" => "Detail Program Keahlian"
         ]);
     }
