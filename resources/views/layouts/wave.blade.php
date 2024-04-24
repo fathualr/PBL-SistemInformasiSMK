@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
 .wave-effect {
     overflow: hidden;
 }
@@ -54,4 +54,4 @@
 <div class="ocean">
     <div class="wave"></div>
     <div class="wave"></div>
-</div>
+</div> --}}
