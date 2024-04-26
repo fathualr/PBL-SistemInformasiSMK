@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        // Schema untuk tabel admin
+        // Tabel untuk admin
         Schema::create('admin', function (Blueprint $table) {
             $table->id('id_admin');
             $table->string('username')->unique();
@@ -22,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel konten_website
+        // Tabel untuk konten_website
         Schema::create('konten_website', function (Blueprint $table) {
             $table->id('id_sekolah');
             $table->string('nama_sekolah')->notNullable();
@@ -51,7 +50,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel media_sosial
+        // Tabel untuk media_sosial
         Schema::create('media_sosial', function (Blueprint $table) {
             $table->id('id_media_sosial');
             $table->string('nomor_telepon');
@@ -65,14 +64,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel konten_ppdb
+        // Tabel untuk konten_ppdb
         Schema::create('konten_ppdb', function (Blueprint $table) {
             $table->id('id_ppdb');
             $table->text('deskripsi_ppdb')->nullable();
             $table->timestamps();
         });
 
-        // Schema untuk tabel alur_ppdb
+        // Tabel untuk alur_ppdb
         Schema::create('alur_ppdb', function (Blueprint $table) {
             $table->id('id_alur');
             $table->date('tanggal_alur');
@@ -80,7 +79,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel sejarah_sekolah
+        // Tabel untuk sejarah_sekolah
         Schema::create('sejarah_sekolah', function (Blueprint $table) {
             $table->id('id_sejarah');
             $table->text('deskripsi_sejarah')->nullable();
@@ -89,7 +88,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel program_keahlian
+        // Tabel untuk program_keahlian
         Schema::create('program_keahlian', function (Blueprint $table) {
             $table->id('id_program');
             $table->string('nama_program')->notNullable();
@@ -102,7 +101,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel direktori_pegawai
+        // Tabel untuk direktori_pegawai
         Schema::create('direktori_pegawai', function (Blueprint $table) {
             $table->id('id_pegawai');
             $table->string('nama_pegawai')->notNullable();
@@ -118,7 +117,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel direktori_alumni
+        // Tabel untuk direktori_alumni
         Schema::create('direktori_alumni', function (Blueprint $table) {
             $table->id('id_alumni');
             $table->string('nama_alumni')->notNullable();
@@ -131,7 +130,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel direktori_siswa
+        // Tabel untuk direktori_siswa
         Schema::create('direktori_siswa', function (Blueprint $table) {
             $table->id('id_siswa');
             $table->unsignedBigInteger('id_program')->notNullable();
@@ -147,7 +146,7 @@ return new class extends Migration
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
         });
 
-        // Schema untuk tabel direktori_guru
+        // Tabel untuk direktori_guru
         Schema::create('direktori_guru', function (Blueprint $table) {
             $table->id('id_guru');
             $table->unsignedBigInteger('id_program')->notNullable();
@@ -165,8 +164,7 @@ return new class extends Migration
 
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
         });
-
-        // Schema untuk tabel form_ppdb
+        // Tabel untuk informasi pendaftaran siswa PPDB
         Schema::create('form_ppdb', function (Blueprint $table) {
             $table->id('id_pendaftaran');
             $table->unsignedBigInteger('id_program')->notNullable();
@@ -198,7 +196,7 @@ return new class extends Migration
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
         });
 
-        // Schema untuk tabel pengumuman_ppdb
+        // Tabel untuk pengumuman hasil pendaftaran PPDB
         Schema::create('pengumuman_ppdb', function (Blueprint $table) {
             $table->id('id_pengumuman');
             $table->unsignedBigInteger('id_pendaftaran')->notNullable();
@@ -210,7 +208,7 @@ return new class extends Migration
             $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('form_ppdb')->onDelete('cascade');
         });
 
-        // Schema untuk tabel dokumen_ppdb
+        // Tabel untuk dokumen terkait pendaftaran PPDB
         Schema::create('dokumen_ppdb', function (Blueprint $table) {
             $table->id('id_dokumen');
             $table->unsignedBigInteger('id_pendaftaran')->notNullable();
@@ -221,7 +219,7 @@ return new class extends Migration
             $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('form_ppdb')->onDelete('cascade');
         });
 
-        // Schema untuk tabel capaian_pembelajaran
+        // Tabel untuk capaian pembelajaran
         Schema::create('capaian_pembelajaran', function (Blueprint $table) {
             $table->id('id_capaian_pembelajaran');
             $table->unsignedBigInteger('id_program')->notNullable();
@@ -232,7 +230,7 @@ return new class extends Migration
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
         });
 
-        // Schema untuk tabel peluang_kerja
+        // Tabel untuk peluang kerja
         Schema::create('peluang_kerja', function (Blueprint $table) {
             $table->id('id_peluang_kerja');
             $table->unsignedBigInteger('id_program')->notNullable();
@@ -243,7 +241,7 @@ return new class extends Migration
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
         });
 
-        // Schema untuk tabel ekstrakurikuler
+        // Tabel untuk  ekstrakulikuler
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
             $table->id('id_ekstrakurikuler');
             $table->unsignedBigInteger('id_guru')->notNullable();
@@ -257,7 +255,7 @@ return new class extends Migration
             $table->foreign('id_guru')->references('id_guru')->on('direktori_guru')->onDelete('cascade');
         });
 
-        // Schema untuk tabel gambar_ekstrakurikuler
+        // Tabel untuk gambar ekstrakurikuler
         Schema::create('gambar_ekstrakurikuler', function (Blueprint $table) {
             $table->id('id_gambar_ekstrakurikuler');
             $table->unsignedBigInteger('id_ekstrakurikuler');
@@ -267,7 +265,7 @@ return new class extends Migration
             $table->foreign('id_ekstrakurikuler')->references('id_ekstrakurikuler')->on('ekstrakurikuler')->onDelete('cascade');
         });
 
-        // Schema untuk tabel prestasi_siswa
+        // Tabel untuk prestasi_siswa
         Schema::create('prestasi_siswa', function (Blueprint $table) {
             $table->id('id_prestasi');
             $table->string('nama_prestasi')->notNullable();
@@ -279,7 +277,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel gambar_prestasi
+        // Tabel untuk gambar_prestasi
         Schema::create('gambar_prestasi', function (Blueprint $table) {
             $table->id('id_gambar');
             $table->unsignedBigInteger('id_prestasi')->notNullable();
@@ -288,7 +286,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel umpan_balik
+        // Tabel untuk umpan_balik
         Schema::create('umpan_balik', function (Blueprint $table) {
             $table->id('id_pesan');
             $table->string('nama_penulis')->notNullable();
@@ -299,16 +297,34 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel fasilitas
-        Schema::create('fasilitas', function (Blueprint $table) {
-            $table->id('id_fasilitas');
-            $table->unsignedBigInteger('id_gedung')->nullable();
-            $table->foreign('id_gedung')->references('id_gedung')->on('gedung')->onDelete('cascade');
-            $table->string('nama_fasilitas')->notNullable();
+        // Tabel untuk prasarana
+        Schema::create('prasarana', function (Blueprint $table) {
+            $table->id('id_prasarana');
+            $table->string('deskripsi_prasarana')->notNullable();
+            $table->string('lokasi')->notNullable();
+            $table->enum('status_prasarana', ['Aktif', 'Tidak Aktif', 'Perbaikan'])->notNullable();
             $table->timestamps();
         });
 
-        // Schema untuk tabel lapangan
+        // Tabel untuk gedung
+        Schema::create('gedung', function (Blueprint $table) {
+            $table->id('id_gedung');
+            $table->unsignedBigInteger('id_prasarana')->notNullable();
+            $table->foreign('id_prasarana')->references('id_prasarana')->on('prasarana')->onDelete('cascade');
+            $table->integer('jumlah_lantai')->unsigned()->notNullable();
+            $table->timestamps();
+        });
+
+        // Tabel untuk ruangan
+        Schema::create('ruangan', function (Blueprint $table) {
+            $table->id('id_ruangan');
+            $table->unsignedBigInteger('id_prasarana')->notNullable();
+            $table->foreign('id_prasarana')->references('id_prasarana')->on('prasarana')->onDelete('cascade');
+            $table->integer('kapasitas_ruangan')->unsigned()->notNullable();
+            $table->timestamps();
+        });
+
+        // Tabel untuk lapangan
         Schema::create('lapangan', function (Blueprint $table) {
             $table->id('id_lapangan');
             $table->unsignedBigInteger('id_prasarana')->notNullable();
@@ -318,7 +334,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel fasilitas
+        // Tabel untuk fasilitas
         Schema::create('fasilitas', function (Blueprint $table) {
             $table->id('id_fasilitas');
             $table->unsignedBigInteger('id_gedung')->nullable();
@@ -327,7 +343,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel album
+        // Tabel untuk album
         Schema::create('album', function (Blueprint $table) {
             $table->id('id_album');
             $table->string('nama_album')->notNullable();
@@ -337,7 +353,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel foto
+        // Tabel untuk foto
         Schema::create('foto', function (Blueprint $table) {
             $table->id('id_foto');
             $table->unsignedBigInteger('id_album')->notNullable();
@@ -349,7 +365,7 @@ return new class extends Migration
             $table->index('id_album');
         });
 
-        // Schema untuk tabel vidio
+        // Tabel untuk vidio
         Schema::create('vidio', function (Blueprint $table) {
             $table->id('id_video');
             $table->unsignedBigInteger('id_album')->notNullable();
@@ -361,7 +377,7 @@ return new class extends Migration
             $table->index('id_album');
         });
 
-        // Schema untuk tabel berita
+        // Tabel untuk berita
         Schema::create('berita', function (Blueprint $table) {
             $table->id('id_berita');
             $table->string('judul_berita')->notNullable();
@@ -370,7 +386,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel kategori_berita
+        // Tabel untuk kategori_berita
         Schema::create('kategori_berita', function (Blueprint $table) {
             $table->id('id_kategori');
             $table->unsignedBigInteger('berita_id');
@@ -379,7 +395,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel gambar_berita
+        // Tabel untuk gambar_berita
         Schema::create('gambar_berita', function (Blueprint $table) {
             $table->id('id_gambar');
             $table->unsignedBigInteger('berita_id');
@@ -388,7 +404,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Schema untuk tabel komentar_berita
+        // Tabel untuk komentar_berita
         Schema::create('komentar_berita', function (Blueprint $table) {
             $table->id('id_komentar');
             $table->unsignedBigInteger('id_berita')->notNullable();
