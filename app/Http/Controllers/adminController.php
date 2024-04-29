@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Admin;
 
 class adminController extends Controller
 {
@@ -18,11 +19,13 @@ class adminController extends Controller
         ]);
     }
 
-    public function admin(){
-        return view('admin/admin', [
-            "title" => "Admin"
-        ]);
-    }
+    // public function admin(){
+    //     $admin = Admin::all();
+    //     return view('admin/admin', [
+    //         'admin' => $admin,
+    //         "title" => "Admin"
+    //     ]);
+    // }
 
     public function adminBeranda(){
         return view('admin/beranda', [

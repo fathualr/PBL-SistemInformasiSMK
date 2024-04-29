@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\webController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\adminActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::get('guest/detail-program', [webController::class, 'detailProgram']);
 // Admin
 Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
-Route::get('admin/admin', [adminController::class, 'admin']);
+// Route::get('admin/admin', [adminController::class, 'admin'])->name('admin.admin');
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
 Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
@@ -69,4 +70,9 @@ Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikul
 Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
 Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
+
+Route::get('admin/admin', [adminActionController::class, 'index'])->name('admin.index');
+Route::post('/adminStore', [adminActionController::class, 'store'])->name('admin.store');
+Route::patch('/adminUpdate/{id}', [adminActionController::class, 'update'])->name('admin.update');
+Route::delete('/adminUpdate/{id}', [adminActionController::class, 'destroy'])->name('admin.destroy');
 // Admin
