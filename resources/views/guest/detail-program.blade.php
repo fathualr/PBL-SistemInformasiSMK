@@ -100,7 +100,7 @@
     <div class="col-span-2 w-[50rem] mx-auto my-7">
         <!-- First Collapse -->
         <div class="collapse collapse-arrow bg-base-200 mb-5">
-            <input type="checkbox" />
+            <input type="checkbox" checked />
             <div class="collapse-title text-xl font-medium flex">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     class="stroke-info shrink-0 w-6 h-6">

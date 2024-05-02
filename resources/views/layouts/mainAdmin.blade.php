@@ -425,6 +425,7 @@
             button.querySelector('.circle-1').classList.add('translate-x-4');
             button.querySelector('.circle-3').classList.add('-translate-x-4');
             button.querySelector('.circle-2').classList.add('animate-ping');
+            button.querySelector('.plus-icon').classList.add('rotate-45');
         };
 
         const handleMouseLeave = (button) => {
@@ -432,6 +433,7 @@
             button.querySelector('.circle-1').classList.remove('translate-x-4');
             button.querySelector('.circle-3').classList.remove('-translate-x-4');
             button.querySelector('.circle-2').classList.remove('animate-ping');
+            button.querySelector('.plus-icon').classList.remove('rotate-45');
         };
 
         const handleClick = (button) => {
@@ -440,10 +442,12 @@
                 button.querySelector('.fa-times').classList.remove('hidden');
                 button.querySelector('.fa-times').classList.add('animate-pulse');
                 button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.add('hidden'));
+                button.querySelector('.plus-icon').classList.add('rotate-45');
             } else {
                 button.dataset.clicked = 'false';
                 button.querySelector('.fa-times').classList.add('hidden');
                 button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.remove('hidden'));
+                button.querySelector('.plus-icon').classList.remove('rotate-45');
             }
         };
 
@@ -452,6 +456,11 @@
             button.addEventListener('mouseleave', () => handleMouseLeave(button));
             button.addEventListener('click', () => handleClick(button));
         });
+
+        function rotateIcon() {
+            var icon = document.getElementById('plus-icon');
+            icon.classList.toggle('rotate-45');
+        }
         // Action Button
 
         // Password
@@ -474,22 +483,57 @@
         });
         // Password
 
-        // Obeject Load
-        window.addEventListener('scroll', function() {
-            var section = document.getElementById('.section');
-            var button = document.getElementById('button');
+        // Toast
+        function showToast(message, duration = 3000) {
+            let toastId, toastMessageId;
 
-            var sectionRect = section.getBoundingClientRect();
-
-            if (sectionRect.top <= window.innerHeight) {
-                button.classList.remove('hidden');
-                button.classList.add('animate-slideInFromTop');
-            } else {
-                button.classList.add('hidden');
+            if (message.includes('Data Berhasil Ditambahkan')) {
+                toastId = 'toastAdd';
+                toastMessageId = 'toast-message-add';
+            } else if (message.includes('Data Berhasil Diedit')) {
+                toastId = 'toastEdit';
+                toastMessageId = 'toast-message-edit';
+            } else if (message.includes('Data Berhasil Dihapus')) {
+                toastId = 'toastDelete';
+                toastMessageId = 'toast-message-delete';
             }
+
+            const toast = document.getElementById(toastId);
+            const toastMessage = document.getElementById(toastMessageId);
+
+            toastMessage.innerHTML = message;
+
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, duration);
+        }
+
+        document.getElementById('add-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            showToast('Data Berhasil Ditambahkan !');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2500);
         });
 
-        // Obeject Load
+        document.getElementById('edit-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            showToast('Data Berhasil Diedit !');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2500);
+        });
+
+        document.getElementById('delete-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            showToast('Data Berhasil Dihapus !');
+            setTimeout(() => {
+                window.location.reload();
+            }, 2500);
+        });
+        // Toast
         </script>
 </body>
 

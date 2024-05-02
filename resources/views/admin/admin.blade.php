@@ -235,7 +235,7 @@
             <div class="divider"></div>
         </div>
 
-        <form action="">
+        <form action="" id="add-form">
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
@@ -271,7 +271,8 @@
 
                 <a href="" class="">
                     <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm"
+                        id="submit-button">
                         <i class=" fas fa-plus"></i>
                         Tambah
                     </button>
@@ -295,7 +296,7 @@
             <div class="divider divider-success"></div>
             <div class="divider"></div>
         </div>
-        <form action="" method="dialog">
+        <form action="" method="dialog" id="edit-form">
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
@@ -324,7 +325,8 @@
 
                 <a href="" class="">
                     <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm"
+                        id="edit-button">
                         <i class=" fas fa-pen-to-square"></i>
                         Edit
                     </button>
@@ -377,14 +379,15 @@
             <div class="divider divider-success"></div>
             <div class="divider"></div>
         </div>
-        <form action="">
+        <form action="" id="delete-form">
             Apakah Anda Yakin Ingin Menghapus Data Ini ?
 
             <div class="flex justify-end items-end mt-20 gap-4">
 
                 <a href="" class="">
                     <button type="submit"
-                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error"
+                        id="delete-button">
                         <i class=" fas fa-trash"></i>
                         Hapus
                     </button>
@@ -395,4 +398,48 @@
     </div>
 </dialog>
 
+<!-- Toast -->
+
+<!-- Toast Add -->
+<div id="toastAdd" class="toast toast-top toast-center bg-white p-4 rounded-md shadow-md border border-gray-300 hidden">
+    <div class="flex justify-center items-center">
+        <div class="mr-2 text-elm">
+            <i class="fas fa-check"></i>
+        </div>
+        <div id="toast-message-add">
+
+        </div>
+    </div>
+</div>
+<!-- Toast Add -->
+
+<!-- Toast Edit -->
+<div id="toastEdit"
+    class="toast toast-top toast-center bg-white p-4 rounded-md shadow-md border border-gray-300 hidden">
+    <div class="flex justify-center items-center">
+        <div class="mr-2 text-elm">
+            <i class="fas fa-check"></i>
+        </div>
+        <div id="toast-message-edit">
+
+        </div>
+    </div>
+</div>
+<!-- Toast Edit -->
+
+<!-- Toast Delete -->
+<div id="toastDelete"
+    class="toast toast-top toast-center bg-white p-4 rounded-md shadow-md border border-gray-300 hidden">
+    <div class="flex justify-center items-center">
+        <div class="mr-2 text-elm">
+            <i class="fas fa-check"></i>
+        </div>
+        <div id="toast-message-delete">
+
+        </div>
+    </div>
+</div>
+<!-- Toast Delete -->
+
+<!-- Toast -->
 @endsection
