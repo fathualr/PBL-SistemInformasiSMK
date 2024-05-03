@@ -164,6 +164,7 @@ return new class extends Migration
 
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
         });
+        
         // Tabel untuk informasi pendaftaran siswa PPDB
         Schema::create('form_ppdb', function (Blueprint $table) {
             $table->id('id_pendaftaran');
@@ -347,6 +348,7 @@ return new class extends Migration
         Schema::create('album', function (Blueprint $table) {
             $table->id('id_album');
             $table->string('nama_album')->notNullable();
+            $table->string('gambar_album')->notNullable();
             $table->enum('tipe_album', ['Foto', 'Video'])->notNullable();
             $table->text('deskripsi_album')->notNullable();
             $table->date('tanggal_unggah')->notNullable();
@@ -366,7 +368,7 @@ return new class extends Migration
         });
 
         // Tabel untuk vidio
-        Schema::create('vidio', function (Blueprint $table) {
+        Schema::create('video', function (Blueprint $table) {
             $table->id('id_video');
             $table->unsignedBigInteger('id_album')->notNullable();
             $table->foreign('id_album')->references('id_album')->on('album')->onDelete('cascade');

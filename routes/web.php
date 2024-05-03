@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\webController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\BackendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,8 @@ Route::get('guest/direktori-siswa', [webController::class, 'siswa']);
 Route::get('guest/direktori-alumni', [webController::class, 'alumni']);
 Route::get('guest/galeri-foto', [webController::class, 'foto']);
 Route::get('guest/galeri-video', [webController::class, 'video']);
-Route::get('guest/galeri-template', [webController::class, 'galeriTemplate']);
+Route::get('guest/galeri-template/{id_album}', [webController::class, 'galeriTemplate']);
+Route::get('guest/galeri-template-video/{id_album}', [webController::class, 'galeriTemplateVideo']);
 Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
 Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPrasaranaTemplate']);
 Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
@@ -45,7 +47,7 @@ Route::get('guest/sejarah', [webController::class, 'sejarah']);
 Route::get('guest/detail-program', [webController::class, 'detailProgram']);
 // Public
 
-// Admin
+// Admin 
 Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
 Route::get('admin/admin', [adminController::class, 'admin']);
@@ -57,8 +59,9 @@ Route::get('admin/guru', [adminController::class, 'adminGuru']);
 Route::get('admin/staff', [adminController::class, 'adminStaff']);
 Route::get('admin/siswa', [adminController::class, 'adminSiswa']);
 Route::get('admin/alumni', [adminController::class, 'adminAlumni']);
-Route::get('admin/foto', [adminController::class, 'adminFoto']);
-Route::get('admin/video', [adminController::class, 'adminVideo']);
+Route::get('admin/album', [adminController::class, 'adminAlbum'])->name('admin.album.index');
+Route::get('admin/foto', [adminController::class, 'adminFoto'])->name('admin.foto.index');
+Route::get('admin/video', [adminController::class, 'adminVideo'])->name('admin.video.index');
 Route::get('admin/informasiPPDB', [adminController::class, 'adminInformasiPPDB']);
 Route::get('admin/pendaftaranPPDB', [adminController::class, 'adminPendaftaranPPDB']);
 Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB']);
@@ -70,3 +73,32 @@ Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
 Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
 // Admin
+
+//Backend Crud
+Route::post('admin/album', [BackendController::class, 'storeAlbum'])->name('admin.album.store');
+Route::patch('/admin/album/{id}', [BackendController::class, 'updateAlbum'])->name('admin.album.update');
+Route::delete('/admin/album/{id}', [BackendController::class, 'destroyAlbum'])->name('admin.album.destroy');
+
+Route::post('admin/foto', [BackendController::class, 'storeFoto'])->name('admin.foto.store');
+Route::patch('/admin/foto/{id}', [BackendController::class, 'updateFoto'])->name('admin.foto.update');
+Route::delete('/admin/foto/{id}', [BackendController::class, 'destroyFoto'])->name('admin.foto.destroy');
+
+Route::post('admin/video', [BackendController::class, 'storeVideo'])->name('admin.video.store');
+Route::patch('/admin/video/{id}', [BackendController::class, 'updateVideo'])->name('admin.video.update');
+Route::delete('/admin/video/{id}', [BackendController::class, 'destroyVideo'])->name('admin.video.destroy');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
