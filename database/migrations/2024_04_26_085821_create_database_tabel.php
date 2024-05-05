@@ -74,7 +74,7 @@ return new class extends Migration
         // Tabel untuk alur_ppdb
         Schema::create('alur_ppdb', function (Blueprint $table) {
             $table->id('id_alur');
-            $table->id('judul_alur');
+            $table->text('judul_alur');
             $table->date('tanggal_alur');
             $table->text('deskripsi_alur')->nullable();
             $table->timestamps();
