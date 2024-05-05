@@ -225,6 +225,11 @@ return new class extends Migration
         Schema::create('capaian_pembelajaran', function (Blueprint $table) {
             $table->id('id_capaian_pembelajaran');
             $table->unsignedBigInteger('id_program')->notNullable();
+            $table->longText('deskripsi_capaian_pembelajaran');
+            $table->longText('aspek_sikap');
+            $table->longText('aspek_pengetahuan');
+            $table->longText('aspek_keterampilan_umum');
+            $table->longText('aspek_keterampilan_khusus');
             $table->text('capaian')->nullable();
             $table->timestamps();
 
@@ -236,7 +241,10 @@ return new class extends Migration
         Schema::create('peluang_kerja', function (Blueprint $table) {
             $table->id('id_peluang_kerja');
             $table->unsignedBigInteger('id_program')->notNullable();
+            $table->text('deskripsi_peluang_kerja')->nullable();
             $table->text('peluang_kerja')->nullable();
+            $table->text('judul_pekerjaan')->nullable();
+            $table->text('deskripsi_pekerjaan')->nullable();
             $table->timestamps();
 
             // Menambahkan foreign key constraint
