@@ -65,7 +65,7 @@ return new class extends Migration
         });
 
         // Tabel untuk konten_ppdb
-        Schema::create('konten_ppdb', function (Blueprint $table) {
+        Schema::create('informasi_ppdb', function (Blueprint $table) {
             $table->id('id_ppdb');
             $table->text('deskripsi_ppdb')->nullable();
             $table->timestamps();
@@ -74,6 +74,7 @@ return new class extends Migration
         // Tabel untuk alur_ppdb
         Schema::create('alur_ppdb', function (Blueprint $table) {
             $table->id('id_alur');
+            $table->id('judul_alur');
             $table->date('tanggal_alur');
             $table->text('deskripsi_alur')->nullable();
             $table->timestamps();
