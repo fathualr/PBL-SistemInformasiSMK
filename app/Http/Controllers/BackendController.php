@@ -169,4 +169,37 @@ class BackendController extends Controller
         // Redirect atau response yang sesuai
         return redirect()->route('admin.video.index')->with('success', 'Video berhasil ditambahkan');
     }
+
+    public function updateVideo(Request $request, $id)
+    {
+        // Validasi data yang diterima dari formulir
+        $request->validate([
+            'id_album' => 'required|exists:album,id_album', // Pastikan album tersedia
+            'tautan_video' => 'required|string',
+            // Tambahkan validasi lainnya sesuai kebutuhan
+        ]);
+
+        // Temukan video yang sesuai berdasarkan ID
+        $video = Video::findOrFail($id);
+
+        // Lakukan update data
+        $video->update([
+            'id_album' => $request->id_album,
+            'tautan_video' => $request->tautan_video,
+            // Tambahkan field lainnya jika ada
+        ]);
+
+        // Redirect pengguna ke halaman terkait atau tampilkan pesan sukses
+        return redirect()->route('admin.video.index')->with('success', 'Video berhasil diperbarui.');
+    }
+
+    public function destroyVideo($id)
+    {
+        // Temukan album yang akan dihapus
+        $video = Video::findOrFail($id);
+
+        $video->delete();
+
+        return redirect()->route('admin.video.index')->with('success', 'Video berhasil dihapus.');
+    }
 }

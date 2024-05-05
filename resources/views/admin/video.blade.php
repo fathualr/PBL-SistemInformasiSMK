@@ -78,7 +78,7 @@
                     <option disabled>Nama Album || Tipe Album</option>
                     @foreach($albums as $album)
                     @if($album->tipe_album === 'Video')
-                    <option value="{{ $album->id_album }}" @if($album->id_album == $video->id_album) selected @endif>{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
+                    <option value="{{ $album->id_album }}">{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
                     @endif
                     @endforeach
                 </select>
@@ -122,13 +122,13 @@
                     <option disabled>Nama Album || Tipe Album</option>
                     @foreach($albums as $album)
                     @if($album->tipe_album === 'Video')
-                    <option value="{{ $album->id_album }}" @if($album->id_album == $video->id_album) selected @endif>{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
+                    <option value="{{ $album->id_album }}">{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
                     @endif
                     @endforeach
                 </select>
 
                 <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                    <input type="text" name="tautan_video" class="grow file-input file-input-success border-none bg-transparent py-2" placeholder="Copy & Paste Link Di Sini" />
+                    <input type="text" name="tautan_video" class="grow file-input file-input-success border-none bg-transparent py-2" placeholder="Copy & Paste Link Di Sini" value="{{ $video->tautan_video }}" />
                 </label>
 
                 <div class="flex justify-end items-end mt-20 gap-4">
@@ -141,7 +141,7 @@
         </div>
     </dialog>
     @endforeach
-    
+
 
     @foreach($videos as $video)
     <dialog id="my_modal_detail_{{ $video->id_video }}" class="modal" onclick="if (event.target === this) this.close()">
@@ -156,7 +156,9 @@
                     <div class="divider divider-success"></div>
                     <div class="divider"></div>
                 </div>
-                <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg mx-auto" src="{{ asset('/' . $video->tautan_video) }}" alt="gallery video" />
+                <div class="w-96 h-52">
+                    <iframe class="w-96 h-52" src="{{ $video->embed_link }}" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </dialog>
