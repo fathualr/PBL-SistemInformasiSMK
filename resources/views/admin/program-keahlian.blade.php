@@ -11,13 +11,12 @@
 
     <!-- Modal -->
     <div class="col-span-4 col-start-2 row-start-2 grid grid-cols-2 gap-4">
-
-        <details class="dropdown dropdown-right mx-auto z-50">
-            <summary tabindex="0" role="button" class="btn btn-outline button" onclick="rotateIcon()">
-                <i class="fas fa-plus text-xl transition-all duration-500" id="plus-icon"></i>
+        <details class="dropdown dropdown-right mx-auto">
+            <summary tabindex="0" role="button" class="btn btn-outline button w-max" onclick="rotateIcon()">
+                <i class="fas fa-plus font-bold text-xl transition-all duration-500" id="plus-icon"></i>
                 Tambah
             </summary>
-            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-max absolute">
+            <ul tabindex="0" class="dropdown-content menu p-2 z-50 shadow bg-base-100 rounded-box w-max absolute">
                 <!-- Program Keahlian -->
                 <li>
                     <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
@@ -280,6 +279,8 @@
                                     <!-- Program Keahlian -->
 
                                     <!-- Capaian Pembelajaran -->
+                                    @foreach($capaianPembelajaran as $capaianIndex => $capaian)
+                                    @if($capaian->id_program === $program->id_program)
                                     <div class="col-span-3">
                                         <h3 class="font-bold text-lg text-center">Capaian Pembelajaran</h3>
                                         <!-- First Collapse -->
@@ -298,7 +299,8 @@
                                             <div class="collapse-content">
                                                 <textarea
                                                     class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                                                    placeholder="Aspek Sikap" name="aspek_sikap"></textarea>
+                                                    placeholder="Aspek Sikap"
+                                                    name="aspek_sikap">{{ $capaian->aspek_sikap }}</textarea>
                                             </div>
                                         </div>
                                         <!-- First Collapse -->
@@ -365,6 +367,8 @@
                                         </div>
                                         <!-- Fourth Collapse -->
                                     </div>
+                                    @endif
+                                    @endforeach
                                     <!-- Capaian Pembelajaran -->
 
                                     <!-- Peluang Kerja -->
@@ -428,130 +432,6 @@
                         </div>
                     </dialog>
                     <!-- Delete Modal -->
-
-                    <!-- Tambah Capaian Pembelajaran -->
-                    <dialog id="my_modal_capaianPembelajaran" class="modal">
-                        <div class="modal-box w-11/12 max-w-5xl">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Tambah Capaian Pembelajaran</h3>
-
-                            <div class="grid grid-cols-3 w-52 -mt-5">
-                                <div class="divider"></div>
-                                <div class="divider divider-success"></div>
-                                <div class="divider"></div>
-                            </div>
-
-                            <form action="{{ route('ProgramKeahlian.store') }}" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
-
-                                <select class="select border-elm border-2 w-full mb-5">
-                                    <option disabled selected>Pilih Program Keahlian</option>
-                                    <option value="{{ $program->id_program }}">{{ $program->nama_program }}</option>
-                                </select>
-
-                                <textarea
-                                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                                    placeholder="Deskripsi Capaian Pembelajaran"
-                                    name="deskripsi_capaian_pembelajaran"></textarea>
-
-                                <!-- First Collapse -->
-                                <div class="collapse collapse-arrow bg-base-200 mb-5">
-                                    <input type="checkbox" />
-                                    <div class="collapse-title text-xl font-medium flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            class="stroke-info shrink-0 w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <h1 class="mx-5 text-base">ASPEK SIKAP</h1>
-                                    </div>
-                                    <div class="collapse-content">
-                                        <textarea
-                                            class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                                            placeholder="Aspek Sikap" name="aspek_sikap"></textarea>
-                                    </div>
-                                </div>
-                                <!-- First Collapse -->
-                                <!-- Second Collapse -->
-                                <div class="collapse collapse-arrow bg-base-200 mb-5">
-                                    <input type="checkbox" />
-                                    <div class="collapse-title text-xl font-medium flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            class="stroke-info shrink-0 w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <h1 class="mx-5 text-base">ASPEK PENGETAHUAN</h1>
-                                    </div>
-                                    <div class="collapse-content">
-                                        <textarea
-                                            class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                                            placeholder="Aspek Pengetahuan" name="aspek_penegtahuan"></textarea>
-                                    </div>
-                                </div>
-                                <!-- Second Collapse -->
-                                <!-- Third Collapse -->
-                                <div class="collapse collapse-arrow bg-base-200 mb-5">
-                                    <input type="checkbox" />
-                                    <div class="collapse-title text-xl font-medium flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            class="stroke-info shrink-0 w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <h1 class="mx-5 text-base">ASPEK KETERAMPILAN UMUM</h1>
-                                    </div>
-                                    <div class="collapse-content">
-                                        <textarea
-                                            class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                                            placeholder="Aspek Keterampilan Umum"
-                                            name="aspek_keterampilan_umum"></textarea>
-                                    </div>
-                                </div>
-                                <!-- Third Collapse -->
-                                <!-- Fourth Collapse -->
-                                <div class="collapse collapse-arrow bg-base-200">
-                                    <input type="checkbox" />
-                                    <div class="collapse-title text-xl font-medium flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            class="stroke-info shrink-0 w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <h1 class="mx-5 text-base">ASPEK KETERAMPILAN KHUSUS</h1>
-                                    </div>
-                                    <div class="collapse-content">
-                                        <textarea
-                                            class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                                            placeholder="Aspek Keterampilan Khusus"
-                                            name="aspek_keterampilan_khusus"></textarea>
-                                    </div>
-                                </div>
-                                <!-- Fourth Collapse -->
-
-                                <div class="flex justify-end items-end mt-20 gap-4">
-
-                                    <button type="reset"
-                                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                        <i class="fas fa-times"></i>
-                                        Reset
-                                    </button>
-
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                                        <i class=" fas fa-plus"></i>
-                                        Tambah
-                                    </button>
-
-                                </div>
-
-                            </form>
-                        </div>
-                    </dialog>
-                    <!-- Tambah Capaian Pembelajaran -->
 
                     <!-- Tambah Peluang Kerja -->
                     <dialog id="my_modal_peluangKerja" class="modal">
@@ -698,5 +578,125 @@
     </div>
 </dialog>
 <!-- Tambah Program Keahlian -->
+
+<!-- Tambah Capaian Pembelajaran -->
+<dialog id="my_modal_capaianPembelajaran" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Tambah Capaian Pembelajaran</h3>
+
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+
+        <form action="{{ route('CapaianPembelajaran.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <select class="select border-elm border-2 w-full mb-5" name="id_program">
+                <option disabled selected>Pilih Program Keahlian</option>
+                @foreach($programKeahlian as $index => $program)
+                <option value="{{ $program->id_program }}">{{ $program->nama_program }}</option>
+                @endforeach
+            </select>
+            <textarea
+                class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Capaian Pembelajaran" name="deskripsi_capaian_pembelajaran"></textarea>
+
+            <!-- First Collapse -->
+            <div class="collapse collapse-arrow bg-base-200 mb-5">
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        class="stroke-info shrink-0 w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h1 class="mx-5 text-base">ASPEK SIKAP</h1>
+                </div>
+                <div class="collapse-content">
+                    <textarea
+                        class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                        placeholder="Aspek Sikap" name="aspek_sikap"></textarea>
+                </div>
+            </div>
+            <!-- First Collapse -->
+            <!-- Second Collapse -->
+            <div class="collapse collapse-arrow bg-base-200 mb-5">
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        class="stroke-info shrink-0 w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h1 class="mx-5 text-base">ASPEK PENGETAHUAN</h1>
+                </div>
+                <div class="collapse-content">
+                    <textarea
+                        class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                        placeholder="Aspek Pengetahuan" name="aspek_pengetahuan"></textarea>
+                </div>
+            </div>
+            <!-- Second Collapse -->
+            <!-- Third Collapse -->
+            <div class="collapse collapse-arrow bg-base-200 mb-5">
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        class="stroke-info shrink-0 w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h1 class="mx-5 text-base">ASPEK KETERAMPILAN UMUM</h1>
+                </div>
+                <div class="collapse-content">
+                    <textarea
+                        class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                        placeholder="Aspek Keterampilan Umum" name="aspek_keterampilan_umum"></textarea>
+                </div>
+            </div>
+            <!-- Third Collapse -->
+            <!-- Fourth Collapse -->
+            <div class="collapse collapse-arrow bg-base-200">
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        class="stroke-info shrink-0 w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h1 class="mx-5 text-base">ASPEK KETERAMPILAN KHUSUS</h1>
+                </div>
+                <div class="collapse-content">
+                    <textarea
+                        class="input border-2 border-elm flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                        placeholder="Aspek Keterampilan Khusus" name="aspek_keterampilan_khusus"></textarea>
+                </div>
+            </div>
+            <!-- Fourth Collapse -->
+
+            <div class="flex justify-end items-end mt-20 gap-4">
+
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <i class="fas fa-times"></i>
+                    Reset
+                </button>
+
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <i class=" fas fa-plus"></i>
+                    Tambah
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</dialog>
+<!-- Tambah Capaian Pembelajaran -->
 
 @endsection

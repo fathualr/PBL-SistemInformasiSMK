@@ -17,4 +17,8 @@ class ProgramKeahlian extends Model
         "tujuan_program",
         "sasaran_program"
     ];
+    public function capaianPembelajaran()
+    {
+        return $this->hasMany(CapaianPembelajaran::class);
+    }
 }

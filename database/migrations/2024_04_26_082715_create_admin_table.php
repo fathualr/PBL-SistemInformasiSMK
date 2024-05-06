@@ -56,7 +56,13 @@ return new class extends Migration
             $table->id('id_capaian_pembelajaran');
             $table->unsignedBigInteger('id_program');
             $table->foreign('id_program')->references('id_program')->on('programKeahlian');
-            $table->longText('capaian_pembelajaran');
+            $table->longText('deskripsi_capaian_pembelajaran');
+            $table->longText('aspek_sikap');
+            $table->longText('aspek_pengetahuan');
+            $table->longText('aspek_keterampilan_umum');
+            $table->longText('aspek_keterampilan_khusus');            
+            $table->rememberToken();
+            $table->timestamps();
         });
 
         Schema ::create('peluangKerja', function(Blueprint $table){

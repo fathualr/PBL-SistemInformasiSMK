@@ -53,6 +53,8 @@ Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
 Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
 Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian'])->name('admin.programKeahlian.index');
+Route::get('admin/capaianPembelajaran/{id_capaian_pembelajaran}', [adminController::class, 'capaianPembelajaran'])->name('admin.capaianPembelajaran.index');
+Route::get('admin/peluangKerja', [adminController::class, 'peluangKerja']);
 Route::get('admin/guru', [adminController::class, 'adminGuru']);
 Route::get('admin/staff', [adminController::class, 'adminStaff']);
 Route::get('admin/siswa', [adminController::class, 'adminSiswa']);
@@ -72,6 +74,9 @@ Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
 // Admin
 
 // CRUD
+Route::post('admin/program-keahlian', [adminController::class, 'storeProgramKeahlian'])->name('ProgramKeahlian.store');
+Route::post('admin/capaianPembelajaran', [adminController::class, 'storeCapaianPembelajaran'])->name('CapaianPembelajaran.store');
+Route::post('admin/program-keahlian', [adminController::class, 'storePeluangKerja'])->name('PeluangKerja.store');
 Route::post('admin/program-keahlian', [adminController::class, 'storeProgramKeahlian'])->name('ProgramKeahlian.store');
 Route::patch('admin/program-keahlian/{id_program}', [adminController::class, 'updateProgramKeahlian'])->name('ProgramKeahlian.update');
 Route::delete('admin/program-keahlian/{id_program}', [adminController::class, 'destroyProgramKeahlian'])->name('ProgramKeahlian.destroy');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProgramKeahlian;
+use App\Models\CapaianPembelajaran;
 
 class adminController extends Controller
 {
@@ -46,25 +47,16 @@ class adminController extends Controller
     // Program Keahlian
     public function adminProgramKeahlian(){
         $programKeahlian = ProgramKeahlian::all();
+        $capaianPembelajaran = CapaianPembelajaran::all();
         return view('admin/program-keahlian', [
             "title" => "Admin Program Keahlian",
-            "programKeahlian" => $programKeahlian
+            "programKeahlian" => $programKeahlian,
+            "capaianPembelajaran"=> $capaianPembelajaran
         ]);
     }
 
     public function storeProgramKeahlian(Request $request)
     {
-        $request->validate([
-            "nama_program" => "required",
-            "logo_program" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
-            "deskripsi_program" => "required",
-            "visi_program" => "required",
-            "misi_program" => "required",
-            "tujuan_program" => "required",
-            "sasaran_program" => "required",
-        ]);
-        
-
             $format_file = $request->file('logo_program')->getClientOriginalName();
             $request->file('logo_program')->move(public_path('image'), $format_file);
     
@@ -77,7 +69,7 @@ class adminController extends Controller
                 "tujuan_program" => $request->tujuan_program,
                 "sasaran_program" => $request->sasaran_program,
             ]);
-            return redirect()->route('admin.programKeahlian.index')->with('success', 'berhasil ditambahkan.');
+            return redirect()->route('admin.programKeahlian.index');
     }
     
     
@@ -125,6 +117,45 @@ class adminController extends Controller
         return redirect()->route('admin.programKeahlian.index')->with('success', 'Data berhasil dihapus.');
     }
     // Program Keahlian
+
+    // Capaian Pembelajaran
+    public function capaianPembelajaran(){
+        $programKeahlian = ProgramKeahlian::all();
+        $capaianPembelajaran = CapaianPembelajaran::all();
+        return view('admin/program-keahlian', [
+            "title" => "Capaian Pembelajaran",
+            "capaianPembelajaran"=> $capaianPembelajaran,
+            "programKeahlian" => $programKeahlian,
+            compact('programKeahlian', 'capaianPembelajaran')
+        ]);
+    }
+    public function storeCapaianPembelajaran(Request $request){
+        CapaianPembelajaran::create([
+            "id_program" => $request->id_program,
+            "deskripsi_capaian_pembelajaran" => $request->deskripsi_capaian_pembelajaran,
+            "aspek_sikap" => $request->aspek_sikap,
+            "aspek_pengetahuan" => $request->aspek_pengetahuan,
+            "aspek_keterampilan_umum" => $request->aspek_keterampilan_umum,
+            "aspek_keterampilan_khusus" => $request->aspek_keterampilan_khusus,
+        ]);
+        return redirect()->route('admin.programKeahlian.index');
+}
+
+public function destroyCapaianPembelajaran($id_capaian_pembelajaran)
+    {
+        $capaianPembelajaran = CapaianPembelajaran::findOrFail($id_capaian_pembelajaran);
+        
+        $capaianPembelajaran->delete();
+    
+        return redirect()->route('admin.capaianPembelajaran.index');
+    }
+    // Capaian Pembelajaran
+
+        public function peluangKerja(){
+        return view('admin/peluangKerja', [
+            "title" => "Peluang Kerja"
+        ]);
+    }
 
     public function adminGuru(){
         return view('admin/guru', [

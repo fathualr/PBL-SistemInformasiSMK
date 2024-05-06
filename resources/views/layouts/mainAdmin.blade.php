@@ -86,8 +86,7 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Profile Sekolah</h1>
                         </a>
                     </li>
-                    <li
-                        class="hover:translate-y-0 @if($title == 'Admin Program Keahlian') bg-blue-lagoon rounded-md @endif">
+                    <li class="hover:translate-y-0">
                         <a href="/admin/program-keahlian">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-pen-ruler text-2xl text-center font-bold"></i>
@@ -97,7 +96,7 @@
                     </li>
                     <li class="hover:translate-y-0">
                         <!-- W-20 -->
-                        <div class="dropdown dropdown-hover -mt-1" id="dropdown">
+                        <div class="dropdown dropdown-hover -mt-1 -z-50" id="dropdown">
                             <div tabindex="0" role="button" class="btn bg-transparent border-none">
                                 <div class="w-3 flex justify-center items-center text-white">
                                     <i class="fas fa-folder-open text-2xl text-center font-bold"></i>
@@ -113,8 +112,8 @@
                                 </li>
                                 <li class="@if($title == 'Admin Staff') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/staff">
-                                        <i class="fas fa-clipboard-user text-2xl"></i>
-                                        <h1 class="font-bold mx-5">Staff</h1>
+                                        <i class="fas fa-clipboard-user text-xl"></i>
+                                        <h1 class="font-bold mx-[1.30rem]">Staff</h1>
                                     </a>
                                 </li>
                                 <li class="@if($title == 'Admin Siswa') bg-blue-lagoon rounded-md @endif">
