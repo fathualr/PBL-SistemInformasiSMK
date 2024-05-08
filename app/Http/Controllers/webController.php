@@ -144,19 +144,19 @@ class webController extends Controller
         ]);
     }
 
-    public function berita()
-    {
-        return view('guest/berita', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function berita()
+    // {
+    //     return view('guest/berita', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
-    public function beritaTemplate()
-    {
-        return view('guest/berita-template', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function beritaTemplate()
+    // {
+    //     return view('guest/berita-template', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
     public function ekstrakulikuler()
     {

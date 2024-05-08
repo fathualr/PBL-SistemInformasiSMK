@@ -5,6 +5,7 @@ use App\Http\Controllers\webController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\adminActionController;
+use App\Http\Controllers\beritaActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,6 @@ Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
 Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPrasaranaTemplate']);
 Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
 Route::get('guest/prestasi-template', [webController::class, 'prestasiTemplate']);
-Route::get('guest/berita', [webController::class, 'berita']);
-Route::get('guest/berita-template', [webController::class, 'beritaTemplate']);
 Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
 Route::get('guest/media-sosial', [webController::class, 'mediaSosial']);
 Route::get('guest/sejarah', [webController::class, 'sejarah']);
@@ -51,7 +50,6 @@ Route::get('guest/detail-program', [webController::class, 'detailProgram']);
 // Admin 
 Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
-// Route::get('admin/admin', [adminController::class, 'admin'])->name('admin.admin');
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
 Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
@@ -68,7 +66,6 @@ Route::get('admin/pendaftaranPPDB', [adminController::class, 'adminPendaftaranPP
 Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB']);
 Route::get('admin/saranaPrasarana', [adminController::class, 'adminSaranaPrasarana']);
 Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
-Route::get('admin/berita', [adminController::class, 'adminIBerita']);
 Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
 Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
@@ -79,7 +76,25 @@ Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
 Route::get('admin/admin', [adminActionController::class, 'index'])->name('admin.index');
 Route::post('/adminStore', [adminActionController::class, 'store'])->name('admin.store');
 Route::patch('/adminUpdate/{id}', [adminActionController::class, 'update'])->name('admin.update');
-Route::delete('/adminUpdate/{id}', [adminActionController::class, 'destroy'])->name('admin.destroy');
+Route::delete('/adminDestroy/{id}', [adminActionController::class, 'destroy'])->name('admin.destroy');
+
+//Berita -----
+    //CRUD
+Route::get('admin/berita', [beritaActionController::class, 'index'])->name('berita.index');
+Route::post('/beritaStore', [beritaActionController::class, 'store'])->name('berita.store');
+Route::patch('/beritaUpdate/{id}', [beritaActionController::class, 'update'])->name('berita.update');
+Route::delete('/beritaDestroy/{id}', [beritaActionController::class, 'destroy'])->name('berita.destroy');
+
+Route::patch('/gambarBeritaUpdate/{id}', [beritaActionController::class, 'updateGambarBerita'])->name('gambarBerita.update');
+Route::delete('/gambarBeritaDestroy/{id}', [beritaActionController::class, 'destroyGambarBerita'])->name('gambarBerita.destroy');
+
+Route::patch('/kategoriBeritaUpdate/{id}', [beritaActionController::class, 'updateKategoriBerita'])->name('kategoriBerita.update');
+Route::delete('/kategoriBeritaDestroy/{id}', [beritaActionController::class, 'destroyKategoriBerita'])->name('kategoriBerita.destroy');
+
+    //Guest
+Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
+Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
+//-----
 
 //Backend Crud
 Route::post('admin/album', [BackendController::class, 'storeAlbum'])->name('admin.album.store');

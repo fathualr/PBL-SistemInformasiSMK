@@ -164,12 +164,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminIBerita()
-    {
-        return view('admin/berita', [
-            "title" => "Admin Berita"
-        ]);
-    }
+    // public function adminIBerita()
+    // {
+    //     return view('admin/berita', [
+    //         "title" => "Admin Berita"
+    //     ]);
+    // }
 
     public function adminEkstrakulikuler()
     {

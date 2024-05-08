@@ -394,6 +394,7 @@ return new class extends Migration
             $table->string('judul_berita')->notNullable();
             $table->text('isi_berita')->notNullable();
             $table->date('tanggal_berita')->notNullable();
+            $table->string('gambar_headline')->notNullable();
             $table->timestamps();
         });
 
