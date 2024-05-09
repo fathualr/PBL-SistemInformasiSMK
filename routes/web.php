@@ -6,6 +6,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\adminActionController;
 use App\Http\Controllers\beritaActionController;
+use App\Http\Controllers\komentarBeritaActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,8 +93,12 @@ Route::patch('/kategoriBeritaUpdate/{id}', [beritaActionController::class, 'upda
 Route::delete('/kategoriBeritaDestroy/{id}', [beritaActionController::class, 'destroyKategoriBerita'])->name('kategoriBerita.destroy');
 
     //Guest
-Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
-Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
+    Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
+    Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
+
+        //Komentar 
+        Route::post('/komentarStore/{id}', [komentarBeritaActionController::class, 'store'])->name('komentarBerita.store');
+        Route::delete('/komentarDestroy/{id}', [komentarBeritaActionController::class, 'destroy'])->name('komentarBerita.destroy');
 //-----
 
 //Backend Crud

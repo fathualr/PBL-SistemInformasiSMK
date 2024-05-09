@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\GambarBerita;
 use App\Models\KategoriBerita;
+use App\Models\KomentarBerita;
 
 class beritaActionController extends Controller
 {
     public function index(){
         $berita = Berita::with('kategori', 'gambar')->get();
+        $komentar = KomentarBerita::with('berita')->orderBy('created_at', 'desc')->get();
         return view('admin/berita', [
             'berita' => $berita,
+            'komentar' => $komentar,
             "title" => "Admin"
         ]);
     }
@@ -26,7 +29,7 @@ class beritaActionController extends Controller
     }
 
     public function showTemplate($id_berita){
-        $berita = Berita::with('kategori', 'gambar')->findOrFail($id_berita);
+        $berita = Berita::with(['kategori', 'gambar', 'komentar' => function ($query) {$query->orderBy('created_at', 'desc');}])->findOrFail($id_berita);
         return view('guest/berita-template', [
             'berita' => $berita,
             'title' => "Berita $berita->judul_berita"

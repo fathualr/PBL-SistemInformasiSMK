@@ -116,26 +116,34 @@
 <div class="divider my-5"></div>
 <!-- Comments -->
 <div class=" w-full">
-    <form action="">
-        <label class="form-control">
+
+    @include('shared.success-message')
+    @include('shared.error-message')
+    <form action="{{ route('komentarBerita.store', $berita->id_berita) }}" method="POST">
+        @csrf
+        @method('POST')
+        <label class="form-control gap-2">
             <div class="label">
                 <span class="label-text font-bold text-xl">Komentar</span>
             </div>
-            <textarea class="textarea textarea-bordered textarea-lg w-full h-32"
-                placeholder="Tulis Komentar Anda Disini"></textarea>
+            <input type="text" placeholder="Nama Anda" class="input input-bordered w-full" name="nama_komentar"/>
+            <textarea class="textarea textarea-bordered textarea-lg w-full h-32" placeholder="Tulis Komentar Anda Disini" name="teks_komentar"></textarea>
         </label>
-        <a href="" class="flex justify-end my-5">
-            <button class="btn btn-outline btn-accent font-bold">
+        <div class="flex justify-end my-5">
+            <button type="submit" class="btn btn-outline btn-accent font-bold">
                 <i class="fas fa-paper-plane"></i>
                 <span>Kirim</span>
             </button>
-        </a>
+        </div>
     </form>
+
 </div>
 <!-- Comments -->
 <div class="divider my-5"></div>
 <!-- Show Others Comments -->
 <div class="w-full">
+
+    @foreach($berita->komentar as $komentar)
     <div class="chat chat-start">
         <div class="chat-image avatar">
             <div class="w-10 rounded-full border-2 place-content-center">
@@ -144,43 +152,16 @@
                 </div>
             </div>
         </div>
-        <div class="chat-bubble">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero nesciunt odio tempore
-                exercitationem architecto fuga maiores optio, eaque veritatis deserunt omnis est pariatur quaerat
-                perferendis, soluta rem praesentium tenetur laudantium.</p>
-            <span class="flex justify-end items-end text-sm text-slate-300 pt-5">2024-09-12</span>
-        </div>
-    </div>
-    <div class="chat chat-start">
-        <div class="chat-image avatar">
-            <div class="w-10 rounded-full border-2 place-content-center">
-                <div class="text-center">
-                    <i class="fas fa-user text-xl"></i>
-                </div>
-            </div>
+        <div class="chat-header">
+            {{ $komentar->nama_komentar }}
+            <time class="text-xs opacity-50">{{ $komentar->created_at->format('d M Y H:i:s') }}</time>
         </div>
         <div class="chat-bubble">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero nesciunt odio tempore
-                exercitationem architecto fuga maiores optio, eaque veritatis deserunt omnis est pariatur quaerat
-                perferendis, soluta rem praesentium tenetur laudantium.</p>
-            <span class="flex justify-end items-end text-sm text-slate-300 pt-5">2024-09-12</span>
+            <p>{{ $komentar->teks_komentar }}</p>
         </div>
     </div>
-    <div class="chat chat-start">
-        <div class="chat-image avatar">
-            <div class="w-10 rounded-full border-2 place-content-center">
-                <div class="text-center">
-                    <i class="fas fa-user text-xl"></i>
-                </div>
-            </div>
-        </div>
-        <div class="chat-bubble">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero nesciunt odio tempore
-                exercitationem architecto fuga maiores optio, eaque veritatis deserunt omnis est pariatur quaerat
-                perferendis, soluta rem praesentium tenetur laudantium.</p>
-            <span class="flex justify-end items-end text-sm text-slate-300 pt-5">2024-09-12</span>
-        </div>
-    </div>
+    @endforeach
+
 </div>
 <!-- Show Others Comments -->
 

@@ -423,7 +423,7 @@ return new class extends Migration
             $table->foreign('id_berita')->references('id_berita')->on('berita')->onDelete('cascade');
             $table->string('nama_komentar')->notNullable();
             $table->text('teks_komentar')->notNullable();
-            $table->timestamp('waktu_komentar')->useCurrent();
+            // $table->timestamp('waktu_komentar')->useCurrent();
             $table->timestamps();
 
             // Index foreign key

@@ -18,13 +18,15 @@ class Berita extends Model
         'tanggal_berita',
     ];
 
-    public function kategori()
-    {
+    public function kategori(){
         return $this->hasMany(KategoriBerita::class, 'berita_id');
     }
 
-    public function gambar()
-    {
+    public function gambar(){
         return $this->hasMany(GambarBerita::class, 'berita_id');
+    }
+
+    public function komentar(){
+        return $this->hasMany(KomentarBerita::class, 'id_berita');
     }
 }

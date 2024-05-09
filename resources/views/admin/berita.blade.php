@@ -121,6 +121,94 @@
         </div>
     </div>
     <!-- Content -->
+
+    <div class="col-span-3 mt-16 mb-4 mx-5 row-start-5">
+        <h3 class="font-bold text-lg">Pengelolaan Komentar Berita</h3>
+    </div>
+
+    <!-- Content -->
+    <div class="col-span-9 row-start-6">
+        <div class="overflow-x-auto mt-5 px-16">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th>
+                            <label>
+                                <input type="checkbox" class="checkbox" />
+                            </label>
+                        </th>
+                        <th>No.</th>
+                        <th>Judul Berita</th>
+                        <th>Nama</th>
+                        <th>Komentar</th>
+                        <th>Waktu</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($komentar as $key => $kmt)
+                    <tr class="hover">
+                        <th>
+                            <label>
+                                <input type="checkbox" class="checkbox" />
+                            </label>
+                        </th>
+                        <th>{{ $key + 1 }}</th>
+                        <td>{{ $kmt->berita->judul_berita }}</td>
+                        <td>{{ $kmt->nama_komentar }}</td>
+                        <td class="truncate">
+                            {{ $kmt->teks_komentar }}
+                        </td>
+                        <td>{{ $kmt->created_at->format('d M Y H:i:s') }}</td>
+                        <td>
+                            <details class="dropdown dropdown-right">
+                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
+                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
+                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
+                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                                </summary>
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                    <!-- View -->
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view_komentar{{ $kmt->id_komentar }}.showModal()">
+                                            <i class="fas fa-circle-info"></i>
+                                            Detail
+                                        </button>
+                                    </li>
+                                    <!-- View -->
+                                    <!-- Delete -->
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete_komentar{{ $kmt->id_komentar }}.showModal()">
+                                            <i class="fas fa-trash"></i>
+                                            Hapus
+                                        </button>
+                                    </li>
+                                    <!-- Delete -->
+                                </ul>
+                            </details>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>No.</th>
+                        <th>Judul Berita</th>
+                        <th>Nama</th>
+                        <th>Komentar</th>
+                        <th>Waktu</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <!-- Content -->
 </div>
 
 <!-- Modal CREATE -->
@@ -216,6 +304,7 @@
 </dialog>
 <!-- Modal CREATE end -->
 
+<!-- MODAL BERITA-->
 @foreach($berita as $brt)
 <!-- Modal EDIT -->
 <dialog id="my_modal_edit_{{ $brt->id_berita }}" class="modal">
@@ -296,7 +385,7 @@
         </form>
 
     </div>
-</dialog>
+</dialog><!-- Modal EDIT end -->
 
     <!-- Modal EDIT Gambar -->
     <dialog id="my_modal_view_gambar{{ $brt->id_berita }}" class="modal">
@@ -345,8 +434,7 @@
             </form>
 
         </div>
-    </dialog>
-    <!-- Modal EDIT gambar end -->
+    </dialog><!-- Modal EDIT Gambar end -->
 
     <!-- Modal EDIT kategori -->
     <dialog id="my_modal_view_kategori{{ $brt->id_berita }}" class="modal">
@@ -395,9 +483,7 @@
             </form>
 
         </div>
-    </dialog>
-    <!-- Modal EDIT kategori end -->
-<!-- Modal EDIT end -->
+    </dialog><!-- Modal EDIT Kategori end -->
 
 <!-- Modal VIEW -->
 <dialog id="my_modal_view{{ $brt->id_berita }}" class="modal">
@@ -466,8 +552,7 @@
 
         </div>
     </div>
-</dialog>
-<!-- Modal VIEW end -->
+</dialog><!-- Modal VIEW end -->
 
 <!-- Modal DELETE -->
 <dialog id="my_modal_delete{{ $brt->id_berita }}" class="modal">
@@ -486,8 +571,64 @@
             </form>
         </div>
     </div>
-</dialog>
-<!-- Modal DELETE end -->
+</dialog><!-- Modal DELETE end -->
+@endforeach
+<!-- MODAL BERITA end-->
+
+<!-- MODAL KOMENTAR BERITA -->
+@foreach($komentar as $kmt)
+<!-- Modal VIEW -->
+<dialog id="my_modal_view_komentar{{ $kmt->id_komentar }}" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Detail Komentar Berita</h3>
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <div class="grid">
+            <div class="label">
+                <span class="label-text">Judul:</span>
+            </div>
+            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->berita->judul_berita }}" disabled />
+            <div class="label">
+                <span class="label-text">Nama:</span>
+            </div>
+            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->nama_komentar }}" disabled />
+            <div class="label">
+                <span class="label-text">Komentar:</span>
+            </div>
+            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->teks_komentar }}" disabled />
+            <div class="label">
+                <span class="label-text">Waktu:</span>
+            </div>
+            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->created_at }}" disabled />
+        </div>
+    </div>
+</dialog><!-- Modal VIEW end -->
+
+<!-- Modal DELETE -->
+<dialog id="my_modal_delete_komentar{{ $kmt->id_komentar }}" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Hapus Komentar Berita</h3>
+        <div class="flex justify-end items-end gap-4">
+            <form action="{{ route('komentarBerita.destroy', $kmt->id_komentar) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    Hapus
+                </button>
+            </form>
+        </div>
+    </div>
+</dialog><!-- Modal DELETE end -->
+<!-- Modal KOMENTAR BERITA end -->
 @endforeach
 
 @endsection
