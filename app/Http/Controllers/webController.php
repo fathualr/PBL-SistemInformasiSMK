@@ -10,19 +10,19 @@ use App\Models\Video;
 
 class webController extends Controller
 {
-    public function home()
-    {
-        return view('/home', [
-            "title" => "Beranda"
-        ]);
-    }
+    // public function home()
+    // {
+    //     return view('/home', [
+    //         "title" => "Beranda"
+    //     ]);
+    // }
 
-    public function profile()
-    {
-        return view('guest/profile', [
-            "title" => "Profile"
-        ]);
-    }
+    // public function profile()
+    // {
+    //     return view('guest/profile', [
+    //         "title" => "Profile"
+    //     ]);
+    // }
 
     public function program()
     {

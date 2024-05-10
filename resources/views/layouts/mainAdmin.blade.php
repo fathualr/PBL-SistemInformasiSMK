@@ -74,7 +74,7 @@
                         </a>
                     </li>
                     <li class="hover:translate-y-0 @if($title == 'Admin Profile') bg-blue-lagoon rounded-md @endif">
-                        <a href="/admin/profile">
+                        <a href="/admin/profile/#">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-school text-2xl text-center font-bold"></i>
                             </div>

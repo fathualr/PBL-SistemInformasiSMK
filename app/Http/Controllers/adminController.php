@@ -46,12 +46,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminProfile()
-    {
-        return view('admin/profile', [
-            "title" => "Admin Profile"
-        ]);
-    }
+    // public function adminProfile()
+    // {
+    //     return view('admin/profile', [
+    //         "title" => "Admin Profile"
+    //     ]);
+    // }
 
     public function adminProgramKeahlian()
     {

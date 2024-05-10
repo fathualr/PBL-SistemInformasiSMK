@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\webController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\frontEndController;
 use App\Http\Controllers\adminActionController;
 use App\Http\Controllers\beritaActionController;
 use App\Http\Controllers\komentarBeritaActionController;
+use App\Http\Controllers\kontenWebsiteActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +27,7 @@ use App\Http\Controllers\komentarBeritaActionController;
 
 
 // Public
-Route::get('/', [webController::class, 'home']);
-Route::get('guest/profile', [webController::class, 'profile']);
+Route::get('guest/profile', [frontEndController::class, 'profile']);
 Route::get('guest/program-keahlian', [webController::class, 'program']);
 Route::get('guest/ppdb', [webController::class, 'ppdb']);
 Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman']);
@@ -53,7 +54,6 @@ Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
 Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
-Route::get('admin/profile', [adminController::class, 'adminProfile']);
 Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian']);
 Route::get('admin/guru', [adminController::class, 'adminGuru']);
 Route::get('admin/staff', [adminController::class, 'adminStaff']);
@@ -91,14 +91,48 @@ Route::delete('/gambarBeritaDestroy/{id}', [beritaActionController::class, 'dest
 
 Route::patch('/kategoriBeritaUpdate/{id}', [beritaActionController::class, 'updateKategoriBerita'])->name('kategoriBerita.update');
 Route::delete('/kategoriBeritaDestroy/{id}', [beritaActionController::class, 'destroyKategoriBerita'])->name('kategoriBerita.destroy');
-
     //Guest
-    Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
-    Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
-
+Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
+Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
         //Komentar 
-        Route::post('/komentarStore/{id}', [komentarBeritaActionController::class, 'store'])->name('komentarBerita.store');
-        Route::delete('/komentarDestroy/{id}', [komentarBeritaActionController::class, 'destroy'])->name('komentarBerita.destroy');
+Route::post('/komentarStore/{id}', [komentarBeritaActionController::class, 'store'])->name('komentarBerita.store');
+Route::delete('/komentarDestroy/{id}', [komentarBeritaActionController::class, 'destroy'])->name('komentarBerita.destroy');
+//-----
+//Konten Website CMS -----
+Route::get('/', [frontEndController::class, 'home']);
+
+Route::get('admin/profile', [kontenWebsiteActionController::class, 'index']);
+Route::patch('/namaSekolahUpdate/{id}', [kontenWebsiteActionController::class, 'updateNamaSekolah'])->name('namaSekolah.update');
+Route::patch('/updateLogoSekolah/{id}', [kontenWebsiteActionController::class, 'updateLogoSekolah'])->name('logoSekolah.update');
+Route::patch('/updateAlamatSekolah/{id}', [kontenWebsiteActionController::class, 'updateAlamatSekolah'])->name('alamatSekolah.update');
+Route::patch('/updateNoTelpSekolah/{id}', [kontenWebsiteActionController::class, 'updateNoTelpSekolah'])->name('noTelpSekolah.update');
+Route::patch('/updateEmailSekolah/{id}', [kontenWebsiteActionController::class, 'updateEmailSekolah'])->name('emailSekolah.update');
+Route::patch('/updateNamaKepalaSekolah/{id}', [kontenWebsiteActionController::class, 'updateNamaKepalaSekolah'])->name('namaKepalaSekolah.update');
+Route::patch('/updateSejarah/{id}', [kontenWebsiteActionController::class, 'updateSejarah'])->name('sejarah.update');
+Route::patch('/updateTautanVideoSejarah/{id}', [kontenWebsiteActionController::class, 'updateTautanVideoSejarah'])->name('tautanVideoSejarah.update');
+Route::patch('/updateSambutan/{id}', [kontenWebsiteActionController::class, 'updateSambutan'])->name('sambutan.update');
+Route::patch('/updateTautanVideoSambutan/{id}', [kontenWebsiteActionController::class, 'updateTautanVideoSambutan'])->name('tautanVideoSambutan.update');
+Route::patch('/updateVisi/{id}', [kontenWebsiteActionController::class, 'updateVisi'])->name('visi.update');
+Route::patch('/updateMisi/{id}', [kontenWebsiteActionController::class, 'updateMisi'])->name('misi.update');
+Route::patch('/updateNis/{id}', [kontenWebsiteActionController::class, 'updateNis'])->name('nis.update');
+Route::patch('/updateStatusAkreditasiSekolah/{id}', [kontenWebsiteActionController::class, 'updateStatusAkreditasiSekolah'])->name('statusAkreditasiSekolah.update');
+Route::patch('/updateStrukturOrganisasiSekolah/{id}', [kontenWebsiteActionController::class, 'updateStrukturOrganisasiSekolah'])->name('strukturOrganisasiSekolah.update');
+Route::patch('/updateStatusKepemilikanTanah/{id}', [kontenWebsiteActionController::class, 'updateStatusKepemilikanTanah'])->name('statusKepemilikanTanah.update');
+Route::patch('/updateTahunDidirikan/{id}', [kontenWebsiteActionController::class, 'updateTahunDidirikan'])->name('tahunDidirikan.update');
+Route::patch('/updateTahunOperasional/{id}', [kontenWebsiteActionController::class, 'updateTahunOperasional'])->name('tahunOperasional.update');
+Route::patch('/updateNoStatistikSekolah/{id}', [kontenWebsiteActionController::class, 'updateNoStatistikSekolah'])->name('noStatistikSekolah.update');
+Route::patch('/updateFasilitasLainnya/{id}', [kontenWebsiteActionController::class, 'updateFasilitasLainnya'])->name('fasilitasLainnya.update');
+Route::patch('/updateLuasTanah/{id}', [kontenWebsiteActionController::class, 'updateLuasTanah'])->name('luasTanah.update');
+Route::patch('/updateNoSertifikat/{id}', [kontenWebsiteActionController::class, 'updateNoSertifikat'])->name('noSertifikat.update');
+Route::patch('/updateNoPendirianSekolah/{id}', [kontenWebsiteActionController::class, 'updateNoPendirianSekolah'])->name('noPendirianSekolah.update');
+Route::patch('/updateStatusKepemilikanBangunan/{id}', [kontenWebsiteActionController::class, 'updateStatusKepemilikanBangunan'])->name('statusKepemilikanBangunan.update');
+Route::patch('/updateSisaLahanSeluruhnya/{id}', [kontenWebsiteActionController::class, 'updateSisaLahanSeluruhnya'])->name('sisaLahanSeluruhnya.update');
+Route::patch('/updateLuasLahanKeseluruhan/{id}', [kontenWebsiteActionController::class, 'updateLuasLahanKeseluruhan'])->name('luasLahanKeseluruhan.update');
+Route::patch('/updateTeksProfile/{id}', [kontenWebsiteActionController::class, 'updateTeksProfile'])->name('teksProfile.update');
+Route::patch('/updateTeksFasilitas/{id}', [kontenWebsiteActionController::class, 'updateTeksFasilitas'])->name('teksFasilitas.update');
+Route::patch('/updateTeksLokasi/{id}', [kontenWebsiteActionController::class, 'updateTeksLokasi'])->name('teksLokasi.update');
+Route::patch('/updateTeksSejarah/{id}', [kontenWebsiteActionController::class, 'updateTeksSejarah'])->name('teksSejarah.update');
+Route::patch('/updateTeksPrestasi/{id}', [kontenWebsiteActionController::class, 'updateTeksPrestasi'])->name('teksPrestasi.update');
 //-----
 
 //Backend Crud
