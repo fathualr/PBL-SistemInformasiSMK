@@ -213,27 +213,18 @@
     <!-- Carousel -->
     <div class="flex justify-center items-center">
         <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
-            <div id="slide1" class="carousel-item relative w-full transition">
-                <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
-                    class="w-full transition-transform duration-500 transform filter brightness-50" />
-                <div class="absolute inset-0 flex justify-center items-center">
-                    <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
-                        <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
+            @foreach($carousels as $key => $crs)
+            <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition {{ $key !== 0 ? 'hidden' : '' }}">
+                <img src="{{ asset('storage/'. $crs->image) }}" class="w-full transition-transform duration-500 transform" />
+                @if ($key === 0)
+                    <div class="absolute inset-0 flex justify-center items-center">
+                        <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
+                            <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
-            <div id="slide2" class="carousel-item relative w-full transition  hidden">
-                <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
-                    class="w-full transition-transform duration-500 transform" />
-            </div>
-            <div id="slide3" class="carousel-item relative w-full transition  hidden">
-                <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
-                    class="w-full transition-transform duration-500 transform" />
-            </div>
-            <div id="slide4" class="carousel-item relative w-full transition  hidden">
-                <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
-                    class="w-full transition-transform duration-500 transform" />
-            </div>
+            @endforeach
         </div>
     </div>
     <!-- Carousel -->

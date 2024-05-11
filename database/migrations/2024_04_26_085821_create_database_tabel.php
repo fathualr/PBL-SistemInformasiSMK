@@ -437,6 +437,13 @@ return new class extends Migration
             // Index foreign key
             $table->index('id_berita');
         });
+
+        // Tabel untuk carousel
+        Schema::create('carousels', function (Blueprint $table) {
+            $table->id('id_carousels');
+            $table->string('image');
+            $table->timestamps();
+        });
     }
 
 
@@ -475,5 +482,6 @@ return new class extends Migration
         Schema::dropIfExists('gambar_berita');
         Schema::dropIfExists('kategori_berita');
         Schema::dropIfExists('berita');
+        Schema::dropIfExists('carousels');
     }
 };

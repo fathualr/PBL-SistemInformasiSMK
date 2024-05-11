@@ -9,6 +9,7 @@ use App\Http\Controllers\adminActionController;
 use App\Http\Controllers\beritaActionController;
 use App\Http\Controllers\komentarBeritaActionController;
 use App\Http\Controllers\kontenWebsiteActionController;
+use App\Http\Controllers\carouselsActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,8 +81,8 @@ Route::patch('/adminUpdate/{id}', [adminActionController::class, 'update'])->nam
 Route::delete('/adminDestroy/{id}', [adminActionController::class, 'destroy'])->name('admin.destroy');
 
 //Berita -----
-    //CRUD
 Route::get('admin/berita', [beritaActionController::class, 'index'])->name('berita.index');
+    //CRUD
 Route::post('/beritaStore', [beritaActionController::class, 'store'])->name('berita.store');
 Route::patch('/beritaUpdate/{id}', [beritaActionController::class, 'update'])->name('berita.update');
 Route::delete('/beritaDestroy/{id}', [beritaActionController::class, 'destroy'])->name('berita.destroy');
@@ -98,10 +99,11 @@ Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 
 Route::post('/komentarStore/{id}', [komentarBeritaActionController::class, 'store'])->name('komentarBerita.store');
 Route::delete('/komentarDestroy/{id}', [komentarBeritaActionController::class, 'destroy'])->name('komentarBerita.destroy');
 //-----
-//Konten Website CMS -----
-Route::get('/', [frontEndController::class, 'home']);
 
+//Konten Website -----
+Route::get('/', [frontEndController::class, 'home']);
 Route::get('admin/profile', [kontenWebsiteActionController::class, 'index']);
+    //CMS
 Route::patch('/namaSekolahUpdate/{id}', [kontenWebsiteActionController::class, 'updateNamaSekolah'])->name('namaSekolah.update');
 Route::patch('/updateLogoSekolah/{id}', [kontenWebsiteActionController::class, 'updateLogoSekolah'])->name('logoSekolah.update');
 Route::patch('/updateAlamatSekolah/{id}', [kontenWebsiteActionController::class, 'updateAlamatSekolah'])->name('alamatSekolah.update');
@@ -133,6 +135,13 @@ Route::patch('/updateTeksFasilitas/{id}', [kontenWebsiteActionController::class,
 Route::patch('/updateTeksLokasi/{id}', [kontenWebsiteActionController::class, 'updateTeksLokasi'])->name('teksLokasi.update');
 Route::patch('/updateTeksSejarah/{id}', [kontenWebsiteActionController::class, 'updateTeksSejarah'])->name('teksSejarah.update');
 Route::patch('/updateTeksPrestasi/{id}', [kontenWebsiteActionController::class, 'updateTeksPrestasi'])->name('teksPrestasi.update');
+//-----
+
+//Carousels -----
+Route::get('admin/carousels', [carouselsActionController::class, 'index']);
+    //CRUD
+    Route::post('carouselsStore', [carouselsActionController::class, 'store'])->name('carousels.store');
+    Route::delete('carouselsDestroy/{id}', [carouselsActionController::class, 'destroy'])->name('carousels.destroy');
 //-----
 
 //Backend Crud
