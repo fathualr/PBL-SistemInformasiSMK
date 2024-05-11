@@ -20,18 +20,15 @@ class BackendController extends Controller
             'tanggal_unggah' => 'required|date',
         ]);
 
-        // Dapatkan nama asli file
-        $nama_file = $request->file('gambar_album')->getClientOriginalName();
-
         // Simpan gambar ke dalam direktori penyimpanan public/album dengan nama asli file
-        $request->file('gambar_album')->move(public_path('album'), $nama_file);
+        $request->file('gambar_album')->store('image/albumAlbumFoto', 'public');
 
         // Simpan data ke database dengan menyertakan path relatif gambar
         Album::create([
             'nama_album' => $request->nama_album,
             'tipe_album' => $request->tipe_album,
             'deskripsi_album' => $request->deskripsi_album,
-            'gambar_album' => 'album/' . $nama_file,
+            'gambar_album' => $request->file('gambar_album')->store('image/albumAlbumFoto', 'public'),
             'tanggal_unggah' => $request->tanggal_unggah,
         ]);
 
@@ -54,17 +51,15 @@ class BackendController extends Controller
         $album = Album::findOrFail($id);
 
         if ($request->hasFile('gambar_album')) {
-            // Dapatkan nama asli file
-            $nama_file = $request->file('gambar_album')->getClientOriginalName();
-
+        
             // Simpan foto ke dalam direktori penyimpanan public/fotos dengan nama asli file
-            $request->file('gambar_album')->move(public_path('album'), $nama_file);
+            $request->file('gambar_album')->store('image/albumAlbumFoto', 'public');
             // Simpan perubahan
             $album->update([
                 'nama_album' => $request->nama_album,
                 'tipe_album' => $request->tipe_album,
                 'deskripsi_album' => $request->deskripsi_album,
-                'gambar_album' => 'album/' . $nama_file,
+                'gambar_album' => $request->file('gambar_album')->store('image/albumAlbumFoto', 'public'),
                 'tanggal_unggah' => $request->tanggal_unggah,
             ]);
         }
@@ -92,16 +87,12 @@ class BackendController extends Controller
             'tautan_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan
         ]);
 
-        // Dapatkan nama asli file
-        $nama_file = $request->file('tautan_foto')->getClientOriginalName();
-
         // Simpan foto ke dalam direktori penyimpanan public/fotos dengan nama asli file
-        $request->file('tautan_foto')->move(public_path('fotos'), $nama_file);
-
+        $request->file('tautan_foto')->store('image/albumFoto', 'public');
         // Buat entri baru dalam database
         Foto::create([
             'id_album' => $request->id_album,
-            'tautan_foto' => 'fotos/' . $nama_file, // Simpan path relatif ke dalam database
+            'tautan_foto' => $request->file('tautan_foto')->store('image/albumFoto', 'public'), // Simpan path relatif ke dalam database
         ]);
 
         return redirect()->route('admin.foto.index')->with('success', 'Foto berhasil ditambahkan.');
@@ -120,19 +111,14 @@ class BackendController extends Controller
 
         // Jika ada file gambar yang diunggah, proses pembaruan
         if ($request->hasFile('tautan_foto')) {
-            // Dapatkan nama asli file
-            $nama_file = $request->file('tautan_foto')->getClientOriginalName();
 
-            // Simpan foto ke dalam direktori penyimpanan public/fotos dengan nama asli file
-            $request->file('tautan_foto')->move(public_path('fotos'), $nama_file);
+            $request->file('tautan_foto')->store('image/albumFoto', 'public');
 
-            // Perbarui tautan_foto di database
             $foto->update([
                 'id_album' => $request->id_album,
-                'tautan_foto' => 'fotos/' . $nama_file, // Simpan path relatif ke dalam database
+                'tautan_foto' => $request->file('tautan_foto')->store('image/albumFoto', 'public'), // Simpan path relatif ke dalam database
             ]);
         } else {
-            // Jika tidak ada file gambar yang diunggah, hanya perbarui id_album
             $foto->update([
                 'id_album' => $request->id_album,
             ]);

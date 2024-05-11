@@ -78,7 +78,7 @@
                     <option disabled>Nama Album || Tipe Album</option>
                     @foreach($albums as $album)
                     @if($album->tipe_album === 'Foto')
-                    <option value="{{ $album->id_album }}" @if($album->id_album == $foto->id_album) selected @endif>{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
+                    <option value="{{ $album->id_album }}">{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
                     @endif
                     @endforeach
                 </select>
