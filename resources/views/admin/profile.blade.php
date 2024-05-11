@@ -4,1259 +4,1114 @@
 
 <!-- First Content -->
 <div class="grid grid-cols-9 shadow-xl rounded-md">
-    <!-- Title -->
-    <div class="col-span-2 my-4 mx-5">
-        <h3 class="font-bold text-lg">Video Sejarah Sekolah</h3>
+
+    @include('shared.success-message')
+    @include('shared.error-message')
+    <div class="col-span-4 my-4 mx-5 row-start-2">
+        <h3 class="font-bold text-lg">Pengelolaan Konten Profil Website</h3>
     </div>
-    <!-- Title -->
-
-    <!-- Modal -->
-    <div class="col-span-2 col-start-2 row-start-2">
-
-        <button class="btn w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
-            <i class="fas fa-link"></i>
-            Tambah Link Video
-        </button>
-
-    </div>
-    <!-- Modal -->
-
-    <!-- Toggle -->
-    <div class="col-span-2 col-start-7 row-start-2 flex justify-center items-center gap-x-3">
-        Aktif/Nonaktif Konten
-        <input type="checkbox" class="toggle rounded-md" checked />
-    </div>
-    <!-- Toggle -->
-
-    <!-- Content -->
-    <div class="col-span-9 row-start-3">
-        <div class="overflow-x-auto mt-5 px-16">
-            <table class="table text-center">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul Video</th>
-                        <th>Link Video</th>
-                        <th>Tanggal Rilis</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- row 1 -->
-                    <tr class="hover">
-                        <th>1</th>
-                        <td>Sejarah Sekolah</td>
-                        <td class="flex justify-center items-center">
-                            <p class="truncate w-64">
-                                https://www.youtube.com/embed/Tc_JWD9NhKY
-                            </p>
-                        </td>
-                        <td>24-04-2024</td>
-                        <td>
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_edit.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul Video</th>
-                        <th>Video</th>
-                        <th>Tanggal Rilis</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
+    
+    <div class="col-span-3 col-start-7 my-4 mx-5 row-start-2">
+        <div class="dropdown w-full">
+            <div tabindex="0" role="button" class="btn btn-neutral m-1 w-full">Daftar Konten</div>
+            <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-full">
+                <li><a href="#nama_sekolah">Nama Sekolah</a></li>
+                <li><a href="#logo_sekolah">Logo Sekolah</a></li>
+                <li><a href="#alamat_sekolah">Alamat Sekolah</a></li>
+                <li><a href="#no_telp_sekolah">No Telp Sekolah</a></li>
+                <li><a href="#email_sekolah">Email Sekolah</a></li>
+                <li><a href="#nama_kepala_sekolah">Nama Kepala Sekolah</a></li>
+                <li><a href="#sejarah">Sejarah</a></li>
+                <li><a href="#tautan_video_sejarah">Tautan Video Sejarah</a></li>
+                <li><a href="#sambutan">Sambutan</a></li>
+                <li><a href="#tautan_video_sambutan">Tautan Video Sambutan</a></li>
+                <li><a href="#visi">Visi</a></li>
+                <li><a href="#misi">Misi</a></li>
+                <li><a href="#nis">NIS</a></li>
+                <li><a href="#status_akreditasi_sekolah">Status Akreditasi Sekolah</a></li>
+                <li><a href="#struktur_organisasi_sekolah">Struktur Organisasi Sekolah</a></li>
+                <li><a href="#status_kepemilikan_tanah">Status Kepemilikan Tanah</a></li>
+                <li><a href="#tahun_didirikan">Tahun Didirikan</a></li>
+                <li><a href="#tahun_operasional">Tahun Operasional</a></li>
+                <li><a href="#no_statistik_sekolah">Nomor Statistik Sekolah</a></li>
+                <li><a href="#fasilitas_lainnya">Fasilitas Lainnya</a></li>
+                <li><a href="#luas_tanah">Luas Tanah</a></li>
+                <li><a href="#no_sertifikat">Nomor Sertifikat</a></li>
+                <li><a href="#no_pendirian_sekolah">Nomor Pendirian Sekolah</a></li>
+                <li><a href="#status_kepemilikan_bangunan">Status Kepemilikan Bangunan</a></li>
+                <li><a href="#sisa_lahan_seluruhnya">Sisa Lahan Seluruhnya</a></li>
+                <li><a href="#luas_lahan_keseluruhan">Luas Lahan Keseluruhan</a></li>
+                <li><a href="#teks_profile">Teks Profile</a></li>
+                <li><a href="#teks_fasilitas">Teks Fasilitas</a></li>
+                <li><a href="#teks_lokasi">Teks Lokasi</a></li>
+                <li><a href="#teks_sejarah">Teks Sejarah</a></li>
+                <li><a href="#teks_prestasi">Teks Prestasi</a></li>
+            </ul>
         </div>
     </div>
-    <!-- Content -->
+
+    <div class="col-span-9 row-start-3 pb-2">
+
+        <!-- Nama Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="nama_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Nama Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('namaSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->nama_sekolah))
+                                <textarea class="textarea textarea-bordered bg-white" disabled>{{ $konten->nama_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="nama_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="logo_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Logo Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('logoSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->logo_sekolah))
+                                <textarea class="textarea textarea-bordered bg-white" disabled>{{ $konten->logo_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="file" class="file-input file-input-bordered w-full" name="logo_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alamat Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="alamat_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Alamat Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('alamatSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->alamat_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->alamat_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="alamat_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Telp Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="no_telp_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">No Telp Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('noTelpSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->no_telepon_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_telepon_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="number" placeholder="Type here" class="input input-bordered w-full" name="no_telepon_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="email_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Email Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('emailSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->email_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->email_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="email" placeholder="Type here" class="input input-bordered w-full" name="email_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nama Kepala Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="nama_kepala_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Nama Kepala Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('namaKepalaSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->nama_kepala_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->nama_kepala_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="nama_kepala_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teks Sejarah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="sejarah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Sejarah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('sejarah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->sejarah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->sejarah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="sejarah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tautan Video Sejarah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="tautan_video_sejarah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Tautan Video Sejarah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('tautanVideoSejarah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->tautan_video_sejarah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->tautan_video_sejarah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="tautan_video_sejarah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teks Sambutan -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="sambutan">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Sambutan: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('sambutan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->sambutan))
+                            <textarea class="textarea textarea-bordered" disabled>{{ $konten->sambutan }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="sambutan" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tautan Video Sambutan -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="tautan_video_sambutan">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Tautan Video Sambutan: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('tautanVideoSambutan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->tautan_video_sambutan))
+                            <textarea class="textarea textarea-bordered" disabled>{{ $konten->tautan_video_sambutan }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="tautan_video_sambutan" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visi -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="visi">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Visi: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('visi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->visi))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->visi }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="visi" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Misi -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="misi">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Misi: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('misi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->misi))
+                            <textarea class="textarea textarea-bordered" disabled>{{ $konten->misi }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif<input type="text" placeholder="Type here" class="input input-bordered w-full" name="misi" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Nis -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="nis">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">NIS: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('nis.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->nis))
+                            <textarea class="textarea textarea-bordered" disabled>{{ $konten->nis }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="number" placeholder="Type here" class="input input-bordered w-full" name="nis" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Akreditasi Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="status_akreditasi_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Status Akreditasi Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('statusAkreditasiSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->status_akreditasi_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->status_akreditasi_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <select class="select select-bordered w-full" name="status_akreditasi_sekolah">
+                                <option disabled selected>-- Pilih Status Akreditasi --</option>
+                                <option value="Belum Terakreditasi">Belum Terakreditasi</option>
+                                <option value="Akreditasi A">Akreditasi A</option>
+                                <option value="Akreditasi B">Akreditasi B</option>
+                                <option value="Akreditasi C">Akreditasi C</option>
+                            </select>
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Struktur Organisasi Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="struktur_organisasi_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Struktur Organisasi Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('strukturOrganisasiSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')                        
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->struktur_organisasi_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->struktur_organisasi_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="file" class="file-input file-input-bordered w-full" name="struktur_organisasi_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Kepemilikan Tanah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="status_kepemilikan_tanah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Status Kepemilikan Tanah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('statusKepemilikanTanah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->status_kepemilikan_tanah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->status_kepemilikan_tanah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="status_kepemilikan_tanah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tahun Didirikan -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="tahun_didirikan">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Tahun Didirikan: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('tahunDidirikan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->tahun_didirikan))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->tahun_didirikan }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="year" placeholder="Type here" class="input input-bordered w-full" name="tahun_didirikan" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tahun Operasional -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="tahun_operasional">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Tahun Operasional: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('tahunOperasional.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->tahun_operasional))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->tahun_operasional }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="tahun_operasional" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nomor Statistik Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="no_statistik_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Nomor Statistik Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('noStatistikSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->no_statistik_sekolah))
+                            <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_statistik_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="no_statistik_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fasilitas Lainnya -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="fasilitas_lainnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Fasilitas Lainnya: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('fasilitasLainnya.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->fasilitas_lainnya))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->fasilitas_lainnya }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="fasilitas_lainnya" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Luas Tanah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_tanah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Luas Tanah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('luasTanah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->luas_tanah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->luas_tanah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="luas_tanah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nomor Sertifikat -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="no_sertifikat">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Nomor Sertifikat: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('noSertifikat.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->no_sertifikat))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_sertifikat }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="no_sertifikat" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nomor Pendirian Sekolah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="no_pendirian_sekolah">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Nomor Pendirian Sekolah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('noPendirianSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->no_pendirian_sekolah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_pendirian_sekolah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="no_pendirian_sekolah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Kepemilikan Bangunan -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="status_kepemilikan_bangunan">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Status Kepemilikan Bangunan: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('statusKepemilikanBangunan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->status_kepemilikan_bangunan))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->status_kepemilikan_bangunan }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="status_kepemilikan_bangunan" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sisa Lahan Seluruhnya -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="sisa_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Sisa Lahan Seluruhnya: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('sisaLahanSeluruhnya.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->sisa_lahan_seluruhnya))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->sisa_lahan_seluruhnya }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="sisa_lahan_seluruhnya" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Luas Lahan Keseluruhan -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Luas Lahan Keseluruhan: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('luasLahanKeseluruhan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->luas_lahan_keseluruhan))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->luas_lahan_keseluruhan }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="luas_lahan_keseluruhan" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Teks Profile -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Profil: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('teksProfile.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->teks_profile))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_profile }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_profile" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teks Fasilitas -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Fasilitas: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('teksFasilitas.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->teks_fasilitas))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_fasilitas }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_fasilitas" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teks Lokasi -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Lokasi: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('teksLokasi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->teks_lokasi))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_lokasi }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_lokasi" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teks Sejarah -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Sejarah: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('teksSejarah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->teks_sejarah))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_sejarah }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_sejarah" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teks Prestasi -->
+        <div class="mt-5 px-16">
+            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+                <input type="checkbox" /> 
+                <div class="collapse-title text-xl font-medium">
+                    <span class="label-text font-bold">Teks Prestasi: </span>
+                </div>
+                <div class="collapse-content"> 
+                    <form action="{{ route('teksPrestasi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                        @csrf
+                        @method('PATCH')
+                        <label class="form-control w-full gap-2">
+                            @if(!empty($konten->teks_prestasi))
+                                <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_prestasi }}</textarea>
+                            @else
+                                <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi konten agar dapat ditampilkan.</p>
+                            @endif
+                            <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_prestasi" />
+                        </label>
+                        <div class="flex justify-end items-endgap-4 gap-2">
+                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                <i class="fas fa-times"></i>
+                                Reset
+                            </button>
+                            <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                <i class=" fas fa-plus"></i>
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
-
-<dialog id="my_modal_add" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Tambah Video</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-
-        <form action="">
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Video" />
-            </label>
-
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
-                placeholder="Deskripsi Video"></textarea>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-link"></i>
-                <input type="link" class="grow bg-transparent py-2" placeholder="Link Video" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    <i class="fas fa-times"></i>
-                    Reset
-                </button>
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-plus"></i>
-                        Tambah
-                    </button>
-                </a>
-
-            </div>
-
-        </form>
-    </div>
-</dialog>
-
-<dialog id="my_modal_edit" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Video</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="" method="dialog">
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Video" />
-            </label>
-
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
-                placeholder="Deskripsi Video"></textarea>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-link"></i>
-                <input type="link" class="grow bg-transparent py-2" placeholder="Link Video" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                </a>
-
-            </div>
-
-        </form>
-    </div>
-</dialog>
-
-<dialog id="my_modal_view" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Data Video</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Video" disabled />
-            </label>
-
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi Video"
-                disabled></textarea>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-link"></i>
-                <input type="link" class="grow bg-transparent py-2" placeholder="Link Video" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" disabled />
-            </label>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="my_modal_delete" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Hapus Video</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            Apakah Anda Yakin Ingin Menghapus Data Ini ?
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                        <i class=" fas fa-trash"></i>
-                        Hapus
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-<!-- First Content -->
-
-<!-- Second Content -->
-<div class="grid grid-cols-9 shadow-xl rounded-md mt-10">
-    <!-- Title -->
-    <div class="col-span-2 my-4 mx-5">
-        <h3 class="font-bold text-lg">Profile Sekolah</h3>
-    </div>
-    <!-- Title -->
-
-    <!-- Toggle -->
-    <div class="col-span-2 col-start-7 flex justify-center items-center gap-x-3">
-        Aktif/Nonaktif Konten
-        <input type="checkbox" class="toggle rounded-md" checked />
-    </div>
-    <!-- Toggle -->
-
-    <!-- Content -->
-    <div class="col-span-9 row-start-3">
-        <div class="overflow-x-auto mt-5 px-16">
-            <table class="table text-center">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Kolom</th>
-                        <th>Deskripsi</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- row 1 -->
-                    <tr class="hover">
-                        <th>1</th>
-                        <td>Kolom Pertama</td>
-                        <td class="">
-                            <p class="truncate w-64 mx-auto">
-                                SMK Muhammadiyah
-                            </p>
-                        </td>
-                        <td>
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_edit_firstColumn.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_view_firstColumn.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr class="hover">
-                        <th>2</th>
-                        <td>Kolom Kedua</td>
-                        <td class="">
-                            <p class="truncate w-64 mx-auto">
-                                92568787
-                            </p>
-                        </td>
-                        <td>
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_edit_secondColumn.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_view_secondColumn.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr class="hover">
-                        <th>3</th>
-                        <td>Kolom Ketiga</td>
-                        <td class="">
-                            <p class="truncate w-64 mx-auto">
-                                20 1 02 06 10 008
-                            </p>
-                        </td>
-                        <td>
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_edit_thirdColumn.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_view_thirdColumn.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul Kolom</th>
-                        <th>Deskripsi</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-    <!-- Content -->
-</div>
-
-<dialog id="modal_edit_firstColumn" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Kolom Pertama Profile Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Sekolah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Kepala Sekolah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-location-dot"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Alamat Sekolah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-envelope"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Email Sekolah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-phone"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Telepon Sekolah" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_view_firstColumn" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Profile Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Sekolah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Kepala Sekolah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-location-dot"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Alamat Sekolah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-envelope"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Email Sekolah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-phone"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Telepon Sekolah" disabled />
-            </label>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_edit_secondColumn" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Kolom Kedua Profile Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Pendirian Sekolah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Sertifikat" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-a"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Akreditasi" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Tahun Didirikan" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Tahun Operasional" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-users-between-lines"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jumlah Staff" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-users"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jumlah Siswa" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_view_secondColumn" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Profile Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Pendirian Sekolah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Sertifikat" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-a"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Akreditasi" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Tahun Didirikan" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Tahun Operasional" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-users-between-lines"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jumlah Staff" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-users"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jumlah Siswa" disabled />
-            </label>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_edit_thirdColumn" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Kolom Kedua Profile Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Statistik Sekolah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="NIS" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-certificate"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Status Kepemilikan Tanah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-arrows-left-right"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Luas Tanah" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-certificate"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Status Kepemilikan Bangunan" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-arrows-left-right"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Luas Tanah Keseluruhan" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-building"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jumlah Fasilitas Lainnya" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-arrows-left-right"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Sisa Lahan Keseluruhan" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_view_thirdColumn" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Profile Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="No. Statistik Sekolah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-list-ol"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="NIS" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-certificate"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Status Kepemilikan Tanah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-arrows-left-right"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Luas Tanah" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-certificate"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Status Kepemilikan Bangunan"
-                    disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-arrows-left-right"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Luas Tanah Keseluruhan" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-building"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jumlah Fasilitas Lainnya" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-arrows-left-right"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Sisa Lahan Keseluruhan" disabled />
-            </label>
-        </form>
-    </div>
-</dialog>
-<!-- Second Content -->
-
-<!-- Third Content -->
-<div class="grid grid-cols-9 shadow-xl rounded-md mt-10">
-    <!-- Title -->
-    <div class="col-span-2 my-4 mx-5">
-        <h3 class="font-bold text-lg">Visi & Misi Sekolah</h3>
-    </div>
-    <!-- Title -->
-
-    <!-- Toggle -->
-    <div class="col-span-2 row-start-2 col-start-7 flex justify-center items-center gap-x-3">
-        Aktif/Nonaktif Konten
-        <input type="checkbox" class="toggle rounded-md" checked />
-    </div>
-    <!-- Toggle -->
-
-    <!-- Content -->
-    <div class="col-span-9 row-start-3">
-        <div class="overflow-x-auto mt-5 px-16">
-            <table class="table text-center">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul</th>
-                        <th>Deskripsi</th>
-                        <th class="w-52">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- row 1 -->
-                    <tr class="hover">
-                        <th>1</th>
-                        <td>Visi & Misi</td>
-                        <td>
-                            <p class="truncate w-64 mx-auto">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum
-                                nihil, fuga ratione facere ducimus eaque, commodi quae odio sequi eveniet enim corrupti
-                                adipisci repellendus ipsam. Nulla, sapiente!
-                            </p>
-                        </td>
-                        <td>
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_edit_visiMisi.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_view_visiMisi.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul</th>
-                        <th>Deskripsi</th>
-                        <th class="w-52">Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-    <!-- Content -->
-</div>
-
-<dialog id="modal_edit_visiMisi" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Visi & Misi Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Visi"></textarea>
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Misi"></textarea>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_view_visiMisi" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Visi & Misi Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Visi"
-                disabled></textarea>
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Misi"
-                disabled></textarea>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_delete_galeri" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Hapus Berita</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            Apakah Anda Yakin Ingin Menghapus Data Ini ?
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                        <i class=" fas fa-trash"></i>
-                        Hapus
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-<!-- Third Content -->
-
-<!-- Fourth Content -->
-<div class="grid grid-cols-9 shadow-xl rounded-md mt-10">
-    <!-- Title -->
-    <div class="col-span-2 my-4 mx-5">
-        <h3 class="font-bold text-lg">Program Keahlian</h3>
-    </div>
-    <!-- Title -->
-
-    <!-- Modal -->
-    <div class="col-span-2 col-start-2 row-start-2">
-
-        <button class="btn w-full hover:animate-pulse" onclick="modal_add_program.showModal()">
-            <i class="fas fa-plus"></i>
-            Tambah Program Keahlian
-        </button>
-
-    </div>
-    <!-- Modal -->
-
-    <!-- Toggle -->
-    <div class="col-span-2 row-start-2 col-start-7 flex justify-center items-center gap-x-3">
-        Aktif/Nonaktif Konten
-        <input type="checkbox" class="toggle rounded-md" checked />
-    </div>
-    <!-- Toggle -->
-
-    <!-- Content -->
-    <div class="col-span-9 row-start-3">
-        <div class="overflow-x-auto mt-5 px-16">
-            <table class="table text-center">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Nama Program Keahlian</th>
-                        <th>Link Logo</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- row 1 -->
-                    <tr class="hover">
-                        <th>1</th>
-                        <td>Teknik Komputer dan Jaringan</td>
-                        <td>
-                            <p class="truncate w-64 mx-auto">
-                                image/Humans.svg
-                            </p>
-                        </td>
-                        <td>
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_edit_program.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_view_program.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_delete_program.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No.</th>
-                        <th>Nama Program Keahlian</th>
-                        <th>Link Logo</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-    <!-- Content -->
-</div>
-
-<dialog id="modal_add_program" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Tambah Program Kehalian Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Program Keahlian" />
-            </label>
-
-            <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" />
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    <i class="fas fa-times"></i>
-                    Reset
-                </button>
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-plus"></i>
-                        Tambah
-                    </button>
-                </a>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_edit_program" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Program Keahlian Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Program Keahlian" />
-            </label>
-
-            <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" />
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-pen-to-square"></i>
-                        Edit
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_view_program" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Program Keahlian Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <div class="aspect-w-10 aspect-h-5 mb-5">
-                <img class="w-full h-64" src="{{ asset('image/Humans.svg') }}">
-            </div>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Program Keahlian" />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-link"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Link Logo" />
-            </label>
-
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_delete_program" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Hapus Data Program Keahlian</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            Apakah Anda Yakin Ingin Menghapus Data Ini ?
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                        <i class=" fas fa-trash"></i>
-                        Hapus
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
-<!-- Fourth Content -->
 
 @endsection

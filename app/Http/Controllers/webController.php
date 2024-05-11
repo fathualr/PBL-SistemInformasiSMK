@@ -15,19 +15,19 @@ use App\Models\AlurPPDB;
 
 class webController extends Controller
 {
-    public function home()
-    {
-        return view('/home', [
-            "title" => "Beranda"
-        ]);
-    }
+    // public function home()
+    // {
+    //     return view('/home', [
+    //         "title" => "Beranda"
+    //     ]);
+    // }
 
-    public function profile()
-    {
-        return view('guest/profile', [
-            "title" => "Profile"
-        ]);
-    }
+    // public function profile()
+    // {
+    //     return view('guest/profile', [
+    //         "title" => "Profile"
+    //     ]);
+    // }
 
         public function program()
     {
@@ -170,19 +170,19 @@ class webController extends Controller
         ]);
     }
 
-    public function berita()
-    {
-        return view('guest/berita', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function berita()
+    // {
+    //     return view('guest/berita', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
-    public function beritaTemplate()
-    {
-        return view('guest/berita-template', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function beritaTemplate()
+    // {
+    //     return view('guest/berita-template', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
     public function ekstrakulikuler()
     {

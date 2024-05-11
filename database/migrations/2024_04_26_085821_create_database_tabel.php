@@ -24,31 +24,39 @@ return new class extends Migration
         // Tabel untuk konten_website
         Schema::create('konten_website', function (Blueprint $table) {
             $table->id('id_sekolah');
-            $table->string('nama_sekolah')->notNullable();
+            $table->string('nama_sekolah')->nullable();
             $table->string('logo_sekolah')->nullable();
-            $table->string('alamat_sekolah')->notNullable();
-            $table->string('no_telepon_sekolah')->notNullable();
-            $table->string('email_sekolah')->notNullable();
-            $table->text('sejarah')->notNullable();
-            $table->text('sambutan')->notNullable();
-            $table->text('visi')->notNullable();
-            $table->text('misi')->notNullable();
-            $table->enum('status_akreditasi_sekolah', ['Belum Terakreditasi', 'Akreditasi A', 'Akreditasi B', 'Akreditasi C'])->notNullable(); // Pilihan untuk sekolah swasta
-            $table->text('struktur_organisasi_sekolah')->notNullable();
-            $table->string('status_kepemilikan_tanah')->notNullable();
-            $table->string('tahun_didirikan')->notNullable();
-            $table->string('tahun_operasional')->notNullable();
-            $table->string('no_statistik_sekolah')->notNullable();
-            $table->string('fasilitas_lainnya')->notNullable();
-            $table->string('luas_tanah')->notNullable();
-            $table->string('nama_kepala_sekolah')->notNullable();
-            $table->string('no_sertifikat')->notNullable();
-            $table->string('no_pendirian_sekolah')->notNullable();
-            $table->string('status_kepemilikan_bangunan')->notNullable();
-            $table->string('sisa_lahan_seluruhnya')->notNullable();
-            $table->string('luas_lahan_keseluruhan')->notNullable();
+            $table->string('alamat_sekolah')->nullable();
+            $table->string('no_telepon_sekolah')->nullable();
+            $table->string('email_sekolah')->nullable();
+            $table->string('nama_kepala_sekolah')->nullable();
+            $table->text('sejarah')->nullable();
+            $table->string('tautan_video_sejarah')->nullable();
+            $table->text('sambutan')->nullable();
+            $table->string('tautan_video_sambutan')->nullable();
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
+            $table->string('nis')->nullable();
+            $table->enum('status_akreditasi_sekolah', ['Belum Terakreditasi', 'Akreditasi A', 'Akreditasi B', 'Akreditasi C'])->nullable();
+            $table->text('struktur_organisasi_sekolah')->nullable();
+            $table->string('status_kepemilikan_tanah')->nullable();
+            $table->string('tahun_didirikan')->nullable();
+            $table->string('tahun_operasional')->nullable();
+            $table->string('no_statistik_sekolah')->nullable();
+            $table->string('fasilitas_lainnya')->nullable();
+            $table->string('luas_tanah')->nullable();
+            $table->string('no_sertifikat')->nullable();
+            $table->string('no_pendirian_sekolah')->nullable();
+            $table->string('status_kepemilikan_bangunan')->nullable();
+            $table->string('sisa_lahan_seluruhnya')->nullable();
+            $table->string('luas_lahan_keseluruhan')->nullable();
+            $table->text('teks_profile')->nullable();
+            $table->text('teks_fasilitas')->nullable();
+            $table->text('teks_lokasi')->nullable();
+            $table->text('teks_sejarah')->nullable();
+            $table->text('teks_prestasi')->nullable();
             $table->timestamps();
-        });
+        });        
 
         // Tabel untuk media_sosial
         Schema::create('media_sosial', function (Blueprint $table) {
@@ -416,11 +424,18 @@ return new class extends Migration
             $table->foreign('id_berita')->references('id_berita')->on('berita')->onDelete('cascade');
             $table->string('nama_komentar')->notNullable();
             $table->text('teks_komentar')->notNullable();
-            $table->timestamp('waktu_komentar')->useCurrent();
+            // $table->timestamp('waktu_komentar')->useCurrent();
             $table->timestamps();
 
             // Index foreign key
             $table->index('id_berita');
+        });
+
+        // Tabel untuk carousel
+        Schema::create('carousels', function (Blueprint $table) {
+            $table->id('id_carousels');
+            $table->string('image');
+            $table->timestamps();
         });
     }
 
@@ -460,5 +475,6 @@ return new class extends Migration
         Schema::dropIfExists('gambar_berita');
         Schema::dropIfExists('kategori_berita');
         Schema::dropIfExists('berita');
+        Schema::dropIfExists('carousels');
     }
 };
