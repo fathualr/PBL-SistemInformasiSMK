@@ -5,6 +5,8 @@ use App\Http\Controllers\webController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\adminActionController;
+use App\Http\Controllers\programKeahlianController;
+use App\Http\Controllers\direktoriGuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +47,6 @@ Route::get('guest/berita-template', [webController::class, 'beritaTemplate']);
 Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
 Route::get('guest/media-sosial', [webController::class, 'mediaSosial']);
 Route::get('guest/sejarah', [webController::class, 'sejarah']);
-Route::get('guest/detail-program', [webController::class, 'detailProgram']);
 // Public
 
 // Admin 
@@ -55,8 +56,8 @@ Route::get('admin/dashboard', [adminController::class, 'dashboard']);
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
 Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
-Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian']);
-Route::get('admin/guru', [adminController::class, 'adminGuru']);
+// Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian'])->name('admin.programKeahlian.index');
+// Route::get('admin/guru', [adminController::class, 'adminGuru']);
 Route::get('admin/staff', [adminController::class, 'adminStaff']);
 Route::get('admin/siswa', [adminController::class, 'adminSiswa']);
 Route::get('admin/alumni', [adminController::class, 'adminAlumni']);
@@ -95,17 +96,43 @@ Route::patch('/admin/video/{id}', [BackendController::class, 'updateVideo'])->na
 Route::delete('/admin/video/{id}', [BackendController::class, 'destroyVideo'])->name('admin.video.destroy');
 
 
+// CRUD Program Keahlian
+Route::get('admin/program-keahlian', [programKeahlianController::class, 'adminProgramKeahlian'])->name('admin.programKeahlian.index');
+Route::get('guest/program-keahlian', [webController::class, 'program']);
+Route::get('guest/detail-program/{id_program}', [webController::class, 'detailProgram']);
+    // Store
+    Route::post('admin/program-keahlian', [programKeahlianController::class, 'storeProgramKeahlian'])->name('ProgramKeahlian.store');
+    Route::post('admin/capaianPembelajaran', [programKeahlianController::class, 'storeCapaianPembelajaran'])->name('CapaianPembelajaran.store');
+    Route::post('admin/peluangKerja', [programKeahlianController::class, 'storePeluangKerja'])->name('PeluangKerja.store');
+    // Store
 
+    // Update
+    Route::patch('admin/program-keahlian/{id_program}', [programKeahlianController::class, 'updateProgramKeahlian'])->name('ProgramKeahlian.update');
+    Route::patch('admin/capaianPembelajaran/{id_capaian_pembelajaran}', [programKeahlianController::class, 'updateCapaianPembelajaran'])->name('CapaianPembelajaran.update');
+    Route::patch('admin/peluangKerja/{id_peluang_kerja}', [programKeahlianController::class, 'updatePeluangKerja'])->name('PeluangKerja.update');
+    // Update
 
+    // Destroy
+    Route::delete('admin/program-keahlian/{id_program}', [programKeahlianController::class, 'destroyProgramKeahlian'])->name('ProgramKeahlian.destroy');
+    Route::delete('admin/capaianPembelajaran/{id_capaian_pembelajaran}', [programKeahlianController::class, 'destroyCapaianPembelajaran'])->name('CapaianPembelajaran.destroy');
+    Route::delete('admin/peluangKerja/{id_peluang_kerja}', [programKeahlianController::class, 'destroyPeluangKerja'])->name('PeluangKerja.destroy');
+    // Destroy
 
+// CRUD Program Keahlian
 
+// CRUD Direktori Guru
+Route::get('admin/guru', [direktoriGuruController::class, 'adminDirektoriGuru'])->name('admin.direktoriGuru.index');
 
+    // Store
+    Route::post('admin/guru', [direktoriGuruController::class, 'storeDirektoriGuru'])->name('DirektoriGuru.store');
+    // Store
 
+    // Update
+    Route::patch('admin/guru/{id_guru}', [direktoriGuruController::class, 'updateDirektoriGuru'])->name('DirektoriGuru.update');
+    // Update
 
-
-
-
-
-
-
-
+    // Destroy
+    Route::delete('admin/guru/{id_guru}', [direktoriGuruController::class, 'destroyDirektoriGuru'])->name('DirektoriGuru.destroy');
+    // Destroy
+    
+// CRUD Direktori Guru

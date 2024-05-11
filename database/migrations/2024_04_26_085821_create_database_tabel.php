@@ -95,6 +95,7 @@ return new class extends Migration
             $table->string('nama_program')->notNullable();
             $table->string('logo_program')->nullable();
             $table->text('deskripsi_program')->nullable();
+            $table->text('deskripsi_peluang_kerja')->nullable();
             $table->text('visi_program')->nullable();
             $table->text('misi_program')->nullable();
             $table->text('tujuan_program')->nullable();
@@ -155,7 +156,7 @@ return new class extends Migration
             $table->string('nik_guru')->unique()->notNullable();
             $table->string('jabatan_guru')->notNullable();
             $table->date('TTL_guru')->notNullable();
-            $table->enum('jenis_kelamin', ['Laki-Laki', 'Wanita'])->nullable();
+            $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan'])->nullable();
             $table->string('no_hp_guru')->notNullable();
             $table->string('alamat_guru')->notNullable();
             $table->string('gambar_guru')->nullable();
@@ -241,9 +242,7 @@ return new class extends Migration
         Schema::create('peluang_kerja', function (Blueprint $table) {
             $table->id('id_peluang_kerja');
             $table->unsignedBigInteger('id_program')->notNullable();
-            $table->text('deskripsi_peluang_kerja')->nullable();
             $table->text('peluang_kerja')->nullable();
-            $table->text('judul_pekerjaan')->nullable();
             $table->text('deskripsi_pekerjaan')->nullable();
             $table->timestamps();
 

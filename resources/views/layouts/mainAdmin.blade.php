@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <title>Admin SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     @vite('resources/css/app.css')
 </head>
 <style>
-    .overflow-x-auto::-webkit-scrollbar {
-        display: none;
-    }
+.overflow-x-auto::-webkit-scrollbar {
+    display: none;
+}
 </style>
 
 <body class="font-poppins">
@@ -24,7 +26,9 @@
         <!-- Side Navbar -->
         <div class="w-20 bg-elm text-white flex-none transition-all duration-300">
             <div class="flex flex-col py-4">
-                <button id="toggleButton" class="focus:outline-none absolute left-[0.85rem] text-xl text-center btn rounded-full transition-all duration-300 z-50 tooltip tooltip-right" data-tip="Alt + O" accesskey="o">
+                <button id="toggleButton"
+                    class="focus:outline-none absolute left-[0.85rem] text-xl text-center btn rounded-full transition-all duration-300 z-50 tooltip tooltip-right"
+                    data-tip="Alt + O" accesskey="o">
                     <i id="toggleIcon" class="fas fa-bars transition-all duration-500"></i>
                 </button>
             </div>
@@ -65,7 +69,8 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Beranda</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0 @if($title == 'Admin Sejarah Sekolah') bg-blue-lagoon rounded-md @endif">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Sejarah Sekolah') bg-blue-lagoon rounded-md @endif">
                         <a href="/admin/sejarah">
                             <div class=" w-3 flex justify-center items-center">
                                 <i class="fas fa-timeline text-2xl font-bold"></i>
@@ -81,7 +86,8 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Profile Sekolah</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0 @if($title == 'Admin Program Keahlian') bg-blue-lagoon rounded-md @endif">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Program Keahlian') bg-blue-lagoon rounded-md @endif">
                         <a href="/admin/program-keahlian">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-pen-ruler text-2xl text-center font-bold"></i>
@@ -97,7 +103,8 @@
                                     <i class="fas fa-folder-open text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0" class="dropdown-content menu p-2 text-white shadow bg-elm rounded-box w-52">
+                            <ul tabindex="0"
+                                class="dropdown-content menu p-2 text-white shadow bg-elm rounded-box w-52">
                                 <li class="@if($title == 'Admin Guru') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/guru">
                                         <i class="fas fa-chalkboard-user"></i>
@@ -168,7 +175,8 @@
                                     <i class="fas fa-photo-film text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-52">
+                            <ul tabindex="0"
+                                class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-52">
                                 <li class="@if($title == 'Admin Album') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/album">
                                         <i class="fas fa-image"></i>
@@ -227,7 +235,8 @@
                                     <i class="fas fa-file-lines text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-max">
+                            <ul tabindex="0"
+                                class="dropdown-content z-[1] menu p-2 text-white shadow bg-elm rounded-box w-max">
                                 <li class="@if($title == 'Admin Informasi PPDB') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/informasiPPDB">
                                         <i class="fas fa-circle-info"></i>
@@ -278,7 +287,8 @@
                             </ul>
                         </details>
                     </li>
-                    <li class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-lagoon rounded-md @endif">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-lagoon rounded-md @endif">
                         <a href="/admin/saranaPrasarana">
                             <div class="w-3 flex justify-center items-center -z-50">
                                 <i class="fas fa-building text-2xl text-center font-bold"></i>
@@ -302,7 +312,8 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Berita</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0 @if($title == 'Admin Ekstrakulikuler') bg-blue-lagoon rounded-md @endif">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Ekstrakulikuler') bg-blue-lagoon rounded-md @endif">
                         <a href="/admin/ekstrakulikuler">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-baseball-bat-ball text-2xl text-center font-bold"></i>
@@ -310,7 +321,8 @@
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Ekstrakulikuler</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0 @if($title == 'Admin Sosial Media') bg-blue-lagoon rounded-md @endif">
+                    <li
+                        class="hover:translate-y-0 @if($title == 'Admin Sosial Media') bg-blue-lagoon rounded-md @endif">
                         <a href="/admin/sosialMedia">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-link text-2xl text-center font-bold"></i>
@@ -366,130 +378,134 @@
 
         <!-- Navbar -->
         <script>
-            // Sidebar
-            document.getElementById("toggleButton").addEventListener("click", function() {
-                document.querySelector(".bg-gray-800").classList.toggle("w-16");
-                document.querySelector(".bg-gray-800").classList.toggle("w-32");
-            });
+        // Sidebar
+        document.getElementById("toggleButton").addEventListener("click", function() {
+            document.querySelector(".bg-gray-800").classList.toggle("w-16");
+            document.querySelector(".bg-gray-800").classList.toggle("w-32");
+        });
 
-            document.getElementById("toggleButton").addEventListener("click", function() {
-                var sidebar = document.querySelector(".bg-elm");
-                var icon = document.getElementById("toggleIcon");
-                var normalTitle = document.getElementById("normalTitle");
-                var menu = document.getElementById("menu");
-                var dropdown = document.querySelectorAll("#dropdown");
-                var navTitles = document.querySelectorAll("#navTitle");
-                sidebar.classList.toggle("w-20");
-                sidebar.classList.toggle("w-72");
+        document.getElementById("toggleButton").addEventListener("click", function() {
+            var sidebar = document.querySelector(".bg-elm");
+            var icon = document.getElementById("toggleIcon");
+            var normalTitle = document.getElementById("normalTitle");
+            var menu = document.getElementById("menu");
+            var dropdown = document.querySelectorAll("#dropdown");
+            var navTitles = document.querySelectorAll("#navTitle");
+            sidebar.classList.toggle("w-20");
+            sidebar.classList.toggle("w-72");
 
-                if (sidebar.classList.contains("w-72")) {
-                    document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
-                    document.getElementById("toggleButton").classList.add("left-[16.5rem]");
-                    icon.classList.add("rotate-180");
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-x");
-                    normalTitle.classList.remove("hidden");
-                    menu.classList.remove("flex");
-                    menu.classList.remove("justify-center");
-                    menu.classList.remove("items-center");
-                    dropdown.forEach(function(dropdown) {
-                        dropdown.classList.add("hidden");
-                    });
-                    navTitles.forEach(function(navTitle) {
-                        navTitle.classList.remove("hidden");
-                    });
-                } else {
-                    document.getElementById("toggleButton").classList.add("left-[0.85rem]");
-                    document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
-                    icon.classList.remove("rotate-180");
-                    icon.classList.remove("fa-x");
-                    icon.classList.add("fa-bars");
-                    normalTitle.classList.add("hidden");
-                    menu.classList.add("flex");
-                    menu.classList.add("justify-center");
-                    menu.classList.add("items-center");
-                    dropdown.forEach(function(dropdown) {
-                        dropdown.classList.remove("hidden");
-                    });
-                    navTitles.forEach(function(navTitle) {
-                        navTitle.classList.add("hidden");
-                    });
-                }
-            });
-            // Sidebar
-
-            // Action Button
-            const buttons = document.querySelectorAll('.button');
-
-            const handleMouseEnter = (button) => {
-                button.querySelector('.circle-1').classList.add('translate-x-4');
-                button.querySelector('.circle-3').classList.add('-translate-x-4');
-                button.querySelector('.circle-2').classList.add('animate-ping');
-            };
-
-            const handleMouseLeave = (button) => {
-                clearTimeout(button.dataset.timer);
-                button.querySelector('.circle-1').classList.remove('translate-x-4');
-                button.querySelector('.circle-3').classList.remove('-translate-x-4');
-                button.querySelector('.circle-2').classList.remove('animate-ping');
-            };
-
-            const handleClick = (button) => {
-                if (!button.dataset.clicked || button.dataset.clicked === 'false') {
-                    button.dataset.clicked = 'true';
-                    button.querySelector('.fa-times').classList.remove('hidden');
-                    button.querySelector('.fa-times').classList.add('animate-pulse');
-                    button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.add('hidden'));
-                } else {
-                    button.dataset.clicked = 'false';
-                    button.querySelector('.fa-times').classList.add('hidden');
-                    button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.remove('hidden'));
-                }
-            };
-
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', () => handleMouseEnter(button));
-                button.addEventListener('mouseleave', () => handleMouseLeave(button));
-                button.addEventListener('click', () => handleClick(button));
-            });
-            // Action Button
-
-            // Password
-            document.addEventListener("DOMContentLoaded", function() {
-                const togglePassword = document.getElementById("togglePassword");
-                const passwordInput = document.getElementById("passwordInput");
-
-                togglePassword.addEventListener("click", function() {
-                    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-                    passwordInput.setAttribute("type", type);
-
-                    if (type === "password") {
-                        togglePassword.classList.remove("fa-eye-slash");
-                        togglePassword.classList.add("fa-eye");
-                    } else {
-                        togglePassword.classList.remove("fa-eye");
-                        togglePassword.classList.add("fa-eye-slash");
-                    }
+            if (sidebar.classList.contains("w-72")) {
+                document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
+                document.getElementById("toggleButton").classList.add("left-[16.5rem]");
+                icon.classList.add("rotate-180");
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-x");
+                normalTitle.classList.remove("hidden");
+                menu.classList.remove("flex");
+                menu.classList.remove("justify-center");
+                menu.classList.remove("items-center");
+                dropdown.forEach(function(dropdown) {
+                    dropdown.classList.add("hidden");
                 });
-            });
-            // Password
+                navTitles.forEach(function(navTitle) {
+                    navTitle.classList.remove("hidden");
+                });
+            } else {
+                document.getElementById("toggleButton").classList.add("left-[0.85rem]");
+                document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
+                icon.classList.remove("rotate-180");
+                icon.classList.remove("fa-x");
+                icon.classList.add("fa-bars");
+                normalTitle.classList.add("hidden");
+                menu.classList.add("flex");
+                menu.classList.add("justify-center");
+                menu.classList.add("items-center");
+                dropdown.forEach(function(dropdown) {
+                    dropdown.classList.remove("hidden");
+                });
+                navTitles.forEach(function(navTitle) {
+                    navTitle.classList.add("hidden");
+                });
+            }
+        });
+        // Sidebar
 
-            // Obeject Load
-            window.addEventListener('scroll', function() {
-                var section = document.getElementById('.section');
-                var button = document.getElementById('button');
+        // Action Button
+        const buttons = document.querySelectorAll('.button');
 
-                var sectionRect = section.getBoundingClientRect();
+        const handleMouseEnter = (button) => {
+            button.querySelector('.circle-1').classList.add('translate-x-4');
+            button.querySelector('.circle-3').classList.add('-translate-x-4');
+            button.querySelector('.circle-2').classList.add('animate-ping');
+        };
 
-                if (sectionRect.top <= window.innerHeight) {
-                    button.classList.remove('hidden');
-                    button.classList.add('animate-slideInFromTop');
+        const handleMouseLeave = (button) => {
+            clearTimeout(button.dataset.timer);
+            button.querySelector('.circle-1').classList.remove('translate-x-4');
+            button.querySelector('.circle-3').classList.remove('-translate-x-4');
+            button.querySelector('.circle-2').classList.remove('animate-ping');
+        };
+
+        const handleClick = (button) => {
+            if (!button.dataset.clicked || button.dataset.clicked === 'false') {
+                button.dataset.clicked = 'true';
+                button.querySelector('.fa-times').classList.remove('hidden');
+                button.querySelector('.fa-times').classList.add('animate-pulse');
+                button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.add('hidden'));
+            } else {
+                button.dataset.clicked = 'false';
+                button.querySelector('.fa-times').classList.add('hidden');
+                button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.remove('hidden'));
+            }
+        };
+
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => handleMouseEnter(button));
+            button.addEventListener('mouseleave', () => handleMouseLeave(button));
+            button.addEventListener('click', () => handleClick(button));
+        });
+
+        function rotateIcon() {
+            var icon = document.getElementById('plus-icon');
+            icon.classList.toggle('rotate-45');
+        }
+        // Action Button
+
+        // Password
+        document.addEventListener("DOMContentLoaded", function() {
+            const togglePassword = document.getElementById("togglePassword");
+            const passwordInput = document.getElementById("passwordInput");
+
+            togglePassword.addEventListener("click", function() {
+                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                passwordInput.setAttribute("type", type);
+
+                if (type === "password") {
+                    togglePassword.classList.remove("fa-eye-slash");
+                    togglePassword.classList.add("fa-eye");
                 } else {
-                    button.classList.add('hidden');
+                    togglePassword.classList.remove("fa-eye");
+                    togglePassword.classList.add("fa-eye-slash");
                 }
             });
+        });
+        // Password
 
-            // Obeject Load
+        // Obeject Load
+        window.addEventListener('scroll', function() {
+            var section = document.getElementById('.section');
+            var button = document.getElementById('button');
+
+            var sectionRect = section.getBoundingClientRect();
+
+            if (sectionRect.top <= window.innerHeight) {
+                button.classList.remove('hidden');
+                button.classList.add('animate-slideInFromTop');
+            } else {
+                button.classList.add('hidden');
+            }
+        });
+        // Obeject Load
         </script>
 </body>
 

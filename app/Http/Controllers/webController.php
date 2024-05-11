@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Foto;
 use App\Models\Video;
+use App\Models\ProgramKeahlian;
+use App\Models\CapaianPembelajaran;
+use App\Models\PeluangKerja;
 
 
 class webController extends Controller
@@ -24,10 +27,25 @@ class webController extends Controller
         ]);
     }
 
-    public function program()
+        public function program()
     {
+        $programKeahlian = ProgramKeahlian::all();
         return view('guest/program-keahlian', [
-            "title" => "Program Keahlian"
+            "title" => "Program Keahlian",
+            "programKeahlian" => $programKeahlian
+        ]);
+    }
+
+        public function detailProgram()
+    {
+        $programKeahlian = ProgramKeahlian::all();
+        $capaianPembelajaran = CapaianPembelajaran::all();
+        $peluangKerja = PeluangKerja::all();
+        return view('guest/detail-program', [
+            "title" => "Detail Program Keahlian",
+            "programKeahlian" => $programKeahlian,
+            "capaianPembelajaran"=> $capaianPembelajaran,
+            "peluangKerja" => $peluangKerja
         ]);
     }
 
@@ -176,13 +194,6 @@ class webController extends Controller
     {
         return view('guest/sejarah', [
             "title" => "Sejarah"
-        ]);
-    }
-
-    public function detailProgram()
-    {
-        return view('guest/detail-program', [
-            "title" => "Detail Program Keahlian"
         ]);
     }
 }

@@ -60,12 +60,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminGuru()
-    {
-        return view('admin/guru', [
-            "title" => "Admin Guru"
-        ]);
-    }
+    // public function adminGuru()
+    // {
+    //     return view('admin/guru', [
+    //         "title" => "Admin Guru"
+    //     ]);
+    // }
 
     public function adminStaff()
     {
