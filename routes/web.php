@@ -7,6 +7,8 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\adminActionController;
 use App\Http\Controllers\programKeahlianController;
 use App\Http\Controllers\direktoriGuruController;
+use App\Http\Controllers\formController;
+use App\Http\Controllers\informasippdbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +30,6 @@ use App\Http\Controllers\direktoriGuruController;
 Route::get('/', [webController::class, 'home']);
 Route::get('guest/profile', [webController::class, 'profile']);
 Route::get('guest/program-keahlian', [webController::class, 'program']);
-Route::get('guest/ppdb', [webController::class, 'ppdb']);
 Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman']);
 Route::get('guest/direktori-guru', [webController::class, 'guru']);
 Route::get('guest/direktori-pegawai', [webController::class, 'pegawai']);
@@ -64,7 +65,6 @@ Route::get('admin/alumni', [adminController::class, 'adminAlumni']);
 Route::get('admin/album', [adminController::class, 'adminAlbum'])->name('admin.album.index');
 Route::get('admin/foto', [adminController::class, 'adminFoto'])->name('admin.foto.index');
 Route::get('admin/video', [adminController::class, 'adminVideo'])->name('admin.video.index');
-Route::get('admin/informasiPPDB', [adminController::class, 'adminInformasiPPDB']);
 Route::get('admin/pendaftaranPPDB', [adminController::class, 'adminPendaftaranPPDB']);
 Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB']);
 Route::get('admin/saranaPrasarana', [adminController::class, 'adminSaranaPrasarana']);
@@ -95,6 +95,18 @@ Route::post('admin/video', [BackendController::class, 'storeVideo'])->name('admi
 Route::patch('/admin/video/{id}', [BackendController::class, 'updateVideo'])->name('admin.video.update');
 Route::delete('/admin/video/{id}', [BackendController::class, 'destroyVideo'])->name('admin.video.destroy');
 
+//PPDB
+Route::get('admin/informasiPPDB', [informasippdbController::class, 'adminInformasiPPDB'])->name('admin.informasiPPDB.index');
+Route::post('admin/informasiPPDB', [informasippdbController::class, 'storeInformasiPPDB'])->name('admin.informasiPPDB.store');
+Route::patch('admin/informasiPPDB/{id}', [informasippdbController::class, 'updateInformasiPPDB'])->name('admin.informasiPPDB.update');
+Route::delete('admin/informasiPPDB/{id}', [informasippdbController::class, 'destroyInformasiPPDB'])->name('admin.informasiPPDB.destroy');
+
+Route::post('admin/alurPPDB', [informasippdbController::class, 'storeAlurPPDB'])->name('admin.alurPPDB.store');
+Route::patch('admin/alurPPDB/{id}', [informasippdbController::class, 'updateAlurPPDB'])->name('admin.alurPPDB.update');
+Route::delete('admin/alurPPDB/{id}', [informasippdbController::class, 'destroyAlurPPDB'])->name('admin.alurPPDB.destroy');
+
+Route::get('guest/ppdb', [webController::class, 'ppdb'])->name('guest.ppdb.index');
+Route::post('guest/ppdb', [formController::class, 'storePPDB'])->name('guest.ppdb.store');
 
 // CRUD Program Keahlian
 Route::get('admin/program-keahlian', [programKeahlianController::class, 'adminProgramKeahlian'])->name('admin.programKeahlian.index');

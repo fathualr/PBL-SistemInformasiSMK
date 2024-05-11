@@ -7,6 +7,8 @@ use App\Models\Admin;
 use App\Models\Album;
 use App\Models\Foto;
 use App\Models\Video;
+use App\Models\InformasiPPDB;
+use App\Models\AlurPPDB;
 
 class adminController extends Controller
 {
@@ -125,14 +127,6 @@ class adminController extends Controller
             "title" => "Admin Video",
             "videos" => $videos,
             "albums" => $albums,
-        ]);
-    }
-
-
-    public function adminInformasiPPDB()
-    {
-        return view('admin/informasiPPDB', [
-            "title" => "Admin Informasi PPDB"
         ]);
     }
 

@@ -9,6 +9,8 @@ use App\Models\Video;
 use App\Models\ProgramKeahlian;
 use App\Models\CapaianPembelajaran;
 use App\Models\PeluangKerja;
+use App\Models\InformasiPPDB;
+use App\Models\AlurPPDB;
 
 
 class webController extends Controller
@@ -51,8 +53,14 @@ class webController extends Controller
 
     public function ppdb()
     {
-        return view('guest/ppdb', [
-            "title" => "PPDB"
+        $informasi = InformasiPPDB::all();
+        $alurs = AlurPPDB::all();
+        $programs = ProgramKeahlian::all();
+        return view('guest.ppdb', [
+            "title" => "Guest PPDB",
+            "informasi" => $informasi,
+            "alurs" => $alurs,
+            "programs" => $programs,
         ]);
     }
 
