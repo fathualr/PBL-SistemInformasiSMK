@@ -91,6 +91,7 @@ return new class extends Migration
         // Tabel untuk sejarah_sekolah
         Schema::create('sejarah_sekolah', function (Blueprint $table) {
             $table->id('id_sejarah');
+            $table->text('judul_sejarah')->nullable();
             $table->text('deskripsi_sejarah')->nullable();
             $table->date('tanggal_sejarah')->nullable();
             $table->string('gambar_sejarah')->nullable();

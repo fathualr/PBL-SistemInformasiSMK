@@ -15,6 +15,7 @@ use App\Http\Controllers\direktoriGuruController;
 use App\Http\Controllers\formController;
 use App\Http\Controllers\informasippdbController;
 use App\Http\Controllers\ekstrakulikulerController;
+use App\Http\Controllers\sejarahSekolahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,7 @@ Route::get('guest/sejarah', [webController::class, 'sejarah']);
 Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
-Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
+// Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
 // Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian'])->name('admin.programKeahlian.index');
 // Route::get('admin/guru', [adminController::class, 'adminGuru']);
@@ -228,3 +229,17 @@ Route::get('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'adminEks
     Route::delete('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
     // Destroy
 // CRUD Ekstrakulikuler
+
+
+// CRUD SEJARAH SEKOLAH
+Route::get('admin/sejarah', [sejarahSekolahController::class, 'adminSejarah'])->name('admin.sejarahSekolah.index');
+
+    //STORE
+    Route::post('admin/sejarah', [sejarahSekolahController::class, 'storeSejarahSekolah'])->name('SejarahSekolah.store');
+    //STORE
+
+    //UPDATE
+    Route::patch('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'updateSejarahSekolah'])->name('SejarahSekolah.update');
+
+    //Destroy
+    Route::delete('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'destroySejarahSekolah'])->name('SejarahSekolah.destroy');
