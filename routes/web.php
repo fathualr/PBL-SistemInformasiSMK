@@ -5,6 +5,7 @@ use App\Http\Controllers\webController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\adminActionController;
+use App\Http\Controllers\sejarahSekolahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,7 @@ Route::get('admin/login', [adminController::class, 'login']);
 Route::get('admin/dashboard', [adminController::class, 'dashboard']);
 // Route::get('admin/admin', [adminController::class, 'admin'])->name('admin.admin');
 Route::get('admin/beranda', [adminController::class, 'adminBeranda']);
-Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
+// Route::get('admin/sejarah', [adminController::class, 'adminSejarah']);
 Route::get('admin/profile', [adminController::class, 'adminProfile']);
 Route::get('admin/program-keahlian', [adminController::class, 'adminProgramKeahlian']);
 Route::get('admin/guru', [adminController::class, 'adminGuru']);
@@ -96,10 +97,18 @@ Route::delete('/admin/video/{id}', [BackendController::class, 'destroyVideo'])->
 
 
 
+// CRUD SEJARAH SEKOLAH
+Route::get('admin/sejarah', [sejarahSekolahController::class, 'adminSejarah'])->name('admin.sejarahSekolah.index');
 
+    //STORE
+    Route::post('admin/sejarah', [sejarahSekolahController::class, 'storeSejarahSekolah'])->name('SejarahSekolah.store');
+    //STORE
 
+    //UPDATE
+    Route::patch('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'updateSejarahSekolah'])->name('SejarahSekolah.update');
 
-
+    //Destroy
+    Route::delete('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'destroySejarahSekolah'])->name('SejarahSekolah.destroy');
 
 
 

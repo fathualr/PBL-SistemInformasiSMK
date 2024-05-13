@@ -31,7 +31,7 @@
 
     <!-- Content -->
     <div class="col-span-9 row-start-3">
-        <div class="overflow-x-auto mt-5 px-16">
+        <div class=" mt-5 px-16">
             <table class="table text-center">
                 <!-- head -->
                 <thead>
@@ -39,29 +39,20 @@
                         <th>No.</th>
                         <th>Judul Sejarah</th>
                         <th>Deskripsi Sejarah</th>
-                        <th>Gambar</th>
-                        <th>Tanggal</th>
                         <th class="w-52">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- row 1 -->
+                    @foreach($sejarahSekolah as $sejarahIndex => $sejarah)
+
                     <tr class="hover">
-                        <th>1</th>
-                        <td>Baru Dibangun</td>
+                        <th>{{$sejarahIndex + 1}}</th>
+                        <td>{{ $sejarah -> judul_sejarah }}</td>
                         <td>
                             <p class="truncate w-64 mx-auto">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum
-                                nihil, fuga ratione facere ducimus eaque, commodi quae odio sequi eveniet enim corrupti
-                                adipisci repellendus ipsam. Nulla, sapiente!
+                                {{$sejarah -> deskripsi_sejarah}}
                             </p>
                         </td>
-                        <td>
-                            <p class="truncate w-64 mx-auto">
-                                image/Humans.svg
-                            </p>
-                        </td>
-                        <td>26 Januari 2024</td>
                         <td>
                             <details class="dropdown dropdown-right">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -75,7 +66,7 @@
                                     <!-- Edit -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_edit_sejarah.showModal()">
+                                            onclick="window['modal_edit_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -85,7 +76,7 @@
                                     <!-- View -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_view_sejarah.showModal()">
+                                            onclick="window['modal_view_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -95,7 +86,7 @@
                                     <!-- Delete -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="modal_delete_sejarah.showModal()">
+                                            onclick="window['modal_delete_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -105,14 +96,141 @@
                             </details>
                         </td>
                     </tr>
+                    <!-- edit modal -->
+                    <dialog id="modal_edit_sejarah{{ $sejarah->id_sejarah }}" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Edit Data Sejarah Sekolah</h3>
+
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="{{ route('SejarahSekolah.update',['id_sejarah' => $sejarah->id_sejarah]) }}"
+            method="post" enctype="multipart/form-data">
+            @csrf
+            @method('patch')
+        <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="fas fa-heading"></i>
+                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" name="judul_sejarah" value="{{$sejarah->judul_sejarah}}"/>
+            </label>
+
+            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
+                placeholder="Deskripsi" name="deskripsi_sejarah">{{$sejarah->deskripsi_sejarah}}</textarea>
+
+            <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" name="gambar_sejarah"/>
+
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="far fa-calendar"></i>
+                <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" name="tanggal_sejarah" value="{{$sejarah->tanggal_sejarah}}"/>
+            </label>
+
+            <div class="flex justify-end items-end mt-20 gap-4">
+
+                <a href="" class="">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                        <i class=" fas fa-pen-to-square"></i>
+                        Edit
+                    </button>
+                </a>
+
+            </div>
+        </form>
+    </div>
+</dialog>
+                    <!-- edit modal -->
+
+<!-- view modal -->
+
+<dialog id="modal_view_sejarah{{ $sejarah->id_sejarah}}" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Info Detail Sejarah Sekolah</h3>
+
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="">
+
+        <div class="aspect-w-10 aspect-h-5 mb-5">
+                <img class="w-full h-64" src="{{ asset('image/Humans.svg') }}">
+            </div>
+
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="far fa-file-image"></i>
+                <input type="text" class="grow bg-transparent py-2" placeholder="Link Galeri" name="gambar_sejarah" value="{{$sejarah->gambar_sejarah}}"disabled />
+            </label>
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="fas fa-heading"></i>
+                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" name="judul_sejarah" value="{{$sejarah->judul_sejarah}}"disabled />
+            </label>
+
+            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi" name="deskripsi_sejarah"
+
+                disabled>{{$sejarah->deskripsi_sejarah}}</textarea>
+                
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <i class="far fa-calendar"></i>
+                <input type="text" class="grow bg-transparent py-2" placeholder="Tanggal" nama="tanggal_sejarah" value="{{$sejarah->tanggal_sejarah}}"disabled />
+            </label>
+        </form>
+    </div>
+</dialog>
+
+<!-- view modal -->
+
+
+                    <!-- delate modal -->
+                    <dialog id="modal_delete_sejarah{{ $sejarah->id_sejarah }}" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Hapus Data Sejarah Sekolah</h3>
+
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="{{ route ('SejarahSekolah.destroy', [ 'id_sejarah' => $sejarah -> id_sejarah]) }}" method="post">
+        @csrf
+        @method('DELETE')
+            Apakah Anda Yakin Ingin Menghapus Data Ini ?
+
+            <div class="flex justify-end items-end mt-20 gap-4">
+
+                    <button type="submit"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                        <i class=" fas fa-trash"></i>
+                        Hapus
+                    </button>
+
+            </div>
+        </form>
+    </div>
+</dialog>
+                    <!-- delate modal -->
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>No.</th>
                         <th>Judul Sejarah</th>
                         <th>Deskripsi Sejarah</th>
-                        <th>Gambar</th>
-                        <th>Tanggal</th>
                         <th class="w-52">Aksi</th>
                     </tr>
                 </tfoot>
@@ -134,22 +252,23 @@
             <div class="divider divider-success"></div>
             <div class="divider"></div>
         </div>
-        <form action="">
+        <form action="{{ route('SejarahSekolah.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" name="judul_sejarah"/>
             </label>
 
             <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
-                placeholder="Deskripsi"></textarea>
+                placeholder="Deskripsi" name="deskripsi_sejarah"></textarea>
 
-            <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" />
+            <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" name="gambar_sejarah"/>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="far fa-calendar"></i>
-                <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" />
+                <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" name="tanggal_sejarah"/>
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
@@ -160,14 +279,11 @@
                     Reset
                 </button>
 
-                <a href="" class="">
                     <button type="submit"
                         class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class=" fas fa-plus"></i>
                         Tambah
                     </button>
-                </a>
-                </a>
 
             </div>
         </form>
@@ -219,75 +335,6 @@
     </div>
 </dialog>
 
-<dialog id="modal_view_sejarah" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Sejarah Sekolah</h3>
 
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="fas fa-heading"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" disabled />
-            </label>
-
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi"
-                disabled></textarea>
-
-            <div class="aspect-w-10 aspect-h-5 mb-5">
-                <img class="w-full h-64" src="{{ asset('image/Humans.svg') }}">
-            </div>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-file-image"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Link Galeri" disabled />
-            </label>
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <i class="far fa-calendar"></i>
-                <input type="text" class="grow bg-transparent py-2" placeholder="Tanggal" disabled />
-            </label>
-        </form>
-    </div>
-</dialog>
-
-<dialog id="modal_delete_sejarah" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Hapus Data Sejarah Sekolah</h3>
-
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            Apakah Anda Yakin Ingin Menghapus Data Ini ?
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                        <i class=" fas fa-trash"></i>
-                        Hapus
-                    </button>
-                </a>
-
-            </div>
-        </form>
-    </div>
-</dialog>
 <!-- Third Content -->
 @endsection

@@ -39,12 +39,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminSejarah()
-    {
-        return view('admin/sejarah', [
-            "title" => "Admin Sejarah Sekolah"
-        ]);
-    }
+    // public function adminSejarah()
+    // {
+    //     return view('admin/sejarah', [
+    //         "title" => "Admin Sejarah Sekolah"
+    //     ]);
+    // }
 
     public function adminProfile()
     {
