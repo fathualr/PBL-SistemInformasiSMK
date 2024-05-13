@@ -13,7 +13,7 @@
     @foreach($fotos->chunk(16) as $chunk)
     @foreach($chunk as $foto)
     <button>
-        <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg" src="{{ asset('/' . $foto->tautan_foto) }}" alt="gallery foto" />
+        <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg" src="{{ asset('storage/' . $foto->tautan_foto) }}" alt="gallery foto" />
     </button>
     @endforeach
     @endforeach

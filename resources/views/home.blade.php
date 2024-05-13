@@ -6,7 +6,7 @@
 <div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96" src="https://www.youtube.com/embed/Tc_JWD9NhKY"></iframe>
+            <iframe class="w-full h-full lg:h-96" src="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}"></iframe>
         </div>
     </div>
     <!-- Title -->
@@ -14,7 +14,7 @@
         <div class="card w-full ">
             <div class="card-body">
                 <h1 class="card-title text-lg">
-                    Lorem
+                    {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}
                 </h1>
             </div>
         </div>
@@ -25,9 +25,7 @@
         <div class="card w-full">
             <div class="card-body">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, error fugiat? Repellendus
-                    consequuntur provident iure at. Aut nobis quasi amet. Iure dolorum placeat corporis eaque tenetur
-                    distinctio id voluptatum maxime.
+                    {!! empty($konten->sambutan) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->sambutan !!}.
                 </p>
                 <div class="card-actions justify-start mt-7">
                     <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
@@ -49,10 +47,9 @@
         <div class="card w-full rounded-sm my-24 desktop:my-48 mx-auto lg:mx-10 desktop:border-r-2 border-gray-400">
             <div class="card-body">
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati omnis assumenda earum nihil,
-                    fuga
-                    ratione facere ducimus eaque, commodi quae odio sequi eveniet enim corrupti adipisci repellendus
-                    ipsam. Nulla, sapiente!</p>
+                <p class="overflow-y-auto h-32">
+                    {!! empty($konten->teks_profile) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_profile !!}
+                </p>
                 <div class="card-actions justify-center md:justify-start">
                     <a href="/guest/profile">
                         <button
@@ -72,8 +69,7 @@
         <div class="col-span-1">
             <!-- Facility School -->
             <a href="/guest/sarana-prasarana">
-                <div
-                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -85,11 +81,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Fasilitas</h2>
                         <p class="overflow-y-auto h-20">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                            molestiae voluptatem eum
-                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
-                            optio
-                            inventore qui sequi enim eaque neque?</p>
+                            {!! empty($konten->teks_fasilitas) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_fasilitas !!}
+                        </p>
                     </div>
                 </div>
             </a>
@@ -99,8 +92,7 @@
         <div class="col-span-1">
             <!-- School Location -->
             <a href="/guest/media-sosial">
-                <div
-                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full">
                             <div class="size-20 p-5 shadow-md rounded-full">
@@ -112,11 +104,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Lokasi</h2>
                         <p class="overflow-y-auto h-20">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                            molestiae voluptatem eum
-                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
-                            optio
-                            inventore qui sequi enim eaque neque?</p>
+                            {!! empty($konten->teks_lokasi) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_lokasi !!}
+                        </p>
                     </div>
                 </div>
             </a>
@@ -126,8 +115,7 @@
         <div class="col-span-1">
             <!-- School History -->
             <a href="/guest/profile">
-                <div
-                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -139,11 +127,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Sejarah</h2>
                         <p class="overflow-y-auto h-20">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                            molestiae voluptatem eum
-                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
-                            optio
-                            inventore qui sequi enim eaque neque?</p>
+                            {!! empty($konten->teks_sejarah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_sejarah !!}
+                        </p>
                     </div>
                 </div>
             </a>
@@ -153,8 +138,7 @@
         <div class="col-span-1">
             <!-- School Achievement -->
             <a href="/guest/prestasi-siswa">
-                <div
-                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -166,11 +150,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Prestasi</h2>
                         <p class="overflow-y-auto h-20">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat fugit
-                            molestiae voluptatem eum
-                            molestias dignissimos labore enim, possimus optio maxime exercitationem ullam? Quisquam
-                            optio
-                            inventore qui sequi enim eaque neque?</p>
+                            {!! empty($konten->teks_prestasi) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_prestasi !!}
+                        </p>
                     </div>
                 </div>
             </a>

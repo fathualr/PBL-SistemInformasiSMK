@@ -7,6 +7,8 @@ use App\Models\Admin;
 use App\Models\Album;
 use App\Models\Foto;
 use App\Models\Video;
+use App\Models\InformasiPPDB;
+use App\Models\AlurPPDB;
 
 class adminController extends Controller
 {
@@ -46,12 +48,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminProfile()
-    {
-        return view('admin/profile', [
-            "title" => "Admin Profile"
-        ]);
-    }
+    // public function adminProfile()
+    // {
+    //     return view('admin/profile', [
+    //         "title" => "Admin Profile"
+    //     ]);
+    // }
 
     public function adminProgramKeahlian()
     {
@@ -128,14 +130,6 @@ class adminController extends Controller
         ]);
     }
 
-
-    public function adminInformasiPPDB()
-    {
-        return view('admin/informasiPPDB', [
-            "title" => "Admin Informasi PPDB"
-        ]);
-    }
-
     public function adminPendaftaranPPDB()
     {
         return view('admin/pendaftaranPPDB', [
@@ -164,12 +158,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminIBerita()
-    {
-        return view('admin/berita', [
-            "title" => "Admin Berita"
-        ]);
-    }
+    // public function adminIBerita()
+    // {
+    //     return view('admin/berita', [
+    //         "title" => "Admin Berita"
+    //     ]);
+    // }
 
     // public function adminEkstrakulikuler()
     // {

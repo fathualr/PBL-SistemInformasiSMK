@@ -113,6 +113,7 @@
                         </th>
                         <th>No.</th>
                         <th>Nama</th>
+                        <th>Username</th>
                         <th>Role</th>
                         <th>Aksi</th>
                     </tr>

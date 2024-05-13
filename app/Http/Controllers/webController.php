@@ -9,24 +9,26 @@ use App\Models\Video;
 use App\Models\ProgramKeahlian;
 use App\Models\CapaianPembelajaran;
 use App\Models\PeluangKerja;
+use App\Models\InformasiPPDB;
+use App\Models\AlurPPDB;
 use App\Models\DirektoriGuru;
 
 
 class webController extends Controller
 {
-    public function home()
-    {
-        return view('/home', [
-            "title" => "Beranda"
-        ]);
-    }
+    // public function home()
+    // {
+    //     return view('/home', [
+    //         "title" => "Beranda"
+    //     ]);
+    // }
 
-    public function profile()
-    {
-        return view('guest/profile', [
-            "title" => "Profile"
-        ]);
-    }
+    // public function profile()
+    // {
+    //     return view('guest/profile', [
+    //         "title" => "Profile"
+    //     ]);
+    // }
 
         public function program()
     {
@@ -52,8 +54,14 @@ class webController extends Controller
 
     public function ppdb()
     {
-        return view('guest/ppdb', [
-            "title" => "PPDB"
+        $informasi = InformasiPPDB::all();
+        $alurs = AlurPPDB::all();
+        $programs = ProgramKeahlian::all();
+        return view('guest.ppdb', [
+            "title" => "Guest PPDB",
+            "informasi" => $informasi,
+            "alurs" => $alurs,
+            "programs" => $programs,
         ]);
     }
 
@@ -77,7 +85,7 @@ class webController extends Controller
 
     public function pegawai()
     {
-        return view('guest/guest/direktori-pegawai', [
+        return view('guest/direktori-pegawai', [
             "title" => "Direktori Pegawai"
         ]);
     }
@@ -167,19 +175,19 @@ class webController extends Controller
         ]);
     }
 
-    public function berita()
-    {
-        return view('guest/berita', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function berita()
+    // {
+    //     return view('guest/berita', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
-    public function beritaTemplate()
-    {
-        return view('guest/berita-template', [
-            "title" => "Berita"
-        ]);
-    }
+    // public function beritaTemplate()
+    // {
+    //     return view('guest/berita-template', [
+    //         "title" => "Berita"
+    //     ]);
+    // }
 
     public function ekstrakulikuler()
     {
