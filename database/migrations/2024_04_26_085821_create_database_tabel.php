@@ -156,6 +156,7 @@ return new class extends Migration
             $table->string('nik_guru')->unique()->notNullable();
             $table->string('jabatan_guru')->notNullable();
             $table->date('TTL_guru')->notNullable();
+            $table->string('tempat_lahir_guru')->notNullable();
             $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan'])->nullable();
             $table->string('no_hp_guru')->notNullable();
             $table->string('alamat_guru')->notNullable();

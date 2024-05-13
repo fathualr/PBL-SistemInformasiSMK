@@ -9,7 +9,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="col-span-2 col-start-2 row-start-2">
+    <div class="col-span-2 row-start-2 mx-5">
         <button class="btn w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-user-plus"></i>
             Tambah Ekstrakulikuler
@@ -27,41 +27,33 @@
     <!-- Search Bar -->
 
     <!-- Content -->
-    
+
     <div class="col-span-9 row-start-3">
-        <div class="overflow-x-auto mt-5 px-16">
+        <div class=" mt-5">
             <table class="table text-center">
                 <!-- head -->
                 <thead>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
                         <th>No.</th>
-                        <th>Gambar</th>
-                        <th>Nama</th>
-                        <th>Pembina</th>
-                        <th>Jadwal</th>
+                        <th class="w-48">Gambar</th>
+                        <th class="w-52">Nama Ekstrakulikuler</th>
+                        <th class="w-72">Pembina Ekstrakulikuler</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- row 1 -->
+                    @foreach($ekstrakulikuler as $eskulIndex => $ekskul)
+                    @foreach($direktoriGuru as $guruIndex => $guru)
+                    @if($ekskul->id_ekstrakurikuler === $guru->id_guru)
                     <tr class="hover">
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
                         <th>1</th>
-                        <td class="flex justify-center">
-                            <figure class="max-w-40 max-h-40"><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
+                        <td class="flex justify-center w-48">
+                            <figure class="max-w-40 max-h-40">
+                                <img src="{{ asset($ekskul->gambar_profil_ekstrakurikuler) }}" alt="Rojek naek gojek" />
+                            </figure>
                         </td>
-                        <td>$nama</td>
-                        <td>$pembina</td>
-                        <td>$jadwal</td>
+                        <td class="w-52">{{ $ekskul->nama_ekstrakurikuler }}</td>
+                        <td class="w-72">{{ $guru->nama_guru }}</td>
                         <td>
                             <details class="dropdown dropdown-right">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -75,7 +67,7 @@
                                     <!-- Edit -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_edit.showModal()">
+                                            onclick="window['my_modal_edit{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -85,7 +77,7 @@
                                     <!-- View -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view.showModal()">
+                                            onclick="window['my_modal_view{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -95,7 +87,7 @@
                                     <!-- Delete -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete.showModal()">
+                                            onclick="window['my_modal_delete{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -105,19 +97,182 @@
                             </details>
                         </td>
                     </tr>
+
+                    <!-- Edit Modal -->
+                    <dialog id="my_modal_edit{{ $ekskul->id_ekstrakurikuler }}" class="modal">
+                        <div class="modal-box">
+                            <form method="dialog">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                            <h3 class="font-bold text-lg">Edit Ekstrakulikuler</h3>
+                            <div class="grid grid-cols-3 w-52 -mt-5">
+                                <div class="divider"></div>
+                                <div class="divider divider-success"></div>
+                                <div class="divider"></div>
+                            </div>
+                            <form
+                                action="{{ route('Ekstrakulikuler.update', ['id_ekstrakurikuler' => $ekskul->id_ekstrakurikuler]) }}"
+                                method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('patch')
+                                <div class="grid gap-y-5">
+
+                                    <input type="text" class="input input-bordered input-success w-full"
+                                        placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler"
+                                        value="{{ $ekskul->nama_ekstrakurikuler }}" />
+
+                                    <label
+                                        class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                        <input type="file" name="gambar_profil_ekstrakurikuler"
+                                            class="grow file-input file-input-success border-none bg-transparent py-2"
+                                            accept="gambarEkskul/*" placeholder="Logo"
+                                            value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" />
+                                    </label>
+
+                                    <select class="select select-success w-full" name="id_guru">
+                                        <option disabled selected>Pembimbing Ekstrakulikuler</option>
+                                        @foreach($direktoriGuru as $guruIndex => $guru)
+                                        <option value="{{ $guru->id_guru }}" @if($guru->id_guru ===
+                                            $ekskul->id_ekstrakurikuler) selected @endif>{{ $guru->nama_guru }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <textarea class="textarea textarea-success w-full"
+                                        placeholder="Deskripsi Ekstrakulikuler"
+                                        name="deskripsi_ekstrakurikuler">{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
+
+                                    <input type="text" class="input input-bordered input-success w-full"
+                                        placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler"
+                                        value="{{ $ekskul->tempat_ekstrakurikuler }}" />
+
+                                    <input type="text" class="input input-bordered input-success w-full"
+                                        placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler"
+                                        value="{{ $ekskul->jadwal_ekstrakurikuler }}" />
+
+                                </div>
+
+                                <div class="flex justify-end items-end mt-10 gap-4">
+                                    <button type="submit"
+                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                        <i class=" fas fa-pen-to-square"></i>
+                                        Edit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </dialog>
+                    <!-- Edit Modal -->
+
+                    <!-- View Modal -->
+                    <dialog id="my_modal_view{{ $ekskul->id_ekstrakurikuler }}" class="modal">
+                        <div class="modal-box">
+                            <form method="dialog">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                            <h3 class="font-bold text-lg">Info Detail Ekstrakulikuler</h3>
+                            <div class="grid grid-cols-3 w-52 -mt-5">
+                                <div class="divider"></div>
+                                <div class="divider divider-success"></div>
+                                <div class="divider"></div>
+                            </div>
+                            <div class="grid gap-y-5">
+
+                                <div class="avatar flex justify-center items-center my-5">
+                                    <div class="mask mask-squircle w-36 h-36">
+                                        <img src="{{ asset($ekskul->gambar_profil_ekstrakurikuler) }}"
+                                            alt="Avatar Tailwind CSS Component" />
+                                    </div>
+                                </div>
+
+                                <label
+                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 w-full focus-within:outline-none">
+                                    <i class="fas fa-link"></i>
+                                    <input type="text" name="gambar_profil_ekstrakurikuler"
+                                        class="grow file-input file-input-success border-none bg-transparent py-2"
+                                        accept="gambarEkskul/*" placeholder="Logo"
+                                        value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" readonly />
+                                </label>
+
+                                <input type="text" class="input input-bordered input-success w-full"
+                                    placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler"
+                                    value="{{ $ekskul->nama_ekstrakurikuler }}" readonly />
+
+
+                                <select class="select select-success w-full" name="id_guru" readonly>
+                                    <option disabled selected>Pembimbing Ekstrakulikuler</option>
+                                    @foreach($direktoriGuru as $guruIndex => $guru)
+                                    <option value="{{ $guru->id_guru }}" @if($guru->id_guru ===
+                                        $ekskul->id_ekstrakurikuler) selected @endif>{{ $guru->nama_guru }}</option>
+                                    @endforeach
+                                </select>
+
+                                <textarea class="textarea textarea-success w-full"
+                                    placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler"
+                                    readonly>{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
+
+                                <input type="text" class="input input-bordered input-success w-full"
+                                    placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler"
+                                    value="{{ $ekskul->tempat_ekstrakurikuler }}" readonly />
+
+                                <input type="text" class="input input-bordered input-success w-full"
+                                    placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler"
+                                    value="{{ $ekskul->jadwal_ekstrakurikuler }}" readonly />
+
+                            </div>
+                        </div>
+                    </dialog>
+                    <!-- View Modal -->
+
+                    <!-- Delete Modal -->
+                    <dialog id="my_modal_delete{{ $ekskul->id_ekstrakurikuler }}" class="modal">
+                        <div class="modal-box">
+                            <form method="dialog">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                            <h3 class="font-bold text-lg">Hapus Data</h3>
+
+                            <div class="grid grid-cols-3 w-52 -mt-5">
+                                <div class="divider"></div>
+                                <div class="divider divider-error"></div>
+                                <div class="divider"></div>
+                            </div>
+                            <form
+                                action="{{ route('Ekstrakulikuler.destroy', ['id_ekstrakurikuler' => $ekskul->id_ekstrakurikuler]) }}"
+                                method="post">
+                                @csrf
+                                @method('DELETE')
+
+                                <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus
+                                    Data Ini ?</h3>
+
+                                <div class="flex justify-end items-end mt-10 gap-4">
+
+                                    <button type="submit"
+                                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                        <i class=" fas fa-trash"></i>
+                                        Hapus
+                                    </button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </dialog>
+                    <!-- Delete Modal -->
                 </tbody>
-                <thead>
+                @if ($guru->count() > 5)
+                <tfoot>
                     <tr>
-                        <th>
-                        </th>
                         <th>No.</th>
-                        <td>Gambar</td>
-                        <td>Nama</td>
-                        <td>Pembina</td>
-                        <td>Jadwal</th>
-                        <td>Aksi</td>
+                        <th class="w-48">Gambar</th>
+                        <th class="w-52">Nama Ekstrakulikuler</th>
+                        <th class="w-52">Pembina Ekstrakulikuler</th>
+                        <th>Aksi</th>
                     </tr>
-                </thead>
+                </tfoot>
+                @endif
+                @endif
+                @endforeach
+                @endforeach
             </table>
         </div>
     </div>
@@ -136,19 +291,34 @@
             <div class="divider divider-success"></div>
             <div class="divider"></div>
         </div>
-        <form action="">
+        <form action="{{ route('Ekstrakulikuler.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="grid gap-y-5">
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Nama Ekstrakulikuler" />
-                <input type="file" class="file-input file-input-bordered file-input-success w-full" placeholder="Pilih gambar berita" />
-                <select class="select select-success w-full">
+                <input type="text" class="input input-bordered input-success w-full" placeholder="Nama Ekstrakulikuler"
+                    name="nama_ekstrakurikuler" />
+
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="file" name="gambar_profil_ekstrakurikuler"
+                        class="grow file-input file-input-success border-none bg-transparent py-2"
+                        accept="gambarEkskul/*" placeholder="Logo" />
+                </label>
+
+                <select class="select select-success w-full" name="id_guru">
                     <option disabled selected>Pembimbing Ekstrakulikuler</option>
-                    <option>pembimbing 1</option>
-                    <option>pembimbing 2</option>
-                    <option>pembimbing 3</option>
+                    @foreach($direktoriGuru as $guruIndex => $guru)
+                    <option value="{{ $guru->id_guru }}">{{ $guru->nama_guru }}</option>
+                    @endforeach
                 </select>
-                <textarea class="textarea textarea-success w-full" placeholder="Deskripsi Ekstrakulikuler"></textarea>
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Tempat Ekstrakulikuler" />
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Jadwal Ekstrakulikuler" />
+
+                <textarea class="textarea textarea-success w-full" placeholder="Deskripsi Ekstrakulikuler"
+                    name="deskripsi_ekstrakurikuler"></textarea>
+
+                <input type="text" class="input input-bordered input-success w-full"
+                    placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" />
+
+                <input type="text" class="input input-bordered input-success w-full"
+                    placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" />
             </div>
             <div class="flex justify-end items-end mt-10 gap-4">
                 <button type="reset"
@@ -156,112 +326,15 @@
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-plus"></i>
-                        Tambah
-                    </button>
-                </a>
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <i class=" fas fa-plus"></i>
+                    Tambah
+                </button>
             </div>
         </form>
     </div>
 </dialog>
 <!-- Modal CREATE end -->
-
-<!-- Modal EDIT -->
-<dialog id="my_modal_edit" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Ekstrakulikuler</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <form action="">
-            <div class="grid gap-y-5">
-                <input type="text" class="input input-bordered input-success w-full" placeholder="$nama" />
-                <input type="file" class="file-input file-input-bordered file-input-success w-full" placeholder="Pilih gambar ekskul" />
-                <select class="select select-success w-full">
-                    <option disabled selected>Pembimbing Ekstrakulikuler</option>
-                    <option>pembimbing 1</option>
-                    <option>pembimbing 2</option>
-                    <option>pembimbing 3</option>
-                </select>
-                <textarea class="textarea textarea-success w-full" placeholder="$deskripsi"></textarea>
-                <input type="text" class="input input-bordered input-success w-full" placeholder="$tempat" />
-                <input type="text" class="input input-bordered input-success w-full" placeholder="$jadwal" />
-            </div>
-            <div class="flex justify-end items-end mt-10 gap-4">
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-60 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-plus"></i>
-                        Simpan perubahan
-                    </button>
-                </a>
-            </div>
-        </form>
-    </div>
-</dialog>
-<!-- Modal EDIT end -->
-
-<!-- Modal VIEW -->
-<dialog id="my_modal_view" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Ekstrakulikuler</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <div>
-            <figure class="w-full flex justify-center mb-10"><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-            <p>$DeskripsiEkstrakulikuler</p>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro aliquam esse veritatis, animi praesentium tempore? Eligendi aperiam adipisci totam sit deserunt laboriosam accusamus? Iure rem hic quas dolore officiis omnis.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolorum distinctio necessitatibus commodi illo explicabo sit animi, non saepe eum minus quibusdam iure repellendus delectus corporis debitis amet iusto dignissimos.
-            </p>
-            <label class="form-control w-full">
-                <div class="label mt-5">
-                    <span class="label-text">Pembimbing:</span>
-                </div>
-                <input type="text" placeholder="$pembimbing" class="input input-bordered input-sm w-full" disabled/>
-            </label>
-            <label class="form-control w-full">
-                <div class="label mt-5">
-                    <span class="label-text">Jadwal:</span>
-                </div>
-                <input type="text" placeholder="$jadwal" class="input input-bordered input-sm w-full" disabled/>
-            </label>
-        </div>
-    </div>
-</dialog>
-<!-- Modal VIEW end -->
-
-<!-- Modal DELETE -->
-<dialog id="my_modal_delete" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Hapus Ekstrakulikuler</h3>
-        <div class="flex justify-end items-end gap-4">
-            <a href="" class="">
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    Hapus
-                </button>
-            </a>
-        </div>
-    </div>
-</dialog>
-<!-- Modal DELETE end -->
 
 @endsection

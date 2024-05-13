@@ -158,8 +158,10 @@
 
                                 <label
                                     class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                                    <input type="date" class="grow bg-transparent border-b-2 py-2" placeholder="TTL"
-                                        name="TTL_guru" value="{{ $guru->TTL_guru }}" />
+                                    <input type="date" class="grow bg-transparent border-r-2 py-2 w-16"
+                                        placeholder="Tanggal Lahir" name="TTL_guru" value="{{ $guru->TTL_guru }}" />
+                                    <input type="text" class="grow bg-transparent py-2" placeholder="Tempat Lahir"
+                                        name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" />
                                 </label>
 
                                 <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin">
@@ -279,8 +281,11 @@
 
                             <label
                                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                                <input type="date" class="grow bg-transparent border-b-2 py-2" placeholder="TTL"
-                                    name="TTL_guru" value="{{ $guru->TTL_guru }}" readonly />
+                                <input type="date" class="grow bg-transparent border-r-2 py-2 w-16"
+                                    placeholder="Tanggal Lahir" name="TTL_guru" value="{{ $guru->TTL_guru }}"
+                                    readonly />
+                                <input type="text" class="grow bg-transparent py-2" placeholder="Tempat Lahir"
+                                    name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" readonly />
                             </label>
 
                             <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin" disabled>
@@ -420,7 +425,10 @@
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" class="grow bg-transparent border-b-2 py-2" placeholder="TTL" name="TTL_guru" />
+                <input type="date" class="grow bg-transparent border-r-2 py-2 w-16" placeholder="Tanggal Lahir"
+                    name="TTL_guru" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="Tempat Lahir"
+                    name="tempat_lahir_guru" />
             </label>
 
             <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin">

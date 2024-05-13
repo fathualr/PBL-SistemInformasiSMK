@@ -9,6 +9,7 @@ use App\Models\Video;
 use App\Models\ProgramKeahlian;
 use App\Models\CapaianPembelajaran;
 use App\Models\PeluangKerja;
+use App\Models\DirektoriGuru;
 
 
 class webController extends Controller
@@ -65,8 +66,12 @@ class webController extends Controller
 
     public function guru()
     {
+        $direktoriGuru = DirektoriGuru::all();
+        $programKeahlian = ProgramKeahlian::all();
         return view('guest/direktori-guru', [
-            "title" => "Direktori Guru"
+            "title" => "Direktori Guru",
+            "direktoriGuru" => $direktoriGuru,
+            "programKeahlian" => $programKeahlian
         ]);
     }
 

@@ -2,8 +2,13 @@
 
 @section('Main')
 
+@php
+$target_id_program = request()->id_program;
+@endphp
+
 <!-- First Content -->
 @foreach($programKeahlian as $index => $program)
+@if($program->id_program == $target_id_program)
 <h1 class="font-bold text-2xl text-center uppercase">{{ $program->nama_program }}</h1>
 
 <div class="grid grid-cols-3 w-48 mx-auto -mt-3">
@@ -70,12 +75,14 @@
         <img src="{{ asset('image/Humans.png') }}" alt="" class="mx-auto">
     </div>
 </div>
+@endif
 @endforeach
 <!-- Second Content -->
 
 <!-- Third Content -->
 @foreach($programKeahlian as $index => $program)
 @foreach($capaianPembelajaran as $capaianIndex => $capaian)
+@if($program->id_program == $target_id_program)
 @if($capaian->id_program === $program->id_program)
 <h1 class="font-bold text-2xl text-center">CAPAIAN PEMBELAJARAN</h1>
 
@@ -158,6 +165,7 @@
     </div>
 </div>
 @endif
+@endif
 @endforeach
 @endforeach
 <!-- Third Content -->
@@ -165,6 +173,7 @@
 <!-- Fourth Content -->
 @foreach($peluangKerja as $peluangIndex => $peluang)
 @foreach($programKeahlian as $index => $program)
+@if($program->id_program == $target_id_program)
 @if($peluang->id_program === $program->id_program)
 <h1 class="font-bold text-2xl text-center mt-32">PELUANG KERJA</h1>
 <div class="grid grid-cols-3 w-48 mx-auto -mt-3">
@@ -192,6 +201,7 @@
 
 </div>
 
+@endif
 @endif
 @endforeach
 @endforeach

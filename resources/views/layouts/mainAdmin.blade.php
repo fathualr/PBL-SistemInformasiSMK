@@ -17,6 +17,15 @@
 .overflow-x-auto::-webkit-scrollbar {
     display: none;
 }
+
+::-webkit-scrollbar {
+    display: none;
+
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
 </style>
 
 <body class="font-poppins">

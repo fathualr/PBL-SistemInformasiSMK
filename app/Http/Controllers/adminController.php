@@ -171,12 +171,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminEkstrakulikuler()
-    {
-        return view('admin/ekstrakulikuler', [
-            "title" => "Admin Ekstrakulikuler"
-        ]);
-    }
+    // public function adminEkstrakulikuler()
+    // {
+    //     return view('admin/ekstrakulikuler', [
+    //         "title" => "Admin Ekstrakulikuler"
+    //     ]);
+    // }
 
     public function adminSosialMedia()
     {

@@ -14,6 +14,7 @@ class DirektoriGuru extends Model
         "nik_guru",
         "jabatan_guru",
         "TTL_guru",
+        "tempat_lahir_guru",
         "jenis_kelamin",
         "no_hp_guru",
         "alamat_guru",

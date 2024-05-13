@@ -7,6 +7,7 @@ use App\Http\Controllers\BackendController;
 use App\Http\Controllers\adminActionController;
 use App\Http\Controllers\programKeahlianController;
 use App\Http\Controllers\direktoriGuruController;
+use App\Http\Controllers\ekstrakulikulerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +71,7 @@ Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB
 Route::get('admin/saranaPrasarana', [adminController::class, 'adminSaranaPrasarana']);
 Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
 Route::get('admin/berita', [adminController::class, 'adminIBerita']);
-Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
+// Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
 Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
@@ -136,3 +137,18 @@ Route::get('admin/guru', [direktoriGuruController::class, 'adminDirektoriGuru'])
     // Destroy
     
 // CRUD Direktori Guru
+
+// CRUD Ekstrakulikuler
+Route::get('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'adminEkstrakulikuler'])->name('admin.ekstrakulikuler.index');
+    // Store
+    Route::post('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'storeEkstrakulikuler'])->name('Ekstrakulikuler.store');
+    // Store
+
+    // Update
+    Route::patch('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakulikuler'])->name('Ekstrakulikuler.update');
+    // Update
+
+    // Destroy
+    Route::delete('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
+    // Destroy
+// CRUD Ekstrakulikuler
