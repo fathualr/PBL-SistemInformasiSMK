@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CapaianPembelajaran;
 use App\Models\PeluangKerja;
@@ -9,6 +10,7 @@ use App\Models\DirektoriGuru;
 
 class ProgramKeahlian extends Model
 {
+    use HasFactory;
     protected $table = "program_keahlian";
     protected $primaryKey = "id_program";
     protected $fillable = [
