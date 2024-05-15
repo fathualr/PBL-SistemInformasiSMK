@@ -172,11 +172,9 @@
                                         $guru->jenis_kelamin) selected @endif>Perempuan</option>
                                 </select>
 
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                                    <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Alamat"
-                                        name="alamat_guru" value="{{ $guru->alamat_guru }}" />
-                                </label>
+                                <textarea
+                                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                                    placeholder="Alamat" name="alamat_guru">{{ $guru->alamat_guru }}</textarea>
 
                                 <label
                                     class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
@@ -296,11 +294,9 @@
                                     $guru->jenis_kelamin) selected @endif>Perempuan</option>
                             </select>
 
-                            <label
-                                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Alamat"
-                                    name="alamat_guru" value="{{ $guru->alamat_guru }}" readonly />
-                            </label>
+                            <textarea
+                                class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                                placeholder="Alamat" name="alamat_guru" readonly>{{ $guru->alamat_guru }}</textarea>
 
                             <label
                                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
@@ -437,11 +433,9 @@
                 <option value="Perempuan">Perempuan</option>
             </select>
 
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Alamat"
-                    name="alamat_guru" />
-            </label>
+            <textarea
+                class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Alamat" name="alamat_guru"></textarea>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">

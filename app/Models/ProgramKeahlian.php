@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\CapaianPembelajaran;
 use App\Models\PeluangKerja;
 use App\Models\DirektoriGuru;
+use App\Models\DirektoriSiswa;
 
 class ProgramKeahlian extends Model
 {
@@ -32,5 +33,9 @@ class ProgramKeahlian extends Model
     public function direktoriGuru()
     {
         return $this->belongsTo(DirektoriGuru::class);
+    }
+    public function direktoriSiswa()
+    {
+        return $this->belongsTo(DirektoriSiswa::class);
     }
 }
