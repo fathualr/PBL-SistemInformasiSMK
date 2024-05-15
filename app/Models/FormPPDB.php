@@ -14,6 +14,7 @@ class FormPPDB extends Model
     protected $primaryKey = 'id_pendaftaran';
 
     protected $fillable = [
+        'id_prgoram',
         'nama_lengkap',
         'jenis_kelamin',
         'nisn',

@@ -2,60 +2,58 @@
 
 @section('main-content')
 
+<div>
+    <h2 class="text-black font-bold ml-2 mt-2 mb-8">Pendaftaraan PPDB</h2>
+</div>
+<div class="col-span-2 col-start-2">
+    <details class="dropdown dropdown-right mx-5 z-50">
+        <summary tabindex="0" role="button" class="btn btn-outline button w-max">
+            <i>
+                <a href="{{ route('download.excel') }}" class="btn btn-ghost w-full">
+                    <i class="fas fa-file-excel"></i>
+                    Download Excel
+                </a>
+            </i>
+        </summary>
+    </details>
+</div>
+
 <div class="grid grid-cols-9 shadow-xl rounded-md">
-
-    <div class="col-span-2 col-start-2">
-        <a href="#" class="btn w-full hover:animate-pulse">
-            <i class="fas fa-download"></i>
-            Unduh Data
-        </a>
-    </div>
-
-
-    <!-- Search Bar -->
-    <div class="col-span-2 col-start-7">
-        <label class="input input-bordered flex items-center gap-2  focus-within:outline-none">
-            <i class="fas fa-magnifying-glass"></i>
-            <input type="text" class="grow" placeholder="Cari" />
-        </label>
-    </div>
-    <!-- Search Bar -->
-
-    <!-- Content -->
     <div class="col-span-9 row-start-2">
-        <div class="overflow-x-auto mt-5 px-16">
+        <div class="mt-5">
             <table class="table text-center">
-                <!-- head -->
                 <thead>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
                         <th>No.</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <Th>Nisn</Th>
                         <Th>Agama</Th>
                         <Th>No Telepon</Th>
+                        <th>Dokumen</th>
                         <Th>Aksi</Th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- row 1 -->
+                    @foreach($forms->chunk(10) as $chunk)
+                    @foreach($chunk as $key => $form_ppdb)
                     <tr class="hover">
-                        <th class="w-8">
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
-                        <th class="w-8">1</th>
-                        <td class="w-8">James</td>
-                        <td class="w-8">Laki-Laki</td>
-                        <td class="w-8">1400420009920</td>
-                        <td class="w-8">Sedang Mencari</td>
-                        <td class="w-8">+1 0099 666 888</td>
+                        <th class="w-8">{{ ($forms->currentPage() - 1) * $forms->perPage() + $key + 1 }}</th>
+                        <td class="w-8">{{ $form_ppdb->nama_lengkap }}</td>
+                        <td class="w-8">{{ $form_ppdb->jenis_kelamin }}</td>
+                        <td class="w-8">{{ $form_ppdb->nisn }}</td>
+                        <td class="w-8">{{ $form_ppdb->agama }}</td>
+                        <td class="w-8">{{ $form_ppdb->no_hp }}</td>
+                        <td class="w-8">
+                            @if($form_ppdb->tautan_dokumen)
+                            <a href="{{ asset('storage/' . $form_ppdb->tautan_dokumen) }}" target="_blank">
+                                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat Dokumen</button>
+                            </a>
+                            @else
+                            <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
+                            @endif
+                        </td>
+
                         <td class="w-8">
                             <details class="dropdown dropdown-right">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -65,154 +63,34 @@
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
                                 <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
                                     </li>
-                                    <!-- View -->
-
-                                    <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
                                     </li>
-                                    <!-- Delete -->
                                 </ul>
                             </details>
                         </td>
                     </tr>
-                    <!-- row 2 -->
-                    <tr class="hover">
-                        <th class="w-8">
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
-                        <th class="w-8">2</th>
-                        <td class="w-8">Rodygro</td>
-                        <td class="w-8">Laki-Laki</td>
-                        <td class="w-8">1400420009920</td>
-                        <td class="w-8">Sedang Mencari</td>
-                        <td class="w-8">+1 0099 666 888</td>
-                        <td class="w-8">
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                    <tr class="hover">
-                        <th class="w-8">
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
-                        <th class="w-8">3</th>
-                        <td class="w-8">Vinicius Jr</td>
-                        <td class="w-8">Laki-Laki</td>
-                        <td class="w-8">1400420009920</td>
-                        <td class="w-8">Sedang Mencari</td>
-                        <td class="w-8">+1 0099 666 888</td>
-                        <td class="w-8">
-                            <details class="dropdown dropdown-right">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-
+                    @endforeach
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
                         <th>No.</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <Th>Nisn</Th>
                         <Th>Agama</Th>
                         <Th>No Telepon</Th>
+                        <Th>Dokumen</Th>
                         <Th>Aksi</Th>
                     </tr>
                 </tfoot>
@@ -221,40 +99,217 @@
     </div>
 </div>
 
-<dialog id="my_modal_edit" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data</h3>
-        <form action="">
-
-        </form>
-    </div>
-</dialog>
-
-<dialog id="my_modal_view" class="modal">
+@foreach ($forms as $form_ppdb)
+<dialog id="my_modal_view_{{ $form_ppdb->id_pendaftaran }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Info Detail Data</h3>
-        <form action="">
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
 
-        </form>
+        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100">
+            <div class="collapse-title font-medium">
+                Data Siswa
+            </div>
+            <div class="collapse-content">
+                <table class="table w-full">
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2">Nama Lengkap</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->nama_lengkap }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">Jenis Kelamin</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->jenis_kelamin }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">NISN</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->nisn }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">Agama</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->agama }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">Tempat Lahir</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->tempat_lahir }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">Tanggal Lahir</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->tanggal_lahir }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">No HP</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->no_hp }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">Pilihan 1</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->pilihan_1 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2">Pilihan 2</td>
+                            <td class="px-4 py-2">{{ $form_ppdb->pilihan_2 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2">
+            <div class="collapse-title font-medium">
+                Data Sekolah
+            </div>
+            <div class="collapse-content">
+                <table class="w-full">
+                    <tr>
+                        <td class="border px-4 py-2">Nama Sekolah Asal</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->nama_sekolah_asal }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Alamat</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">No RT</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->no_rt }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">No RW</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->no_rw }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Kelurahan</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->kelurahan }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Kecamatan</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->kecamatan }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Kota</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->kota }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Provinsi</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->provinsi }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Kode Pos</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->kode_pos }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2">
+            <div class="collapse-title font-medium">
+                Data Wali
+            </div>
+            <div class="collapse-content">
+                <table class="w-full">
+                    <tr>
+                        <td class="border px-4 py-2">Nama Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->nama_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Agama Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->agama_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Alamat Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->alamat_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">No HP Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->no_hp_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Tempat Lahir Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->tempat_lahir_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Tanggal Lahir Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->tanggal_lahir_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Pekerjaan Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->pekerjaan_wali }}</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Penghasilan Wali</td>
+                        <td class="border px-4 py-2">{{ $form_ppdb->penghasilan_wali }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2">
+            <div class="collapse-title font-medium">
+                Dokumen Tambahan
+            </div>
+            <div class="collapse-content">
+                <table class="w-full">
+                    <tr>
+                        <td class="w-8">
+                            @if($form_ppdb->tautan_dokumen)
+                            <a href="{{ asset('storage/' . $form_ppdb->tautan_dokumen) }}" target="_blank">
+                                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat Dokumen</button>
+                            </a>
+                            @else
+                            <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
+                            @endif
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </dialog>
 
-<dialog id="my_modal_delete" class="modal">
+<dialog id="my_modal_delete_{{ $form_ppdb->id_pendaftaran }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
-        <form action="">
-
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <form action="{{ route('admin.pendaftaranPPDB.destroy', $form_ppdb->id_pendaftaran) }}" method="post">
+            @csrf
+            @method('DELETE')
+            Apakah Anda Yakin Ingin Menghapus Data Ini ?
+            <div class="flex justify-end items-end mt-20 gap-4">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <i class="fas fa-trash"></i>
+                    Hapus
+                </button>
+            </div>
         </form>
     </div>
 </dialog>
+@endforeach
 
+<div class="join flex justify-center my-5">
+    @if($forms->previousPageUrl())
+    <a href="{{ $forms->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+
+    <button class="join-item btn">Page {{ $forms->currentPage() }}</button>
+
+    @if($forms->nextPageUrl())
+    <a href="{{ $forms->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
 @endsection
