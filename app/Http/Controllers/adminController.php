@@ -172,13 +172,6 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminSosialMedia()
-    {
-        return view('admin/sosialMedia', [
-            "title" => "Admin Sosial Media"
-        ]);
-    }
-
     public function adminUmpanBalik()
     {
         return view('admin/umpanBalik', [

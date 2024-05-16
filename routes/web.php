@@ -14,6 +14,8 @@ use App\Http\Controllers\programKeahlianController;
 use App\Http\Controllers\direktoriGuruController;
 use App\Http\Controllers\formController;
 use App\Http\Controllers\informasippdbController;
+use App\Http\Controllers\MediaSosialController;
+use App\Http\Controllers\umpanBalikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +50,6 @@ Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPras
 Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
 Route::get('guest/prestasi-template', [webController::class, 'prestasiTemplate']);
 Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
-Route::get('guest/media-sosial', [webController::class, 'mediaSosial']);
 Route::get('guest/sejarah', [webController::class, 'sejarah']);
 // Public
 
@@ -71,7 +72,6 @@ Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB
 Route::get('admin/saranaPrasarana', [adminController::class, 'adminSaranaPrasarana']);
 Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
 Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
-Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
 Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
 // Admin
@@ -212,3 +212,19 @@ Route::get('admin/guru', [direktoriGuruController::class, 'adminDirektoriGuru'])
     // Destroy
     
 // CRUD Direktori Guru
+
+
+Route::get('admin/sosialMedia', [MediaSosialController::class, 'adminSosialMedia'])->name('sosialMedia.index');
+Route::get('guest/media-sosial', [MediaSosialController::class, 'guestSosialMedia'])->name('guest.media-sosial.index');
+Route::patch('/MediaSosialUpdate/{id}/{field}', [MediaSosialController::class, 'update'])->name('medsos.update');
+
+// CRUD Umpan Balik
+Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik'])->name('admin.umpanBalik.index');
+    // Store
+    Route::post('admin/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->name('UmpanBalik.store');
+    // Store
+
+    // Destroy
+    Route::delete('admin/umpanBalik/{id_pesan}', [umpanBalikController::class, 'destroyUmpanBalik'])->name('UmpanBalik.destroy');
+    // Destroy
+// CRUD Umpan Balik
