@@ -179,12 +179,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminUmpanBalik()
-    {
-        return view('admin/umpanBalik', [
-            "title" => "Admin Umpan Balik"
-        ]);
-    }
+    // public function adminUmpanBalik()
+    // {
+    //     return view('admin/umpanBalik', [
+    //         "title" => "Admin Umpan Balik"
+    //     ]);
+    // }
 
     public function adminPengaturan()
     {

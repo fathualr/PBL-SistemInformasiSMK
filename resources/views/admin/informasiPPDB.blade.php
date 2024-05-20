@@ -14,14 +14,16 @@
             </summary>
             <ul tabindex="0" class="dropdown-content menu p-2 z-50 shadow bg-base-100 rounded-box w-max absolute">
                 <li>
-                    <button class="btn btn-ghost flex justify-start items-center hover:animate-pulse" onclick="my_modal_add_informasi.showModal()">
+                    <button class="btn btn-ghost flex justify-start items-center hover:animate-pulse"
+                        onclick="my_modal_add_informasi.showModal()">
                         <i class="fa-solid fa-plus"></i>
                         Tambah Informasi PPDB
                     </button>
                 </li>
 
                 <li>
-                    <button class="btn btn-ghost flex justify-start items-center hover:animate-pulse" onclick="my_modal_add_alur.showModal()">
+                    <button class="btn btn-ghost flex justify-start items-center hover:animate-pulse"
+                        onclick="my_modal_add_alur.showModal()">
                         <i class="fas fa-plus"></i>
                         Tambah Alur PPDB
                     </button>
@@ -52,23 +54,28 @@
                                         <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                         <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
                                         <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                        <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                                        <i
+                                            class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                     </summary>
-                                    <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                    <ul tabindex="0"
+                                        class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                         <li>
-                                            <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit_informasi_{{ $informasi_ppdb->id_ppdb }}'].showModal()">
+                                            <button class="btn btn-ghost w-full hover:animate-pulse"
+                                                onclick="window['my_modal_edit_informasi_{{ $informasi_ppdb->id_ppdb }}'].showModal()">
                                                 <i class="fas fa-pen-to-square"></i>
                                                 Edit
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view_informasi_{{ $informasi_ppdb->id_ppdb }}'].showModal()">
+                                            <button class="btn btn-ghost w-full hover:animate-pulse"
+                                                onclick="window['my_modal_view_informasi_{{ $informasi_ppdb->id_ppdb }}'].showModal()">
                                                 <i class="fas fa-circle-info"></i>
                                                 Detail
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_informasi_{{ $informasi_ppdb->id_ppdb }}'].showModal()">
+                                            <button class="btn btn-ghost w-full hover:animate-pulse"
+                                                onclick="window['my_modal_delete_informasi_{{ $informasi_ppdb->id_ppdb }}'].showModal()">
                                                 <i class="fas fa-trash"></i>
                                                 Hapus
                                             </button>
@@ -106,13 +113,17 @@
 
             <form action="{{ route('admin.informasiPPDB.store') }}" method="post">
                 @csrf
-                <textarea name="deskripsi_ppdb" class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2" placeholder="Deskripsi Informasi PPDB"></textarea>
+                <textarea name="deskripsi_ppdb"
+                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2"
+                    placeholder="Deskripsi Informasi PPDB"></textarea>
                 <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <button type="reset"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                         <i class="fas fa-times"></i>
                         Reset
                     </button>
-                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class=" fas fa-plus"></i>
                         Tambah
                     </button>
@@ -122,7 +133,8 @@
     </dialog>
 
     @foreach($informasi as $key => $informasi_ppdb)
-    <dialog id="my_modal_edit_informasi_{{ $informasi_ppdb->id_ppdb }}" class="modal" onclick="if (event.target === this) this.close()">
+    <dialog id="my_modal_edit_informasi_{{ $informasi_ppdb->id_ppdb }}" class="modal"
+        onclick="if (event.target === this) this.close()">
         <div class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -136,9 +148,12 @@
             <form action="{{ route('admin.informasiPPDB.update', $informasi_ppdb->id_ppdb) }}" method="post">
                 @csrf
                 @method('PATCH')
-                <textarea name="deskripsi_ppdb" class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2" placeholder="Deskripsi Informasi PPDB">{{ $informasi_ppdb->deskripsi_ppdb }}</textarea>
+                <textarea name="deskripsi_ppdb"
+                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2"
+                    placeholder="Deskripsi Informasi PPDB">{{ $informasi_ppdb->deskripsi_ppdb }}</textarea>
                 <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class="fas fa-pen-to-square"></i>
                         Edit
                     </button>
@@ -147,7 +162,8 @@
         </div>
     </dialog>
 
-    <dialog id="my_modal_view_informasi_{{ $informasi_ppdb->id_ppdb }}" class="modal" onclick="if (event.target === this) this.close()">
+    <dialog id="my_modal_view_informasi_{{ $informasi_ppdb->id_ppdb }}" class="modal"
+        onclick="if (event.target === this) this.close()">
         <div class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -159,12 +175,15 @@
                 <div class="divider"></div>
             </div>
             <form action="">
-                <textarea name="deskripsi_ppdb" class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2" placeholder="Deskripsi Informasi PPDB" readonly>{{ $informasi_ppdb->deskripsi_ppdb }}</textarea>
+                <textarea name="deskripsi_ppdb"
+                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2"
+                    placeholder="Deskripsi Informasi PPDB" readonly>{{ $informasi_ppdb->deskripsi_ppdb }}</textarea>
             </form>
         </div>
     </dialog>
 
-    <dialog id="my_modal_delete_informasi_{{ $informasi_ppdb->id_ppdb }}" class="modal" onclick="if (event.target === this) this.close()">
+    <dialog id="my_modal_delete_informasi_{{ $informasi_ppdb->id_ppdb }}" class="modal"
+        onclick="if (event.target === this) this.close()">
         <div class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -181,7 +200,8 @@
                 Apakah Anda Yakin Ingin Menghapus Data Ini ?
 
                 <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <button type="submit"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                         <i class="fas fa-trash"></i>
                         Hapus
                     </button>
@@ -222,23 +242,28 @@
                                         <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                         <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
                                         <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                        <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                                        <i
+                                            class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                     </summary>
-                                    <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                    <ul tabindex="0"
+                                        class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                         <li>
-                                            <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit_alur_{{ $alur_ppdb->id_alur }}'].showModal()">
+                                            <button class="btn btn-ghost w-full hover:animate-pulse"
+                                                onclick="window['my_modal_edit_alur_{{ $alur_ppdb->id_alur }}'].showModal()">
                                                 <i class="fas fa-pen-to-square"></i>
                                                 Edit
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view_alur_{{ $alur_ppdb->id_alur }}'].showModal()">
+                                            <button class="btn btn-ghost w-full hover:animate-pulse"
+                                                onclick="window['my_modal_view_alur_{{ $alur_ppdb->id_alur }}'].showModal()">
                                                 <i class="fas fa-circle-info"></i>
                                                 Detail
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_alur_{{ $alur_ppdb->id_alur }}'].showModal()">
+                                            <button class="btn btn-ghost w-full hover:animate-pulse"
+                                                onclick="window['my_modal_delete_alur_{{ $alur_ppdb->id_alur }}'].showModal()">
                                                 <i class="fas fa-trash"></i>
                                                 Hapus
                                             </button>
@@ -280,23 +305,30 @@
             <form action="{{ route('admin.alurPPDB.store') }}" method="post">
                 @csrf
 
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                     <input type="text" name="judul_alur" class="grow bg-transparent py-2" placeholder="Judul Alur" />
                 </label>
 
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                    <input type="date" name="tanggal_alur" class="grow bg-transparent py-2" placeholder="Tanggal Alur" />
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="date" name="tanggal_alur" class="grow bg-transparent py-2"
+                        placeholder="Tanggal Alur" />
                 </label>
 
-                <textarea name="deskripsi_alur" class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2" placeholder="Deskripsi Alur"></textarea>
+                <textarea name="deskripsi_alur"
+                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2"
+                    placeholder="Deskripsi Alur"></textarea>
 
                 <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <button type="reset"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                         <i class="fas fa-times"></i>
                         Reset
                     </button>
 
-                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class=" fas fa-plus"></i>
                         Tambah
                     </button>
@@ -306,7 +338,8 @@
     </dialog>
 
     @foreach($alurs as $key => $alur_ppdb)
-    <dialog id="my_modal_edit_alur_{{ $alur_ppdb->id_alur }}" class="modal" onclick="if (event.target === this) this.close()">
+    <dialog id="my_modal_edit_alur_{{ $alur_ppdb->id_alur }}" class="modal"
+        onclick="if (event.target === this) this.close()">
         <div class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -316,18 +349,24 @@
                 @csrf
                 @method('PATCH')
 
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                    <input type="text" name="judul_alur" class="grow bg-transparent py-2" value="{{ $alur_ppdb->judul_alur }}" />
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="text" name="judul_alur" class="grow bg-transparent py-2"
+                        value="{{ $alur_ppdb->judul_alur }}" />
                 </label>
 
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                    <input type="date" name="tanggal_alur" class="grow bg-transparent py-2" value="{{ $alur_ppdb->tanggal_alur }}" />
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="date" name="tanggal_alur" class="grow bg-transparent py-2"
+                        value="{{ $alur_ppdb->tanggal_alur }}" />
                 </label>
 
-                <textarea name="deskripsi_alur" class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2">{{ $alur_ppdb->deskripsi_alur }}</textarea>
+                <textarea name="deskripsi_alur"
+                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2">{{ $alur_ppdb->deskripsi_alur }}</textarea>
 
                 <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class="fas fa-pen-to-square"></i>
                         Edit
                     </button>
@@ -336,27 +375,35 @@
         </div>
     </dialog>
 
-    <dialog id="my_modal_view_alur_{{ $alur_ppdb->id_alur }}" class="modal" onclick="if (event.target === this) this.close()">
+    <dialog id="my_modal_view_alur_{{ $alur_ppdb->id_alur }}" class="modal"
+        onclick="if (event.target === this) this.close()">
         <div class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
             <h3 class="font-bold text-lg">Info Detail Data</h3>
             <form action="">
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                    <input type="text" name="judul_alur" class="grow bg-transparent py-2" value="{{ $alur_ppdb->judul_alur }}" readonly />
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="text" name="judul_alur" class="grow bg-transparent py-2"
+                        value="{{ $alur_ppdb->judul_alur }}" readonly />
                 </label>
 
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                    <input type="date" name="tanggal_alur" class="grow bg-transparent py-2" value="{{ $alur_ppdb->tanggal_alur }}" readonly />
+                <label
+                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="date" name="tanggal_alur" class="grow bg-transparent py-2"
+                        value="{{ $alur_ppdb->tanggal_alur }}" readonly />
                 </label>
 
-                <textarea name="deskripsi_alur" class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2" readonly>{{ $alur_ppdb->deskripsi_alur }}</textarea>
+                <textarea name="deskripsi_alur"
+                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow bg-transparent py-2"
+                    readonly>{{ $alur_ppdb->deskripsi_alur }}</textarea>
             </form>
         </div>
     </dialog>
 
-    <dialog id="my_modal_delete_alur_{{ $alur_ppdb->id_alur }}" class="modal" onclick="if (event.target === this) this.close()">
+    <dialog id="my_modal_delete_alur_{{ $alur_ppdb->id_alur }}" class="modal"
+        onclick="if (event.target === this) this.close()">
         <div class="modal-box">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -368,7 +415,8 @@
                 Apakah Anda Yakin Ingin Menghapus Data Ini ?
 
                 <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <button type="submit"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                         <i class="fas fa-trash"></i>
                         Hapus
                     </button>

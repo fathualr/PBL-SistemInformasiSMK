@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="card w-full h-max bg-slate-200 shadow-xl mx-auto">
+<div class="card w-full h-max bg-slate-200 shadow-xl">
     <div class="card-body">
         <div class="grid grid-cols-4">
             <!-- First Card -->

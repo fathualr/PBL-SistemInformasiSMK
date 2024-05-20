@@ -388,22 +388,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         <!-- Navbar -->
         <script>
         // Sidebar
-        document.getElementById("toggleButton").addEventListener("click", function() {
-            document.querySelector(".bg-gray-800").classList.toggle("w-16");
-            document.querySelector(".bg-gray-800").classList.toggle("w-32");
-        });
-
-        document.getElementById("toggleButton").addEventListener("click", function() {
+        document.addEventListener('DOMContentLoaded', function() {
             var sidebar = document.querySelector(".bg-elm");
             var icon = document.getElementById("toggleIcon");
             var normalTitle = document.getElementById("normalTitle");
             var menu = document.getElementById("menu");
             var dropdown = document.querySelectorAll("#dropdown");
             var navTitles = document.querySelectorAll("#navTitle");
-            sidebar.classList.toggle("w-20");
-            sidebar.classList.toggle("w-72");
 
-            if (sidebar.classList.contains("w-72")) {
+            // Function to open sidebar
+            function openSidebar() {
+                sidebar.classList.add("w-72");
+                sidebar.classList.remove("w-20");
                 document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
                 document.getElementById("toggleButton").classList.add("left-[16.5rem]");
                 icon.classList.add("rotate-180");
@@ -419,7 +415,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 navTitles.forEach(function(navTitle) {
                     navTitle.classList.remove("hidden");
                 });
-            } else {
+            }
+
+            // Function to close sidebar
+            function closeSidebar() {
+                sidebar.classList.remove("w-72");
+                sidebar.classList.add("w-20");
                 document.getElementById("toggleButton").classList.add("left-[0.85rem]");
                 document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
                 icon.classList.remove("rotate-180");
@@ -436,8 +437,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                     navTitle.classList.add("hidden");
                 });
             }
+
+            // Initial state: open sidebar
+            openSidebar();
+
+            document.getElementById("toggleButton").addEventListener("click", function() {
+                if (sidebar.classList.contains("w-72")) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
         });
         // Sidebar
+
 
         // Action Button
         const buttons = document.querySelectorAll('.button');
@@ -530,23 +543,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 const fileInputWrapper = document.createElement('div');
                 fileInputWrapper.classList.add('flex', 'gap-1');
 
+                const newLabel = document.createElement('label');
+                newLabel.classList.add('input', 'bg-transparent', 'border-2', 'border-elm', 'flex',
+                    'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+
                 const newFileInput = document.createElement('input');
                 newFileInput.setAttribute('type', 'file');
-                newFileInput.classList.add('file-input', 'file-input-bordered', 'file-input-success',
-                    'w-full');
+                newFileInput.classList.add('grow', 'file-input', 'file-input-success',
+                    'border-none', 'bg-transparent', 'py-2');
                 newFileInput.setAttribute('placeholder', 'Pilih gambar berita');
                 newFileInput.setAttribute('name', `gambar_berita[]`);
 
                 const btnRemove = document.createElement('button');
                 btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
                     'btn-remove');
-                btnRemove.innerHTML =
-                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
+                btnRemove.innerHTML = `<i class='fas fa-times'></i>`;
                 btnRemove.addEventListener('click', function() {
                     fileInputWrapper.remove();
                 });
 
-                fileInputWrapper.appendChild(newFileInput);
+                newLabel.appendChild(newFileInput);
+                fileInputWrapper.appendChild(newLabel);
                 fileInputWrapper.appendChild(btnRemove);
                 fileInputsContainer.appendChild(fileInputWrapper);
 
@@ -579,6 +596,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 textInputCount++;
             });
         });
+
+        // Ekstrakurikuler
+        document.addEventListener("DOMContentLoaded", function() {
+            const fileInputsEkskul = document.getElementById('fileInputsEkskul');
+            const btnAddFileEkskul = document.getElementById('btnAddFileEkskul');
+            let fileInputEkskulCount = 1;
+
+            btnAddFileEkskul.addEventListener('click', function() {
+                const fileInputEkskulWrapper = document.createElement('div');
+                fileInputEkskulWrapper.classList.add('flex', 'gap-1');
+
+                const newLabelEkskul = document.createElement('label');
+                newLabelEkskul.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
+                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+
+                const newFileInputEkskul = document.createElement('input');
+                newFileInputEkskul.setAttribute('type', 'file');
+                newFileInputEkskul.classList.add('grow', 'file-input', 'file-input-success',
+                    'border-none', 'bg-transparent', 'py-2');
+                newFileInputEkskul.setAttribute('placeholder', 'Pilih gambar berita');
+                newFileInputEkskul.setAttribute('name', `gambar_ekstrakurikuler[]`);
+
+                const btnRemoveEkskul = document.createElement('button');
+                btnRemoveEkskul.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                    'btn-remove');
+                btnRemoveEkskul.innerHTML = `<i class='fas fa-times'></i>`;
+                btnRemoveEkskul.addEventListener('click', function() {
+                    fileInputEkskulWrapper.remove();
+                });
+
+                newLabelEkskul.appendChild(newFileInputEkskul);
+                fileInputEkskulWrapper.appendChild(newLabelEkskul);
+                fileInputEkskulWrapper.appendChild(btnRemoveEkskul);
+                fileInputsEkskul.appendChild(fileInputEkskulWrapper);
+
+                fileInputEkskulCount++;
+            });
+        });
+        // Ekstrakurikuler
+
         // Duplicate input file & text
         </script>
 </body>

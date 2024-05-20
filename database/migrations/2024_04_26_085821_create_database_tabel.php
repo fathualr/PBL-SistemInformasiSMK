@@ -310,7 +310,6 @@ return new class extends Migration
             $table->id('id_pesan');
             $table->string('nama_penulis')->notNullable();
             $table->string('email_penulis')->notNullable();
-            $table->string('judul_pesan')->notNullable();
             $table->text('deskripsi_pesan')->notNullable();
             $table->timestamp('tanggal_unggah_pesan')->useCurrent();
             $table->timestamps();

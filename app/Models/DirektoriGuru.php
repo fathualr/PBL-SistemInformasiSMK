@@ -24,6 +24,11 @@ class DirektoriGuru extends Model
     ];
     public function programKeahlian()
     {
-        return $this->belongsTo(ProgramKeahlian::class);
+        return $this->belongsTo(ProgramKeahlian::class, 'id_program');
+    }
+
+        public function ekstrakurikuler()
+    {
+        return $this->belongsTo(Ekstrakulikuler::class, 'id_guru');
     }
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\formController;
 use App\Http\Controllers\informasippdbController;
 use App\Http\Controllers\ekstrakulikulerController;
 use App\Http\Controllers\sejarahSekolahController;
+use App\Http\Controllers\umpanBalikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPras
 Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
 Route::get('guest/prestasi-template', [webController::class, 'prestasiTemplate']);
 Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
+Route::get('guest/ekstrakulikuler-template/{id_ekstrakurikuler}', [webController::class, 'ekstrakulikulerTemplate']);
 Route::get('guest/media-sosial', [webController::class, 'mediaSosial']);
 Route::get('guest/sejarah', [webController::class, 'sejarah']);
 // Public
@@ -77,7 +79,7 @@ Route::get('admin/saranaPrasarana', [adminController::class, 'adminSaranaPrasara
 Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
 // Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
-Route::get('admin/umpanBalik', [adminController::class, 'adminUmpanBalik']);
+// Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
 // Admin
 
@@ -270,11 +272,13 @@ Route::get('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'adminEks
     // Store
 
     // Update
-    Route::patch('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakulikuler'])->name('Ekstrakulikuler.update');
+    Route::patch('admin/ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakurikuler'])->name('ekstrakurikuler.update');
+    Route::patch('/gambarEkskulUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateGambarEkstrakurikuler'])->name('gambarEkskul.update');
     // Update
 
     // Destroy
     Route::delete('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
+    Route::delete('/gambarEkskulDestroy/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyGambarEkstrakurikuler'])->name('gambarEkskul.destroy');
     // Destroy
 // CRUD Ekstrakulikuler
 
@@ -294,3 +298,15 @@ Route::get('admin/sejarah', [sejarahSekolahController::class, 'adminSejarah'])->
     Route::delete('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'destroySejarahSekolah'])->name('SejarahSekolah.destroy');
     //Destroy
 // CRUD Sejarah Sekolah
+
+// CRUD Umpan Balik
+Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik'])->name('admin.umpanBalik.index');
+Route::get('guest/media-sosial', [webController::class, 'mediaSosial'])->name('guest.umpanBalik.index');
+    // Store
+    Route::post('admin/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->name('UmpanBalik.store');
+    // Store
+
+    // Destroy
+    Route::delete('admin/umpanBalik/{id_pesan}', [umpanBalikController::class, 'destroyUmpanBalik'])->name('UmpanBalik.destroy');
+    // Destroy
+// CRUD Umpan Balik

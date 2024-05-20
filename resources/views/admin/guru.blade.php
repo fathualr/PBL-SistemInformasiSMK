@@ -257,7 +257,8 @@
                                     name="nik_guru" value="{{ $guru->nik_guru }}" readonly />
                             </label>
 
-                            <select class="select border-elm border-2 w-full mb-5" name="id_program" disabled>
+                            <select class="pointer-events-none select border-elm border-2 w-full mb-5"
+                                name="id_program">
                                 <option disabled selected>Pilih Program Keahlian</option>
                                 @foreach($programKeahlian as $index => $program)
                                 <option value="{{ $program->id_program }}" @if($program->id_program ===
@@ -286,7 +287,8 @@
                                     name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" readonly />
                             </label>
 
-                            <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin" disabled>
+                            <select class="pointer-events-none select border-elm border-2 w-full mb-5"
+                                name="jenis_kelamin">
                                 <option disabled>Pilih Jenis Kelamin</option>
                                 <option value="Laki - Laki" @if($guru->id_guru ===
                                     $guru->jenis_kelamin) selected @endif>Laki - Laki</option>
