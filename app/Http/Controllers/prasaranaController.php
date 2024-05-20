@@ -34,7 +34,6 @@ class PrasaranaController extends Controller
             'status_prasarana' => 'required|in:Aktif,Tidak Aktif',
         ]);
 
-
         Prasarana::create([
             'nama_prasarana' => $request->nama_prasarana,
             'jenis_prasarana' => $request->jenis_prasarana,

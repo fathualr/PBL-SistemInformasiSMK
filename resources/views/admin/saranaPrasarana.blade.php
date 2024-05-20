@@ -96,7 +96,7 @@
             <div class="divider"></div>
         </div>
 
-        <form action="{{ route('admin.SaranaPrasarana.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.SaranaPrasarana.store') }}" method="POST">
             @csrf
             <div class="space-y-5">
                 <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
@@ -121,10 +121,6 @@
 
                 <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
                     <input type="date" name="tahun_dibangun" class="grow bg-transparent py-2" required />
-                </label>
-
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
-                    <input type="file" name="gambar_prasarana" class="grow file-input file-input-success border-none bg-transparent py-2" accept="image/*" placeholder="Logo" />
                 </label>
 
                 <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
@@ -168,7 +164,7 @@
             <div class="divider divider-success"></div>
             <div class="divider"></div>
         </div>
-        <form method="POST" action="{{ route('admin.SaranaPrasarana.update', $prasarana->id_prasarana) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.SaranaPrasarana.update', $prasarana->id_prasarana) }}">
             @csrf
             @method('PATCH')
             <div class="space-y-5">
@@ -194,10 +190,6 @@
 
                 <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
                     <input type="date" name="tahun_dibangun" class="grow bg-transparent py-2" value="{{ $prasarana->tahun_dibangun }}" required />
-                </label>
-
-                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
-                    <input type="file" name="gambar_prasarana" class="grow file-input file-input-success border-none bg-transparent py-2" accept="image/*" placeholder="Logo" />
                 </label>
 
                 <label class="input bg-transparent border-2 border-elm flex items-center gap-2 focus-within:outline-none">
@@ -339,3 +331,4 @@
     @endif
 </div>
 @endsection
+

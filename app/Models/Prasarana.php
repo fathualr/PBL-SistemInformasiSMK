@@ -18,7 +18,6 @@ class Prasarana extends Model
         'luas',
         'kapasitas',
         'tahun_dibangun',
-        'gambar_prasarana',
         'kondisi',
         'status_prasarana',
     ];
