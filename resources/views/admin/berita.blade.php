@@ -213,7 +213,7 @@
 
 <!-- Modal CREATE -->
 <dialog id="my_modal_add" class="modal">
-    <div class="modal-box">
+    <div class="modal-box max-w-5xl">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
@@ -260,7 +260,7 @@
                 <div class="label">
                     <span class="label-text">Isi Berita:</span>
                 </div>
-                <textarea class="textarea textarea-success w-full" placeholder="Isi berita" name="isi_berita"></textarea>
+                <textarea class="" id="editor" placeholder="Isi berita" name="isi_berita"></textarea>
                 @error('isi_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>

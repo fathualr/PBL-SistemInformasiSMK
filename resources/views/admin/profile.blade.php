@@ -60,7 +60,7 @@
                     <span class="label-text font-bold">Nama Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('namaSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nama_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -72,10 +72,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="nama_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -94,7 +90,7 @@
                     <span class="label-text font-bold">Logo Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('logoSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'logo_sekolah']) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -106,10 +102,6 @@
                             <input type="file" class="file-input file-input-bordered w-full" name="logo_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -128,7 +120,7 @@
                     <span class="label-text font-bold">Alamat Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('alamatSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'alamat_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -140,10 +132,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="alamat_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -162,7 +150,7 @@
                     <span class="label-text font-bold">No Telp Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('noTelpSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_telepon_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -174,10 +162,6 @@
                             <input type="number" placeholder="Type here" class="input input-bordered w-full" name="no_telepon_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -196,7 +180,7 @@
                     <span class="label-text font-bold">Email Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('emailSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'email_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -208,10 +192,6 @@
                             <input type="email" placeholder="Type here" class="input input-bordered w-full" name="email_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -230,7 +210,7 @@
                     <span class="label-text font-bold">Nama Kepala Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('namaKepalaSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nama_kepala_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -242,10 +222,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="nama_kepala_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -264,7 +240,7 @@
                     <span class="label-text font-bold">Teks Sejarah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('sejarah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sejarah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -276,10 +252,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="sejarah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -298,7 +270,7 @@
                     <span class="label-text font-bold">Tautan Video Sejarah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('tautanVideoSejarah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tautan_video_sejarah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -310,10 +282,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="tautan_video_sejarah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -332,7 +300,7 @@
                     <span class="label-text font-bold">Teks Sambutan: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('sambutan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sambutan']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -344,10 +312,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="sambutan" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -366,7 +330,7 @@
                     <span class="label-text font-bold">Tautan Video Sambutan: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('tautanVideoSambutan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tautan_video_sambutan']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -378,10 +342,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="tautan_video_sambutan" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -400,7 +360,7 @@
                     <span class="label-text font-bold">Teks Visi: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('visi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'visi']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -412,10 +372,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="visi" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -434,7 +390,7 @@
                     <span class="label-text font-bold">Teks Misi: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('misi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'misi']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -445,10 +401,6 @@
                             @endif<input type="text" placeholder="Type here" class="input input-bordered w-full" name="misi" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -467,7 +419,7 @@
                     <span class="label-text font-bold">NIS: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('nis.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nis']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -479,10 +431,6 @@
                             <input type="number" placeholder="Type here" class="input input-bordered w-full" name="nis" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -501,7 +449,7 @@
                     <span class="label-text font-bold">Status Akreditasi Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('statusAkreditasiSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_akreditasi_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -519,10 +467,6 @@
                             </select>
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -541,7 +485,7 @@
                     <span class="label-text font-bold">Struktur Organisasi Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('strukturOrganisasiSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'struktur_organisasi_sekolah']) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')                        
                         <label class="form-control w-full gap-2">
@@ -553,10 +497,6 @@
                             <input type="file" class="file-input file-input-bordered w-full" name="struktur_organisasi_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -575,7 +515,7 @@
                     <span class="label-text font-bold">Status Kepemilikan Tanah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('statusKepemilikanTanah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_kepemilikan_tanah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -587,10 +527,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="status_kepemilikan_tanah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -609,7 +545,7 @@
                     <span class="label-text font-bold">Tahun Didirikan: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('tahunDidirikan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tahun_didirikan']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -621,10 +557,6 @@
                             <input type="year" placeholder="Type here" class="input input-bordered w-full" name="tahun_didirikan" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -643,7 +575,7 @@
                     <span class="label-text font-bold">Tahun Operasional: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('tahunOperasional.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tahun_operasional']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -655,10 +587,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="tahun_operasional" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -677,7 +605,7 @@
                     <span class="label-text font-bold">Nomor Statistik Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('noStatistikSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_statistik_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -689,10 +617,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="no_statistik_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -711,7 +635,7 @@
                     <span class="label-text font-bold">Fasilitas Lainnya: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('fasilitasLainnya.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'fasilitas_lainnya']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -723,10 +647,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="fasilitas_lainnya" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -745,7 +665,7 @@
                     <span class="label-text font-bold">Luas Tanah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('luasTanah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'luas_tanah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -757,10 +677,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="luas_tanah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -779,7 +695,7 @@
                     <span class="label-text font-bold">Nomor Sertifikat: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('noSertifikat.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_sertifikat']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -791,10 +707,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="no_sertifikat" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -813,7 +725,7 @@
                     <span class="label-text font-bold">Nomor Pendirian Sekolah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('noPendirianSekolah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_pendirian_sekolah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -825,10 +737,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="no_pendirian_sekolah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -847,7 +755,7 @@
                     <span class="label-text font-bold">Status Kepemilikan Bangunan: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('statusKepemilikanBangunan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_kepemilikan_bangunan']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -859,10 +767,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="status_kepemilikan_bangunan" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -881,7 +785,7 @@
                     <span class="label-text font-bold">Sisa Lahan Seluruhnya: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('sisaLahanSeluruhnya.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sisa_lahan_seluruhnya']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -893,10 +797,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="sisa_lahan_seluruhnya" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -915,7 +815,7 @@
                     <span class="label-text font-bold">Luas Lahan Keseluruhan: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('luasLahanKeseluruhan.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'luas_lahan_keseluruhan']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -927,10 +827,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="luas_lahan_keseluruhan" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -943,13 +839,13 @@
         
         <!-- Teks Profile -->
         <div class="mt-5 px-16">
-            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+            <div class="collapse collapse-arrow bg-base-200" id="teks_profile">
                 <input type="checkbox" /> 
                 <div class="collapse-title text-xl font-medium">
                     <span class="label-text font-bold">Teks Profil: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('teksProfile.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_profile']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -961,10 +857,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_profile" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -977,13 +869,13 @@
 
         <!-- Teks Fasilitas -->
         <div class="mt-5 px-16">
-            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+            <div class="collapse collapse-arrow bg-base-200" id="teks_fasilitas">
                 <input type="checkbox" /> 
                 <div class="collapse-title text-xl font-medium">
                     <span class="label-text font-bold">Teks Fasilitas: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('teksFasilitas.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_fasilitas']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -995,10 +887,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_fasilitas" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -1011,13 +899,13 @@
 
         <!-- Teks Lokasi -->
         <div class="mt-5 px-16">
-            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+            <div class="collapse collapse-arrow bg-base-200" id="teks_lokasi">
                 <input type="checkbox" /> 
                 <div class="collapse-title text-xl font-medium">
                     <span class="label-text font-bold">Teks Lokasi: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('teksLokasi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_lokasi']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -1029,10 +917,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_lokasi" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -1045,13 +929,13 @@
 
         <!-- Teks Sejarah -->
         <div class="mt-5 px-16">
-            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+            <div class="collapse collapse-arrow bg-base-200" id="teks_sejarah">
                 <input type="checkbox" /> 
                 <div class="collapse-title text-xl font-medium">
                     <span class="label-text font-bold">Teks Sejarah: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('teksSejarah.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_sejarah']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -1063,10 +947,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_sejarah" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan
@@ -1079,13 +959,13 @@
 
         <!-- Teks Prestasi -->
         <div class="mt-5 px-16">
-            <div class="collapse collapse-arrow bg-base-200" id="luas_lahan_seluruhnya">
+            <div class="collapse collapse-arrow bg-base-200" id="teks_prestasi">
                 <input type="checkbox" /> 
                 <div class="collapse-title text-xl font-medium">
                     <span class="label-text font-bold">Teks Prestasi: </span>
                 </div>
                 <div class="collapse-content"> 
-                    <form action="{{ route('teksPrestasi.update', $konten->id_sekolah) }}" method="POST" class="grid gap-2">
+                    <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_prestasi']) }}" method="POST" class="grid gap-2">
                         @csrf
                         @method('PATCH')
                         <label class="form-control w-full gap-2">
@@ -1097,10 +977,6 @@
                             <input type="text" placeholder="Type here" class="input input-bordered w-full" name="teks_prestasi" />
                         </label>
                         <div class="flex justify-end items-endgap-4 gap-2">
-                            <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                <i class="fas fa-times"></i>
-                                Reset
-                            </button>
                             <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                 <i class=" fas fa-plus"></i>
                                 Simpan

@@ -675,6 +675,14 @@
         // Ekstrakurikuler
 
         // Duplicate input file & text
+            
+            //Rich Text Editor (CKEDITOR5)
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            //Rich Text Editor (CKEDITOR5)
         </script>
 </body>
 

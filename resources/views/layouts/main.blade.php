@@ -220,21 +220,19 @@
     <!-- Carousel -->
     <div class="flex justify-center items-center">
         <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
-            {{-- @foreach($carousels as $key => $crs)
-            <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition
-            {{ $key !== 0 ? 'hidden' : '' }}">
-            <img src="{{ asset('storage/'. $crs->image) }}"
-                class="w-full transition-transform duration-500 transform" />
-            @if ($key === 0)
-            <div class="absolute inset-0 flex justify-center items-center">
-                <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
-                    <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
-                </div>
+            @foreach($carousels as $key => $crs)
+            <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition {{ $key !== 0 ? 'hidden' : '' }}">
+                <img src="{{ asset('storage/'. $crs->image) }}" class="w-full transition-transform duration-500 transform" />
+                @if ($key === 0)
+                    <div class="absolute inset-0 flex justify-center items-center">
+                        <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
+                            <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
+                        </div>
+                    </div>
+                @endif
             </div>
-            @endif
+            @endforeach
         </div>
-        @endforeach --}}
-    </div>
     </div>
     <!-- Carousel -->
 
