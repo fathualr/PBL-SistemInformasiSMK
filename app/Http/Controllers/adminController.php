@@ -137,13 +137,6 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminSaranaPrasarana()
-    {
-        return view('admin/saranaPrasarana', [
-            "title" => "Admin Sarana & Prasarana"
-        ]);
-    }
-
     public function adminPrestasi()
     {
         return view('admin/prestasi', [

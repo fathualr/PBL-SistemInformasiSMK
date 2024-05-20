@@ -16,6 +16,8 @@ use App\Http\Controllers\formController;
 use App\Http\Controllers\informasippdbController;
 use App\Http\Controllers\ekstrakulikulerController;
 use App\Http\Controllers\sejarahSekolahController;
+use App\Http\Controllers\prasaranaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +47,6 @@ Route::get('guest/galeri-foto', [webController::class, 'foto']);
 Route::get('guest/galeri-video', [webController::class, 'video']);
 Route::get('guest/galeri-template/{id_album}', [webController::class, 'galeriTemplate']);
 Route::get('guest/galeri-template-video/{id_album}', [webController::class, 'galeriTemplateVideo']);
-Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
-Route::get('guest/sarana-prasarana-template', [webController::class, 'saranaPrasaranaTemplate']);
 Route::get('guest/prestasi-siswa', [webController::class, 'prestasi']);
 Route::get('guest/prestasi-template', [webController::class, 'prestasiTemplate']);
 Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
@@ -69,7 +69,6 @@ Route::get('admin/album', [adminController::class, 'adminAlbum'])->name('admin.a
 Route::get('admin/foto', [adminController::class, 'adminFoto'])->name('admin.foto.index');
 Route::get('admin/video', [adminController::class, 'adminVideo'])->name('admin.video.index');
 Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB']);
-Route::get('admin/saranaPrasarana', [adminController::class, 'adminSaranaPrasarana']);
 Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
 // Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 Route::get('admin/sosialMedia', [adminController::class, 'adminSosialMedia']);
@@ -245,3 +244,16 @@ Route::patch('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'up
 
 //Destroy
 Route::delete('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'destroySejarahSekolah'])->name('SejarahSekolah.destroy');
+
+
+Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
+
+Route::get('admin/saranaPrasarana', [prasaranaController::class, 'adminSaranaPrasarana'])->name('admin.SaranaPrasarana.index');
+Route::post('admin/saranaPrasarana', [prasaranaController::class, 'storeSaranaPrasarana'])->name('admin.SaranaPrasarana.store');
+Route::patch('admin/saranaPrasarana/{id_prasarana}', [prasaranaController::class, 'updateSaranaPrasarana'])->name('admin.SaranaPrasarana.update');
+Route::delete('admin/saranaPrasarana/{id_prasarana}', [prasaranaController::class, 'destroySaranaPrasarana'])->name('admin.SaranaPrasarana.destroy');
+
+Route::get('admin/fotoPrasarana', [prasaranaController::class, 'adminFotoPrasarana'])->name('admin.FotoPrasarana.index');
+Route::post('admin/fotoPrasarana', [prasaranaController::class, 'storeFotoPrasarana'])->name('admin.FotoPrasarana.store');
+Route::patch('admin/fotoPrasarana/{id_foto_prasarana}', [prasaranaController::class, 'updateFotoPrasarana'])->name('admin.FotoPrasarana.update');
+Route::delete('admin/fotoPrasarana/{id_foto_prasarana}', [prasaranaController::class, 'destroyFotoPrasarana'])->name('admin.FotoPrasarana.destroy');

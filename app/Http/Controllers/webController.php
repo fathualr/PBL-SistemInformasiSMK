@@ -12,6 +12,8 @@ use App\Models\PeluangKerja;
 use App\Models\InformasiPPDB;
 use App\Models\AlurPPDB;
 use App\Models\DirektoriGuru;
+use App\Models\Prasarana;
+use App\Models\FotoPrasarana;
 
 
 class webController extends Controller
@@ -149,10 +151,12 @@ class webController extends Controller
 
     public function saranaPrasarana()
     {
-        return view('guest/sarana-prasarana', [
-            "title" => "Sarana & Prasarana"
+        $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
+        return view('guest.sarana-prasarana', [
+            'title' => 'Sarana & Prasarana',
+            'prasaranas' => $prasaranas,
         ]);
-    }
+    }    
 
     public function saranaPrasaranaTemplate()
     {

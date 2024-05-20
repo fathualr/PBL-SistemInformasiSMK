@@ -1,64 +1,64 @@
 @extends('layouts.main')
+
 @section('Main')
-
-<div class="divider">
-    <p class="font-bold text-xl">Sarana Prasarana</p>
-</div>
-
-<div class="grid grid-cols-3 gap-5 gap-y-20 my-24">
-
-    <div class="mx-auto">
-        <a href="/guest/sarana-prasarana-template">
-            <div class="card card-compact w-full bg-base-100 shadow-xl">
-                <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-                <div class="card-body bg-dark-lochinvar/70 rounded-none rounded-b-xl">
-                    <p class="text-center font-bold text-white">Televisi umum</p>
+<div class="mt-10">
+    @foreach ($prasaranas as $prasarana)
+    <div class="collapse collapse-arrow border bg-base-100 mb-5">
+        <input type="radio" name="my-accordion-2" />
+        <div class="collapse-title text-xl font-medium">
+            {{ $prasarana->nama_prasarana }}
+        </div>
+        <div class="collapse-content w-full">
+            <div class="flex flex-col lg:flex-row w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full">
+                    @if ($prasarana->foto_prasarana->isNotEmpty())
+                    @foreach ($prasarana->foto_prasarana->slice(0, 4) as $foto_prasarana)
+                    <img class="object-cover object-center w-full h-44 max-w-full rounded-lg mx-auto mt-3" src="{{ asset('storage/' . $foto_prasarana->tautan_foto) }}" alt="gallery foto" />
+                    @endforeach
+                    @else
+                    <div class="artboard artboard-horizontal phone-1 bg-slate-400 text-center">No image available</div>
+                    @endif
+                </div>
+                <div class="divider lg:divider-horizontal"></div>
+                <div class="grid flex-grow w-full">
+                    <div class="overflow-x-auto w-full">
+                        <table class="table table-s w-full mt-5">
+                            <thead>
+                                <tr>
+                                    <th>Jenis Prasarana</th>
+                                    <th>Luas</th>
+                                    <th>Kapasitas</th>
+                                    <th>Tahun Di Bangun</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ $prasarana->jenis_prasarana }}</td>
+                                    <td>{{ $prasarana->luas }} m2</td>
+                                    <td>{{ $prasarana->kapasitas }} Org</td>
+                                    <td>{{ $prasarana->tahun_dibangun }}</td>
+                                    <td>{{ $prasarana->kondisi }} || {{ $prasarana->status_prasarana }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-s mt-5 w-full">
+                            <thead>
+                                <tr>
+                                    <th>Deskripsi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ $prasarana->deskripsi_prasarana }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </a>
-    </div>
-    <div class="mx-auto">
-        <div class="card card-compact w-full bg-base-100 shadow-xl">
-            <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-            <div class="card-body bg-dark-lochinvar/70 rounded-none rounded-b-xl">
-                <p class="text-center font-bold text-white">Green house</p>
-            </div>
         </div>
     </div>
-    <div class="mx-auto">
-        <div class="card card-compact w-full bg-base-100 shadow-xl">
-            <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-            <div class="card-body bg-dark-lochinvar/70 rounded-none rounded-b-xl">
-                <p class="text-center font-bold text-white">Lab Biologi</p>
-            </div>
-        </div>
-    </div>
-    <div class="mx-auto">
-        <div class="card card-compact w-full bg-base-100 shadow-xl">
-            <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-            <div class="card-body bg-dark-lochinvar/70 rounded-none rounded-b-xl">
-                <p class="text-center font-bold text-white">Panggung</p>
-            </div>
-        </div>
-    </div>
-    <div class="mx-auto">
-        <div class="card card-compact w-full bg-base-100 shadow-xl">
-            <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-            <div class="card-body bg-dark-lochinvar/70 rounded-none rounded-b-xl">
-                <p class="text-center font-bold text-white">Cctv</p>
-            </div>
-        </div>
-    </div>
-    <div class="mx-auto">
-        <div class="card card-compact w-full bg-base-100 shadow-xl">
-            <figure class=""><img src="{{asset('image/test-ekskul.png')}}" alt="Shoes" /></figure>
-            <div class="card-body bg-dark-lochinvar rounded-none rounded-b-xl">
-                <p class="text-center font-bold text-white">Lemari terofy</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="join flex justify-center my-5">
-    <button class="btn bg-green-600 font-bold text-white">Selengkapnya</button>
+    @endforeach
 </div>
 @endsection

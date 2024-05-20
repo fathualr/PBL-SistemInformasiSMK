@@ -313,46 +313,22 @@ return new class extends Migration
         // Tabel untuk prasarana
         Schema::create('prasarana', function (Blueprint $table) {
             $table->id('id_prasarana');
+            $table->string('nama_prasarana')->notNullable();
+            $table->string('jenis_prasarana')->notNullable();
             $table->string('deskripsi_prasarana')->notNullable();
-            $table->string('lokasi')->notNullable();
-            $table->enum('status_prasarana', ['Aktif', 'Tidak Aktif', 'Perbaikan'])->notNullable();
+            $table->integer('luas')->notNullable();
+            $table->integer('kapasitas')->notNullable();
+            $table->date('tahun_dibangun')->notNullable();
+            $table->enum('kondisi', ['Baik', 'Perlu Perbaikan', 'Dalam Perbaikan'])->default('Baik');
+            $table->enum('status_prasarana', ['Aktif', 'Tidak Aktif'])->default('Aktif');
             $table->timestamps();
         });
 
-        // Tabel untuk gedung
-        Schema::create('gedung', function (Blueprint $table) {
-            $table->id('id_gedung');
+        Schema::create('foto_prasarana', function(Blueprint $table){
+            $table->id('id_foto_prasarana');
             $table->unsignedBigInteger('id_prasarana')->notNullable();
             $table->foreign('id_prasarana')->references('id_prasarana')->on('prasarana')->onDelete('cascade');
-            $table->integer('jumlah_lantai')->unsigned()->notNullable();
-            $table->timestamps();
-        });
-
-        // Tabel untuk ruangan
-        Schema::create('ruangan', function (Blueprint $table) {
-            $table->id('id_ruangan');
-            $table->unsignedBigInteger('id_prasarana')->notNullable();
-            $table->foreign('id_prasarana')->references('id_prasarana')->on('prasarana')->onDelete('cascade');
-            $table->integer('kapasitas_ruangan')->unsigned()->notNullable();
-            $table->timestamps();
-        });
-
-        // Tabel untuk lapangan
-        Schema::create('lapangan', function (Blueprint $table) {
-            $table->id('id_lapangan');
-            $table->unsignedBigInteger('id_prasarana')->notNullable();
-            $table->foreign('id_prasarana')->references('id_prasarana')->on('prasarana')->onDelete('cascade');
-            $table->string('ukuran_lapangan')->notNullable();
-            $table->enum('jenis_lapangan', ['Futsal', 'Basket', 'Tenis', 'Voli', 'Badminton'])->notNullable();
-            $table->timestamps();
-        });
-
-        // Tabel untuk fasilitas
-        Schema::create('fasilitas', function (Blueprint $table) {
-            $table->id('id_fasilitas');
-            $table->unsignedBigInteger('id_gedung')->nullable();
-            $table->foreign('id_gedung')->references('id_gedung')->on('gedung')->onDelete('cascade');
-            $table->string('nama_fasilitas')->notNullable();
+            $table->string('tautan_foto')->notNullable();
             $table->timestamps();
         });
 
