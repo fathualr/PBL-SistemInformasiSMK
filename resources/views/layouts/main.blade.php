@@ -213,7 +213,7 @@
     <!-- Carousel -->
     <div class="flex justify-center items-center">
         <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
-            {{-- @foreach($carousels as $key => $crs)
+            @foreach($carousels as $key => $crs)
             <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition {{ $key !== 0 ? 'hidden' : '' }}">
                 <img src="{{ asset('storage/'. $crs->image) }}" class="w-full transition-transform duration-500 transform" />
                 @if ($key === 0)
@@ -224,7 +224,7 @@
                     </div>
                 @endif
             </div>
-            @endforeach --}}
+            @endforeach
         </div>
     </div>
     <!-- Carousel -->

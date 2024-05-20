@@ -108,37 +108,7 @@ Route::delete('/komentarDestroy/{id}', [komentarBeritaActionController::class, '
 Route::get('/', [frontEndController::class, 'home']);
 Route::get('admin/profile', [kontenWebsiteActionController::class, 'index']);
     //CMS
-Route::patch('/namaSekolahUpdate/{id}', [kontenWebsiteActionController::class, 'updateNamaSekolah'])->name('namaSekolah.update');
-Route::patch('/updateLogoSekolah/{id}', [kontenWebsiteActionController::class, 'updateLogoSekolah'])->name('logoSekolah.update');
-Route::patch('/updateAlamatSekolah/{id}', [kontenWebsiteActionController::class, 'updateAlamatSekolah'])->name('alamatSekolah.update');
-Route::patch('/updateNoTelpSekolah/{id}', [kontenWebsiteActionController::class, 'updateNoTelpSekolah'])->name('noTelpSekolah.update');
-Route::patch('/updateEmailSekolah/{id}', [kontenWebsiteActionController::class, 'updateEmailSekolah'])->name('emailSekolah.update');
-Route::patch('/updateNamaKepalaSekolah/{id}', [kontenWebsiteActionController::class, 'updateNamaKepalaSekolah'])->name('namaKepalaSekolah.update');
-Route::patch('/updateSejarah/{id}', [kontenWebsiteActionController::class, 'updateSejarah'])->name('sejarah.update');
-Route::patch('/updateTautanVideoSejarah/{id}', [kontenWebsiteActionController::class, 'updateTautanVideoSejarah'])->name('tautanVideoSejarah.update');
-Route::patch('/updateSambutan/{id}', [kontenWebsiteActionController::class, 'updateSambutan'])->name('sambutan.update');
-Route::patch('/updateTautanVideoSambutan/{id}', [kontenWebsiteActionController::class, 'updateTautanVideoSambutan'])->name('tautanVideoSambutan.update');
-Route::patch('/updateVisi/{id}', [kontenWebsiteActionController::class, 'updateVisi'])->name('visi.update');
-Route::patch('/updateMisi/{id}', [kontenWebsiteActionController::class, 'updateMisi'])->name('misi.update');
-Route::patch('/updateNis/{id}', [kontenWebsiteActionController::class, 'updateNis'])->name('nis.update');
-Route::patch('/updateStatusAkreditasiSekolah/{id}', [kontenWebsiteActionController::class, 'updateStatusAkreditasiSekolah'])->name('statusAkreditasiSekolah.update');
-Route::patch('/updateStrukturOrganisasiSekolah/{id}', [kontenWebsiteActionController::class, 'updateStrukturOrganisasiSekolah'])->name('strukturOrganisasiSekolah.update');
-Route::patch('/updateStatusKepemilikanTanah/{id}', [kontenWebsiteActionController::class, 'updateStatusKepemilikanTanah'])->name('statusKepemilikanTanah.update');
-Route::patch('/updateTahunDidirikan/{id}', [kontenWebsiteActionController::class, 'updateTahunDidirikan'])->name('tahunDidirikan.update');
-Route::patch('/updateTahunOperasional/{id}', [kontenWebsiteActionController::class, 'updateTahunOperasional'])->name('tahunOperasional.update');
-Route::patch('/updateNoStatistikSekolah/{id}', [kontenWebsiteActionController::class, 'updateNoStatistikSekolah'])->name('noStatistikSekolah.update');
-Route::patch('/updateFasilitasLainnya/{id}', [kontenWebsiteActionController::class, 'updateFasilitasLainnya'])->name('fasilitasLainnya.update');
-Route::patch('/updateLuasTanah/{id}', [kontenWebsiteActionController::class, 'updateLuasTanah'])->name('luasTanah.update');
-Route::patch('/updateNoSertifikat/{id}', [kontenWebsiteActionController::class, 'updateNoSertifikat'])->name('noSertifikat.update');
-Route::patch('/updateNoPendirianSekolah/{id}', [kontenWebsiteActionController::class, 'updateNoPendirianSekolah'])->name('noPendirianSekolah.update');
-Route::patch('/updateStatusKepemilikanBangunan/{id}', [kontenWebsiteActionController::class, 'updateStatusKepemilikanBangunan'])->name('statusKepemilikanBangunan.update');
-Route::patch('/updateSisaLahanSeluruhnya/{id}', [kontenWebsiteActionController::class, 'updateSisaLahanSeluruhnya'])->name('sisaLahanSeluruhnya.update');
-Route::patch('/updateLuasLahanKeseluruhan/{id}', [kontenWebsiteActionController::class, 'updateLuasLahanKeseluruhan'])->name('luasLahanKeseluruhan.update');
-Route::patch('/updateTeksProfile/{id}', [kontenWebsiteActionController::class, 'updateTeksProfile'])->name('teksProfile.update');
-Route::patch('/updateTeksFasilitas/{id}', [kontenWebsiteActionController::class, 'updateTeksFasilitas'])->name('teksFasilitas.update');
-Route::patch('/updateTeksLokasi/{id}', [kontenWebsiteActionController::class, 'updateTeksLokasi'])->name('teksLokasi.update');
-Route::patch('/updateTeksSejarah/{id}', [kontenWebsiteActionController::class, 'updateTeksSejarah'])->name('teksSejarah.update');
-Route::patch('/updateTeksPrestasi/{id}', [kontenWebsiteActionController::class, 'updateTeksPrestasi'])->name('teksPrestasi.update');
+    Route::patch('/kontenUpdate/{id}/{field}', [KontenWebsiteActionController::class, 'update'])->name('konten.update');
 //-----
 
 //Carousels -----

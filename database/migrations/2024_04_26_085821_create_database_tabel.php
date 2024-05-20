@@ -61,14 +61,14 @@ return new class extends Migration
         // Tabel untuk media_sosial
         Schema::create('media_sosial', function (Blueprint $table) {
             $table->id('id_media_sosial');
-            $table->string('nomor_telepon');
-            $table->string('fax');
-            $table->string('instagram');
-            $table->string('facebook');
-            $table->string('youtube');
-            $table->string('tiktok');
-            $table->string('email');
-            $table->string('google_map');
+            $table->string('nomor_telepon')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('tiktok')->nullable();
+            $table->string('email')->nullable();
+            $table->string('google_map')->nullable();
             $table->timestamps();
         });
 
