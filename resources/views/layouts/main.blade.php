@@ -16,6 +16,11 @@
     .overflow-y-auto::-webkit-scrollbar {
         display: none;
     }
+
+    ::-webkit-scrollbar {
+        display: none;
+
+    }
     </style>
     <title>SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
 </head>
@@ -27,7 +32,8 @@
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                    <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : 'empty' }}" class="h-5 w-5" alt="logo_sekolah">
+                    <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : 'empty' }}"
+                        class="h-5 w-5" alt="logo_sekolah">
                     {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -115,7 +121,8 @@
                     class="avatar-group -space-x-6 rtl:space-x-reverse hidden laptop:flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
                         <div class="w-12">
-                            <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : 'empty' }}" class="h-5 w-5" alt="logo_sekolah">
+                            <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : 'empty' }}"
+                                class="h-5 w-5" alt="logo_sekolah">
                         </div>
                     </div>
                 </div>
@@ -214,18 +221,20 @@
     <div class="flex justify-center items-center">
         <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
             {{-- @foreach($carousels as $key => $crs)
-            <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition {{ $key !== 0 ? 'hidden' : '' }}">
-                <img src="{{ asset('storage/'. $crs->image) }}" class="w-full transition-transform duration-500 transform" />
-                @if ($key === 0)
-                    <div class="absolute inset-0 flex justify-center items-center">
-                        <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
-                            <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
-                        </div>
-                    </div>
-                @endif
+            <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition
+            {{ $key !== 0 ? 'hidden' : '' }}">
+            <img src="{{ asset('storage/'. $crs->image) }}"
+                class="w-full transition-transform duration-500 transform" />
+            @if ($key === 0)
+            <div class="absolute inset-0 flex justify-center items-center">
+                <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
+                    <p class="text-2xl font-bold">Halaman {{ $title }} SMK Muhammadiyah Plus Batam Kota </p>
+                </div>
             </div>
-            @endforeach --}}
+            @endif
         </div>
+        @endforeach --}}
+    </div>
     </div>
     <!-- Carousel -->
 

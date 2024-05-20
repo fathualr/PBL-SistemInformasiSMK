@@ -69,26 +69,26 @@ class adminController extends Controller
     //     ]);
     // }
 
-    public function adminStaff()
-    {
-        return view('admin/staff', [
-            "title" => "Admin Staff"
-        ]);
-    }
+    // public function adminStaff()
+    // {
+    //     return view('admin/staff', [
+    //         "title" => "Admin Staff"
+    //     ]);
+    // }
 
-    public function adminSiswa()
-    {
-        return view('admin/siswa', [
-            "title" => "Admin Siswa"
-        ]);
-    }
+    // public function adminSiswa()
+    // {
+    //     return view('admin/siswa', [
+    //         "title" => "Admin Siswa"
+    //     ]);
+    // }
 
-    public function adminAlumni()
-    {
-        return view('admin/alumni', [
-            "title" => "Admin Alumni"
-        ]);
-    }
+    // public function adminAlumni()
+    // {
+    //     return view('admin/alumni', [
+    //         "title" => "Admin Alumni"
+    //     ]);
+    // }
 
     public function adminAlbum()
     {
@@ -172,12 +172,12 @@ class adminController extends Controller
     //     ]);
     // }
 
-    public function adminUmpanBalik()
-    {
-        return view('admin/umpanBalik', [
-            "title" => "Admin Umpan Balik"
-        ]);
-    }
+    // public function adminUmpanBalik()
+    // {
+    //     return view('admin/umpanBalik', [
+    //         "title" => "Admin Umpan Balik"
+    //     ]);
+    // }
 
     public function adminPengaturan()
     {

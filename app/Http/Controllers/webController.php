@@ -12,6 +12,12 @@ use App\Models\PeluangKerja;
 use App\Models\InformasiPPDB;
 use App\Models\AlurPPDB;
 use App\Models\DirektoriGuru;
+use App\Models\DirektoriPegawai;
+use App\Models\DirektoriSiswa;
+use App\Models\DirektoriAlumni;
+use App\Models\Ekstrakulikuler;
+use App\Models\UmpanBalik;
+use App\Models\SejarahSekolah;
 
 
 class webController extends Controller
@@ -85,22 +91,30 @@ class webController extends Controller
 
     public function pegawai()
     {
+        $direktoriPegawai = DirektoriPegawai::all();
         return view('guest/direktori-pegawai', [
-            "title" => "Direktori Pegawai"
+            "title" => "Direktori Pegawai",
+            "direktoriPegawai"=> $direktoriPegawai
         ]);
     }
 
     public function siswa()
     {
+        $direktoriSiswa = DirektoriSiswa::all();
+        $programKeahlian = ProgramKeahlian::all();  
         return view('guest/direktori-siswa', [
-            "title" => "Direktori Siswa"
+            "title" => "Direktori Siswa",
+            "direktoriSiswa" => $direktoriSiswa,
+            "programKeahlian" => $programKeahlian
         ]);
     }
 
     public function alumni()
     {
+        $direktoriAlumni = DirektoriAlumni::all();
         return view('guest/direktori-alumni', [
-            "title" => "Direktori Alumni"
+            "title" => "Direktori Alumni",
+            "direktoriAlumni"=> $direktoriAlumni
         ]);
     }
 
@@ -191,8 +205,21 @@ class webController extends Controller
 
     public function ekstrakulikuler()
     {
+        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->get();
+        $direktoriGuru = DirektoriGuru::all();
         return view('guest/ekstrakulikuler', [
-            "title" => "Ekstrakulikuler"
+            "title" => "Ekstrakulikuler",
+            "ekstrakulikuler" => $ekstrakulikuler,
+            "direktoriGuru"=> $direktoriGuru
+        ]);
+    }
+
+    public function ekstrakulikulerTemplate($id_ekstrakurikuler)
+    {        
+        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->findOrFail($id_ekstrakurikuler);
+        return view('guest/ekstrakulikuler-template', [
+            "title" => "Ekstrakulikuler",
+            "ekstrakulikuler" => $ekstrakulikuler
         ]);
     }
 
@@ -205,8 +232,10 @@ class webController extends Controller
 
     public function sejarah()
     {
+        $sejarahSekolah = SejarahSekolah::all();
         return view('guest/sejarah', [
-            "title" => "Sejarah"
+            "title" => "Sejarah",
+            "sejarahSekolah" => $sejarahSekolah
         ]);
     }
 }

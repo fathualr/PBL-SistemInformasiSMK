@@ -70,12 +70,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Admin</h1>
                         </a>
                     </li>
-                    <li class="hover:translate-y-0 @if($title == 'Admin Beranda') bg-blue-lagoon rounded-md @endif">
-                        <a href="/admin/beranda">
+                    <li class="hover:translate-y-0 @if($title == 'Admin Carousel') bg-blue-lagoon rounded-md @endif">
+                        <a href="/admin/carousels">
                             <div class=" w-3 flex justify-center items-center">
-                                <i class="fas fa-house text-2xl font-bold"></i>
+                                <i class="fas fa-film text-2xl font-bold"></i>
                             </div>
-                            <h1 class="font-bold mx-10 hidden" id="navTitle">Beranda</h1>
+                            <h1 class="font-bold mx-10 hidden" id="navTitle">Carousel</h1>
                         </a>
                     </li>
                     <li
@@ -92,7 +92,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-school text-2xl text-center font-bold"></i>
                             </div>
-                            <h1 class="font-bold mx-10 hidden" id="navTitle">Profile Sekolah</h1>
+                            <h1 class="font-bold mx-10 hidden" id="navTitle">Konten Website</h1>
                         </a>
                     </li>
                     <li
@@ -157,8 +157,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                 </li>
                                 <li class="@if($title == 'Admin Staff') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/staff">
-                                        <i class="fas fa-clipboard-user"></i>
-                                        <h1 class="font-bold mx-5 text-2xl">Staff</h1>
+                                        <i class="fas fa-clipboard-user text-2xl"></i>
+                                        <h1 class="font-bold mx-5">Staff</h1>
                                     </a>
                                 </li>
                                 <li class="@if($title == 'Admin Siswa') bg-blue-lagoon rounded-md @endif">
@@ -238,7 +238,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                     </li>
                     <li class="hover:translate-y-0">
                         <!-- W-20 -->
-                        <div class="dropdown dropdown-hover -mt-3" id="dropdown">
+                        <div class="dropdown dropdown-hover -mt-3 -z-50" id="dropdown">
                             <div tabindex="0" role="button" class="btn bg-transparent border-none">
                                 <div class="w-3 flex justify-center items-center text-white">
                                     <i class="fas fa-file-lines text-2xl text-center font-bold"></i>
@@ -372,8 +372,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                         <a href="/admin/login" class="hover:animate-pulse transition-all duration-300">
                             <i class="fas fa-arrow-right-from-bracket"></i>
                         </a>
-                        <a href="/admin/pengaturan" class="hover:animate-spin transition-all duration-300">
-                            <i class="fas fa-gear"></i>
+                        <a href="/admin/pengaturan" class="">
+                            <i class="fas fa-gear hover:rotate-45 transition-all duration-300"></i>
                         </a>
                     </div>
                 </div>
@@ -388,22 +388,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         <!-- Navbar -->
         <script>
         // Sidebar
-        document.getElementById("toggleButton").addEventListener("click", function() {
-            document.querySelector(".bg-gray-800").classList.toggle("w-16");
-            document.querySelector(".bg-gray-800").classList.toggle("w-32");
-        });
-
-        document.getElementById("toggleButton").addEventListener("click", function() {
+        document.addEventListener('DOMContentLoaded', function() {
             var sidebar = document.querySelector(".bg-elm");
             var icon = document.getElementById("toggleIcon");
             var normalTitle = document.getElementById("normalTitle");
             var menu = document.getElementById("menu");
             var dropdown = document.querySelectorAll("#dropdown");
             var navTitles = document.querySelectorAll("#navTitle");
-            sidebar.classList.toggle("w-20");
-            sidebar.classList.toggle("w-72");
 
-            if (sidebar.classList.contains("w-72")) {
+            // Function to open sidebar
+            function openSidebar() {
+                sidebar.classList.add("w-72");
+                sidebar.classList.remove("w-20");
                 document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
                 document.getElementById("toggleButton").classList.add("left-[16.5rem]");
                 icon.classList.add("rotate-180");
@@ -419,7 +415,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 navTitles.forEach(function(navTitle) {
                     navTitle.classList.remove("hidden");
                 });
-            } else {
+            }
+
+            // Function to close sidebar
+            function closeSidebar() {
+                sidebar.classList.remove("w-72");
+                sidebar.classList.add("w-20");
                 document.getElementById("toggleButton").classList.add("left-[0.85rem]");
                 document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
                 icon.classList.remove("rotate-180");
@@ -436,8 +437,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                     navTitle.classList.add("hidden");
                 });
             }
+
+            // Initial state: open sidebar
+            openSidebar();
+
+            document.getElementById("toggleButton").addEventListener("click", function() {
+                if (sidebar.classList.contains("w-72")) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
         });
         // Sidebar
+
 
         // Action Button
         const buttons = document.querySelectorAll('.button');
@@ -507,74 +520,123 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
             var sectionRect = section.getBoundingClientRect();
 
-                if (sectionRect.top <= window.innerHeight) {
-                    button.classList.remove('hidden');
-                    button.classList.add('animate-slideInFromTop');
-                } else {
-                    button.classList.add('hidden');
-                }
-            });
-            // Obeject Load
+            if (sectionRect.top <= window.innerHeight) {
+                button.classList.remove('hidden');
+                button.classList.add('animate-slideInFromTop');
+            } else {
+                button.classList.add('hidden');
+            }
+        });
+        // Obeject Load
 
-            // Duplicate input file & text
-            document.addEventListener("DOMContentLoaded", function() {
-                const fileInputsContainer = document.getElementById('fileInputs');
-                const btnAddFile = document.getElementById('btnAddFile');
-                let fileInputCount = 1;
+        // Duplicate input file & text
+        document.addEventListener("DOMContentLoaded", function() {
+            const fileInputsContainer = document.getElementById('fileInputs');
+            const btnAddFile = document.getElementById('btnAddFile');
+            let fileInputCount = 1;
 
-                const textInputContainer = document.getElementById('textInputContainer');
-                const btnAddText = document.getElementById('btnAddText');
-                let textInputCount = 1;
+            const textInputContainer = document.getElementById('textInputContainer');
+            const btnAddText = document.getElementById('btnAddText');
+            let textInputCount = 1;
 
-                btnAddFile.addEventListener('click', function() {
-                    const fileInputWrapper = document.createElement('div');
-                    fileInputWrapper.classList.add('flex', 'gap-1');
+            btnAddFile.addEventListener('click', function() {
+                const fileInputWrapper = document.createElement('div');
+                fileInputWrapper.classList.add('flex', 'gap-1');
 
-                    const newFileInput = document.createElement('input');
-                    newFileInput.setAttribute('type', 'file');
-                    newFileInput.classList.add('file-input', 'file-input-bordered', 'file-input-success', 'w-full');
-                    newFileInput.setAttribute('placeholder', 'Pilih gambar berita');
-                    newFileInput.setAttribute('name', `gambar_berita[]`);
+                const newLabel = document.createElement('label');
+                newLabel.classList.add('input', 'bg-transparent', 'border-2', 'border-elm', 'flex',
+                    'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
 
-                    const btnRemove = document.createElement('button');
-                    btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success', 'btn-remove');
-                    btnRemove.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
-                    btnRemove.addEventListener('click', function() {
-                        fileInputWrapper.remove();
-                    });
+                const newFileInput = document.createElement('input');
+                newFileInput.setAttribute('type', 'file');
+                newFileInput.classList.add('grow', 'file-input', 'file-input-success',
+                    'border-none', 'bg-transparent', 'py-2');
+                newFileInput.setAttribute('placeholder', 'Pilih gambar berita');
+                newFileInput.setAttribute('name', `gambar_berita[]`);
 
-                    fileInputWrapper.appendChild(newFileInput);
-                    fileInputWrapper.appendChild(btnRemove);
-                    fileInputsContainer.appendChild(fileInputWrapper);
-
-                    fileInputCount++;
+                const btnRemove = document.createElement('button');
+                btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                    'btn-remove');
+                btnRemove.innerHTML = `<i class='fas fa-times'></i>`;
+                btnRemove.addEventListener('click', function() {
+                    fileInputWrapper.remove();
                 });
-                
-                btnAddText.addEventListener('click', function() {
-                    const textInputWrapper = document.createElement('div');
-                    textInputWrapper.classList.add('flex', 'gap-1');
-                    
-                    const newTextInput = document.createElement('input');
-                    newTextInput.setAttribute('type', 'text');
-                    newTextInput.classList.add('input', 'input-bordered', 'input-success', 'w-full');
-                    newTextInput.setAttribute('placeholder', 'Kategori Berita');
-                    newTextInput.setAttribute('name', `kategori_berita[]`);
 
-                    const btnRemove = document.createElement('button');
-                    btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success', 'btn-remove');
-                    btnRemove.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
-                    btnRemove.addEventListener('click', function() {
-                        textInputWrapper.remove();
-                    });
+                newLabel.appendChild(newFileInput);
+                fileInputWrapper.appendChild(newLabel);
+                fileInputWrapper.appendChild(btnRemove);
+                fileInputsContainer.appendChild(fileInputWrapper);
 
-                    textInputWrapper.appendChild(newTextInput);
-                    textInputWrapper.appendChild(btnRemove);
-                    textInputContainer.appendChild(textInputWrapper);
-                    
-                    textInputCount++;
-                });
+                fileInputCount++;
             });
-            // Duplicate input file & text
+
+            btnAddText.addEventListener('click', function() {
+                const textInputWrapper = document.createElement('div');
+                textInputWrapper.classList.add('flex', 'gap-1');
+
+                const newTextInput = document.createElement('input');
+                newTextInput.setAttribute('type', 'text');
+                newTextInput.classList.add('input', 'input-bordered', 'input-success', 'w-full');
+                newTextInput.setAttribute('placeholder', 'Kategori Berita');
+                newTextInput.setAttribute('name', `kategori_berita[]`);
+
+                const btnRemove = document.createElement('button');
+                btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                    'btn-remove');
+                btnRemove.innerHTML =
+                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
+                btnRemove.addEventListener('click', function() {
+                    textInputWrapper.remove();
+                });
+
+                textInputWrapper.appendChild(newTextInput);
+                textInputWrapper.appendChild(btnRemove);
+                textInputContainer.appendChild(textInputWrapper);
+
+                textInputCount++;
+            });
+        });
+
+        // Ekstrakurikuler
+        document.addEventListener("DOMContentLoaded", function() {
+            const fileInputsEkskul = document.getElementById('fileInputsEkskul');
+            const btnAddFileEkskul = document.getElementById('btnAddFileEkskul');
+            let fileInputEkskulCount = 1;
+
+            btnAddFileEkskul.addEventListener('click', function() {
+                const fileInputEkskulWrapper = document.createElement('div');
+                fileInputEkskulWrapper.classList.add('flex', 'gap-1');
+
+                const newLabelEkskul = document.createElement('label');
+                newLabelEkskul.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
+                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+
+                const newFileInputEkskul = document.createElement('input');
+                newFileInputEkskul.setAttribute('type', 'file');
+                newFileInputEkskul.classList.add('grow', 'file-input', 'file-input-success',
+                    'border-none', 'bg-transparent', 'py-2');
+                newFileInputEkskul.setAttribute('placeholder', 'Pilih gambar berita');
+                newFileInputEkskul.setAttribute('name', `gambar_ekstrakurikuler[]`);
+
+                const btnRemoveEkskul = document.createElement('button');
+                btnRemoveEkskul.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                    'btn-remove');
+                btnRemoveEkskul.innerHTML = `<i class='fas fa-times'></i>`;
+                btnRemoveEkskul.addEventListener('click', function() {
+                    fileInputEkskulWrapper.remove();
+                });
+
+                newLabelEkskul.appendChild(newFileInputEkskul);
+                fileInputEkskulWrapper.appendChild(newLabelEkskul);
+                fileInputEkskulWrapper.appendChild(btnRemoveEkskul);
+                fileInputsEkskul.appendChild(fileInputEkskulWrapper);
+
+                fileInputEkskulCount++;
+            });
+        });
+        // Ekstrakurikuler
+
+        // Duplicate input file & text
         </script>
 </body>
 

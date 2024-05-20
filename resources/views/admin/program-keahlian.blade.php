@@ -11,8 +11,8 @@
 
     <!-- Modal -->
     <div class="col-span-4 row-start-2 grid grid-cols-2 gap-4">
-        <details class="dropdown dropdown-right mx-5 z-50">
-            <summary tabindex="0" role="button" class="btn btn-outline button w-max" onclick="rotateIcon()">
+        <details class="dropdown dropdown-right mx-5">
+            <summary tabindex="0" role="button" class="btn btn-outline button w-full" onclick="rotateIcon()">
                 <i class="fas fa-plus font-bold text-xl transition-all duration-500" id="plus-icon"></i>
                 Tambah
             </summary>

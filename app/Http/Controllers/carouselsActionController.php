@@ -11,7 +11,7 @@ class carouselsActionController extends Controller
         $carousels = Carousels::all();
         return view('admin/carousels', [
             "carousels" => $carousels,
-            "title" => "Carousels",
+            "title" => "Admin Carousel",
         ]);
     }
 

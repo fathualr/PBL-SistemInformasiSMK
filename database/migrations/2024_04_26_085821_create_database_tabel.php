@@ -119,7 +119,8 @@ return new class extends Migration
             $table->string('nik_pegawai')->unique()->notNullable();
             $table->string('jabatan_pegawai')->notNullable();
             $table->date('TTL_pegawai')->notNullable();
-            $table->enum('jenis_kelamin', ['Laki-Laki', 'Wanita'])->nullable();
+            $table->string('tempat_lahir_pegawai')->notNullable();
+            $table->enum('jenis_kelamin', ['Laki - Laki', 'Wanita'])->nullable();
             $table->string('no_hp_pegawai')->notNullable();
             $table->string('alamat_pegawai')->notNullable();
             $table->string('gambar_pegawai')->nullable();
@@ -133,8 +134,10 @@ return new class extends Migration
             $table->id('id_alumni');
             $table->string('nama_alumni')->notNullable();
             $table->string('no_hp_alumni')->notNullable();
-            $table->enum('jenis_kelamin_alumni', ['Laki-Laki', 'Perempuan'])->nullable();
+            $table->string('email_alumni')->notNullable();
+            $table->enum('jenis_kelamin_alumni', ['Laki - Laki', 'Perempuan'])->nullable();
             $table->date('TTL_alumni')->nullable();
+            $table->string('tempat_lahir_alumni')->notNullable();
             $table->unsignedSmallInteger('tahun_kelulusan_alumni')->nullable();
             $table->string('gambar_alumni')->nullable();
             $table->string('alamat_alumni')->nullable();
@@ -147,8 +150,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_program')->notNullable();
             $table->string('nama_siswa')->notNullable();
             $table->string('nisn_siswa')->unique()->notNullable();
-            $table->enum('jenis_kelamin_siswa', ['Laki-Laki', 'Perempuan'])->nullable();
+            $table->enum('jenis_kelamin_siswa', ['Laki - Laki', 'Perempuan'])->nullable();
+            $table->string('no_hp_siswa')->notNullable();
             $table->date('TTL_siswa')->nullable();
+            $table->string('tempat_lahir_siswa')->notNullable();
+            $table->text('alamat_siswa')->notNullable();
             $table->string('kelas_siswa')->nullable();
             $table->unsignedSmallInteger('tahun_angkatan_siswa')->nullable();
             $table->string('gambar_siswa')->nullable();

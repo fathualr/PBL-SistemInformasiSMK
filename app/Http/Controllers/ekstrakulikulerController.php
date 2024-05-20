@@ -4,59 +4,81 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ekstrakulikuler;
+use App\Models\GambarEkstarkurikuler;
 use App\Models\DirektoriGuru;
 
 class ekstrakulikulerController extends Controller
 {
         public function adminEkstrakulikuler()
     {
-        $ekstrakulikuler = Ekstrakulikuler::all();
+        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->get();
         $direktoriGuru = DirektoriGuru::all();
         return view('admin/ekstrakulikuler', [
             "title" => "Admin Ekstrakulikuler",
             "ekstrakulikuler" => $ekstrakulikuler,
-            "direktoriGuru" => $direktoriGuru
+            "direktoriGuru"=> $direktoriGuru
         ]);
     }
 
-    public function storeEkstrakulikuler(Request $request)
+public function storeEkstrakulikuler(Request $request)
     {
-            $format_file = $request->file('gambar_profil_ekstrakurikuler')->getClientOriginalName();
-            $request->file('gambar_profil_ekstrakurikuler')->move(public_path('gambarEkskul'), $format_file);
-    
-            Ekstrakulikuler::create([
-                "id_guru" => $request->id_guru,
-                "nama_ekstrakurikuler" => $request->nama_ekstrakurikuler,
-                "deskripsi_ekstrakurikuler" => $request->deskripsi_ekstrakurikuler,
-                "tempat_ekstrakurikuler" => $request->tempat_ekstrakurikuler,
-                "jadwal_ekstrakurikuler" => $request->jadwal_ekstrakurikuler,
-                "gambar_profil_ekstrakurikuler" => 'gambarEkskul/'.$format_file
-            ]);
-            return redirect()->route('admin.ekstrakulikuler.index');
-    }
+            $validate = $request->validate([
+            'id_guru' => 'required',
+            'nama_ekstrakurikuler' => 'required',
+            'deskripsi_ekstrakurikuler' => 'required',
+            'tempat_ekstrakurikuler' => 'required',
+            'jadwal_ekstrakurikuler' => 'required',
+            'gambar_profil_ekstrakurikuler' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar_ekstrakurikuler.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
 
-    public function updateEkstrakulikuler(Request $request, $id_ekstrakurikuler)
+        $gambarProfil = $request->file('gambar_profil_ekstrakurikuler')->store('image/gambarEkskul', 'public');
+        $validate['gambar_profil_ekstrakurikuler'] = $gambarProfil;
+        $ekstrakurikuler = Ekstrakulikuler::create($validate);
+
+        if ($request->hasFile('gambar_ekstrakurikuler')) {
+            foreach ($request->file('gambar_ekstrakurikuler') as $image){
+                GambarEkstarkurikuler::create([
+                    'id_ekstrakurikuler' => $ekstrakurikuler->id_ekstrakurikuler,
+                    'gambar_ekstrakurikuler' => $image->store('image/gambarEkskul', 'public'),
+                ]);
+            }
+        }
+
+        if($ekstrakurikuler){
+            return redirect()->route('admin.ekstrakulikuler.index');
+        } else {
+            return redirect()->route('admin.ekstrakulikuler.index');
+        }
+
+    }
+    public function updateEkstrakurikuler(Request $request, $id_ekstrakurikuler)
     {
     
         $ekskul = Ekstrakulikuler::findOrFail($id_ekstrakurikuler);
     
-        $validatedData = [
-                "id_guru" => $request->id_guru,
-                "nama_ekstrakurikuler" => $request->nama_ekstrakurikuler,
-                "deskripsi_ekstrakurikuler" => $request->deskripsi_ekstrakurikuler,
-                "tempat_ekstrakurikuler" => $request->tempat_ekstrakurikuler,
-                "jadwal_ekstrakurikuler" => $request->jadwal_ekstrakurikuler
-        ];
+        $validate = $request->validate([
+            'id_guru' => 'required',
+            'nama_ekstrakurikuler' => 'required',
+            'deskripsi_ekstrakurikuler' => 'required',
+            'tempat_ekstrakurikuler' => 'required',
+            'jadwal_ekstrakurikuler' => 'required',
+            'gambar_profil_ekstrakurikuler' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+        ]);
 
         if ($request->hasFile('gambar_profil_ekstrakurikuler')) {
-            $format_file = $request->file('gambar_profil_ekstrakurikuler')->getClientOriginalName();
-            $request->file('gambar_profil_ekstrakurikuler')->move(public_path('gambarEkskul'), $format_file);
-            $validatedData["gambar_profil_ekstrakurikuler"] = 'gambarEkskul/' . $format_file;
+            $gambarPath = $request->file('gambar_profil_ekstrakurikuler')->store('image/gambarEkskul', 'public');
+            $validate['gambar_profil_ekstrakurikuler'] = $gambarPath;
         }
-    
-        $ekskul->update($validatedData);
-    
-        return redirect()->route('admin.ekstrakulikuler.index');
+
+        $status = $ekskul->fill($validate)->save();
+        if($status){
+            return redirect()->back();
+        }
+        else{
+            return redirect()->back();
+        }
+
     }
 
     public function destroyEkstrakulikuler($id_ekstrakurikuler)
@@ -66,5 +88,36 @@ class ekstrakulikulerController extends Controller
         $ekskul->delete();
     
         return redirect()->route('admin.ekstrakulikuler.index');
+    }
+
+    public function updateGambarEkstrakurikuler(Request $request, $id_ekstrakurikuler) {
+        $request->validate([
+            'gambar_ekstrakurikuler' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+    
+        $ekskul = Ekstrakulikuler::findOrFail($id_ekstrakurikuler);
+        $image = $request->file('gambar_ekstrakurikuler');
+    
+        $status = GambarEkstarkurikuler::create([
+            'id_ekstrakurikuler' => $ekskul->id_ekstrakurikuler,
+            'gambar_ekstrakurikuler' => $image->store('image/gambarEkskul', 'public'),
+        ]);
+        if($status){
+            return redirect()->back();
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+
+    public function destroyGambarEkstrakurikuler($id_gambar_ekstrakurikuler){
+        $data = GambarEkstarkurikuler::findOrFail($id_gambar_ekstrakurikuler);
+        $status = $data->delete();
+        if($status){
+            return redirect()->back();
+        }
+        else{
+            return redirect()->back();
+        }
     }
 }

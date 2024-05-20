@@ -172,11 +172,9 @@
                                         $guru->jenis_kelamin) selected @endif>Perempuan</option>
                                 </select>
 
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                                    <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Alamat"
-                                        name="alamat_guru" value="{{ $guru->alamat_guru }}" />
-                                </label>
+                                <textarea
+                                    class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                                    placeholder="Alamat" name="alamat_guru">{{ $guru->alamat_guru }}</textarea>
 
                                 <label
                                     class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
@@ -259,7 +257,8 @@
                                     name="nik_guru" value="{{ $guru->nik_guru }}" readonly />
                             </label>
 
-                            <select class="select border-elm border-2 w-full mb-5" name="id_program" disabled>
+                            <select class="pointer-events-none select border-elm border-2 w-full mb-5"
+                                name="id_program">
                                 <option disabled selected>Pilih Program Keahlian</option>
                                 @foreach($programKeahlian as $index => $program)
                                 <option value="{{ $program->id_program }}" @if($program->id_program ===
@@ -288,7 +287,8 @@
                                     name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" readonly />
                             </label>
 
-                            <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin" disabled>
+                            <select class="pointer-events-none select border-elm border-2 w-full mb-5"
+                                name="jenis_kelamin">
                                 <option disabled>Pilih Jenis Kelamin</option>
                                 <option value="Laki - Laki" @if($guru->id_guru ===
                                     $guru->jenis_kelamin) selected @endif>Laki - Laki</option>
@@ -296,11 +296,9 @@
                                     $guru->jenis_kelamin) selected @endif>Perempuan</option>
                             </select>
 
-                            <label
-                                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Alamat"
-                                    name="alamat_guru" value="{{ $guru->alamat_guru }}" readonly />
-                            </label>
+                            <textarea
+                                class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                                placeholder="Alamat" name="alamat_guru" readonly>{{ $guru->alamat_guru }}</textarea>
 
                             <label
                                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
@@ -437,11 +435,9 @@
                 <option value="Perempuan">Perempuan</option>
             </select>
 
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Alamat"
-                    name="alamat_guru" />
-            </label>
+            <textarea
+                class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Alamat" name="alamat_guru"></textarea>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">

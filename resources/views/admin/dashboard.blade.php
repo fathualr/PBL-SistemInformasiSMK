@@ -1,142 +1,101 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
-<!-- First Content -->
-<div class="grid grid-cols-3 grid-flow-row gap-y-12">
 
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-users text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Pengunjung</h2>
-            <h2 class="card-title mx-auto font-bold text-base">1000</h2>
+<div class="card w-full h-max bg-slate-200 shadow-xl">
+    <div class="card-body">
+        <div class="grid grid-cols-4">
+            <!-- First Card -->
+            <div class="card w-96">
+                <div class="card-body">
+                    <div class="grid grid-rows-2 grid-flow-col gap-4">
+                        <div class="row-span-3 flex justify-center items-center">
+                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
+                                <i class="far fa-user text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="col-span-2">
+                            <p>Siswa Aktif</p>
+                        </div>
+                        <div class="col-span-2">
+                            <h2 class="text-2xl font-bold text-elm">
+                                200
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- First Card -->
+
+            <!-- Sceond Card -->
+            <div class="card w-96">
+                <div class="card-body">
+                    <div class="grid grid-rows-2 grid-flow-col gap-4">
+                        <div class="row-span-3 flex justify-center items-center">
+                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
+                                <i class="fas fa-chalkboard-user text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="col-span-2">
+                            <p>Staff Pengajar</p>
+                        </div>
+                        <div class="col-span-2">
+                            <h2 class="text-2xl font-bold text-elm">
+                                200
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sceond Card -->
+
+            <!-- Third Card -->
+            <div class="card w-96">
+                <div class="card-body">
+                    <div class="grid grid-rows-2 grid-flow-col gap-4">
+                        <div class="row-span-3 flex justify-center items-center">
+                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
+                                <i class="fas fa-file-contract text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="col-span-2">
+                            <p>Pendaftar PPDB</p>
+                        </div>
+                        <div class="col-span-2">
+                            <h2 class="text-2xl font-bold text-elm">
+                                200
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Third Card -->
+
+            <!-- Fourth Card -->
+            <div class="card w-96">
+                <div class="card-body">
+                    <div class="grid grid-rows-2 grid-flow-col gap-4">
+                        <div class="row-span-3 flex justify-center items-center">
+                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
+                                <i class="fas fa-user-check text-2xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="col-span-2">
+                            <p>Lolos PPDB</p>
+                        </div>
+                        <div class="col-span-2">
+                            <h2 class="text-2xl font-bold text-elm">
+                                200
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fourth Card -->
         </div>
     </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-user-check text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Siswa Aktif</h2>
-            <h2 class="card-title mx-auto font-bold text-base">300</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-user-graduate text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Alumni</h2>
-            <h2 class="card-title mx-auto font-bold text-base">100</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-address-book text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Siswa Mendaftar</h2>
-            <h2 class="card-title mx-auto font-bold text-base">100</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-users-viewfinder text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Lolos PPDB</h2>
-            <h2 class="card-title mx-auto font-bold text-base">100</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-users-slash text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Tidak Lolos PPDB</h2>
-            <h2 class="card-title mx-auto font-bold text-base">100</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-chalkboard-user text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Guru</h2>
-            <h2 class="card-title mx-auto font-bold text-base">100</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-clipboard-user text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Staff</h2>
-            <h2 class="card-title mx-auto font-bold text-base">100</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-user-gear text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Admin</h2>
-            <h2 class="card-title mx-auto font-bold text-base">10</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-pen-ruler text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Program Keahlian</h2>
-            <h2 class="card-title mx-auto font-bold text-base">2</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-baseball-bat-ball text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Ekstrakulikuler</h2>
-            <h2 class="card-title mx-auto font-bold text-base">7</h2>
-        </div>
-    </div>
-
-    <div class="card w-80 h-32 bg-slate-200 shadow-xl mx-auto">
-        <div class="card-body">
-            <button
-                class="btn btn-outline btn-success w-20 h-20 border-2 hover:rounded-full mx-auto transition-all duration-500 absolute -top-8 right-28">
-                <i class="fas fa-message text-xl"></i>
-            </button>
-            <h2 class="card-title mx-auto font-bold mt-5">Feedback</h2>
-            <h2 class="card-title mx-auto font-bold text-base">200</h2>
-        </div>
-    </div>
-
 </div>
 
-<!-- First Content -->
+@include('layouts.chart')
+
 @endsection

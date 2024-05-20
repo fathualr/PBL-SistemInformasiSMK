@@ -13,7 +13,7 @@ class SejarahSekolahController extends Controller
     
         return view('admin.sejarah', [
             "title" => "Admin Sejarah Sekolah",
-            "sejarahSekolah" => $sejarahSekolah,
+            "sejarahSekolah" => $sejarahSekolah
         ]);
     }
 
@@ -36,7 +36,7 @@ class SejarahSekolahController extends Controller
             "judul_sejarah" => $request->judul_sejarah,
             "deskripsi_sejarah" => $request->deskripsi_sejarah,
             "tanggal_sejarah" => $request->tanggal_sejarah,
-            "gambar_sejarah" => $format_file,
+            "gambar_sejarah" => 'gambarSejarah/'. $format_file,
         ]);
 
         

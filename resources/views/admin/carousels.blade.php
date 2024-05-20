@@ -21,30 +21,21 @@
 
     <!-- Content -->
     <div class="col-span-9 row-start-4">
-        <div class="overflow-x-auto mt-5 px-16">
+        <div class="mt-5">
             <table class="table text-center">
                 <!-- head -->
                 <thead>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
-                        <th>No.</th>
-                        <th>Gambar</th>
-                        <th>Aksi</th>
+                        <th class="w-24">No.</th>
+                        <th class="w-36">Link Gambar</th>
+                        <th class="w-72">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @foreach($carousels as $key => $crs)
                     <tr class="hover">
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
+
                         <th>{{ $key + 1 }}</th>
                         <td>{{ $crs->image }}</td>
                         <td>
@@ -55,10 +46,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view_{{ $crs->id_carousels }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_view_{{ $crs->id_carousels }}.showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -67,7 +60,8 @@
 
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete_{{ $crs->id_carousels }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_delete_{{ $crs->id_carousels }}.showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -82,11 +76,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
+
                         <th>No.</th>
                         <th>Gambar</th>
                         <th>Aksi</th>
@@ -120,11 +110,13 @@
             </div>
             <input type="file" class="file-input file-input-bordered file-input-success w-full" name="image" />
             <div class="flex justify-end items-end mt-5 gap-4">
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
