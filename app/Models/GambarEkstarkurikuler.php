@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class GambarEkstarkurikuler extends Model
 {
+    Use HasFactory;
     protected $table = "gambar_ekstrakurikuler";
     protected $primaryKey = "id_gambar_ekstrakurikuler";
     protected $fillable = [

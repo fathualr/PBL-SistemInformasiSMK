@@ -2,21 +2,18 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ProgramKeahlian;
+use App\Models\FormPPDB;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Seed program_keahlian with some example data
+        \App\Models\ProgramKeahlian::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Seed form_ppdb with 100 entries
+        \App\Models\FormPPDB::factory(100)->create();
     }
 }

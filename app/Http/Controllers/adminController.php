@@ -130,24 +130,10 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminPendaftaranPPDB()
-    {
-        return view('admin/pendaftaranPPDB', [
-            "title" => "Admin Pendaftaran PPDB"
-        ]);
-    }
-
     public function adminPengumumanPPDB()
     {
         return view('admin/pengumumanPPDB', [
             "title" => "Admin Pengumuman PPDB"
-        ]);
-    }
-
-    public function adminSaranaPrasarana()
-    {
-        return view('admin/saranaPrasarana', [
-            "title" => "Admin Sarana & Prasarana"
         ]);
     }
 

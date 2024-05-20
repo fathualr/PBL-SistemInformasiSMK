@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DirektoriPegawai extends Model
 {
+    use HasFactory;
     protected $table = "direktori_pegawai";
     protected $primaryKey = "id_pegawai";
     protected $fillable = [

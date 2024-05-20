@@ -18,6 +18,8 @@ use App\Models\DirektoriAlumni;
 use App\Models\Ekstrakulikuler;
 use App\Models\UmpanBalik;
 use App\Models\SejarahSekolah;
+use App\Models\Prasarana;
+use App\Models\FotoPrasarana;
 
 
 class webController extends Controller
@@ -163,10 +165,12 @@ class webController extends Controller
 
     public function saranaPrasarana()
     {
-        return view('guest/sarana-prasarana', [
-            "title" => "Sarana & Prasarana"
+        $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
+        return view('guest.sarana-prasarana', [
+            'title' => 'Sarana & Prasarana',
+            'prasaranas' => $prasaranas,
         ]);
-    }
+    }    
 
     public function saranaPrasaranaTemplate()
     {
