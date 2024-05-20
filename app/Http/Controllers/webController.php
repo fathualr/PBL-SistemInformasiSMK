@@ -196,12 +196,12 @@ class webController extends Controller
         ]);
     }
 
-    public function mediaSosial()
-    {
-        return view('guest/media-sosial', [
-            "title" => "Media Sosial"
-        ]);
-    }
+    // public function mediaSosial()
+    // {
+    //     return view('guest/media-sosial', [
+    //         "title" => "Media Sosial"
+    //     ]);
+    // }
 
     public function sejarah()
     {
