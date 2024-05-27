@@ -673,6 +673,44 @@
             });
         });
         // Ekstrakurikuler
+        // Prestasi Siswa
+        document.addEventListener("DOMContentLoaded", function() {
+            const fileInputsPrestasi = document.getElementById('fileInputsPrestasi');
+            const btnAddFilePrestasi = document.getElementById('btnAddFilePrestasi');
+            let fileInputPrestasiCount = 1;
+
+            btnAddFilePrestasi.addEventListener('click', function() {
+                const fileInputPrestasiWrapper = document.createElement('div');
+                fileInputPrestasiWrapper.classList.add('flex', 'gap-1');
+
+                const newLabelPrestasi = document.createElement('label');
+                newLabelPrestasi.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
+                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+
+                const newFileInputPrestasi = document.createElement('input');
+                newFileInputPrestasi.setAttribute('type', 'file');
+                newFileInputPrestasi.classList.add('grow', 'file-input', 'file-input-success',
+                    'border-none', 'bg-transparent', 'py-2');
+                newFileInputPrestasi.setAttribute('placeholder', 'Pilih gambar berita');
+                newFileInputPrestasi.setAttribute('name', `gambar[]`);
+
+                const btnRemovePrestasi = document.createElement('button');
+                btnRemovePrestasi.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                    'btn-remove');
+                btnRemovePrestasi.innerHTML = `<i class='fas fa-times'></i>`;
+                btnRemovePrestasi.addEventListener('click', function() {
+                    fileInputPrestasiWrapper.remove();
+                });
+
+                newLabelPrestasi.appendChild(newFileInputPrestasi);
+                fileInputPrestasiWrapper.appendChild(newLabelPrestasi);
+                fileInputPrestasiWrapper.appendChild(btnRemovePrestasi);
+                fileInputsPrestasi.appendChild(fileInputPrestasiWrapper);
+
+                fileInputPrestasiCount++;
+            });
+        });
+        // Prestasi Siswa
 
         // Duplicate input file & text
             

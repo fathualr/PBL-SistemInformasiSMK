@@ -137,12 +137,12 @@ class adminController extends Controller
         ]);
     }
 
-    public function adminPrestasi()
-    {
-        return view('admin/prestasi', [
-            "title" => "Admin Prestasi"
-        ]);
-    }
+    // public function adminPrestasi()
+    // {
+    //     return view('admin/prestasi', [
+    //         "title" => "Admin Prestasi"
+    //     ]);
+    // }
 
     // public function adminIBerita()
     // {

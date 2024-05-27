@@ -289,6 +289,7 @@ return new class extends Migration
             $table->id('id_prestasi');
             $table->string('nama_prestasi')->notNullable();
             $table->string('siswa_prestasi')->notNullable();
+            $table->string('gambar_prestasi')->notNullable();
             $table->text('deskripsi_prestasi')->notNullable();
             $table->date('tanggal_prestasi')->notNullable();
             $table->enum('kategori_prestasi', ['Akademik', 'Olahraga', 'Seni', 'Lainnya'])->notNullable();

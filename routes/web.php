@@ -22,6 +22,7 @@ use App\Http\Controllers\sejarahSekolahController;
 use App\Http\Controllers\MediaSosialController;
 use App\Http\Controllers\umpanBalikController;
 use App\Http\Controllers\PrasaranaController;
+use App\Http\Controllers\prestasiSiswaController;
 
 
 /*
@@ -74,7 +75,7 @@ Route::get('admin/album', [adminController::class, 'adminAlbum'])->name('admin.a
 Route::get('admin/foto', [adminController::class, 'adminFoto'])->name('admin.foto.index');
 Route::get('admin/video', [adminController::class, 'adminVideo'])->name('admin.video.index');
 Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB']);
-Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
+// Route::get('admin/prestasi', [prestasiSiswaController::class, 'adminPrestasi']);
 // Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 // Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
@@ -281,6 +282,15 @@ Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik'])
     Route::delete('admin/umpanBalik/{id_pesan}', [umpanBalikController::class, 'destroyUmpanBalik'])->name('UmpanBalik.destroy');
     // Destroy
 // CRUD Umpan Balik
+
+// CRUD Prestasi Siswa
+Route::get('admin/prestasi', [prestasiSiswaController::class, 'adminPrestasi'])->name('admin.prestasiSiswa.index');
+    Route::post('admin/prestasi', [prestasiSiswaController::class, 'storePrestasiSiswa'])->name('PrestasiSiswa.store');
+    Route::patch('admin/prestasi/{id_prestasi}', [prestasiSiswaController::class, 'updatePrestasiSiswa'])->name('PrestasiSiswa.update');
+    Route::patch('/gambarPrestasiUpdate/{id_prestasi}', [prestasiSiswaController::class, 'updateGambarPrestasi'])->name('GambarPrestasi.update');
+    Route::delete('/gambarPrestasiDestroy/{id_prestasi}', [prestasiSiswaController::class, 'destroyGambarPrestasi'])->name('GambarPrestasi.destroy');
+    Route::delete('admin/prestasi/{id_prestasi}', [prestasiSiswaController::class, 'destroyPrestasiSiswa'])->name('PrestasiSiswa.destroy');
+// CRUD Prestasi Siswa
 
 
 
