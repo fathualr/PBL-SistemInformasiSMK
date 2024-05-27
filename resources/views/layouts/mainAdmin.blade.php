@@ -324,7 +324,7 @@
                                 <h1 class="font-bold mx-10 hidden" id="navTitle">Prasarana</h1>
                             </summary>
                             <ul>
-                               <li class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-lagoon rounded-md @endif">
+                                <li class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-lagoon rounded-md @endif">
                                     <a href="/admin/saranaPrasarana">
                                         <div class="w-3 flex justify-center items-center -z-50">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>

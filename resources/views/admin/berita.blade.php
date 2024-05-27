@@ -31,14 +31,9 @@
     <!-- Content -->
     <div class="col-span-9 row-start-4">
         <div class="overflow-x-auto mt-5 px-16">
-            <table class="table text-center">
+            <table class="table border-collapse border border-slate-200 text-center">
                 <thead>
                     <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
                         <th>No.</th>
                         <th>Gambar Headline</th>
                         <th>Judul</th>
@@ -49,15 +44,19 @@
                 </thead>
                 <tbody>
 
+                    @php
+                        $currentPage_brt = $berita->currentPage();
+                        $perPage_brt = $berita->perPage();
+                        $globalIndex_brt = ($currentPage_brt - 1) * $perPage_brt;
+                    @endphp
                     @foreach ($berita as $key => $brt)
                     <tr class="hover">
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
-                        <th>{{ $key + 1 }}</th>
-                        <td>{{ $brt->gambar_headline }}</td>
+                        <th>{{ $globalIndex_brt + $key + 1 }}</th>
+                        <td>
+                            <div class="grid justify-items-center">
+                                <img class="max-h-20" src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="">
+                            </div>
+                        </td>
                         <td>{{ $brt->judul_berita }}</td>
                         <td>
                             @foreach ($brt->kategori as $kategori)
@@ -107,8 +106,6 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>
-                        </th>
                         <th>No.</th>
                         <th>Gambar Headline</th>
                         <th>Judul</th>
@@ -119,6 +116,9 @@
                 </tfoot>
             </table>
         </div>
+        <div class="pagination mt-5 px-16">
+            {{ $berita->appends(request()->except('berita_page'))->links() }}
+        </div>        
     </div>
     <!-- Content -->
 
@@ -127,9 +127,9 @@
     </div>
 
     <!-- Content -->
-    <div class="col-span-9 row-start-6">
+    <div class="col-span-9 row-start-6 mb-5">
         <div class="overflow-x-auto mt-5 px-16">
-            <table class="table text-center">
+            <table class="table border-collapse border border-slate-200 text-center">
                 <thead>
                     <tr>
                         <th>
@@ -147,6 +147,11 @@
                 </thead>
                 <tbody>
 
+                    @php
+                        $currentPage_kmt = $komentar->currentPage();
+                        $perPage_kmt = $komentar->perPage();
+                        $globalIndex_kmt = ($currentPage_kmt - 1) * $perPage_kmt;
+                    @endphp
                     @foreach ($komentar as $key => $kmt)
                     <tr class="hover">
                         <th>
@@ -154,7 +159,7 @@
                                 <input type="checkbox" class="checkbox" />
                             </label>
                         </th>
-                        <th>{{ $key + 1 }}</th>
+                        <th>{{ $globalIndex_kmt + $key + 1 }}</th>
                         <td>{{ $kmt->berita->judul_berita }}</td>
                         <td>{{ $kmt->nama_komentar }}</td>
                         <td class="truncate">
@@ -206,6 +211,9 @@
                     </tr>
                 </tfoot>
             </table>
+        </div>
+        <div class="pagination mt-5 px-16">
+            {{ $komentar->appends(request()->except('komentar_page'))->links() }}
         </div>
     </div>
     <!-- Content -->
@@ -260,7 +268,7 @@
                 <div class="label">
                     <span class="label-text">Isi Berita:</span>
                 </div>
-                <textarea class="" id="editor" placeholder="Isi berita" name="isi_berita"></textarea>
+                <textarea class="textarea textarea-success" id="editor" placeholder="Isi berita" name="isi_berita"></textarea>
                 @error('isi_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>

@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KontenWebsite;
+use App\Models\Berita;
+use App\Models\Album;
+use App\Models\ProgramKeahlian;
 
 class FrontEndController extends Controller
 {
     public function home(){
-        $konten = KontenWebsite::first();
+        $berita = Berita::with('kategori', 'gambar')->inRandomOrder()->limit(6)->get();
+        $album = Album::inRandomOrder()->limit(6)->get();
         return view('/home', [
-            "konten" => $konten,
+            "berita" => $berita,
+            "album" => $album,
             "title" => "Beranda"
         ]);
     }
 
     public function profile(){
-        $konten = KontenWebsite::first();
+        $programKeahlian = ProgramKeahlian::inRandomOrder()->get();
         return view('guest/profile', [
-            "konten" => $konten,
+            "programKeahlian" => $programKeahlian,
             "title" => "Profile"
         ]);
     }

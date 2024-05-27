@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carousels;
+use Illuminate\Support\Facades\Storage;
 
 class carouselsActionController extends Controller
 {
@@ -32,6 +33,9 @@ class carouselsActionController extends Controller
 
     public function destroy($id){
         $data = Carousels::findOrFail($id);
+        if($data->image){
+            Storage::disk('public')->delete($data->image);
+        }
         $status = $data->delete();
         if($status){
             return redirect()->back()->with('success', 'Carousel berhasil dihapus!');

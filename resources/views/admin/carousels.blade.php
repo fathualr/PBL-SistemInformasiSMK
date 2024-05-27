@@ -6,7 +6,7 @@
 
     @include('shared.success-message')
     @include('shared.error-message')
-    <div class="col-span-2 my-4 mx-5 row-start-2">
+    <div class="col-span-3 my-4 mx-5 row-start-2">
         <h3 class="font-bold text-lg">Pengelolaan Carousels</h3>
     </div>
 

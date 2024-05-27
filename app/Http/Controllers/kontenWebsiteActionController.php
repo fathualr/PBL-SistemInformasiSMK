@@ -70,6 +70,11 @@ class kontenWebsiteActionController extends Controller
             }
             $validate[$field] = $request->file($field)->store('image/gambarKontenWebsite', 'public');
         }
+
+        if ($field === 'tautan_video_sejarah' || $field === 'tautan_video_sambutan') {
+            $videoId = $this->getYouTubeVideoId($request->$field);
+            $validate[$field] = "https://www.youtube.com/embed/{$videoId}";
+        }
     
         $status = $konten->fill($validate)->save();
         
@@ -79,5 +84,15 @@ class kontenWebsiteActionController extends Controller
         else{
             return redirect()->back()->with('error', 'Konten gagal diubah!');
         }
+    }
+
+    private function getYouTubeVideoId($url)
+    {
+        // Pattern untuk mencocokkan ID video YouTube
+        $pattern = '/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/';
+
+        preg_match($pattern, $url, $matches);
+
+        return isset($matches[1]) ? $matches[1] : null;
     }
 }

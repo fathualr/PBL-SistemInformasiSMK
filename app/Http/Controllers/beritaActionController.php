@@ -7,12 +7,13 @@ use App\Models\Berita;
 use App\Models\GambarBerita;
 use App\Models\KategoriBerita;
 use App\Models\KomentarBerita;
+use Illuminate\Support\Facades\Storage;
 
 class beritaActionController extends Controller
 {
     public function index(){
-        $berita = Berita::with('kategori', 'gambar')->get();
-        $komentar = KomentarBerita::with('berita')->orderBy('created_at', 'desc')->get();
+        $berita = Berita::with('kategori', 'gambar')->paginate(5, ['*'], 'berita_page');
+        $komentar = KomentarBerita::with('berita')->orderBy('created_at', 'desc')->paginate(5, ['*'], 'komentar_page');
         return view('admin/berita', [
             'berita' => $berita,
             'komentar' => $komentar,
@@ -21,7 +22,7 @@ class beritaActionController extends Controller
     }
 
     public function show(){
-        $berita = Berita::with('kategori', 'gambar')->get();
+        $berita = Berita::with('kategori', 'gambar')->orderBy('created_at', 'desc')->get();
         return view('guest/berita', [
             'berita' => $berita,
             "title" => "Berita"
@@ -83,8 +84,12 @@ class beritaActionController extends Controller
             'gambar_headline' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'tanggal_berita' => 'required|date',
         ]);
+        
         if ($request->hasFile('gambar_headline')) {
             $gambarHeadlinePath = $request->file('gambar_headline')->store('image/gambarBeritaHeadline', 'public');
+            if ($berita->gambar_headline) {
+                Storage::disk('public')->delete($berita->gambar_headline);
+            }
             $validate['gambar_headline'] = $gambarHeadlinePath;
         }
 
@@ -99,6 +104,17 @@ class beritaActionController extends Controller
 
     public function destroy($id){
         $data = Berita::findOrFail($id);
+
+        if ($data->gambar_headline) {
+            Storage::disk('public')->delete($data->gambar_headline);
+        }
+
+        $gambarBeritas = $data->gambar;
+        foreach ($gambarBeritas as $gambarBerita) {
+            Storage::disk('public')->delete($gambarBerita->tautan_gambar);
+            $gambarBerita->delete();
+        }
+
         $status = $data->delete();
         if($status){
             return redirect()->back()->with('success', 'Berita berhasil dihapus!');
@@ -130,6 +146,10 @@ class beritaActionController extends Controller
 
     public function destroyGambarBerita($id){
         $data = GambarBerita::findOrFail($id);
+
+        if ($data->tautan_gambar) {
+            Storage::disk('public')->delete($data->tautan_gambar);
+        }
         $status = $data->delete();
         if($status){
             return redirect()->back()->with('success', 'Gambar berita berhasil dihapus!');

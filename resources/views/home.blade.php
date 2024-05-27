@@ -163,8 +163,11 @@
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="grid md:grid-rows-4 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-6">
-    <div class="smartphone:col-span-1 md:col-span-2">
+<div class="divider mt-20 mb-10">
+    <p class="font-bold text-xl">BERITA SEKOLAH</p>
+</div>
+<div class="grid md:grid-rows-3 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-6">
+    {{-- <div class="smartphone:col-span-1 md:col-span-2">
         <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
         <label class="input input-bordered mx-auto my-10 flex items-center smartphone:w-52 md:w-72">
             <input type="text" class="grow" placeholder="Search" />
@@ -174,73 +177,70 @@
                     clip-rule="evenodd" />
             </svg>
         </label>
-    </div>
+    </div> --}}
 
+    @foreach ($berita as $brt)
     <div class="smartphone:col-span-1 md:mx-auto">
         <div class="card card-side bg-base-100 shadow-xl h-32 lg:h-60">
-            <figure>
-                <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"
-                    class="w-24 lg:w-auto" />
+            <figure class="h-full overflow-hidden">
+                <img class="object-cover h-full" src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar">
             </figure>
             <div class="card-body w-60 lg:w-full">
-                <h2 class="lg:card-title text-sm font-bold -mt-5 lg:-mt-0">Kegiatan Belajar mengajar di
-                    Rumah</h2>
+                <h2 class="lg:card-title text-sm font-bold -mt-5 lg:-mt-0">
+                    {{ $brt->judul_berita }}
+                </h2>
                 <p class="w-28 py-5 -my-3 lg:py-0 lg:-my-0 lg:w-72 truncate text-xs">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quasi,
-                    omnis ut, Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quo atque blanditiis
-                    iusto accusantium. Nobis rem illo exercitationem quam. Debitis voluptate amet incidunt esse officia
-                    laboriosam voluptas, expedita veritatis cupiditate?
+                    {{ $brt->isi_berita }}
                 </p>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-ghost">
-                        <img src="{{ asset('assets/right-arrow.svg') }}" alt="Prestasi"
-                            class="object-cover rounded-full w-5 h-5" />
-                    </button>
+                    <a class="btn btn-ghost" href="/guest/berita-template/{{ $brt->id_berita }}">
+                        <img src="{{ asset('assets/right-arrow.svg') }}" alt="Prestasi" class="object-cover rounded-full w-5 h-5" />
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="mx-auto">05</div>
-    <div class="mx-auto">05</div>
-    <div class="mx-auto">05</div>
-    <div class="mx-auto">05</div>
-    <div class="mx-auto">05</div>
+    @endforeach
+    
+</div>
+<div class="flex justify-center mx-auto w-full">
+    <a href="/guest/berita">
+        <button
+            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lainnya
+        </button>
+    </a>
 </div>
 <!-- Third Content -->
 
 <!-- Fourth Content -->
-<div class="grid lg:grid-rows-4 grid-cols-2 lg:grid-cols-3 lg:grid-flow-row mt-10 lg:mt-0">
-    <div class="col-span-2 lg:col-span-3 mx-auto">
-        <h1 class="font-bold text-xl text-center my-5">Galeri</h1>
-    </div>
-    <div class="mx-auto  lg:w-full h-min">
-        <div class="avatar">
-            <div class="lg:w-64 rounded-sm">
-                <img src="{{ asset('assets/Group 30.svg') }}" class="object-contain w-5 h-5" />
-            </div>
-        </div>
-    </div>
-    <div class="mx-auto lg:w-full h-min">
-        <div class="avatar">
-            <div class="lg:w-64 rounded-sm">
-                <img src="{{ asset('assets/Group 30.svg') }}" class="object-contain w-5 h-5" />
-            </div>
-        </div>
-    </div>
-    <div class="mx-auto">01</div>
-    <div class="mx-auto">01</div>
-    <div class="mx-auto">01</div>
-    <div class="mx-auto">01</div>
-    <div class="col-span-2 lg:col-span-3 mx-auto">
-        <a href="/guest/galeri-foto">
-            <button
-                class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
-                Lanjut
-            </button>
-        </a>
-    </div>
+<div class="divider mt-20 mb-10">
+    <p class="font-bold text-xl">ALBUM SEKOLAH</p>
 </div>
-<!-- Fourth Content -->
+<div class="grid gap-5 lg:grid-rows-2 grid-cols-2 lg:grid-cols-3 lg:grid-flow-row mt-10 lg:mt-0">
 
+    @foreach ($album as $abm)
+    <div class="card md:mx-auto rounded-b-xl w-80 h-80 lg:h-96 lg:w-96 bg-cover" style="background-image: url('{{ asset('storage/' . $abm->gambar_album) }}');">
+        <div class=" bg-teal-50/70 rounded-none rounded-b-xl py-8 lg:py-8 translate-y-[9.75rem] lg:translate-y-[13.75rem]">
+            <h2 class="card-title px-5 text-black/80">{{ $abm->nama_album }}</h2>
+            <p class="px-5 text-black/50 truncate w-64">{{ $abm->deskripsi_album }}</p>
+            <div class="card-actions justify-end">
+                <a href="/guest/galeri-template/{{ $abm->id_album }}" class="btn bg-transparent hover:bg-transparent border-none">
+                    <img src="{{ asset('assets/Arrow-Foto.svg') }}" class="object-cover rounded-full w-8 h-8 mt-8" />
+                </a>
+            </div>
+        </div>
+    </div>
+    @endforeach
+
+</div>
+<div class="flex justify-center mx-auto w-full">
+    <a href="/guest/galeri-foto">
+        <button
+            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lainnya
+        </button>
+    </a>
+</div>
+
+<!-- Fourth Content -->
 
 @endsection

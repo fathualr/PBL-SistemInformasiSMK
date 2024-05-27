@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Models\KontenWebsite;
 use App\Models\Carousels;
 
 class ViewServiceProvider extends ServiceProvider
@@ -22,7 +23,11 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            $view->with('carousels', Carousels::all());
+            $carousels = Carousels::all();
+            $konten = KontenWebsite::first();
+    
+            $view->with('carousels', $carousels)
+                ->with('konten', $konten);
         });
     }
 }

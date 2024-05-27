@@ -7,7 +7,11 @@
     @include('shared.success-message')
     @include('shared.error-message')
     <!-- Modal -->
-    <div class="col-span-2 col-start-2 row-start-2">
+    <div class="col-span-4 my-4 mx-5 row-start-2">
+        <h3 class="font-bold text-lg">Pengelolaan Admin</h3>
+    </div>
+
+    <div class="col-span-2 col-start-2 row-start-3">
 
         <button class="btn w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-user-plus"></i>
@@ -18,7 +22,7 @@
     <!-- Modal -->
 
     <!-- Search Bar -->
-    <div class="col-span-2 col-start-7 row-start-2">
+    <div class="col-span-2 col-start-7 row-start-3">
         <label class="input input-bordered flex items-center gap-2  focus-within:outline-none">
             <i class="fas fa-magnifying-glass"></i>
             <input type="text" class="grow" placeholder="Cari" />
@@ -27,7 +31,7 @@
     <!-- Search Bar -->
 
     <!-- Content -->
-    <div class="col-span-9 row-start-3">
+    <div class="col-span-9 row-start-4">
         <div class="overflow-x-auto mt-5 px-16">
             <table class="table text-center">
                 <!-- head -->
