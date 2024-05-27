@@ -8,10 +8,10 @@
 <div class="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-14 lg:gap-y-8 lg:gap-4">
     @endif
     @if($album->tipe_album === 'Video')
-    <div class="card md:mx-auto rounded-b-xl w-80 h-80 lg:h-96 lg:w-96 bg-cover bg-[url(https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg)]">
-        <div class=" bg-dark-lochinvar/70 rounded-none rounded-b-xl py-8 lg:py-8 translate-y-[9.75rem] lg:translate-y-[13.75rem]">
-            <h2 class="card-title px-5 text-white">{{ $album->nama_album }}</h2>
-            <p class="px-5 text-white">{{ $album->deskripsi_album }}</p>
+    <div class="card md:mx-auto rounded-b-xl w-80 h-80 lg:h-96 lg:w-96 bg-cover" style="background-image: url('{{ asset('storage/' . $album->gambar_album) }}');">
+        <div class=" bg-teal-50/70 rounded-none rounded-b-xl py-8 lg:py-8 translate-y-[9.75rem] lg:translate-y-[13.75rem]">
+            <h2 class="card-title px-5 text-black/80">{{ $album->nama_album }}</h2>
+            <p class="px-5 text-black/50 truncate w-64">{{ $album->deskripsi_album }}</p>
             <div class="card-actions justify-end">
                 <a href="/guest/galeri-template-video/{{ $album->id_album }}" class="btn bg-transparent hover:bg-transparent border-none">
                     <img src="{{ asset('assets/Arrow-Foto.svg') }}" class="object-cover rounded-full w-8 h-8 mt-8" />

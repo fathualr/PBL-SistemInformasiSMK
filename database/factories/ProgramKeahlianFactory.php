@@ -11,8 +11,10 @@ class ProgramKeahlianFactory extends Factory
 
     public function definition()
     {
+        $programs = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Elektro', 'Teknik Multemedia', 'Teknik Memasak'];
+
         return [
-            'nama_program' => $this->faker->word(),
+            'nama_program' => $this->faker->unique()->randomElement($programs),
             'logo_program' => $this->faker->imageUrl(100, 100, 'logo'),
             'deskripsi_program' => $this->faker->sentence(),
             'deskripsi_peluang_kerja' => $this->faker->sentence(),

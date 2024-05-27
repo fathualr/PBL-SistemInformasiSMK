@@ -196,6 +196,7 @@ return new class extends Migration
             $table->string('no_hp')->notNullable();
             $table->string('pilihan_1')->notNullable();
             $table->string('pilihan_2')->notNullable();
+            $table->string('tahun_pendaftaran')->notNullable();
             $table->string('nama_sekolah_asal')->notNullable();
             $table->string('alamat')->notNullable();
             $table->string('no_rt')->notNullable();
@@ -214,22 +215,17 @@ return new class extends Migration
             $table->string('pekerjaan_wali')->notNullable();
             $table->string('penghasilan_wali')->notNullable();
             $table->string('tautan_dokumen')->notNullable();
+            $table->enum('status', ['Diterima', 'Ditolak', 'Dalam Proses'])->Nullable()->default('Dalam Proses');
             $table->timestamps();
 
-            // Menambahkan foreign key constraint
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade')->nullable();
         });
 
         // Tabel untuk pengumuman hasil pendaftaran PPDB
         Schema::create('pengumuman_ppdb', function (Blueprint $table) {
             $table->id('id_pengumuman');
-            $table->unsignedBigInteger('id_pendaftaran')->notNullable();
-            $table->string('bukti_daftar_ulang')->nullable();
-            $table->enum('status', ['Diterima', 'Ditolak', 'Dalam Proses'])->notNullable()->default('Dalam Proses');
+            $table->string('tautan_dokumen')->notNullable();
             $table->timestamps();
-
-            // Menambahkan foreign key constraint
-            $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('form_ppdb')->onDelete('cascade');
         });
 
         // Tabel untuk capaian pembelajaran

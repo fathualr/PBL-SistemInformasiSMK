@@ -3,22 +3,32 @@
 @section('main-content')
 
 <div>
-    <h2 class="text-black font-bold ml-2 mt-2 mb-2 jus">Galeri Album</h2>
+    <h2 class="text-black font-bold ml-2 mt-2 mb-2">Galeri Album</h2>
 </div>
 
-<button class="btn mb-8 mt-4 ml-20" onclick="my_modal_add.showModal()">Tambahkan Album</button>
+<div class="flex flex-col md:flex-row justify-between items-center">
+    <div class="w-full md:w-auto mb-2 md:mb-0">
+        <button class="btn btn-outline w-full md:w-auto hover:animate-pulse" onclick="my_modal_add.showModal()">Tambahkan Album</button>
+    </div>
 
-<div class="overflow-x-auto">
-    <table class="table table-xs table-pin-rows table-pin-cols">
+    <div class="w-full md:w-auto hidden md:flex">
+        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none w-full">
+            <i class="fas fa-magnifying-glass"></i>
+            <input type="text" class="grow" placeholder="Cari" />
+        </label>
+    </div>
+</div>
+
+<div class="shadow-xl rounded-md mt-5 overflow-x-auto">
+    <table class="table table-xs w-full">
         <thead>
             <tr>
-                <th class="w-8">No</th>
-                <td class="w-8">Nama Album</td>
-                <td class="w-8">Tipe Album</td>
-                <td class="w-8">Gambar Album</td>
-                <td class="w-44">Deskripsi</td>
-                <td class="w-8">Tanggal unggah</td>
-                <td class="w-8">Aksi</td>
+                <th>No</th>
+                <td>Nama Album</td>
+                <td class="p-2 hidden md:table-cell">Tipe Album</td>
+                <td class="p-2 hidden md:table-cell">Gambar Album</td>
+                <td class="p-2 hidden md:table-cell">Deskripsi</td>
+                <td>Aksi</td>
             </tr>
         </thead>
         <tbody>
@@ -27,15 +37,16 @@
             <tr>
                 <td>{{ ($albums->currentPage() - 1) * $albums->perPage() + $key + 1 }}</td>
                 <td>{{ $album->nama_album }}</td>
-                <td>{{ $album->tipe_album }}</td>
-                <td>{{ $album->gambar_album }}</td>
-                <td class="w-44">
-                    <p class="truncate w-[30rem]">{{ $album->deskripsi_album }}</p>
+                <td class="p-2 hidden md:table-cell">{{ $album->tipe_album }}</td>
+                <td class="p-2 hidden md:table-cell w-36">
+                    <p class="truncate w-36">{{ $album->gambar_album }}</p>
                 </td>
-                <td>{{ $album->tanggal_unggah }}</td>
+                <td class="p-2 hidden md:table-cell w-96">
+                    <p class="truncate w-96">{{ $album->deskripsi_album }}</p>
+                </td>
                 <td>
-                    <details class="dropdown dropdown-right">
-                        <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                    <details class="dropdown">
+                        <summary tabindex="0" role="button" class="btn btn-ghost w-20">
                             <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                             <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
                             <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
@@ -67,6 +78,16 @@
             @endforeach
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <th>No</th>
+                <td>Nama Album</td>
+                <td class="p-2 hidden md:table-cell">Tipe Album</td>
+                <td class="p-2 hidden md:table-cell">Gambar Album</td>
+                <td class="p-2 hidden md:table-cell">Deskripsi</td>
+                <td>Aksi</td>
+            </tr>
+        </tfoot>
     </table>
 </div>
 
@@ -244,19 +265,19 @@
 @endforeach
 
 <!-- Pagination -->
-<div class="join flex justify-center my-5">
+<div class="flex justify-center my-5 gap-2">
     @if($albums->previousPageUrl())
-    <a href="{{ $albums->previousPageUrl() }}" class="join-item btn">«</a>
+    <a href="{{ $albums->previousPageUrl() }}" class="btn">«</a>
     @else
-    <button class="join-item btn disabled">«</button>
+    <button class="btn disabled">«</button>
     @endif
 
-    <button class="join-item btn">Page {{ $albums->currentPage() }}</button>
+    <button class="btn">Page {{ $albums->currentPage() }}</button>
 
     @if($albums->nextPageUrl())
-    <a href="{{ $albums->nextPageUrl() }}" class="join-item btn">»</a>
+    <a href="{{ $albums->nextPageUrl() }}" class="btn">»</a>
     @else
-    <button class="join-item btn disabled">»</button>
+    <button class="btn disabled">»</button>
     @endif
 </div>
 @endsection

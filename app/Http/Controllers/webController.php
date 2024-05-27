@@ -16,6 +16,7 @@ use App\Models\DirektoriPegawai;
 use App\Models\DirektoriSiswa;
 use App\Models\DirektoriAlumni;
 use App\Models\Ekstrakulikuler;
+use App\Models\FormPPDB;
 use App\Models\UmpanBalik;
 use App\Models\SejarahSekolah;
 use App\Models\Prasarana;
@@ -73,10 +74,26 @@ class webController extends Controller
         ]);
     }
 
-    public function pengumuman()
+    public function pengumuman(Request $request)
     {
-        return view('guest/pengumuman-ppdb', [
-            "title" => "Pengumuman PPDB"
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
+    
+        // Lakukan pengecekan apakah terdapat query pencarian
+        if ($search) {
+            // Jika ada, lakukan pencarian berdasarkan nama atau NISN
+            $forms = FormPPDB::where('nama_lengkap', 'like', '%' . $search . '%')
+                ->orWhere('nisn', 'like', '%' . $search . '%')
+                ->orWhere('tahun_pendaftaran', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $forms = FormPPDB::paginate($perPage);
+        }
+    
+        return view('guest.pengumuman-ppdb', [
+            "title" => "Guest Pendaftaran PPDB",
+            "forms" => $forms,
         ]);
     }
 

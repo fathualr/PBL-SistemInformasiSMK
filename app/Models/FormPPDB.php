@@ -24,6 +24,7 @@ class FormPPDB extends Model
         'no_hp',
         'pilihan_1',
         'pilihan_2',
+        'tahun_pendaftaran',
         'nama_sekolah_asal',
         'alamat',
         'no_rt',

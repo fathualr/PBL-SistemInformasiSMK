@@ -37,6 +37,7 @@ class FormsExport implements FromCollection, WithHeadings
             'No HP',
             'Pilihan 1',
             'Pilihan 2',
+            'Tahun Pendaftaraan',
             'Nama Sekolah Asal',
             'Alamat',
             'No RT',
@@ -55,6 +56,7 @@ class FormsExport implements FromCollection, WithHeadings
             'Pekerjaan Wali',
             'Penghasilan Wali',
             'Tautan Dokumen',
+            'Status',
             'Created At',
             'Updated At'
         ];
