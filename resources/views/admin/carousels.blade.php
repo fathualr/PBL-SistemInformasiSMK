@@ -2,18 +2,18 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
 
     @include('shared.success-message')
     @include('shared.error-message')
-    <div class="col-span-2 my-4 mx-5 row-start-2">
+    <div class="col-span-3 my-4 mx-5 row-start-2">
         <h3 class="font-bold text-lg">Pengelolaan Carousels</h3>
     </div>
 
     <!-- Modal -->
-    <div class="col-span-2 col-start-2 row-start-3">
-        <button class="btn w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
-            <i class="fas fa-user-plus"></i>
+    <div class="col-span-2 row-start-3 mx-5">
+        <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
+            <i class="fas fa-plus text-xl"></i>
             Tambah Carousels
         </button>
     </div>
@@ -39,7 +39,7 @@
                         <th>{{ $key + 1 }}</th>
                         <td>{{ $crs->image }}</td>
                         <td>
-                            <details class="dropdown dropdown-right">
+                            <details class="dropdown dropdown-bottom">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>

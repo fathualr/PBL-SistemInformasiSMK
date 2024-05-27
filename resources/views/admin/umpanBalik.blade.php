@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
 
     <div class="col-span-3 my-4 mx-5">
         <h3 class="font-bold text-lg">Pengelolaan Umpan Balik</h3>

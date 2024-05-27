@@ -3,7 +3,7 @@
 @section('main-content')
 
 <!-- First Content -->
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Video Kata Sambutan</h3>

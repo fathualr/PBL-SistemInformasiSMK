@@ -1,14 +1,14 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
 
     <div class="col-span-3 my-4 mx-5">
         <h3 class="font-bold text-lg">Pengelolaan Ekstrakulikuler</h3>
     </div>
 
     <!-- Modal -->
-    <div class="col-span-2 row-start-2 mx-5 w-full">
+    <div class="col-span-3 row-start-2 mx-5 w-full">
         <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-user-plus"></i>
             Tambah Ekstrakulikuler

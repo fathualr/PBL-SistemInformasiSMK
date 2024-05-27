@@ -12,28 +12,33 @@
     </div>
     <div class="col-span-2">
         <p class="-mt-10">
-            {!! empty($konten->sejarah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->sejarah !!}
+            {!! empty($konten->sejarah) ? '
+        <p class="text-red-500 italic">$NULL</p>' : $konten->sejarah !!}
         </p>
     </div>
     <div class="col-span-2 mt-10">
         <a href="/guest/sejarah">
-            <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
+            <button
+                class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
                 Lanjut
             </button>
         </a>
     </div>
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96" src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
+            <iframe class="w-full h-full lg:h-96"
+                src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
         </div>
     </div>
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
+<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p
+        class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
 
 <div class="grid tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">
 
-    <div class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-gossamer">
+    <div
+        class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
         <!-- First Card -->
         <div class="card smartphone:w-60 tablet:w-60 lg:w-full h-96 mx-auto rounded-sm">
             <figure class="px-5 pt-5 mx-auto">
@@ -46,13 +51,15 @@
             <div class="card-body text-center text-white">
                 <h2 class="card-title mx-auto mb-3">Nama Sekolah</h2>
                 <p class="">
-                    {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}
-                    
+                    {!! empty($konten->nama_sekolah) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}
+
                 </p>
 
                 <h2 class="card-title mx-auto mb-3">Nama Kepala Sekolah</h2>
                 <p class="">
-                    {!! empty($konten->nama_kepala_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_kepala_sekolah !!}
+                    {!! empty($konten->nama_kepala_sekolah) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->nama_kepala_sekolah !!}
                 </p>
             </div>
         </div>
@@ -70,7 +77,8 @@
             <div class="card-body text-center text-white">
                 <h2 class="card-title mx-auto mb-3">Alamat Sekolah</h2>
                 <p class="">
-                    {!! empty($konten->alamat_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->alamat_sekolah !!}
+                    {!! empty($konten->alamat_sekolah) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->alamat_sekolah !!}
                 </p>
             </div>
         </div>
@@ -88,12 +96,14 @@
             <div class="card-body text-center text-white">
                 <h2 class="card-title mx-auto mb-3">Email Sekolah</h2>
                 <p class="">
-                    {!! empty($konten->email_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->email_sekolah !!}
+                    {!! empty($konten->email_sekolah) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->email_sekolah !!}
                 </p>
 
                 <h2 class="card-title mx-auto mb-3">No.telp Sekolah</h2>
                 <p class="">
-                    {!! empty($konten->no_telepon_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->no_telepon_sekolah !!}
+                    {!! empty($konten->no_telepon_sekolah) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->no_telepon_sekolah !!}
                 </p>
             </div>
         </div>
@@ -115,12 +125,14 @@
                 <div class="card-body text-center">
                     <h2 class="text-md mx-auto mb-3 font-bold">No. Pendirian Sekolah</h2>
                     <p class="">
-                        {!! empty($konten->no_pendirian_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->no_pendirian_sekolah !!}
+                        {!! empty($konten->no_pendirian_sekolah) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->no_pendirian_sekolah !!}
                     </p>
 
                     <h2 class="text-md mx-auto mb-3 font-bold">No. Sertifikat</h2>
                     <p class="">
-                        {!! empty($konten->no_sertifikat) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->no_sertifikat !!}
+                        {!! empty($konten->no_sertifikat) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->no_sertifikat !!}
                     </p>
                 </div>
             </div>
@@ -140,12 +152,14 @@
                 <div class="card-body text-center">
                     <h2 class="text-md mx-auto mb-3 font-bold">No. Statistik Sekolah</h2>
                     <p class="">
-                        {!! empty($konten->no_statistik_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->no_statistik_sekolah !!}
+                        {!! empty($konten->no_statistik_sekolah) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->no_statistik_sekolah !!}
                     </p>
 
                     <h2 class="text-md mx-auto mb-3 font-bold">NIS</h2>
                     <p class="">
-                        {!! empty($konten->nis) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nis !!}
+                        {!! empty($konten->nis) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->nis !!}
                     </p>
                 </div>
             </div>
@@ -165,17 +179,20 @@
                 <div class="card-body text-center">
                     <h2 class="text-md mx-auto font-bold">Jenjang Akreditasi</h2>
                     <p class="">
-                        {!! empty($konten->status_akreditasi_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->status_akreditasi_sekolah !!}
+                        {!! empty($konten->status_akreditasi_sekolah) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->status_akreditasi_sekolah !!}
                     </p>
 
                     <h2 class="text-md mx-auto font-bold">Tahun Didirikan</h2>
                     <p class="">
-                        {!! empty($konten->tahun_didirikan) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->tahun_didirikan !!}
+                        {!! empty($konten->tahun_didirikan) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->tahun_didirikan !!}
                     </p>
 
                     <h2 class="text-md mx-auto font-bold">Tahun Operasional</h2>
                     <p class="">
-                        {!! empty($konten->tahun_operasional) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->tahun_operasional !!}
+                        {!! empty($konten->tahun_operasional) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->tahun_operasional !!}
                     </p>
                 </div>
             </div>
@@ -195,17 +212,20 @@
                 <div class="card-body text-center">
                     <h2 class="text-md mx-auto font-bold">Status Kepemilikan Tanah</h2>
                     <p class="">
-                        {!! empty($konten->status_kepemilikan_tanah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->status_kepemilikan_tanah !!}
+                        {!! empty($konten->status_kepemilikan_tanah) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->status_kepemilikan_tanah !!}
                     </p>
 
                     <h2 class="text-md mx-auto font-bold">Luas Tanah</h2>
                     <p class="">
-                        {!! empty($konten->luas_tanah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->luas_tanah !!}
+                        {!! empty($konten->luas_tanah) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->luas_tanah !!}
                     </p>
 
                     <h2 class="text-md mx-auto font-bold">Status Kepemilikan Bangunan</h2>
                     <p class="">
-                        {!! empty($konten->status_kepemilikan_bangunan) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->status_kepemilikan_bangunan !!}
+                        {!! empty($konten->status_kepemilikan_bangunan) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->status_kepemilikan_bangunan !!}
                     </p>
                 </div>
             </div>
@@ -250,17 +270,20 @@
                 <div class="card-body text-center">
                     <h2 class="text-md mx-auto font-bold">Luas Tanah Keseluruhan</h2>
                     <p class="">
-                        {!! empty($konten->luas_lahan_keseluruhan) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->luas_lahan_keseluruhan !!}
+                        {!! empty($konten->luas_lahan_keseluruhan) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->luas_lahan_keseluruhan !!}
                     </p>
 
                     <h2 class="text-md mx-auto font-bold">Fasilitas Lainnya</h2>
                     <p class="">
-                        {!! empty($konten->fasilitas_lainnya) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->fasilitas_lainnya !!}
+                        {!! empty($konten->fasilitas_lainnya) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->fasilitas_lainnya !!}
                     </p>
 
                     <h2 class="text-md mx-auto font-bold">Sisa Lahan Seluruhnya</h2>
                     <p class="">
-                        {!! empty($konten->sisa_lahan_seluruhnya) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->sisa_lahan_seluruhnya !!}
+                        {!! empty($konten->sisa_lahan_seluruhnya) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->sisa_lahan_seluruhnya !!}
                     </p>
                 </div>
             </div>
@@ -276,10 +299,11 @@
     <!-- Visi -->
     <div class="mx-auto">
         <div class="card w-72 laptop:w-96 bg-slate-100">
-            <h2 class="text-center font-bold text-white text-xl bg-dark-kepple w-full mt-10">VISI</h2>
+            <h2 class="text-center font-bold text-white text-xl bg-blue-400 w-full mt-10">VISI</h2>
             <div class="card-body items-center text-center">
                 <p>
-                    {!! empty($konten->visi) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->visi !!}
+                    {!! empty($konten->visi) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->visi !!}
                 </p>
             </div>
         </div>
@@ -289,10 +313,11 @@
     <!-- Misi -->
     <div class="mx-auto">
         <div class="card w-72 laptop:w-96 bg-slate-100">
-            <h2 class="text-center font-bold text-white text-xl bg-dark-kepple w-full mt-10">MISI</h2>
+            <h2 class="text-center font-bold text-white text-xl bg-blue-400 w-full mt-10">MISI</h2>
             <div class="card-body items-center text-center">
                 <p>
-                    {!! empty($konten->misi) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->misi !!}
+                    {!! empty($konten->misi) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->misi !!}
                 </p>
             </div>
         </div>
@@ -304,9 +329,10 @@
 
 <div class="col-span-2 my-5 w-full">
     @if(empty($konten->struktur_organisasi_sekolah))
-        <p class="text-red-500 italic">$NULL</p>
+    <p class="text-red-500 italic">$NULL</p>
     @else
-        <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}" alt="struktur_organisasi_sekolah">
+    <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}"
+        alt="struktur_organisasi_sekolah">
     @endif
 </div>
 

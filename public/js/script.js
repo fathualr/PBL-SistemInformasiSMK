@@ -6,12 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", function () {
         if (window.scrollY > document.querySelector(".carousel").offsetHeight) {
             navbar.classList.remove("bg-transparent");
-            navbar.classList.add("bg-blue-lagoon");
+            navbar.classList.remove("backdrop-blur");
+            navbar.classList.add("bg-blue-300");
 
             navbarText.classList.add("text-white");
         } else {
-            navbar.classList.remove("bg-blue-lagoon");
+            navbar.classList.remove("bg-blue-300");
             navbar.classList.add("bg-transparent");
+            navbar.classList.add("backdrop-blur");
 
             navbarText.classList.remove("text-white");
         }

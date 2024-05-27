@@ -41,55 +41,66 @@
     <!-- Search Box -->
 </div>
 <!-- Content -->
-<div class="grid grid-cols-4">
-    @foreach($direktoriSiswa as $siswa)
-    @foreach($programKeahlian as $program)
-    @if($siswa->id_program === $program->id_program)
+@foreach($direktoriSiswa as $siswa)
+@foreach($programKeahlian as $program)
+@if($siswa->id_program === $program->id_program)
 
-    <div class="card w-72 bg-base-300 shadow-xl mt-5">
-        <div class="badge badge-outline absolute top-5 left-5">
-            {{ $program->nama_program }}</div>
-        <figure class="px-10 pt-10">
-            <img src="{{ asset($siswa->gambar_siswa) }}" alt="Shoes" class="rounded-full w-32 h-32 mt-5" />
-        </figure>
+<div class="overflow-x-auto my-10">
+    <table class="table text-center">
+        <!-- head -->
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Jurusan</th>
+                <th>Tahun Angkatan</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="hover">
+                <td>
+                    <div class="flex justify-center items-center gap-4">
+                        <div class="avatar">
+                            <div class="mask mask-squircle w-12 h-12">
+                                <img src="{{ asset($siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-bold">{{ $siswa->nama_siswa }}</div>
+                            <div class="text-sm opacity-50">{{ $siswa->nisn_siswa }}</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    {{ $siswa->alamat_siswa }}
+                </td>
+                <td>{{ $program->nama_program }}</td>
+                <td>{{ $siswa->tahun_angkatan_siswa }}</td>
+                <th>
+                    <button class="btn btn-ghost btn-xs">
+                        <i class="fas fa-eye text-xl"></i>
+                    </button>
+                </th>
+            </tr>
+        </tbody>
+        <!-- foot -->
+        <tfoot>
+            <tr>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Jurusan</th>
+                <th>Tahun Angkatan</th>
+                <th>Aksi</th>
+            </tr>
+        </tfoot>
 
-        <div class="card-body items-center text-center">
-
-            <label class="form-control w-full max-w-xs pointer-events-none">
-                <div class="label">
-                    <span class="label-text font-bold">Nama</span>
-                </div>
-                <input type="text" placeholder="Type here"
-                    class="input pointer-events-none bg-transparent w-full text-sm focus-within:outline-none"
-                    value="{{ $siswa->nama_siswa }}" readonly />
-            </label>
-
-            <label class="form-control w-full pointer-events-none">
-                <div class="label">
-                    <span class="label-text font-bold">Tempat, Tanggal Lahir</span>
-                </div>
-                <input type="text" placeholder="Type here"
-                    class="input pointer-events-none bg-transparent w-full text-sm focus-within:outline-none"
-                    value="{{ $siswa->tempat_lahir_siswa }}, {{ $siswa->TTL_siswa }}" readonly />
-            </label>
-
-            <label class="form-control w-full max-w-xs pointer-events-none">
-                <div class="label">
-                    <span class="label-text font-bold">Alamat</span>
-                </div>
-                <input type="text" placeholder="Type here"
-                    class="input pointer-events-none bg-transparent w-full text-sm focus-within:outline-none"
-                    value="{{ $siswa->alamat_siswa }}" readonly />
-            </label>
-
-        </div>
-    </div>
-
-
-    @endif
-    @endforeach
-    @endforeach
+    </table>
 </div>
+
+@endif
+@endforeach
+@endforeach
 <!-- Content -->
 
 @endsection

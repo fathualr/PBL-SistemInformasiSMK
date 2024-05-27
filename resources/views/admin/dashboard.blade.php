@@ -2,23 +2,19 @@
 
 @section('main-content')
 
-<div class="card w-full h-max bg-slate-200 shadow-xl">
+<div class="card w-screen desktop:w-full h-max bg-slate-200 shadow-xl">
     <div class="card-body">
-        <div class="grid grid-cols-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- First Card -->
-            <div class="card w-96">
+            <div class="card w-full">
                 <div class="card-body">
-                    <div class="grid grid-rows-2 grid-flow-col gap-4">
-                        <div class="row-span-3 flex justify-center items-center">
-                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
-                                <i class="far fa-user text-2xl text-white"></i>
-                            </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="rounded-full bg-blue-700 w-20 h-20 flex justify-center items-center">
+                            <i class="far fa-user text-2xl text-white"></i>
                         </div>
-                        <div class="col-span-2">
+                        <div>
                             <p>Siswa Aktif</p>
-                        </div>
-                        <div class="col-span-2">
-                            <h2 class="text-2xl font-bold text-elm">
+                            <h2 class="text-2xl font-bold text-blue-700">
                                 200
                             </h2>
                         </div>
@@ -27,42 +23,34 @@
             </div>
             <!-- First Card -->
 
-            <!-- Sceond Card -->
-            <div class="card w-96">
+            <!-- Second Card -->
+            <div class="card w-full">
                 <div class="card-body">
-                    <div class="grid grid-rows-2 grid-flow-col gap-4">
-                        <div class="row-span-3 flex justify-center items-center">
-                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
-                                <i class="fas fa-chalkboard-user text-2xl text-white"></i>
-                            </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="rounded-full bg-blue-700 w-20 h-20 flex justify-center items-center">
+                            <i class="fas fa-chalkboard-user text-2xl text-white"></i>
                         </div>
-                        <div class="col-span-2">
+                        <div>
                             <p>Staff Pengajar</p>
-                        </div>
-                        <div class="col-span-2">
-                            <h2 class="text-2xl font-bold text-elm">
+                            <h2 class="text-2xl font-bold text-blue-700">
                                 200
                             </h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Sceond Card -->
+            <!-- Second Card -->
 
             <!-- Third Card -->
-            <div class="card w-96">
+            <div class="card w-full">
                 <div class="card-body">
-                    <div class="grid grid-rows-2 grid-flow-col gap-4">
-                        <div class="row-span-3 flex justify-center items-center">
-                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
-                                <i class="fas fa-file-contract text-2xl text-white"></i>
-                            </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="rounded-full bg-blue-700 w-20 h-20 flex justify-center items-center">
+                            <i class="fas fa-file-contract text-2xl text-white"></i>
                         </div>
-                        <div class="col-span-2">
+                        <div>
                             <p>Pendaftar PPDB</p>
-                        </div>
-                        <div class="col-span-2">
-                            <h2 class="text-2xl font-bold text-elm">
+                            <h2 class="text-2xl font-bold text-blue-700">
                                 200
                             </h2>
                         </div>
@@ -72,19 +60,15 @@
             <!-- Third Card -->
 
             <!-- Fourth Card -->
-            <div class="card w-96">
+            <div class="card w-full">
                 <div class="card-body">
-                    <div class="grid grid-rows-2 grid-flow-col gap-4">
-                        <div class="row-span-3 flex justify-center items-center">
-                            <div class="rounded-full bg-elm w-20 h-20 flex justify-center items-center">
-                                <i class="fas fa-user-check text-2xl text-white"></i>
-                            </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="rounded-full bg-blue-700 w-20 h-20 flex justify-center items-center">
+                            <i class="fas fa-user-check text-2xl text-white"></i>
                         </div>
-                        <div class="col-span-2">
+                        <div>
                             <p>Lolos PPDB</p>
-                        </div>
-                        <div class="col-span-2">
-                            <h2 class="text-2xl font-bold text-elm">
+                            <h2 class="text-2xl font-bold text-blue-700">
                                 200
                             </h2>
                         </div>

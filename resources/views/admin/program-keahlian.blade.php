@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Program Keahlian</h3>
@@ -700,7 +700,7 @@
 <!-- Tambah Peluang Kerja -->
 
 <!-- Capaian Pembelajaran -->
-<div class="grid grid-cols-9 shadow-xl rounded-md my-10">
+<div class="grid grid-cols-9 rounded-md my-10">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Capaian Pembelajaran</h3>
@@ -955,7 +955,7 @@
 <!-- Capaian Pembelajaran -->
 
 <!-- Peluang Kerja -->
-<div class="grid grid-cols-9 shadow-xl rounded-md my-10">
+<div class="grid grid-cols-9 rounded-md my-10">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Peluang Kerja</h3>
