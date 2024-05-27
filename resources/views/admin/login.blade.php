@@ -18,7 +18,7 @@
 <body class="bg-slate-100 font-poppins">
 
     <div class="flex justify-center items-center h-screen">
-        <div class="bg-elm w-10/12 h-5/6 ">
+        <div class="bg-blue-400 w-10/12 h-5/6 ">
             <div class="grid grid-cols-2 h-full">
                 <!-- Form Login -->
                 <div class="bg-white">
@@ -26,7 +26,7 @@
 
                     <div class="grid grid-cols-3 w-52 -mt-12 mx-auto">
                         <div class="divider"></div>
-                        <div class="divider divider-success"></div>
+                        <div class="divider divider-primary"></div>
                         <div class="divider"></div>
                     </div>
 
@@ -35,24 +35,24 @@
                         <label
                             class="input bg-transparent border-none flex items-center gap-2 mb-5 w-1/2 mx-auto focus-within:outline-none">
                             <i class="fas fa-user"></i>
-                            <input type="text" class="grow bg-transparent border-b-2 border-elm py-2"
+                            <input type="text" class="grow bg-transparent border-b-2 border-blue-500 py-2"
                                 placeholder="Username" />
                         </label>
 
                         <label
                             class="input bg-transparent border-none flex items-center gap-2 w-1/2 mx-auto focus-within:outline-none">
                             <i class="fas fa-lock"></i>
-                            <input type="password" class="grow border-b-2 border-elm py-2" id="passwordInput"
+                            <input type="password" class="grow border-b-2 border-blue-500 py-2" id="passwordInput"
                                 placeholder="Password" value="" />
                             <i class="fas fa-eye absolute translate-x-60" id="togglePassword"></i>
                         </label>
 
                         <a href="admin/dashboard" class="flex justify-center items-center mt-20">
                             <button
-                                class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Login
+                                class="btn bg-blue-500 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-500">Login
                             </button>
                         </a>
-                        <a href="" class="flex justify-center items-center mt-5 text-sm text-elm">
+                        <a href="" class="flex justify-center items-center mt-5 text-sm text-blue-600">
                             Lupa Password ?
                         </a>
 

@@ -2,9 +2,10 @@
 
 @section('Main')
 
+<h2 class="text-xl font-bold mb-8 text-center divider">Program Keahlian</h2>
 <div class="grid tablet:grid-cols-2 laptop:grid-cols-3 gap-y-16 laptop:gap-y-16 tablet:gap-y-28 tablet:gap-2 my-24">
     <!-- Kompetensi 1 -->
-    @foreach($programKeahlian as $index => $program)
+    @forelse($programKeahlian as $program)
     <div class="mx-auto">
         <div class="card card-compact smartphone:w-72 laptop:w-96 h-80 shadow-xl bg-indigo-500">
             <div class="avatar mx-auto h-28 -translate-y-10">
@@ -23,7 +24,12 @@
             </div>
         </div>
     </div>
-    @endforeach
+    @empty
+    <div class="col-start-2">
+        <h2 class="text-center text-2xl capitalize font-bold">Tidak ada data program Keahlian yang tersedia.</h2>
+
+    </div>
+    @endforelse
     <!-- Kompetensi 1 -->
 </div>
 

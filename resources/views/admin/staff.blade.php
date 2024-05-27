@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Direktori Pegawai</h3>
@@ -376,36 +376,35 @@
             @csrf
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai"
-                    name="nama_pegawai" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Pegawai" name="nama_pegawai"
+                    required />
             </label>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_pegawai" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="NIP" name="nik_pegawai" required />
             </label>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email"
-                    name="email_pegawai" />
+                <input type="email" class="grow bg-transparent py-2" placeholder="Email" name="email_pegawai"
+                    required />
             </label>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp"
-                    name="no_hp_pegawai" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="No.Hp" name="no_hp_pegawai" required />
             </label>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="date" class="grow bg-transparent border-r-2 py-2 w-16" placeholder="Tanggal Lahir"
-                    name="TTL_pegawai" />
+                    name="TTL_pegawai" required />
                 <input type="text" class="grow bg-transparent py-2" placeholder="Tempat Lahir"
-                    name="tempat_lahir_pegawai" />
+                    name="tempat_lahir_pegawai" required />
             </label>
 
-            <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin">
+            <select class="select border-elm border-2 w-full mb-5" name="jenis_kelamin" required>
                 <option disabled selected>Pilih Jenis Kelamin</option>
                 <option value="Laki - Laki">Laki - Laki</option>
                 <option value="Perempuan">Perempuan</option>
@@ -413,15 +412,15 @@
 
             <textarea
                 class="input border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Alamat" name="alamat_pegawai"></textarea>
+                placeholder="Alamat" name="alamat_pegawai" required></textarea>
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan"
-                    name="jabatan_pegawai" />
+                <input type="text" class="grow bg-transparent py-2" placeholder="Jabatan" name="jabatan_pegawai"
+                    required />
             </label>
 
-            <select class="select border-elm border-2 w-full mb-5" name="status_pegawai">
+            <select class="select border-elm border-2 w-full mb-5" name="status_pegawai" required>
                 <option disabled selected>Pilih Status Pegawai</option>
                 <option value="Aktif">Aktif</option>
                 <option value="Cuti">Cuti</option>
@@ -431,9 +430,10 @@
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" name="gambar_pegawai"
-                    class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarPegawai/*"
-                    placeholder="Logo" />
+                <input type="file" name="gambar_pegawai" class="grow file-input file-input-success border-none bg-transparent py-2
+                    file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-elm file:text-white
+                    hover:file:bg-white hover:file:text-elm" accept="gambarPegawai/*" placeholder="Logo" required />
             </label>
 
 

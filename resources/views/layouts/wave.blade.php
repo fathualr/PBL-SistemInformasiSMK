@@ -9,11 +9,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #015871;
+    background: #1d4ed8;
 }
 
 .wave {
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+    background: url('{{ asset('image/wave.svg') }}') repeat-x;
     position: absolute;
     top: -195px;
     width: 6400px;

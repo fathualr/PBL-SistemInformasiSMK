@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
 
     <div class="col-span-2 col-start-2">
         <button class="btn w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
@@ -63,10 +63,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_edit.showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -75,7 +77,8 @@
 
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_view.showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -84,7 +87,8 @@
 
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_delete.showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -115,10 +119,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_edit.showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -127,7 +133,8 @@
 
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_view.showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -136,7 +143,8 @@
 
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_delete.showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -166,10 +174,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_edit.showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -178,7 +188,8 @@
 
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_view.showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -187,7 +198,8 @@
 
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="my_modal_delete.showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -235,19 +247,23 @@
 
         <form action="">
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" class="bg-transparent py-2" name="excel_file" accept=".xlsx, .xls" placeholder="Upload file Excel" />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="file" class="bg-transparent py-2" name="excel_file" accept=".xlsx, .xls"
+                    placeholder="Upload file Excel" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
 
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
 
                 <a href="" class="">
-                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class=" fas fa-plus"></i>
                         Tambah
                     </button>

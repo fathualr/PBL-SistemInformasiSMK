@@ -3,14 +3,14 @@
 @section('main-content')
 
 <!-- First Content -->
-<div class="grid grid-cols-9 shadow-xl rounded-md">
+<div class="grid grid-cols-9 rounded-md">
 
     @include('shared.success-message')
     @include('shared.error-message')
     <div class="col-span-4 my-4 mx-5 row-start-2">
         <h3 class="font-bold text-lg">Pengelolaan Konten Profil Website</h3>
     </div>
-{{--     
+{{-- 
     <div class="col-span-3 col-start-7 my-4 mx-5 row-start-2">
         <div class="dropdown w-full">
             <div tabindex="0" role="button" class="btn btn-neutral m-1 w-full">Daftar Konten</div>

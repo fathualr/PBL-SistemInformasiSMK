@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -28,14 +29,14 @@
 <body class="font-poppins">
 
     <!-- Navbar -->
-    <div class="navbar bg-transparent fixed top-0 z-40" id="navbar">
+    <div class="navbar bg-transparent backdrop-blur  text-slate-300 fixed top-0 z-[999]" id="navbar">
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                     <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}" class="h-5 w-5" alt="logo_sekolah">
                 </div>
                 <ul tabindex="0"
-                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    class="menu menu-sm dropdown-content text-black mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/guest/profile">Profile
                             Sekolah</a></li>
@@ -109,7 +110,7 @@
         </div>
 
         <!--Normal-->
-        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start  place-items-end">
+        <div class="grid grid-cols-10 gap-1 w-full lg:place-items-start place-items-end">
             <div class="">
                 <div
                     class="avatar-group -space-x-6 rtl:space-x-reverse hidden laptop:flex translate-x-7 items-center md:ml-auto sm:ml-0">
@@ -123,23 +124,31 @@
             <div class="col-span-9 w-full font-bold hidden laptop:flex desktop:justify-center desktop:items-center"
                 id="nav-text">
                 <ul class="menu menu-horizontal px-1 justify-center items-center">
-                    <li class="@if($title == 'Beranda') bg-deep-sea rounded-md @endif"><a href="/">Beranda</a>
+                    <li
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Beranda') bg-blue-400 rounded-md @endif">
+                        <a href="/">Beranda</a>
                     </li>
-                    <li class="@if($title == 'Profile') bg-deep-sea rounded-md @endif"><a href="/guest/profile">Profile
-                            Sekolah</a></li>
+                    <li
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Profile') bg-blue-400 rounded-md @endif">
+                        <a href="/guest/profile">Profile
+                            Sekolah</a>
+                    </li>
                     <li>
-                    <li class="@if($title == 'Program Keahlian') bg-deep-sea rounded-md @endif"><a
-                            href="/guest/program-keahlian">Program Keahlian</a></li>
+                    <li
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Program Keahlian') bg-blue-500 rounded-md @endif">
+                        <a href="/guest/program-keahlian">Program Keahlian</a>
+                    </li>
                     <li>
                         <details>
-                            <summary>PPDB</summary>
-                            <ul class="p-2 bg-blue-lagoon w-60 z-40">
+                            <summary class="hover:bg-blue-400 hover:rounded-md transition-all duration-300">PPDB
+                            </summary>
+                            <ul class="p-2 bg-blue-400 w-60 z-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'PPDB') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300  @if($title == 'PPDB') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/ppdb">Informasi & Pendaftaran</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md  @if($title == 'Pengumuman PPDB') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300  @if($title == 'Pengumuman PPDB') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/pengumuman-ppdb">Pengumuman</a>
                                 </li>
                             </ul>
@@ -147,22 +156,23 @@
                     </li>
                     <li>
                         <details>
-                            <summary>Direktori</summary>
-                            <ul class="bg-blue-lagoon z-40">
+                            <summary class="hover:bg-blue-400 hover:rounded-md transition-all duration-300">Direktori
+                            </summary>
+                            <ul class="bg-blue-400 z-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Guru') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Direktori Guru') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/direktori-guru">Guru</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Pegawai') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Direktori Pegawai') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/direktori-pegawai">Pegawai</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Siswa') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Direktori Siswa') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/direktori-siswa">Siswa</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Direktori Alumni') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Direktori Alumni') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/direktori-alumni">Alumni</a>
                                 </li>
                             </ul>
@@ -170,35 +180,43 @@
                     </li>
                     <li>
                         <details>
-                            <summary>Galeri</summary>
-                            <ul class="p-2 bg-blue-lagoon z-40">
+                            <summary class="hover:bg-blue-400 hover:rounded-md transition-all duration-300">Galeri
+                            </summary>
+                            <ul class="p-2 bg-blue-400 z-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Foto') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Galeri Foto') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/galeri-foto">Foto</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Galeri Video') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Galeri Video') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/galeri-video">Video</a>
                                 </li>
                             </ul>
                         </details>
                     </li>
-                    <li class="@if($title == 'Sarana & Prasarana') bg-deep-sea rounded-md @endif"><a
-                            href="/guest/sarana-prasarana">Sarana & Prasarana</a></li>
-                    <li class="@if($title == 'Prestasi Siswa') bg-deep-sea rounded-md @endif"><a
-                            href="/guest/prestasi-siswa">Prestasi Siswa</a></li>
-                    <li class="@if($title == 'Ekstrakulikuler') bg-deep-sea rounded-md @endif"><a
-                            href="/guest/ekstrakulikuler">Ekstrakulikuler</a></li>
+                    <li
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Sarana & Prasarana') bg-blue-500 rounded-md @endif">
+                        <a href="/guest/sarana-prasarana">Sarana & Prasarana</a>
+                    </li>
+                    <li
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Prestasi Siswa') bg-blue-500 rounded-md @endif">
+                        <a href="/guest/prestasi-siswa">Prestasi Siswa</a>
+                    </li>
+                    <li
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Ekstrakulikuler') bg-blue-500 rounded-md @endif">
+                        <a href="/guest/ekstrakulikuler">Ekstrakulikuler</a>
+                    </li>
                     <li>
                         <details>
-                            <summary>Lainnya</summary>
-                            <ul class="p-2 bg-blue-lagoon w-40">
+                            <summary class="hover:bg-blue-400 hover:rounded-md transition-all duration-300">Lainnya
+                            </summary>
+                            <ul class="p-2 bg-blue-400 w-40">
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Berita') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Berita') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/berita">Berita</a>
                                 </li>
                                 <li
-                                    class="text-white m-2 hover:bg-dark-lochinvar hover:rounded-md @if($title == 'Media Sosial') bg-deep-sea rounded-md @endif">
+                                    class="text-white m-2 hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Media Sosial') bg-blue-500 rounded-md @endif">
                                     <a href="/guest/media-sosial">Informasi Lainnya</a>
                                 </li>
                             </ul>
@@ -212,16 +230,18 @@
 
     <!-- Carousel -->
     <div class="flex justify-center items-center">
-        <div class="carousel w-full h-[30vh] lg:h-[70vh] relative overflow-hidden">
+        <div class="carousel w-full h-[50vh] lg:h-[80vh] relative overflow-hidden">
             @foreach($carousels as $key => $crs)
-            <div id="slide{{ $key+1 }}" class="carousel-item relative w-full transition {{ $key !== 0 ? 'hidden' : '' }}">
-                <img src="{{ asset('storage/'. $crs->image) }}" class="w-full transition-transform duration-500 transform" />
+            <div id="slide{{ $key+1 }}"
+                class="carousel-item relative w-full bg-opacity-60 transition {{ $key !== 0 ? 'hidden' : '' }}">
+                <img src="{{ asset('storage/'. $crs->image) }}"
+                    class="w-full h-[35rem] transition-transform duration-500 transform" />
                 @if ($key === 0)
-                    <div class="absolute inset-0 flex justify-center items-center">
-                        <div class="p-4 text-white bg-opacity-50 text-center w-[30rem]">
-                            <p class="text-2xl font-bold">Halaman {{ $title }} {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!} </p>
-                        </div>
+                <div class="absolute inset-0 flex justify-center items-center">
+                    <div class="p-4 text-white text-center w-[30rem]">
+                        <p class="text-2xl font-bold">Halaman {{ $title }} {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!} </p>
                     </div>
+                </div>
                 @endif
             </div>
             @endforeach
@@ -236,7 +256,7 @@
     <!-- Main -->
 
     <!-- Footer -->
-    <footer class="footer p-10 bottom-0 bg-blue-lagoon text-white">
+    <footer class="footer p-10 bottom-0 bg-blue-300 text-white">
         <aside>
             <div class="avatar-group -space-x-6 rtl:space-x-reverse">
                 <div class="avatar">
@@ -310,5 +330,9 @@
 
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
+
+
+
+
 
 </html>

@@ -2,7 +2,7 @@
 
 @section('main-content')
 <!-- Third Content -->
-<div class="grid grid-cols-9 shadow-xl rounded-md mt-10">
+<div class="grid grid-cols-9 rounded-md mt-10">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Sejarah Sekolah</h3>
@@ -10,10 +10,10 @@
     <!-- Title -->
 
     <!-- Modal -->
-    <div class="col-span-2 col-start-2 row-start-2">
+    <div class="col-span-3 row-start-2 mx-5">
 
-        <button class="btn w-full hover:animate-pulse" onclick="modal_add_sejarah.showModal()">
-            <i class="fas fa-plus"></i>
+        <button class="btn btn-outline w-full hover:animate-pulse" onclick="modal_add_sejarah.showModal()">
+            <i class="fas fa-plus text-xl"></i>
             Tambah Deskripsi Sejarah
         </button>
 
@@ -31,7 +31,7 @@
 
     <!-- Content -->
     <div class="col-span-9 row-start-3">
-        <div class=" mt-5 px-16">
+        <div class=" mt-5">
             <table class="table text-center">
                 <!-- head -->
                 <thead>
@@ -54,7 +54,7 @@
                             </p>
                         </td>
                         <td>
-                            <details class="dropdown dropdown-right">
+                            <details class="dropdown dropdown-bottom">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -196,9 +196,7 @@
                             </form>
                         </div>
                     </dialog>
-
                     <!-- view modal -->
-
 
                     <!-- delate modal -->
                     <dialog id="modal_delete_sejarah{{ $sejarah->id_sejarah }}" class="modal">

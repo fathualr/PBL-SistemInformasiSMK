@@ -8,7 +8,7 @@
 
 <button class="btn mb-8 mt-4 ml-20" onclick="my_modal_add.showModal()">Tambahkan Album</button>
 
-<div class="overflow-x-auto">
+<div class="">
     <table class="table table-xs table-pin-rows table-pin-cols">
         <thead>
             <tr>
@@ -43,19 +43,22 @@
                         </summary>
                         <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                             <li>
-                                <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit_{{ $album->id_album }}'].showModal()">
+                                <button class="btn btn-ghost w-full hover:animate-pulse"
+                                    onclick="window['my_modal_edit_{{ $album->id_album }}'].showModal()">
                                     <i class="fas fa-pen-to-square"></i>
                                     Edit
                                 </button>
                             </li>
                             <li>
-                                <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_detail_{{ $album->id_album }}'].showModal()">
+                                <button class="btn btn-ghost w-full hover:animate-pulse"
+                                    onclick="window['my_modal_detail_{{ $album->id_album }}'].showModal()">
                                     <i class="fas fa-circle-info"></i>
                                     Detail
                                 </button>
                             </li>
                             <li>
-                                <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $album->id_album }}'].showModal()">
+                                <button class="btn btn-ghost w-full hover:animate-pulse"
+                                    onclick="window['my_modal_delete_{{ $album->id_album }}'].showModal()">
                                     <i class="fas fa-trash"></i>
                                     Hapus
                                 </button>
@@ -86,11 +89,13 @@
         <form action="{{ route('admin.album.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album" />
             </label>
 
-            <select name="tipe_album" class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10">
+            <select name="tipe_album"
+                class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10">
                 <option disabled selected>
                     Tipe Album
                 </option>
@@ -98,25 +103,32 @@
                 <option value="Video">Video</option>
             </select>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="gambar_album" class="grow bg-transparent py-2" accept="image/*" />
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2" placeholder="Deskripsi Album" />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2"
+                    placeholder="Deskripsi Album" />
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2" placeholder="Tanggal Unggah" />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2"
+                    placeholder="Tanggal Unggah" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
 
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-plus"></i>
                     Tambah
                 </button>
@@ -138,34 +150,44 @@
             <div class="divider divider-success"></div>
             <div class="divider"></div>
         </div>
-        <form action="{{ route('admin.album.update', ['id' => $album->id_album]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('admin.album.update', ['id' => $album->id_album]) }}" method="post"
+            enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album" value="{{ $album->nama_album }}" />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album"
+                    value="{{ $album->nama_album }}" />
             </label>
 
-            <select name="tipe_album" class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10">
+            <select name="tipe_album"
+                class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10">
                 <option disabled>Tipe Album</option>
                 <option value="Foto" {{ $album->tipe_album === 'Foto' ? 'selected' : '' }}>Foto</option>
                 <option value="Video" {{ $album->tipe_album === 'Video' ? 'selected' : '' }}>Video</option>
             </select>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="gambar_album" class="grow bg-transparent py-2" accept="image/*" />
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2" placeholder="Deskripsi Album" value="{{ $album->deskripsi_album }}" />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2" placeholder="Deskripsi Album"
+                    value="{{ $album->deskripsi_album }}" />
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2" placeholder="Tanggal Unggah" value="{{ $album->tanggal_unggah }}" />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2" placeholder="Tanggal Unggah"
+                    value="{{ $album->tanggal_unggah }}" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-pen-to-square"></i>
                     Edit
                 </button>
@@ -190,24 +212,33 @@
         </div>
 
         <form action="">
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album" value="{{ $album->nama_album }}" disabled />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album"
+                    value="{{ $album->nama_album }}" disabled />
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 @if($album->tipe_album === 'Foto')
-                <input type="text" name="tipe_album" class="grow bg-transparent py-2" placeholder="Tipe Album Foto" value="{{ $album->tipe_album }}" disabled />
+                <input type="text" name="tipe_album" class="grow bg-transparent py-2" placeholder="Tipe Album Foto"
+                    value="{{ $album->tipe_album }}" disabled />
                 @elseif($album->tipe_album === 'Video')
-                <input type="text" name="tipe_album" class="grow bg-transparent py-2" placeholder="Tipe Album Video" value="{{ $album->tipe_album }}" disabled />
+                <input type="text" name="tipe_album" class="grow bg-transparent py-2" placeholder="Tipe Album Video"
+                    value="{{ $album->tipe_album }}" disabled />
                 @endif
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2" placeholder="Deskripsi Album" value="{{ $album->deskripsi_album }}" disabled />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2" placeholder="Deskripsi Album"
+                    value="{{ $album->deskripsi_album }}" disabled />
             </label>
 
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2" placeholder="Tanggal Unggah" value="{{ $album->tanggal_unggah }}" disabled />
+            <label
+                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2" placeholder="Tanggal Unggah"
+                    value="{{ $album->tanggal_unggah }}" disabled />
             </label>
         </form>
     </div>
@@ -233,7 +264,8 @@
             Apakah Anda Yakin Ingin Menghapus Data Ini ?
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>

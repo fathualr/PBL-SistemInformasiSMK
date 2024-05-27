@@ -14,7 +14,7 @@
     <div class="col-span-2 carousel w-full">
         @foreach ( $ekstrakulikuler -> gambarEkstrakurikuler as $ekskul )
         <div id="slide1" class="carousel-item relative w-full mx-auto">
-            <img src="{{ asset('storage/'. $ekskul->gambar_ekstrakurikuler) }}" class="w-10/12 h-8/12 mx-auto" />
+            <img src="{{ asset('storage/'. $ekskul->gambar_ekstrakurikuler) }}" class="w-fit h-5/12 mx-auto" />
             <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                 <a href="#slide4" class="btn btn-circle">❮</a>
                 <a href="#slide2" class="btn btn-circle">❯</a>

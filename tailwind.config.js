@@ -18,6 +18,11 @@ export default {
                 elm: "#248277",
                 "deep-sea": "#14746F",
                 "blue-lagoon": "#036666",
+                "Bice-blue": "#386FA4",
+                "Picton-blue": "#59A5D8",
+                "Pale-zure": "#84D2F6",
+                "Non-photo-blue": "#91E5F6",
+                "steel-blue": "#2a4e6c",
             },
             screens: {
                 smartphone: "320px",

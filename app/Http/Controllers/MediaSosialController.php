@@ -30,7 +30,6 @@ class MediaSosialController extends Controller
             "medsos" => $medsos,
         ]);
     }
-    
     public function updateMediaSosial(Request $request, $id)
 {
     try {

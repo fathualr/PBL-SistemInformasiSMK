@@ -3,10 +3,15 @@
 @section('Main')
 
 <!-- First Content -->
+<label class="input input-bordered mx-auto my-10 flex items-center smartphone:w-52 md:w-72">
+    <input type="text" class="grow" placeholder="Cari" />
+    <i class="fas fa-magnifying-glass"></i>
+</label>
 <div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96" src="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}"></iframe>
+            <iframe class="w-full h-full lg:h-96"
+                src="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}"></iframe>
         </div>
     </div>
     <!-- Title -->
@@ -14,7 +19,8 @@
         <div class="card w-full ">
             <div class="card-body">
                 <h1 class="card-title text-lg">
-                    {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}
+                    {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' :
+                    $konten->nama_sekolah !!}
                 </h1>
             </div>
         </div>
@@ -25,10 +31,12 @@
         <div class="card w-full">
             <div class="card-body">
                 <p>
-                    {!! empty($konten->sambutan) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->sambutan !!}.
+                    {!! empty($konten->sambutan) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->sambutan !!}.
                 </p>
                 <div class="card-actions justify-start mt-7">
-                    <button class="btn bg-elm w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
+                    <button
+                        class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">Lebih
                         Lanjut</button>
                 </div>
             </div>
@@ -48,12 +56,13 @@
             <div class="card-body">
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
                 <p class="overflow-y-auto h-32">
-                    {!! empty($konten->teks_profile) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_profile !!}
+                    {!! empty($konten->teks_profile) ? '
+                <p class="text-red-500 italic">$NULL</p>' : $konten->teks_profile !!}
                 </p>
                 <div class="card-actions justify-center md:justify-start">
                     <a href="/guest/profile">
                         <button
-                            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lebih
+                            class="btn bg-blue-400 mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">Lebih
                             Lanjut</button>
                     </a>
                 </div>
@@ -69,7 +78,8 @@
         <div class="col-span-1">
             <!-- Facility School -->
             <a href="/guest/sarana-prasarana">
-                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -81,7 +91,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Fasilitas</h2>
                         <p class="overflow-y-auto h-20">
-                            {!! empty($konten->teks_fasilitas) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_fasilitas !!}
+                            {!! empty($konten->teks_fasilitas) ? '
+                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_fasilitas !!}
                         </p>
                     </div>
                 </div>
@@ -92,7 +103,8 @@
         <div class="col-span-1">
             <!-- School Location -->
             <a href="/guest/media-sosial">
-                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full">
                             <div class="size-20 p-5 shadow-md rounded-full">
@@ -104,7 +116,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Lokasi</h2>
                         <p class="overflow-y-auto h-20">
-                            {!! empty($konten->teks_lokasi) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_lokasi !!}
+                            {!! empty($konten->teks_lokasi) ? '
+                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_lokasi !!}
                         </p>
                     </div>
                 </div>
@@ -115,7 +128,8 @@
         <div class="col-span-1">
             <!-- School History -->
             <a href="/guest/profile">
-                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -127,7 +141,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Sejarah</h2>
                         <p class="overflow-y-auto h-20">
-                            {!! empty($konten->teks_sejarah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_sejarah !!}
+                            {!! empty($konten->teks_sejarah) ? '
+                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_sejarah !!}
                         </p>
                     </div>
                 </div>
@@ -138,7 +153,8 @@
         <div class="col-span-1">
             <!-- School Achievement -->
             <a href="/guest/prestasi-siswa">
-                <div class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
+                <div
+                    class="card smartphone:w-60 tablet:w-72 h-72 bg-base-100 shadow-xl tablet:mx-auto rounded-sm hover:scale-110 duration-150">
                     <figure class="px-5 pt-5 -translate-x-16">
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
@@ -150,7 +166,8 @@
                     <div class="card-body text-start">
                         <h2 class="card-title">Prestasi</h2>
                         <p class="overflow-y-auto h-20">
-                            {!! empty($konten->teks_prestasi) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->teks_prestasi !!}
+                            {!! empty($konten->teks_prestasi) ? '
+                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_prestasi !!}
                         </p>
                     </div>
                 </div>
@@ -169,16 +186,7 @@
 <div class="grid md:grid-rows-3 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-6">
     {{-- <div class="smartphone:col-span-1 md:col-span-2">
         <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
-        <label class="input input-bordered mx-auto my-10 flex items-center smartphone:w-52 md:w-72">
-            <input type="text" class="grow" placeholder="Search" />
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-                <path fill-rule="evenodd"
-                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                    clip-rule="evenodd" />
-            </svg>
-        </label>
     </div> --}}
-
     @foreach ($berita as $brt)
     <div class="smartphone:col-span-1 md:mx-auto">
         <div class="card card-side bg-base-100 shadow-xl h-32 lg:h-60">
@@ -236,7 +244,7 @@
 <div class="flex justify-center mx-auto w-full">
     <a href="/guest/galeri-foto">
         <button
-            class="btn bg-elm mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-elm">Lainnya
+            class="btn bg-blue-400 mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">Lainnya
         </button>
     </a>
 </div>
