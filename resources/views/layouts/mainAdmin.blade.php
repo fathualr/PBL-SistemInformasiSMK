@@ -437,19 +437,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
         <!-- Navbar -->
         <script>
-        // Sidebar
-        document.addEventListener('DOMContentLoaded', function() {
-            var sidebar = document.querySelector(".bg-blue-500");
-            var icon = document.getElementById("toggleIcon");
-            var normalTitle = document.getElementById("normalTitle");
-            var menu = document.getElementById("menu");
-            var dropdown = document.querySelectorAll("#dropdown");
-            var navTitles = document.querySelectorAll("#navTitle");
+            // Sidebar
+            document.addEventListener('DOMContentLoaded', function() {
+                var sidebar = document.querySelector(".bg-blue-500");
+                var icon = document.getElementById("toggleIcon");
+                var normalTitle = document.getElementById("normalTitle");
+                var menu = document.getElementById("menu");
+                var dropdown = document.querySelectorAll("#dropdown");
+                var navTitles = document.querySelectorAll("#navTitle");
 
             // Function to open sidebar
-            function openSidebar() {
-                sidebar.classList.add("w-72");
-                sidebar.classList.remove("w-20");
+                function openSidebar() {
+                    sidebar.classList.add("w-72");
+                    sidebar.classList.remove("w-20");
                 document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
                 document.getElementById("toggleButton").classList.add("left-[16.5rem]");
                 icon.classList.add("rotate-180");
@@ -467,10 +467,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 });
             }
 
-            // Function to close sidebar
-            function closeSidebar() {
-                sidebar.classList.remove("w-72");
-                sidebar.classList.add("w-20");
+                // Function to close sidebar
+                function closeSidebar() {
+                    sidebar.classList.remove("w-72");
+                    sidebar.classList.add("w-20");
                 document.getElementById("toggleButton").classList.add("left-[0.85rem]");
                 document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
                 icon.classList.remove("rotate-180");
@@ -488,16 +488,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 });
             }
 
-            // Initial state: open sidebar
-            openSidebar();
+                // Initial state: open sidebar
+                openSidebar();
 
-            document.getElementById("toggleButton").addEventListener("click", function() {
-                if (sidebar.classList.contains("w-72")) {
-                    closeSidebar();
-                } else {
-                    openSidebar();
-                }
-            });
+                document.getElementById("toggleButton").addEventListener("click", function() {
+                    if (sidebar.classList.contains("w-72")) {
+                        closeSidebar();
+                    } else {
+                        openSidebar();
+                    }
+                });
         });
         // Sidebar
 
@@ -570,52 +570,52 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
             var sectionRect = section.getBoundingClientRect();
 
-            if (sectionRect.top <= window.innerHeight) {
-                button.classList.remove('hidden');
-                button.classList.add('animate-slideInFromTop');
-            } else {
-                button.classList.add('hidden');
-            }
-        });
-        // Obeject Load
+                if (sectionRect.top <= window.innerHeight) {
+                    button.classList.remove('hidden');
+                    button.classList.add('animate-slideInFromTop');
+                } else {
+                    button.classList.add('hidden');
+                }
+            });
+            // Obeject Load
 
-        // Duplicate input file & text
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInputsContainer = document.getElementById('fileInputs');
-            const btnAddFile = document.getElementById('btnAddFile');
-            let fileInputCount = 1;
+            // Duplicate input file & text
+            document.addEventListener("DOMContentLoaded", function() {
+                const fileInputsContainer = document.getElementById('fileInputs');
+                const btnAddFile = document.getElementById('btnAddFile');
+                let fileInputCount = 1;
 
-            const textInputContainer = document.getElementById('textInputContainer');
-            const btnAddText = document.getElementById('btnAddText');
-            let textInputCount = 1;
+                const textInputContainer = document.getElementById('textInputContainer');
+                const btnAddText = document.getElementById('btnAddText');
+                let textInputCount = 1;
 
-            btnAddFile.addEventListener('click', function() {
-                const fileInputWrapper = document.createElement('div');
-                fileInputWrapper.classList.add('flex', 'gap-1');
+                btnAddFile.addEventListener('click', function() {
+                    const fileInputWrapper = document.createElement('div');
+                    fileInputWrapper.classList.add('flex', 'gap-1');
 
-                const newLabel = document.createElement('label');
-                newLabel.classList.add('input', 'bg-transparent', 'border-2', 'border-elm', 'flex',
-                    'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+                    const newLabel = document.createElement('label');
+                    newLabel.classList.add('input', 'bg-transparent', 'border-2', 'border-elm', 'flex',
+                        'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
 
-                const newFileInput = document.createElement('input');
-                newFileInput.setAttribute('type', 'file');
-                newFileInput.classList.add('grow', 'file-input', 'file-input-success',
-                    'border-none', 'bg-transparent', 'py-2');
-                newFileInput.setAttribute('placeholder', 'Pilih gambar berita');
-                newFileInput.setAttribute('name', `gambar_berita[]`);
+                    const newFileInput = document.createElement('input');
+                    newFileInput.setAttribute('type', 'file');
+                    newFileInput.classList.add('grow', 'file-input', 'file-input-success',
+                        'border-none', 'bg-transparent', 'py-2');
+                    newFileInput.setAttribute('placeholder', 'Pilih gambar berita');
+                    newFileInput.setAttribute('name', `gambar_berita[]`);
 
-                const btnRemove = document.createElement('button');
-                btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
-                    'btn-remove');
-                btnRemove.innerHTML = `<i class='fas fa-times'></i>`;
-                btnRemove.addEventListener('click', function() {
-                    fileInputWrapper.remove();
-                });
+                    const btnRemove = document.createElement('button');
+                    btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                        'btn-remove');
+                    btnRemove.innerHTML = `<i class='fas fa-times'></i>`;
+                    btnRemove.addEventListener('click', function() {
+                        fileInputWrapper.remove();
+                    });
 
-                newLabel.appendChild(newFileInput);
-                fileInputWrapper.appendChild(newLabel);
-                fileInputWrapper.appendChild(btnRemove);
-                fileInputsContainer.appendChild(fileInputWrapper);
+                    newLabel.appendChild(newFileInput);
+                    fileInputWrapper.appendChild(newLabel);
+                    fileInputWrapper.appendChild(btnRemove);
+                    fileInputsContainer.appendChild(fileInputWrapper);
 
                 fileInputCount++;
             });
@@ -630,61 +630,61 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 newTextInput.setAttribute('placeholder', 'Kategori Berita');
                 newTextInput.setAttribute('name', `kategori_berita[]`);
 
-                const btnRemove = document.createElement('button');
-                btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
-                    'btn-remove');
-                btnRemove.innerHTML =
-                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
-                btnRemove.addEventListener('click', function() {
-                    textInputWrapper.remove();
+                    const btnRemove = document.createElement('button');
+                    btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                        'btn-remove');
+                    btnRemove.innerHTML =
+                        `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>`;
+                    btnRemove.addEventListener('click', function() {
+                        textInputWrapper.remove();
+                    });
+
+                    textInputWrapper.appendChild(newTextInput);
+                    textInputWrapper.appendChild(btnRemove);
+                    textInputContainer.appendChild(textInputWrapper);
+
+                    textInputCount++;
                 });
-
-                textInputWrapper.appendChild(newTextInput);
-                textInputWrapper.appendChild(btnRemove);
-                textInputContainer.appendChild(textInputWrapper);
-
-                textInputCount++;
             });
-        });
 
-        // Ekstrakurikuler
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInputsEkskul = document.getElementById('fileInputsEkskul');
-            const btnAddFileEkskul = document.getElementById('btnAddFileEkskul');
-            let fileInputEkskulCount = 1;
+            // Ekstrakurikuler
+            document.addEventListener("DOMContentLoaded", function() {
+                const fileInputsEkskul = document.getElementById('fileInputsEkskul');
+                const btnAddFileEkskul = document.getElementById('btnAddFileEkskul');
+                let fileInputEkskulCount = 1;
 
-            btnAddFileEkskul.addEventListener('click', function() {
-                const fileInputEkskulWrapper = document.createElement('div');
-                fileInputEkskulWrapper.classList.add('flex', 'gap-1');
+                btnAddFileEkskul.addEventListener('click', function() {
+                    const fileInputEkskulWrapper = document.createElement('div');
+                    fileInputEkskulWrapper.classList.add('flex', 'gap-1');
 
-                const newLabelEkskul = document.createElement('label');
-                newLabelEkskul.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
-                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+                    const newLabelEkskul = document.createElement('label');
+                    newLabelEkskul.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
+                        'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
 
-                const newFileInputEkskul = document.createElement('input');
-                newFileInputEkskul.setAttribute('type', 'file');
-                newFileInputEkskul.classList.add('grow', 'file-input', 'file-input-success',
-                    'border-none', 'bg-transparent', 'py-2');
-                newFileInputEkskul.setAttribute('placeholder', 'Pilih gambar berita');
-                newFileInputEkskul.setAttribute('name', `gambar_ekstrakurikuler[]`);
+                    const newFileInputEkskul = document.createElement('input');
+                    newFileInputEkskul.setAttribute('type', 'file');
+                    newFileInputEkskul.classList.add('grow', 'file-input', 'file-input-success',
+                        'border-none', 'bg-transparent', 'py-2');
+                    newFileInputEkskul.setAttribute('placeholder', 'Pilih gambar berita');
+                    newFileInputEkskul.setAttribute('name', `gambar_ekstrakurikuler[]`);
 
-                const btnRemoveEkskul = document.createElement('button');
-                btnRemoveEkskul.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
-                    'btn-remove');
-                btnRemoveEkskul.innerHTML = `<i class='fas fa-times'></i>`;
-                btnRemoveEkskul.addEventListener('click', function() {
-                    fileInputEkskulWrapper.remove();
+                    const btnRemoveEkskul = document.createElement('button');
+                    btnRemoveEkskul.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                        'btn-remove');
+                    btnRemoveEkskul.innerHTML = `<i class='fas fa-times'></i>`;
+                    btnRemoveEkskul.addEventListener('click', function() {
+                        fileInputEkskulWrapper.remove();
+                    });
+
+                    newLabelEkskul.appendChild(newFileInputEkskul);
+                    fileInputEkskulWrapper.appendChild(newLabelEkskul);
+                    fileInputEkskulWrapper.appendChild(btnRemoveEkskul);
+                    fileInputsEkskul.appendChild(fileInputEkskulWrapper);
+
+                    fileInputEkskulCount++;
                 });
-
-                newLabelEkskul.appendChild(newFileInputEkskul);
-                fileInputEkskulWrapper.appendChild(newLabelEkskul);
-                fileInputEkskulWrapper.appendChild(btnRemoveEkskul);
-                fileInputsEkskul.appendChild(fileInputEkskulWrapper);
-
-                fileInputEkskulCount++;
             });
-        });
-        // Ekstrakurikuler
+            // Ekstrakurikuler
         // Prestasi Siswa
         document.addEventListener("DOMContentLoaded", function() {
             const fileInputsPrestasi = document.getElementById('fileInputsPrestasi');
@@ -733,6 +733,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 console.error(error);
             });
         //Rich Text Editor (CKEDITOR5)
+        </script>
+        <script>
+            // fungsi checkbox select all
+            document.addEventListener('DOMContentLoaded', function() {
+                const selectAllCheckboxes = document.querySelectorAll('#select-all, #select-all-footer');
+                const itemCheckboxes = document.querySelectorAll('.select-item');
+
+                selectAllCheckboxes.forEach(selectAllCheckbox => {
+                    selectAllCheckbox.addEventListener('change', function(e) {
+                        const isChecked = e.target.checked;
+                        itemCheckboxes.forEach(checkbox => {
+                            checkbox.checked = isChecked;
+                        });
+                    });
+                });
+            });
         </script>
 </body>
 

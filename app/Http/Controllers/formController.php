@@ -10,14 +10,30 @@ use App\Exports\FormsExport;
 
 class FormController extends Controller
 {
-    public function adminPendaftaranPPDB()
+    public function adminPendaftaranPPDB(Request $request)
     {
-        $forms = FormPPDB::paginate(10);
-        return view('admin/pendaftaranPPDB', [
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
+    
+        // Lakukan pengecekan apakah terdapat query pencarian
+        if ($search) {
+            // Jika ada, lakukan pencarian berdasarkan nama atau NISN
+            $forms = FormPPDB::where('nama_lengkap', 'like', '%' . $search . '%')
+                ->orWhere('nisn', 'like', '%' . $search . '%')
+                ->orWhere('tahun_pendaftaran', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $forms = FormPPDB::paginate($perPage);
+        }
+    
+        return view('admin.pendaftaranPPDB', [
             "title" => "Admin Pendaftaran PPDB",
             "forms" => $forms,
         ]);
     }
+    
+
 
     public function storePPDB(Request $request)
     {
@@ -30,6 +46,7 @@ class FormController extends Controller
                 'tempat_lahir' => 'required|string|max:255',
                 'tanggal_lahir' => 'required|date',
                 'no_hp' => 'required|string|max:255',
+                'tahun_pendaftaran' => 'required|string|max:255',
                 'nama_sekolah_asal' => 'required|string|max:255',
                 'alamat' => 'required|string',
                 'no_rt' => 'required|string|max:255',
@@ -62,6 +79,7 @@ class FormController extends Controller
                 'no_hp' => $request->no_hp,
                 'pilihan_1' => $request->pilihan_1,
                 'pilihan_2' => $request->pilihan_2,
+                'tahun_pendaftaran' => $request->tahun_pendaftaran,
                 'nama_sekolah_asal' => $request->nama_sekolah_asal,
                 'alamat' => $request->alamat,
                 'no_rt' => $request->no_rt,

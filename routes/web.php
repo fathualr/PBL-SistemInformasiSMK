@@ -17,6 +17,7 @@ use App\Http\Controllers\direktoriSiswaController;
 use App\Http\Controllers\direktoriAlumniController;
 use App\Http\Controllers\formController;
 use App\Http\Controllers\informasippdbController;
+use App\Http\Controllers\pengumumanController;
 use App\Http\Controllers\ekstrakulikulerController;
 use App\Http\Controllers\sejarahSekolahController;
 use App\Http\Controllers\MediaSosialController;
@@ -44,7 +45,7 @@ use App\Http\Controllers\prestasiSiswaController;
 // Public
 Route::get('guest/profile', [frontEndController::class, 'profile']);
 Route::get('guest/program-keahlian', [webController::class, 'program']);
-Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman']);
+Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
 Route::get('guest/direktori-guru', [webController::class, 'guru']);
 Route::get('guest/direktori-pegawai', [webController::class, 'pegawai']);
 Route::get('guest/direktori-siswa', [webController::class, 'siswa']);
@@ -74,8 +75,7 @@ Route::get('admin/profile', [adminController::class, 'adminProfile']);
 Route::get('admin/album', [adminController::class, 'adminAlbum'])->name('admin.album.index');
 Route::get('admin/foto', [adminController::class, 'adminFoto'])->name('admin.foto.index');
 Route::get('admin/video', [adminController::class, 'adminVideo'])->name('admin.video.index');
-Route::get('admin/pengumumanPPDB', [adminController::class, 'adminPengumumanPPDB']);
-// Route::get('admin/prestasi', [prestasiSiswaController::class, 'adminPrestasi']);
+Route::get('admin/prestasi', [adminController::class, 'adminPrestasi']);
 // Route::get('admin/ekstrakulikuler', [adminController::class, 'adminEkstrakulikuler']);
 // Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik']);
 Route::get('admin/pengaturan', [adminController::class, 'adminPengaturan']);
@@ -150,6 +150,8 @@ Route::get('/download-excel', [formController::class, 'downloadExcel'])->name('d
 Route::get('admin/pendaftaranPPDB', [formController::class, 'adminPendaftaranPPDB'])->name('admin.pendaftaranPPDB.index');
 Route::delete('admin/pendaftaranPPDB/{id}', [formController::class, 'destroyPendaftaranPPDB'])->name('admin.pendaftaranPPDB.destroy');
 
+Route::get('admin/pengumumanPPDB', [pengumumanController::class, 'adminPengumumanPPDB'])->name('admin.pengumumanPPDB.index');
+Route::post('admin/pengumumanPPDB/updateBatch', [PengumumanController::class, 'updateBatch'])->name('admin.pengumumanPPDB.updateBatch');
 // CRUD Program Keahlian
 Route::get('admin/program-keahlian', [programKeahlianController::class, 'adminProgramKeahlian'])->name('admin.programKeahlian.index');
 Route::get('guest/program-keahlian', [webController::class, 'program']);

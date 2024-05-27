@@ -49,7 +49,7 @@
                             <th class="w-20">{{ $key + 1 }}</th>
                             <td class="text-left pl-10">{{ $informasi_ppdb->deskripsi_ppdb }}</td>
                             <td>
-                                <details class="dropdown dropdown-right">
+                                <details class="dropdown">
                                     <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                         <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                         <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>

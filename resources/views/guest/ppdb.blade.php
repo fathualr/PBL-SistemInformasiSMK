@@ -128,6 +128,7 @@
                     </select>
                 </div>
             </div>
+
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-4">
                     <label class="block font-medium ml-2">Pilihan 2</label>
@@ -140,6 +141,14 @@
                         </option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-4">
+                    <label class="block font-medium ml-2">Tahun Pendaftaran</label>
+                </div>
+                <div class="col-span-8">
+                    <input type="text" id="tahun_pendaftaran" name="tahun_pendaftaran" class="input input-bordered w-full" placeholder="Contoh: 2022, 2024">
                 </div>
             </div>
 
