@@ -83,7 +83,7 @@
                             @endif
                         </td>
                     </tr>
-
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -103,44 +103,22 @@
         </div>
     </div>
 </div>
+</form>
 
-<dialog id="my_modal_add" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Upload Data</h3>
+<div class="join flex justify-center my-5">
+    @if($forms->previousPageUrl())
+    <a href="{{ $forms->previousPageUrl() }}&perPage={{ request()->get('perPage') }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
 
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
+    <button class="join-item btn">Page {{ $forms->currentPage() }}</button>
 
-        <form action="">
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" class="bg-transparent py-2" name="excel_file" accept=".xlsx, .xls"
-                    placeholder="Upload file Excel" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    <i class="fas fa-times"></i>
-                    Reset
-                </button>
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-plus"></i>
-                        Tambah
-                    </button>
-                </a>
-
-            </div>
+    @if($forms->nextPageUrl())
+    <a href="{{ $forms->nextPageUrl() }}&perPage={{ request()->get('perPage') }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
 
 @endsection

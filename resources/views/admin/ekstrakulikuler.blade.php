@@ -198,7 +198,7 @@
                                 </form>
                                 @endforeach
                             </div>
-                            <form action="{{ route('gambarEkskul.update', $gambar->id_ekstrakurikuler) }}" method="POST"
+                            <form action="{{ route('gambarEkskul.update', $ekskul->id_ekstrakurikuler) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')

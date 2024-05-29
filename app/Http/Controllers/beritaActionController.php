@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class beritaActionController extends Controller
 {
     public function index(){
-        $berita = Berita::with('kategori', 'gambar')->paginate(5, ['*'], 'berita_page');
+        $berita = Berita::with('kategori', 'gambar')->orderBy('created_at', 'desc')->paginate(5, ['*'], 'berita_page');
         $komentar = KomentarBerita::with('berita')->orderBy('created_at', 'desc')->paginate(5, ['*'], 'komentar_page');
         return view('admin/berita', [
             'berita' => $berita,

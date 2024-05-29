@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Storage;
 class carouselsActionController extends Controller
 {
     public function index(){
-        $carousels = Carousels::all();
+        $carousel = Carousels::paginate(10);
         return view('admin/carousels', [
-            "carousels" => $carousels,
+            "carousel" => $carousel,
             "title" => "Admin Carousel",
         ]);
     }

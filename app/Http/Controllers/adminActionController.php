@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
 class adminActionController extends Controller
 {
     public function index(){
-        $admin = Admin::all();
+        $admin = Admin::paginate(10);
         return view('admin/admin', [
             'admin' => $admin,
             "title" => "Admin"

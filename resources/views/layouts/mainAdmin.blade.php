@@ -414,17 +414,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 </figure>
                 <div class="card-body h-60 sticky top-16 rounded-lg wave-effect">
                     @include('layouts.wave')
-                    <h1 class="card-title font-bold text-xl uppercase absolute bottom-10 left-5 text-white">welcome
-                        admin
+                    <h1 class="card-title font-bold text-xl uppercase absolute bottom-10 left-5 text-white">
+                        Welcome {{ auth('admin')->user()->nama }}
                     </h1>
-
                     <div class="card-actions text-xl absolute right-12 top-5 gap-6 text-white">
-                        <a href="/admin/login" class="hover:animate-pulse transition-all duration-300">
-                            <i class="fas fa-arrow-right-from-bracket"></i>
-                        </a>
-                        <a href="/admin/pengaturan" class="">
-                            <i class="fas fa-gear hover:rotate-45 transition-all duration-300"></i>
-                        </a>
+
+                        <form id="logout-form" action="{{ route('account.logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="bg-transparent border-0 cursor-pointer">
+                                <i class="fas fa-arrow-right-from-bracket"></i>
+                            </button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>

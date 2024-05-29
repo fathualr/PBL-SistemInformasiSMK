@@ -196,19 +196,19 @@ class webController extends Controller
         ]);
     }
 
-    public function prestasi()
-    {
-        return view('guest/prestasi', [
-            "title" => "Prestasi Siswa"
-        ]);
-    }
+    // public function prestasi()
+    // {
+    //     return view('guest/prestasi', [
+    //         "title" => "Prestasi Siswa"
+    //     ]);
+    // }
 
-    public function prestasiTemplate()
-    {
-        return view('guest/prestasi-template', [
-            "title" => "Prestasi Siswa"
-        ]);
-    }
+    // public function prestasiTemplate()
+    // {
+    //     return view('guest/prestasi-template', [
+    //         "title" => "Prestasi Siswa"
+    //     ]);
+    // }
 
     // public function berita()
     // {

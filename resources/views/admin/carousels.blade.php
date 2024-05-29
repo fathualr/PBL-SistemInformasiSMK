@@ -7,83 +7,97 @@
     @include('shared.success-message')
     @include('shared.error-message')
     <div class="col-span-3 my-4 mx-5 row-start-2">
-        <h3 class="font-bold text-lg">Pengelolaan Carousels</h3>
+        <h3 class="font-bold text-lg">Pengelolaan Carousel</h3>
     </div>
 
     <!-- Modal -->
-    <div class="col-span-2 row-start-3 mx-5">
+    <div class="col-span-3 row-start-3 mx-5">
         <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-plus text-xl"></i>
-            Tambah Carousels
+            Tambah Carousel
         </button>
     </div>
     <!-- Modal -->
 
     <!-- Content -->
-    <div class="col-span-9 row-start-4">
-        <div class="mt-5">
-            <table class="table text-center">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th class="w-24">No.</th>
-                        <th class="w-36">Link Gambar</th>
-                        <th class="w-72">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="col-span-9 row-start-4 mt-5">
+        <table class="table border-collapse border border-slate-200 text-center">
+            <!-- head -->
+            <thead>
+                <tr>
+                    <th class="w-24">No.</th>
+                    <th class="w-36">Link Gambar</th>
+                    <th class="w-72">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                    @foreach($carousels as $key => $crs)
-                    <tr class="hover">
+                @foreach($carousel as $key => $crs)
+                <tr class="hover">
+                    <th>{{ ($carousel->currentPage() - 1) * $carousel->perPage() + $key + 1 }}</th>
+                    <td>{{ $crs->image }}</td>
+                    <td>
+                        <details class="dropdown dropdown-bottom">
+                            <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                                <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
+                                <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
+                                <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
+                                <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                            </summary>
+                            <ul tabindex="0"
+                                class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <!-- View -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_view_{{ $crs->id_carousels }}.showModal()">
+                                        <i class="fas fa-circle-info"></i>
+                                        Detail
+                                    </button>
+                                </li>
+                                <!-- View -->
 
-                        <th>{{ $key + 1 }}</th>
-                        <td>{{ $crs->image }}</td>
-                        <td>
-                            <details class="dropdown dropdown-bottom">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view_{{ $crs->id_carousels }}.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
+                                <!-- Delete -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_delete_{{ $crs->id_carousels }}.showModal()">
+                                        <i class="fas fa-trash"></i>
+                                        Hapus
+                                    </button>
+                                </li>
+                                <!-- Delete -->
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                @endforeach
 
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete_{{ $crs->id_carousels }}.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                    @endforeach
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>No.</th>
+                    <th>Gambar</th>
+                    <th>Aksi</th>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center my-5 gap-2">
+            @if($carousel->previousPageUrl())
+            <a href="{{ $carousel->previousPageUrl() }}" class="btn">«</a>
+            @else
+            <button class="btn disabled">«</button>
+            @endif
 
-                </tbody>
-                <tfoot>
-                    <tr>
+            <button class="btn">Page {{ $carousel->currentPage() }}</button>
 
-                        <th>No.</th>
-                        <th>Gambar</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+            @if($carousel->nextPageUrl())
+            <a href="{{ $carousel->nextPageUrl() }}" class="btn">»</a>
+            @else
+            <button class="btn disabled">»</button>
+            @endif
+        </div>  
+
     </div>
     <!-- Content -->
 </div>
@@ -127,7 +141,7 @@
     </div>
 </dialog>
 
-@foreach($carousels as $crs)
+@foreach($carousel as $crs)
 <dialog id="my_modal_view_{{ $crs->id_carousels }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
@@ -145,7 +159,7 @@
     </div>
 </dialog>
 
-<dialog id="my_modal_delete_{{ $crs->id_carousels }}" class="modal">
+<dialog id="my_modal_delete_{{ $crs->id_carousel }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

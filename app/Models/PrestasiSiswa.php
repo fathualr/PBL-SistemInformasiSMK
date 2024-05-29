@@ -20,7 +20,7 @@ class PrestasiSiswa extends Model
         "tingkat_prestasi"
     ];
 
-    public function gambarPrestasi()
+    public function gambar()
     {
         return $this->hasMany(GambarPrestasiSiswa::class, 'id_prestasi');
     }

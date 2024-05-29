@@ -11,7 +11,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="col-span-2 row-start-3 mx-5">
+    <div class="col-span-3 row-start-3 mx-5">
         <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-plus text-xl"></i>
             Tambah Berita
@@ -29,100 +29,108 @@
     <!-- Search Bar -->
 
     <!-- Content -->
-    <div class="col-span-9 row-start-4">
-        <div class="overflow-x-auto mt-5 px-16">
-            <table class="table border-collapse border border-slate-200 text-center">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Gambar Headline</th>
-                        <th>Judul</th>
-                        <th>Kategori</th>
-                        <th>Tanggal Upload</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="col-span-9 row-start-4 mt-5">
+        <table class="table border-collapse border border-slate-200 text-center">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Gambar Headline</th>
+                    <th>Judul</th>
+                    <th>Kategori</th>
+                    <th>Tanggal Upload</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                    @php
-                        $currentPage_brt = $berita->currentPage();
-                        $perPage_brt = $berita->perPage();
-                        $globalIndex_brt = ($currentPage_brt - 1) * $perPage_brt;
-                    @endphp
-                    @foreach ($berita as $key => $brt)
-                    <tr class="hover">
-                        <th>{{ $globalIndex_brt + $key + 1 }}</th>
-                        <td>
-                            <div class="grid justify-items-center">
-                                <img class="max-h-20" src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="">
-                            </div>
-                        </td>
-                        <td>{{ $brt->judul_berita }}</td>
-                        <td>
-                            @foreach ($brt->kategori as $kategori)
-                            {{ $kategori->nama_kategori }}
-                            @endforeach
-                        </td>
-                        <td>{{ $brt->tanggal_berita }}</td>
-                        <td>
-                            <details class="dropdown dropdown-bottom">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- Edit -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_edit_{{ $brt->id_berita }}.showModal()">
-                                            <i class="fas fa-pen-to-square"></i>
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <!-- Edit -->
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view{{ $brt->id_berita }}.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete{{ $brt->id_berita }}.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($berita as $key => $brt)
+                <tr class="hover">
+                    <th>{{ ($berita->currentPage() - 1) * $berita->perPage() + $key + 1 }}</th>
+                    <td>
+                        <div class="grid justify-items-center">
+                            <img class="max-h-20" src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="">
+                        </div>
+                    </td>
+                    <td>{{ $brt->judul_berita }}</td>
+                    <td>
+                        @foreach ($brt->kategori as $kategori)
+                        {{ $kategori->nama_kategori }}
+                        @endforeach
+                    </td>
+                    <td>{{ $brt->tanggal_berita }}</td>
+                    <td>
+                        <details class="dropdown dropdown-bottom">
+                            <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                                <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
+                                <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
+                                <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
+                                <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                            </summary>
+                            <ul tabindex="0"
+                                class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <!-- Edit -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_edit_{{ $brt->id_berita }}.showModal()">
+                                        <i class="fas fa-pen-to-square"></i>
+                                        Edit
+                                    </button>
+                                </li>
+                                <!-- Edit -->
+                                <!-- View -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_view{{ $brt->id_berita }}.showModal()">
+                                        <i class="fas fa-circle-info"></i>
+                                        Detail
+                                    </button>
+                                </li>
+                                <!-- View -->
+                                <!-- Delete -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_delete{{ $brt->id_berita }}.showModal()">
+                                        <i class="fas fa-trash"></i>
+                                        Hapus
+                                    </button>
+                                </li>
+                                <!-- Delete -->
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                @endforeach
 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No.</th>
-                        <th>Gambar Headline</th>
-                        <th>Judul</th>
-                        <th>Kategori</th>
-                        <th>Tanggal Upload</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div class="pagination mt-5 px-16">
-            {{ $berita->appends(request()->except('berita_page'))->links() }}
-        </div>        
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>No.</th>
+                    <th>Gambar Headline</th>
+                    <th>Judul</th>
+                    <th>Kategori</th>
+                    <th>Tanggal Upload</th>
+                    <th>Aksi</th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Pagination -->
+        <div class="flex justify-center my-5 gap-2">
+            @if($berita->previousPageUrl())
+            <a href="{{ $berita->previousPageUrl() }}" class="btn">«</a>
+            @else
+            <button class="btn disabled">«</button>
+            @endif
+
+            <button class="btn">Page {{ $berita->currentPage() }}</button>
+
+            @if($berita->nextPageUrl())
+            <a href="{{ $berita->nextPageUrl() }}" class="btn">»</a>
+            @else
+            <button class="btn disabled">»</button>
+            @endif
+        </div>   
+
     </div>
     <!-- Content -->
 
@@ -131,90 +139,93 @@
     </div>
 
     <!-- Content -->
-    <div class="col-span-9 row-start-6 mb-5">
-        <div class="overflow-x-auto mt-5 px-16">
-            <table class="table border-collapse border border-slate-200 text-center">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul Berita</th>
-                        <th>Nama</th>
-                        <th>Komentar</th>
-                        <th>Waktu</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="col-span-9 row-start-6 mb-5 mt-5">
+        <table class="table border-collapse border border-slate-200 text-center">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Judul Berita</th>
+                    <th>Nama</th>
+                    <th>Komentar</th>
+                    <th>Waktu</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                    @php
-                        $currentPage_kmt = $komentar->currentPage();
-                        $perPage_kmt = $komentar->perPage();
-                        $globalIndex_kmt = ($currentPage_kmt - 1) * $perPage_kmt;
-                    @endphp
-                    @foreach ($komentar as $key => $kmt)
-                    <tr class="hover">
-                        <th>
-                            <label>
-                                <input type="checkbox" class="checkbox" />
-                            </label>
-                        </th>
-                        <th>{{ $globalIndex_kmt + $key + 1 }}</th>
-                        <td>{{ $kmt->berita->judul_berita }}</td>
-                        <td>{{ $kmt->nama_komentar }}</td>
-                        <td class="truncate">
-                            {{ $kmt->teks_komentar }}
-                        </td>
-                        <td>{{ $kmt->created_at->format('d M Y H:i:s') }}</td>
-                        <td>
-                            <details class="dropdown dropdown-bottom">
-                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                                </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                    <!-- View -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view_komentar{{ $kmt->id_komentar }}.showModal()">
-                                            <i class="fas fa-circle-info"></i>
-                                            Detail
-                                        </button>
-                                    </li>
-                                    <!-- View -->
-                                    <!-- Delete -->
-                                    <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete_komentar{{ $kmt->id_komentar }}.showModal()">
-                                            <i class="fas fa-trash"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                    <!-- Delete -->
-                                </ul>
-                            </details>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($komentar as $key => $kmt)
+                <tr class="hover">
+                    <th>{{ ($komentar->currentPage() - 1) * $komentar->perPage() + $key + 1 }}</th>
+                    <td>{{ $kmt->berita->judul_berita }}</td>
+                    <td>{{ $kmt->nama_komentar }}</td>
+                    <td class="truncate">
+                        {{ $kmt->teks_komentar }}
+                    </td>
+                    <td>{{ $kmt->created_at->format('d M Y H:i:s') }}</td>
+                    <td>
+                        <details class="dropdown dropdown-bottom">
+                            <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                                <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
+                                <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
+                                <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
+                                <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                            </summary>
+                            <ul tabindex="0"
+                                class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <!-- View -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_view_komentar{{ $kmt->id_komentar }}.showModal()">
+                                        <i class="fas fa-circle-info"></i>
+                                        Detail
+                                    </button>
+                                </li>
+                                <!-- View -->
+                                <!-- Delete -->
+                                <li>
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="my_modal_delete_komentar{{ $kmt->id_komentar }}.showModal()">
+                                        <i class="fas fa-trash"></i>
+                                        Hapus
+                                    </button>
+                                </li>
+                                <!-- Delete -->
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+                @endforeach
 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No.</th>
-                        <th>Judul Berita</th>
-                        <th>Nama</th>
-                        <th>Komentar</th>
-                        <th>Waktu</th>
-                        <th>Aksi</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div class="pagination mt-5 px-16">
-            {{ $komentar->appends(request()->except('komentar_page'))->links() }}
-        </div>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>No.</th>
+                    <th>Judul Berita</th>
+                    <th>Nama</th>
+                    <th>Komentar</th>
+                    <th>Waktu</th>
+                    <th>Aksi</th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Pagination -->
+        <div class="flex justify-center my-5 gap-2">
+            @if($komentar->previousPageUrl())
+            <a href="{{ $komentar->previousPageUrl() }}" class="btn">«</a>
+            @else
+            <button class="btn disabled">«</button>
+            @endif
+
+            <button class="btn">Page {{ $komentar->currentPage() }}</button>
+
+            @if($komentar->nextPageUrl())
+            <a href="{{ $komentar->nextPageUrl() }}" class="btn">»</a>
+            @else
+            <button class="btn disabled">»</button>
+            @endif
+        </div>  
+
     </div>
     <!-- Content -->
 </div>
