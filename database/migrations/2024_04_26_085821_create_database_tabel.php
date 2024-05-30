@@ -232,11 +232,11 @@ return new class extends Migration
         Schema::create('capaian_pembelajaran', function (Blueprint $table) {
             $table->id('id_capaian_pembelajaran');
             $table->unsignedBigInteger('id_program')->notNullable();
-            $table->longText('deskripsi_capaian_pembelajaran');
-            $table->longText('aspek_sikap');
-            $table->longText('aspek_pengetahuan');
-            $table->longText('aspek_keterampilan_umum');
-            $table->longText('aspek_keterampilan_khusus');
+            $table->longText('deskripsi_capaian_pembelajaran')->nullable();
+            $table->longText('aspek_sikap')->nullable();
+            $table->longText('aspek_pengetahuan')->nullable();
+            $table->longText('aspek_keterampilan_umum')->nullable();
+            $table->longText('aspek_keterampilan_khusus')->nullable();
             $table->text('capaian')->nullable();
             $table->timestamps();
 

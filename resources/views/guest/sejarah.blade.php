@@ -19,7 +19,7 @@
             </p>
         </div>
         <div class="{{ $index % 2 == 0 ? 'timeline-end my-10 mx-auto' : 'timeline-start md:text-end mb-10' }}">
-            <img src="{{ asset($sejarah->gambar_sejarah) }}" alt="" class="w-[36rem] h-80">
+            <img src="{{ asset('storage/'.$sejarah->gambar_sejarah) }}" alt="" class="w-[36rem] h-80">
         </div>
         <hr />
     </li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SejarahSekolah;
+use Illuminate\Support\Facades\Storage;
 
 class SejarahSekolahController extends Controller
 {
@@ -17,60 +18,65 @@ class SejarahSekolahController extends Controller
         ]);
     }
 
-    public function storeSejarahSekolah(Request $request)
-    {
+    public function storeSejarahSekolah(Request $request){
 
-        $request->validate([
+        $validate = $request->validate([
             'judul_sejarah' => 'required',
-            'gambar_sejarah' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file size limit as needed
+            'gambar_sejarah' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi_sejarah' => 'required',
             'tanggal_sejarah' => 'required',
         ]);
 
+        $path = $request->file('gambar_sejarah')->store('image/gambarSejarah', 'public');
+        $validate['gambar_sejarah'] = $path;
+        $status = SejarahSekolah::create($validate);
 
-        $format_file = $request->file('gambar_sejarah')->getClientOriginalName();
-        $request->file('gambar_sejarah')->move(public_path('gambarSejarah'), $format_file);
-
-
-        SejarahSekolah::create([
-            "judul_sejarah" => $request->judul_sejarah,
-            "deskripsi_sejarah" => $request->deskripsi_sejarah,
-            "tanggal_sejarah" => $request->tanggal_sejarah,
-            "gambar_sejarah" => 'gambarSejarah/'. $format_file,
-        ]);
-
-        
-        return redirect()->route('admin.sejarahSekolah.index');
+        if($status){
+            return redirect()->back()->with('success', 'Sejarah berhasil ditambahkan!');
+        }
+        else{
+            return redirect()->back()->with('error', 'Sejarah gagal ditambahkan!');
+        }
     }
 
-    public function updateSejarahSekolah(Request $request, $id_sejarah)
-    {
+    public function updateSejarahSekolah(Request $request, $id_sejarah){
         $sejarahSekolah = SejarahSekolah::findOrFail($id_sejarah);
 
-        $validateData =
-        [
-            "judul_sejarah" => $request->judul_sejarah,
-            "deskripsi_sejarah" => $request->deskripsi_sejarah,
-            "tanggal_sejarah" => $request->tanggal_sejarah,
-        ];
+        $validate = $request->validate([
+            'judul_sejarah' => 'required',
+            'deskripsi_sejarah' => 'required',
+            'tanggal_sejarah' => 'required',
+            'gambar_sejarah' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-        if  ($request -> hasFile('gambar_sejarah')) {
-            $format_file = $request->file('gambar_sejarah')->getClientOriginalName();
-            $request->file('gambar_sejarah')->move(public_path('gambarSejarah'), $format_file);
-            $validateData["gambar_sejarah"] = 'gambarSejarah/' .$format_file;
+        if ($request->hasFile('gambar_sejarah')) {
+            if ($sejarahSekolah->gambar_sejarah) {
+                Storage::disk('public')->delete($sejarahSekolah->gambar_sejarah);
+            }
+            $path = $request->file('gambar_sejarah')->store('image/gambarSejarah', 'public');
+            $validate['gambar_sejarah'] = $path;
         }
 
-        $sejarahSekolah->update($validateData);
-
-        return redirect()->route('admin.sejarahSekolah.index');
+        $status = $sejarahSekolah->update($validate);
+        if ($status) {
+            return redirect()->back()->with('success', 'Sejarah berhasil diperbarui!');
+        } else {
+            return redirect()->back()->with('error', 'Sejarah gagal diperbarui!');
+        }
     }
 
-    public function destroySejarahSekolah($id_sejarah)
-    {
-        $sejrahSekolah = SejarahSekolah::findOrFail($id_sejarah);
+    public function destroySejarahSekolah($id_sejarah){
+        $sejarahSekolah = SejarahSekolah::findOrFail($id_sejarah);
 
-        $sejrahSekolah->delete();
+        if ($sejarahSekolah->gambar_sejarah) {
+            Storage::disk('public')->delete($sejarahSekolah->gambar_sejarah);
+        }
 
-        return redirect()->route('admin.sejarahSekolah.index');
+        $status = $sejarahSekolah->delete();
+        if ($status) {
+            return redirect()->back()->with('success', 'Sejarah berhasil dihapus!');
+        } else {
+            return redirect()->back()->with('error', 'Sejarah gagal dihapus!');
+        }
     }
 }

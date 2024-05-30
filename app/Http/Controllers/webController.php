@@ -39,27 +39,25 @@ class webController extends Controller
     //     ]);
     // }
 
-        public function program()
-    {
-        $programKeahlian = ProgramKeahlian::all();
-        return view('guest/program-keahlian', [
-            "title" => "Program Keahlian",
-            "programKeahlian" => $programKeahlian
-        ]);
-    }
+    // public function program(){
+    //     $programKeahlian = ProgramKeahlian::all();
+    //     return view('guest/program-keahlian', [
+    //         "title" => "Program Keahlian",
+    //         "programKeahlian" => $programKeahlian
+    //     ]);
+    // }
 
-        public function detailProgram()
-    {
-        $programKeahlian = ProgramKeahlian::all();
-        $capaianPembelajaran = CapaianPembelajaran::all();
-        $peluangKerja = PeluangKerja::all();
-        return view('guest/detail-program', [
-            "title" => "Detail Program Keahlian",
-            "programKeahlian" => $programKeahlian,
-            "capaianPembelajaran"=> $capaianPembelajaran,
-            "peluangKerja" => $peluangKerja
-        ]);
-    }
+    // public function detailProgram(){
+    //     $programKeahlian = ProgramKeahlian::all();
+    //     $capaianPembelajaran = CapaianPembelajaran::all();
+    //     $peluangKerja = PeluangKerja::all();
+    //     return view('guest/program-keahlian-template', [
+    //         "title" => "Detail Program Keahlian",
+    //         "programKeahlian" => $programKeahlian,
+    //         "capaianPembelajaran"=> $capaianPembelajaran,
+    //         "peluangKerja" => $peluangKerja
+    //     ]);
+    // }
 
     public function ppdb()
     {

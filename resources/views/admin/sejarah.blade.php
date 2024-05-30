@@ -3,6 +3,8 @@
 @section('main-content')
 <!-- Third Content -->
 <div class="grid grid-cols-9 rounded-md mt-10">
+    @include('shared.success-message')
+    @include('shared.error-message')
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Sejarah Sekolah</h3>
@@ -167,7 +169,7 @@
                             <form action="">
 
                                 <div class="aspect-w-10 aspect-h-5 mb-5">
-                                    <img class="w-full h-64" src="{{ asset($sejarah->gambar_sejarah) }}">
+                                    <img class="w-full h-64" src="{{ asset('storage/'.$sejarah->gambar_sejarah) }}">
                                 </div>
 
                                 <label

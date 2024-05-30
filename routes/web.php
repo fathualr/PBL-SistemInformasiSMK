@@ -44,13 +44,13 @@ use App\Http\Controllers\{
 //  });
 
 
-// Public
 // Home
 Route::get('/', [frontEndController::class, 'home']);
+// Public
 Route::get('guest/profile', [frontEndController::class, 'profile']);
 Route::get('guest/sejarah', [webController::class, 'sejarah']);
-Route::get('guest/program-keahlian', [webController::class, 'program']);
-Route::get('guest/detail-program/{id_program}', [webController::class, 'detailProgram']);
+Route::get('guest/program-keahlian', [programKeahlianController::class, 'program']);
+Route::get('guest/program-keahlian-template/{id_program}', [programKeahlianController::class, 'detailProgram']);
 Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
 Route::get('guest/direktori-guru', [webController::class, 'guru']);
 Route::get('guest/direktori-pegawai', [webController::class, 'pegawai']);
@@ -124,13 +124,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::patch('program-keahlian/{id_program}', [programKeahlianController::class, 'updateProgramKeahlian'])->name('ProgramKeahlian.update');
     Route::delete('program-keahlian/{id_program}', [programKeahlianController::class, 'destroyProgramKeahlian'])->name('ProgramKeahlian.destroy');
     // CRUD capaian pembelajaran
-    Route::post('capaianPembelajaran', [programKeahlianController::class, 'storeCapaianPembelajaran'])->name('CapaianPembelajaran.store');
-    Route::patch('capaianPembelajaran/{id_capaian_pembelajaran}', [programKeahlianController::class, 'updateCapaianPembelajaran'])->name('CapaianPembelajaran.update');
-    Route::delete('capaianPembelajaran/{id_capaian_pembelajaran}', [programKeahlianController::class, 'destroyCapaianPembelajaran'])->name('CapaianPembelajaran.destroy');
+    Route::patch('capaianPembelajaran/{id_program}', [programKeahlianController::class, 'updateCapaianPembelajaran'])->name('CapaianPembelajaran.update');
     // CRUD peluang kerja
-    Route::post('peluangKerja', [programKeahlianController::class, 'storePeluangKerja'])->name('PeluangKerja.store');
-    Route::patch('peluangKerja/{id_peluang_kerja}', [programKeahlianController::class, 'updatePeluangKerja'])->name('PeluangKerja.update');
-    Route::delete('peluangKerja/{id_peluang_kerja}', [programKeahlianController::class, 'destroyPeluangKerja'])->name('PeluangKerja.destroy');
+    Route::patch('peluangKerja/{id_program}', [programKeahlianController::class, 'updatePeluangKerja'])->name('PeluangKerja.update');
+    Route::delete('peluangKerja/{id}', [programKeahlianController::class, 'destroyPeluangKerja'])->name('PeluangKerja.destroy');
     // -----
 
     // Direktori Guru -----
