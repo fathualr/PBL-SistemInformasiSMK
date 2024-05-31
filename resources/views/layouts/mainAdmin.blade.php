@@ -109,10 +109,10 @@
                                         <h1 class="font-bold mx-5">Guru</h1>
                                     </a>
                                 </li>
-                                <li class="@if($title == 'Admin Staff') bg-blue-600 rounded-md @endif">
-                                    <a href="/admin/staff">
+                                <li class="@if($title == 'Admin Pegawai') bg-blue-600 rounded-md @endif">
+                                    <a href="/admin/pegawai">
                                         <i class="fas fa-clipboard-user text-2xl"></i>
-                                        <h1 class="font-bold mx-5">Staff</h1>
+                                        <h1 class="font-bold mx-5">Pegawai</h1>
                                     </a>
                                 </li>
                                 <li class="@if($title == 'Admin Siswa') bg-blue-600 rounded-md @endif">
@@ -144,10 +144,10 @@
                                         <h1 class="font-bold mx-5">Guru</h1>
                                     </a>
                                 </li>
-                                <li class="@if($title == 'Admin Staff') bg-blue-600 rounded-md @endif">
-                                    <a href="/admin/staff">
+                                <li class="@if($title == 'Admin Pegawai') bg-blue-600 rounded-md @endif">
+                                    <a href="/admin/pegawai">
                                         <i class="fas fa-clipboard-user text-2xl"></i>
-                                        <h1 class="font-bold mx-5">Staff</h1>
+                                        <h1 class="font-bold mx-5">Pegawai</h1>
                                     </a>
                                 </li>
                                 <li class="@if($title == 'Admin Siswa') bg-blue-600 rounded-md @endif">

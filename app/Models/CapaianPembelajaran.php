@@ -20,6 +20,6 @@ class CapaianPembelajaran extends Model
     ];
     public function programKeahlian()
     {
-        return $this->belongsTo(ProgramKeahlian::class);
+        return $this->belongsTo(ProgramKeahlian::class, 'id_program', 'id_program');
     }
 }

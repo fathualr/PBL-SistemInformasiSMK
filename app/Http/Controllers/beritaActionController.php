@@ -47,7 +47,7 @@ class beritaActionController extends Controller
             'tanggal_berita' => 'required|date',
         ]);
 
-        $gambarHeadline = $request->file('gambar_headline')->store('image/gambarBeritaHeadline', 'public');
+        $gambarHeadline = $request->file('gambar_headline')->store('image/BeritaHeadline', 'public');
         $validate['gambar_headline'] = $gambarHeadline;
         $berita = Berita::create($validate);
 
@@ -55,7 +55,7 @@ class beritaActionController extends Controller
             foreach ($request->file('gambar_berita') as $image){
                 GambarBerita::create([
                     'berita_id' => $berita->id_berita,
-                    'tautan_gambar' => $image->store('image/gambarBerita', 'public'),
+                    'tautan_gambar' => $image->store('image/Berita', 'public'),
                 ]);
             }
         }
@@ -86,7 +86,7 @@ class beritaActionController extends Controller
         ]);
         
         if ($request->hasFile('gambar_headline')) {
-            $gambarHeadlinePath = $request->file('gambar_headline')->store('image/gambarBeritaHeadline', 'public');
+            $gambarHeadlinePath = $request->file('gambar_headline')->store('image/BeritaHeadline', 'public');
             if ($berita->gambar_headline) {
                 Storage::disk('public')->delete($berita->gambar_headline);
             }
@@ -134,7 +134,7 @@ class beritaActionController extends Controller
     
         $status = GambarBerita::create([
             'berita_id' => $berita->id_berita,
-            'tautan_gambar' => $image->store('image/gambarBerita', 'public'),
+            'tautan_gambar' => $image->store('image/Berita', 'public'),
         ]);
         if($status){
             return redirect()->back()->with('success', 'Gambar berita berhasil diubah!');

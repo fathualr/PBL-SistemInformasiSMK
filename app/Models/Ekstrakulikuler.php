@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\GambarEkstarkurikuler;
+use App\Models\GambarEkstrakurikuler;
 
 class Ekstrakulikuler extends Model
 {
@@ -24,8 +24,8 @@ class Ekstrakulikuler extends Model
         return $this->belongsTo(DirektoriGuru::class, 'id_guru');
     }
 
-    public function gambarEkstrakurikuler()
+    public function gambar()
     {
-        return $this->hasMany(GambarEkstarkurikuler::class, 'id_ekstrakurikuler');
+        return $this->hasMany(GambarEkstrakurikuler::class, 'id_ekstrakurikuler');
     }
 }

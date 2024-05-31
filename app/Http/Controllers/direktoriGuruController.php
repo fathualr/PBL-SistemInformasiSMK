@@ -9,87 +9,101 @@ use Illuminate\Support\Facades\Storage;
 
 class direktoriGuruController extends Controller
 {
-    public function adminDirektoriGuru()
+    public function guru()
     {
         $direktoriGuru = DirektoriGuru::all();
         $programKeahlian = ProgramKeahlian::all();
+        return view('guest/direktori-guru', [
+            "title" => "Direktori Guru",
+            "direktoriGuru" => $direktoriGuru,
+            "programKeahlian" => $programKeahlian
+        ]);
+    }
+
+    // Perbaiki ^^^
+    public function adminDirektoriGuru(){
+        $gurus = DirektoriGuru::with('programKeahlian')->paginate(10);
+        $programKeahlian = ProgramKeahlian::all();
         return view('admin/guru', [
             "title" => "Admin Guru",
-            "direktoriGuru" => $direktoriGuru,
+            "gurus" => $gurus,
             "programKeahlian" => $programKeahlian,
         ]);
     }
 
-    public function storeDirektoriGuru(Request $request)
-    {
+    public function storeDirektoriGuru(Request $request){
         $validate = $request->validate([
-            'id_program' => 'nullable',
-            'nama_guru' => 'required',
-            'nik_guru' => 'required',
-            'jabatan_guru' => 'required',
-            'TTL_guru' => 'required',
-            'tempat_lahir_guru' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp_guru' => 'required',
-            'alamat_guru' => 'required',
-            'gambar_guru' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'status_guru' => 'required',
-            'email_guru' => 'required'
-        ]);
+            'id_program' => 'required|exists:program_keahlian,id_program',
+            'nama_guru' => 'required|string|max:255',
+            'nik_guru' => 'required|string|max:255|unique:direktori_guru,nik_guru',
+            'jabatan_guru' => 'required|string|max:255',
+            'TTL_guru' => 'required|date',
+            'tempat_lahir_guru' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:Laki - Laki,Perempuan',
+            'no_hp_guru' => 'required|string|max:15',
+            'alamat_guru' => 'required|string|max:255',
+            'gambar_guru' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status_guru' => 'required|in:Aktif,Cuti,Pensiun,Resign',
+            'email_guru' => 'required|email|max:255|unique:direktori_guru,email_guru',
+        ]); 
 
-        $gambarGuru = $request->file('gambar_guru')->store('image/gambarGuru', 'public');
-        $validate['gambar_guru'] = $gambarGuru;
-        $direktoriGuru = DirektoriGuru::create($validate);
+        $path = $request->file('gambar_guru')->store('image/gambarGuru', 'public');
+        $validate['gambar_guru'] = $path;
 
-        if ($direktoriGuru) {
-            return redirect()->route('admin.direktoriGuru.index');
+        $status = DirektoriGuru::create($validate);
+        if ($status) {
+            return redirect()->back()->with('success', 'Data guru berhasil ditambahkan!');
         } else {
-            return redirect()->route('admin.direktoriGuru.index');
+            return redirect()->back()->with('error', 'Data guru gagal ditambahkan!');
         }
     }
-
-    public function updateDirektoriGuru(Request $request, $id_guru)
-    {
-
+    
+    public function updateDirektoriGuru(Request $request, $id_guru){
         $guru = DirektoriGuru::findOrFail($id_guru);
 
         $validate = $request->validate([
-            'id_program' => 'nullable',
-            'nama_guru' => 'required',
-            'nik_guru' => 'required',
-            'jabatan_guru' => 'required',
-            'TTL_guru' => 'required',
-            'tempat_lahir_guru' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp_guru' => 'required',
-            'alamat_guru' => 'required',
+            'id_program' => 'required|exists:program_keahlian,id_program',
+            'nama_guru' => 'required|string|max:255',
+            'nik_guru' => 'required|string|max:255|unique:direktori_guru,nik_guru,' . $id_guru . ',id_guru',
+            'jabatan_guru' => 'required|string|max:255',
+            'TTL_guru' => 'required|date',
+            'tempat_lahir_guru' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:Laki - Laki,Perempuan',
+            'no_hp_guru' => 'required|string|max:15',
+            'alamat_guru' => 'required|string|max:255',
             'gambar_guru' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'status_guru' => 'required',
-            'email_guru' => 'required'
+            'status_guru' => 'required|in:Aktif,Cuti,Pensiun,Resign',
+            'email_guru' => 'required|email|max:255|unique:direktori_guru,email_guru,' . $id_guru . ',id_guru',
         ]);
 
         if ($request->hasFile('gambar_guru')) {
-            $gambarPath = $request->file('gambar_guru')->store('image/gambarGuru', 'public');
             if ($guru->gambar_guru) {
                 Storage::disk('public')->delete($guru->gambar_guru);
             }
-            $validate['gambar_guru'] = $gambarPath;
+            $path = $request->file('gambar_guru')->store('image/gambarGuru', 'public');
+            $validate['gambar_guru'] = $path;
         }
 
-        $status = $guru->fill($validate)->save();
+        $status = $guru->update($validate);
         if ($status) {
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Data guru berhasil diperbarui!');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Data guru gagal diperbarui!');
         }
     }
 
-    public function destroyDirektoriGuru($id_guru)
-    {
+    public function destroyDirektoriGuru($id_guru){
         $guru = DirektoriGuru::findOrFail($id_guru);
 
-        $guru->delete();
+        if ($guru->gambar_guru) {
+            Storage::disk('public')->delete($guru->gambar_guru);
+        }
 
-        return redirect()->route('admin.direktoriGuru.index');
+        $status = $guru->delete();
+        if ($status) {
+            return redirect()->back()->with('success', 'Data guru berhasil dihapus!');
+        } else {
+            return redirect()->back()->with('error', 'Data guru gagal dihapus!');
+        }
     }
 }

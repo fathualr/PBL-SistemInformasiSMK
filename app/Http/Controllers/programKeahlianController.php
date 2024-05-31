@@ -10,55 +10,73 @@ use Illuminate\Support\Facades\Storage;
 
 class programKeahlianController extends Controller
 {
-    public function adminProgramKeahlian()
-    {
+    public function program(){
+        $programKeahlian = ProgramKeahlian::all();
+        return view('guest/program-keahlian', [
+            "title" => "Program Keahlian",
+            "programKeahlian" => $programKeahlian
+        ]);
+    }
+
+    public function detailProgram(){
         $programKeahlian = ProgramKeahlian::all();
         $capaianPembelajaran = CapaianPembelajaran::all();
         $peluangKerja = PeluangKerja::all();
-
-        return view('admin/program-keahlian', [
-            "title" => "Admin Program Keahlian",
+        return view('guest/program-keahlian-template', [
+            "title" => "Detail Program Keahlian",
             "programKeahlian" => $programKeahlian,
             "capaianPembelajaran" => $capaianPembelajaran,
             "peluangKerja" => $peluangKerja
         ]);
     }
+    // Perbaiki ^^^
+    
+    public function adminProgramKeahlian(){
+        $programKeahlian = ProgramKeahlian::with('capaianPembelajaran', 'peluangKerja')->paginate(10);
+        return view('admin/program-keahlian', [
+            "title" => "Admin Program Keahlian",
+            "programKeahlian" => $programKeahlian
+        ]);
+    }
 
-    // Program Keahlian
-    public function storeProgramKeahlian(Request $request)
-    {
-
+    public function storeProgramKeahlian(Request $request){
         $validate = $request->validate([
             'nama_program' => 'required',
-            'logo_program' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'logo_program' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'deskripsi_program' => 'required',
             'deskripsi_peluang_kerja' => 'required',
             'visi_program' => 'required',
             'misi_program' => 'required',
             'tujuan_program' => 'required',
-            'sasaran_program' => 'required'
+            'sasaran_program' => 'required',
         ]);
 
-        $logoProgram = $request->file('logo_program')->store('image/logoProgram', 'public');
-        $validate['logo_program'] = $logoProgram;
-        $programKeahlian = ProgramKeahlian::create($validate);
+        $path = $request->file('logo_program')->store('image/logoProgram', 'public');
+        $validate['logo_program'] = $path;
 
+        $programKeahlian = ProgramKeahlian::create($validate);
         if ($programKeahlian) {
-            return redirect()->route('admin.programKeahlian.index');
+            $capaianPembelajaran = CapaianPembelajaran::create([
+                'id_program' => $programKeahlian->id_program,
+            ]);
+
+            if ($capaianPembelajaran) {
+                return redirect()->back()->with('success', 'Program Keahlian berhasil ditambahkan!');
+            } else {
+                $programKeahlian->delete();
+                return redirect()->back()->with('error', 'Gagal membuat Capaian Pembelajaran untuk Program Keahlian!');
+            }
         } else {
-            return redirect()->route('admin.programKeahlian.index');
+            return redirect()->back()->with('error', 'Gagal membuat Program Keahlian!');
         }
     }
 
-
-
-    public function updateProgramKeahlian(Request $request, $id_program)
-    {
-        $program = ProgramKeahlian::findOrFail($id_program);
+    public function updateProgramKeahlian(Request $request, $id_program){
+        $programKeahlian = ProgramKeahlian::findOrFail($id_program);
 
         $validate = $request->validate([
             "nama_program" => "required",
-            "logo_program" => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048",
+            "logo_program" => "nullable|image|mimes:jpeg,png,jpg|max:2048",
             "deskripsi_program" => "required",
             "deskripsi_peluang_kerja" => "required",
             "visi_program" => "required",
@@ -68,142 +86,81 @@ class programKeahlianController extends Controller
         ]);
 
         if ($request->hasFile('logo_program')) {
-            $gambarPath = $request->file('logo_program')->store('image/logoProgram', 'public');
-            if ($program->logo_program) {
-                Storage::disk('public')->delete($program->logo_program);
+            if ($programKeahlian->logo_program) {
+                Storage::disk('public')->delete($programKeahlian->logo_program);
             }
-            $validate['logo_program'] = $gambarPath;
+            $path = $request->file('logo_program')->store('image/logoProgram', 'public');
+            $validate['logo_program'] = $path;
         }
 
-        $status = $program->fill($validate)->save();
+        $status = $programKeahlian->update($validate);
         if ($status) {
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Program Keahlian berhasil diperbarui!');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Program Keahlian gagal diperbarui!');
         }
     }
 
-    public function destroyProgramKeahlian($id_program)
-    {
+    public function destroyProgramKeahlian($id_program){
         $program = ProgramKeahlian::findOrFail($id_program);
 
-        $program->delete();
+        if ($program->logo_program) {
+            Storage::disk('public')->delete($program->logo_program);
+        }
 
-        return redirect()->route('admin.programKeahlian.index')->with('success', 'Data berhasil dihapus.');
+        $status = $program->delete();
+        if ($status) {
+            return redirect()->back()->with('success', 'Program Keahlian berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'Gagal menghapus Program Keahlian.');
+        }
     }
-    // Program Keahlian
 
-    // Capaian Pembelajaran
-    public function capaianPembelajaran()
-    {
-        $capaianPembelajaran = CapaianPembelajaran::with("programKeahlian")->get();
-        return view('admin/program-keahlian', [
-            "title" => "Capaian Pembelajaran",
-            "capaianPembelajaran" => $capaianPembelajaran
+    public function updateCapaianPembelajaran(Request $request, $id_program){
+        $program = ProgramKeahlian::findOrFail($id_program);
+
+        $validatedData = $request->validate([
+            'deskripsi_capaian_pembelajaran' => 'nullable',
+            'aspek_sikap' => 'nullable',
+            'aspek_pengetahuan' => 'nullable',
+            'aspek_keterampilan_umum' => 'nullable',
+            'aspek_keterampilan_khusus' => 'nullable',
         ]);
+    
+        $capaianPembelajaran = $program->capaianPembelajaran;
+        $status = $capaianPembelajaran->update($validatedData);
+        if ($status) {
+            return redirect()->back()->with('success', 'Capaian Pembelajaran berhasil diperbarui!');
+        } else {
+            return redirect()->back()->with('error', 'Capaian Pembelajaran gagal diperbarui!');
+        }
     }
-    public function storeCapaianPembelajaran(Request $request)
-    {
-        CapaianPembelajaran::create([
-            "id_program" => $request->id_program,
-            "deskripsi_capaian_pembelajaran" => $request->deskripsi_capaian_pembelajaran,
-            "aspek_sikap" => $request->aspek_sikap,
-            "aspek_pengetahuan" => $request->aspek_pengetahuan,
-            "aspek_keterampilan_umum" => $request->aspek_keterampilan_umum,
-            "aspek_keterampilan_khusus" => $request->aspek_keterampilan_khusus,
+
+    public function updatePeluangKerja(Request $request, $id_program){
+        $program = ProgramKeahlian::findOrFail($id_program);
+    
+        $validate = $request->validate([
+            'peluang_kerja' => 'required|string|max:255',
+            'deskripsi_pekerjaan' => 'required|string|max:255',
         ]);
-        return redirect()->route('admin.programKeahlian.index');
+        $validate['id_program'] = $program->id_program;
+
+        $status = PeluangKerja::create($validate);
+        if($status){
+            return redirect()->back()->with('success', 'Peluang Kerja berhasil ditambahkan!');
+        }
+        else{
+            return redirect()->back()->with('error', 'Peluang Kerja gagal ditambahkan!');
+        }
     }
 
-    public function updateCapaianPembelajaran(Request $request, $id_capaian_pembelajaran)
-    {
-
-        $capaian = CapaianPembelajaran::findOrFail($id_capaian_pembelajaran);
-
-        $validatedData = [
-            "id_program" => $request->id_program,
-            "deskripsi_capaian_pembelajaran" => $request->deskripsi_capaian_pembelajaran,
-            "aspek_sikap" => $request->aspek_sikap,
-            "aspek_pengetahuan" => $request->aspek_pengetahuan,
-            "aspek_keterampilan_umum" => $request->aspek_keterampilan_umum,
-            "aspek_keterampilan_khusus" => $request->aspek_keterampilan_khusus,
-        ];
-
-        $capaian->update($validatedData);
-
-        return redirect()->back();
+    public function destroyPeluangKerja($id){
+        $peluangKerja = PeluangKerja::findOrFail($id);
+        $status = $peluangKerja->delete();
+        if ($status) {
+            return redirect()->back()->with('success', 'Peluang Kerja berhasil dihapus!');
+        } else {
+            return redirect()->back()->with('error', 'Peluang Kerja gagal dihapus!');
+        }
     }
-
-    public function destroyCapaianPembelajaran($id_capaian_pembelajaran)
-    {
-        $capaianPembelajaran = CapaianPembelajaran::findOrFail($id_capaian_pembelajaran);
-
-        $capaianPembelajaran->delete();
-
-        return redirect()->back();
-    }
-    // Capaian Pembelajaran
-
-    // Peluang Kerja
-    public function peluangKerja()
-    {
-        $programKeahlian = ProgramKeahlian::all();
-        $peluangKerja = PeluangKerja::all();
-        return view('admin/program-keahlian', [
-            "peluangKerja" => $peluangKerja,
-            "programKeahlian" => $programKeahlian,
-            compact('programKeahlian', 'peluangKerja')
-        ]);
-    }
-
-    public function storePeluangKerja(Request $request)
-    {
-        PeluangKerja::create([
-            "id_program" => $request->id_program,
-            "peluang_kerja" => $request->peluang_kerja,
-            "deskripsi_pekerjaan" => $request->deskripsi_pekerjaan
-        ]);
-        return redirect()->route('admin.programKeahlian.index');
-    }
-
-    public function updatePeluangKerja(Request $request, $id_peluang_kerja)
-    {
-
-        $peluang = PeluangKerja::findOrFail($id_peluang_kerja);
-
-        $validatedData = [
-            "id_program" => $request->id_program,
-            "peluang_kerja" => $request->peluang_kerja,
-            "deskripsi_pekerjaan" => $request->deskripsi_pekerjaan
-        ];
-
-        $peluang->update($validatedData);
-
-        return redirect()->route('admin.programKeahlian.index');
-    }
-
-    public function destroyPeluangKerja($id_peluang_kerja)
-    {
-        $peluang = PeluangKerja::findOrFail($id_peluang_kerja);
-
-        $peluang->delete();
-
-        return redirect()->route('admin.programKeahlian.index');
-    }
-    // Peluang Kerja
-
-    // Guest
-    public function program()
-    {
-        $programKeahlian = ProgramKeahlian::all();
-        $capaianPembelajaran = CapaianPembelajaran::all();
-        $peluangKerja = PeluangKerja::all();
-        return view('guest/program-keahlian', [
-            "title" => "Program Keahlian",
-            "programKeahlian" => $programKeahlian,
-            "capaianPembelajaran" => $capaianPembelajaran,
-            "peluangKerja" => $peluangKerja
-        ]);
-    }
-    // Guest
 }

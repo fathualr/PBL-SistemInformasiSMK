@@ -44,32 +44,32 @@ use App\Http\Controllers\{
 //  });
 
 
-// Public
 // Home
 Route::get('/', [frontEndController::class, 'home']);
+// Public
 Route::get('guest/profile', [frontEndController::class, 'profile']);
-Route::get('guest/sejarah', [webController::class, 'sejarah']);
-Route::get('guest/program-keahlian', [webController::class, 'program']);
-Route::get('guest/detail-program/{id_program}', [webController::class, 'detailProgram']);
-Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
-Route::get('guest/direktori-guru', [webController::class, 'guru']);
-Route::get('guest/direktori-pegawai', [webController::class, 'pegawai']);
-Route::get('guest/direktori-siswa', [webController::class, 'siswa']);
-Route::get('guest/direktori-alumni', [webController::class, 'alumni']);
+Route::get('guest/sejarah', [sejarahSekolahController::class, 'sejarah']);
+Route::get('guest/program-keahlian', [programKeahlianController::class, 'program']);
+Route::get('guest/program-keahlian-template/{id_program}', [programKeahlianController::class, 'detailProgram']);
+Route::get('guest/direktori-guru', [direktoriGuruController::class, 'guru']);
+Route::get('guest/direktori-pegawai', [DirektoriPegawaiController::class, 'pegawai']);
+Route::get('guest/direktori-siswa', [DirektoriSiswaController::class, 'siswa']);
+Route::get('guest/direktori-alumni', [direktoriAlumniController::class, 'alumni']);
 Route::get('guest/galeri-foto', [webController::class, 'foto']);
 Route::get('guest/galeri-video', [webController::class, 'video']);
 Route::get('guest/galeri-template/{id_album}', [webController::class, 'galeriTemplate']);
 Route::get('guest/galeri-template-video/{id_album}', [webController::class, 'galeriTemplateVideo']);
 Route::get('guest/ppdb', [webController::class, 'ppdb'])->name('guest.ppdb.index');
 Route::post('guest/ppdb', [formController::class, 'storePPDB'])->name('guest.ppdb.store');
+Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
 Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
 Route::get('guest/prestasi-siswa', [prestasiSiswaController::class, 'index']);
 Route::get('guest/prestasi-siswa-template/{id_prestasi}', [PrestasiSiswaController::class, 'showTemplate']);
 Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
 Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
 Route::post('/komentarStore/{id}', [komentarBeritaActionController::class, 'store'])->name('komentarBerita.store');
-Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
-Route::get('guest/ekstrakulikuler-template/{id_ekstrakurikuler}', [webController::class, 'ekstrakulikulerTemplate']);
+Route::get('guest/ekstrakulikuler', [ekstrakulikulerController::class, 'ekstrakulikuler']);
+Route::get('guest/ekstrakulikuler-template/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'ekstrakulikulerTemplate']);
 Route::get('guest/media-sosial', [MediaSosialController::class, 'guestSosialMedia'])->name('guest.media-sosial.index');
 Route::post('/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->name('UmpanBalik.store');
 // Public
@@ -124,13 +124,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::patch('program-keahlian/{id_program}', [programKeahlianController::class, 'updateProgramKeahlian'])->name('ProgramKeahlian.update');
     Route::delete('program-keahlian/{id_program}', [programKeahlianController::class, 'destroyProgramKeahlian'])->name('ProgramKeahlian.destroy');
     // CRUD capaian pembelajaran
-    Route::post('capaianPembelajaran', [programKeahlianController::class, 'storeCapaianPembelajaran'])->name('CapaianPembelajaran.store');
-    Route::patch('capaianPembelajaran/{id_capaian_pembelajaran}', [programKeahlianController::class, 'updateCapaianPembelajaran'])->name('CapaianPembelajaran.update');
-    Route::delete('capaianPembelajaran/{id_capaian_pembelajaran}', [programKeahlianController::class, 'destroyCapaianPembelajaran'])->name('CapaianPembelajaran.destroy');
+    Route::patch('capaianPembelajaran/{id_program}', [programKeahlianController::class, 'updateCapaianPembelajaran'])->name('CapaianPembelajaran.update');
     // CRUD peluang kerja
-    Route::post('peluangKerja', [programKeahlianController::class, 'storePeluangKerja'])->name('PeluangKerja.store');
-    Route::patch('peluangKerja/{id_peluang_kerja}', [programKeahlianController::class, 'updatePeluangKerja'])->name('PeluangKerja.update');
-    Route::delete('peluangKerja/{id_peluang_kerja}', [programKeahlianController::class, 'destroyPeluangKerja'])->name('PeluangKerja.destroy');
+    Route::patch('peluangKerja/{id_program}', [programKeahlianController::class, 'updatePeluangKerja'])->name('PeluangKerja.update');
+    Route::delete('peluangKerja/{id}', [programKeahlianController::class, 'destroyPeluangKerja'])->name('PeluangKerja.destroy');
     // -----
 
     // Direktori Guru -----
@@ -142,11 +139,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     // -----
 
     // Direktori Pegawai
-    Route::get('staff', [direktoriPegawaiController::class, 'adminStaff'])->name('admin.direktoriPegawai.index');
+    Route::get('pegawai', [direktoriPegawaiController::class, 'adminPegawai'])->name('admin.direktoriPegawai.index');
     // CRUD
-    Route::post('staff', [direktoriPegawaiController::class, 'storeDirektoriPegawai'])->name('DirektoriPegawai.store');
-    Route::patch('staff/{id_pegawai}', [direktoriPegawaiController::class, 'updateDirektoriPegawai'])->name('DirektoriPegawai.update');
-    Route::delete('staff/{id_pegawai}', [direktoriPegawaiController::class, 'destroyDirektoriPegawai'])->name('DirektoriPegawai.destroy');
+    Route::post('pegawai', [direktoriPegawaiController::class, 'storeDirektoriPegawai'])->name('DirektoriPegawai.store');
+    Route::patch('pegawai/{id_pegawai}', [direktoriPegawaiController::class, 'updateDirektoriPegawai'])->name('DirektoriPegawai.update');
+    Route::delete('pegawai/{id_pegawai}', [direktoriPegawaiController::class, 'destroyDirektoriPegawai'])->name('DirektoriPegawai.destroy');
     // -----
 
     // Direktori Siswa
@@ -159,6 +156,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
     // Direktori Alumni -----
     Route::get('alumni', [direktoriAlumniController::class, 'adminAlumni'])->name('admin.direktoriAlumni.index');
+    // CRUD
     Route::post('alumni', [direktoriAlumniController::class, 'storeDirektoriAlumni'])->name('DirektoriAlumni.store');
     Route::patch('alumni/{id_alumni}', [direktoriAlumniController::class, 'updateDirektoriAlumni'])->name('DirektoriAlumni.update');
     Route::delete('alumni/{id_alumni}', [direktoriAlumniController::class, 'destroyDirektoriAlumni'])->name('DirektoriAlumni.destroy');
@@ -187,6 +185,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/download-excel', [formController::class, 'downloadExcel'])->name('download.excel');
     Route::get('pendaftaranPPDB', [formController::class, 'adminPendaftaranPPDB'])->name('admin.pendaftaranPPDB.index');
     Route::get('pengumumanPPDB', [pengumumanController::class, 'adminPengumumanPPDB'])->name('admin.pengumumanPPDB.index');
+    Route::get('countdown', [InformasiPPDBController::class, 'adminCountdown'])->name('admin.countdown.edit');
     // CMS
     Route::post('informasiPPDB', [informasippdbController::class, 'storeInformasiPPDB'])->name('admin.informasiPPDB.store');
     Route::patch('informasiPPDB/{id}', [informasippdbController::class, 'updateInformasiPPDB'])->name('admin.informasiPPDB.update');
@@ -199,6 +198,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::delete('pendaftaranPPDB/{id}', [formController::class, 'destroyPendaftaranPPDB'])->name('admin.pendaftaranPPDB.destroy');
     // CRUD pengumuman
     Route::post('pengumumanPPDB/updateBatch', [PengumumanController::class, 'updateBatch'])->name('admin.pengumumanPPDB.updateBatch');
+    // CMS countdown
+    Route::post('countdown/update', [InformasiPPDBController::class, 'updateCountdown'])->name('admin.countdown.update');
+    Route::delete('countdown/delete', [InformasiPPDBController::class, 'destroyCountdown'])->name('admin.countdown.delete');
     // -----
 
     // Sarana - Prasarana -----
@@ -245,7 +247,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('ekstrakulikuler', [ekstrakulikulerController::class, 'adminEkstrakulikuler'])->name('admin.ekstrakulikuler.index');
     // CRUD
     Route::post('ekstrakulikuler', [ekstrakulikulerController::class, 'storeEkstrakulikuler'])->name('Ekstrakulikuler.store');
-    Route::patch('ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakurikuler'])->name('ekstrakurikuler.update');
+    Route::patch('ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakulikuler'])->name('ekstrakurikuler.update');
     Route::delete('ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
     // CRUD gambar ekstrakurikuler
     Route::patch('/gambarEkskulUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateGambarEkstrakurikuler'])->name('gambarEkskul.update');

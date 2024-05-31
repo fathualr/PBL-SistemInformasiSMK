@@ -8,84 +8,95 @@ use Illuminate\Support\Facades\Storage;
 
 class direktoriPegawaiController extends Controller
 {
-    public function adminStaff()
+    public function pegawai()
     {
         $direktoriPegawai = DirektoriPegawai::all();
-        return view('admin/staff', [
-            "title" => "Admin Staff",
-            "direktoriPegawai" => $direktoriPegawai
+        return view('guest/direktori-pegawai', [
+            "title" => "Direktori Pegawai",
+            "direktoriPegawai"=> $direktoriPegawai
         ]);
     }
 
-    public function storeDirektoriPegawai(Request $request)
-    {
+    //Perbaiki ^^
+    public function adminPegawai(){
+        $pegawai = DirektoriPegawai::paginate(10);
+        return view('admin/pegawai', [
+            "title" => "Admin Staff",
+            "pegawai"=> $pegawai
+        ]);
+    }
 
+    public function storeDirektoriPegawai(Request $request){
         $validate = $request->validate([
-            'nama_pegawai' => 'nullable',
-            'nik_pegawai' => 'required',
-            'jabatan_pegawai' => 'required',
-            'TTL_pegawai' => 'required',
-            'tempat_lahir_pegawai' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp_pegawai' => 'required',
-            'alamat_pegawai' => 'required',
-            'gambar_pegawai' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'status_pegawai' => 'required',
-            'email_pegawai' => 'required'
+            'nama_pegawai' => 'required|string|max:255',
+            'nik_pegawai' => 'required|string|unique:direktori_pegawai,nik_pegawai',
+            'jabatan_pegawai' => 'required|string|max:255',
+            'TTL_pegawai' => 'required|date',
+            'tempat_lahir_pegawai' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:Laki - Laki,Perempuan',
+            'no_hp_pegawai' => 'required|string|max:255',
+            'alamat_pegawai' => 'required|string',
+            'gambar_pegawai' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'status_pegawai' => 'required|in:Aktif,Cuti,Pensiun,Resign',
+            'email_pegawai' => 'required|string|email|unique:direktori_pegawai,email_pegawai',
         ]);
 
-        $gambarPegawai = $request->file('gambar_pegawai')->store('image/gambarPegawai', 'public');
-        $validate['gambar_pegawai'] = $gambarPegawai;
-        $direktoriPegawai = DirektoriPegawai::create($validate);
+        $path = $request->file('gambar_pegawai')->store('image/gambarPegawai', 'public');
+        $validate['gambar_pegawai'] = $path;
 
-        if ($direktoriPegawai) {
-            return redirect()->route('admin.direktoriPegawai.index');
+        $status = DirektoriPegawai::create($validate);
+        if ($status) {
+            return redirect()->back()->with('success', 'Data pegawai berhasil ditambahkan!');
         } else {
-            return redirect()->route('admin.direktoriPegawai.index');
+            return redirect()->back()->with('error', 'Data pegawai gagal ditambahkan!');
         }
     }
 
-    public function updateDirektoriPegawai(Request $request, $id_pegawai)
-    {
-
-        $staff = DirektoriPegawai::findOrFail($id_pegawai);
+    public function updateDirektoriPegawai(Request $request, $id){
+        $pegawai = DirektoriPegawai::findOrFail($id);
 
         $validate = $request->validate([
-            'nama_pegawai' => 'nullable',
-            'nik_pegawai' => 'required',
-            'jabatan_pegawai' => 'required',
-            'TTL_pegawai' => 'required',
-            'tempat_lahir_pegawai' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp_pegawai' => 'required',
-            'alamat_pegawai' => 'required',
+            'nama_pegawai' => 'required|string|max:255',
+            'nik_pegawai' => 'required|string|max:255|unique:direktori_pegawai,nik_pegawai,' . $id . ',id_pegawai',
+            'jabatan_pegawai' => 'required|string|max:255',
+            'TTL_pegawai' => 'required|date',
+            'tempat_lahir_pegawai' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:Laki - Laki,Perempuan',
+            'no_hp_pegawai' => 'required|string|max:255',
+            'alamat_pegawai' => 'required|string',
             'gambar_pegawai' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'status_pegawai' => 'required',
-            'email_pegawai' => 'required'
+            'status_pegawai' => 'required|in:Aktif,Cuti,Pensiun,Resign',
+            'email_pegawai' => 'required|string|email|unique:direktori_pegawai,email_pegawai,' . $id . ',id_pegawai',
         ]);
 
         if ($request->hasFile('gambar_pegawai')) {
-            $gambarPath = $request->file('gambar_pegawai')->store('image/gambarPegawai', 'public');
-            if ($staff->gambar_pegawai) {
-                Storage::disk('public')->delete($staff->gambar_pegawai);
+            if ($pegawai->gambar_pegawai) {
+                Storage::disk('public')->delete($pegawai->gambar_pegawai);
             }
-            $validate['gambar_pegawai'] = $gambarPath;
+            $path = $request->file('gambar_pegawai')->store('image/gambarPegawai', 'public');
+            $validate['gambar_pegawai'] = $path;
         }
 
-        $status = $staff->fill($validate)->save();
+        $status = $pegawai->update($validate);
         if ($status) {
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Data pegawai berhasil diperbarui!');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Data pegawai gagal diperbarui!');
         }
     }
 
-    public function destroyDirektoriPegawai($id_pegawai)
-    {
-        $staff = DirektoriPegawai::findOrFail($id_pegawai);
+    public function destroyDirektoriPegawai($id_pegawai){
+        $pegawai = DirektoriPegawai::findOrFail($id_pegawai);
 
-        $staff->delete();
+        if ($pegawai->gambar_pegawai) {
+            Storage::disk('public')->delete($pegawai->gambar_pegawai);
+        }
 
-        return redirect()->route('admin.direktoriPegawai.index');
+        $status = $pegawai->delete();
+        if ($status) {
+            return redirect()->back()->with('success', 'Data pegawai berhasil dihapus!');
+        } else {
+            return redirect()->back()->with('error', 'Data pegawai gagal dihapus!');
+        }
     }
 }

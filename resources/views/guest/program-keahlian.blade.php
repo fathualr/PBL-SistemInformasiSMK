@@ -17,7 +17,7 @@
                 <h2 class="card-title justify-center text-center my-3 h-14">{{ $program->nama_program }}</h2>
                 <p class="text-center truncate">{{ $program->deskripsi_program }}</p>
                 <div class="card-actions justify-center">
-                    <a href="/guest/detail-program/{{ $program->id_program }}">
+                    <a href="/guest/program-keahlian-template/{{ $program->id_program }}">
                         <button class="btn bottom-0">Lihat Selengkapnya</button>
                     </a>
                 </div>

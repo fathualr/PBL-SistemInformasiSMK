@@ -129,7 +129,7 @@ return new class extends Migration
             $table->string('jabatan_pegawai')->notNullable();
             $table->date('TTL_pegawai')->notNullable();
             $table->string('tempat_lahir_pegawai')->notNullable();
-            $table->enum('jenis_kelamin', ['Laki - Laki', 'Wanita'])->nullable();
+            $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan'])->nullable();
             $table->string('no_hp_pegawai')->notNullable();
             $table->string('alamat_pegawai')->notNullable();
             $table->string('gambar_pegawai')->nullable();
@@ -241,11 +241,11 @@ return new class extends Migration
         Schema::create('capaian_pembelajaran', function (Blueprint $table) {
             $table->id('id_capaian_pembelajaran');
             $table->unsignedBigInteger('id_program')->notNullable();
-            $table->longText('deskripsi_capaian_pembelajaran');
-            $table->longText('aspek_sikap');
-            $table->longText('aspek_pengetahuan');
-            $table->longText('aspek_keterampilan_umum');
-            $table->longText('aspek_keterampilan_khusus');
+            $table->longText('deskripsi_capaian_pembelajaran')->nullable();
+            $table->longText('aspek_sikap')->nullable();
+            $table->longText('aspek_pengetahuan')->nullable();
+            $table->longText('aspek_keterampilan_umum')->nullable();
+            $table->longText('aspek_keterampilan_khusus')->nullable();
             $table->text('capaian')->nullable();
             $table->timestamps();
 
@@ -268,7 +268,7 @@ return new class extends Migration
         // Tabel untuk  ekstrakulikuler
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
             $table->id('id_ekstrakurikuler');
-            $table->unsignedBigInteger('id_guru')->notNullable();
+            $table->unsignedBigInteger('id_guru')->nullable();
             $table->string('nama_ekstrakurikuler')->notNullable();
             $table->text('deskripsi_ekstrakurikuler')->nullable();
             $table->string('tempat_ekstrakurikuler')->nullable();

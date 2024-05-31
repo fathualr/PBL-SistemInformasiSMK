@@ -4,12 +4,14 @@
 
 <div class="grid grid-cols-9 rounded-md">
 
-    <div class="col-span-3 my-4 mx-5">
+    @include('shared.success-message')
+    @include('shared.error-message')
+    <div class="col-span-3 my-4 mx-5 row-start-2">
         <h3 class="font-bold text-lg">Pengelolaan Umpan Balik</h3>
     </div>
 
     <!-- Search Bar -->
-    <div class="col-span-2 col-start-7 row-start-2">
+    <div class="col-span-2 col-start-7 row-start-3">
         <label class="input input-bordered flex items-center gap-2  focus-within:outline-none">
             <i class="fas fa-magnifying-glass"></i>
             <input type="text" class="grow" placeholder="Cari" />
@@ -18,7 +20,7 @@
     <!-- Search Bar -->
 
     <!-- Content -->
-    <div class="col-span-9 row-start-3">
+    <div class="col-span-9 row-start-4">
         <div class="mt-5">
             <table class="table text-center">
                 <!-- head -->
@@ -32,9 +34,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ( $umpanBalik as $umpanIndex => $umpan )
+
+                    @foreach ( $umpanBalik as $key => $umpan )
                     <tr class="hover">
-                        <th>{{ $umpanIndex + 1 }}</th>
+                        <th>{{ $key + 1 }}</th>
                         <td>{{ $umpan->email_penulis }}</td>
                         <td>
                             <p class="truncate w-28 mx-auto">
@@ -61,7 +64,6 @@
                                         </button>
                                     </li>
                                     <!-- View -->
-
                                     <!-- Delete -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -75,96 +77,8 @@
                             </details>
                         </td>
                     </tr>
-
-                    <!-- View Modal -->
-                    <dialog id="my_modal_view{{ $umpan->id_pesan }}" class="modal">
-                        <div class="modal-box w-11/12 max-w-5xl">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Detail Umpan balik</h3>
-                            <div class="grid grid-cols-3 w-52 -mt-5">
-                                <div class="divider"></div>
-                                <div class="divider divider-success"></div>
-                                <div class="divider"></div>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-5">
-                                <div class="col-span-1">
-
-                                    <label class="form-control w-full">
-                                        <div class="label">
-                                            <span class="label-text">Nama</span>
-                                        </div>
-                                        <input type="text" placeholder="Masukkan Nama"
-                                            class="input input-bordered w-full" name="nama_penulis"
-                                            value="{{ $umpan->nama_penulis }}" readonly />
-                                    </label>
-                                </div>
-
-                                <div class="col-span-1">
-                                    <label class="form-control w-full">
-                                        <div class="label">
-                                            <span class="label-text">Email</span>
-                                        </div>
-                                        <input type="text" placeholder="example@gmail.com"
-                                            class="input input-bordered w-full" name="email_penulis"
-                                            value="{{ $umpan->email_penulis }}" readonly />
-                                    </label>
-                                </div>
-
-                                <div class="col-span-2">
-                                    <label class="form-control w-full">
-                                        <div class="label">
-                                            <span class="label-text">Isi Pesan</span>
-                                        </div>
-                                        <textarea class="textarea textarea-bordered h-48"
-                                            placeholder="Ketikkan Komentar Disini" name="deskripsi_pesan"
-                                            readonly>{{ $umpan->deskripsi_pesan }}</textarea>
-                                    </label>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </dialog>
-                    <!-- View Modal -->
-
-                    <!-- Delete Modal -->
-                    <dialog id="my_modal_delete{{ $umpan->id_pesan }}" class="modal">
-                        <div class="modal-box">
-                            <form method="dialog">
-                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            </form>
-                            <h3 class="font-bold text-lg">Hapus Data</h3>
-
-                            <div class="grid grid-cols-3 w-52 -mt-5">
-                                <div class="divider"></div>
-                                <div class="divider divider-error"></div>
-                                <div class="divider"></div>
-                            </div>
-                            <form action="{{ route('UmpanBalik.destroy', ['id_pesan' => $umpan->id_pesan]) }}"
-                                method="post">
-                                @csrf
-                                @method('DELETE')
-
-                                <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus
-                                    Data Ini ?</h3>
-
-                                <div class="flex justify-end items-end mt-10 gap-4">
-
-                                    <button type="submit"
-                                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                                        <i class=" fas fa-trash"></i>
-                                        Hapus
-                                    </button>
-
-                                </div>
-                            </form>
-                        </div>
-                    </dialog>
-                    <!-- Delete Modal -->
                     @endforeach
+
                 </tbody>
                 <tfoot>
                     <tr>
@@ -176,9 +90,104 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <!-- Pagination -->
+            <div class="flex justify-center my-5 gap-2">
+                @if($umpanBalik->previousPageUrl())
+                <a href="{{ $umpanBalik->previousPageUrl() }}" class="btn">«</a>
+                @else
+                <button class="btn disabled">«</button>
+                @endif
+                <button class="btn">Page {{ $umpanBalik->currentPage() }}</button>
+                @if($umpanBalik->nextPageUrl())
+                <a href="{{ $umpanBalik->nextPageUrl() }}" class="btn">»</a>
+                @else
+                <button class="btn disabled">»</button>
+                @endif
+            </div>
+
         </div>
     </div>
     <!-- Content -->
 </div>
+
+<!-- View Modal -->
+@foreach ( $umpanBalik as $key => $umpan )
+<dialog id="my_modal_view{{ $umpan->id_pesan }}" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Detail Umpan balik</h3>
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <div class="col-span-1">
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Nama</span>
+                    </div>
+                    <input type="text" placeholder="Masukkan Nama"
+                        class="input input-bordered w-full" name="nama_penulis"
+                        value="{{ $umpan->nama_penulis }}" readonly />
+                </label>
+            </div>
+            <div class="col-span-1">
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Email</span>
+                    </div>
+                    <input type="text" placeholder="example@gmail.com"
+                        class="input input-bordered w-full" name="email_penulis"
+                        value="{{ $umpan->email_penulis }}" readonly />
+                </label>
+            </div>
+            <div class="col-span-2">
+                <label class="form-control w-full">
+                    <div class="label">
+                        <span class="label-text">Isi Pesan</span>
+                    </div>
+                    <textarea class="textarea textarea-bordered h-48"
+                        placeholder="Ketikkan Komentar Disini" name="deskripsi_pesan"
+                        readonly>{{ $umpan->deskripsi_pesan }}</textarea>
+                </label>
+            </div>
+        </div>
+    </div>
+</dialog>
+<!-- View Modal -->
+
+<!-- Delete Modal -->
+<dialog id="my_modal_delete{{ $umpan->id_pesan }}" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Hapus Data</h3>
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-error"></div>
+            <div class="divider"></div>
+        </div>
+
+        <form action="{{ route('UmpanBalik.destroy', ['id_pesan' => $umpan->id_pesan]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
+            <div class="flex justify-end items-end mt-10 gap-4">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <i class=" fas fa-trash"></i>
+                    Hapus
+                </button>
+            </div>
+        </form>
+
+    </div>
+</dialog>
+@endforeach
+<!-- Delete Modal -->
 
 @endsection

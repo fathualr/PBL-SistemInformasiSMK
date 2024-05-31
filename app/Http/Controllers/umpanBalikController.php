@@ -7,32 +7,37 @@ use App\Models\UmpanBalik;
 
 class umpanBalikController extends Controller
 {
-        public function adminUmpanBalik()
-    {
-        $umpanBalik = UmpanBalik::all();
+    public function adminUmpanBalik(){
+        $umpanBalik = UmpanBalik::paginate(10);
         return view('admin/umpanBalik', [
             "title" => "Admin Umpan Balik",
             "umpanBalik"=> $umpanBalik
         ]);
     }
 
-    public function storeUmpanBalik(Request $request)
-    {
-
-            UmpanBalik::create([
-                "nama_penulis" => $request->nama_penulis,
-                "email_penulis" => $request->email_penulis,
-                "deskripsi_pesan" => $request->deskripsi_pesan
-            ]);
-            return redirect()->route('guest.media-sosial.index');
+    public function storeUmpanBalik(Request $request){
+        $validatedData = $request->validate([
+            'nama_penulis' => 'required|string|max:255',
+            'email_penulis' => 'required|email|max:255',
+            'deskripsi_pesan' => 'required|string',
+        ]);
+    
+        $umpanBalik = UmpanBalik::create($validatedData);
+    
+        if ($umpanBalik) {
+            return redirect()->back()->with('success', 'Umpan balik berhasil dikirim!');
+        } else {
+            return redirect()->back()->with('error', 'Umpan balik gagal dikirim!');
+        }
     }
 
-        public function destroyUmpanBalik($id_pesan)
-    {
+    public function destroyUmpanBalik($id_pesan){
         $umpanBalik = UmpanBalik::findOrFail($id_pesan);
-
-        $umpanBalik->delete();
-
-        return redirect()->route('admin.umpanBalik.index');
+    
+        if ($umpanBalik->delete()) {
+            return redirect()->back()->with('success', 'Umpan balik berhasil dihapus!');
+        } else {
+            return redirect()->back()->with('error', 'Umpan balik gagal dihapus!');
+        }
     }
 }

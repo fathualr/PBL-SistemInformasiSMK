@@ -41,27 +41,25 @@ class webController extends Controller
     //     ]);
     // }
 
-    public function program()
-    {
-        $programKeahlian = ProgramKeahlian::all();
-        return view('guest/program-keahlian', [
-            "title" => "Program Keahlian",
-            "programKeahlian" => $programKeahlian
-        ]);
-    }
+    // public function program(){
+    //     $programKeahlian = ProgramKeahlian::all();
+    //     return view('guest/program-keahlian', [
+    //         "title" => "Program Keahlian",
+    //         "programKeahlian" => $programKeahlian
+    //     ]);
+    // }
 
-    public function detailProgram()
-    {
-        $programKeahlian = ProgramKeahlian::all();
-        $capaianPembelajaran = CapaianPembelajaran::all();
-        $peluangKerja = PeluangKerja::all();
-        return view('guest/detail-program', [
-            "title" => "Detail Program Keahlian",
-            "programKeahlian" => $programKeahlian,
-            "capaianPembelajaran" => $capaianPembelajaran,
-            "peluangKerja" => $peluangKerja
-        ]);
-    }
+    // public function detailProgram(){
+    //     $programKeahlian = ProgramKeahlian::all();
+    //     $capaianPembelajaran = CapaianPembelajaran::all();
+    //     $peluangKerja = PeluangKerja::all();
+    //     return view('guest/program-keahlian-template', [
+    //         "title" => "Detail Program Keahlian",
+    //         "programKeahlian" => $programKeahlian,
+    //         "capaianPembelajaran"=> $capaianPembelajaran,
+    //         "peluangKerja" => $peluangKerja
+    //     ]);
+    // }
 
     public function ppdb()
     {
@@ -118,46 +116,6 @@ class webController extends Controller
             "forms" => $forms,
             "search" => $search, // Mengirimkan search ke view
             "perPage" => $perPage, // Mengirimkan perPage ke view
-        ]);
-    }
-
-    public function guru()
-    {
-        $direktoriGuru = DirektoriGuru::all();
-        $programKeahlian = ProgramKeahlian::all();
-        return view('guest/direktori-guru', [
-            "title" => "Direktori Guru",
-            "direktoriGuru" => $direktoriGuru,
-            "programKeahlian" => $programKeahlian
-        ]);
-    }
-
-    public function pegawai()
-    {
-        $direktoriPegawai = DirektoriPegawai::all();
-        return view('guest/direktori-pegawai', [
-            "title" => "Direktori Pegawai",
-            "direktoriPegawai" => $direktoriPegawai
-        ]);
-    }
-
-    public function siswa()
-    {
-        $direktoriSiswa = DirektoriSiswa::all();
-        $programKeahlian = ProgramKeahlian::all();
-        return view('guest/direktori-siswa', [
-            "title" => "Direktori Siswa",
-            "direktoriSiswa" => $direktoriSiswa,
-            "programKeahlian" => $programKeahlian
-        ]);
-    }
-
-    public function alumni()
-    {
-        $direktoriAlumni = DirektoriAlumni::all();
-        return view('guest/direktori-alumni', [
-            "title" => "Direktori Alumni",
-            "direktoriAlumni" => $direktoriAlumni
         ]);
     }
 
@@ -248,25 +206,7 @@ class webController extends Controller
     //     ]);
     // }
 
-    public function ekstrakulikuler()
-    {
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->get();
-        $direktoriGuru = DirektoriGuru::all();
-        return view('guest/ekstrakulikuler', [
-            "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler,
-            "direktoriGuru" => $direktoriGuru
-        ]);
-    }
-
-    public function ekstrakulikulerTemplate($id_ekstrakurikuler)
-    {
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->findOrFail($id_ekstrakurikuler);
-        return view('guest/ekstrakulikuler-template', [
-            "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler
-        ]);
-    }
+    
 
     // public function mediaSosial()
     // {
@@ -275,12 +215,5 @@ class webController extends Controller
     //     ]);
     // }
 
-    public function sejarah()
-    {
-        $sejarahSekolah = SejarahSekolah::all();
-        return view('guest/sejarah', [
-            "title" => "Sejarah",
-            "sejarahSekolah" => $sejarahSekolah
-        ]);
-    }
+    
 }

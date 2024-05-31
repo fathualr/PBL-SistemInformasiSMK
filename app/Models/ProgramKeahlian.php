@@ -4,10 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CapaianPembelajaran;
-use App\Models\PeluangKerja;
-use App\Models\DirektoriGuru;
-use App\Models\DirektoriSiswa;
 
 class ProgramKeahlian extends Model
 {
@@ -24,20 +20,24 @@ class ProgramKeahlian extends Model
         "tujuan_program",
         "sasaran_program"
     ];
+
     public function capaianPembelajaran()
     {
-        return $this->hasMany(CapaianPembelajaran::class, 'id_program');
+        return $this->belongsTo(CapaianPembelajaran::class, 'id_program');
     }
+
     public function peluangKerja()
     {
         return $this->hasMany(PeluangKerja::class, 'id_program');
     }
+
     public function direktoriGuru()
     {
-        return $this->belongsTo(DirektoriGuru::class, 'id_program');
+        return $this->belongsTo(DirektoriGuru::class, 'id_direktori_guru');
     }
+
     public function direktoriSiswa()
     {
-        return $this->belongsTo(DirektoriSiswa::class, 'id_program');
+        return $this->belongsTo(DirektoriSiswa::class, 'id_direktori_siswa');
     }
 }

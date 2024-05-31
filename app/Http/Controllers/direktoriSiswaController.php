@@ -9,87 +9,100 @@ use Illuminate\Support\Facades\Storage;
 
 class direktoriSiswaController extends Controller
 {
-    public function adminSiswa()
-    {
+    public function siswa(){
         $direktoriSiswa = DirektoriSiswa::all();
-        $programKeahlian = ProgramKeahlian::all();
-
-        return view('admin/siswa', [
-            "title" => "Admin Siswa",
+        $programKeahlian = ProgramKeahlian::all();  
+        return view('guest/direktori-siswa', [
+            "title" => "Direktori Siswa",
             "direktoriSiswa" => $direktoriSiswa,
             "programKeahlian" => $programKeahlian
         ]);
     }
 
-    public function storeDirektoriSiswa(Request $request)
-    {
-
-        $validate = $request->validate([
-            'id_program' => 'nullable',
-            'nama_siswa' => 'required',
-            'nisn_siswa' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp_siswa' => 'required',
-            'TTL_siswa' => 'required',
-            'tempat_lahir_siswa' => 'required',
-            'alamat_siswa' => 'required',
-            'kelas_siswa' => 'required',
-            'tahun_angkatan_siswa' => 'required',
-            'gambar_siswa' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+    // Perbaiki ^^^
+    public function adminSiswa(){
+        $siswa = DirektoriSiswa::with('programKeahlian')->paginate(10);
+        $programKeahlian = ProgramKeahlian::all();
+        return view('admin/siswa', [
+            "title" => "Admin Siswa",
+            "siswa"=> $siswa,
+            "programKeahlian"=> $programKeahlian
         ]);
-
-        $gambarSiswa = $request->file('gambar_siswa')->store('image/gambarSiswa', 'public');
-        $validate['gambar_siswa'] = $gambarSiswa;
-        $direktoriSiswa = DirektoriSiswa::create($validate);
-
-        if ($direktoriSiswa) {
-            return redirect()->route('admin.direktoriSiswa.index');
-        } else {
-            return redirect()->route('admin.direktoriSiswa.index');
-        }
     }
 
-    public function updateDirektoriSiswa(Request $request, $id_siswa)
-    {
-
-        $siswa = DirektoriSiswa::findOrFail($id_siswa);
-
+    public function storeDirektoriSiswa(Request $request){
         $validate = $request->validate([
-            'id_program' => 'nullable',
-            'nama_siswa' => 'required',
-            'nisn_siswa' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_hp_siswa' => 'required',
-            'TTL_siswa' => 'required',
-            'tempat_lahir_siswa' => 'required',
-            'alamat_siswa' => 'required',
-            'kelas_siswa' => 'required',
+            'id_program' => 'required|exists:program_keahlian,id_program',
+            'nama_siswa' => 'required|string|max:255',
+            'nisn_siswa' => 'required|string|max:255|unique:direktori_siswa,nisn_siswa',
+            'jenis_kelamin_siswa' => 'required|in:Laki - Laki,Perempuan',
+            'no_hp_siswa' => 'required|string|max:255',
+            'TTL_siswa' => 'required|date',
+            'tempat_lahir_siswa' => 'required|string|max:255',
+            'alamat_siswa' => 'required|string',
+            'kelas_siswa' => 'required|string|max:255',
             'tahun_angkatan_siswa' => 'required',
-            'gambar_siswa' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'gambar_siswa' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         if ($request->hasFile('gambar_siswa')) {
-            $gambarPath = $request->file('gambar_siswa')->store('image/gambarSiswa', 'public');
-            if ($siswa->gambar_siswa) {
-                Storage::disk('public')->delete($siswa->gambar_siswa);
-            }
-            $validate['gambar_siswa'] = $gambarPath;
+            $path = $request->file('gambar_siswa')->store('image/gambarSiswa', 'public');
+            $validate['gambar_siswa'] = $path;
         }
 
-        $status = $siswa->fill($validate)->save();
+        $status = DirektoriSiswa::create($validate);
         if ($status) {
-            return redirect()->back();
+            return redirect()->route('admin.direktoriSiswa.index')->with('success', 'Data siswa berhasil ditambahkan!');
         } else {
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Data siswa gagal ditambahkan!');
         }
     }
 
-    public function destroyDirektoriSiswa($id_siswa)
-    {
+    public function updateDirektoriSiswa(Request $request, $id_siswa){
         $siswa = DirektoriSiswa::findOrFail($id_siswa);
 
-        $siswa->delete();
+        $validate = $request->validate([
+            'id_program' => 'required|exists:program_keahlian,id_program',
+            'nama_siswa' => 'required|string|max:255',
+            'nisn_siswa' => 'required|string|max:255|',
+            'jenis_kelamin_siswa' => 'required|in:Laki - Laki,Perempuan',
+            'no_hp_siswa' => 'required|string|max:255',
+            'TTL_siswa' => 'required|date',
+            'tempat_lahir_siswa' => 'required|string|max:255',
+            'alamat_siswa' => 'required|string',
+            'kelas_siswa' => 'required|string|max:255',
+            'tahun_angkatan_siswa' => 'required',
+            'gambar_siswa' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-        return redirect()->route('admin.direktoriSiswa.index');
+        if ($request->hasFile('gambar_siswa')) {
+            if ($siswa->gambar_siswa) {
+                Storage::disk('public')->delete($siswa->gambar_siswa);
+            }
+            $path = $request->file('gambar_siswa')->store('image/gambarSiswa', 'public');
+            $validate['gambar_siswa'] = $path;
+        }
+
+        $status = $siswa->update($validate);
+        if ($status) {
+            return redirect()->back()->with('success', 'Data siswa berhasil diperbarui!');
+        } else {
+            return redirect()->back()->with('error', 'Data siswa gagal diperbarui!');
+        }
+    }
+
+    public function destroyDirektoriSiswa($id_siswa){
+        $siswa = DirektoriSiswa::findOrFail($id_siswa);
+
+        if ($siswa->gambar_siswa) {
+            Storage::disk('public')->delete($siswa->gambar_siswa);
+        }
+
+        $status = $siswa->delete();
+        if ($status) {
+            return redirect()->back()->with('success', 'Data siswa berhasil dihapus!');
+        } else {
+            return redirect()->back()->with('error', 'Data siswa gagal dihapus!');
+        }
     }
 }

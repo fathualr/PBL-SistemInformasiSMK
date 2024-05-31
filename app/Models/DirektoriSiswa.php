@@ -22,8 +22,8 @@ class DirektoriSiswa extends Model
         "tahun_angkatan_siswa",
         "gambar_siswa"
     ];
-        public function programKeahlian()
+    public function programKeahlian()
     {
-        return $this->belongsTo(ProgramKeahlian::class);
+        return $this->belongsTo(ProgramKeahlian::class, 'id_program');
     }
 }

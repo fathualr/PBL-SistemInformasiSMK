@@ -45,6 +45,7 @@
                 </tr>
             </thead>
             <tbody>
+                
                 @foreach($prestasiSiswa as $key => $prestasi)
                 <tr class="hover">
                     <th>{{ ($prestasiSiswa->currentPage() - 1) * $prestasiSiswa->perPage() + $key + 1 }}</th>
@@ -123,9 +124,7 @@
             @else
             <button class="btn disabled">«</button>
             @endif
-
             <button class="btn">Page {{ $prestasiSiswa->currentPage() }}</button>
-
             @if($prestasiSiswa->nextPageUrl())
             <a href="{{ $prestasiSiswa->nextPageUrl() }}" class="btn">»</a>
             @else

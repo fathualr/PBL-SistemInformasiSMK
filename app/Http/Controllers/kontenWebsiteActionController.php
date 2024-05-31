@@ -68,7 +68,7 @@ class kontenWebsiteActionController extends Controller
             if($konten->$field){
                 Storage::disk('public')->delete($konten->$field);
             }
-            $validate[$field] = $request->file($field)->store('image/gambarKontenWebsite', 'public');
+            $validate[$field] = $request->file($field)->store('image/KontenWebsite', 'public');
         }
 
         if ($field === 'tautan_video_sejarah' || $field === 'tautan_video_sambutan') {
