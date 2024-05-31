@@ -14,11 +14,11 @@
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
 
@@ -27,18 +27,20 @@
                 <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
                     <i class="fas fa-magnifying-glass"></i>
                     <input type="text" class="grow w-40" name="search" placeholder="Cari Nama" value="{{ request()->get('search') }}" />
+                    <input type="hidden" name="perPage" value="{{ request()->get('perPage') }}" />
                 </label>
             </form>
         </div>
         <div class="mr-2">
             <form id="updateStatusForm" action="{{ route('admin.pengumumanPPDB.updateBatch') }}" method="POST">
                 @csrf
-                <select name="status" class="select select-bordered">
+                <select name="status" class="select select-bordered w-32">
                     <option value="Diterima">Diterima</option>
                     <option value="Ditolak">Ditolak</option>
                     <option value="Dalam Proses">Dalam Proses</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Update Status</button>
+            </form>
         </div>
     </div>
 </div>
@@ -103,11 +105,10 @@
         </div>
     </div>
 </div>
-</form>
 
 <div class="join flex justify-center my-5">
     @if($forms->previousPageUrl())
-    <a href="{{ $forms->previousPageUrl() }}&perPage={{ request()->get('perPage') }}" class="join-item btn">«</a>
+    <a href="{{ $forms->previousPageUrl() }}&search={{ request()->get('search') }}&perPage={{ request()->get('perPage') }}" class="join-item btn">«</a>
     @else
     <button class="join-item btn disabled">«</button>
     @endif
@@ -115,7 +116,7 @@
     <button class="join-item btn">Page {{ $forms->currentPage() }}</button>
 
     @if($forms->nextPageUrl())
-    <a href="{{ $forms->nextPageUrl() }}&perPage={{ request()->get('perPage') }}" class="join-item btn">»</a>
+    <a href="{{ $forms->nextPageUrl() }}&search={{ request()->get('search') }}&perPage={{ request()->get('perPage') }}" class="join-item btn">»</a>
     @else
     <button class="join-item btn disabled">»</button>
     @endif

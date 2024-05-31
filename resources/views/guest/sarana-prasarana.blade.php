@@ -1,10 +1,12 @@
 @extends('layouts.main')
 
 @section('Main')
+<h2 class="text-xl font-bold mb-8 text-center divider">Sarana Prasarana</h2>
+<Span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maxime ratione assumenda facilis placeat voluptatibus necessitatibus perspiciatis, distinctio sunt consequuntur aliquid mollitia perferendis quos qui architecto eos quas repudiandae non.</Span>
 <div class="mt-10">
     @foreach ($prasaranas as $prasarana)
     <div class="collapse collapse-arrow border bg-base-100 mb-5">
-        <input type="radio" name="my-accordion-2" />
+        <input type="checkbox"/>
         <div class="collapse-title text-xl font-medium">
             {{ $prasarana->nama_prasarana }}
         </div>

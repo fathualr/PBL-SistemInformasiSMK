@@ -16,12 +16,12 @@ class ProgramKeahlianFactory extends Factory
         return [
             'nama_program' => $this->faker->unique()->randomElement($programs),
             'logo_program' => $this->faker->imageUrl(100, 100, 'logo'),
-            'deskripsi_program' => $this->faker->sentence(),
-            'deskripsi_peluang_kerja' => $this->faker->sentence(),
-            'visi_program' => $this->faker->sentence(),
-            'misi_program' => $this->faker->sentence(),
-            'tujuan_program' => $this->faker->sentence(),
-            'sasaran_program' => $this->faker->sentence(),
+            'deskripsi_program' => implode("\n\n", $this->faker->paragraphs(5)),
+            'deskripsi_peluang_kerja' => implode("\n\n", $this->faker->paragraphs(5)),
+            'visi_program' => implode("\n\n", $this->faker->paragraphs(2)),
+            'misi_program' => implode("\n\n", $this->faker->paragraphs(2)),
+            'tujuan_program' => implode("\n\n", $this->faker->paragraphs(5)),
+            'sasaran_program' => implode("\n\n", $this->faker->paragraphs(5)),
             'created_at' => now(),
             'updated_at' => now(),
         ];

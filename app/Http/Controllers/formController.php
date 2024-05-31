@@ -14,7 +14,7 @@ class FormController extends Controller
     {
         $search = $request->query('search');
         $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
-    
+
         // Lakukan pengecekan apakah terdapat query pencarian
         if ($search) {
             // Jika ada, lakukan pencarian berdasarkan nama atau NISN
@@ -24,16 +24,18 @@ class FormController extends Controller
                 ->paginate($perPage);
         } else {
             // Jika tidak ada query pencarian, tampilkan semua data
-            $forms = FormPPDB::paginate($perPage);
+            $forms = FormPPDB::orderBy('created_at', 'desc')->paginate($perPage);
         }
-    
+
+        $forms->appends(['search' => $search, 'perPage' => $perPage]);
+
         return view('admin.pendaftaranPPDB', [
             "title" => "Admin Pendaftaran PPDB",
             "forms" => $forms,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
-    
-
 
     public function storePPDB(Request $request)
     {

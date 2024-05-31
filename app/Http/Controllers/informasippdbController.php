@@ -5,61 +5,87 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\InformasiPPDB;
 use App\Models\AlurPPDB;
+use App\Models\CountdownSetting;
 
-class informasippdbController extends Controller
+class InformasiPPDBController extends Controller
 {
 
+    public function __construct()
+    {
+        if(InformasiPPDB::count() === 0){
+            $informasi = new InformasiPPDB;
+            $informasi->save();
+        }
+    }
+   // Fungsi untuk menampilkan halaman admin informasi PPDB
     public function adminInformasiPPDB()
     {
-        $informasi = InformasiPPDB::all();
+        $informasi = InformasiPPDB::first();
         $alurs = AlurPPDB::all();
-        
+        $countdownStart = CountdownSetting::where('key', 'countdown_start')->value('value');
+        $countdownEnd = CountdownSetting::where('key', 'countdown_end')->value('value');
+
         return view('admin.informasiPPDB', [
             "title" => "Admin Informasi PPDB",
             "informasi" => $informasi,
             "alurs" => $alurs,
+            "countdownStart" => $countdownStart,
+            "countdownEnd" => $countdownEnd,
         ]);
     }
 
-    public function storeInformasiPPDB(Request $request)
+    // Fungsi untuk mengatur countdown
+    public function updateCountdown(Request $request)
     {
         $request->validate([
-            'deskripsi_ppdb' => 'required',
+            'countdown_start' => 'required|date',
+            'countdown_end' => 'required|date|after:countdown_start',
         ]);
 
-        InformasiPPDB::create([
-            'deskripsi_ppdb' => $request->deskripsi_ppdb,
-        ]);
-        return redirect()->route('admin.informasiPPDB.index')->with('success', 'Informasi PPDB berhasil ditambahkan');
+        // Update pengaturan countdown yang ada jika sudah ada
+        CountdownSetting::updateOrCreate(
+            ['key' => 'countdown_start'],
+            ['value' => $request->countdown_start]
+        );
+
+        CountdownSetting::updateOrCreate(
+            ['key' => 'countdown_end'],
+            ['value' => $request->countdown_end]
+        );
+
+        return redirect()->back()->with('success', 'Pengaturan countdown berhasil diperbarui');
     }
 
-    public function updateInformasiPPDB(Request $request, $id)
+    // Fungsi untuk menghapus pengaturan countdown
+    public function destroyCountdown()
     {
-        $request->validate([
+        // Menghapus pengaturan countdown
+        CountdownSetting::where('key', 'countdown_start')->delete();
+        CountdownSetting::where('key', 'countdown_end')->delete();
+
+        return redirect()->back()->with('success', 'Pengaturan countdown berhasil dihapus');
+    }
+
+    public function updateInformasiPPDB(Request $request, $id, $field)
+    {
+        $informasi = InformasiPPDB::findOrFail($id);
+
+        $validateRules=[
             'deskripsi_ppdb' => 'required',
+            'deskripsi_pengumuman' => 'required',
+        ] ;
+
+        $validate = $request->validate([
+            $field => $validateRules[$field],
         ]);
 
-        $informasi_ppdb = InformasiPPDB::findOrFail($id);
+        $informasi->fill($validate)->save();
 
-        $informasi_ppdb->update([
-            'deskripsi_ppdb' => $request->deskripsi_ppdb,
-        ]);
         return redirect()->route('admin.informasiPPDB.index')->with('success', 'Informasi PPDB berhasil diupdate');
     }
 
-    public function destroyInformasiPPDB($id)
-    {
-        // Temukan album yang akan dihapus
-        $informasi_ppdb = InformasiPPDB::findOrFail($id);
-
-        $informasi_ppdb->delete();
-
-        return redirect()->route('admin.informasiPPDB.index')->with('success', 'Informasi PPDB berhasil dihapus.');
-    }
-
-
     //ALUR PPDB
-    
+
     public function storeAlurPPDB(Request $request)
     {
         $request->validate([

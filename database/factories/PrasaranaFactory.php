@@ -20,7 +20,7 @@ class PrasaranaFactory extends Factory
         return [
             'nama_prasarana' => $this->faker->randomElement($stadiumNames),
             'jenis_prasarana' => $this->faker->word,
-            'deskripsi_prasarana' => $this->faker->text(200),
+            'deskripsi_prasarana' => implode("\n\n", $this->faker->paragraphs(3)),
             'luas' => $this->faker->numberBetween(10, 1000),
             'kapasitas' => $this->faker->numberBetween(10, 500),
             'tahun_dibangun' => $this->faker->date('Y-m-d'),

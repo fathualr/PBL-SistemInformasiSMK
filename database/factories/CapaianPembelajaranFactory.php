@@ -27,11 +27,11 @@ class CapaianPembelajaranFactory extends Factory
 
         return [
             'id_program' => $selectedId,
-            'deskripsi_capaian_pembelajaran' => $this->faker->paragraph(3), 
-            'aspek_sikap' => $this->faker->paragraph(2), 
-            'aspek_pengetahuan' => $this->faker->paragraph(2), 
-            'aspek_keterampilan_umum' => $this->faker->paragraph(2), 
-            'aspek_keterampilan_khusus' => $this->faker->paragraph(2),
+            'deskripsi_capaian_pembelajaran' => implode("\n\n", $this->faker->paragraphs(5)),
+            'aspek_sikap' => implode("\n\n", $this->faker->paragraphs(2)), 
+            'aspek_pengetahuan' => implode("\n\n", $this->faker->paragraphs(3)), 
+            'aspek_keterampilan_umum' => implode("\n\n", $this->faker->paragraphs(2)), 
+            'aspek_keterampilan_khusus' => implode("\n\n", $this->faker->paragraphs(6)),
         ];
     }
 }
