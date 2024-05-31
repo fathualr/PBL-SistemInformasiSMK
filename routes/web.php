@@ -110,8 +110,8 @@ Route::delete('/komentarDestroy/{id}', [komentarBeritaActionController::class, '
 //Konten Website -----
 Route::get('/', [frontEndController::class, 'home']);
 Route::get('admin/profile', [kontenWebsiteActionController::class, 'index']);
-    //CMS
-    Route::patch('/kontenUpdate/{id}/{field}', [KontenWebsiteActionController::class, 'update'])->name('konten.update');
+//CMS
+Route::patch('/kontenUpdate/{id}/{field}', [KontenWebsiteActionController::class, 'update'])->name('konten.update');
 //-----
 
 //Carousels -----
@@ -178,47 +178,47 @@ Route::delete('admin/peluangKerja/{id_peluang_kerja}', [programKeahlianControlle
 
 // CRUD Direktori Guru
 Route::get('admin/guru', [direktoriGuruController::class, 'adminDirektoriGuru'])->name('admin.direktoriGuru.index');
-    Route::post('admin/guru', [direktoriGuruController::class, 'storeDirektoriGuru'])->name('DirektoriGuru.store');
-    Route::patch('admin/guru/{id_guru}', [direktoriGuruController::class, 'updateDirektoriGuru'])->name('DirektoriGuru.update');
-    Route::delete('admin/guru/{id_guru}', [direktoriGuruController::class, 'destroyDirektoriGuru'])->name('DirektoriGuru.destroy');
+Route::post('admin/guru', [direktoriGuruController::class, 'storeDirektoriGuru'])->name('DirektoriGuru.store');
+Route::patch('admin/guru/{id_guru}', [direktoriGuruController::class, 'updateDirektoriGuru'])->name('DirektoriGuru.update');
+Route::delete('admin/guru/{id_guru}', [direktoriGuruController::class, 'destroyDirektoriGuru'])->name('DirektoriGuru.destroy');
 // CRUD Direktori Guru
 
 // CRUD Direktori Pegawai
 Route::get('admin/staff', [direktoriPegawaiController::class, 'adminStaff'])->name('admin.direktoriPegawai.index');
-    Route::post('admin/staff', [direktoriPegawaiController::class, 'storeDirektoriPegawai'])->name('DirektoriPegawai.store');
-    Route::patch('admin/staff/{id_pegawai}', [direktoriPegawaiController::class, 'updateDirektoriPegawai'])->name('DirektoriPegawai.update');
-    Route::delete('admin/staff/{id_pegawai}', [direktoriPegawaiController::class, 'destroyDirektoriPegawai'])->name('DirektoriPegawai.destroy');
+Route::post('admin/staff', [direktoriPegawaiController::class, 'storeDirektoriPegawai'])->name('DirektoriPegawai.store');
+Route::patch('admin/staff/{id_pegawai}', [direktoriPegawaiController::class, 'updateDirektoriPegawai'])->name('DirektoriPegawai.update');
+Route::delete('admin/staff/{id_pegawai}', [direktoriPegawaiController::class, 'destroyDirektoriPegawai'])->name('DirektoriPegawai.destroy');
 // CRUD Direktori Pegawai
 
 // CRUD Direktori Siswa
 Route::get('admin/siswa', [direktoriSiswaController::class, 'adminSiswa'])->name('admin.direktoriSiswa.index');
-    Route::post('admin/siswa', [direktoriSiswaController::class, 'storeDirektoriSiswa'])->name('DirektoriSiswa.store');
-    Route::patch('admin/siswa/{id_siswa}', [direktoriSiswaController::class, 'updateDirektoriSiswa'])->name('DirektoriSiswa.update');
-    Route::delete('admin/siswa/{id_siswa}', [direktoriSiswaController::class, 'destroyDirektoriSiswa'])->name('DirektoriSiswa.destroy');
+Route::post('admin/siswa', [direktoriSiswaController::class, 'storeDirektoriSiswa'])->name('DirektoriSiswa.store');
+Route::patch('admin/siswa/{id_siswa}', [direktoriSiswaController::class, 'updateDirektoriSiswa'])->name('DirektoriSiswa.update');
+Route::delete('admin/siswa/{id_siswa}', [direktoriSiswaController::class, 'destroyDirektoriSiswa'])->name('DirektoriSiswa.destroy');
 // CRUD Direktori Siswa
 
 // CRUD Direktori Alumni
 Route::get('admin/alumni', [direktoriAlumniController::class, 'adminAlumni'])->name('admin.direktoriAlumni.index');
-    Route::post('admin/alumni', [direktoriAlumniController::class, 'storeDirektoriAlumni'])->name('DirektoriAlumni.store');
-    Route::patch('admin/alumni/{id_alumni}', [direktoriAlumniController::class, 'updateDirektoriAlumni'])->name('DirektoriAlumni.update');
-    Route::delete('admin/alumni/{id_alumni}', [direktoriAlumniController::class, 'destroyDirektoriAlumni'])->name('DirektoriAlumni.destroy');
+Route::post('admin/alumni', [direktoriAlumniController::class, 'storeDirektoriAlumni'])->name('DirektoriAlumni.store');
+Route::patch('admin/alumni/{id_alumni}', [direktoriAlumniController::class, 'updateDirektoriAlumni'])->name('DirektoriAlumni.update');
+Route::delete('admin/alumni/{id_alumni}', [direktoriAlumniController::class, 'destroyDirektoriAlumni'])->name('DirektoriAlumni.destroy');
 // CRUD Direktori Alumni
 
 // CRUD Ekstrakulikuler
 Route::get('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'adminEkstrakulikuler'])->name('admin.ekstrakulikuler.index');
-    Route::post('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'storeEkstrakulikuler'])->name('Ekstrakulikuler.store');
-    Route::patch('admin/ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakurikuler'])->name('ekstrakurikuler.update');
-    Route::patch('/gambarEkskulUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateGambarEkstrakurikuler'])->name('gambarEkskul.update');
-    Route::delete('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
-    Route::delete('/gambarEkskulDestroy/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyGambarEkstrakurikuler'])->name('gambarEkskul.destroy');
+Route::post('admin/ekstrakulikuler', [ekstrakulikulerController::class, 'storeEkstrakulikuler'])->name('Ekstrakulikuler.store');
+Route::patch('admin/ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakurikuler'])->name('ekstrakurikuler.update');
+Route::patch('/gambarEkskulUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateGambarEkstrakurikuler'])->name('gambarEkskul.update');
+Route::delete('admin/ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
+Route::delete('/gambarEkskulDestroy/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyGambarEkstrakurikuler'])->name('gambarEkskul.destroy');
 // CRUD Ekstrakulikuler
 
 
 // CRUD Sejarah Sekolah
 Route::get('admin/sejarah', [sejarahSekolahController::class, 'adminSejarah'])->name('admin.sejarahSekolah.index');
-    Route::post('admin/sejarah', [sejarahSekolahController::class, 'storeSejarahSekolah'])->name('SejarahSekolah.store');
-    Route::patch('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'updateSejarahSekolah'])->name('SejarahSekolah.update');
-    Route::delete('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'destroySejarahSekolah'])->name('SejarahSekolah.destroy');
+Route::post('admin/sejarah', [sejarahSekolahController::class, 'storeSejarahSekolah'])->name('SejarahSekolah.store');
+Route::patch('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'updateSejarahSekolah'])->name('SejarahSekolah.update');
+Route::delete('admin/sejarah/{id_sejarah}', [sejarahSekolahController::class, 'destroySejarahSekolah'])->name('SejarahSekolah.destroy');
 // CRUD Sejarah Sekolah
 
 Route::get('admin/sosialMedia', [MediaSosialController::class, 'adminSosialMedia'])->name('sosialMedia.index');
@@ -228,17 +228,17 @@ Route::patch('/MediaSosialUpdate/{id}/{field}', [MediaSosialController::class, '
 
 // CRUD Umpan Balik
 Route::get('admin/umpanBalik', [umpanBalikController::class, 'adminUmpanBalik'])->name('admin.umpanBalik.index');
-    Route::post('admin/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->name('UmpanBalik.store');
-    Route::delete('admin/umpanBalik/{id_pesan}', [umpanBalikController::class, 'destroyUmpanBalik'])->name('UmpanBalik.destroy');
+Route::post('admin/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->name('UmpanBalik.store');
+Route::delete('admin/umpanBalik/{id_pesan}', [umpanBalikController::class, 'destroyUmpanBalik'])->name('UmpanBalik.destroy');
 // CRUD Umpan Balik
 
 // CRUD Prestasi Siswa
 Route::get('admin/prestasi', [prestasiSiswaController::class, 'adminPrestasi'])->name('admin.prestasiSiswa.index');
-    Route::post('admin/prestasi', [prestasiSiswaController::class, 'storePrestasiSiswa'])->name('PrestasiSiswa.store');
-    Route::patch('admin/prestasi/{id_prestasi}', [prestasiSiswaController::class, 'updatePrestasiSiswa'])->name('PrestasiSiswa.update');
-    Route::patch('/gambarPrestasiUpdate/{id_prestasi}', [prestasiSiswaController::class, 'updateGambarPrestasi'])->name('GambarPrestasi.update');
-    Route::delete('/gambarPrestasiDestroy/{id_prestasi}', [prestasiSiswaController::class, 'destroyGambarPrestasi'])->name('GambarPrestasi.destroy');
-    Route::delete('admin/prestasi/{id_prestasi}', [prestasiSiswaController::class, 'destroyPrestasiSiswa'])->name('PrestasiSiswa.destroy');
+Route::post('admin/prestasi', [prestasiSiswaController::class, 'storePrestasiSiswa'])->name('PrestasiSiswa.store');
+Route::patch('admin/prestasi/{id_prestasi}', [prestasiSiswaController::class, 'updatePrestasiSiswa'])->name('PrestasiSiswa.update');
+Route::patch('/gambarPrestasiUpdate/{id_prestasi}', [prestasiSiswaController::class, 'updateGambarPrestasi'])->name('GambarPrestasi.update');
+Route::delete('/gambarPrestasiDestroy/{id_prestasi}', [prestasiSiswaController::class, 'destroyGambarPrestasi'])->name('GambarPrestasi.destroy');
+Route::delete('admin/prestasi/{id_prestasi}', [prestasiSiswaController::class, 'destroyPrestasiSiswa'])->name('PrestasiSiswa.destroy');
 // CRUD Prestasi Siswa
 
 

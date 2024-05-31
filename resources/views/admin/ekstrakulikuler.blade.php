@@ -196,7 +196,6 @@
                                         </button>
                                     </div>
                                 </form>
-                                @endforeach
                             </div>
                             <form action="{{ route('gambarEkskul.update', $gambar->id_ekstrakurikuler) }}" method="POST"
                                 enctype="multipart/form-data">
@@ -213,6 +212,7 @@
                                     </button>
                                 </div>
                             </form>
+                            @endforeach
                         </div>
                     </dialog>
                     <!-- Edit Gambar -->

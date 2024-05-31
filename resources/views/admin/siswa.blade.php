@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 rounded-md shadow-lg p-4">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Direktori Siswa</h3>
@@ -32,7 +32,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-3">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -55,7 +55,7 @@
                             <div class="flex justify-center items-center">
                                 <div class="avatar">
                                     <div class="mask mask-squircle w-12 h-12">
-                                        <img src="{{ asset($siswa->gambar_siswa) }}"
+                                        <img src="{{ asset('storage/'.$siswa->gambar_siswa) }}"
                                             alt="Avatar Tailwind CSS Component" />
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                         <td>{{ $siswa->nisn_siswa }}</td>
                         <td>{{ $program->nama_program }}</td>
                         <td>
-                            <details class="dropdown dropdown-right">
+                            <details class="dropdown">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -123,8 +123,8 @@
                                 <div class="divider"></div>
                             </div>
 
-                            <form action="{{ route('DirektoriSiswa.update', ['id_siswa' => $siswa->id_siswa]) }}"
-                                method="post" enctype="multipart/form-data">
+                            <form action="{{ route('DirektoriSiswa.update', $siswa->id_siswa) }}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <label
@@ -192,7 +192,7 @@
                                     class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <input type="file" name="gambar_siswa"
                                         class="grow file-input file-input-success border-none bg-transparent py-2"
-                                        accept="gambarSiswa/*" placeholder="Logo" />
+                                        placeholder="Logo" />
                                 </label>
 
                                 <div class="flex justify-end items-end mt-20 gap-4">
@@ -220,7 +220,8 @@
 
                             <div class="avatar flex justify-center items-center my-5">
                                 <div class="mask mask-squircle w-36 h-36">
-                                    <img src="{{ asset($siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
+                                    <img src="{{ asset('storage/'.$siswa->gambar_siswa) }}"
+                                        alt="Avatar Tailwind CSS Component" />
                                 </div>
                             </div>
 
@@ -335,6 +336,9 @@
                         </div>
                     </dialog>
                     <!-- Delete Modal -->
+                    @endif
+                    @endforeach
+                    @endforeach
                 </tbody>
                 @if ($siswa->count() > 5)
                 <tfoot>
@@ -349,9 +353,6 @@
                     </tr>
                 </tfoot>
                 @endif
-                @endif
-                @endforeach
-                @endforeach
             </table>
         </div>
     </div>
@@ -403,7 +404,7 @@
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" class="grow bg-transparent border-r-2 py-2 w-16" placeholder="Tanggal Lahir"
+                <input type="date" class="grow bg-transparent border-r-2 py-2 px-2 w-24" placeholder="Tanggal Lahir"
                     name="TTL_siswa" />
                 <input type="text" class="grow bg-transparent py-2" placeholder="Tempat Lahir"
                     name="tempat_lahir_siswa" />

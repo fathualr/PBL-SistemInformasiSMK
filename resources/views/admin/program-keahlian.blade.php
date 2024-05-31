@@ -2,9 +2,9 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 rounded-md shadow-lg p-4">
     <!-- Title -->
-    <div class="col-span-2 my-4 mx-5">
+    <div class="col-span-3 my-4 mx-5">
         <h3 class="font-bold text-lg">Program Keahlian</h3>
     </div>
     <!-- Title -->
@@ -65,7 +65,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-3">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -84,7 +84,7 @@
                             <p class="truncate w-48 mx-auto">{{ $program->deskripsi_program }}</p>
                         </td>
                         <td class="">
-                            <details class="dropdown dropdown-right mx-auto">
+                            <details class="dropdown mx-auto">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -92,7 +92,7 @@
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
                                 <ul tabindex="0"
-                                    class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-max absolute">
+                                    class="dropdown-content menu p-2 z-[1] shadow bg-base-100 rounded-box w-max absolute">
                                     <!-- Edit -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -141,7 +141,7 @@
                                 <div class="divider"></div>
                             </div>
                             <form action="{{ route('ProgramKeahlian.update', ['id_program' => $program->id_program]) }}"
-                                method="post">
+                                method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <label
@@ -182,7 +182,7 @@
                                     class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <input type="file" name="logo_program"
                                         class="grow file-input file-input-success border-none bg-transparent py-2"
-                                        accept="image/*" placeholder="Logo" />
+                                        placeholder="Logo" value="{{ $program->logo_program }}" />
                                 </label>
 
                                 <div class="flex justify-end items-end mt-20 gap-4">
@@ -223,7 +223,7 @@
                             <figure>
                                 <div class="avatar flex justify-center items-center my-5">
                                     <div class="w-40 rounded-full border-2">
-                                        <img src="{{ asset($program->logo_program) }}" />
+                                        <img src="{{ asset('storage/'.$program->logo_program) }}" />
                                     </div>
                                 </div>
                             </figure>
@@ -435,18 +435,18 @@
             </div>
         </dialog>
         <!-- Delete Modal -->
+        @endforeach
         </tbody>
         @if ($program->count() > 5)
         <tfoot>
             <tr>
                 <th>No.</th>
-                <th>Nama</th>
-                <Th>Deskripsi</Th>
+                <th>Nama Program Keahlian</th>
+                <th>Deskripsi Program Keahlian</th>
                 <th>Aksi</th>
             </tr>
         </tfoot>
         @endif
-        @endforeach
         </table>
     </div>
 </div>
@@ -700,9 +700,9 @@
 <!-- Tambah Peluang Kerja -->
 
 <!-- Capaian Pembelajaran -->
-<div class="grid grid-cols-9 rounded-md my-10">
+<div class="grid grid-cols-9 rounded-md shadow-lg my-10 p-4">
     <!-- Title -->
-    <div class="col-span-2 my-4 mx-5">
+    <div class="col-span-3 my-4 mx-5">
         <h3 class="font-bold text-lg">Capaian Pembelajaran</h3>
     </div>
     <!-- Title -->
@@ -710,7 +710,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-3">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -731,7 +731,7 @@
                             <p class="truncate w-48 mx-auto">{{ $capaian->deskripsi_capaian_pembelajaran }}</p>
                         </td>
                         <td class="">
-                            <details class="dropdown dropdown-right mx-auto">
+                            <details class="dropdown mx-auto">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -739,7 +739,7 @@
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
                                 <ul tabindex="0"
-                                    class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-max absolute">
+                                    class="dropdown-content menu p-2 z-[1] shadow bg-base-100 rounded-box w-max absolute">
                                     <!-- Edit -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -777,8 +777,7 @@
                                 <div class="divider divider-success"></div>
                                 <div class="divider"></div>
                             </div>
-                            <form
-                                action="{{ route('CapaianPembelajaran.update', ['id_capaian_pembelajaran' => $capaian->id_capaian_pembelajaran]) }}"
+                            <form action="{{ route('CapaianPembelajaran.update',  $capaian->id_capaian_pembelajaran) }}"
                                 method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
@@ -905,8 +904,7 @@
                     <div class="divider divider-error"></div>
                     <div class="divider"></div>
                 </div>
-                <form
-                    action="{{ route('CapaianPembelajaran.destroy', ['id_capaian_pembelajaran' => $capaian->id_capaian_pembelajaran]) }}"
+                <form action="{{ route('CapaianPembelajaran.destroy',  $capaian->id_capaian_pembelajaran) }}"
                     method="post">
                     @csrf
                     @method('DELETE')
@@ -927,26 +925,20 @@
             </div>
         </dialog>
         <!-- Delete Modal -->
-
+        @endif
+        @endforeach
+        @endforeach
         </tbody>
         @if ($program->count() > 5)
         <tfoot>
             <tr>
-                <th>
-                    <label>
-                        <input type="checkbox" class="checkbox" />
-                    </label>
-                </th>
                 <th>No.</th>
-                <th>Nama</th>
-                <Th>Deskripsi</Th>
+                <th>Nama Program Keahlian</th>
+                <th>Deskripsi Capaian Pembelajaran</th>
                 <th>Aksi</th>
             </tr>
         </tfoot>
         @endif
-        @endif
-        @endforeach
-        @endforeach
         </table>
     </div>
 </div>
@@ -955,7 +947,7 @@
 <!-- Capaian Pembelajaran -->
 
 <!-- Peluang Kerja -->
-<div class="grid grid-cols-9 rounded-md my-10">
+<div class="grid grid-cols-9 rounded-md shadow-lg my-10 p-4">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Peluang Kerja</h3>
@@ -965,7 +957,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-3">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -986,7 +978,7 @@
                             <p class="truncate w-48 mx-auto">{{ $peluang->peluang_kerja }}</p>
                         </td>
                         <td class="">
-                            <details class="dropdown dropdown-right mx-auto">
+                            <details class="dropdown mx-auto">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -994,7 +986,7 @@
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
                                 <ul tabindex="0"
-                                    class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-max absolute">
+                                    class="dropdown-content menu p-2 z-[1] shadow bg-base-100 rounded-box w-max absolute">
                                     <!-- Edit -->
                                     <li>
                                         <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -1032,9 +1024,8 @@
                                 <div class="divider divider-success"></div>
                                 <div class="divider"></div>
                             </div>
-                            <form
-                                action="{{ route('PeluangKerja.update', ['id_peluang_kerja' => $peluang->id_peluang_kerja]) }}"
-                                method="post" enctype="multipart/form-data">
+                            <form action="{{ route('PeluangKerja.update', $peluang->id_program) }}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <select class="select border-elm border-2 w-full mb-5" name="id_program">
@@ -1091,8 +1082,7 @@
                     <div class="divider divider-error"></div>
                     <div class="divider"></div>
                 </div>
-                <form action="{{ route('PeluangKerja.destroy', ['id_peluang_kerja' => $peluang->id_peluang_kerja]) }}"
-                    method="post">
+                <form action="{{ route('PeluangKerja.destroy',  $peluang->id_program) }}" method="post">
                     @csrf
                     @method('DELETE')
 
@@ -1112,26 +1102,20 @@
             </div>
         </dialog>
         <!-- Delete Modal -->
-
+        @endif
+        @endforeach
+        @endforeach
         </tbody>
         @if ($program->count() > 5)
         <tfoot>
             <tr>
-                <th>
-                    <label>
-                        <input type="checkbox" class="checkbox" />
-                    </label>
-                </th>
                 <th>No.</th>
-                <th>Nama</th>
-                <Th>Deskripsi</Th>
+                <th>Nama Program Keahlian</th>
+                <th>Peluang Kerja</th>
                 <th>Aksi</th>
             </tr>
         </tfoot>
         @endif
-        @endif
-        @endforeach
-        @endforeach
         </table>
     </div>
 </div>

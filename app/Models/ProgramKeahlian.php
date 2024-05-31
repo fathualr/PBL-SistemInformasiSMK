@@ -26,18 +26,18 @@ class ProgramKeahlian extends Model
     ];
     public function capaianPembelajaran()
     {
-        return $this->hasMany(CapaianPembelajaran::class);
+        return $this->hasMany(CapaianPembelajaran::class, 'id_program');
     }
     public function peluangKerja()
     {
-        return $this->hasMany(PeluangKerja::class);
+        return $this->hasMany(PeluangKerja::class, 'id_program');
     }
     public function direktoriGuru()
     {
-        return $this->belongsTo(DirektoriGuru::class);
+        return $this->belongsTo(DirektoriGuru::class, 'id_program');
     }
     public function direktoriSiswa()
     {
-        return $this->belongsTo(DirektoriSiswa::class);
+        return $this->belongsTo(DirektoriSiswa::class, 'id_program');
     }
 }

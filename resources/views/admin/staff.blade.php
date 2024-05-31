@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 rounded-md shadow-lg p-4">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Direktori Pegawai</h3>
@@ -32,7 +32,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-3">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -51,7 +51,7 @@
                         <td class="w-56">
                             <div class="avatar">
                                 <div class="mask mask-squircle w-16 h-16">
-                                    <img src="{{ asset($staff->gambar_pegawai) }}"
+                                    <img src="{{ asset('storage/'.$staff->gambar_pegawai) }}"
                                         alt="Avatar Tailwind CSS Component" />
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                         <td>{{ $staff->nik_pegawai }}</td>
                         <td>{{ $staff->jabatan_pegawai }}</td>
                         <td>
-                            <details class="dropdown dropdown-right">
+                            <details class="dropdown">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -220,7 +220,7 @@
 
                             <div class="avatar flex justify-center items-center my-5">
                                 <div class="mask mask-squircle w-36 h-36">
-                                    <img src="{{ asset($staff->gambar_pegawai) }}"
+                                    <img src="{{ asset('storage/'.$staff->gambar_pegawai) }}"
                                         alt="Avatar Tailwind CSS Component" />
                                 </div>
                             </div>
@@ -338,6 +338,7 @@
                         </div>
                     </dialog>
                     <!-- Delete Modal -->
+                    @endforeach
                 </tbody>
                 <!-- foot -->
                 @if ($staff->count() > 5)
@@ -352,7 +353,6 @@
                     </tr>
                 </tfoot>
                 @endif
-                @endforeach
             </table>
         </div>
     </div>
@@ -398,7 +398,7 @@
 
             <label
                 class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" class="grow bg-transparent border-r-2 py-2 w-16" placeholder="Tanggal Lahir"
+                <input type="date" class="grow bg-transparent border-r-2 py-2 px-2 w-24" placeholder="Tanggal Lahir"
                     name="TTL_pegawai" required />
                 <input type="text" class="grow bg-transparent py-2" placeholder="Tempat Lahir"
                     name="tempat_lahir_pegawai" required />
