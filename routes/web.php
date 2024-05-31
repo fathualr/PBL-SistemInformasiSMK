@@ -48,13 +48,13 @@ use App\Http\Controllers\{
 Route::get('/', [frontEndController::class, 'home']);
 // Public
 Route::get('guest/profile', [frontEndController::class, 'profile']);
-Route::get('guest/sejarah', [webController::class, 'sejarah']);
+Route::get('guest/sejarah', [sejarahSekolahController::class, 'sejarah']);
 Route::get('guest/program-keahlian', [programKeahlianController::class, 'program']);
 Route::get('guest/program-keahlian-template/{id_program}', [programKeahlianController::class, 'detailProgram']);
 Route::get('guest/direktori-guru', [direktoriGuruController::class, 'guru']);
 Route::get('guest/direktori-pegawai', [DirektoriPegawaiController::class, 'pegawai']);
 Route::get('guest/direktori-siswa', [DirektoriSiswaController::class, 'siswa']);
-Route::get('guest/direktori-alumni', [webController::class, 'alumni']);
+Route::get('guest/direktori-alumni', [direktoriAlumniController::class, 'alumni']);
 Route::get('guest/galeri-foto', [webController::class, 'foto']);
 Route::get('guest/galeri-video', [webController::class, 'video']);
 Route::get('guest/galeri-template/{id_album}', [webController::class, 'galeriTemplate']);
@@ -68,8 +68,8 @@ Route::get('guest/prestasi-siswa-template/{id_prestasi}', [PrestasiSiswaControll
 Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
 Route::get('guest/berita-template/{id_berita}', [beritaActionController::class, 'showTemplate']);
 Route::post('/komentarStore/{id}', [komentarBeritaActionController::class, 'store'])->name('komentarBerita.store');
-Route::get('guest/ekstrakulikuler', [webController::class, 'ekstrakulikuler']);
-Route::get('guest/ekstrakulikuler-template/{id_ekstrakurikuler}', [webController::class, 'ekstrakulikulerTemplate']);
+Route::get('guest/ekstrakulikuler', [ekstrakulikulerController::class, 'ekstrakulikuler']);
+Route::get('guest/ekstrakulikuler-template/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'ekstrakulikulerTemplate']);
 Route::get('guest/media-sosial', [MediaSosialController::class, 'guestSosialMedia'])->name('guest.media-sosial.index');
 Route::post('/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->name('UmpanBalik.store');
 // Public
@@ -243,7 +243,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('ekstrakulikuler', [ekstrakulikulerController::class, 'adminEkstrakulikuler'])->name('admin.ekstrakulikuler.index');
     // CRUD
     Route::post('ekstrakulikuler', [ekstrakulikulerController::class, 'storeEkstrakulikuler'])->name('Ekstrakulikuler.store');
-    Route::patch('ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakurikuler'])->name('ekstrakurikuler.update');
+    Route::patch('ekstrakulikulerUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateEkstrakulikuler'])->name('ekstrakurikuler.update');
     Route::delete('ekstrakulikuler/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'destroyEkstrakulikuler'])->name('Ekstrakulikuler.destroy');
     // CRUD gambar ekstrakurikuler
     Route::patch('/gambarEkskulUpdate/{id_ekstrakurikuler}', [ekstrakulikulerController::class, 'updateGambarEkstrakurikuler'])->name('gambarEkskul.update');

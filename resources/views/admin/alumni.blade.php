@@ -49,7 +49,7 @@
 
                     @foreach($direktoriAlumni as $key => $alumni)
                     <tr class="hover">
-                        <th>{{ $key + 1 }}</th>
+                        <th>{{ ($alumni->currentPage() - 1) * $alumni->perPage() + $key + 1 }}</th>
                         <td>
                             <div class="flex justify-center items-center gap-3">
                                 <div class="avatar">
@@ -111,6 +111,24 @@
                     </tr>
                 </tfoot>
             </table>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center my-5 gap-2">
+                @if($direktoriAlumni->previousPageUrl())
+                <a href="{{ $direktoriAlumni->previousPageUrl() }}" class="btn">«</a>
+                @else
+                <button class="btn disabled">«</button>
+                @endif
+
+                <button class="btn">Page {{ $direktoriAlumni->currentPage() }}</button>
+
+                @if($direktoriAlumni->nextPageUrl())
+                <a href="{{ $direktoriAlumni->nextPageUrl() }}" class="btn">»</a>
+                @else
+                <button class="btn disabled">»</button>
+                @endif
+            </div> 
+
         </div>
     </div>
     <!-- Content -->

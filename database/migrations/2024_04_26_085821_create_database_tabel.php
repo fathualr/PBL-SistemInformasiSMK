@@ -259,7 +259,7 @@ return new class extends Migration
         // Tabel untuk  ekstrakulikuler
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
             $table->id('id_ekstrakurikuler');
-            $table->unsignedBigInteger('id_guru')->notNullable();
+            $table->unsignedBigInteger('id_guru')->nullable();
             $table->string('nama_ekstrakurikuler')->notNullable();
             $table->text('deskripsi_ekstrakurikuler')->nullable();
             $table->string('tempat_ekstrakurikuler')->nullable();

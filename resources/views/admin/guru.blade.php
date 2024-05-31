@@ -49,7 +49,7 @@
 
                     @foreach($gurus as $key => $guru)
                     <tr class="hover">
-                        <th>{{ $key + 1 }}</th>
+                        <th>{{ ($gurus->currentPage() - 1) * $gurus->perPage() + $key + 1 }}</th>
                         <td class="w-56">
                             <div class="avatar">
                                 <div class="mask mask-squircle w-16 h-16">
@@ -117,6 +117,22 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <!-- Pagination -->
+            <div class="flex justify-center my-5 gap-2">
+                @if($gurus->previousPageUrl())
+                <a href="{{ $gurus->previousPageUrl() }}" class="btn">«</a>
+                @else
+                <button class="btn disabled">«</button>
+                @endif
+                <button class="btn">Page {{ $gurus->currentPage() }}</button>
+                @if($gurus->nextPageUrl())
+                <a href="{{ $gurus->nextPageUrl() }}" class="btn">»</a>
+                @else
+                <button class="btn disabled">»</button>
+                @endif
+            </div>
+
         </div>
     </div>
     <!-- Content -->

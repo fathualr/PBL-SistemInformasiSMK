@@ -182,25 +182,7 @@ class webController extends Controller
     //     ]);
     // }
 
-    public function ekstrakulikuler()
-    {
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->get();
-        $direktoriGuru = DirektoriGuru::all();
-        return view('guest/ekstrakulikuler', [
-            "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler,
-            "direktoriGuru"=> $direktoriGuru
-        ]);
-    }
-
-    public function ekstrakulikulerTemplate($id_ekstrakurikuler)
-    {        
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->findOrFail($id_ekstrakurikuler);
-        return view('guest/ekstrakulikuler-template', [
-            "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler
-        ]);
-    }
+    
 
     // public function mediaSosial()
     // {
@@ -209,12 +191,5 @@ class webController extends Controller
     //     ]);
     // }
 
-    public function sejarah()
-    {
-        $sejarahSekolah = SejarahSekolah::all();
-        return view('guest/sejarah', [
-            "title" => "Sejarah",
-            "sejarahSekolah" => $sejarahSekolah
-        ]);
-    }
+    
 }

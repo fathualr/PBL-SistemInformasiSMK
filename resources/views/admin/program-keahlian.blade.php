@@ -44,9 +44,10 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach($programKeahlian as $index => $program)
                     <tr class="hover">
-                        <th class="w-8">{{ $index + 1 }}</th>
+                        <th class="w-8">{{ ($programKeahlian->currentPage() - 1) * $programKeahlian->perPage() + $key + 1 }}</th>
                         <td class="w-64">{{ $program->nama_program }}</td>
                         <td class="">
                             <p class="truncate w-48 mx-auto">{{ $program->deskripsi_program }}</p>
@@ -103,6 +104,22 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <!-- Pagination -->
+            <div class="flex justify-center my-5 gap-2">
+                @if($programKeahlian->previousPageUrl())
+                <a href="{{ $programKeahlian->previousPageUrl() }}" class="btn">«</a>
+                @else
+                <button class="btn disabled">«</button>
+                @endif
+                <button class="btn">Page {{ $programKeahlian->currentPage() }}</button>
+                @if($programKeahlian->nextPageUrl())
+                <a href="{{ $programKeahlian->nextPageUrl() }}" class="btn">»</a>
+                @else
+                <button class="btn disabled">»</button>
+                @endif
+            </div>
+
         </div>
     </div>
     <!-- Content -->

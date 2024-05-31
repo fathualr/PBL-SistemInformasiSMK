@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\SejarahSekolah;
 use Illuminate\Support\Facades\Storage;
 
-class SejarahSekolahController extends Controller
-{
-    public function adminSejarah()
-    {
+class SejarahSekolahController extends Controller{
+    public function sejarah(){
         $sejarahSekolah = SejarahSekolah::all();
+        return view('guest/sejarah', [
+            "title" => "Sejarah",
+            "sejarahSekolah" => $sejarahSekolah
+        ]);
+    }
+
+    public function adminSejarah(){
+        $sejarahSekolah = SejarahSekolah::paginate(10);
     
         return view('admin.sejarah', [
             "title" => "Admin Sejarah Sekolah",

@@ -216,15 +216,13 @@
             @else
             <button class="btn disabled">«</button>
             @endif
-
             <button class="btn">Page {{ $komentar->currentPage() }}</button>
-
             @if($komentar->nextPageUrl())
             <a href="{{ $komentar->nextPageUrl() }}" class="btn">»</a>
             @else
             <button class="btn disabled">»</button>
             @endif
-        </div>  
+        </div>
 
     </div>
     <!-- Content -->
@@ -270,8 +268,6 @@
                     <span class="label-text">Gambar Berita:</span>
                 </div>
                 <div class="grid gap-2" id="fileInputs">
-                    <input type="file" class="file-input file-input-bordered file-input-success w-full"
-                        placeholder="Pilih gambar berita" name="gambar_berita[]" />
                 </div>
                 @error('gambar_berita[]')
                 <div class="label">
@@ -292,8 +288,6 @@
                     <span class="label-text">Kategori:</span>
                 </div>
                 <div class="grid gap-2" id="textInputContainer">
-                    <input type="text" class="input input-bordered input-success w-full" placeholder="Kategori berita"
-                        name="kategori_berita[]" />
                     @error('kategori_berita[]')
                     <div class="label">
                         <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -392,8 +386,7 @@
                 <div class="label">
                     <span class="label-text">Kategori:</span>
                 </div>
-                <button type="button" class="btn no-animation btn-sm"
-                    onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
+                <button type="button" class="btn no-animation btn-sm" onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
 
                 <div class="label">
                     <span class="label-text">Tanggal Berita:</span>

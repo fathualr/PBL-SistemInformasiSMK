@@ -50,7 +50,7 @@
 
                     @foreach($siswa as $key => $ssw)
                     <tr class="hover">
-                        <th>{{ $key + 1 }}</th>
+                        <th>{{ ($siswa->currentPage() - 1) * $siswa->perPage() + $key + 1 }}</th>
                         <td>
                             <div class="flex justify-center items-center">
                                 <div class="avatar">
@@ -117,6 +117,22 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <!-- Pagination -->
+            <div class="flex justify-center my-5 gap-2">
+                @if($siswa->previousPageUrl())
+                <a href="{{ $siswa->previousPageUrl() }}" class="btn">«</a>
+                @else
+                <button class="btn disabled">«</button>
+                @endif
+                <button class="btn">Page {{ $siswa->currentPage() }}</button>
+                @if($siswa->nextPageUrl())
+                <a href="{{ $siswa->nextPageUrl() }}" class="btn">»</a>
+                @else
+                <button class="btn disabled">»</button>
+                @endif
+            </div>
+
         </div>
     </div>
     <!-- Content -->

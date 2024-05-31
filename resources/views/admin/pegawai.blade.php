@@ -49,7 +49,7 @@
 
                     @foreach($pegawai as $key => $pgw)
                     <tr class="hover">
-                        <th>{{ $key + 1 }}</th>
+                        <th>{{ ($pegawai->currentPage() - 1) * $pegawai->perPage() + $key + 1 }}</th>
                         <td class="w-56">
                             <div class="avatar">
                                 <div class="mask mask-squircle w-16 h-16">
@@ -117,6 +117,22 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <!-- Pagination -->
+            <div class="flex justify-center my-5 gap-2">
+                @if($pegawai->previousPageUrl())
+                <a href="{{ $pegawai->previousPageUrl() }}" class="btn">«</a>
+                @else
+                <button class="btn disabled">«</button>
+                @endif
+                <button class="btn">Page {{ $pegawai->currentPage() }}</button>
+                @if($pegawai->nextPageUrl())
+                <a href="{{ $pegawai->nextPageUrl() }}" class="btn">»</a>
+                @else
+                <button class="btn disabled">»</button>
+                @endif
+            </div>
+
         </div>
     </div>
     <!-- Content -->
