@@ -17,7 +17,7 @@ class DirektoriPegawaiFactory extends Factory
             'jabatan_pegawai' => $this->faker->jobTitle,
             'TTL_pegawai' => $this->faker->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
             'tempat_lahir_pegawai' => $this->faker->city,
-            'jenis_kelamin' => $this->faker->randomElement(['Laki - Laki', 'Wanita']),
+            'jenis_kelamin' => $this->faker->randomElement(['Laki - Laki', 'Perempuan']),
             'no_hp_pegawai' => $this->faker->phoneNumber,
             'alamat_pegawai' => $this->faker->address,
             'status_pegawai' => $this->faker->randomElement(['Aktif', 'Cuti', 'Pensiun', 'Resign']),
