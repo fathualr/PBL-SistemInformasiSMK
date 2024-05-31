@@ -6,14 +6,14 @@
     <p class="font-bold text-xl">EKSTRAKULIKULER</p>
 </div>
 
-<div class="grid grid-cols-3 gap-4 my-24">
+<div class="grid grid-cols-3 gap-4 grid-flow-row my-24">
     @foreach ($ekstrakulikuler as $ekskul )
     @foreach($direktoriGuru as $guru)
     @if($ekskul->id_guru === $guru->id_guru)
 
-    <div class="mx-auto my-10">
+    <div class="mx-auto mt-6">
         <a href="/guest/ekstrakulikuler-template/{{ $ekskul->id_ekstrakurikuler }}">
-            <div class="card card-compact w-full bg-base-100 shadow-xl">
+            <div class="card card-compact w-11/12 bg-base-100 shadow-xl">
                 <figure class="">
                     <img src="{{ asset('storage/'. $ekskul->gambar_profil_ekstrakurikuler) }}" class="h-64 w-96" alt="Shoes" />
                 </figure>
@@ -29,7 +29,7 @@
                             <td class="font-bold">Tempat</td>
                             <td>:</td>
                             <td class="w-64">
-                                <p class="truncate w-64">{{ $ekskul->tempat_ekstrakurikuler }}</p>
+                                <p class="truncate w-56">{{ $ekskul->tempat_ekstrakurikuler }}</p>
                             </td>
                         </tr>
                         <tr>

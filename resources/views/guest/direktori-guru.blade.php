@@ -22,17 +22,19 @@
     @foreach($programKeahlian as $index => $program)
     @if($guru->id_program === $program->id_program)
     <div class="mx-auto">
-        <button class="hover:scale-110 transition-all duration-300" onclick="my_modal_2.showModal()">
+        <button class="hover:scale-110 transition-all duration-300"
+            onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
             <div class="card card-compact w-64 h-80 shadow-xl">
                 <div class="h-2/5 bg-indigo-600 rounded-t-lg">
                     <div class="avatar mx-auto h-28 translate-y-[4rem]">
                         <div class="w-32 h-32 rounded-full">
-                            <img src="{{ asset($guru->gambar_guru) }}" />
+                            <img src="{{ asset('storage/'.$guru->gambar_guru) }}" />
                         </div>
                     </div>
 
                     <div class="card-body bg-base-100">
-                        <h2 class="text-center font-bold text-xl mt-16">{{ $guru->nama_guru }}</h2>
+                        <h2 class="text-center font-bold text-xl mt-16 truncate w-48 mx-auto">{{ $guru->nama_guru }}
+                        </h2>
                         <p class="text-center">{{ $program->nama_program }}</p>
                         <p class="text-center">{{ $guru->nik_guru }}</p>
                     </div>
@@ -42,7 +44,7 @@
     </div>
 
 
-    <dialog id="my_modal_2" class="modal">
+    <dialog id="my_modal_view{{ $guru->id_guru }}" class="modal">
         <div class="modal-box w-10/12 max-w-5xl">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3">

@@ -40,12 +40,9 @@
     </div>
     <!-- Search Box -->
 </div>
-<!-- Content -->
-@foreach($direktoriSiswa as $siswa)
-@foreach($programKeahlian as $program)
-@if($siswa->id_program === $program->id_program)
 
-<div class="overflow-x-auto my-10">
+<!-- Content -->
+<div class="my-10">
     <table class="table text-center">
         <!-- head -->
         <thead>
@@ -58,12 +55,16 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($direktoriSiswa as $siswa)
+            @foreach($programKeahlian as $program)
+            @if($siswa->id_program === $program->id_program)
             <tr class="hover">
                 <td>
-                    <div class="flex justify-center items-center gap-4">
+                    <div class="flex justify-start items-start text-start gap-4">
                         <div class="avatar">
                             <div class="mask mask-squircle w-12 h-12">
-                                <img src="{{ asset($siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
+                                <img src="{{ asset('storage/'.$siswa->gambar_siswa) }}"
+                                    alt="Avatar Tailwind CSS Component" />
                             </div>
                         </div>
                         <div>
@@ -72,19 +73,21 @@
                         </div>
                     </div>
                 </td>
-                <td>
-                    {{ $siswa->alamat_siswa }}
-                </td>
+                <td>{{ $siswa->alamat_siswa }}</td>
                 <td>{{ $program->nama_program }}</td>
                 <td>{{ $siswa->tahun_angkatan_siswa }}</td>
                 <th>
-                    <button class="btn btn-ghost btn-xs">
+                    <button class="btn" onclick="window['my_modal_4{{ $siswa->id_siswa }}'].showModal()">
                         <i class="fas fa-eye text-xl"></i>
                     </button>
                 </th>
             </tr>
+
+            @endif
+            @endforeach
+            @endforeach
         </tbody>
-        <!-- foot -->
+
         <tfoot>
             <tr>
                 <th>Nama</th>
@@ -94,13 +97,91 @@
                 <th>Aksi</th>
             </tr>
         </tfoot>
-
     </table>
 </div>
+<!-- Content -->
 
+@foreach($direktoriSiswa as $siswa)
+@foreach($programKeahlian as $program)
+@if($siswa->id_program === $program->id_program)
+<dialog id="my_modal_4{{ $siswa->id_siswa }}" class="modal">
+    <div class="modal-box w-10/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </form>
+        <h3 class="font-bold text-lg">
+            <i class="far fa-id-card mr-5"></i>
+            Info Detail Siswa
+        </h3>
+        <div class="grid grid-cols-8 w-[32rem] -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-success"></div>
+            <div class="divider"></div>
+        </div>
+        <div class="grid grid-cols-3 my-10">
+            <!-- Photo -->
+            <div class="flex justify-center items-center">
+                <div class="avatar flex justify-center items-center my-5">
+                    <div class="mask mask-squircle w-44 h-44">
+                        <img src="{{ asset($siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
+                    </div>
+                </div>
+                <div class="divider divider-horizontal translate-x-8"></div>
+            </div>
+            <!-- Photo -->
+            <!-- Information -->
+            <div class="col-span-2">
+                <table class="w-full">
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>{{ $siswa->nama_siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td>NIK</td>
+                        <td>:</td>
+                        <td>{{ $siswa->nisn_siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td>Program Keahlian</td>
+                        <td>:</td>
+                        <td>{{ $program->nama_program }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tempat, Tanggal Lahir</td>
+                        <td>:</td>
+                        <td>{{ $siswa->tempat_lahir_siswa }}, {{ $siswa->TTL_siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>:</td>
+                        <td>{{ $siswa->jenis_kelamin_siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>{{ $siswa->alamat_siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td>No. Handphone</td>
+                        <td>:</td>
+                        <td>{{ $siswa->no_hp_siswa }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>{{ $siswa->tahun_angkatan_siswa }}</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Information -->
+        </div>
+    </div>
+</dialog>
 @endif
 @endforeach
 @endforeach
-<!-- Content -->
 
 @endsection

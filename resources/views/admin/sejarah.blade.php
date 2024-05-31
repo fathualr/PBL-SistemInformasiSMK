@@ -2,7 +2,7 @@
 
 @section('main-content')
 <!-- Third Content -->
-<div class="grid grid-cols-9 rounded-md mt-10">
+<div class="grid grid-cols-9 rounded-md mt-10 shadow-lg p-4">
     <!-- Title -->
     <div class="col-span-2 my-4 mx-5">
         <h3 class="font-bold text-lg">Sejarah Sekolah</h3>
@@ -32,7 +32,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-3">
         <div class=" mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -61,12 +61,10 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['modal_edit_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['modal_edit_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -75,8 +73,7 @@
 
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['modal_view_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['modal_view_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -85,8 +82,7 @@
 
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['modal_delete_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['modal_delete_sejarah{{ $sejarah->id_sejarah }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -109,36 +105,27 @@
                                 <div class="divider divider-success"></div>
                                 <div class="divider"></div>
                             </div>
-                            <form action="{{ route('SejarahSekolah.update',['id_sejarah' => $sejarah->id_sejarah]) }}"
-                                method="post" enctype="multipart/form-data">
+                            <form action="{{ route('SejarahSekolah.update', $sejarah->id_sejarah) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <i class="fas fa-heading"></i>
-                                    <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah"
-                                        name="judul_sejarah" value="{{$sejarah->judul_sejarah}}" />
+                                    <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" name="judul_sejarah" value="{{$sejarah->judul_sejarah}}" />
                                 </label>
 
-                                <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
-                                    placeholder="Deskripsi"
-                                    name="deskripsi_sejarah">{{$sejarah->deskripsi_sejarah}}</textarea>
+                                <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi" name="deskripsi_sejarah">{{$sejarah->deskripsi_sejarah}}</textarea>
 
-                                <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5"
-                                    name="gambar_sejarah" />
+                                <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" name="gambar_sejarah" />
 
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <i class="far fa-calendar"></i>
-                                    <input type="date" class="grow bg-transparent py-2" placeholder="Link Video"
-                                        name="tanggal_sejarah" value="{{$sejarah->tanggal_sejarah}}" />
+                                    <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" name="tanggal_sejarah" value="{{$sejarah->tanggal_sejarah}}" />
                                 </label>
 
                                 <div class="flex justify-end items-end mt-20 gap-4">
 
                                     <a href="" class="">
-                                        <button type="submit"
-                                            class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                        <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                             <i class=" fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -167,31 +154,23 @@
                             <form action="">
 
                                 <div class="aspect-w-10 aspect-h-5 mb-5">
-                                    <img class="w-full h-64" src="{{ asset($sejarah->gambar_sejarah) }}">
+                                    <img class="w-full h-64" src="{{ asset('storage/'.$sejarah->gambar_sejarah) }}">
                                 </div>
 
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <i class="far fa-file-image"></i>
-                                    <input type="text" class="grow bg-transparent py-2" placeholder="Link Galeri"
-                                        name="gambar_sejarah" value="{{$sejarah->gambar_sejarah}}" disabled />
+                                    <input type="text" class="grow bg-transparent py-2" placeholder="Link Galeri" name="gambar_sejarah" value="{{$sejarah->gambar_sejarah}}" disabled />
                                 </label>
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <i class="fas fa-heading"></i>
-                                    <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah"
-                                        name="judul_sejarah" value="{{$sejarah->judul_sejarah}}" disabled />
+                                    <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" name="judul_sejarah" value="{{$sejarah->judul_sejarah}}" disabled />
                                 </label>
 
-                                <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
-                                    placeholder="Deskripsi" name="deskripsi_sejarah"
-                                    disabled>{{$sejarah->deskripsi_sejarah}}</textarea>
+                                <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi" name="deskripsi_sejarah" disabled>{{$sejarah->deskripsi_sejarah}}</textarea>
 
-                                <label
-                                    class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                     <i class="far fa-calendar"></i>
-                                    <input type="text" class="grow bg-transparent py-2" placeholder="Tanggal"
-                                        nama="tanggal_sejarah" value="{{$sejarah->tanggal_sejarah}}" disabled />
+                                    <input type="text" class="grow bg-transparent py-2" placeholder="Tanggal" nama="tanggal_sejarah" value="{{$sejarah->tanggal_sejarah}}" disabled />
                                 </label>
                             </form>
                         </div>
@@ -211,17 +190,14 @@
                                 <div class="divider divider-success"></div>
                                 <div class="divider"></div>
                             </div>
-                            <form
-                                action="{{ route ('SejarahSekolah.destroy', [ 'id_sejarah' => $sejarah -> id_sejarah]) }}"
-                                method="post">
+                            <form action="{{ route ('SejarahSekolah.destroy', [ 'id_sejarah' => $sejarah -> id_sejarah]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 Apakah Anda Yakin Ingin Menghapus Data Ini ?
 
                                 <div class="flex justify-end items-end mt-20 gap-4">
 
-                                    <button type="submit"
-                                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                                    <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                                         <i class=" fas fa-trash"></i>
                                         Hapus
                                     </button>
@@ -261,33 +237,28 @@
         </div>
         <form action="{{ route('SejarahSekolah.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="fas fa-heading"></i>
                 <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" name="judul_sejarah" />
             </label>
 
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi"
-                name="deskripsi_sejarah"></textarea>
+            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi" name="deskripsi_sejarah"></textarea>
 
             <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" name="gambar_sejarah" />
 
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="far fa-calendar"></i>
                 <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" name="tanggal_sejarah" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
 
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
 
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -310,19 +281,16 @@
             <div class="divider"></div>
         </div>
         <form action="">
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="fas fa-heading"></i>
                 <input type="text" class="grow bg-transparent py-2" placeholder="Judul Sejarah" />
             </label>
 
-            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5"
-                placeholder="Deskripsi"></textarea>
+            <textarea class="textarea textarea-bordered border-2 border-elm w-full mb-5" placeholder="Deskripsi"></textarea>
 
             <input type="file" class="file-input file-input-bordered bg-elm w-full mb-5" />
 
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <i class="far fa-calendar"></i>
                 <input type="date" class="grow bg-transparent py-2" placeholder="Link Video" />
             </label>
@@ -330,8 +298,7 @@
             <div class="flex justify-end items-end mt-20 gap-4">
 
                 <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class=" fas fa-pen-to-square"></i>
                         Edit
                     </button>

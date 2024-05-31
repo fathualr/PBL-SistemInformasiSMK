@@ -29,7 +29,7 @@ class EkstrakulikulerFactory extends Factory
             'deskripsi_ekstrakurikuler' => implode("\n\n", $this->faker->paragraphs(5)),
             'tempat_ekstrakurikuler' => $this->faker->address,
             'jadwal_ekstrakurikuler' => $this->faker->dateTimeThisYear(),
-            'gambar_profil_ekstrakurikuler' => 'image/albumAlbumFoto/H2FsHTG0nLkHbVaAF2khnWPthPWPvztthySPbAYP.jpg',
+            'gambar_profil_ekstrakurikuler' => 'image/albumAlbumFoto/3ZJGaluEBp5sfks4YHutCaDMMH3cDkOLJWXjaP0j.jpg',
         ];
     }
 }

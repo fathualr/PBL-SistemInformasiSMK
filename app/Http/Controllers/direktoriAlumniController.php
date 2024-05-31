@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DirektoriAlumni;
+use Illuminate\Support\Facades\Storage;
 
 class direktoriAlumniController extends Controller
 {
@@ -12,62 +13,75 @@ class direktoriAlumniController extends Controller
         $direktoriAlumni = DirektoriAlumni::all();
         return view('admin/alumni', [
             "title" => "Admin Alumni",
-            "direktoriAlumni"=> $direktoriAlumni
+            "direktoriAlumni" => $direktoriAlumni
         ]);
     }
 
-        public function storeDirektoriAlumni(Request $request)
+    public function storeDirektoriAlumni(Request $request)
     {
-            $format_file = $request->file('gambar_alumni')->getClientOriginalName();
-            $request->file('gambar_alumni')->move(public_path('gambarAlumni'), $format_file);
-    
-            DirektoriAlumni::create([
-                "nama_alumni" => $request->nama_alumni,
-                "no_hp_alumni" => $request->no_hp_alumni,
-                "email_alumni" => $request->email_alumni,
-                "jenis_kelamin_alumni" => $request->jenis_kelamin_alumni,
-                "TTL_alumni" =>$request->TTL_alumni,
-                "tempat_lahir_alumni" => $request->tempat_lahir_alumni,
-                "tahun_kelulusan_alumni" => $request->tahun_kelulusan_alumni,
-                "gambar_alumni" => 'gambarAlumni/'.$format_file,
-                "alamat_alumni" => $request->alamat_alumni
-            ]);
+
+        $validate = $request->validate([
+            'nama_alumni' => 'required',
+            'no_hp_alumni' => 'required',
+            'email_alumni' => 'required',
+            'jenis_kelamin' => 'required',
+            'TTL_alumni' => 'required',
+            'tempat_lahir_alumni' => 'required',
+            'tahun_kelulusan_alumni' => 'required',
+            'gambar_alumni' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'alamat_alumni' => 'required'
+        ]);
+
+        $gambarAlumni = $request->file('gambar_alumni')->store('image/gambarAlumni', 'public');
+        $validate['gambar_alumni'] = $gambarAlumni;
+        $direktoriAlumni = DirektoriAlumni::create($validate);
+
+        if ($direktoriAlumni) {
             return redirect()->route('admin.direktoriAlumni.index');
+        } else {
+            return redirect()->route('admin.direktoriAlumni.index');
+        }
     }
 
-     public function updateDirektoriAlumni(Request $request, $id_alumni)
+    public function updateDirektoriAlumni(Request $request, $id_alumni)
     {
-    
+
         $alumni = DirektoriAlumni::findOrFail($id_alumni);
-    
-        $validatedData = [
-                "nama_alumni" => $request->nama_alumni,
-                "no_hp_alumni" => $request->no_hp_alumni,
-                "email_alumni" => $request->email_alumni,
-                "jenis_kelamin_alumni" => $request->jenis_kelamin_alumni,
-                "TTL_alumni" =>$request->TTL_alumni,
-                "tempat_lahir_alumni" => $request->tempat_lahir_alumni,
-                "tahun_kelulusan_alumni" => $request->tahun_kelulusan_alumni,
-                "alamat_alumni" => $request->alamat_alumni
-        ];
+
+        $validate = $request->validate([
+            'nama_alumni' => 'required',
+            'no_hp_alumni' => 'required',
+            'email_alumni' => 'required',
+            'jenis_kelamin' => 'required',
+            'TTL_alumni' => 'required',
+            'tempat_lahir_alumni' => 'required',
+            'tahun_kelulusan_alumni' => 'required',
+            'gambar_alumni' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'alamat_alumni' => 'required'
+        ]);
 
         if ($request->hasFile('gambar_alumni')) {
-            $format_file = $request->file('gambar_alumni')->getClientOriginalName();
-            $request->file('gambar_alumni')->move(public_path('gambarAlumni'), $format_file);
-            $validatedData["gambar_alumni"] = 'gambarAlumni/' . $format_file;
+            $gambarPath = $request->file('gambar_alumni')->store('image/gambarAlumni', 'public');
+            if ($alumni->gambar_alumni) {
+                Storage::disk('public')->delete($alumni->gambar_alumni);
+            }
+            $validate['gambar_alumni'] = $gambarPath;
         }
-    
-        $alumni->update($validatedData);
-    
-        return redirect()->route('admin.direktoriAlumni.index');
+
+        $status = $alumni->fill($validate)->save();
+        if ($status) {
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
     }
 
-        public function destroyDirektoriAlumni($id_alumni)
+    public function destroyDirektoriAlumni($id_alumni)
     {
         $alumni = DirektoriAlumni::findOrFail($id_alumni);
-        
+
         $alumni->delete();
-    
+
         return redirect()->route('admin.direktoriAlumni.index');
     }
 }

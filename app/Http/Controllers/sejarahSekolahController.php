@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SejarahSekolah;
+use Illuminate\Support\Facades\Storage;
 
 class SejarahSekolahController extends Controller
 {
     public function adminSejarah()
     {
         $sejarahSekolah = SejarahSekolah::all();
-    
+
         return view('admin.sejarah', [
             "title" => "Admin Sejarah Sekolah",
             "sejarahSekolah" => $sejarahSekolah
@@ -20,49 +21,50 @@ class SejarahSekolahController extends Controller
     public function storeSejarahSekolah(Request $request)
     {
 
-        $request->validate([
+        $validate = $request->validate([
             'judul_sejarah' => 'required',
-            'gambar_sejarah' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file size limit as needed
+            'gambar_sejarah' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi_sejarah' => 'required',
-            'tanggal_sejarah' => 'required',
+            'tanggal_sejarah' => 'required'
         ]);
 
+        $gambarSejarah = $request->file('gambar_sejarah')->store('image/gambarSejarah', 'public');
+        $validate['gambar_sejarah'] = $gambarSejarah;
+        $sejarahSekolah = SejarahSekolah::create($validate);
 
-        $format_file = $request->file('gambar_sejarah')->getClientOriginalName();
-        $request->file('gambar_sejarah')->move(public_path('gambarSejarah'), $format_file);
-
-
-        SejarahSekolah::create([
-            "judul_sejarah" => $request->judul_sejarah,
-            "deskripsi_sejarah" => $request->deskripsi_sejarah,
-            "tanggal_sejarah" => $request->tanggal_sejarah,
-            "gambar_sejarah" => 'gambarSejarah/'. $format_file,
-        ]);
-
-        
-        return redirect()->route('admin.sejarahSekolah.index');
+        if ($sejarahSekolah) {
+            return redirect()->route('admin.sejarahSekolah.index');
+        } else {
+            return redirect()->route('admin.sejarahSekolah.index');
+        }
     }
 
     public function updateSejarahSekolah(Request $request, $id_sejarah)
     {
+
         $sejarahSekolah = SejarahSekolah::findOrFail($id_sejarah);
 
-        $validateData =
-        [
-            "judul_sejarah" => $request->judul_sejarah,
-            "deskripsi_sejarah" => $request->deskripsi_sejarah,
-            "tanggal_sejarah" => $request->tanggal_sejarah,
-        ];
+        $validate = $request->validate([
+            'judul_sejarah' => 'required',
+            'gambar_sejarah' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'deskripsi_sejarah' => 'required',
+            'tanggal_sejarah' => 'required'
+        ]);
 
-        if  ($request -> hasFile('gambar_sejarah')) {
-            $format_file = $request->file('gambar_sejarah')->getClientOriginalName();
-            $request->file('gambar_sejarah')->move(public_path('gambarSejarah'), $format_file);
-            $validateData["gambar_sejarah"] = 'gambarSejarah/' .$format_file;
+        if ($request->hasFile('gambar_sejarah')) {
+            $gambarPath = $request->file('gambar_sejarah')->store('image/gambarSejarah', 'public');
+            if ($sejarahSekolah->gambar_sejarah) {
+                Storage::disk('public')->delete($sejarahSekolah->gambar_sejarah);
+            }
+            $validate['gambar_sejarah'] = $gambarPath;
         }
 
-        $sejarahSekolah->update($validateData);
-
-        return redirect()->route('admin.sejarahSekolah.index');
+        $status = $sejarahSekolah->fill($validate)->save();
+        if ($status) {
+            return redirect()->back();
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function destroySejarahSekolah($id_sejarah)

@@ -30,7 +30,7 @@
 
     <div class="card w-72 bg-base-300 shadow-xl mt-5">
         <figure class="px-10 pt-10">
-            <img src="{{ asset($alumni->gambar_alumni) }}" alt="Shoes" class="rounded-full w-32 h-32 mt-5" />
+            <img src="{{ asset('storage/'.$alumni->gambar_alumni) }}" alt="Shoes" class="rounded-full w-32 h-32 mt-5" />
         </figure>
 
         <div class="card-body items-center text-center">

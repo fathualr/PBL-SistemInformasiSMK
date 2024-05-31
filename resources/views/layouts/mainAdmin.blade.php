@@ -6,26 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Admin SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     @vite('resources/css/app.css')
 </head>
 <style>
-.overflow-x-auto::-webkit-scrollbar {
-    display: none;
-}
+    .overflow-x-auto::-webkit-scrollbar {
+        display: none;
+    }
 
-::-webkit-scrollbar {
-    display: none;
+    ::-webkit-scrollbar {
+        display: none;
 
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-}
+    }
 </style>
 
 <body class="font-poppins">
@@ -35,9 +29,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         <!-- Side Navbar -->
         <div class="w-20 bg-blue-500 text-white flex-none transition-all duration-300">
             <div class="flex flex-col py-4">
-                <button id="toggleButton"
-                    class="focus:outline-none absolute left-[0.85rem] text-xl text-center btn rounded-full transition-all duration-300 z-50 tooltip tooltip-right"
-                    data-tip="Alt + O" accesskey="o">
+                <button id="toggleButton" class="focus:outline-none absolute left-[0.85rem] text-xl text-center btn rounded-full transition-all duration-300 z-50 tooltip tooltip-right" data-tip="Alt + O" accesskey="o">
                     <i id="toggleIcon" class="fas fa-bars transition-all duration-500"></i>
                 </button>
             </div>
@@ -78,8 +70,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Carousel</h1>
                         </a>
                     </li>
-                    <li
-                        class="hover:translate-y-0 @if($title == 'Admin Sejarah Sekolah') bg-blue-600 rounded-md @endif">
+                    <li class="hover:translate-y-0 @if($title == 'Admin Sejarah Sekolah') bg-blue-600 rounded-md @endif">
                         <a href="/admin/sejarah">
                             <div class=" w-3 flex justify-center items-center">
                                 <i class="fas fa-timeline text-2xl font-bold"></i>
@@ -95,8 +86,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Konten Website</h1>
                         </a>
                     </li>
-                    <li
-                        class="hover:translate-y-0 @if($title == 'Admin Program Keahlian') bg-blue-600 rounded-md @endif">
+                    <li class="hover:translate-y-0 @if($title == 'Admin Program Keahlian') bg-blue-600 rounded-md @endif">
                         <a href="/admin/program-keahlian">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-pen-ruler text-2xl text-center font-bold"></i>
@@ -112,8 +102,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                     <i class="fas fa-folder-open text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0"
-                                class="dropdown-content menu p-2 text-white shadow bg-blue-500 rounded-box w-52">
+                            <ul tabindex="0" class="dropdown-content menu p-2 text-white shadow bg-blue-500 rounded-box w-52">
                                 <li class="@if($title == 'Admin Guru') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/guru">
                                         <i class="fas fa-chalkboard-user"></i>
@@ -184,8 +173,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                     <i class="fas fa-photo-film text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0"
-                                class="dropdown-content z-[1] menu p-2 text-white shadow bg-blue-500 rounded-box w-52">
+                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 text-white shadow bg-blue-500 rounded-box w-52">
                                 <li class="@if($title == 'Admin Album') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/album">
                                         <i class="fas fa-image"></i>
@@ -244,8 +232,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                     <i class="fas fa-file-lines text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0"
-                                class="dropdown-content z-[1] menu p-2 text-white shadow bg-blue-500 rounded-box w-max">
+                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 text-white shadow bg-blue-500 rounded-box w-max">
                                 <li class="@if($title == 'Admin Informasi PPDB') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/informasiPPDB">
                                         <i class="fas fa-circle-info"></i>
@@ -305,10 +292,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                     <i class="fas fa-building text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
-                            <ul tabindex="0"
-                                class="dropdown-content z-[1] menu p-2 text-white shadow bg-blue-500 rounded-box w-max">
-                                <li
-                                    class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-600 rounded-md @endif">
+                            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 text-white shadow bg-blue-500 rounded-box w-max">
+                                <li class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/saranaPrasarana">
                                         <div class="w-3 flex justify-center items-center ">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
@@ -316,8 +301,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                         <h1 class="font-bold mx-10">Sarana & Prasarana</h1>
                                     </a>
                                 </li>
-                                <li
-                                    class="hover:translate-y-0 @if($title == 'Admin Foto Prasarana') bg-blue-600 rounded-md @endif">
+                                <li class="hover:translate-y-0 @if($title == 'Admin Foto Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/fotoPrasarana">
                                         <div class="w-3 flex justify-center items-center ">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
@@ -344,8 +328,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                                         <h1 class="font-bold mx-10 hidden" id="navTitle">Sarana & Prasarana</h1>
                                     </a>
                                 </li>
-                                <li
-                                    class="hover:translate-y-0 @if($title == 'Admin Foto Prasarana') bg-blue-600 rounded-md @endif">
+                                <li class="hover:translate-y-0 @if($title == 'Admin Foto Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/fotoPrasarana">
                                         <div class="w-3 flex justify-center items-center -z-50">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
@@ -372,8 +355,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Berita</h1>
                         </a>
                     </li>
-                    <li
-                        class="hover:translate-y-0 @if($title == 'Admin Ekstrakulikuler') bg-blue-600 rounded-md @endif">
+                    <li class="hover:translate-y-0 @if($title == 'Admin Ekstrakulikuler') bg-blue-600 rounded-md @endif">
                         <a href="/admin/ekstrakulikuler">
                             <div class="w-3 flex justify-center items-center">
                                 <i class="fas fa-baseball-bat-ball text-2xl text-center font-bold"></i>
@@ -447,47 +429,47 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 var dropdown = document.querySelectorAll("#dropdown");
                 var navTitles = document.querySelectorAll("#navTitle");
 
-            // Function to open sidebar
+                // Function to open sidebar
                 function openSidebar() {
                     sidebar.classList.add("w-72");
                     sidebar.classList.remove("w-20");
-                document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
-                document.getElementById("toggleButton").classList.add("left-[16.5rem]");
-                icon.classList.add("rotate-180");
-                icon.classList.remove("fa-bars");
-                icon.classList.add("fa-x");
-                normalTitle.classList.remove("hidden");
-                menu.classList.remove("flex");
-                menu.classList.remove("justify-center");
-                menu.classList.remove("items-center");
-                dropdown.forEach(function(dropdown) {
-                    dropdown.classList.add("hidden");
-                });
-                navTitles.forEach(function(navTitle) {
-                    navTitle.classList.remove("hidden");
-                });
-            }
+                    document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
+                    document.getElementById("toggleButton").classList.add("left-[16.5rem]");
+                    icon.classList.add("rotate-180");
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-x");
+                    normalTitle.classList.remove("hidden");
+                    menu.classList.remove("flex");
+                    menu.classList.remove("justify-center");
+                    menu.classList.remove("items-center");
+                    dropdown.forEach(function(dropdown) {
+                        dropdown.classList.add("hidden");
+                    });
+                    navTitles.forEach(function(navTitle) {
+                        navTitle.classList.remove("hidden");
+                    });
+                }
 
                 // Function to close sidebar
                 function closeSidebar() {
                     sidebar.classList.remove("w-72");
                     sidebar.classList.add("w-20");
-                document.getElementById("toggleButton").classList.add("left-[0.85rem]");
-                document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
-                icon.classList.remove("rotate-180");
-                icon.classList.remove("fa-x");
-                icon.classList.add("fa-bars");
-                normalTitle.classList.add("hidden");
-                menu.classList.add("flex");
-                menu.classList.add("justify-center");
-                menu.classList.add("items-center");
-                dropdown.forEach(function(dropdown) {
-                    dropdown.classList.remove("hidden");
-                });
-                navTitles.forEach(function(navTitle) {
-                    navTitle.classList.add("hidden");
-                });
-            }
+                    document.getElementById("toggleButton").classList.add("left-[0.85rem]");
+                    document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
+                    icon.classList.remove("rotate-180");
+                    icon.classList.remove("fa-x");
+                    icon.classList.add("fa-bars");
+                    normalTitle.classList.add("hidden");
+                    menu.classList.add("flex");
+                    menu.classList.add("justify-center");
+                    menu.classList.add("items-center");
+                    dropdown.forEach(function(dropdown) {
+                        dropdown.classList.remove("hidden");
+                    });
+                    navTitles.forEach(function(navTitle) {
+                        navTitle.classList.add("hidden");
+                    });
+                }
 
                 // Initial state: open sidebar
                 openSidebar();
@@ -499,77 +481,77 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                         openSidebar();
                     }
                 });
-        });
-        // Sidebar
-
-
-        // Action Button
-        const buttons = document.querySelectorAll('.button');
-
-        const handleMouseEnter = (button) => {
-            button.querySelector('.circle-1').classList.add('translate-x-4');
-            button.querySelector('.circle-3').classList.add('-translate-x-4');
-            button.querySelector('.circle-2').classList.add('animate-ping');
-        };
-
-        const handleMouseLeave = (button) => {
-            clearTimeout(button.dataset.timer);
-            button.querySelector('.circle-1').classList.remove('translate-x-4');
-            button.querySelector('.circle-3').classList.remove('-translate-x-4');
-            button.querySelector('.circle-2').classList.remove('animate-ping');
-        };
-
-        const handleClick = (button) => {
-            if (!button.dataset.clicked || button.dataset.clicked === 'false') {
-                button.dataset.clicked = 'true';
-                button.querySelector('.fa-times').classList.remove('hidden');
-                button.querySelector('.fa-times').classList.add('animate-pulse');
-                button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.add('hidden'));
-            } else {
-                button.dataset.clicked = 'false';
-                button.querySelector('.fa-times').classList.add('hidden');
-                button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.remove('hidden'));
-            }
-        };
-
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => handleMouseEnter(button));
-            button.addEventListener('mouseleave', () => handleMouseLeave(button));
-            button.addEventListener('click', () => handleClick(button));
-        });
-
-        function rotateIcon() {
-            var icon = document.getElementById('plus-icon');
-            icon.classList.toggle('rotate-45');
-        }
-        // Action Button
-
-        // Password
-        document.addEventListener("DOMContentLoaded", function() {
-            const togglePassword = document.getElementById("togglePassword");
-            const passwordInput = document.getElementById("passwordInput");
-
-            togglePassword.addEventListener("click", function() {
-                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-                passwordInput.setAttribute("type", type);
-
-                if (type === "password") {
-                    togglePassword.classList.remove("fa-eye-slash");
-                    togglePassword.classList.add("fa-eye");
-                } else {
-                    togglePassword.classList.remove("fa-eye");
-                    togglePassword.classList.add("fa-eye-slash");
-                }
             });
-        });
-        // Password
+            // Sidebar
 
-        // Obeject Load
-        window.addEventListener('scroll', function() {
-            var section = document.getElementById('.section');
-            var button = document.getElementById('button');
 
-            var sectionRect = section.getBoundingClientRect();
+            // Action Button
+            const buttons = document.querySelectorAll('.button');
+
+            const handleMouseEnter = (button) => {
+                button.querySelector('.circle-1').classList.add('translate-x-4');
+                button.querySelector('.circle-3').classList.add('-translate-x-4');
+                button.querySelector('.circle-2').classList.add('animate-ping');
+            };
+
+            const handleMouseLeave = (button) => {
+                clearTimeout(button.dataset.timer);
+                button.querySelector('.circle-1').classList.remove('translate-x-4');
+                button.querySelector('.circle-3').classList.remove('-translate-x-4');
+                button.querySelector('.circle-2').classList.remove('animate-ping');
+            };
+
+            const handleClick = (button) => {
+                if (!button.dataset.clicked || button.dataset.clicked === 'false') {
+                    button.dataset.clicked = 'true';
+                    button.querySelector('.fa-times').classList.remove('hidden');
+                    button.querySelector('.fa-times').classList.add('animate-pulse');
+                    button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.add('hidden'));
+                } else {
+                    button.dataset.clicked = 'false';
+                    button.querySelector('.fa-times').classList.add('hidden');
+                    button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.remove('hidden'));
+                }
+            };
+
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => handleMouseEnter(button));
+                button.addEventListener('mouseleave', () => handleMouseLeave(button));
+                button.addEventListener('click', () => handleClick(button));
+            });
+
+            function rotateIcon() {
+                var icon = document.getElementById('plus-icon');
+                icon.classList.toggle('rotate-45');
+            }
+            // Action Button
+
+            // Password
+            document.addEventListener("DOMContentLoaded", function() {
+                const togglePassword = document.getElementById("togglePassword");
+                const passwordInput = document.getElementById("passwordInput");
+
+                togglePassword.addEventListener("click", function() {
+                    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                    passwordInput.setAttribute("type", type);
+
+                    if (type === "password") {
+                        togglePassword.classList.remove("fa-eye-slash");
+                        togglePassword.classList.add("fa-eye");
+                    } else {
+                        togglePassword.classList.remove("fa-eye");
+                        togglePassword.classList.add("fa-eye-slash");
+                    }
+                });
+            });
+            // Password
+
+            // Obeject Load
+            window.addEventListener('scroll', function() {
+                var section = document.getElementById('.section');
+                var button = document.getElementById('button');
+
+                var sectionRect = section.getBoundingClientRect();
 
                 if (sectionRect.top <= window.innerHeight) {
                     button.classList.remove('hidden');
@@ -618,18 +600,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                     fileInputWrapper.appendChild(btnRemove);
                     fileInputsContainer.appendChild(fileInputWrapper);
 
-                fileInputCount++;
-            });
+                    fileInputCount++;
+                });
 
-            btnAddText.addEventListener('click', function() {
-                const textInputWrapper = document.createElement('div');
-                textInputWrapper.classList.add('flex', 'gap-1');
+                btnAddText.addEventListener('click', function() {
+                    const textInputWrapper = document.createElement('div');
+                    textInputWrapper.classList.add('flex', 'gap-1');
 
-                const newTextInput = document.createElement('input');
-                newTextInput.setAttribute('type', 'text');
-                newTextInput.classList.add('input', 'input-bordered', 'input-success', 'w-full');
-                newTextInput.setAttribute('placeholder', 'Kategori Berita');
-                newTextInput.setAttribute('name', `kategori_berita[]`);
+                    const newTextInput = document.createElement('input');
+                    newTextInput.setAttribute('type', 'text');
+                    newTextInput.classList.add('input', 'input-bordered', 'input-success', 'w-full');
+                    newTextInput.setAttribute('placeholder', 'Kategori Berita');
+                    newTextInput.setAttribute('name', `kategori_berita[]`);
 
                     const btnRemove = document.createElement('button');
                     btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
@@ -686,54 +668,54 @@ input[type="date"]::-webkit-calendar-picker-indicator {
                 });
             });
             // Ekstrakurikuler
-        // Prestasi Siswa
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInputsPrestasi = document.getElementById('fileInputsPrestasi');
-            const btnAddFilePrestasi = document.getElementById('btnAddFilePrestasi');
-            let fileInputPrestasiCount = 1;
+            // Prestasi Siswa
+            document.addEventListener("DOMContentLoaded", function() {
+                const fileInputsPrestasi = document.getElementById('fileInputsPrestasi');
+                const btnAddFilePrestasi = document.getElementById('btnAddFilePrestasi');
+                let fileInputPrestasiCount = 1;
 
-            btnAddFilePrestasi.addEventListener('click', function() {
-                const fileInputPrestasiWrapper = document.createElement('div');
-                fileInputPrestasiWrapper.classList.add('flex', 'gap-1');
+                btnAddFilePrestasi.addEventListener('click', function() {
+                    const fileInputPrestasiWrapper = document.createElement('div');
+                    fileInputPrestasiWrapper.classList.add('flex', 'gap-1');
 
-                const newLabelPrestasi = document.createElement('label');
-                newLabelPrestasi.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
-                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
+                    const newLabelPrestasi = document.createElement('label');
+                    newLabelPrestasi.classList.add('input', 'bg-transparent', 'border-2', 'border-elm',
+                        'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
 
-                const newFileInputPrestasi = document.createElement('input');
-                newFileInputPrestasi.setAttribute('type', 'file');
-                newFileInputPrestasi.classList.add('grow', 'file-input', 'file-input-success',
-                    'border-none', 'bg-transparent', 'py-2');
-                newFileInputPrestasi.setAttribute('placeholder', 'Pilih gambar berita');
-                newFileInputPrestasi.setAttribute('name', `gambar[]`);
+                    const newFileInputPrestasi = document.createElement('input');
+                    newFileInputPrestasi.setAttribute('type', 'file');
+                    newFileInputPrestasi.classList.add('grow', 'file-input', 'file-input-success',
+                        'border-none', 'bg-transparent', 'py-2');
+                    newFileInputPrestasi.setAttribute('placeholder', 'Pilih gambar berita');
+                    newFileInputPrestasi.setAttribute('name', `gambar[]`);
 
-                const btnRemovePrestasi = document.createElement('button');
-                btnRemovePrestasi.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
-                    'btn-remove');
-                btnRemovePrestasi.innerHTML = `<i class='fas fa-times'></i>`;
-                btnRemovePrestasi.addEventListener('click', function() {
-                    fileInputPrestasiWrapper.remove();
+                    const btnRemovePrestasi = document.createElement('button');
+                    btnRemovePrestasi.classList.add('btn', 'btn-square', 'btn-outline', 'btn-success',
+                        'btn-remove');
+                    btnRemovePrestasi.innerHTML = `<i class='fas fa-times'></i>`;
+                    btnRemovePrestasi.addEventListener('click', function() {
+                        fileInputPrestasiWrapper.remove();
+                    });
+
+                    newLabelPrestasi.appendChild(newFileInputPrestasi);
+                    fileInputPrestasiWrapper.appendChild(newLabelPrestasi);
+                    fileInputPrestasiWrapper.appendChild(btnRemovePrestasi);
+                    fileInputsPrestasi.appendChild(fileInputPrestasiWrapper);
+
+                    fileInputPrestasiCount++;
                 });
-
-                newLabelPrestasi.appendChild(newFileInputPrestasi);
-                fileInputPrestasiWrapper.appendChild(newLabelPrestasi);
-                fileInputPrestasiWrapper.appendChild(btnRemovePrestasi);
-                fileInputsPrestasi.appendChild(fileInputPrestasiWrapper);
-
-                fileInputPrestasiCount++;
             });
-        });
-        // Prestasi Siswa
+            // Prestasi Siswa
 
-        // Duplicate input file & text
+            // Duplicate input file & text
 
-        //Rich Text Editor (CKEDITOR5)
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-        //Rich Text Editor (CKEDITOR5)
+            //Rich Text Editor (CKEDITOR5)
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+            //Rich Text Editor (CKEDITOR5)
         </script>
         <script>
             // fungsi checkbox select all
