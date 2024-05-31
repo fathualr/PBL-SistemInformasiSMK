@@ -20,7 +20,7 @@ class carouselsActionController extends Controller
         $validate = $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        $validate['image'] = $request->file('image')->store('image/gambarCarousel', 'public');
+        $validate['image'] = $request->file('image')->store('image/Carousel', 'public');
 
         $status = Carousels::create($validate);
         if($status){

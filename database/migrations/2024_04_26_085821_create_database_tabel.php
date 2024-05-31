@@ -120,7 +120,7 @@ return new class extends Migration
             $table->string('jabatan_pegawai')->notNullable();
             $table->date('TTL_pegawai')->notNullable();
             $table->string('tempat_lahir_pegawai')->notNullable();
-            $table->enum('jenis_kelamin', ['Laki - Laki', 'Wanita'])->nullable();
+            $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan'])->nullable();
             $table->string('no_hp_pegawai')->notNullable();
             $table->string('alamat_pegawai')->notNullable();
             $table->string('gambar_pegawai')->nullable();

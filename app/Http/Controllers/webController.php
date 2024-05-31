@@ -95,46 +95,6 @@ class webController extends Controller
         ]);
     }
 
-    public function guru()
-    {
-        $direktoriGuru = DirektoriGuru::all();
-        $programKeahlian = ProgramKeahlian::all();
-        return view('guest/direktori-guru', [
-            "title" => "Direktori Guru",
-            "direktoriGuru" => $direktoriGuru,
-            "programKeahlian" => $programKeahlian
-        ]);
-    }
-
-    public function pegawai()
-    {
-        $direktoriPegawai = DirektoriPegawai::all();
-        return view('guest/direktori-pegawai', [
-            "title" => "Direktori Pegawai",
-            "direktoriPegawai"=> $direktoriPegawai
-        ]);
-    }
-
-    public function siswa()
-    {
-        $direktoriSiswa = DirektoriSiswa::all();
-        $programKeahlian = ProgramKeahlian::all();  
-        return view('guest/direktori-siswa', [
-            "title" => "Direktori Siswa",
-            "direktoriSiswa" => $direktoriSiswa,
-            "programKeahlian" => $programKeahlian
-        ]);
-    }
-
-    public function alumni()
-    {
-        $direktoriAlumni = DirektoriAlumni::all();
-        return view('guest/direktori-alumni', [
-            "title" => "Direktori Alumni",
-            "direktoriAlumni"=> $direktoriAlumni
-        ]);
-    }
-
     public function foto()
     {
         $albums = Album::where('tipe_album', 'Foto')->paginate(6);

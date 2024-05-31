@@ -46,7 +46,7 @@ class prestasiSiswaController extends Controller
             'gambar.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
-        $gambarPrestasi = $request->file('gambar_prestasi')->store('image/gambarPrestasi', 'public');
+        $gambarPrestasi = $request->file('gambar_prestasi')->store('image/PrestasiHeadline', 'public');
         $validate['gambar_prestasi'] = $gambarPrestasi;
         $prestasi = PrestasiSiswa::create($validate);
 
@@ -54,7 +54,7 @@ class prestasiSiswaController extends Controller
             foreach ($request->file('gambar') as $image){
                 GambarPrestasiSiswa::create([
                     'id_prestasi' => $prestasi->id_prestasi,
-                    'gambar' => $image->store('image/gambarPrestasi', 'public'),
+                    'gambar' => $image->store('image/PrestasiHeadline', 'public'),
                 ]);
             }
         }
@@ -85,7 +85,7 @@ class prestasiSiswaController extends Controller
             // Hapus gambar lama dari penyimpanan sebelum memperbarui dengan gambar yang baru
             Storage::disk('public')->delete($prestasi->gambar_prestasi);
             
-            $gambarPath = $request->file('gambar_prestasi')->store('image/gambarPrestasi', 'public');
+            $gambarPath = $request->file('gambar_prestasi')->store('image/PrestasiHeadline', 'public');
             $validate['gambar_prestasi'] = $gambarPath;
         }
         
@@ -130,7 +130,7 @@ class prestasiSiswaController extends Controller
     
         $status = GambarPrestasiSiswa::create([
             'id_prestasi' => $prestasi->id_prestasi,
-            'gambar' => $image->store('image/gambarPrestasi', 'public'),
+            'gambar' => $image->store('image/Prestasi', 'public'),
         ]);
         if($status){
             return redirect()->back()->with('success', 'Gambar prestasu berhasil ditambahkan.');

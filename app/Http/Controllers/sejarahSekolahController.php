@@ -27,7 +27,7 @@ class SejarahSekolahController extends Controller
             'tanggal_sejarah' => 'required',
         ]);
 
-        $path = $request->file('gambar_sejarah')->store('image/gambarSejarah', 'public');
+        $path = $request->file('gambar_sejarah')->store('image/Sejarah', 'public');
         $validate['gambar_sejarah'] = $path;
         $status = SejarahSekolah::create($validate);
 
@@ -53,7 +53,7 @@ class SejarahSekolahController extends Controller
             if ($sejarahSekolah->gambar_sejarah) {
                 Storage::disk('public')->delete($sejarahSekolah->gambar_sejarah);
             }
-            $path = $request->file('gambar_sejarah')->store('image/gambarSejarah', 'public');
+            $path = $request->file('gambar_sejarah')->store('image/Sejarah', 'public');
             $validate['gambar_sejarah'] = $path;
         }
 
