@@ -14,11 +14,11 @@
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.pengumumanPPDB.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.pengumumanPPDB.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
 
@@ -27,18 +27,20 @@
                 <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
                     <i class="fas fa-magnifying-glass"></i>
                     <input type="text" class="grow w-40" name="search" placeholder="Cari Nama" value="{{ request()->get('search') }}" />
+                    <input type="hidden" name="perPage" value="{{ request()->get('perPage') }}" />
                 </label>
             </form>
         </div>
         <div class="mr-2">
             <form id="updateStatusForm" action="{{ route('admin.pengumumanPPDB.updateBatch') }}" method="POST">
                 @csrf
-                <select name="status" class="select select-bordered">
+                <select name="status" class="select select-bordered w-32">
                     <option value="Diterima">Diterima</option>
                     <option value="Ditolak">Ditolak</option>
                     <option value="Dalam Proses">Dalam Proses</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Update Status</button>
+            </form>
         </div>
     </div>
 </div>
@@ -83,7 +85,7 @@
                             @endif
                         </td>
                     </tr>
-
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -104,43 +106,20 @@
     </div>
 </div>
 
-<dialog id="my_modal_add" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Upload Data</h3>
+<div class="join flex justify-center my-5">
+    @if($forms->previousPageUrl())
+    <a href="{{ $forms->previousPageUrl() }}&search={{ request()->get('search') }}&perPage={{ request()->get('perPage') }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
 
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
+    <button class="join-item btn">Page {{ $forms->currentPage() }}</button>
 
-        <form action="">
-
-            <label
-                class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" class="bg-transparent py-2" name="excel_file" accept=".xlsx, .xls"
-                    placeholder="Upload file Excel" />
-            </label>
-
-            <div class="flex justify-end items-end mt-20 gap-4">
-
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    <i class="fas fa-times"></i>
-                    Reset
-                </button>
-
-                <a href="" class="">
-                    <button type="submit"
-                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                        <i class=" fas fa-plus"></i>
-                        Tambah
-                    </button>
-                </a>
-
-            </div>
+    @if($forms->nextPageUrl())
+    <a href="{{ $forms->nextPageUrl() }}&search={{ request()->get('search') }}&perPage={{ request()->get('perPage') }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
 
 @endsection

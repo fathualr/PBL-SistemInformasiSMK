@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div>
-    <h2 class="text-black font-bold ml-2 mt-2 mb-2">Pendaftaraan PPDB</h2>
+    <h2 class="text-black font-bold text-xl ml-2 mt-2 mb-2">Pendaftaraan PPDB</h2>
 </div>
 
 <div class="flex justify-between items-center">

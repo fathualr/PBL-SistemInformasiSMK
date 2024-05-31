@@ -21,6 +21,8 @@ use App\Models\UmpanBalik;
 use App\Models\SejarahSekolah;
 use App\Models\Prasarana;
 use App\Models\FotoPrasarana;
+use App\Models\CountdownSetting;
+use Carbon\Carbon;
 
 
 class webController extends Controller
@@ -39,7 +41,7 @@ class webController extends Controller
     //     ]);
     // }
 
-        public function program()
+    public function program()
     {
         $programKeahlian = ProgramKeahlian::all();
         return view('guest/program-keahlian', [
@@ -48,7 +50,7 @@ class webController extends Controller
         ]);
     }
 
-        public function detailProgram()
+    public function detailProgram()
     {
         $programKeahlian = ProgramKeahlian::all();
         $capaianPembelajaran = CapaianPembelajaran::all();
@@ -56,29 +58,46 @@ class webController extends Controller
         return view('guest/detail-program', [
             "title" => "Detail Program Keahlian",
             "programKeahlian" => $programKeahlian,
-            "capaianPembelajaran"=> $capaianPembelajaran,
+            "capaianPembelajaran" => $capaianPembelajaran,
             "peluangKerja" => $peluangKerja
         ]);
     }
 
     public function ppdb()
     {
-        $informasi = InformasiPPDB::all();
+        $informasi = InformasiPPDB::first();
         $alurs = AlurPPDB::all();
         $programs = ProgramKeahlian::all();
+        $countdownStart = CountdownSetting::where('key', 'countdown_start')->value('value');
+        $countdownEnd = CountdownSetting::where('key', 'countdown_end')->value('value');
+
+        // Check if countdownStart and countdownEnd are set
+        $countdownStartSet = !is_null($countdownStart);
+        $countdownEndSet = !is_null($countdownEnd);
+
+        $currentDate = Carbon::now();
+        $registrationClosed = !$countdownEndSet || $currentDate->greaterThan(Carbon::parse($countdownEnd));
+
         return view('guest.ppdb', [
             "title" => "Guest PPDB",
             "informasi" => $informasi,
             "alurs" => $alurs,
             "programs" => $programs,
+            "countdownStart" => $countdownStartSet ? $countdownStart : '',
+            "countdownEnd" => $countdownEndSet ? $countdownEnd : '',
+            "registrationClosed" => $registrationClosed,
+            "countdownStartSet" => $countdownStartSet,
+            "countdownEndSet" => $countdownEndSet,
         ]);
     }
+
 
     public function pengumuman(Request $request)
     {
         $search = $request->query('search');
         $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
-    
+        $informasi = InformasiPPDB::first();
+
         // Lakukan pengecekan apakah terdapat query pencarian
         if ($search) {
             // Jika ada, lakukan pencarian berdasarkan nama atau NISN
@@ -88,12 +107,17 @@ class webController extends Controller
                 ->paginate($perPage);
         } else {
             // Jika tidak ada query pencarian, tampilkan semua data
-            $forms = FormPPDB::paginate($perPage);
+            $forms = FormPPDB::orderBy('created_at', 'desc')->paginate($perPage);
         }
-    
+
+        $forms->appends(['search' => $search, 'perPage' => $perPage]);
+
         return view('guest.pengumuman-ppdb', [
             "title" => "Guest Pendaftaran PPDB",
+            "informasi" => $informasi,
             "forms" => $forms,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
@@ -113,14 +137,14 @@ class webController extends Controller
         $direktoriPegawai = DirektoriPegawai::all();
         return view('guest/direktori-pegawai', [
             "title" => "Direktori Pegawai",
-            "direktoriPegawai"=> $direktoriPegawai
+            "direktoriPegawai" => $direktoriPegawai
         ]);
     }
 
     public function siswa()
     {
         $direktoriSiswa = DirektoriSiswa::all();
-        $programKeahlian = ProgramKeahlian::all();  
+        $programKeahlian = ProgramKeahlian::all();
         return view('guest/direktori-siswa', [
             "title" => "Direktori Siswa",
             "direktoriSiswa" => $direktoriSiswa,
@@ -133,7 +157,7 @@ class webController extends Controller
         $direktoriAlumni = DirektoriAlumni::all();
         return view('guest/direktori-alumni', [
             "title" => "Direktori Alumni",
-            "direktoriAlumni"=> $direktoriAlumni
+            "direktoriAlumni" => $direktoriAlumni
         ]);
     }
 
@@ -187,7 +211,7 @@ class webController extends Controller
             'title' => 'Sarana & Prasarana',
             'prasaranas' => $prasaranas,
         ]);
-    }    
+    }
 
     public function saranaPrasaranaTemplate()
     {
@@ -231,12 +255,12 @@ class webController extends Controller
         return view('guest/ekstrakulikuler', [
             "title" => "Ekstrakulikuler",
             "ekstrakulikuler" => $ekstrakulikuler,
-            "direktoriGuru"=> $direktoriGuru
+            "direktoriGuru" => $direktoriGuru
         ]);
     }
 
     public function ekstrakulikulerTemplate($id_ekstrakurikuler)
-    {        
+    {
         $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->findOrFail($id_ekstrakurikuler);
         return view('guest/ekstrakulikuler-template', [
             "title" => "Ekstrakulikuler",

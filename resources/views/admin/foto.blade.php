@@ -2,19 +2,12 @@
 
 @section('main-content')
 <div>
-    <h2 class="text-black font-bold ml-2 mt-2 mb-2">Galeri foto</h2>
+    <h2 class="text-black font-bold text-xl ml-2 mt-2 mb-2">Galeri Foto</h2>
 </div>
 
 <div class="flex flex-col md:flex-row justify-between items-center">
     <div class="w-full md:w-auto mb-2 md:mb-0">
         <button class="btn btn-outline w-full md:w-auto hover:animate-pulse" onclick="my_modal_add.showModal()">Tambahkan foto</button>
-    </div>
-
-    <div class="w-full md:w-auto hidden md:flex">
-        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none w-full">
-            <i class="fas fa-magnifying-glass"></i>
-            <input type="text" class="grow" placeholder="Cari" />
-        </label>
     </div>
 </div>
 
@@ -96,8 +89,8 @@
         <form action="{{ route('admin.foto.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <select name="id_album" class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10">
-                <option disabled>Nama Album || Tipe Album</option>
+            <select name="id_album" class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10" required>
+                <option disabled selected>Nama Album || Tipe Album</option>
                 @foreach($albums as $album)
                 @if($album->tipe_album === 'Foto')
                 <option value="{{ $album->id_album }}">{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
@@ -106,7 +99,7 @@
             </select>
 
             <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" name="tautan_foto" class="grow file-input file-input-success border-none bg-transparent py-2" accept="image/*" placeholder="Logo" />
+                <input type="file" name="tautan_foto" class="grow file-input file-input-success border-none bg-transparent py-2" accept="image/*" placeholder="Logo" required />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
@@ -139,8 +132,8 @@
             @csrf
             @method('PATCH')
 
-            <select name="id_album" class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10">
-                <option disabled>Nama Album || Tipe Album</option>
+            <select name="id_album" class="select border-b-2 border-elm w-full gap-2 mb-5 focus-within:outline-none px-10" required>
+                <option disabled selected>Nama Album || Tipe Album</option>
                 @foreach($albums as $album)
                 @if($album->tipe_album === 'Foto')
                 <option value="{{ $album->id_album }}">{{ $album->nama_album }} || [ {{ $album->tipe_album }} ]</option>
@@ -149,7 +142,7 @@
             </select>
 
             <label class="input bg-transparent border-2 border-elm flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" name="tautan_foto" class="grow file-input file-input-success border-none bg-transparent py-2" accept="image/*" placeholder="Logo" />
+                <input type="file" name="tautan_foto" class="grow file-input file-input-success border-none bg-transparent py-2" accept="image/*" placeholder="Logo" required />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">

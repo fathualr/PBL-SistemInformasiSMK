@@ -3,18 +3,11 @@
 @section('main-content')
 
 <div>
-    <h2 class="text-black font-bold ml-2 mt-2 mb-2">Sarana Prasarana</h2>
+    <h2 class="text-black font-bold text-xl ml-2 mt-2 mb-2">Sarana Prasarana</h2>
 </div>
 <div class="flex flex-col md:flex-row justify-between items-center">
     <div class="w-full md:w-auto mb-2 md:mb-0">
         <button class="btn btn-outline w-full md:w-auto hover:animate-pulse" onclick="my_modal_add.showModal()">Tambahkan Prasarana</button>
-    </div>
-
-    <div class="w-full md:w-auto hidden md:flex">
-        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none w-full">
-            <i class="fas fa-magnifying-glass"></i>
-            <input type="text" class="grow" placeholder="Cari" />
-        </label>
     </div>
 </div>
 

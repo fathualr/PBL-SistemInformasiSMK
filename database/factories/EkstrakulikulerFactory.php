@@ -26,7 +26,7 @@ class EkstrakulikulerFactory extends Factory
         return [
             'id_guru' => $selectedId,
             'nama_ekstrakurikuler' => $this->faker->words(3, true),
-            'deskripsi_ekstrakurikuler' => $this->faker->paragraph,
+            'deskripsi_ekstrakurikuler' => implode("\n\n", $this->faker->paragraphs(5)),
             'tempat_ekstrakurikuler' => $this->faker->address,
             'jadwal_ekstrakurikuler' => $this->faker->dateTimeThisYear(),
             'gambar_profil_ekstrakurikuler' => 'image/albumAlbumFoto/H2FsHTG0nLkHbVaAF2khnWPthPWPvztthySPbAYP.jpg',

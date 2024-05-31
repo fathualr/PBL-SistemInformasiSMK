@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\PeluangKerja::factory(5)->create();
 
         // Seed form_ppdb with 100 entries
-        \App\Models\FormPPDB::factory(100)->create();
+        \App\Models\FormPPDB::factory(500)->create();
 
         // Seed album with 10 entries
         \App\Models\Album::factory(10)->create();
@@ -59,7 +59,19 @@ class DatabaseSeeder extends Seeder
         // Seed kontenwebsite with 10 entries
         \App\Models\KontenWebsite::factory(1)->create();
         
-        // Seed kontenwebsite with 10 entries
+        // Seed sejarahsekolah with 10 entries
         \App\Models\SejarahSekolah::factory(1)->create();
+        
+        // Seed informasippdb with 10 entries
+        \App\Models\InformasiPPDB::factory(1)->create();
+        
+        // Seed alurppdb with 10 entries
+        \App\Models\AlurPPDB::factory(4)->create();
+        
+        // Seed alurppdb with 10 entries
+        \App\Models\KomentarBerita::factory(50)->create();
+        
+        // Seed alurppdb with 10 entries
+        \App\Models\KategoriBerita::factory(5)->create();
     }
 }

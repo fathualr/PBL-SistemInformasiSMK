@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('role');
             $table->timestamps();
         });
+        $this->call(\Database\Seeders\AdminTableSeeder::class);
 
         // Tabel untuk konten_website
         Schema::create('konten_website', function (Blueprint $table) {
@@ -30,15 +31,15 @@ return new class extends Migration
             $table->string('no_telepon_sekolah')->nullable();
             $table->string('email_sekolah')->nullable();
             $table->string('nama_kepala_sekolah')->nullable();
-            $table->text('sejarah')->nullable();
+            $table->longText('sejarah')->nullable();
             $table->string('tautan_video_sejarah')->nullable();
-            $table->text('sambutan')->nullable();
+            $table->longText('sambutan')->nullable();
             $table->string('tautan_video_sambutan')->nullable();
-            $table->text('visi')->nullable();
-            $table->text('misi')->nullable();
+            $table->longText('visi')->nullable();
+            $table->longText('misi')->nullable();
             $table->string('nis')->nullable();
             $table->enum('status_akreditasi_sekolah', ['Belum Terakreditasi', 'Akreditasi A', 'Akreditasi B', 'Akreditasi C'])->nullable();
-            $table->text('struktur_organisasi_sekolah')->nullable();
+            $table->string('struktur_organisasi_sekolah')->nullable();
             $table->string('status_kepemilikan_tanah')->nullable();
             $table->string('tahun_didirikan')->nullable();
             $table->string('tahun_operasional')->nullable();
@@ -50,13 +51,13 @@ return new class extends Migration
             $table->string('status_kepemilikan_bangunan')->nullable();
             $table->string('sisa_lahan_seluruhnya')->nullable();
             $table->string('luas_lahan_keseluruhan')->nullable();
-            $table->text('teks_profile')->nullable();
-            $table->text('teks_fasilitas')->nullable();
-            $table->text('teks_lokasi')->nullable();
-            $table->text('teks_sejarah')->nullable();
-            $table->text('teks_prestasi')->nullable();
+            $table->longText('teks_profile')->nullable();
+            $table->longText('teks_fasilitas')->nullable();
+            $table->longText('teks_lokasi')->nullable();
+            $table->longText('teks_sejarah')->nullable();
+            $table->longText('teks_prestasi')->nullable();
             $table->timestamps();
-        });        
+        });
 
         // Tabel untuk media_sosial
         Schema::create('media_sosial', function (Blueprint $table) {
@@ -71,28 +72,36 @@ return new class extends Migration
             $table->string('google_map')->nullable();
             $table->timestamps();
         });
-        
+
         // Tabel untuk konten_ppdb
         Schema::create('informasi_ppdb', function (Blueprint $table) {
             $table->id('id_ppdb');
-            $table->text('deskripsi_ppdb')->nullable();
+            $table->longText('deskripsi_ppdb')->nullable();
+            $table->longText('deskripsi_pengumuman')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('countdown_settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('key')->unique();
+            $table->timestamp('value');
             $table->timestamps();
         });
 
         // Tabel untuk alur_ppdb
         Schema::create('alur_ppdb', function (Blueprint $table) {
             $table->id('id_alur');
-            $table->text('judul_alur');
+            $table->string('judul_alur');
             $table->date('tanggal_alur');
-            $table->text('deskripsi_alur')->nullable();
+            $table->longText('deskripsi_alur')->nullable();
             $table->timestamps();
         });
 
         // Tabel untuk sejarah_sekolah
         Schema::create('sejarah_sekolah', function (Blueprint $table) {
             $table->id('id_sejarah');
-            $table->text('judul_sejarah')->nullable();
-            $table->text('deskripsi_sejarah')->nullable();
+            $table->string('judul_sejarah')->nullable();
+            $table->longText('deskripsi_sejarah')->nullable();
             $table->date('tanggal_sejarah')->nullable();
             $table->string('gambar_sejarah')->nullable();
             $table->timestamps();
@@ -103,12 +112,12 @@ return new class extends Migration
             $table->id('id_program');
             $table->string('nama_program')->notNullable();
             $table->string('logo_program')->nullable();
-            $table->text('deskripsi_program')->nullable();
-            $table->text('deskripsi_peluang_kerja')->nullable();
-            $table->text('visi_program')->nullable();
-            $table->text('misi_program')->nullable();
-            $table->text('tujuan_program')->nullable();
-            $table->text('sasaran_program')->nullable();
+            $table->longText('deskripsi_program')->nullable();
+            $table->longText('deskripsi_peluang_kerja')->nullable();
+            $table->longText('visi_program')->nullable();
+            $table->longText('misi_program')->nullable();
+            $table->longText('tujuan_program')->nullable();
+            $table->longText('sasaran_program')->nullable();
             $table->timestamps();
         });
 
@@ -307,7 +316,7 @@ return new class extends Migration
             $table->id('id_pesan');
             $table->string('nama_penulis')->notNullable();
             $table->string('email_penulis')->notNullable();
-            $table->text('deskripsi_pesan')->notNullable();
+            $table->longText('deskripsi_pesan')->notNullable();
             $table->timestamp('tanggal_unggah_pesan')->useCurrent();
             $table->timestamps();
         });
@@ -317,7 +326,7 @@ return new class extends Migration
             $table->id('id_prasarana');
             $table->string('nama_prasarana')->notNullable();
             $table->string('jenis_prasarana')->notNullable();
-            $table->string('deskripsi_prasarana')->notNullable();
+            $table->longText('deskripsi_prasarana')->notNullable();
             $table->integer('luas')->notNullable();
             $table->integer('kapasitas')->notNullable();
             $table->date('tahun_dibangun')->notNullable();
@@ -326,7 +335,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('foto_prasarana', function(Blueprint $table){
+        Schema::create('foto_prasarana', function (Blueprint $table) {
             $table->id('id_foto_prasarana');
             $table->unsignedBigInteger('id_prasarana')->notNullable();
             $table->foreign('id_prasarana')->references('id_prasarana')->on('prasarana')->onDelete('cascade');
@@ -403,7 +412,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_berita')->notNullable();
             $table->foreign('id_berita')->references('id_berita')->on('berita')->onDelete('cascade');
             $table->string('nama_komentar')->notNullable();
-            $table->text('teks_komentar')->notNullable();
+            $table->longText('teks_komentar')->notNullable();
             // $table->timestamp('waktu_komentar')->useCurrent();
             $table->timestamps();
 
@@ -439,6 +448,7 @@ return new class extends Migration
         Schema::dropIfExists('dokumen_ppdb');
         Schema::dropIfExists('pengumuman_ppdb');
         Schema::dropIfExists('form_ppdb');
+        Schema::dropIfExists('countdown_settings');
         Schema::dropIfExists('program_keahlian');
         Schema::dropIfExists('gambar_prestasi');
         Schema::dropIfExists('prestasi_siswa');
@@ -456,5 +466,10 @@ return new class extends Migration
         Schema::dropIfExists('kategori_berita');
         Schema::dropIfExists('berita');
         Schema::dropIfExists('carousels');
+    }
+    
+    protected function call($class)
+    {
+        (new $class)->run();
     }
 };
