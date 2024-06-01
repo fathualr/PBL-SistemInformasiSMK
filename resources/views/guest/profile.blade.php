@@ -345,7 +345,7 @@
         <div class="card card-compact w-72 h-80 shadow-xl bg-indigo-500">
             <div class="avatar mx-auto h-28 -translate-y-10">
                 <div class="w-24 h-24 rounded-full">
-                    <img src="{{ asset($prg->logo_program)}}" />
+                    <img src="{{ asset('storage/'.$prg->logo_program)}}" />
                 </div>
             </div>
             <div class="card-body rounded-b-xl h-28 bg-base-100">

@@ -18,15 +18,11 @@ class programKeahlianController extends Controller
         ]);
     }
 
-    public function detailProgram(){
-        $programKeahlian = ProgramKeahlian::all();
-        $capaianPembelajaran = CapaianPembelajaran::all();
-        $peluangKerja = PeluangKerja::all();
+    public function detailProgram($id){
+        $program = ProgramKeahlian::with('capaianPembelajaran', 'peluangKerja')->findOrFail($id);
         return view('guest/program-keahlian-template', [
             "title" => "Detail Program Keahlian",
-            "programKeahlian" => $programKeahlian,
-            "capaianPembelajaran" => $capaianPembelajaran,
-            "peluangKerja" => $peluangKerja
+            "program" => $program
         ]);
     }
     // Perbaiki ^^^

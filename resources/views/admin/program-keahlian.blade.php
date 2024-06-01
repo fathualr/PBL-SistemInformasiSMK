@@ -45,7 +45,7 @@
                 </thead>
                 <tbody>
 
-                    @foreach($programKeahlian as $index => $program)
+                    @foreach($programKeahlian as $key => $program)
                     <tr class="hover">
                         <th class="w-8">{{ ($programKeahlian->currentPage() - 1) * $programKeahlian->perPage() + $key + 1 }}</th>
                         <td class="w-64">{{ $program->nama_program }}</td>

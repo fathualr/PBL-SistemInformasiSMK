@@ -12,18 +12,16 @@ class ekstrakulikulerController extends Controller
 {
     public function ekstrakulikuler()
     {
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->get();
-        $direktoriGuru = DirektoriGuru::all();
+        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->get();
         return view('guest/ekstrakulikuler', [
             "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler,
-            "direktoriGuru"=> $direktoriGuru
+            "ekstrakulikuler" => $ekstrakulikuler
         ]);
     }
 
     public function ekstrakulikulerTemplate($id_ekstrakurikuler)
     {        
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambarEkstrakurikuler")->findOrFail($id_ekstrakurikuler);
+        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->findOrFail($id_ekstrakurikuler);
         return view('guest/ekstrakulikuler-template', [
             "title" => "Ekstrakulikuler",
             "ekstrakulikuler" => $ekstrakulikuler

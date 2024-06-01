@@ -7,10 +7,8 @@
 </div>
 
 <div class="grid grid-cols-3 gap-4 grid-flow-row my-24">
+    
     @foreach ($ekstrakulikuler as $ekskul )
-    @foreach($direktoriGuru as $guru)
-    @if($ekskul->id_guru === $guru->id_guru)
-
     <div class="mx-auto mt-6">
         <a href="/guest/ekstrakulikuler-template/{{ $ekskul->id_ekstrakurikuler }}">
             <div class="card card-compact w-11/12 bg-base-100 shadow-xl">
@@ -23,7 +21,7 @@
                         <tr>
                             <td class="font-bold">Pembimbing</td>
                             <td>:</td>
-                            <td>{{ $guru->nama_guru }}</td>
+                            <td>{{ $ekskul->guru->nama_guru }}</td>
                         </tr>
                         <tr>
                             <td class="font-bold">Tempat</td>
@@ -42,10 +40,8 @@
             </div>
         </a>
     </div>
+    @endforeach
 
-    @endif
-    @endforeach
-    @endforeach
 </div>
 
 @endsection
