@@ -17,7 +17,7 @@
 </div>
 
 <div class="grid grid-cols-4 gap-3 gap-y-10 my-24">
-    @foreach ( $direktoriPegawai as $pegawaiIndex => $pegawai )
+    @foreach ( $direktoriPegawai as $pegawai )
     <div class="mx-auto">
         <button class="hover:scale-110 transition-all duration-300"
             onclick="window['my_modal_view{{ $pegawai->id_pegawai }}'].showModal()">
@@ -142,12 +142,9 @@
                 <!-- Information -->
             </div>
         </div>
-
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
         </form>
-
-
     </dialog>
     @endforeach
 

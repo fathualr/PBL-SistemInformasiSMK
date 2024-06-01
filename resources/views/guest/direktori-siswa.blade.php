@@ -16,7 +16,7 @@
                 Program Keahlian
             </div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-max">
-                @foreach($programKeahlian as $index => $program)
+                @foreach($programKeahlian as $program)
                 <li><a>{{ $program->nama_program }}</a></li>
                 @endforeach
             </ul>
@@ -56,8 +56,6 @@
         </thead>
         <tbody>
             @foreach($direktoriSiswa as $siswa)
-            @foreach($programKeahlian as $program)
-            @if($siswa->id_program === $program->id_program)
             <tr class="hover">
                 <td>
                     <div class="flex justify-start items-start text-start gap-4">
@@ -74,7 +72,7 @@
                     </div>
                 </td>
                 <td>{{ $siswa->alamat_siswa }}</td>
-                <td>{{ $program->nama_program }}</td>
+                <td>{{ $siswa->programKeahlian->nama_program }}</td>
                 <td>{{ $siswa->tahun_angkatan_siswa }}</td>
                 <th>
                     <button class="btn" onclick="window['my_modal_4{{ $siswa->id_siswa }}'].showModal()">
@@ -82,9 +80,6 @@
                     </button>
                 </th>
             </tr>
-
-            @endif
-            @endforeach
             @endforeach
         </tbody>
 
@@ -102,8 +97,6 @@
 <!-- Content -->
 
 @foreach($direktoriSiswa as $siswa)
-@foreach($programKeahlian as $program)
-@if($siswa->id_program === $program->id_program)
 <dialog id="my_modal_4{{ $siswa->id_siswa }}" class="modal">
     <div class="modal-box w-10/12 max-w-5xl">
         <form method="dialog">
@@ -125,7 +118,7 @@
             <div class="flex justify-center items-center">
                 <div class="avatar flex justify-center items-center my-5">
                     <div class="mask mask-squircle w-44 h-44">
-                        <img src="{{ asset($siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
+                        <img src="{{ asset('storage/'.$siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
                     </div>
                 </div>
                 <div class="divider divider-horizontal translate-x-8"></div>
@@ -147,7 +140,7 @@
                     <tr>
                         <td>Program Keahlian</td>
                         <td>:</td>
-                        <td>{{ $program->nama_program }}</td>
+                        <td>{{ $siswa->programKeahlian->nama_program }}</td>
                     </tr>
                     <tr>
                         <td>Tempat, Tanggal Lahir</td>
@@ -180,8 +173,6 @@
         </div>
     </div>
 </dialog>
-@endif
-@endforeach
 @endforeach
 
 @endsection

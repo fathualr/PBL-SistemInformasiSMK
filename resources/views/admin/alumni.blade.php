@@ -48,7 +48,7 @@
 
                     @foreach($direktoriAlumni as $key => $alumni)
                     <tr class="hover">
-                        <th>{{ ($alumni->currentPage() - 1) * $alumni->perPage() + $key + 1 }}</th>
+                        <th>{{ ($direktoriAlumni->currentPage() - 1) * $direktoriAlumni->perPage() + $key + 1 }}</th>
                         <td>
                             <div class="flex justify-center items-center gap-3">
                                 <div class="avatar">

@@ -21,7 +21,7 @@ class direktoriPegawaiController extends Controller
     public function adminPegawai(){
         $pegawai = DirektoriPegawai::paginate(10);
         return view('admin/pegawai', [
-            "title" => "Admin Staff",
+            "title" => "Admin Pegawai",
             "pegawai"=> $pegawai
         ]);
     }

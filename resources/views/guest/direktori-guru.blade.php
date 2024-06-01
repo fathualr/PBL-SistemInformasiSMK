@@ -16,11 +16,9 @@
     </label>
 </div>
 
-<div
-    class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
-    @foreach($direktoriGuru as $guruIndex => $guru)
-    @foreach($programKeahlian as $index => $program)
-    @if($guru->id_program === $program->id_program)
+<div class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
+
+    @foreach($direktoriGuru as $guru)
     <div class="mx-auto">
         <button class="hover:scale-110 transition-all duration-300"
             onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
@@ -31,18 +29,16 @@
                             <img src="{{ asset('storage/'.$guru->gambar_guru) }}" />
                         </div>
                     </div>
-
                     <div class="card-body bg-base-100">
                         <h2 class="text-center font-bold text-xl mt-16 truncate w-48 mx-auto">{{ $guru->nama_guru }}
                         </h2>
-                        <p class="text-center">{{ $program->nama_program }}</p>
+                        <p class="text-center">{{ $guru->programKeahlian->nama_program }}</p>
                         <p class="text-center">{{ $guru->nik_guru }}</p>
                     </div>
                 </div>
             </div>
         </button>
     </div>
-
 
     <dialog id="my_modal_view{{ $guru->id_guru }}" class="modal">
         <div class="modal-box w-10/12 max-w-5xl">
@@ -60,13 +56,12 @@
                 <div class="divider divider-success"></div>
                 <div class="divider"></div>
             </div>
-
             <div class="grid grid-cols-3 my-10">
                 <!-- Photo -->
                 <div class="flex justify-center items-center">
                     <div class="avatar flex justify-center items-center my-5">
                         <div class="mask mask-squircle w-44 h-44">
-                            <img src="{{ asset($guru->gambar_guru) }}" alt="Avatar Tailwind CSS Component" />
+                            <img src="{{ asset('storage/'.$guru->gambar_guru) }}" alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div class="divider divider-horizontal translate-x-8"></div>
@@ -93,7 +88,7 @@
                             <td>Program Keahlian</td>
                             <td>:</td>
                             <td>
-                                {{ $program->nama_program }}
+                                {{ $guru->programKeahlian->nama_program }}
                             </td>
                         </tr>
                         <tr>
@@ -150,15 +145,10 @@
                 <!-- Information -->
             </div>
         </div>
-
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
         </form>
-
-
     </dialog>
-    @endif
-    @endforeach
     @endforeach
 
 </div>

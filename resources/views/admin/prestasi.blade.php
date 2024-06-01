@@ -28,7 +28,7 @@
             <input type="text" class="grow" placeholder="Cari" />
         </label>
     </div>
-    <!-- Search Bar -->
+    <!-- Search Bar --
 
     <!-- Content -->
     <div class="col-span-9 row-start-4 mt-5">

@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class direktoriSiswaController extends Controller
 {
     public function siswa(){
-        $direktoriSiswa = DirektoriSiswa::all();
-        $programKeahlian = ProgramKeahlian::all();  
+        $direktoriSiswa = DirektoriSiswa::with('programKeahlian')->get();
+        $programKeahlian = ProgramKeahlian::all();
         return view('guest/direktori-siswa', [
             "title" => "Direktori Siswa",
             "direktoriSiswa" => $direktoriSiswa,
@@ -19,7 +19,6 @@ class direktoriSiswaController extends Controller
         ]);
     }
 
-    // Perbaiki ^^^
     public function adminSiswa(){
         $siswa = DirektoriSiswa::with('programKeahlian')->paginate(10);
         $programKeahlian = ProgramKeahlian::all();

@@ -11,16 +11,13 @@ class direktoriGuruController extends Controller
 {
     public function guru()
     {
-        $direktoriGuru = DirektoriGuru::all();
-        $programKeahlian = ProgramKeahlian::all();
+        $direktoriGuru = DirektoriGuru::with('programKeahlian')->get();
         return view('guest/direktori-guru', [
             "title" => "Direktori Guru",
-            "direktoriGuru" => $direktoriGuru,
-            "programKeahlian" => $programKeahlian
+            "direktoriGuru" => $direktoriGuru
         ]);
     }
 
-    // Perbaiki ^^^
     public function adminDirektoriGuru(){
         $gurus = DirektoriGuru::with('programKeahlian')->paginate(10);
         $programKeahlian = ProgramKeahlian::all();
@@ -35,12 +32,12 @@ class direktoriGuruController extends Controller
         $validate = $request->validate([
             'id_program' => 'required|exists:program_keahlian,id_program',
             'nama_guru' => 'required|string|max:255',
-            'nik_guru' => 'required|string|max:255|unique:direktori_guru,nik_guru',
+            'nik_guru' => 'required|max:255|unique:direktori_guru,nik_guru',
             'jabatan_guru' => 'required|string|max:255',
             'TTL_guru' => 'required|date',
             'tempat_lahir_guru' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki - Laki,Perempuan',
-            'no_hp_guru' => 'required|string|max:15',
+            'no_hp_guru' => 'required|max:15',
             'alamat_guru' => 'required|string|max:255',
             'gambar_guru' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'status_guru' => 'required|in:Aktif,Cuti,Pensiun,Resign',
@@ -64,12 +61,12 @@ class direktoriGuruController extends Controller
         $validate = $request->validate([
             'id_program' => 'required|exists:program_keahlian,id_program',
             'nama_guru' => 'required|string|max:255',
-            'nik_guru' => 'required|string|max:255|unique:direktori_guru,nik_guru,' . $id_guru . ',id_guru',
+            'nik_guru' => 'required|max:255|unique:direktori_guru,nik_guru,' . $id_guru . ',id_guru',
             'jabatan_guru' => 'required|string|max:255',
             'TTL_guru' => 'required|date',
             'tempat_lahir_guru' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:Laki - Laki,Perempuan',
-            'no_hp_guru' => 'required|string|max:15',
+            'no_hp_guru' => 'required|max:15',
             'alamat_guru' => 'required|string|max:255',
             'gambar_guru' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'status_guru' => 'required|in:Aktif,Cuti,Pensiun,Resign',
