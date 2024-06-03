@@ -7,8 +7,89 @@ use App\Models\Album;
 use App\Models\Foto;
 use App\Models\Video;
 
-class BackendController extends Controller
+class AlbumFotoVideoController extends Controller
 {
+    public function adminAlbum()
+    {
+        $albums = Album::paginate(10); // Mengambil 10 album per halaman
+
+        return view('admin.album', [
+            "title" => "Admin Album",
+            "albums" => $albums // Meneruskan data album ke tampilan
+        ]);
+    }
+
+    public function adminFoto()
+    {
+        // Mengambil semua data foto menggunakan model Foto
+        $fotos = Foto::with('album')->paginate(10);
+        $albums = Album::all();
+
+        // Mengirim data foto ke view 'admin.foto'
+        return view('admin.foto', [
+            "title" => "Admin Foto",
+            "fotos" => $fotos,
+            "albums" => $albums,
+        ]);
+    }
+
+    public function adminVideo()
+    {
+        // Mengambil semua data video menggunakan model Video
+        $videos = Video::with('album')->paginate(10);
+        $albums = Album::all();
+
+        // Mengirim data video ke view 'admin.video'
+        return view('admin.video', [
+            "title" => "Admin Video",
+            "videos" => $videos,
+            "albums" => $albums,
+        ]);
+    }
+
+    public function foto()
+    {
+        $albums = Album::where('tipe_album', 'Foto')->paginate(6);
+
+        return view('guest.foto', [
+            'title' => 'Galeri Foto',
+            'albums' => $albums,
+        ]);
+    }
+
+    public function video()
+    {
+        $albums = Album::where('tipe_album', 'Video')->paginate(6);
+        return view('guest.video', [
+            'title' => 'Galeri Video',
+            'albums' => $albums,
+        ]);
+    }
+
+    public function galeriTemplate($id_album)
+    {
+        $fotos = Foto::where('id_album', $id_album)->paginate(16); // Mengambil semua foto berdasarkan id_album
+        $albums = Album::where('id_album', $id_album)->get();
+
+        return view('guest.galeri-template', [
+            "title" => "Galeri Foto",
+            "fotos" => $fotos, // Meneruskan data foto ke tampilan blade
+            'albums' => $albums,
+        ]);
+    }
+
+    public function galeriTemplateVideo($id_album)
+    {
+        $videos = Video::where('id_album', $id_album)->paginate(6); // Mengambil semua vidio berdasarkan id_album
+        $albums = Album::where('id_album', $id_album)->get();
+
+        return view('guest.galeri-template-video', [
+            "title" => "Galeri Video",
+            "videos" => $videos, // Meneruskan data foto ke tampilan blade
+            'albums' => $albums,
+        ]);
+    }
+
     public function storeAlbum(Request $request)
     {
         // Validasi data jika diperlukan
@@ -51,7 +132,7 @@ class BackendController extends Controller
         $album = Album::findOrFail($id);
 
         if ($request->hasFile('gambar_album')) {
-        
+
             // Simpan foto ke dalam direktori penyimpanan public/fotos dengan nama asli file
             $request->file('gambar_album')->store('image/albumAlbumFoto', 'public');
             // Simpan perubahan
@@ -75,7 +156,6 @@ class BackendController extends Controller
         // Hapus album dari database
         $album->delete();
 
-        // Redirect pengguna ke halaman terkait atau tampilkan pesan sukses
         return redirect()->route('admin.album.index')->with('success', 'Album berhasil dihapus.');
     }
 
@@ -84,48 +164,23 @@ class BackendController extends Controller
         // Validasi request
         $request->validate([
             'id_album' => 'required|exists:album,id_album',
-            'tautan_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan
+            'tautan_foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan, tambahkan .* untuk menandakan array
         ]);
 
-        // Simpan foto ke dalam direktori penyimpanan public/fotos dengan nama asli file
-        $request->file('tautan_foto')->store('image/albumFoto', 'public');
-        // Buat entri baru dalam database
-        Foto::create([
-            'id_album' => $request->id_album,
-            'tautan_foto' => $request->file('tautan_foto')->store('image/albumFoto', 'public'), // Simpan path relatif ke dalam database
-        ]);
+        // Simpan setiap foto ke dalam direktori penyimpanan public/fotos dengan nama asli file
+        foreach ($request->file('tautan_foto') as $foto) {
+            $path = $foto->store('image/albumFoto', 'public');
+
+            // Buat entri baru dalam database
+            Foto::create([
+                'id_album' => $request->id_album,
+                'tautan_foto' => $path, // Simpan path relatif ke dalam database
+            ]);
+        }
 
         return redirect()->route('admin.foto.index')->with('success', 'Foto berhasil ditambahkan.');
     }
 
-    public function updateFoto(Request $request, $id)
-    {
-        // Validasi request
-        $request->validate([
-            'id_album' => 'required|exists:album,id_album', // Pastikan tabel album memiliki nama yang sesuai dengan yang Anda gunakan di sini
-            'tautan_foto' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048', // File gambar hanya diperlukan saat pembaruan dilakukan
-        ]);
-
-        // Temukan foto yang akan diperbarui
-        $foto = Foto::findOrFail($id);
-
-        // Jika ada file gambar yang diunggah, proses pembaruan
-        if ($request->hasFile('tautan_foto')) {
-
-            $request->file('tautan_foto')->store('image/albumFoto', 'public');
-
-            $foto->update([
-                'id_album' => $request->id_album,
-                'tautan_foto' => $request->file('tautan_foto')->store('image/albumFoto', 'public'), // Simpan path relatif ke dalam database
-            ]);
-        } else {
-            $foto->update([
-                'id_album' => $request->id_album,
-            ]);
-        }
-
-        return redirect()->route('admin.foto.index')->with('success', 'Foto berhasil diperbarui.');
-    }
 
     public function destroyFoto($id)
     {
@@ -154,29 +209,6 @@ class BackendController extends Controller
 
         // Redirect atau response yang sesuai
         return redirect()->route('admin.video.index')->with('success', 'Video berhasil ditambahkan');
-    }
-
-    public function updateVideo(Request $request, $id)
-    {
-        // Validasi data yang diterima dari formulir
-        $request->validate([
-            'id_album' => 'required|exists:album,id_album', // Pastikan album tersedia
-            'tautan_video' => 'required|string',
-            // Tambahkan validasi lainnya sesuai kebutuhan
-        ]);
-
-        // Temukan video yang sesuai berdasarkan ID
-        $video = Video::findOrFail($id);
-
-        // Lakukan update data
-        $video->update([
-            'id_album' => $request->id_album,
-            'tautan_video' => $request->tautan_video,
-            // Tambahkan field lainnya jika ada
-        ]);
-
-        // Redirect pengguna ke halaman terkait atau tampilkan pesan sukses
-        return redirect()->route('admin.video.index')->with('success', 'Video berhasil diperbarui.');
     }
 
     public function destroyVideo($id)

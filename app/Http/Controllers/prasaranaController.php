@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Prasarana;
 use App\Models\FotoPrasarana;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PrasaranaController extends Controller
 {
@@ -14,6 +15,15 @@ class PrasaranaController extends Controller
     {
         $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
         return view('admin.saranaPrasarana', [
+            'title' => 'Sarana & Prasarana',
+            'prasaranas' => $prasaranas,
+        ]);
+    }
+
+    public function saranaPrasarana()
+    {
+        $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
+        return view('guest.sarana-prasarana', [
             'title' => 'Sarana & Prasarana',
             'prasaranas' => $prasaranas,
         ]);
@@ -92,13 +102,23 @@ class PrasaranaController extends Controller
     {
         $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
         $fotoPrasaranas = FotoPrasarana::with('prasarana')->paginate(10);
+        $maxPhotosAllowed = 4; // Sesuaikan dengan batas yang diinginkan
+    
+        // Hitung jumlah foto yang sudah ada dalam setiap prasarana
+        $countExistingPhotos = FotoPrasarana::select('id_prasarana', DB::raw('count(*) as total'))
+            ->groupBy('id_prasarana')
+            ->pluck('total', 'id_prasarana')
+            ->toArray(); // Ubah koleksi menjadi array
+    
         return view('admin.fotoPrasarana', [
             "title" => "Sarana & Prasarana",
             "foto_prasaranas" => $fotoPrasaranas,
             'prasaranas' => $prasaranas,
+            'maxPhotosAllowed' => $maxPhotosAllowed,
+            'countExistingPhotos' => $countExistingPhotos, // Sertakan variabel ini
         ]);
     }
-
+    
     public function storeFotoPrasarana(Request $request)
     {
         // Validasi input
@@ -107,16 +127,26 @@ class PrasaranaController extends Controller
             'tautan_foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Menghitung jumlah foto yang sudah ada dalam album
+        $countExistingPhotos = FotoPrasarana::where('id_prasarana', $request->id_prasarana)->count();
+        $maxPhotosAllowed = 4;
+
+        // Memeriksa apakah sudah mencapai batas maksimum foto dalam album
+        if ($countExistingPhotos >= $maxPhotosAllowed) {
+            return redirect()->back()->with('error', 'Album sudah mencapai batas maksimum foto.');
+        }
+
         // Menghandle unggahan gambar
-        $request->file('tautan_foto')->store('image/fotoPrasarana', 'public');
+        $imagePath = $request->file('tautan_foto')->store('image/fotoPrasarana', 'public');
 
         FotoPrasarana::create([
             'id_prasarana' => $request->id_prasarana,
-            'tautan_foto' => $request->file('tautan_foto')->store('image/fotoPrasarana', 'public'),
+            'tautan_foto' => $imagePath,
         ]);
 
         return redirect()->route('admin.FotoPrasarana.index')->with('success', 'Foto prasarana berhasil ditambahkan!');
     }
+
 
     // Method untuk memperbarui foto prasarana
     public function updateFotoPrasarana(Request $request, $id)

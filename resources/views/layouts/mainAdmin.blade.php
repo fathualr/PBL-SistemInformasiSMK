@@ -744,7 +744,19 @@ input[type=number] {
         });
         // Prestasi Siswa
 
-        // Duplicate input file & text
+            //Duplicate foto
+            function duplicateInput() {
+                const container = document.getElementById('imageInputsContainer');
+                const clone = container.firstElementChild.cloneNode(true);
+                container.appendChild(clone);
+                // Show the remove button of the newly added input
+                clone.querySelector('.btn-remove').classList.remove('hidden');
+            }
+
+            function removeInput(btn) {
+                const inputDiv = btn.parentNode.parentNode;
+                inputDiv.parentNode.removeChild(inputDiv);
+            }
 
         //Rich Text Editor (CKEDITOR5)
         ClassicEditor
@@ -754,6 +766,7 @@ input[type=number] {
             });
         //Rich Text Editor (CKEDITOR5)
         </script>
+        
         <script>
         // fungsi checkbox select all
         document.addEventListener('DOMContentLoaded', function() {

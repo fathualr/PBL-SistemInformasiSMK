@@ -7,25 +7,37 @@
 </div>
 <div class="text-center"><Span>{{ $informasi->deskripsi_pengumuman }}</Span></div>
 
-<div class="flex justify-end items-center mt-5">
-    <div class="relative mr-2 hidden md:flex">
-        <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-            <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-            <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-            <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-            <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-            <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
-        </select>
-    </div>
+<div class="flex justify-between items-center mt-5">
 
-    <div class="hidden mr-2 md:flex">
-        <form action="{{ route('guest.pengumuman-ppdb.index') }}" method="GET">
-            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
-                <i class="fas fa-magnifying-glass"></i>
-                <input type="text" class="grow w-72" name="search" placeholder="Cari Nama, NISN" value="{{ request()->get('search') }}" />
-                <input type="hidden" name="perPage" value="{{ request()->get('perPage') }}" />
-            </label>
-        </form>
+    @if($pengumuman_ppdb->tautan_dokumen)
+    <a href="{{ asset('storage/' . $pengumuman_ppdb->tautan_dokumen) }}" target="_blank">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat Dokumen</button>
+    </a>
+    @else
+    <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
+    @endif
+
+
+    <div class="flex items-center">
+        <div class="relative mr-2 hidden md:flex">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+            </select>
+        </div>
+
+        <div class="hidden mr-2 md:flex">
+            <form action="{{ route('guest.pengumuman-ppdb.index') }}" method="GET">
+                <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <input type="text" class="grow w-72" name="search" placeholder="Cari Nama, NISN" value="{{ request()->get('search') }}" />
+                    <input type="hidden" name="perPage" value="{{ request()->get('perPage') }}" />
+                </label>
+            </form>
+        </div>
     </div>
 </div>
 

@@ -21,7 +21,7 @@ class DirektoriPegawaiFactory extends Factory
             'no_hp_pegawai' => $this->faker->phoneNumber,
             'alamat_pegawai' => $this->faker->address,
             'status_pegawai' => $this->faker->randomElement(['Aktif', 'Cuti', 'Pensiun', 'Resign']),
-            'gambar_pegawai' => $this->faker->imageUrl(100, 100, 'people'),
+            'gambar_pegawai' => 'image/gambarPegawai/trBJR5iMRRcma5NX8Tz7Q0ol2WvpNo4nTSDs8R3a.png',
             'email_pegawai' => $this->faker->unique()->safeEmail,
         ];
     }

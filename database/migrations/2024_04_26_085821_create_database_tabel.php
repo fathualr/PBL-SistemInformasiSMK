@@ -233,7 +233,7 @@ return new class extends Migration
         // Tabel untuk pengumuman hasil pendaftaran PPDB
         Schema::create('pengumuman_ppdb', function (Blueprint $table) {
             $table->id('id_pengumuman');
-            $table->string('tautan_dokumen')->notNullable();
+            $table->string('tautan_dokumen')->Nullable();
             $table->timestamps();
         });
 
