@@ -15,7 +15,7 @@ class BeritaFactory extends Factory
         return [
             'judul_berita' => $this->faker->sentence,
             'isi_berita' => $this->faker->paragraphs(3, true),
-            'gambar_headline' => 'image/gambarBeritaHeadline/nMQNVr4BSiA4PWJOVlb8oqPrmCLlGBLnhiTdELFI.png',
+            'gambar_headline' => 'image/BeritaHeadline/Poxs1khJ90rEUgN3vlk9bXjigM6n2ec9QEjqVyej.jpg',
             'tanggal_berita' => Carbon::now(),
         ];
     }

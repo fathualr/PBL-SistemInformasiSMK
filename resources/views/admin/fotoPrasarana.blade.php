@@ -93,7 +93,12 @@
                 <option disabled selected>Nama prasarana || Tipe prasarana</option>
                 @foreach($prasaranas as $prasarana)
                 @if($prasarana->nama_prasarana)
-                <option value="{{ $prasarana->id_prasarana }}">{{ $prasarana->nama_prasarana }} || [ {{ $prasarana->jenis_prasarana }} ]</option>
+                @php
+                $idPrasarana = $prasarana->id_prasarana;
+                $countPhotos = isset($countExistingPhotos[$idPrasarana]) ? $countExistingPhotos[$idPrasarana] : 0;
+                $disabled = $countPhotos >= $maxPhotosAllowed ? 'disabled' : '';
+                @endphp
+                <option value="{{ $idPrasarana }}" {{ $disabled }}>{{ $prasarana->nama_prasarana }} || [ {{ $prasarana->jenis_prasarana }} ]</option>
                 @endif
                 @endforeach
             </select>
@@ -215,4 +220,5 @@
     <button class="join-item btn disabled">»</button>
     @endif
 </div>
+
 @endsection

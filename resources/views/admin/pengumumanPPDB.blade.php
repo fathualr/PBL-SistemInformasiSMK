@@ -6,11 +6,7 @@
     <h2 class="text-black font-bold ml-2 mt-2 mb-2">Pengumuman PPDB</h2>
 </div>
 
-<div class="flex justify-between items-center">
-    <a href="#" class="btn btn-outline w-max hover:animate-pulse">
-        <i class="fas fa-file-excel mr-2"></i>
-        Download Excel
-    </a>
+<div class="flex justify-end items-center">
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
@@ -40,7 +36,6 @@
                     <option value="Dalam Proses">Dalam Proses</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Update Status</button>
-            </form>
         </div>
     </div>
 </div>
@@ -105,6 +100,7 @@
         </div>
     </div>
 </div>
+</form>
 
 <div class="join flex justify-center my-5">
     @if($forms->previousPageUrl())

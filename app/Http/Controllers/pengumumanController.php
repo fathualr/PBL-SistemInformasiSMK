@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FormPPDB;
-use App\Models\PengumumanPPDB;
 
 class PengumumanController extends Controller
 {
@@ -22,7 +21,7 @@ class PengumumanController extends Controller
                 ->paginate($perPage);
         } else {
             // Jika tidak ada query pencarian, tampilkan semua data
-            $forms = FormPPDB::paginate($perPage);
+            $forms = FormPPDB::orderBy('created_at', 'desc')->paginate($perPage);
         }
     
         return view('admin.pengumumanPPDB', [

@@ -90,45 +90,6 @@ class adminController extends Controller
     //     ]);
     // }
 
-    public function adminAlbum()
-    {
-        $albums = Album::paginate(10); // Mengambil 10 album per halaman
-
-        return view('admin.album', [
-            "title" => "Admin Album",
-            "albums" => $albums // Meneruskan data album ke tampilan
-        ]);
-    }
-
-
-    public function adminFoto()
-    {
-        // Mengambil semua data foto menggunakan model Foto
-        $fotos = Foto::with('album')->paginate(10);
-        $albums = Album::all();
-
-        // Mengirim data foto ke view 'admin.foto'
-        return view('admin.foto', [
-            "title" => "Admin Foto",
-            "fotos" => $fotos,
-            "albums" => $albums,
-        ]);
-    }
-
-
-    public function adminVideo()
-    {
-        // Mengambil semua data video menggunakan model Video
-        $videos = Video::with('album')->paginate(10);
-        $albums = Album::all();
-
-        // Mengirim data video ke view 'admin.video'
-        return view('admin.video', [
-            "title" => "Admin Video",
-            "videos" => $videos,
-            "albums" => $albums,
-        ]);
-    }
 
     public function adminPengumumanPPDB()
     {

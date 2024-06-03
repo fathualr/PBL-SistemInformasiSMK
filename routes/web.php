@@ -15,7 +15,7 @@ use App\Http\Controllers\{
     DirektoriPegawaiController,
     DirektoriSiswaController,
     DirektoriAlumniController,
-    BackendController,
+    AlbumFotoVideoController,
     InformasippdbController,
     FormController,
     PengumumanController,
@@ -55,14 +55,14 @@ Route::get('guest/direktori-guru', [direktoriGuruController::class, 'guru']);
 Route::get('guest/direktori-pegawai', [DirektoriPegawaiController::class, 'pegawai']);
 Route::get('guest/direktori-siswa', [DirektoriSiswaController::class, 'siswa']);
 Route::get('guest/direktori-alumni', [direktoriAlumniController::class, 'alumni']);
-Route::get('guest/galeri-foto', [webController::class, 'foto']);
-Route::get('guest/galeri-video', [webController::class, 'video']);
-Route::get('guest/galeri-template/{id_album}', [webController::class, 'galeriTemplate']);
-Route::get('guest/galeri-template-video/{id_album}', [webController::class, 'galeriTemplateVideo']);
-Route::get('guest/ppdb', [webController::class, 'ppdb'])->name('guest.ppdb.index');
+Route::get('guest/galeri-foto', [AlbumFotoVideoController::class, 'foto']);
+Route::get('guest/galeri-video', [AlbumFotoVideoController::class, 'video']);
+Route::get('guest/galeri-template/{id_album}', [AlbumFotoVideoController::class, 'galeriTemplate']);
+Route::get('guest/galeri-template-video/{id_album}', [AlbumFotoVideoController::class, 'galeriTemplateVideo']);
+Route::get('guest/ppdb', [InformasippdbController::class, 'ppdb'])->name('guest.ppdb.index');
 Route::post('guest/ppdb', [formController::class, 'storePPDB'])->name('guest.ppdb.store');
-Route::get('guest/pengumuman-ppdb', [webController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
-Route::get('guest/sarana-prasarana', [webController::class, 'saranaPrasarana']);
+Route::get('guest/pengumuman-ppdb', [InformasippdbController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
+Route::get('guest/sarana-prasarana', [PrasaranaController::class, 'saranaPrasarana']);
 Route::get('guest/prestasi-siswa', [prestasiSiswaController::class, 'index']);
 Route::get('guest/prestasi-siswa-template/{id_prestasi}', [PrestasiSiswaController::class, 'showTemplate']);
 Route::get('guest/berita', [beritaActionController::class, 'show'])->name('berita.show');
@@ -163,21 +163,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     // -----
 
     // Album -----
-    Route::get('album', [adminController::class, 'adminAlbum'])->name('admin.album.index');
-    Route::get('foto', [adminController::class, 'adminFoto'])->name('admin.foto.index');
-    Route::get('video', [adminController::class, 'adminVideo'])->name('admin.video.index');
+    Route::get('album', [AlbumFotoVideoController::class, 'adminAlbum'])->name('admin.album.index');
+    Route::get('foto', [AlbumFotoVideoController::class, 'adminFoto'])->name('admin.foto.index');
+    Route::get('video', [AlbumFotoVideoController::class, 'adminVideo'])->name('admin.video.index');
     // CRUD
-    Route::post('album', [BackendController::class, 'storeAlbum'])->name('admin.album.store');
-    Route::patch('/album/{id}', [BackendController::class, 'updateAlbum'])->name('admin.album.update');
-    Route::delete('/album/{id}', [BackendController::class, 'destroyAlbum'])->name('admin.album.destroy');
+    Route::post('album', [AlbumFotoVideoController::class, 'storeAlbum'])->name('admin.album.store');
+    Route::patch('/album/{id}', [AlbumFotoVideoController::class, 'updateAlbum'])->name('admin.album.update');
+    Route::delete('/album/{id}', [AlbumFotoVideoController::class, 'destroyAlbum'])->name('admin.album.destroy');
     // CRUD foto -----
-    Route::post('foto', [BackendController::class, 'storeFoto'])->name('admin.foto.store');
-    Route::patch('/foto/{id}', [BackendController::class, 'updateFoto'])->name('admin.foto.update');
-    Route::delete('/foto/{id}', [BackendController::class, 'destroyFoto'])->name('admin.foto.destroy');
+    Route::post('foto', [AlbumFotoVideoController::class, 'storeFoto'])->name('admin.foto.store');
+    Route::delete('/foto/{id}', [AlbumFotoVideoController::class, 'destroyFoto'])->name('admin.foto.destroy');
     // CRUD video -----
-    Route::post('video', [BackendController::class, 'storeVideo'])->name('admin.video.store');
-    Route::patch('/video/{id}', [BackendController::class, 'updateVideo'])->name('admin.video.update');
-    Route::delete('/video/{id}', [BackendController::class, 'destroyVideo'])->name('admin.video.destroy');
+    Route::post('video', [AlbumFotoVideoController::class, 'storeVideo'])->name('admin.video.store');
+    Route::delete('/video/{id}', [AlbumFotoVideoController::class, 'destroyVideo'])->name('admin.video.destroy');
     // -----
 
     // PPDB -----
@@ -197,6 +195,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     // CRUD pendaftaran
     Route::delete('pendaftaranPPDB/{id}', [formController::class, 'destroyPendaftaranPPDB'])->name('admin.pendaftaranPPDB.destroy');
     // CRUD pengumuman
+    Route::patch('pengumumanPPDB/{id}', [InformasiPPDBController::class, 'updatePengumumanPPDB'])->name('admin.pengumumanPPDB.update');
     Route::post('pengumumanPPDB/updateBatch', [PengumumanController::class, 'updateBatch'])->name('admin.pengumumanPPDB.updateBatch');
     // CMS countdown
     Route::post('countdown/update', [InformasiPPDBController::class, 'updateCountdown'])->name('admin.countdown.update');

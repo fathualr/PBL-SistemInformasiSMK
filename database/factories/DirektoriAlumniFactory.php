@@ -21,7 +21,7 @@ class DirektoriAlumniFactory extends Factory
             'TTL_alumni' => $this->faker->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
             'tempat_lahir_alumni' => $this->faker->city,
             'tahun_kelulusan_alumni' => $this->faker->numberBetween(2000, 2020),
-            'gambar_alumni' => $this->faker->imageUrl(100, 100, 'people'),
+            'gambar_alumni' => 'image/gambarAlumni/j8RggKktnk9Sq2fC2PvyGXkyxVFPVeCiFDm0xolo.png',
             'alamat_alumni' => $this->faker->address,
         ];
     }

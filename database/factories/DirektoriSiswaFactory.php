@@ -34,7 +34,7 @@ class DirektoriSiswaFactory extends Factory
             'alamat_siswa' => $this->faker->address,
             'kelas_siswa' => $this->faker->randomElement(['X', 'XI', 'XII']),
             'tahun_angkatan_siswa' => $this->faker->numberBetween(2010, 2020),
-            'gambar_siswa' => $this->faker->imageUrl(100, 100, 'people'),
+            'gambar_siswa' => 'image/gambarSiswa/vnCWNHWttyPtxj9bUpYRQUPEkHX7wwJAhhF5yJFg.png',
         ];
     }
 }

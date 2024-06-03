@@ -33,7 +33,7 @@ class DirektoriGuruFactory extends Factory
             'jenis_kelamin' => $this->faker->randomElement(['Laki - laki', 'Perempuan']),
             'no_hp_guru' => $this->faker->phoneNumber,
             'alamat_guru' => $this->faker->address,
-            'gambar_guru' => $this->faker->imageUrl(100, 100, 'logo'),
+            'gambar_guru' => 'image/gambarGuru/j8RggKktnk9Sq2fC2PvyGXkyxVFPVeCiFDm0xolo.png',
             'status_guru' => $this->faker->randomElement(['Aktif', 'Cuti', 'Pensiun', 'Resign']),
             'email_guru' => $this->faker->unique()->safeEmail,
         ];
