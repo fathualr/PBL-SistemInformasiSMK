@@ -7,7 +7,7 @@
 </div>
 
 <div class="grid grid-cols-3 gap-4 grid-flow-row my-24">
-    
+
     @foreach ($ekstrakulikuler as $ekskul )
     <div class="mx-auto mt-6">
         <a href="/guest/ekstrakulikuler-template/{{ $ekskul->id_ekstrakurikuler }}">
@@ -15,7 +15,9 @@
                 <figure class="">
                     <img src="{{ asset('storage/'. $ekskul->gambar_profil_ekstrakurikuler) }}" class="h-64 w-96" alt="Shoes" />
                 </figure>
-                <p class="absolute bottom-28 font-bold ml-5 text-white">{{ $ekskul->nama_ekstrakurikuler }}</p>
+                <div class="px-2 absolute bottom-24 bg-teal-50/70 w-full h-12 flex items-center">
+                    <p class="font-bold text-black">{{ $ekskul->nama_ekstrakurikuler }}</p>
+                </div>
                 <div class="card-body">
                     <table class="">
                         <tr>

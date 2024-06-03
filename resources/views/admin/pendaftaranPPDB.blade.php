@@ -3,10 +3,10 @@
 @section('main-content')
 
 <div>
-    <h2 class="text-black font-bold text-xl ml-2 mt-2 mb-2">Pendaftaraan PPDB</h2>
+    <h2 class="text-black font-bold text-xl mx-5 my-2">Pendaftaraan PPDB</h2>
 </div>
 
-<div class="flex justify-between items-center">
+<div class="flex justify-between items-center mx-5">
     <a href="{{ route('download.excel') }}" class="btn btn-outline w-max hover:animate-pulse">
         <i class="fas fa-file-excel mr-2"></i>
         Download Excel
@@ -15,11 +15,16 @@
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 10]) }}"
+                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 25]) }}"
+                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 50]) }}"
+                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 75]) }}"
+                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 100]) }}"
+                    {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
 
@@ -61,10 +66,12 @@
                         <td class="w-8 p-2 hidden md:table-cell">
                             @if($form_ppdb->tautan_dokumen)
                             <a href="{{ asset('storage/' . $form_ppdb->tautan_dokumen) }}" target="_blank">
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat Dokumen</button>
+                                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat
+                                    Dokumen</button>
                             </a>
                             @else
-                            <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
+                            <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak
+                                ada dokumen</button>
                             @endif
                         </td>
 
@@ -76,15 +83,18 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_view_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -120,7 +130,7 @@
         <h3 class="font-bold text-lg">Info Detail Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
@@ -279,10 +289,12 @@
                             <td class="w-8">
                                 @if($form_ppdb->tautan_dokumen)
                                 <a href="{{ asset('storage/' . $form_ppdb->tautan_dokumen) }}" target="_blank">
-                                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat Dokumen</button>
+                                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Lihat
+                                        Dokumen</button>
                                 </a>
                                 @else
-                                <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
+                                <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed"
+                                    disabled>Tidak ada dokumen</button>
                                 @endif
                             </td>
                         </tr>
@@ -291,6 +303,9 @@
             </div>
         </div>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 
 <dialog id="my_modal_delete_{{ $form_ppdb->id_pendaftaran }}" class="modal">
@@ -301,21 +316,25 @@
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-error"></div>
             <div class="divider"></div>
         </div>
         <form action="{{ route('admin.pendaftaranPPDB.destroy', $form_ppdb->id_pendaftaran) }}" method="post">
             @csrf
             @method('DELETE')
-            Apakah Anda Yakin Ingin Menghapus Data Ini ?
+            <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>
             </div>
         </form>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 @endforeach
 

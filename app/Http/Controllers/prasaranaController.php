@@ -15,7 +15,7 @@ class PrasaranaController extends Controller
     {
         $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
         return view('admin.saranaPrasarana', [
-            'title' => 'Sarana & Prasarana',
+            'title' => 'Admin Sarana & Prasarana',
             'prasaranas' => $prasaranas,
         ]);
     }
@@ -103,22 +103,22 @@ class PrasaranaController extends Controller
         $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
         $fotoPrasaranas = FotoPrasarana::with('prasarana')->paginate(10);
         $maxPhotosAllowed = 4; // Sesuaikan dengan batas yang diinginkan
-    
+
         // Hitung jumlah foto yang sudah ada dalam setiap prasarana
         $countExistingPhotos = FotoPrasarana::select('id_prasarana', DB::raw('count(*) as total'))
             ->groupBy('id_prasarana')
             ->pluck('total', 'id_prasarana')
             ->toArray(); // Ubah koleksi menjadi array
-    
+
         return view('admin.fotoPrasarana', [
-            "title" => "Sarana & Prasarana",
+            "title" => "Gambar Sarana & Prasarana",
             "foto_prasaranas" => $fotoPrasaranas,
             'prasaranas' => $prasaranas,
             'maxPhotosAllowed' => $maxPhotosAllowed,
             'countExistingPhotos' => $countExistingPhotos, // Sertakan variabel ini
         ]);
     }
-    
+
     public function storeFotoPrasarana(Request $request)
     {
         // Validasi input
