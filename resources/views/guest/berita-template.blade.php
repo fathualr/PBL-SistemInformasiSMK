@@ -6,7 +6,7 @@
     <div class="col-span-2">
         <!-- Image -->
         <div class="col-span-2 my-5 w-full">
-            <img class="w-[55rem] h-[25rem] rounded-xl mx-auto" src="{{ asset('image/tester.png') }}" alt="Nama Gambar">
+            <img class="w-[55rem] h-[25rem] rounded-xl mx-auto" src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Nama Gambar">
         </div>
         <!-- Image -->
 
@@ -48,29 +48,18 @@
             </p>
 
             <div class="relative w-full overflow-hidden my-10">
-                <div class="flex transition-transform duration-500" id="slider" style="width: 300%;">
-                    <div class="w-full grid grid-cols-2 justify-center items-center">
-                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="my_modal_view.showModal()">
-                            <img src="{{ asset('image/tester.png') }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image 1">
+                <div class="flex transition-transform duration-500" id="slider" style="width: 100%;">
+                    @if($berita->gambar->isNotEmpty())
+                    @foreach ($berita->gambar->chunk(2) as $chunk)
+                    <div class="w-full grid grid-cols-2 justify-center items-center" style="min-width: 100%;">
+                        @foreach ($chunk as $gambar)
+                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="window['my_modal_view{{ $gambar->id_gambar }}'].showModal()">
+                            <img src="{{ asset('storage/'. $gambar->tautan_gambar) }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image {{ $gambar->berita_id }}">
                         </button>
-                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="my_modal_view.showModal()">
-                            <img src="{{ asset('image/tester.png') }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image 1">
-                        </button>
+                        @endforeach
                     </div>
-                    <div class="w-full grid grid-cols-2 justify-center items-center">
-                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="my_modal_view.showModal()">
-                            <img src="{{ asset('image/tester.png') }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image 1">
-                        </button><button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="my_modal_view.showModal()">
-                            <img src="{{ asset('image/tester.png') }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image 1">
-                        </button>
-                    </div>
-                    <div class="w-full grid grid-cols-2 justify-center items-center">
-                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="my_modal_view.showModal()">
-                            <img src="{{ asset('image/tester.png') }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image 1">
-                        </button><button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="my_modal_view.showModal()">
-                            <img src="{{ asset('image/tester.png') }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image 1">
-                        </button>
-                    </div>
+                    @endforeach
+                    @endif
                 </div>
                 <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center" onclick="prevSlide()">
                     <i class="fas fa-angle-left text-white"></i>
@@ -83,67 +72,29 @@
         <!-- Text -->
     </div>
 
-    <dialog id="my_modal_view" class="modal">
+    @foreach ($berita->gambar as $gambar)
+    <dialog id="my_modal_view{{ $gambar->id_gambar}}" class="modal">
         <div class="modal-box w-11/12 max-w-7xl bg-transparent shadow-none p-5">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute -top-1 -right-0">
                     <i class="fas fa-times text-2xl text-white"></i>
                 </button>
             </form>
-            <img src="{{ asset('image/tester.png') }}" class="w-11/12 h-1/2 object-cover rounded-sm mx-auto" alt="Image 1">
+            <img src="{{ asset('storage/'. $gambar->tautan_gambar) }}" class="w-11/12 h-1/2 object-cover rounded-sm mx-auto" alt="Image 1">
         </div>
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
         </form>
     </dialog>
+    @endforeach
 
     <!-- Side -->
     <div class="col-start-3 ">
         <h2 class="font-bold text-xl ml-10 my-5">Berita Terbaru</h2>
-
         <div class="grid grid-rows-3 grid-flow-row ml-10 gap-4">
 
             <div class="card w-68 h-64 bg-base-100 shadow-xl mx-auto">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
-                </figure>
-                <div class="card-body h-20 p-5">
-                    <div class="grid grid-cols-2 justify-center items-end">
-                        <div class="w-full">
-                            <h2 class="font-bold text-lg truncate w-32">
-                                {{ $berita->judul_berita }}
-                            </h2>
-                        </div>
-                        <div class="flex justify-end items-end">
-                            <span class="badge gap-4 text-sm bg-transparent border-none">
-                                <i class="far fa-message"></i>
-                                12.5K
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card w-68 h-64 bg-base-100 shadow-xl mx-auto">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
-                </figure>
-                <div class="card-body h-20 p-5">
-                    <div class="grid grid-cols-2 justify-center items-end">
-                        <div class="w-full">
-                            <h2 class="font-bold text-lg truncate w-32">
-                                {{ $berita->judul_berita }}
-                            </h2>
-                        </div>
-                        <div class="flex justify-end items-end">
-                            <span class="badge gap-4 text-sm bg-transparent border-none">
-                                <i class="far fa-message"></i>
-                                12.5K
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card w-68 h-64 bg-base-100 shadow-xl mx-auto">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+                <figure><img src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Shoes" />
                 </figure>
                 <div class="card-body h-20 p-5">
                     <div class="grid grid-cols-2 justify-center items-end">
@@ -239,7 +190,6 @@
 </div>
 <!-- Show Others Comments -->
 
-
 <script>
     let currentIndex = 0;
     let autoSlideInterval;
@@ -257,7 +207,7 @@
             currentIndex = index;
         }
 
-        slider.style.transform = `translateX(-${currentIndex * 100 / totalSlides}%)`;
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
     function nextSlide() {
@@ -281,10 +231,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         showSlide(currentIndex);
         startAutoSlide();
-    });
 
-    document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
-    document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+        document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
+        document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+    });
 </script>
 
 @endsection

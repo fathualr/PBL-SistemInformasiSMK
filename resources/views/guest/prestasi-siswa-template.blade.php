@@ -25,8 +25,8 @@
         <div class="relative w-full overflow-hidden my-10">
             <div class="flex transition-transform duration-500" id="slider">
                 @if($PrestasiSiswa->gambar->isNotEmpty())
-                @foreach ($PrestasiSiswa->gambar->chunk(2) as $chunk)
-                <div class="w-full grid grid-cols-2 justify-center items-center" style="min-width: 100%;">
+                @foreach ($PrestasiSiswa->gambar->chunk(4) as $chunk)
+                <div class="w-full grid grid-cols-4 justify-center items-center" style="min-width: 100%;">
                     @foreach ($chunk as $gambar)
                     <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="window['my_modal_view{{ $gambar->id_gambar }}'].showModal()">
                         <img src="{{ asset('storage/'. $gambar->gambar) }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image {{ $gambar->id_gambar }}">
@@ -113,5 +113,4 @@
         document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
     });
 </script>
-
 @endsection
