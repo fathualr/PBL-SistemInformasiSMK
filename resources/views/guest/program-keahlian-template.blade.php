@@ -154,7 +154,6 @@
 </p>
 
 <div class="grid grid-cols-9 gap-2 my-10 bg-slate-200">
-
     @forelse ($program->peluangKerja as $peluang)
     <div class="col-span-3 my-10 mx-auto">
         <div class="card w-96 h-96 bg-base-100 shadow-xl rounded-none">

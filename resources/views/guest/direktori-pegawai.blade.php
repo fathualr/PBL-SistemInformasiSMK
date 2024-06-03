@@ -9,9 +9,7 @@
     <label class="input input-bordered flex justify-between items-center gap-2">
         <input type="text" class="grow" placeholder="Cari Pegawai" />
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-            <path fill-rule="evenodd"
-                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
         </svg>
     </label>
 </div>
@@ -19,11 +17,10 @@
 <div class="grid grid-cols-4 gap-3 gap-y-10 my-24">
     @foreach ( $direktoriPegawai as $pegawai )
     <div class="mx-auto">
-        <button class="hover:scale-110 transition-all duration-300"
-            onclick="window['my_modal_view{{ $pegawai->id_pegawai }}'].showModal()">
+        <button class="hover:scale-110 transition-all duration-300" onclick="window['my_modal_view{{ $pegawai->id_pegawai }}'].showModal()">
             <div class="card card-compact w-64 h-80 shadow-xl">
                 <div class="h-2/5 bg-indigo-600 rounded-t-lg">
-                    <div class=" avatar mx-auto h-28 translate-y-[4rem] translate-x-16">
+                    <div class=" avatar mx-auto h-28 translate-y-[4rem]">
                         <div class="w-32 h-32 rounded-full">
                             <img src="{{ asset('storage/'.$pegawai->gambar_pegawai) }}" />
                         </div>
@@ -64,8 +61,7 @@
                 <div class="flex justify-center items-center">
                     <div class="avatar flex justify-center items-center my-5">
                         <div class="mask mask-squircle w-44 h-44">
-                            <img src="{{ asset('storage/'.$pegawai->gambar_pegawai) }}"
-                                alt="Avatar Tailwind CSS Component" />
+                            <img src="{{ asset('storage/'.$pegawai->gambar_pegawai) }}" alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div class="divider divider-horizontal translate-x-8"></div>

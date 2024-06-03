@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 shadow-lg px-4 rounded-md">
 
     @include('shared.success-message')
     @include('shared.error-message')
@@ -11,7 +11,7 @@
     </div>
 
     <!-- Search Bar -->
-    <div class="col-span-2 col-start-7 row-start-3">
+    <div class="col-span-2 col-start-7 row-start-2">
         <label class="input input-bordered flex items-center gap-2  focus-within:outline-none">
             <i class="fas fa-magnifying-glass"></i>
             <input type="text" class="grow" placeholder="Cari" />
@@ -22,7 +22,7 @@
     <!-- Content -->
     <div class="col-span-9 row-start-4">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -46,19 +46,17 @@
                         </td>
                         <td>{{ $umpan->created_at }}</td>
                         <td>
-                            <details class="dropdown dropdown-right">
+                            <details class="dropdown">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['my_modal_view{{ $umpan->id_pesan }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $umpan->id_pesan }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -66,8 +64,7 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['my_modal_delete{{ $umpan->id_pesan }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $umpan->id_pesan }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -92,17 +89,17 @@
             </table>
 
             <!-- Pagination -->
-            <div class="flex justify-center my-5 gap-2">
+            <div class="join flex justify-center my-5">
                 @if($umpanBalik->previousPageUrl())
-                <a href="{{ $umpanBalik->previousPageUrl() }}" class="btn">«</a>
+                <a href="{{ $umpanBalik->previousPageUrl() }}" class="join-item btn">«</a>
                 @else
-                <button class="btn disabled">«</button>
+                <button class="join-item btn disabled">«</button>
                 @endif
-                <button class="btn">Page {{ $umpanBalik->currentPage() }}</button>
+                <button class="join-item btn">Page {{ $umpanBalik->currentPage() }}</button>
                 @if($umpanBalik->nextPageUrl())
-                <a href="{{ $umpanBalik->nextPageUrl() }}" class="btn">»</a>
+                <a href="{{ $umpanBalik->nextPageUrl() }}" class="join-item btn">»</a>
                 @else
-                <button class="btn disabled">»</button>
+                <button class="join-item btn disabled">»</button>
                 @endif
             </div>
 
@@ -121,7 +118,7 @@
         <h3 class="font-bold text-lg">Detail Umpan balik</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
         <div class="grid grid-cols-2 gap-5">
@@ -130,9 +127,7 @@
                     <div class="label">
                         <span class="label-text">Nama</span>
                     </div>
-                    <input type="text" placeholder="Masukkan Nama"
-                        class="input input-bordered w-full" name="nama_penulis"
-                        value="{{ $umpan->nama_penulis }}" readonly />
+                    <input type="text" placeholder="Masukkan Nama" class="input border-2 border-blue-400 w-full" name="nama_penulis" value="{{ $umpan->nama_penulis }}" readonly />
                 </label>
             </div>
             <div class="col-span-1">
@@ -140,9 +135,7 @@
                     <div class="label">
                         <span class="label-text">Email</span>
                     </div>
-                    <input type="text" placeholder="example@gmail.com"
-                        class="input input-bordered w-full" name="email_penulis"
-                        value="{{ $umpan->email_penulis }}" readonly />
+                    <input type="text" placeholder="example@gmail.com" class="input border-2 border-blue-400 w-full" name="email_penulis" value="{{ $umpan->email_penulis }}" readonly />
                 </label>
             </div>
             <div class="col-span-2">
@@ -150,9 +143,7 @@
                     <div class="label">
                         <span class="label-text">Isi Pesan</span>
                     </div>
-                    <textarea class="textarea textarea-bordered h-48"
-                        placeholder="Ketikkan Komentar Disini" name="deskripsi_pesan"
-                        readonly>{{ $umpan->deskripsi_pesan }}</textarea>
+                    <textarea class="textarea border-2 border-blue-400 h-48" placeholder="Ketikkan Komentar Disini" name="deskripsi_pesan" readonly>{{ $umpan->deskripsi_pesan }}</textarea>
                 </label>
             </div>
         </div>

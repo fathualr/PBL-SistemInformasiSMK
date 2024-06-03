@@ -20,7 +20,7 @@ class ekstrakulikulerController extends Controller
     }
 
     public function ekstrakulikulerTemplate($id_ekstrakurikuler)
-    {        
+    {
         $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->findOrFail($id_ekstrakurikuler);
         return view('guest/ekstrakulikuler-template', [
             "title" => "Ekstrakulikuler",
@@ -29,17 +29,19 @@ class ekstrakulikulerController extends Controller
     }
 
     // Perbaiki ^^^
-    public function adminEkstrakulikuler(){
+    public function adminEkstrakulikuler()
+    {
         $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->paginate(10);
         $gurus = DirektoriGuru::all();
         return view('admin/ekstrakulikuler', [
             "title" => "Admin Ekstrakulikuler",
             "ekstrakulikuler" => $ekstrakulikuler,
-            "gurus"=> $gurus
+            "gurus" => $gurus
         ]);
     }
 
-    public function storeEkstrakulikuler(Request $request){
+    public function storeEkstrakulikuler(Request $request)
+    {
         $validate = $request->validate([
             'id_guru' => 'nullable|exists:direktori_guru,id_guru',
             'nama_ekstrakurikuler' => 'required|string|max:255',
@@ -71,7 +73,8 @@ class ekstrakulikulerController extends Controller
         }
     }
 
-    public function updateEkstrakulikuler(Request $request, $id_ekstrakurikuler){
+    public function updateEkstrakulikuler(Request $request, $id_ekstrakurikuler)
+    {
         $ekstrakurikuler = Ekstrakulikuler::findOrFail($id_ekstrakurikuler);
 
         $validate = $request->validate([
@@ -83,7 +86,7 @@ class ekstrakulikulerController extends Controller
             'gambar_profil_ekstrakurikuler' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'gambar_ekstrakurikuler.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
-    
+
         if ($request->hasFile('gambar_profil_ekstrakurikuler')) {
             if ($ekstrakurikuler->gambar_profil_ekstrakurikuler) {
                 Storage::disk('public')->delete($ekstrakurikuler->gambar_profil_ekstrakurikuler);
@@ -91,16 +94,17 @@ class ekstrakulikulerController extends Controller
             $path = $request->file('gambar_profil_ekstrakurikuler')->store('image/EkstrakurikulerHeadline', 'public');
             $validate['gambar_profil_ekstrakurikuler'] = $path;
         }
-    
+
         $status = $ekstrakurikuler->update($validate);
-        if($status){
+        if ($status) {
             return redirect()->back()->with('success', 'Ekstrakurikuler berhasil diperbarui!');
         } else {
             return redirect()->back()->with('error', 'Ekstrakurikuler gagal diperbarui!');
         }
     }
 
-    public function destroyEkstrakulikuler($id_ekstrakurikuler){
+    public function destroyEkstrakulikuler($id_ekstrakurikuler)
+    {
         $ekstrakurikuler = Ekstrakulikuler::findOrFail($id_ekstrakurikuler);
 
         if ($ekstrakurikuler->gambar_profil_ekstrakurikuler) {
@@ -120,32 +124,34 @@ class ekstrakulikulerController extends Controller
         }
     }
 
-    public function updateGambarEkstrakurikuler(Request $request, $id_ekstrakurikuler) {
+    public function updateGambarEkstrakurikuler(Request $request, $id_ekstrakurikuler)
+    {
         $ekstrakurikuler = Ekstrakulikuler::findOrFail($id_ekstrakurikuler);
 
         $request->validate([
             'gambar_ekstrakurikuler' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-    
+
         $image = $request->file('gambar_ekstrakurikuler');
         $status = GambarEkstrakurikuler::create([
             'id_ekstrakurikuler' => $ekstrakurikuler->id_ekstrakurikuler,
             'gambar_ekstrakurikuler' => $image->store('image/Ekstrakurikuler', 'public'),
         ]);
-        if($status){
+        if ($status) {
             return redirect()->back()->with('success', 'Gambar ekstrakurikuler berhasil ditambahkan!');
         } else {
             return redirect()->back()->with('error', 'Gambar ekstrakurikuler gagal ditambahkan!');
         }
     }
 
-    public function destroyGambarEkstrakurikuler($id_gambar_ekstrakurikuler){
+    public function destroyGambarEkstrakurikuler($id_gambar_ekstrakurikuler)
+    {
         $gambarEkstrakurikuler = GambarEkstrakurikuler::findOrFail($id_gambar_ekstrakurikuler);
 
         if ($gambarEkstrakurikuler->gambar_ekstrakurikuler) {
             Storage::disk('public')->delete($gambarEkstrakurikuler->gambar_ekstrakurikuler);
         }
-    
+
         $status = $gambarEkstrakurikuler->delete();
         if ($status) {
             return redirect()->back()->with('success', 'Gambar ekstrakurikuler berhasil dihapus!');

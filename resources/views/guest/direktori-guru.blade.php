@@ -16,7 +16,8 @@
     </label>
 </div>
 
-<div class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
+<div
+    class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
 
     @foreach($direktoriGuru as $guru)
     <div class="mx-auto">
@@ -53,7 +54,7 @@
             </h3>
             <div class="grid grid-cols-8 w-[32rem] -mt-5">
                 <div class="divider"></div>
-                <div class="divider divider-success"></div>
+                <div class="divider divider-primary"></div>
                 <div class="divider"></div>
             </div>
             <div class="grid grid-cols-3 my-10">

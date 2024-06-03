@@ -9,13 +9,13 @@ use Illuminate\Support\Carbon;
 class BeritaFactory extends Factory
 {
     protected $model = Berita::class;
-    
+
     public function definition()
     {
         return [
             'judul_berita' => $this->faker->sentence,
             'isi_berita' => $this->faker->paragraphs(3, true),
-            'gambar_headline' => 'image/gambarBeritaHeadline/nMQNVr4BSiA4PWJOVlb8oqPrmCLlGBLnhiTdELFI.png',
+            'gambar_headline' => 'image/gambarBeritaHeadline/bos4L3b3tggFzCV1wcvTA2EgrmPMeT0dsk2QjHvC.png',
             'tanggal_berita' => Carbon::now(),
         ];
     }

@@ -33,7 +33,8 @@
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                    <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}" class="h-5 w-5" alt="logo_sekolah">
+                    <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}"
+                        class="h-5 w-5" alt="logo_sekolah">
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content text-black mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -116,7 +117,8 @@
                     class="avatar-group -space-x-6 rtl:space-x-reverse hidden laptop:flex translate-x-7 items-center md:ml-auto sm:ml-0">
                     <div class="avatar lg:mx-auto">
                         <div class="w-12">
-                            <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}" class="h-5 w-5" alt="logo_sekolah">
+                            <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}"
+                                class="h-5 w-5" alt="logo_sekolah">
                         </div>
                     </div>
                 </div>
@@ -239,7 +241,8 @@
                 @if ($key === 0)
                 <div class="absolute inset-0 flex justify-center items-center">
                     <div class="p-4 text-white text-center w-[30rem]">
-                        <p class="text-2xl font-bold">Halaman {{ $title }} {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!} </p>
+                        <p class="text-2xl font-bold">Halaman {{ $title }} {!! empty($konten->nama_sekolah) ? '
+                        <p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!} </p>
                     </div>
                 </div>
                 @endif
@@ -261,7 +264,8 @@
             <div class="avatar-group -space-x-6 rtl:space-x-reverse">
                 <div class="avatar">
                     <div class="w-12">
-                        <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}" class="h-5 w-5" alt="logo_sekolah">
+                        <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}"
+                            class="h-5 w-5" alt="logo_sekolah">
                     </div>
                 </div>
             </div>
@@ -270,7 +274,8 @@
             </path>
             </svg>
             <p>
-                {!! empty($konten->alamat_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->alamat_sekolah !!}
+                {!! empty($konten->alamat_sekolah) ? '
+            <p class="text-red-500 italic">$NULL</p>' : $konten->alamat_sekolah !!}
             </p>
         </aside>
         <nav>

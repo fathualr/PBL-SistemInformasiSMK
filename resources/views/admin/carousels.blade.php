@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 shadow-lg rounded-md px-4">
 
     @include('shared.success-message')
     @include('shared.error-message')
@@ -44,8 +44,7 @@
                                 <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                 <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                             </summary>
-                            <ul tabindex="0"
-                                class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                            <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <!-- View -->
                                 <li>
                                     <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -80,23 +79,23 @@
                 </tr>
             </tfoot>
         </table>
-        
+
         <!-- Pagination -->
-        <div class="flex justify-center my-5 gap-2">
+        <div class="join flex justify-center my-5">
             @if($carousel->previousPageUrl())
-            <a href="{{ $carousel->previousPageUrl() }}" class="btn">«</a>
+            <a href="{{ $carousel->previousPageUrl() }}" class="join-item btn">«</a>
             @else
-            <button class="btn disabled">«</button>
+            <button class="join-item btn disabled">«</button>
             @endif
 
-            <button class="btn">Page {{ $carousel->currentPage() }}</button>
+            <button class="join-item btn">Page {{ $carousel->currentPage() }}</button>
 
             @if($carousel->nextPageUrl())
-            <a href="{{ $carousel->nextPageUrl() }}" class="btn">»</a>
+            <a href="{{ $carousel->nextPageUrl() }}" class="join-item btn">»</a>
             @else
-            <button class="btn disabled">»</button>
+            <button class="join-item btn disabled">»</button>
             @endif
-        </div>  
+        </div>
 
     </div>
     <!-- Content -->
@@ -111,7 +110,7 @@
 
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
@@ -120,9 +119,15 @@
             @csrf
             @method('POST')
             <div class="label">
-                <span class="label-text">Gambar:</span>
+                <span class="label-text">Gambar :</span>
             </div>
-            <input type="file" class="file-input file-input-bordered file-input-success w-full" name="image" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="file" name="image" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
+                    file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" required />
+            </label>
             <div class="flex justify-end items-end mt-5 gap-4">
                 <button type="reset"
                     class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
@@ -135,8 +140,9 @@
                     Tambah
                 </button>
             </div>
-        </form>
-        <!--END Form CREATE admin-->
+    </div>
+    </form>
+    <!--END Form CREATE admin-->
 
     </div>
 </dialog>
@@ -150,7 +156,7 @@
         <h3 class="font-bold text-lg">Info Detail Carousel</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
         <div class="flex justify-center">
@@ -159,7 +165,7 @@
     </div>
 </dialog>
 
-<dialog id="my_modal_delete_{{ $crs->id_carousel }}" class="modal">
+<dialog id="my_modal_delete_{{ $crs->id_carousels }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -167,13 +173,14 @@
         <h3 class="font-bold text-lg">Hapus Carousel</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-error"></div>
             <div class="divider"></div>
         </div>
         <form action="{{ route('carousels.destroy', $crs->id_carousels) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('DELETE')
-            Apakah Anda Yakin Ingin Menghapus Data Ini ?
+            <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus
+                Data Ini ?</h3>
             <div class="flex justify-end items-end mt-20 gap-4">
                 <form action="/adminDelete" method="POST">
                     <button type="submit"

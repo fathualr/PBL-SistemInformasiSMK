@@ -22,13 +22,16 @@
                         @method('PATCH')
                         <label class="form-control w-full">
                             <div class="label mt-5">
-                                <span class="label-text">Link:</span>
+                                <span class="label-text">Link :</span>
                             </div>
                             <input type="text" name="instagram" value="{{ $medsos->instagram }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
 
@@ -44,13 +47,16 @@
                         @method('PATCH')
                         <label class="form-control w-full">
                             <div class="label mt-5">
-                                <span class="label-text">Link:</span>
+                                <span class="label-text">Link :</span>
                             </div>
                             <input type="text" name="facebook" placeholder="{{ $medsos->facebook }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -70,10 +76,13 @@
                                 <span class="label-text">Link:</span>
                             </div>
                             <input type="text" name="youtube" placeholder="{{ $medsos->youtube }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -90,10 +99,13 @@
                                 <span class="label-text">Link:</span>
                             </div>
                             <input type="text" name="tiktok" placeholder="{{ $medsos->tiktok }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -112,10 +124,13 @@
                                 <span class="label-text">Link:</span>
                             </div>
                             <input type="text" name="email" placeholder="{{ $medsos->email }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -133,10 +148,13 @@
                                 <span class="label-text">Link:</span>
                             </div>
                             <input type="text" name="nomor_telepon" placeholder="{{ $medsos->nomor_telepon }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -155,10 +173,13 @@
                                 <span class="label-text">Link:</span>
                             </div>
                             <input type="text" name="fax" placeholder="{{ $medsos->fax }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -176,10 +197,13 @@
                                 <span class="label-text">Latitude & Longitude :</span>
                             </div>
                             <input type="text" name="google_map" placeholder="{{ $medsos->google_map }}"
-                                class="input input-bordered input-sm w-full" />
+                                class="input border-2 border-blue-400 w-full" />
                         </label>
-                        <div class="card-actions justify-end mt-5">
-                            <button class="btn btn-primary">Simpan</button>
+                        <div class="card-actions justify-end my-3">
+                            <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">
+                                <i class="fas fa-save"></i>
+                                Simpan
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 shadow-lg px-4 rounded-md">
 
     @include('shared.success-message')
     @include('shared.error-message')
@@ -12,25 +12,16 @@
     <!-- Modal -->
     <div class="col-span-3 row-start-3 mx-5 w-full">
         <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
-            <i class="fas fa-user-plus"></i>
+            <i class="fas fa-plus"></i>
             Tambah Ekstrakulikuler
         </button>
     </div>
     <!-- Modal -->
 
-    <!-- Search Bar -->
-    <div class="col-span-2 col-start-7 row-start-3">
-        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
-            <i class="fas fa-magnifying-glass"></i>
-            <input type="text" class="grow" placeholder="Cari" />
-        </label>
-    </div>
-    <!-- Search Bar -->
-
     <!-- Content -->
     <div class="col-span-9 row-start-4">
         <div class="mt-5">
-            <table class="table text-center">
+            <table class="table border text-center">
                 <!-- head -->
                 <thead>
                     <tr>
@@ -54,7 +45,7 @@
                         <td class="w-52">{{ $ekskul->nama_ekstrakurikuler }}</td>
                         <td class="w-72">{{ $ekskul->guru->nama_guru ?? '-' }}</td>
                         <td>
-                            <details class="dropdown dropdown-right">
+                            <details class="dropdown">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                     <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                     <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
@@ -105,17 +96,17 @@
             </table>
 
             <!-- Pagination -->
-            <div class="flex justify-center my-5 gap-2">
+            <div class="join flex justify-center my-5">
                 @if($ekstrakulikuler->previousPageUrl())
-                <a href="{{ $ekstrakulikuler->previousPageUrl() }}" class="btn">«</a>
+                <a href="{{ $ekstrakulikuler->previousPageUrl() }}" class="join-item btn">«</a>
                 @else
-                <button class="btn disabled">«</button>
+                <button class="join-item btn disabled">«</button>
                 @endif
-                <button class="btn">Page {{ $ekstrakulikuler->currentPage() }}</button>
+                <button class="join-item btn">Page {{ $ekstrakulikuler->currentPage() }}</button>
                 @if($ekstrakulikuler->nextPageUrl())
-                <a href="{{ $ekstrakulikuler->nextPageUrl() }}" class="btn">»</a>
+                <a href="{{ $ekstrakulikuler->nextPageUrl() }}" class="join-item btn">»</a>
                 @else
-                <button class="btn disabled">»</button>
+                <button class="join-item btn disabled">»</button>
                 @endif
             </div>
 
@@ -126,28 +117,33 @@
 
 <!-- Modal CREATE -->
 <dialog id="my_modal_add" class="modal">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Tambah Ekstrakulikuler</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
         <form action="{{ route('Ekstrakulikuler.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="grid gap-y-5">
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler" />
+                <span class="label-text -mb-4">Nama Ekstrakurikuler :</span>
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler" />
+                <span class="label-text -mb-4">Gambar Headline Ekstrakurikuler :</span>
                 <div class="grid gap-2" id="fileInputsEkskul">
-                    <label class="input bg-transparent border-2 border-elm flex items-center gap-2 w-full focus-within:outline-none">
-                        <input type="file" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarEkskul/*" placeholder="Logo" />
+                    <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                        <input type="file" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" accept="gambarEkskul/*" placeholder="Logo" />
                     </label>
                 </div>
                 <button type="button" id="btnAddFileEkskul" class="btn no-animation btn-sm mt-3">Tambah Gambar</button>
-                <select class="select select-success w-full" name="id_guru">
+                <span class="label-text -mb-4">Guru Pembimbing :</span>
+                <select class="select border-b-2 border-blue-400 w-full" name="id_guru">
                     <option value="" selected>Pembimbing Ekstrakulikuler</option>
 
                     @foreach($gurus as $guru)
@@ -155,9 +151,12 @@
                     @endforeach
 
                 </select>
-                <textarea class="textarea textarea-success w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler"></textarea>
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" />
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" />
+                <span class="label-text -mb-4">Deskripsi Ekstrakurikuler :</span>
+                <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler"></textarea>
+                <span class="label-text -mb-4">Tempat Kegiatan Ekstrakurikuler :</span>
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" />
+                <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" />
             </div>
             <div class="flex justify-end items-end mt-10 gap-4">
                 <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
@@ -171,20 +170,23 @@
             </div>
         </form>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- Modal CREATE end -->
 
 <!-- Edit Modal -->
 @foreach($ekstrakulikuler as $key => $ekskul)
 <dialog id="my_modal_edit{{ $ekskul->id_ekstrakurikuler }}" class="modal">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Edit Ekstrakulikuler</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
@@ -192,27 +194,37 @@
             @csrf
             @method('patch')
             <div class="grid gap-y-5">
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" />
+                <span class="label-text -mb-4">Nama Ekstrakurikuler :</span>
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" />
+                <span class="label-text -mb-4">Gambar Headline Ekstrakurikuler :</span>
                 <div class="grid gap-2">
-                    <label class="input bg-transparent border-2 border-elm flex items-center gap-2 w-full focus-within:outline-none">
-                        <input type="file" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarEkskul/*" placeholder="Logo" value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" />
+                    <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                        <input type="file" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" accept="gambarEkskul/*" placeholder="Logo" value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" />
                     </label>
                 </div>
                 <button type="button" class="btn btn-outline w-full hover:animate-pulse" onclick="window['my_modal_edit_gambar{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                     <i class="fas fa-pen-to-square"></i>
                     Edit Gambar Ekstrakulikuler
                 </button>
-                <select class="select select-success w-full" name="id_guru">
+                <span class="label-text -mb-4">Guru Pembimbing :</span>
+                <select class="select border-b-2 border-blue-400 w-full" name="id_guru">
                     <option value="" selected>Pembimbing Ekstrakurikuler</option>
 
                     @foreach($gurus as $guruIndex => $guru)
-                    <option value="{{ $guru->id_guru }}" {{ $ekskul->id_guru === $guru->id_guru ? 'selected' : '' }}>{{ $guru->nama_guru }}</option>
+                    <option value="{{ $guru->id_guru }}" {{ $ekskul->id_guru === $guru->id_guru ? 'selected' : '' }}>
+                        {{ $guru->nama_guru }}
+                    </option>
                     @endforeach
 
                 </select>
-                <textarea class="textarea textarea-success w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler">{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" />
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" />
+                <span class="label-text -mb-4">Deskripsi Ekstrakurikuler :</span>
+                <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler">{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
+                <span class="label-text -mb-4">Tempat Kegiatan Ekstrakurikuler :</span>
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" />
+                <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" />
             </div>
             <div class="flex justify-end items-end mt-10 gap-4">
                 <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
@@ -222,6 +234,9 @@
             </div>
         </form>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 
 <!-- Edit Gambar -->
@@ -233,7 +248,7 @@
         <h3 class="font-bold text-lg">Edit Gambar Ekstrakulikuler</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
         <div class="label">
@@ -246,7 +261,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="flex gap-1">
-                    <input type="text" class="input input-bordered input-success w-full" placeholder="Gambar berita" value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" disabled />
+                    <input type="text" class="input input-success w-full" placeholder="Gambar berita" value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" disabled />
                     <button class="btn btn-square btn-outline btn-error btn-remove">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -264,28 +279,34 @@
                 <span class="label-text">Tambah Gambar:</span>
             </div>
             <div class="flex gap-1">
-                <input type="file" class="file-input file-input-bordered file-input-success w-full" placeholder="Pilih gambar berita" name="gambar_ekstrakurikuler" />
-                <button type="submit" class="btn btn-square btn-outline btn-success btn-remove">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                    <input type="file" class="file-input w-full py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita" name="gambar_ekstrakurikuler" />
+                </label>
+                <button type="submit" class="btn btn-square bg-blue-400 text-white hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- Edit Gambar -->
 <!-- Edit Modal -->
 
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $ekskul->id_ekstrakurikuler }}" class="modal">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Info Detail Ekstrakulikuler</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
         <div class="grid gap-y-5">
@@ -294,21 +315,30 @@
                     <img src="{{ asset('storage/'.$ekskul->gambar_profil_ekstrakurikuler) }}" alt="Avatar Tailwind CSS Component" />
                 </div>
             </div>
-            <label class="input bg-transparent border-2 border-elm flex items-center gap-2 w-full focus-within:outline-none">
-                <i class="fas fa-link"></i>
+            <span class="label-text -mb-4">Tautan Foto Headline Ekstrakurikuler :</span>
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                 <input type="text" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarEkskul/*" placeholder="Logo" value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" readonly />
             </label>
-            <input type="text" class="input input-bordered input-success w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakulikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" readonly />
-            <input type="text" class="input input-bordered input-success w-full" placeholder="Jadwal Ekstrakulikuler" name="id_guru" value="{{ $ekskul->guru->nama_guru ?? '-' }}" readonly />
-            <textarea class="textarea textarea-success w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler" readonly>{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
-            <input type="text" class="input input-bordered input-success w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakulikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" readonly />
-            <input type="text" class="input input-bordered input-success w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakulikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" readonly />
-            
+            <span class="label-text -mb-4">Nama Ekstrakurikuler :</span>
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakulikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" readonly />
+            <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="id_guru" value="{{ $ekskul->guru->nama_guru ?? '-' }}" readonly />
+            <span class="label-text -mb-4">Deskripsi Ekstrakurikuler :</span>
+            <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler" readonly>{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
+            <span class="label-text -mb-4">Tempat Ekstrakurikuler :</span>
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakulikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" readonly />
+            <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakulikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" readonly />
+
+            <span class="label-text -mb-4">Tautan Foto Ekstrakurikuler :</span>
             @foreach ($ekskul->gambar as $gambar)
-            <input type="text" class="input input-bordered input-success w-full" placeholder="Gambar berita" value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Gambar berita" value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" disabled />
             @endforeach
         </div>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- View Modal -->
 
@@ -336,8 +366,10 @@
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 @endforeach
 <!-- Delete Modal -->

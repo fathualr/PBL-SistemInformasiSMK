@@ -2,11 +2,11 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 rounded-md">
+<div class="grid grid-cols-9 shadow-lg px-4 rounded-md mb-5">
 
     @include('shared.success-message')
     @include('shared.error-message')
-    <div class="col-span-2 my-4 mx-5 row-start-2">
+    <div class="col-span-3 my-4 mx-5 row-start-2">
         <h3 class="font-bold text-lg">Pengelolaan Berita</h3>
     </div>
 
@@ -59,15 +59,14 @@
                     </td>
                     <td>{{ $brt->tanggal_berita }}</td>
                     <td>
-                        <details class="dropdown dropdown-bottom">
+                        <details class="dropdown">
                             <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
                                 <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
                                 <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
                                 <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                 <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                             </summary>
-                            <ul tabindex="0"
-                                class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                            <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <!-- Edit -->
                                 <li>
                                     <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -129,12 +128,17 @@
             @else
             <button class="btn disabled">»</button>
             @endif
-        </div>   
+        </div>
 
     </div>
     <!-- Content -->
+</div>
 
-    <div class="col-span-3 mt-16 mb-4 mx-5 row-start-5">
+<div class="grid grid-cols-9 shadow-lg px-4 rounded-md">
+
+    @include('shared.success-message')
+    @include('shared.error-message')
+    <div class="col-span-4 mt-16 mb-4 mx-5 row-start-5">
         <h3 class="font-bold text-lg">Pengelolaan Komentar Berita</h3>
     </div>
 
@@ -158,8 +162,10 @@
                     <th>{{ ($komentar->currentPage() - 1) * $komentar->perPage() + $key + 1 }}</th>
                     <td>{{ $kmt->berita->judul_berita }}</td>
                     <td>{{ $kmt->nama_komentar }}</td>
-                    <td class="truncate">
-                        {{ $kmt->teks_komentar }}
+                    <td>
+                        <p class="truncate w-32">
+                            {{ $kmt->teks_komentar }}
+                        </p>
                     </td>
                     <td>{{ $kmt->created_at->format('d M Y H:i:s') }}</td>
                     <td>
@@ -170,8 +176,7 @@
                                 <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                 <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                             </summary>
-                            <ul tabindex="0"
-                                class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                            <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <!-- View -->
                                 <li>
                                     <button class="btn btn-ghost w-full hover:animate-pulse"
@@ -210,17 +215,17 @@
         </table>
 
         <!-- Pagination -->
-        <div class="flex justify-center my-5 gap-2">
+        <div class="join flex justify-center my-5">
             @if($komentar->previousPageUrl())
-            <a href="{{ $komentar->previousPageUrl() }}" class="btn">«</a>
+            <a href="{{ $komentar->previousPageUrl() }}" class="join-item btn">«</a>
             @else
-            <button class="btn disabled">«</button>
+            <button class="join-item btn disabled">«</button>
             @endif
-            <button class="btn">Page {{ $komentar->currentPage() }}</button>
+            <button class="join-item btn">Page {{ $komentar->currentPage() }}</button>
             @if($komentar->nextPageUrl())
-            <a href="{{ $komentar->nextPageUrl() }}" class="btn">»</a>
+            <a href="{{ $komentar->nextPageUrl() }}" class="join-item btn">»</a>
             @else
-            <button class="btn disabled">»</button>
+            <button class="join-item btn disabled">»</button>
             @endif
         </div>
 
@@ -237,7 +242,7 @@
         <h3 class="font-bold text-lg">Tambah Berita</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
@@ -245,27 +250,33 @@
             @csrf
             <div class="grid">
                 <div class="label">
-                    <span class="label-text">Judul:</span>
+                    <span class="label-text">Judul Berita :</span>
                 </div>
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Judul berita"
-                    name="judul_berita" />
+                <input type="text" class="input input-bordered border-2 border-blue-400 w-full"
+                    placeholder="Judul berita" name="judul_berita" />
                 @error('judul_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
                 </div>
                 @enderror
                 <div class="label">
-                    <span class="label-text">Gambar Headline:</span>
+                    <span class="label-text">Gambar Headline :</span>
                 </div>
-                <input type="file" class="file-input file-input-bordered file-input-success w-full"
-                    placeholder="Pilih gambar berita" name="gambar_headline" />
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                    <input type="file" class="file-input w-full py-2
+                    file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
+                        name="gambar_headline" />
+                </label>
                 @error('gambar_headline')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
                 </div>
                 @enderror
                 <div class="label">
-                    <span class="label-text">Gambar Berita:</span>
+                    <span class="label-text">Gambar Berita :</span>
                 </div>
                 <div class="grid gap-2" id="fileInputs">
                 </div>
@@ -276,16 +287,17 @@
                 @enderror
                 <button type="button" id="btnAddFile" class="btn no-animation btn-sm mt-3">Tambah Gambar</button>
                 <div class="label">
-                    <span class="label-text">Isi Berita:</span>
+                    <span class="label-text">Isi Berita :</span>
                 </div>
-                <textarea class="textarea textarea-success" id="editor" placeholder="Isi berita" name="isi_berita"></textarea>
+                <textarea class="textarea border-2 border-blue-400" id="editor" placeholder="Isi berita"
+                    name="isi_berita"></textarea>
                 @error('isi_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
                 </div>
                 @enderror
                 <div class="label">
-                    <span class="label-text">Kategori:</span>
+                    <span class="label-text">Kategori :</span>
                 </div>
                 <div class="grid gap-2" id="textInputContainer">
                     @error('kategori_berita[]')
@@ -296,10 +308,9 @@
                 </div>
                 <button type="button" id="btnAddText" class="btn no-animation btn-sm mt-3">Tambah Kategori</button>
                 <div class="label">
-                    <span class="label-text">Tanggal Berita:</span>
+                    <span class="label-text">Tanggal Berita :</span>
                 </div>
-                <input type="date" class="input input-bordered input-success w-full" placeholder=""
-                    name="tanggal_berita" />
+                <input type="date" class="input border-2 border-blue-400 w-full" placeholder="" name="tanggal_berita" />
                 @error('tanggal_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -319,8 +330,10 @@
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- Modal CREATE end -->
 
@@ -328,14 +341,14 @@
 @foreach($berita as $brt)
 <!-- Modal EDIT -->
 <dialog id="my_modal_edit_{{ $brt->id_berita }}" class="modal">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Edit Berita</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
@@ -345,9 +358,9 @@
             <div class="grid">
 
                 <div class="label">
-                    <span class="label-text">Judul:</span>
+                    <span class="label-text">Judul :</span>
                 </div>
-                <input type="text" class="input input-bordered input-success w-full" value="{{ $brt->judul_berita }}"
+                <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $brt->judul_berita }}"
                     name="judul_berita" />
                 @error('judul_berita')
                 <div class="label">
@@ -356,10 +369,16 @@
                 @enderror
 
                 <div class="label">
-                    <span class="label-text">Gambar Headline:</span>
+                    <span class="label-text">Gambar Headline :</span>
                 </div>
-                <input type="file" class="file-input file-input-bordered file-input-success w-full"
-                    placeholder="Pilih gambar berita" name="gambar_headline" />
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                    <input type="file" class="file-input w-full py-2
+                    file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
+                        name="gambar_headline" />
+                </label>
                 @error('gambar_headline')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -367,15 +386,15 @@
                 @enderror
 
                 <div class="label">
-                    <span class="label-text">Gambar Berita:</span>
+                    <span class="label-text">Gambar Berita :</span>
                 </div>
                 <button type="button" class="btn no-animation btn-sm"
                     onclick="my_modal_view_gambar{{ $brt->id_berita }}.showModal()">Edit Gambar</button>
 
                 <div class="label">
-                    <span class="label-text">Isi Berita:</span>
+                    <span class="label-text">Isi Berita :</span>
                 </div>
-                <textarea class="textarea textarea-success w-full" placeholder="Isi berita"
+                <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Isi berita"
                     name="isi_berita">{{ $brt->isi_berita }}</textarea>
                 @error('isi_berita')
                 <div class="label">
@@ -384,14 +403,15 @@
                 @enderror
 
                 <div class="label">
-                    <span class="label-text">Kategori:</span>
+                    <span class="label-text">Kategori :</span>
                 </div>
-                <button type="button" class="btn no-animation btn-sm" onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
+                <button type="button" class="btn no-animation btn-sm"
+                    onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
 
                 <div class="label">
-                    <span class="label-text">Tanggal Berita:</span>
+                    <span class="label-text">Tanggal Berita :</span>
                 </div>
-                <input type="date" class="input input-bordered input-success w-full" value="{{ $brt->tanggal_berita }}"
+                <input type="date" class="input border-2 border-blue-400 w-full" value="{{ $brt->tanggal_berita }}"
                     name="tanggal_berita" />
                 @error('tanggal_berita')
                 <div class="label">
@@ -403,14 +423,17 @@
             <div class="flex justify-end items-end mt-10 gap-4">
                 <button type="submit"
                     class="btn bg-elm w-60 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                    <i class=" fas fa-plus"></i>
-                    Simpan perubahan
+                    <i class=" fas fa-pen-to-square"></i>
+                    Edit
                 </button>
             </div>
         </form>
-
     </div>
-</dialog><!-- Modal EDIT end -->
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
+</dialog>
+<!-- Modal EDIT end -->
 
 <!-- Modal EDIT Gambar -->
 <dialog id="my_modal_view_gambar{{ $brt->id_berita }}" class="modal">
@@ -421,12 +444,12 @@
         <h3 class="font-bold text-lg">Edit Gambar Berita ({{ $brt->judul_berita }})</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
         <div class="label">
-            <span class="label-text">Gambar:</span>
+            <span class="label-text">Gambar :</span>
         </div>
         <div class="grid gap-2" id="textInputContainer">
             @foreach ($brt->gambar as $gambar)
@@ -451,18 +474,26 @@
             @csrf
             @method('PATCH')
             <div class="label">
-                <span class="label-text">Tambah Gambar:</span>
+                <span class="label-text">Tambah Gambar :</span>
             </div>
             <div class="flex gap-1">
-                <input type="file" class="file-input file-input-bordered file-input-success w-full"
-                    placeholder="Pilih gambar berita" name="tautan_gambar" />
-                <button type="submit" class="btn btn-square btn-outline btn-success btn-remove">
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                    <input type="file" class="file-input w-full py-2
+                    file:mr-4 file:px-4 file:rounded-full file:border-0
+                    file:text-sm file:font-semibold file:bg-blue-500 file:text-white
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
+                        name="tautan_gambar" />
+                </label>
+                <button type="submit" class="btn btn-square bg-blue-400 text-white hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog><!-- Modal EDIT Gambar end -->
 
 <!-- Modal EDIT kategori -->
@@ -474,12 +505,12 @@
         <h3 class="font-bold text-lg">Edit Kategori Berita ({{ $brt->judul_berita }})</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
         <div class="label">
-            <span class="label-text">Kategori:</span>
+            <span class="label-text">Kategori :</span>
         </div>
         <div class="grid gap-2" id="textInputContainer">
             @foreach ($brt->kategori as $kategori)
@@ -488,7 +519,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="flex gap-1">
-                    <input type="text" class="input input-bordered input-success w-full" placeholder="Kategori berita"
+                    <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
                         value="{{ $kategori->nama_kategori }}" name="kategori_berita[]" disabled />
                     <button type="submit" class="btn btn-square btn-outline btn-error btn-remove">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -505,49 +536,51 @@
             @csrf
             @method('PATCH')
             <div class="label">
-                <span class="label-text">Tambah Kategori:</span>
+                <span class="label-text">Tambah Kategori :</span>
             </div>
             <div class="flex gap-1">
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Kategori berita"
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
                     name="nama_kategori" />
-                <button type="submit" class="btn btn-square btn-outline btn-success btn-remove">
+                <button type="submit" class="btn btn-square bg-blue-400 text-white hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog><!-- Modal EDIT Kategori end -->
 
 <!-- Modal VIEW -->
 <dialog id="my_modal_view{{ $brt->id_berita }}" class="modal">
-    <div class="modal-box">
+    <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Detail Berita</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
 
         <div class="grid">
 
             <div class="label">
-                <span class="label-text">Judul:</span>
+                <span class="label-text">Judul :</span>
             </div>
-            <input type="text" class="input input-bordered input-success w-full" value="{{ $brt->judul_berita }}"
-                name="judul_berita" disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $brt->judul_berita }}"
+                name="judul_berita" readonly />
 
             <div class="label">
-                <span class="label-text">Gambar Headline:</span>
+                <span class="label-text">Gambar Headline :</span>
             </div>
-            <input type="text" class="input input-bordered input-success w-full" placeholder="Kategori berita"
-                value="{{ $brt->gambar_headline }}" name="gambar_headline" disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
+                value="{{ $brt->gambar_headline }}" name="gambar_headline" readonly />
 
             <div class="label">
-                <span class="label-text">Gambar Berita:</span>
+                <span class="label-text">Gambar Berita :</span>
             </div>
             <div class="grid gap-2">
                 @if ($brt->gambar->isEmpty())
@@ -556,20 +589,20 @@
                 </div>
                 @else
                 @foreach ($brt->gambar as $gambar)
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Kategori berita"
-                    value="{{ $gambar->tautan_gambar }}" name="tautan_gambar" disabled />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
+                    value="{{ $gambar->tautan_gambar }}" name="tautan_gambar" readonly />
                 @endforeach
                 @endif
             </div>
 
             <div class="label">
-                <span class="label-text">Isi Berita:</span>
+                <span class="label-text">Isi Berita :</span>
             </div>
-            <textarea class="textarea textarea-success w-full" placeholder="Isi berita" name="isi_berita"
-                disabled>{{ $brt->isi_berita }}</textarea>
+            <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Isi berita" name="isi_berita"
+                readonly>{{ $brt->isi_berita }}</textarea>
 
             <div class="label">
-                <span class="label-text">Kategori:</span>
+                <span class="label-text">Kategori :</span>
             </div>
             <div class="grid gap-2">
                 @if ($brt->kategori->isEmpty())
@@ -578,21 +611,24 @@
                 </div>
                 @else
                 @foreach ($brt->kategori as $kategori)
-                <input type="text" class="input input-bordered input-success w-full" placeholder="Kategori berita"
-                    value="{{ $kategori->nama_kategori }}" name="kategori_berita" disabled />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
+                    value="{{ $kategori->nama_kategori }}" name="kategori_berita" readonly />
                 @endforeach
                 @endif
             </div>
 
             <div class="label">
-                <span class="label-text">Tanggal Berita:</span>
+                <span class="label-text">Tanggal Berita :</span>
             </div>
-            <input type="date" class="input input-bordered input-success w-full" value="{{ $brt->tanggal_berita }}"
-                name="tanggal_berita" disabled />
-
+            <input type="date" class="input border-2 border-blue-400 w-full" value="{{ $brt->tanggal_berita }}"
+                name="tanggal_berita" readonly />
         </div>
     </div>
-</dialog><!-- Modal VIEW end -->
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
+</dialog>
+<!-- Modal VIEW end -->
 
 <!-- Modal DELETE -->
 <dialog id="my_modal_delete{{ $brt->id_berita }}" class="modal">
@@ -600,15 +636,25 @@
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
-        <h3 class="font-bold text-lg">Hapus Berita</h3>
+        <h3 class="font-bold text-lg">Hapus Data Berita</h3>
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-error"></div>
+            <div class="divider"></div>
+        </div>
+
+        <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data
+            Ini ?</h3>
         <div class="flex justify-end items-end gap-4">
             <form action="{{ route('berita.destroy', $brt->id_berita) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    Hapus
-                </button>
+                <div class="flex justify-end items-end mt-10 gap-4">
+                    <button type="submit"
+                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                        <i class="fas fa-trash"></i> Hapus
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -627,33 +673,33 @@
         <h3 class="font-bold text-lg">Detail Komentar Berita</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
         <div class="grid">
             <div class="label">
-                <span class="label-text">Judul:</span>
+                <span class="label-text">Judul :</span>
             </div>
-            <input type="text" class="input input-bordered input-success w-full"
-                value="{{ $kmt->berita->judul_berita }}" disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->berita->judul_berita }}"
+                readonly />
             <div class="label">
-                <span class="label-text">Nama:</span>
+                <span class="label-text">Nama :</span>
             </div>
-            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->nama_komentar }}"
-                disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->nama_komentar }}"
+                readonly />
             <div class="label">
-                <span class="label-text">Komentar:</span>
+                <span class="label-text">Komentar :</span>
             </div>
-            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->teks_komentar }}"
-                disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->teks_komentar }}"
+                readonly />
             <div class="label">
-                <span class="label-text">Waktu:</span>
+                <span class="label-text">Waktu :</span>
             </div>
-            <input type="text" class="input input-bordered input-success w-full" value="{{ $kmt->created_at }}"
-                disabled />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->created_at }}" readonly />
         </div>
     </div>
-</dialog><!-- Modal VIEW end -->
+</dialog>
+<!-- Modal VIEW end -->
 
 <!-- Modal DELETE -->
 <dialog id="my_modal_delete_komentar{{ $kmt->id_komentar }}" class="modal">
@@ -662,13 +708,20 @@
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Hapus Komentar Berita</h3>
+        <div class="grid grid-cols-3 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-error"></div>
+            <div class="divider"></div>
+        </div>
+
+        <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
         <div class="flex justify-end items-end gap-4">
             <form action="{{ route('komentarBerita.destroy', $kmt->id_komentar) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
                     class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
-                    Hapus
+                    <i class=" fas fa-trash"></i>Hapus
                 </button>
             </form>
         </div>
