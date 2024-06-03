@@ -25,7 +25,7 @@ class PengumumanController extends Controller
         }
     
         return view('admin.pengumumanPPDB', [
-            "title" => "Admin Pendaftaran PPDB",
+            "title" => "Admin Pengumuman PPDB",
             "forms" => $forms,
         ]);
     }

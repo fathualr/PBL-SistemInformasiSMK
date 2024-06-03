@@ -309,7 +309,7 @@ input[type=number] {
                         <!-- W-20 -->
                         <div class="dropdown dropdown-hover -mt-3 -z-50" id="dropdown">
                             <div tabindex="0" role="button" class="btn bg-transparent border-none">
-                                <div class="w-3 flex justify-center items-center text-white">
+                                <div class="w-3 flex justify-center items-center text-white -z-50">
                                     <i class="fas fa-building text-2xl text-center font-bold"></i>
                                 </div>
                             </div>
@@ -318,16 +318,16 @@ input[type=number] {
                                 <li
                                     class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/saranaPrasarana">
-                                        <div class="w-3 flex justify-center items-center ">
+                                        <div class="w-3 flex justify-center items-center">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
                                         </div>
                                         <h1 class="font-bold mx-10">Sarana & Prasarana</h1>
                                     </a>
                                 </li>
                                 <li
-                                    class="hover:translate-y-0 @if($title == 'Admin Foto Prasarana') bg-blue-600 rounded-md @endif">
+                                    class="hover:translate-y-0 @if($title == 'Gambar Sarana & Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/fotoPrasarana">
-                                        <div class="w-3 flex justify-center items-center ">
+                                        <div class="w-3 flex justify-center items-center">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
                                         </div>
                                         <h1 class="font-bold mx-10">Gambar Prasarana</h1>
@@ -345,16 +345,16 @@ input[type=number] {
                             </summary>
                             <ul>
                                 <li
-                                    class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-lagoon rounded-md @endif">
+                                    class="hover:translate-y-0 @if($title == 'Admin Sarana & Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/saranaPrasarana">
-                                        <div class="w-3 flex justify-center items-center -z-50">
+                                        <div class="w-3 flex justify-center items-center">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
                                         </div>
                                         <h1 class="font-bold mx-10 hidden" id="navTitle">Sarana & Prasarana</h1>
                                     </a>
                                 </li>
                                 <li
-                                    class="hover:translate-y-0 @if($title == 'Admin Foto Prasarana') bg-blue-600 rounded-md @endif">
+                                    class="hover:translate-y-0 @if($title == 'Gambar Sarana & Prasarana') bg-blue-600 rounded-md @endif">
                                     <a href="/admin/fotoPrasarana">
                                         <div class="w-3 flex justify-center items-center -z-50">
                                             <i class="fas fa-building text-2xl text-center font-bold"></i>
@@ -414,19 +414,12 @@ input[type=number] {
         <div class="flex-1 p-4">
 
             <div class="card card-compact bg-blue-100 w-full h-72 shadow-xl mx-auto">
-                <figure>
-                    <div class="avatar z-50 absolute top-12 left-5">
-                        <div class="w-24 rounded-full">
-                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                        </div>
-                    </div>
-                </figure>
                 <div class="card-body h-60 sticky top-16 rounded-lg wave-effect">
                     @include('layouts.wave')
                     <h1 class="card-title font-bold text-xl uppercase absolute bottom-10 left-5 text-white">
                         Welcome {{ auth('admin')->user()->nama }}
                     </h1>
-                    <div class="card-actions text-xl absolute right-12 top-5 gap-6 text-white">
+                    <div class="card-actions text-xl absolute right-6 top-5 gap-6 text-slate-500">
 
                         <form id="logout-form" action="{{ route('account.logout') }}" method="POST">
                             @csrf
@@ -744,19 +737,19 @@ input[type=number] {
         });
         // Prestasi Siswa
 
-            //Duplicate foto
-            function duplicateInput() {
-                const container = document.getElementById('imageInputsContainer');
-                const clone = container.firstElementChild.cloneNode(true);
-                container.appendChild(clone);
-                // Show the remove button of the newly added input
-                clone.querySelector('.btn-remove').classList.remove('hidden');
-            }
+        //Duplicate foto
+        function duplicateInput() {
+            const container = document.getElementById('imageInputsContainer');
+            const clone = container.firstElementChild.cloneNode(true);
+            container.appendChild(clone);
+            // Show the remove button of the newly added input
+            clone.querySelector('.btn-remove').classList.remove('hidden');
+        }
 
-            function removeInput(btn) {
-                const inputDiv = btn.parentNode.parentNode;
-                inputDiv.parentNode.removeChild(inputDiv);
-            }
+        function removeInput(btn) {
+            const inputDiv = btn.parentNode.parentNode;
+            inputDiv.parentNode.removeChild(inputDiv);
+        }
 
         //Rich Text Editor (CKEDITOR5)
         ClassicEditor
@@ -766,7 +759,7 @@ input[type=number] {
             });
         //Rich Text Editor (CKEDITOR5)
         </script>
-        
+
         <script>
         // fungsi checkbox select all
         document.addEventListener('DOMContentLoaded', function() {

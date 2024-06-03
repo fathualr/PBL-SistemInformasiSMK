@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div>
-    <h2 class="text-black font-bold ml-2 mt-2 mb-2">Pengumuman PPDB</h2>
+    <h2 class="text-black font-bold text-xl mx-5 my-2">Pengumuman PPDB</h2>
 </div>
 
 <div class="flex justify-end items-center">
@@ -35,7 +35,7 @@
                     <option value="Ditolak">Ditolak</option>
                     <option value="Dalam Proses">Dalam Proses</option>
                 </select>
-                <button type="submit" class="btn btn-primary">Update Status</button>
+                <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">Update Status</button>
         </div>
     </div>
 </div>
@@ -72,9 +72,9 @@
                         <td class="p-2 hidden md:table-cell">{{ $form_ppdb->tahun_pendaftaran }}</td>
                         <td class="p-2 hidden md:table-cell">
                             @if ($form_ppdb->status == 'Diterima')
-                            <span class="px-2 py-1 text-white bg-green-500 rounded-full">Diterima</span>
+                            <span class="px-2 py-1 text-white bg-elm rounded-full">Diterima</span>
                             @elseif ($form_ppdb->status == 'Ditolak')
-                            <span class="px-2 py-1 text-white bg-red-500 rounded-full">Ditolak</span>
+                            <span class="px-2 py-1 text-white bg-error rounded-full">Ditolak</span>
                             @else
                             <span class="px-2 py-1 text-white bg-gray-500 rounded-full">Dalam Proses</span>
                             @endif
