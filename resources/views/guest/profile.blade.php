@@ -18,27 +18,23 @@
     </div>
     <div class="col-span-2 mt-10">
         <a href="/guest/sejarah">
-            <button
-                class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
+            <button class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
                 Lanjut
             </button>
         </a>
     </div>
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96"
-                src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
+            <iframe class="w-full h-full lg:h-96" src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
         </div>
     </div>
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p
-        class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
+<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
 
 <div class="grid tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">
 
-    <div
-        class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
+    <div class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
         <!-- First Card -->
         <div class="card smartphone:w-60 tablet:w-60 lg:w-full h-96 mx-auto rounded-sm">
             <figure class="px-5 pt-5 mx-auto">
@@ -300,7 +296,7 @@
     <div class="mx-auto">
         <div class="card w-72 laptop:w-96 bg-slate-100">
             <h2 class="text-center font-bold text-white text-xl bg-blue-400 w-full mt-10">VISI</h2>
-            <div class="card-body items-center text-center">
+            <div class="card-body items-center text-center h-40">
                 <p>
                     {!! empty($konten->visi) ? '
                 <p class="text-red-500 italic">$NULL</p>' : $konten->visi !!}
@@ -314,8 +310,8 @@
     <div class="mx-auto">
         <div class="card w-72 laptop:w-96 bg-slate-100">
             <h2 class="text-center font-bold text-white text-xl bg-blue-400 w-full mt-10">MISI</h2>
-            <div class="card-body items-center text-center">
-                <p>
+            <div class="card-body items-center text-center h-40">
+                <p class="overflow-y-auto">
                     {!! empty($konten->misi) ? '
                 <p class="text-red-500 italic">$NULL</p>' : $konten->misi !!}
                 </p>
@@ -331,31 +327,93 @@
     @if(empty($konten->struktur_organisasi_sekolah))
     <p class="text-red-500 italic">$NULL</p>
     @else
-    <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}"
-        alt="struktur_organisasi_sekolah">
+    <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}" alt="struktur_organisasi_sekolah">
     @endif
 </div>
 
 <h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">KOMPETENSI KEAHLIAN</h1>
 
-<div class="grid tablet:grid-cols-2 laptop:grid-cols-4 gap-y-16 tablet:gap-y-28 laptop:gap-y-0 tablet:gap-2 my-24">
-    
-    @foreach($programKeahlian as $prg)
-    <div class="mx-auto">
-        <div class="card card-compact w-72 h-80 shadow-xl bg-indigo-500">
-            <div class="avatar mx-auto h-28 -translate-y-10">
-                <div class="w-24 h-24 rounded-full">
-                    <img src="{{ asset('storage/'.$prg->logo_program)}}" />
+<div class="relative w-full overflow-hidden my-10">
+    <div class="flex transition-transform duration-500" id="slider">
+        @if($programKeahlian->isNotEmpty())
+        @foreach ($programKeahlian->chunk(4) as $chunk)
+        <div class="w-full grid grid-cols-4 gap-4 justify-center items-center" style="min-width: 100%;">
+            @foreach ($chunk as $prg)
+            <div class="mx-auto">
+                <div class="card card-compact smartphone:w-72 laptop:w-72 h-80 shadow-xl bg-indigo-500">
+                    <div class="avatar mx-auto h-28 -translate-y-10">
+                        <div class="w-24 h-24 rounded-full">
+                            <img src="{{ asset('storage/'.$prg->logo_program) }}" />
+                        </div>
+                    </div>
+                    <div class="card-body rounded-b-xl h-28 bg-base-100">
+                        <h2 class="card-title justify-center text-center my-3 h-14">{{ $prg->nama_program }}</h2>
+                        <p class="text-center truncate">{{ $prg->deskripsi_program }}</p>
+                        <div class="card-actions justify-center">
+                            <a href="/guest/program-keahlian-template/{{ $prg->id_program }}">
+                                <button class="btn bottom-0">Lihat Selengkapnya</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card-body rounded-b-xl h-28 bg-base-100">
-                <h2 class="card-title text-center my-3 h-14">{{ $prg->nama_program }}</h2>
-                <p class="text-center truncate">{{ $prg->deskripsi_program }}</p>
-            </div>
+            @endforeach
         </div>
+        @endforeach
+        @endif
     </div>
-    @endforeach
-
+    <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform p-2 flex justify-center items-center" onclick="prevSlide()">
+        <i class="fas fa-angle-left text-white"></i>
+    </button>
+    <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-5 top-1/2 transform p-2 flex justify-center items-center" onclick="nextSlide()">
+        <i class="fas fa-angle-right text-white"></i>
+    </button>
 </div>
 
+<script>
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    function showSlide(index) {
+        const slider = document.getElementById('slider');
+        const slides = slider.children;
+        const totalSlides = slides.length;
+
+        if (index >= totalSlides) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else {
+            currentIndex = index;
+        }
+
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            nextSlide();
+        }, 3000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentIndex);
+        startAutoSlide();
+
+        document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
+        document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+    });
+</script>
 @endsection
