@@ -227,16 +227,18 @@
 <div class="grid gap-5 lg:grid-rows-2 grid-cols-2 lg:grid-cols-3 lg:grid-flow-row mt-10 lg:mt-0">
 
     @foreach ($album as $abm)
-    <div class="card md:mx-auto rounded-b-xl w-80 h-80 lg:h-96 lg:w-96 bg-cover"
+    <div class="card md:mx-auto rounded-b-xl w-80 h-80 lg:h-72 lg:w-96 bg-cover"
         style="background-image: url('{{ asset('storage/' . $abm->gambar_album) }}');">
         <div
-            class=" bg-teal-50/70 h-[11rem] rounded-none rounded-b-xl py-8 lg:py-8 translate-y-[9.75rem] lg:translate-y-[13.75rem]">
-            <h2 class="card-title px-5 text-black/80">{{ $abm->nama_album }}</h2>
+            class=" bg-teal-50/70 rounded-none rounded-b-xl py-3 translate-y-[12.4rem] lg:py-3 lg:translate-y-[10.4rem]">
+            <h2 class="card-title px-5 text-black/80">
+                <p class="truncate w-80">{{ $abm->nama_album }}</p>
+            </h2>
             <p class="px-5 text-black/50 truncate w-64">{{ $abm->deskripsi_album }}</p>
-            <div class="card-actions justify-end items-end fixed bottom-5 right-5">
+            <div class="card-actions justify-end">
                 <a href="/guest/galeri-template/{{ $abm->id_album }}"
-                    class="btn rounded-full bg-transparent hover:bg-transparent border-2 border-blue-400 text-blue-500 hover:text-white">
-                    <i class="fas fa-angle-right text-xl"></i>
+                    class="btn bg-transparent hover:bg-transparent border-none">
+                    <img src="{{ asset('assets/Arrow-Foto.svg') }}" class="object-cover rounded-full w-8 h-8 mt-3" />
                 </a>
             </div>
         </div>

@@ -5,24 +5,44 @@
 <div class="divider">
     <p class="font-bold text-xl">DIREKTORI GURU</p>
 </div>
-<div class="flex justify-end">
-    <label class="input input-bordered flex justify-between items-center gap-2">
-        <input type="text" class="grow" placeholder="Cari Guru" />
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-            <path fill-rule="evenodd"
-                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                clip-rule="evenodd" />
-        </svg>
-    </label>
+
+<div class="grid grid-cols-8">
+
+    <!-- Category -->
+    <div class="col-span-2">
+        <div class="dropdown dropdown-hover">
+            <div tabindex="0" role="button" class="btn btn-outline w-full m-1">
+                <i class="fas fa-list"></i>
+                Program Keahlian
+            </div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-max">
+                @foreach($direktoriGuru as $guru)
+                <li><a>{{ $guru->programKeahlian->nama_program }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    <!-- Category -->
+
+    <!-- Search Box -->
+    <div class="col-span-1 col-start-8">
+        <div class="flex justify-end">
+            <label class="input input-bordered flex justify-between items-center gap-2">
+                <input type="text" class="grow" placeholder="Cari Siswa" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+                    <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
+                </svg>
+            </label>
+        </div>
+    </div>
+    <!-- Search Box -->
 </div>
 
-<div
-    class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
+<div class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
 
     @foreach($direktoriGuru as $guru)
     <div class="mx-auto">
-        <button class="hover:scale-110 transition-all duration-300"
-            onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
+        <button class="hover:scale-110 transition-all duration-300" onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
             <div class="card card-compact w-64 h-80 shadow-xl">
                 <div class="h-2/5 bg-indigo-600 rounded-t-lg">
                     <div class="avatar mx-auto h-28 translate-y-[4rem]">
