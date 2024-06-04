@@ -23,13 +23,19 @@ class EkstrakulikulerFactory extends Factory
         $selectedId = $this->faker->randomElement($availableIds);
         self::$usedIds[] = $selectedId;
 
+        $images = [
+            'image/albumAlbumFoto/aKhyyLYBTcCIcitNnPHdvHnvZ87v6e2VR6hm7Kdc.jpg',
+            'image/albumAlbumFoto/3ODYS7TYzAANe6vcMrfUgBXCkXyMKetYoUWxQgGl.jpg',
+            'image/albumAlbumFoto/H2FsHTG0nLkHbVaAF2khnWPthPWPvztthySPbAYP.jpg'
+        ];
+
         return [
             'id_guru' => $selectedId,
             'nama_ekstrakurikuler' => $this->faker->words(3, true),
             'deskripsi_ekstrakurikuler' => implode("\n\n", $this->faker->paragraphs(5)),
             'tempat_ekstrakurikuler' => $this->faker->address,
             'jadwal_ekstrakurikuler' => $this->faker->dateTimeThisYear(),
-            'gambar_profil_ekstrakurikuler' => 'image/albumAlbumFoto/3ZJGaluEBp5sfks4YHutCaDMMH3cDkOLJWXjaP0j.jpg',
+            'gambar_profil_ekstrakurikuler' =>$this->faker->randomElement($images),
         ];
     }
 }

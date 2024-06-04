@@ -1,6 +1,10 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
+
+@include('shared.success-message')
+@include('shared.error-message')
+
 <div>
     <h2 class="text-black font-bold text-xl mx-5 my-2">Galeri Foto Prasarana</h2>
 </div>

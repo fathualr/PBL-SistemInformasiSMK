@@ -46,6 +46,10 @@
         <h4 class="font-bold text-xl">FORM PPDB</h4>
     </div>
 
+    @include('shared.success-message')
+    @include('shared.error-message')
+
+
     @if ($countdownStartSet && $countdownEndSet)
     <div class="flex items-center justify-center">
         <div class="grid grid-flow-col gap-5 text-center auto-cols-max">

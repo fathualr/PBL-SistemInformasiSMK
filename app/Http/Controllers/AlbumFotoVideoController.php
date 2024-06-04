@@ -189,7 +189,7 @@ class AlbumFotoVideoController extends Controller
 
         $foto->delete();
 
-        return redirect()->route('admin.foto.index')->with('success', 'Album berhasil dihapus.');
+        return redirect()->route('admin.foto.index')->with('success', 'Foto berhasil dihapus.');
     }
 
 

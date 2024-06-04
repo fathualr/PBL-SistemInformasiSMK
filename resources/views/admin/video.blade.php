@@ -1,6 +1,10 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
+
+@include('shared.success-message')
+@include('shared.error-message')
+
 <div>
     <h2 class="text-black font-bold text-xl mx-5 my-2">Galeri video</h2>
 </div>
@@ -42,15 +46,13 @@
                             </summary>
                             <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_detail_{{ $video->id_video }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_detail_{{ $video->id_video }}'].showModal()">
                                         <i class="fas fa-circle-info"></i>
                                         Detail
                                     </button>
                                 </li>
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_delete_{{ $video->id_video }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $video->id_video }}'].showModal()">
                                         <i class="fas fa-trash"></i>
                                         Hapus
                                     </button>
@@ -88,8 +90,7 @@
         <form action="{{ route('admin.video.store') }}" method="POST">
             @csrf
             <span class="label-text -mb-4">Pilih Album :</span>
-            <select name="id_album"
-                class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10">
+            <select name="id_album" class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10">
                 <option disabled>Nama Album || Tipe Album</option>
                 @foreach($albums as $album)
                 @if($album->tipe_album === 'Video')
@@ -98,21 +99,16 @@
                 @endforeach
             </select>
             <span class="label-text -mb-4">Tautan Video :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="tautan_video"
-                    class="grow file-input file-input-success border-none bg-transparent py-2"
-                    placeholder="Copy & Paste Link Di Sini" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="tautan_video" class="grow file-input file-input-success border-none bg-transparent py-2" placeholder="Copy & Paste Link Di Sini" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -143,10 +139,8 @@
             </div>
 
             <span class="label-text -mb-4">Tautan Foto :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album"
-                    value="{{ $video->embed_link }}" readonly />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album" value="{{ $video->embed_link }}" readonly />
             </label>
         </div>
     </div>
@@ -169,8 +163,7 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>

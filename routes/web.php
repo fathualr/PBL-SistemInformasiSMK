@@ -185,9 +185,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('pengumumanPPDB', [pengumumanController::class, 'adminPengumumanPPDB'])->name('admin.pengumumanPPDB.index');
     Route::get('countdown', [InformasiPPDBController::class, 'adminCountdown'])->name('admin.countdown.edit');
     // CMS
-    Route::post('informasiPPDB', [informasippdbController::class, 'storeInformasiPPDB'])->name('admin.informasiPPDB.store');
-    Route::patch('informasiPPDB/{id}', [informasippdbController::class, 'updateInformasiPPDB'])->name('admin.informasiPPDB.update');
-    Route::delete('informasiPPDB/{id}', [informasippdbController::class, 'destroyInformasiPPDB'])->name('admin.informasiPPDB.destroy');
+    Route::patch('informasiPPDB/{id}/{field}', [informasippdbController::class, 'updateInformasiPPDB'])->name('admin.informasiPPDB.update');
     // CRUD alur
     Route::post('alurPPDB', [informasippdbController::class, 'storeAlurPPDB'])->name('admin.alurPPDB.store');
     Route::patch('alurPPDB/{id}', [informasippdbController::class, 'updateAlurPPDB'])->name('admin.alurPPDB.update');

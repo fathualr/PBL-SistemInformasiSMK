@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\KontenWebsite::factory(1)->create();
         
         // Seed sejarahsekolah with 10 entries
-        \App\Models\SejarahSekolah::factory(1)->create();
+        \App\Models\SejarahSekolah::factory(5)->create();
         
         // Seed informasippdb with 10 entries
         \App\Models\InformasiPPDB::factory(1)->create();
@@ -82,5 +82,8 @@ class DatabaseSeeder extends Seeder
 
         // Seed alurppdb with 10 entries
         \App\Models\GambarPrestasiSiswa::factory(20)->create();
+
+        // Seed alurppdb with 10 entries
+        \App\Models\GambarEkstrakurikuler::factory(20)->create();
     }
 }

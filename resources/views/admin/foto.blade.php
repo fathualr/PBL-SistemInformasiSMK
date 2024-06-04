@@ -1,6 +1,10 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
+
+@include('shared.success-message')
+@include('shared.error-message')
+
 <div>
     <h2 class="text-black font-bold text-xl mx-5 my-2">Galeri Foto</h2>
 </div>
@@ -46,15 +50,13 @@
                             </summary>
                             <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_detail_{{ $foto->id_foto }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_detail_{{ $foto->id_foto }}'].showModal()">
                                         <i class="fas fa-circle-info"></i>
                                         Detail
                                     </button>
                                 </li>
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_delete_{{ $foto->id_foto }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $foto->id_foto }}'].showModal()">
                                         <i class="fas fa-trash"></i>
                                         Hapus
                                     </button>
@@ -92,8 +94,7 @@
         <form action="{{ route('admin.foto.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <span class="label-text -mb-4">Pilih Album :</span>
-            <select name="id_album"
-                class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10" required>
+            <select name="id_album" class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10" required>
                 <option disabled selected>Nama Album || Tipe Album</option>
                 @foreach($albums as $album)
                 @if($album->tipe_album === 'Foto')
@@ -105,36 +106,30 @@
             <div id="imageInputsContainer">
                 <div class="w-full">
                     <div class="flex gap-1">
-                        <label
-                            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                             <input type="file" name="tautan_foto[]" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
                         </label>
                         <!-- Button for removing input -->
-                        <button class="btn btn-square btn-outline btn-error btn-remove hidden"
-                            onclick="removeInput(this)">
+                        <button class="btn btn-square btn-outline btn-error btn-remove hidden" onclick="removeInput(this)">
                             <i class='fas fa-times'></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <button type="button"
-                class="btn bg-blue-400 w-full h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400"
-                onclick="duplicateInput()">
+            <button type="button" class="btn bg-blue-400 w-full h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400" onclick="duplicateInput()">
                 <i class="fas fa-plus"></i>
                 Tambah Foto
             </button>
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -159,13 +154,10 @@
                 <div class="divider divider-primary"></div>
                 <div class="divider"></div>
             </div>
-            <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg mx-auto mb-5"
-                src="{{ asset('storage/' . $foto->tautan_foto) }}" alt="gallery foto" />
+            <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg mx-auto mb-5" src="{{ asset('storage/' . $foto->tautan_foto) }}" alt="gallery foto" />
             <span class="label-text -mb-4">Tautan Foto :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album"
-                    value="{{ $foto->tautan_foto }}" readonly />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album" value="{{ $foto->tautan_foto }}" readonly />
             </label>
         </div>
     </div>
@@ -191,8 +183,7 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>

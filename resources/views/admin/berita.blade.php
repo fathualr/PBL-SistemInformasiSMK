@@ -114,19 +114,19 @@
         </table>
 
         <!-- Pagination -->
-        <div class="flex justify-center my-5 gap-2">
+        <div class="join flex justify-center my-5">
             @if($berita->previousPageUrl())
-            <a href="{{ $berita->previousPageUrl() }}" class="btn">«</a>
+            <a href="{{ $berita->previousPageUrl() }}" class="join-item btn">«</a>
             @else
-            <button class="btn disabled">«</button>
+            <button class="join-item btn disabled">«</button>
             @endif
 
-            <button class="btn">Page {{ $berita->currentPage() }}</button>
+            <button class="join-item btn">Page {{ $berita->currentPage() }}</button>
 
             @if($berita->nextPageUrl())
-            <a href="{{ $berita->nextPageUrl() }}" class="btn">»</a>
+            <a href="{{ $berita->nextPageUrl() }}" class="join-item btn">»</a>
             @else
-            <button class="btn disabled">»</button>
+            <button class="join-item btn disabled">»</button>
             @endif
         </div>
 
