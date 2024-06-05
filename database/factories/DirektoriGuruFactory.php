@@ -8,23 +8,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class DirektoriGuruFactory extends Factory
 {
     protected $model = DirektoriGuru::class;
-    protected static $usedIds = [];
 
     public function definition()
     {
-        $idprograms = ['1', '2', '3', '4', '5'];
-        $availableIds = array_diff($idprograms, self::$usedIds);
-
-        // Check if there are available ids
-        if (empty($availableIds)) {
-            throw new \Exception('No more unique ids available for id_program');
-        }
-
-        $selectedId = $this->faker->randomElement($availableIds);
-        self::$usedIds[] = $selectedId;
-
         return [
-            'id_program' => $selectedId,
+            'id_program' => $this->faker->numberBetween(1, 5),
             'nama_guru' => $this->faker->name,
             'nik_guru' => $this->faker->unique()->numerify('############'),
             'jabatan_guru' => $this->faker->jobTitle,

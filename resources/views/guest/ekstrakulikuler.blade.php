@@ -6,8 +6,16 @@
     <p class="font-bold text-xl">EKSTRAKULIKULER</p>
 </div>
 
-<div class="grid grid-cols-3 gap-4 grid-flow-row my-24">
+<div class="flex justify-end">
+    <form action="{{ route('guest.ekstrakulikuler.index') }}" method="GET">
+        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+            <i class="fas fa-magnifying-glass"></i>
+            <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari Ekstrakulikuler" />
+        </label>
+    </form>
+</div>
 
+<div class="grid grid-cols-3 gap-4 grid-flow-row my-10">
     @foreach ($ekstrakulikuler as $ekskul )
     <div class="mx-auto mt-6">
         <a href="/guest/ekstrakulikuler-template/{{ $ekskul->id_ekstrakurikuler }}">
@@ -43,7 +51,21 @@
         </a>
     </div>
     @endforeach
-
 </div>
+
+<div class="join flex justify-center my-5">
+    @if($ekstrakulikuler->previousPageUrl())
+    <a href="{{ $ekstrakulikuler->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $ekstrakulikuler->currentPage() }}</button>
+    @if($ekstrakulikuler->nextPageUrl())
+    <a href="{{ $ekstrakulikuler->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
+
 
 @endsection

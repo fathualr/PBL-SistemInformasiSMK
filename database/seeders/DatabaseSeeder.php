@@ -39,25 +39,25 @@ class DatabaseSeeder extends Seeder
         \App\Models\FotoPrasarana::factory(8)->create();
 
         // Seed berita with 10 entries
-        \App\Models\Berita::factory(5)->create();
+        \App\Models\Berita::factory(20)->create();
 
         // Seed berita with 10 entries
-        \App\Models\GambarBerita::factory(25)->create();
+        \App\Models\GambarBerita::factory(30)->create();
 
         // Seed direktoriguru with 10 entries
-        \App\Models\DirektoriGuru::factory(5)->create();
+        \App\Models\DirektoriGuru::factory(20)->create();
 
         // Seed direktoripegawai with 10 entries
-        \App\Models\DirektoriPegawai::factory(5)->create();
+        \App\Models\DirektoriPegawai::factory(20)->create();
 
         // Seed direktorialumni with 10 entries
-        \App\Models\DirektoriAlumni::factory(5)->create();
+        \App\Models\DirektoriAlumni::factory(20)->create();
 
         // Seed direktorisiswa with 10 entries
-        \App\Models\DirektoriSiswa::factory(5)->create();
+        \App\Models\DirektoriSiswa::factory(20)->create();
         
         // Seed ekstrakulikuler with 10 entries
-        \App\Models\Ekstrakulikuler::factory(5)->create();
+        \App\Models\Ekstrakulikuler::factory(10)->create();
         
         // Seed kontenwebsite with 10 entries
         \App\Models\KontenWebsite::factory(1)->create();
@@ -75,15 +75,18 @@ class DatabaseSeeder extends Seeder
         \App\Models\KomentarBerita::factory(50)->create();
         
         // Seed alurppdb with 10 entries
-        \App\Models\KategoriBerita::factory(5)->create();
+        \App\Models\KategoriBerita::factory(20)->create();
 
         // Seed alurppdb with 10 entries
-        \App\Models\PrestasiSiswa::factory(5)->create();
+        \App\Models\PrestasiSiswa::factory(15)->create();
 
         // Seed alurppdb with 10 entries
-        \App\Models\GambarPrestasiSiswa::factory(20)->create();
+        \App\Models\GambarPrestasiSiswa::factory(30)->create();
 
         // Seed alurppdb with 10 entries
         \App\Models\GambarEkstrakurikuler::factory(20)->create();
+
+        // Seed alurppdb with 10 entries
+        \App\Models\UmpanBalik::factory(20)->create();
     }
 }

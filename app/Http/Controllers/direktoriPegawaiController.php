@@ -8,25 +8,63 @@ use Illuminate\Support\Facades\Storage;
 
 class direktoriPegawaiController extends Controller
 {
-    public function pegawai()
+    public function pegawai(Request $request)
     {
-        $direktoriPegawai = DirektoriPegawai::all();
-        return view('guest/direktori-pegawai', [
-            "title" => "Direktori Pegawai",
-            "direktoriPegawai"=> $direktoriPegawai
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 12;
+
+        $query = DirektoriPegawai::query();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_pegawai', 'like', '%' . $search . '%')
+                    ->orWhere('nik_pegawai', 'like', '%' . $search . '%')
+                    ->orWhere('jabatan_pegawai', 'like', '%' . $search . '%');
+            });
+        }
+
+        $direktoriPegawai = $query->paginate($perPage);
+        $direktoriPegawai->appends([
+            'search' => $search,
+            'perPage' => $perPage
+        ]);
+
+        return view('guest.direktori-pegawai', [
+            'title' => 'Direktori Pegawai',
+            'direktoriPegawai' => $direktoriPegawai
         ]);
     }
 
-    //Perbaiki ^^
-    public function adminPegawai(){
-        $pegawai = DirektoriPegawai::paginate(10);
-        return view('admin/pegawai', [
+    public function adminPegawai(Request $request)
+    {
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Default 10 jika tidak ada perPage
+
+        // Cek apakah ada query pencarian
+        if ($search) {
+            // Pencarian berdasarkan nama_pegawai, nik_pegawai, atau jabatan_pegawai
+            $pegawai = DirektoriPegawai::where('nama_pegawai', 'like', '%' . $search . '%')
+                ->orWhere('nik_pegawai', 'like', '%' . $search . '%')
+                ->orWhere('jabatan_pegawai', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $pegawai = DirektoriPegawai::paginate($perPage);
+        }
+
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $pegawai->appends(['search' => $search, 'perPage' => $perPage]);
+
+        return view('admin.pegawai', [
             "title" => "Admin Pegawai",
-            "pegawai"=> $pegawai
+            "pegawai" => $pegawai,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
-    public function storeDirektoriPegawai(Request $request){
+    public function storeDirektoriPegawai(Request $request)
+    {
         $validate = $request->validate([
             'nama_pegawai' => 'required|string|max:255',
             'nik_pegawai' => 'required|string|unique:direktori_pegawai,nik_pegawai',
@@ -52,7 +90,8 @@ class direktoriPegawaiController extends Controller
         }
     }
 
-    public function updateDirektoriPegawai(Request $request, $id){
+    public function updateDirektoriPegawai(Request $request, $id)
+    {
         $pegawai = DirektoriPegawai::findOrFail($id);
 
         $validate = $request->validate([
@@ -85,7 +124,8 @@ class direktoriPegawaiController extends Controller
         }
     }
 
-    public function destroyDirektoriPegawai($id_pegawai){
+    public function destroyDirektoriPegawai($id_pegawai)
+    {
         $pegawai = DirektoriPegawai::findOrFail($id_pegawai);
 
         if ($pegawai->gambar_pegawai) {

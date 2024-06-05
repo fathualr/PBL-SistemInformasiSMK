@@ -26,12 +26,27 @@ class programKeahlianController extends Controller
         ]);
     }
     // Perbaiki ^^^
+    public function adminProgramKeahlian(Request $request){
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10;
+
+        if ($search) {
+
+            $programKeahlian = ProgramKeahlian::where('nama_program', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $programKeahlian = ProgramKeahlian::paginate($perPage);
+        }
     
-    public function adminProgramKeahlian(){
-        $programKeahlian = ProgramKeahlian::with('capaianPembelajaran', 'peluangKerja')->paginate(10);
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $programKeahlian->appends(['search' => $search, 'perPage' => $perPage]);
+
         return view('admin/program-keahlian', [
             "title" => "Admin Program Keahlian",
-            "programKeahlian" => $programKeahlian
+            "programKeahlian" => $programKeahlian,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 

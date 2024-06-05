@@ -13,7 +13,7 @@ class GambarBeritaFactory extends Factory
     {
         return [
             'tautan_gambar' => 'image/Berita/akrp7SFs98hhiyDU5PHK4plg00zzolpDHy85ZwlD.jpg',
-            'berita_id' =>  $this->faker->numberBetween(1, 5), // Assuming you have a factory for the Berita model
+            'berita_id' =>  $this->faker->numberBetween(1, 20), // Assuming you have a factory for the Berita model
         ];
     }
 }

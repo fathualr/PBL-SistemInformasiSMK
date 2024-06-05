@@ -2,117 +2,119 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-lg rounded-md px-4">
-    @include('shared.success-message')
-    @include('shared.error-message')
+@include('shared.success-message')
+@include('shared.error-message')
 
-    <div class="col-span-4 my-4 mx-5 row-start-2">
-        <h3 class="font-bold text-lg">Pengelolaan Admin</h3>
-    </div>
-
-    <!-- Modal -->
-    <div class="col-span-3 row-start-3 mx-5">
-        <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
-            <i class="fas fa-user-plus"></i>
-            Tambah Data
-        </button>
-    </div>
-    <!-- Modal -->
-
-    <!-- Content -->
-    <div class="col-span-9 row-start-4 mt-5">
-        <table class="table border-collapse border border-slate-200 text-center">
-            <!-- head -->
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach ($admin as $key => $adm)
-                <tr class="hover">
-                    <th>{{ ($admin->currentPage() - 1) * $admin->perPage() + $key + 1 }}</th>
-                    <td>{{ $adm->nama }}</td>
-                    <td>{{ $adm->username }}</td>
-                    <td>{{ $adm->role }}</td>
-                    <td>
-                        <details class="dropdown dropdown-bottom">
-                            <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                            </summary>
-                            <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                <!-- Edit -->
-                                <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit_{{ $adm->id_admin }}.showModal()">
-                                        <i class="fas fa-pen-to-square"></i>
-                                        Edit
-                                    </button>
-                                </li>
-                                <!-- Edit -->
-
-                                <!-- View -->
-                                <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view_{{ $adm->id_admin }}.showModal()">
-                                        <i class="fas fa-circle-info"></i>
-                                        Detail
-                                    </button>
-                                </li>
-                                <!-- View -->
-
-                                <!-- Delete -->
-                                <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete_{{ $adm->id_admin }}.showModal()">
-                                        <i class="fas fa-trash"></i>
-                                        Hapus
-                                    </button>
-                                </li>
-                                <!-- Delete -->
-                            </ul>
-                        </details>
-                    </td>
-                </tr>
-                @endforeach
-
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Aksi</th>
-                </tr>
-            </tfoot>
-        </table>
-
-        <!-- Pagination -->
-        <div class="join flex justify-center my-5">
-            @if($admin->previousPageUrl())
-            <a href="{{ $admin->previousPageUrl() }}" class="join-item btn">«</a>
-            @else
-            <button class="join-item btn disabled">«</button>
-            @endif
-
-            <button class="join-item btn">Page {{ $admin->currentPage() }}</button>
-
-            @if($admin->nextPageUrl())
-            <a href="{{ $admin->nextPageUrl() }}" class="join-item btn">»</a>
-            @else
-            <button class="join-item btn disabled">»</button>
-            @endif
-        </div>
-
-    </div>
-    <!-- Content -->
+<div>
+    <h3 class="text-black font-bold text-xl mx-5 my-2">Pengelolaan Admin</h3>
 </div>
+
+<!-- Modal -->
+<div class="flex justify-start items-center w-64 mx-5">
+    <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
+        <i class="fas fa-user-plus"></i>
+        Tambah Data Admin
+    </button>
+</div>
+<!-- Modal -->
+
+<!-- Content -->
+<div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
+    <div class="col-span-9 row-start-4">
+        <div class="mt-5">
+            <table class="table border text-center">
+                <!-- head -->
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($admin as $key => $adm)
+                    <tr class="hover">
+                        <th>{{ ($admin->currentPage() - 1) * $admin->perPage() + $key + 1 }}</th>
+                        <td>{{ $adm->nama }}</td>
+                        <td>{{ $adm->username }}</td>
+                        <td>{{ $adm->role }}</td>
+                        <td>
+                            <details class="dropdown dropdown-bottom">
+                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
+                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
+                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
+                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                                </summary>
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                    <!-- Edit -->
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit_{{ $adm->id_admin }}.showModal()">
+                                            <i class="fas fa-pen-to-square"></i>
+                                            Edit
+                                        </button>
+                                    </li>
+                                    <!-- Edit -->
+
+                                    <!-- View -->
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view_{{ $adm->id_admin }}.showModal()">
+                                            <i class="fas fa-circle-info"></i>
+                                            Detail
+                                        </button>
+                                    </li>
+                                    <!-- View -->
+
+                                    <!-- Delete -->
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete_{{ $adm->id_admin }}.showModal()">
+                                            <i class="fas fa-trash"></i>
+                                            Hapus
+                                        </button>
+                                    </li>
+                                    <!-- Delete -->
+                                </ul>
+                            </details>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="join flex justify-center my-5">
+    @if($admin->previousPageUrl())
+    <a href="{{ $admin->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+
+    <button class="join-item btn">Page {{ $admin->currentPage() }}</button>
+
+    @if($admin->nextPageUrl())
+    <a href="{{ $admin->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
+
 
 <dialog id="my_modal_add" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">

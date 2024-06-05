@@ -9,27 +9,87 @@ use Illuminate\Support\Facades\Storage;
 
 class direktoriSiswaController extends Controller
 {
-    public function siswa(){
-        $direktoriSiswa = DirektoriSiswa::with('programKeahlian')->get();
-        $programKeahlian = ProgramKeahlian::all();
-        return view('guest/direktori-siswa', [
-            "title" => "Direktori Siswa",
-            "direktoriSiswa" => $direktoriSiswa,
-            "programKeahlian" => $programKeahlian
+    public function siswa(Request $request)
+    {
+        $search = $request->query('search');
+        $nama_program = $request->query('nama_program');
+        $tahun_angkatan = $request->query('tahun_angkatan');
+        $perPage = $request->query('perPage') ?? 10;
+
+        $query = DirektoriSiswa::with('programKeahlian');
+
+        if ($search) {
+            $query->where('nama_siswa', 'like', '%' . $search . '%')
+                ->orWhereHas('programKeahlian', function ($q) use ($search) {
+                    $q->where('nama_program', 'like', '%' . $search . '%');
+                })
+                ->orWhere('tahun_angkatan_siswa', $search); // Pencarian berdasarkan tahun angkatan siswa
+        }
+
+        if ($nama_program) {
+            $query->whereHas('programKeahlian', function ($q) use ($nama_program) {
+                $q->where('nama_program', $nama_program);
+            });
+        }
+
+        if ($tahun_angkatan) {
+            $query->where('tahun_angkatan_siswa', $tahun_angkatan);
+        }
+
+        $direktoriSiswa = $query->paginate($perPage);
+        $direktoriSiswa->appends([
+            'search' => $search,
+            'perPage' => $perPage,
+            'nama_program' => $nama_program,
+            'tahun_angkatan' => $tahun_angkatan // Mengirim tahun_angkatan ke view
+        ]);
+
+        $programKeahlian = ProgramKeahlian::all()->unique('nama_program');
+
+        return view('guest.direktori-siswa', [
+            'title' => 'Direktori Siswa',
+            'direktoriSiswa' => $direktoriSiswa,
+            'programKeahlian' => $programKeahlian,
         ]);
     }
 
-    public function adminSiswa(){
-        $siswa = DirektoriSiswa::with('programKeahlian')->paginate(10);
+    public function adminSiswa(Request $request)
+    {
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Default 10 jika tidak ada perPage
+
+        // Cek apakah ada query pencarian
+        if ($search) {
+            // Pencarian berdasarkan nama_siswa, nisn_siswa, atau nama_program
+            $siswa = DirektoriSiswa::with('programKeahlian')
+                ->where('nama_siswa', 'like', '%' . $search . '%')
+                ->orWhere('nisn_siswa', 'like', '%' . $search . '%')
+                ->orWhereHas('programKeahlian', function ($query) use ($search) {
+                    $query->where('nama_program', 'like', '%' . $search . '%');
+                })
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $siswa = DirektoriSiswa::with('programKeahlian')->paginate($perPage);
+        }
+
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $siswa->appends(['search' => $search, 'perPage' => $perPage]);
+
         $programKeahlian = ProgramKeahlian::all();
-        return view('admin/siswa', [
+
+        return view('admin.siswa', [
             "title" => "Admin Siswa",
-            "siswa"=> $siswa,
-            "programKeahlian"=> $programKeahlian
+            "siswa" => $siswa,
+            "programKeahlian" => $programKeahlian,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
-    public function storeDirektoriSiswa(Request $request){
+
+    public function storeDirektoriSiswa(Request $request)
+    {
         $validate = $request->validate([
             'id_program' => 'required|exists:program_keahlian,id_program',
             'nama_siswa' => 'required|string|max:255',
@@ -57,7 +117,8 @@ class direktoriSiswaController extends Controller
         }
     }
 
-    public function updateDirektoriSiswa(Request $request, $id_siswa){
+    public function updateDirektoriSiswa(Request $request, $id_siswa)
+    {
         $siswa = DirektoriSiswa::findOrFail($id_siswa);
 
         $validate = $request->validate([
@@ -90,7 +151,8 @@ class direktoriSiswaController extends Controller
         }
     }
 
-    public function destroyDirektoriSiswa($id_siswa){
+    public function destroyDirektoriSiswa($id_siswa)
+    {
         $siswa = DirektoriSiswa::findOrFail($id_siswa);
 
         if ($siswa->gambar_siswa) {

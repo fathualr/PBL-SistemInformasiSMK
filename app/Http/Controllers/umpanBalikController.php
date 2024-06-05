@@ -7,11 +7,28 @@ use App\Models\UmpanBalik;
 
 class umpanBalikController extends Controller
 {
-    public function adminUmpanBalik(){
-        $umpanBalik = UmpanBalik::paginate(10);
+    public function adminUmpanBalik(Request $request){
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Default 10 jika tidak ada perPage
+
+        if ($search) {
+            // Pencarian berdasarkan nama_alumni atau tahun_kelulusan_alumni
+            $umpanBalik = UmpanBalik::where('nama_penulis', 'like', '%' . $search . '%')
+                ->orWhere('email_penulis', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $umpanBalik = UmpanBalik::paginate($perPage);
+        }
+    
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $umpanBalik->appends(['search' => $search, 'perPage' => $perPage]);
+
         return view('admin/umpanBalik', [
             "title" => "Admin Umpan Balik",
-            "umpanBalik"=> $umpanBalik
+            "umpanBalik"=> $umpanBalik,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 

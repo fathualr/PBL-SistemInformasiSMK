@@ -8,24 +8,75 @@ use Illuminate\Support\Facades\Storage;
 
 class direktoriAlumniController extends Controller
 {
-    public function alumni(){
-        $direktoriAlumni = DirektoriAlumni::all();
-        return view('guest/direktori-alumni', [
-            "title" => "Direktori Alumni",
-            "direktoriAlumni"=> $direktoriAlumni
+    public function alumni(Request $request)
+    {
+        $search = $request->query('search');
+        $tahun_kelulusan = $request->query('tahun_kelulusan');
+        $perPage = $request->query('perPage') ?? 10;
+
+        $query = DirektoriAlumni::query();
+
+        // Filter berdasarkan pencarian
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_alumni', 'like', '%' . $search . '%')
+                    ->orWhere('tahun_kelulusan_alumni', $search);
+            });
+        }
+
+        // Filter berdasarkan tahun kelulusan
+        if ($tahun_kelulusan) {
+            $query->where('tahun_kelulusan_alumni', $tahun_kelulusan);
+        }
+
+        // Ambil data tahun kelulusan yang unik
+        $tahun_kelulusan_list = DirektoriAlumni::pluck('tahun_kelulusan_alumni')->unique()->sort()->values();
+
+        // Paginasi hasil query
+        $direktoriAlumni = $query->paginate($perPage);
+        $direktoriAlumni->appends([
+            'search' => $search,
+            'perPage' => $perPage,
+            'tahun_kelulusan' => $tahun_kelulusan
+        ]);
+
+        return view('guest.direktori-alumni', [
+            'title' => 'Direktori Alumni',
+            'direktoriAlumni' => $direktoriAlumni,
+            'tahun_kelulusan_list' => $tahun_kelulusan_list,
         ]);
     }
 
-    // Perbaiki ^^^
-    public function adminAlumni(){
-        $direktoriAlumni = DirektoriAlumni::paginate(10);
-        return view('admin/alumni', [
+    public function adminAlumni(Request $request)
+    {
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Default 10 jika tidak ada perPage
+
+        // Cek apakah ada query pencarian
+        if ($search) {
+            // Pencarian berdasarkan nama_alumni atau tahun_kelulusan_alumni
+            $direktoriAlumni = DirektoriAlumni::where('nama_alumni', 'like', '%' . $search . '%')
+                ->orWhere('tahun_kelulusan_alumni', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $direktoriAlumni = DirektoriAlumni::paginate($perPage);
+        }
+
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $direktoriAlumni->appends(['search' => $search, 'perPage' => $perPage]);
+
+        return view('admin.alumni', [
             "title" => "Admin Alumni",
-            "direktoriAlumni" => $direktoriAlumni
+            "direktoriAlumni" => $direktoriAlumni,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
-    public function storeDirektoriAlumni(Request $request){
+
+    public function storeDirektoriAlumni(Request $request)
+    {
         $validate = $request->validate([
             'nama_alumni' => 'required|string|max:255',
             'no_hp_alumni' => 'required|string|max:255',
@@ -51,7 +102,8 @@ class direktoriAlumniController extends Controller
         }
     }
 
-    public function updateDirektoriAlumni(Request $request, $id_alumni){
+    public function updateDirektoriAlumni(Request $request, $id_alumni)
+    {
         $alumni = DirektoriAlumni::findOrFail($id_alumni);
 
         $validate = $request->validate([
@@ -82,7 +134,8 @@ class direktoriAlumniController extends Controller
         }
     }
 
-    public function destroyDirektoriAlumni($id_alumni){
+    public function destroyDirektoriAlumni($id_alumni)
+    {
         $alumni = DirektoriAlumni::findOrFail($id_alumni);
 
         if ($alumni->gambar_alumni) {

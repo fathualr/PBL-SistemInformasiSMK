@@ -6,40 +6,50 @@
     <p class="font-bold text-xl">DIREKTORI GURU</p>
 </div>
 
-<div class="grid grid-cols-8">
-
-    <!-- Category -->
-    <div class="col-span-2">
+<div class="flex justify-between items-center mx-5">
+    <div class="flex items-center">
         <div class="dropdown dropdown-hover">
             <div tabindex="0" role="button" class="btn btn-outline w-full m-1">
                 <i class="fas fa-list"></i>
                 Program Keahlian
             </div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-max">
-                @foreach($direktoriGuru as $guru)
-                <li><a>{{ $guru->programKeahlian->nama_program }}</a></li>
+                <li>
+                    <a href="{{ route('guest.guru.index', array_merge(request()->query(), ['nama_program' => null])) }}" class="font-bold">
+                        Tampilkan Semua
+                    </a>
+                </li>
+                @foreach($programKeahlian as $program)
+                <li>
+                    <a href="{{ route('guest.guru.index', array_merge(request()->query(), ['nama_program' => $program->nama_program])) }}">
+                        {{ $program->nama_program }}
+                    </a>
+                </li>
                 @endforeach
             </ul>
         </div>
     </div>
-    <!-- Category -->
 
-    <!-- Search Box -->
-    <div class="col-span-1 col-start-8">
-        <div class="flex justify-end">
-            <label class="input input-bordered flex justify-between items-center gap-2">
-                <input type="text" class="grow" placeholder="Cari Siswa" />
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-                    <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
-                </svg>
-            </label>
+    <div class="flex items-center">
+        <div class="relative hidden md:flex mr-2">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('guest.guru.index', array_merge(request()->query(), ['perPage' => 12])) }}" {{ request()->get('perPage') == 12 ? 'selected' : '' }}>12</option>
+                <option value="{{ route('guest.guru.index', array_merge(request()->query(), ['perPage' => 24])) }}" {{ request()->get('perPage') == 24 ? 'selected' : '' }}>24</option>
+                <option value="{{ route('guest.guru.index', array_merge(request()->query(), ['perPage' => 36])) }}" {{ request()->get('perPage') == 36 ? 'selected' : '' }}>36</option>
+                <option value="{{ route('guest.guru.index', array_merge(request()->query(), ['perPage' => 60])) }}" {{ request()->get('perPage') == 60 ? 'selected' : '' }}>60</option>
+                <option value="{{ route('guest.guru.index', array_merge(request()->query(), ['perPage' => 96])) }}" {{ request()->get('perPage') == 96 ? 'selected' : '' }}>96</option>
+            </select>
         </div>
+        <form action="{{ route('guest.guru.index') }}" method="GET">
+            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
+            </label>
+        </form>
     </div>
-    <!-- Search Box -->
 </div>
 
-<div class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-24 mx-auto">
-
+<div class="grid {{ count($direktoriGuru) > 3 ? 'grid-cols-4' : (count($direktoriGuru) > 2 ? 'grid-cols-3' : (count($direktoriGuru) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-16 mx-auto">
     @foreach($direktoriGuru as $guru)
     <div class="mx-auto">
         <button class="hover:scale-110 transition-all duration-300" onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
@@ -60,7 +70,9 @@
             </div>
         </button>
     </div>
+    @endforeach
 
+    @foreach($direktoriGuru as $guru)
     <dialog id="my_modal_view{{ $guru->id_guru }}" class="modal">
         <div class="modal-box w-10/12 max-w-5xl">
             <form method="dialog">
@@ -174,6 +186,18 @@
 
 </div>
 
-
+<div class="join flex justify-center my-5">
+    @if($direktoriGuru->previousPageUrl())
+    <a href="{{ $direktoriGuru->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $direktoriGuru->currentPage() }}</button>
+    @if($direktoriGuru->nextPageUrl())
+    <a href="{{ $direktoriGuru->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
 
 @endsection

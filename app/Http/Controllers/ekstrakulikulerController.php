@@ -10,14 +10,34 @@ use Illuminate\Support\Facades\Storage;
 
 class ekstrakulikulerController extends Controller
 {
-    public function ekstrakulikuler()
+    public function ekstrakulikuler(Request $request)
     {
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->get();
-        return view('guest/ekstrakulikuler', [
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 6; // Ubah menjadi 6
+
+        $query = Ekstrakulikuler::with("guru", "gambar");
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_ekstrakurikuler', 'like', '%' . $search . '%')
+                    ->orWhereHas('guru', function ($q) use ($search) {
+                        $q->where('nama_guru', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        $ekstrakulikuler = $query->paginate($perPage);
+        $ekstrakulikuler->appends([
+            'search' => $search,
+            'perPage' => $perPage
+        ]);
+
+        return view('guest.ekstrakulikuler', [
             "title" => "Ekstrakulikuler",
             "ekstrakulikuler" => $ekstrakulikuler
         ]);
     }
+
 
     public function ekstrakulikulerTemplate($id_ekstrakurikuler)
     {
@@ -29,14 +49,36 @@ class ekstrakulikulerController extends Controller
     }
 
     // Perbaiki ^^^
-    public function adminEkstrakulikuler()
+    public function adminEkstrakulikuler(Request $request)
     {
-        $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->paginate(10);
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Default 10 jika tidak ada perPage
+
+        // Cek apakah ada query pencarian
+        if ($search) {
+            // Pencarian berdasarkan nik_guru, nama, atau programKeahlian.nama_program
+            $ekstrakulikuler = Ekstrakulikuler::with('guru')
+                ->where('nama_ekstrakurikuler', 'like', '%' . $search . '%')
+                ->orWhereHas('guru', function ($query) use ($search) {
+                    $query->where('nama_guru', 'like', '%' . $search . '%');
+                })
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $ekstrakulikuler = Ekstrakulikuler::with('guru')->paginate($perPage);
+        }
+
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $ekstrakulikuler->appends(['search' => $search, 'perPage' => $perPage]);
+
         $gurus = DirektoriGuru::all();
+
         return view('admin/ekstrakulikuler', [
             "title" => "Admin Ekstrakulikuler",
             "ekstrakulikuler" => $ekstrakulikuler,
-            "gurus" => $gurus
+            "gurus" => $gurus,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
