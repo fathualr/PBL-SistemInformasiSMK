@@ -16,12 +16,22 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         DB::table('admin')->insert([
-            'username' => 'superadmin',
-            'password' => Hash::make('123'), // Gantilah dengan password yang kuat
-            'nama' => 'Super Admin',
-            'role' => 'superadmin',
-            'created_at' => now(),
-            'updated_at' => now(),
+            [
+                'username' => 'superadmin',
+                'password' => Hash::make('123'), // Gantilah dengan password yang kuat
+                'nama' => 'Super Admin',
+                'role' => 'Master',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'username' => 'admin',
+                'password' => Hash::make('123'), // Gantilah dengan password yang kuat
+                'nama' => 'Admin',
+                'role' => 'Admin',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
         ]);
     }
 }

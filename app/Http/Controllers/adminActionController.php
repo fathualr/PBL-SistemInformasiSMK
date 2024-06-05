@@ -9,16 +9,16 @@ use Illuminate\Validation\Rule;
 
 class adminActionController extends Controller
 {
-    public function __construct(){
-        if (Admin::count() == 0) {
-            Admin::create([
-                'username' => 'admin',
-                'password' => Hash::make('12345'),
-                'nama' => 'Admin',
-                'role' => 'Master'
-            ]);
-        }
-    }
+    // public function __construct(){
+    //     if (Admin::count() == 0) {
+    //         Admin::create([
+    //             'username' => 'admin',
+    //             'password' => Hash::make('12345'),
+    //             'nama' => 'Admin',
+    //             'role' => 'Master'
+    //         ]);
+    //     }
+    // }
 
     public function index(){
         $admin = Admin::paginate(10);

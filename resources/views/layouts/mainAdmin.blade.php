@@ -72,6 +72,7 @@ input[type=number] {
                         <h1 class="font-bold mx-10 hidden" id="navTitle">Dashboard</h1>
                         </a>
                     </li>
+                    @if ($adminRole === 'Master')
                     <li class="hover:translate-y-0 @if($title == 'Admin') bg-blue-600 rounded-md @endif">
                         <a href="/admin/admin">
                             <div class="w-3 flex justify-center items-center">
@@ -80,6 +81,7 @@ input[type=number] {
                             <h1 class="font-bold mx-10 hidden" id="navTitle">Admin</h1>
                         </a>
                     </li>
+                    @endif
                     <li class="hover:translate-y-0 @if($title == 'Admin Carousel') bg-blue-600 rounded-md @endif">
                         <a href="/admin/carousels">
                             <div class=" w-3 flex justify-center items-center">

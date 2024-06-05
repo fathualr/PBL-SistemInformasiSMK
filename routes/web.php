@@ -89,11 +89,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('index');
     
     //Admin -----
-    Route::get('admin', [adminActionController::class, 'index'])->name('admin.index');
+    Route::get('admin', [adminActionController::class, 'index'])->name('admin.index')->middleware('master');
     //CRUD
-    Route::post('/adminStore', [adminActionController::class, 'store'])->name('admin.store');
-    Route::patch('/adminUpdate/{id}', [adminActionController::class, 'update'])->name('admin.update');
-    Route::delete('/adminDestroy/{id}', [adminActionController::class, 'destroy'])->name('admin.destroy');
+    Route::post('/adminStore', [adminActionController::class, 'store'])->name('admin.store')->middleware('master');
+    Route::patch('/adminUpdate/{id}', [adminActionController::class, 'update'])->name('admin.update')->middleware('master');
+    Route::delete('/adminDestroy/{id}', [adminActionController::class, 'destroy'])->name('admin.destroy')->middleware('master');
     //-----
 
     //Carousels -----
