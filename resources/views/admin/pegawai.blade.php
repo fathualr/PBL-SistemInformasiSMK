@@ -53,8 +53,7 @@
                         <td class="w-56">
                             <div class="avatar">
                                 <div class="mask mask-squircle w-16 h-16">
-                                    <img src="{{ asset('storage/'.$pgw->gambar_pegawai) }}"
-                                        alt="Avatar Tailwind CSS Component" />
+                                    <img src="{{ asset('storage/'.$pgw->gambar_pegawai) }}" alt="Avatar Tailwind CSS Component" />
                                 </div>
                             </div>
                         </td>
@@ -69,12 +68,10 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['my_modal_edit{{ $pgw->id_pegawai }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit{{ $pgw->id_pegawai }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -82,8 +79,7 @@
                                     <!-- Edit -->
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['my_modal_view{{ $pgw->id_pegawai }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $pgw->id_pegawai }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -91,8 +87,7 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="window['my_modal_delete{{ $pgw->id_pegawai }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $pgw->id_pegawai }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -141,51 +136,41 @@
 <dialog id="my_modal_add" class="modal">
     <div class="modal-box w-11/12 max-w-5xl py-0">
         <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
             <h3 class="font-bold text-lg">Tambah Staff</h3>
             <div class="grid grid-cols-3 w-52 -mt-5">
                 <div class="divider"></div>
                 <div class="divider divider-primary"></div>
                 <div class="divider"></div>
             </div>
-            <form method="dialog">
-                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-2">
-                    <i class="fas fa-times text-lg"></i>
-                </button>
-            </form>
         </div>
 
         <form action="{{ route('DirektoriPegawai.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <span class="label-text -mb-4">Nama Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Pegawai" name="nama_pegawai"
-                    required />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Pegawai" name="nama_pegawai" required />
             </label>
             <span class="label-text -mb-4">NIP Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="number" class="grow bg-transparent py-2" placeholder="NIP" name="nik_pegawai" required />
             </label>
             <span class="label-text -mb-4">Email Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="email" class="grow bg-transparent py-2" placeholder="Email" name="email_pegawai"
-                    required />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="email" class="grow bg-transparent py-2" placeholder="Email" name="email_pegawai" required />
             </label>
             <span class="label-text -mb-4">No.Handphone Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="number" class="grow bg-transparent py-2" placeholder="No.Hp" name="no_hp_pegawai"
-                    required />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="number" class="grow bg-transparent py-2" placeholder="No.Hp" name="no_hp_pegawai" required />
             </label>
             <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
-                    name="tempat_lahir_pegawai" required />
-                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_pegawai"
-                    required />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir" name="tempat_lahir_pegawai" required />
+                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_pegawai" required />
             </label>
             <span class="label-text -mb-4">Jenis Kelamin Pegawai :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="jenis_kelamin" required>
@@ -194,14 +179,10 @@
                 <option value="Perempuan">Perempuan</option>
             </select>
             <span class="label-text -mb-4">Alamat Pegawai :</span>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Alamat" name="alamat_pegawai" required></textarea>
+            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Alamat" name="alamat_pegawai" required></textarea>
             <span class="label-text -mb-4">Jabatan Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent py-2" placeholder="Jabatan" name="jabatan_pegawai"
-                    required />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Jabatan" name="jabatan_pegawai" required />
             </label>
             <span class="label-text -mb-4">Status Pegawai :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="status_pegawai" required>
@@ -212,21 +193,18 @@
                 <option value="Resign">Resign</option>
             </select>
             <span class="label-text -mb-4">Foto Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="gambar_pegawai" accept="gambarPegawai/*" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
             </label>
             <div class="flex justify-end items-end my-5 gap-4">
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -241,52 +219,44 @@
 <!-- Edit Modal -->
 @foreach($pegawai as $key => $pgw)
 <dialog id="my_modal_edit{{ $pgw->id_pegawai }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data</h3>
-        <div class="grid grid-cols-8 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Data</h3>
+            <div class="grid grid-cols-8 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
-        <form action="{{ route('DirektoriPegawai.update', $pgw->id_pegawai) }}" method="post"
-            enctype="multipart/form-data">
+        <form action="{{ route('DirektoriPegawai.update', $pgw->id_pegawai) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <span class="label-text -mb-4">Nama Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai"
-                    name="nama_pegawai" value="{{ $pgw->nama_pegawai }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai" name="nama_pegawai" value="{{ $pgw->nama_pegawai }}" />
             </label>
             <span class="label-text -mb-4">NIP Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_pegawai"
-                    value="{{ $pgw->nik_pegawai }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_pegawai" value="{{ $pgw->nik_pegawai }}" />
             </label>
             <span class="label-text -mb-4">Email Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_pegawai"
-                    value="{{ $pgw->email_pegawai }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_pegawai" value="{{ $pgw->email_pegawai }}" />
             </label>
             <span class="label-text -mb-4">No.Handphone Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_pegawai"
-                    value="{{ $pgw->no_hp_pegawai }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_pegawai" value="{{ $pgw->no_hp_pegawai }}" />
             </label>
             <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
-                    name="tempat_lahir_pegawai" value="{{ $pgw->tempat_lahir_pegawai }}" />
-                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_pegawai"
-                    value="{{ $pgw->TTL_pegawai }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir" name="tempat_lahir_pegawai" value="{{ $pgw->tempat_lahir_pegawai }}" />
+                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_pegawai" value="{{ $pgw->TTL_pegawai }}" />
             </label>
             <span class="label-text -mb-4">Jenis Kelamin Pegawai :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="jenis_kelamin">
@@ -296,14 +266,10 @@
                 <option value="Perempuan" {{ $pgw->jenis_kelamin === 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
             </select>
             <span class="label-text -mb-4">Alamat Pegawai :</span>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Alamat" name="alamat_pegawai">{{ $pgw->alamat_pegawai }}</textarea>
+            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Alamat" name="alamat_pegawai">{{ $pgw->alamat_pegawai }}</textarea>
             <span class="label-text -mb-4">Jabatan Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan"
-                    name="jabatan_pegawai" value="{{ $pgw->jabatan_pegawai }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan" name="jabatan_pegawai" value="{{ $pgw->jabatan_pegawai }}" />
             </label>
             <span class="label-text -mb-4">Status Pegawai :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="status_pegawai">
@@ -314,16 +280,14 @@
                 <option value="Resign" {{ $pgw->status_pegawai === 'Resign' ? 'selected' : '' }}>Resign</option>
             </select>
             <span class="label-text -mb-4">Foto Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="gambar_pegawai" accept="gambarPegawai/*" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
             </label>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
                     Edit
                 </button>
@@ -338,81 +302,64 @@
 
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $pgw->id_pegawai }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Data</h3>
-        <div class="grid grid-cols-8 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Info Detail Data</h3>
+            <div class="grid grid-cols-8 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
+
         <div class="avatar flex justify-center items-center my-5">
             <div class="mask mask-squircle w-36 h-36">
                 <img src="{{ asset('storage/'.$pgw->gambar_pegawai) }}" alt="Avatar Tailwind CSS Component" />
             </div>
         </div>
         <span class="label-text -mb-4">Tautan Foto :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" name="gambar_guru"
-                class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarGuru/*"
-                placeholder="Logo" value="{{ $pgw->gambar_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" name="gambar_guru" class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarGuru/*" placeholder="Logo" value="{{ $pgw->gambar_pegawai }}" readonly />
         </label>
         <span class="label-text -mb-4">Nama Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai"
-                name="nama_pegawai" value="{{ $pgw->nama_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai" name="nama_pegawai" value="{{ $pgw->nama_pegawai }}" readonly />
         </label>
         <span class="label-text -mb-4">NIP Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_pegawai"
-                value="{{ $pgw->nik_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_pegawai" value="{{ $pgw->nik_pegawai }}" readonly />
         </label>
         <span class="label-text -mb-4">Email Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_pegawai"
-                value="{{ $pgw->email_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_pegawai" value="{{ $pgw->email_pegawai }}" readonly />
         </label>
         <span class="label-text -mb-4">No.Handphone Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_pegawai"
-                value="{{ $pgw->no_hp_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_pegawai" value="{{ $pgw->no_hp_pegawai }}" readonly />
         </label>
         <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
-                name="tempat_lahir_pegawai" value="{{ $pgw->tempat_lahir_pegawai }}" readonly />
-            <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_pegawai"
-                value="{{ $pgw->TTL_pegawai }}" />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir" name="tempat_lahir_pegawai" value="{{ $pgw->tempat_lahir_pegawai }}" readonly />
+            <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_pegawai" value="{{ $pgw->TTL_pegawai }}" />
         </label>
         <span class="label-text -mb-4">Jenis Kelamin Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai"
-                name="jenis_kelamin" value="{{ $pgw->jenis_kelamin }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai" name="jenis_kelamin" value="{{ $pgw->jenis_kelamin }}" readonly />
         </label>
         <span class="label-text -mb-4">Alamat Pegawai :</span>
-        <textarea
-            class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-            placeholder="Alamat" name="alamat_pegawai" readonly>{{ $pgw->alamat_pegawai }}</textarea>
+        <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Alamat" name="alamat_pegawai" readonly>{{ $pgw->alamat_pegawai }}</textarea>
         <span class="label-text -mb-4">Jabatan Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan" name="jabatan_pegawai"
-                value="{{ $pgw->jabatan_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan" name="jabatan_pegawai" value="{{ $pgw->jabatan_pegawai }}" readonly />
         </label>
         <span class="label-text -mb-4">Status Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai"
-                name="status_pegawai" value="{{ $pgw->status_pegawai }}" readonly />
+        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Pegawai" name="status_pegawai" value="{{ $pgw->status_pegawai }}" readonly />
         </label>
     </div>
     <form method="dialog" class="modal-backdrop">
@@ -425,7 +372,9 @@
 <dialog id="my_modal_delete{{ $pgw->id_pegawai }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -439,8 +388,7 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class=" fas fa-trash"></i>
                     Hapus
                 </button>

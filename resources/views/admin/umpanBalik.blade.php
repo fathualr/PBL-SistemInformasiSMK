@@ -53,10 +53,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $umpan->id_pesan }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_view{{ $umpan->id_pesan }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -64,7 +66,8 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $umpan->id_pesan }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete{{ $umpan->id_pesan }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -113,7 +116,9 @@
 <dialog id="my_modal_view{{ $umpan->id_pesan }}" class="modal">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Detail Umpan balik</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -127,7 +132,8 @@
                     <div class="label">
                         <span class="label-text">Nama</span>
                     </div>
-                    <input type="text" placeholder="Masukkan Nama" class="input border-2 border-blue-400 w-full" name="nama_penulis" value="{{ $umpan->nama_penulis }}" readonly />
+                    <input type="text" placeholder="Masukkan Nama" class="input border-2 border-blue-400 w-full"
+                        name="nama_penulis" value="{{ $umpan->nama_penulis }}" readonly />
                 </label>
             </div>
             <div class="col-span-1">
@@ -135,7 +141,8 @@
                     <div class="label">
                         <span class="label-text">Email</span>
                     </div>
-                    <input type="text" placeholder="example@gmail.com" class="input border-2 border-blue-400 w-full" name="email_penulis" value="{{ $umpan->email_penulis }}" readonly />
+                    <input type="text" placeholder="example@gmail.com" class="input border-2 border-blue-400 w-full"
+                        name="email_penulis" value="{{ $umpan->email_penulis }}" readonly />
                 </label>
             </div>
             <div class="col-span-2">
@@ -143,11 +150,15 @@
                     <div class="label">
                         <span class="label-text">Isi Pesan</span>
                     </div>
-                    <textarea class="textarea border-2 border-blue-400 h-48" placeholder="Ketikkan Komentar Disini" name="deskripsi_pesan" readonly>{{ $umpan->deskripsi_pesan }}</textarea>
+                    <textarea class="textarea border-2 border-blue-400 h-48" placeholder="Ketikkan Komentar Disini"
+                        name="deskripsi_pesan" readonly>{{ $umpan->deskripsi_pesan }}</textarea>
                 </label>
             </div>
         </div>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- View Modal -->
 
@@ -155,7 +166,9 @@
 <dialog id="my_modal_delete{{ $umpan->id_pesan }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -169,14 +182,17 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class=" fas fa-trash"></i>
                     Hapus
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 @endforeach
 <!-- Delete Modal -->

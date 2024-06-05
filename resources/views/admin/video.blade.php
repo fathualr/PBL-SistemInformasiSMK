@@ -79,7 +79,9 @@
 <dialog id="my_modal_add" class="modal" onclick="if (event.target === this) this.close()">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Tambahkan video</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -125,7 +127,9 @@
 <dialog id="my_modal_detail_{{ $video->id_video }}" class="modal" onclick="if (event.target === this) this.close()">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <div>
             <h3 class="font-bold text-lg">Detail video</h3>
@@ -149,13 +153,15 @@
 <dialog id="my_modal_delete_{{ $video->id_video }}" class="modal" onclick="if (event.target === this) this.close()">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data Video</h3>
 
         <div class="grid grid-cols-3 w-52 -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-error"></div>
             <div class="divider"></div>
         </div>
         <form action="{{ route('admin.video.destroy', $video->id_video) }}" method="post">

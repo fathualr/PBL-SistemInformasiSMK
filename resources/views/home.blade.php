@@ -189,12 +189,13 @@
     </div> --}}
     @foreach ($berita as $brt)
     <div class="smartphone:col-span-1 md:mx-auto">
-        <div class="card card-side bg-base-100 shadow-xl h-32 lg:h-60">
+        <div class="card card-side bg-base-100 shadow-xl w-[35rem] h-32 lg:h-60">
             <figure class="h-full overflow-hidden">
-                <img class="object-cover h-full" src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar">
+                <img class="object-cover w-72 h-full" src="{{ asset('storage/'.$brt->gambar_headline) }}"
+                    alt="Nama Gambar">
             </figure>
             <div class="card-body w-60 lg:w-full">
-                <h2 class="lg:card-title text-sm font-bold -mt-5 lg:-mt-0">
+                <h2 class="text-xl font-bold -mt-5 lg:-mt-0 truncate w-40">
                     {{ $brt->judul_berita }}
                 </h2>
                 <p class="w-28 py-5 -my-3 lg:py-0 lg:-my-0 lg:w-72 truncate text-xs">
