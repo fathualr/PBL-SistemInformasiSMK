@@ -23,4 +23,14 @@ class Album extends Model
         'deskripsi_album',
         'tanggal_unggah',
     ];
+
+    public function Foto()
+    {
+        return $this->belongsTo(Foto::class, 'id_foto');
+    }
+    public function Video()
+    {
+        return $this->belongsTo(Video::class, 'id_video');
+    }
+
 }

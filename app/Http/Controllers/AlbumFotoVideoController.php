@@ -9,41 +9,90 @@ use App\Models\Video;
 
 class AlbumFotoVideoController extends Controller
 {
-    public function adminAlbum()
+    public function adminAlbum(Request $request)
     {
-        $albums = Album::paginate(10); // Mengambil 10 album per halaman
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10;
 
-        return view('admin.album', [
+        if ($search) {
+
+            $albums = Album::where('nama_album', 'like', '%' . $search . '%')
+                ->orWhere('tipe_album', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $albums = Album::paginate($perPage);
+        }
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $albums->appends(['search' => $search, 'perPage' => $perPage]);
+
+        return view('admin/album', [
             "title" => "Admin Album",
-            "albums" => $albums // Meneruskan data album ke tampilan
+            "albums" => $albums, // Meneruskan data album ke tampilan
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
-    public function adminFoto()
+    public function adminFoto(Request $request)
     {
-        // Mengambil semua data foto menggunakan model Foto
-        $fotos = Foto::with('album')->paginate(10);
-        $albums = Album::all();
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10;
 
+        if ($search) {
+            // Pencarian berdasarkan nik_guru, nama, atau programKeahlian.nama_program
+            $fotos = Foto::with('album')
+                ->where('tautan_foto', 'like', '%' . $search . '%')
+                ->orWhereHas('album', function ($query) use ($search) {
+                    $query->where('nama_album', 'like', '%' . $search . '%');
+                })
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $fotos = Foto::with('album')->paginate($perPage);
+        }
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $fotos->appends(['search' => $search, 'perPage' => $perPage]);
+
+        $albums = Album::all();
         // Mengirim data foto ke view 'admin.foto'
-        return view('admin.foto', [
+        return view('admin/foto', [
             "title" => "Admin Foto",
             "fotos" => $fotos,
             "albums" => $albums,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 
-    public function adminVideo()
+    public function adminVideo(Request $request)
     {
-        // Mengambil semua data video menggunakan model Video
-        $videos = Video::with('album')->paginate(10);
-        $albums = Album::all();
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10;
 
+        if ($search) {
+            // Pencarian berdasarkan nik_guru, nama, atau programKeahlian.nama_program
+            $videos = Video::with('album')
+                ->where('tautan_video', 'like', '%' . $search . '%')
+                ->orWhereHas('album', function ($query) use ($search) {
+                    $query->where('nama_album', 'like', '%' . $search . '%');
+                })
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $videos = Video::with('album')->paginate($perPage);
+        }
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $videos->appends(['search' => $search, 'perPage' => $perPage]);
+
+        $albums = Album::all();
         // Mengirim data video ke view 'admin.video'
-        return view('admin.video', [
+        return view('admin/video', [
             "title" => "Admin Video",
             "videos" => $videos,
             "albums" => $albums,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
         ]);
     }
 

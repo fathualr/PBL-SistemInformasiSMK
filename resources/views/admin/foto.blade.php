@@ -9,76 +9,93 @@
     <h2 class="text-black font-bold text-xl mx-5 my-2">Galeri Foto</h2>
 </div>
 
-<div class="flex flex-col md:flex-row justify-between items-center mx-5">
-    <div class="w-full md:w-auto mb-2 md:mb-0">
-        <button class="btn btn-outline w-full md:w-auto hover:animate-pulse" onclick="my_modal_add.showModal()">
+<div class="flex justify-between items-center mx-5">
+    <div class="flex items-center">
+        <button class="btn btn-outline hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-plus"></i>
-            Tambahkan Foto
+            Tambah Foto
         </button>
+    </div>
+    <div class="flex items-center">
+        <div class="relative hidden md:flex mr-2">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('admin.foto.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.foto.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.foto.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.foto.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.foto.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+            </select>
+        </div>
+        <form action="{{ route('admin.foto.index') }}" method="GET">
+            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" class="grow" name="search" placeholder="Cari Nama Album" />
+            </label>
+        </form>
     </div>
 </div>
 
 <div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
-    <div class="col-span-9 row-start-2">
-        <table class="table table-pin-rows table-pin-cols w-full">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Album</th>
-                    <th>Tautan Foto</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($fotos->chunk(10) as $chunk)
-                @foreach($chunk as $key => $foto)
-                <tr class="hover">
-                    <td>{{ ($fotos->currentPage() - 1) * $fotos->perPage() + $key + 1 }}</td>
-                    <td>{{ $foto->album->nama_album }}</td>
-                    <td>
-                        <p class="truncate w-64">
-                            {{ $foto->tautan_foto }}
-                        </p>
-                    </td>
-                    <td>
-                        <details class="dropdown">
-                            <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
-                                <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
-                                <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
-                                <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
-                                <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
-                            </summary>
-                            <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
-                                <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_detail_{{ $foto->id_foto }}'].showModal()">
-                                        <i class="fas fa-circle-info"></i>
-                                        Detail
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_delete_{{ $foto->id_foto }}'].showModal()">
-                                        <i class="fas fa-trash"></i>
-                                        Hapus
-                                    </button>
-                                </li>
-                            </ul>
-                        </details>
-                    </td>
-                </tr>
-                @endforeach
-                @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Album</th>
-                    <th>Tautan Foto</th>
-                    <th>Aksi</th>
-                </tr>
-            </tfoot>
-        </table>
+    <div class="col-span-9 row-start-4">
+        <div class="mt-5">
+            <table class="table border text-center">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Album</th>
+                        <th>Tautan Foto</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($fotos->chunk(10) as $chunk)
+                    @foreach($chunk as $key => $foto)
+                    <tr class="hover">
+                        <td>{{ ($fotos->currentPage() - 1) * $fotos->perPage() + $key + 1 }}</td>
+                        <td>{{ $foto->album->nama_album }}</td>
+                        <td>
+                            <p class="truncate w-64">
+                                {{ $foto->tautan_foto }}
+                            </p>
+                        </td>
+                        <td>
+                            <details class="dropdown">
+                                <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
+                                    <i class="fas fa-circle text-[0.5rem] circle-1 transition-all duration-500"></i>
+                                    <i class="fas fa-circle text-[0.5rem] circle-2 transition-all duration-500"></i>
+                                    <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
+                                    <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
+                                </summary>
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_detail_{{ $foto->id_foto }}'].showModal()">
+                                            <i class="fas fa-circle-info"></i>
+                                            Detail
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $foto->id_foto }}'].showModal()">
+                                            <i class="fas fa-trash"></i>
+                                            Hapus
+                                        </button>
+                                    </li>
+                                </ul>
+                            </details>
+                        </td>
+                    </tr>
+                    @endforeach
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Album</th>
+                        <th>Tautan Foto</th>
+                        <th>Aksi</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
 

@@ -11,25 +11,87 @@ use Illuminate\Support\Facades\Storage;
 
 class beritaActionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $berita = Berita::with('kategori', 'gambar')->orderBy('created_at', 'desc')->paginate(5, ['*'], 'berita_page');
-        $komentar = KomentarBerita::with('berita')->orderBy('created_at', 'desc')->paginate(5, ['*'], 'komentar_page');
-        return view('admin/berita', [
+        $search = $request->query('search');
+        $perPageBerita = $request->query('perPageBerita') ?? 5;
+        $perPageKomentar = $request->query('perPageKomentar') ?? 5;
+
+        // Cek apakah ada query pencarian
+        if ($search) {
+            // Pencarian berdasarkan judul_berita atau nama_kategori
+            $berita = Berita::with('kategori', 'gambar')
+                ->where('judul_berita', 'like', '%' . $search . '%')
+                ->orWhereHas('kategori', function ($query) use ($search) {
+                    $query->where('nama_kategori', 'like', '%' . $search . '%');
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate($perPageBerita, ['*'], 'berita_page');
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $berita = Berita::with('kategori', 'gambar')
+                ->orderBy('created_at', 'desc')
+                ->paginate($perPageBerita, ['*'], 'berita_page');
+        }
+
+        // Ambil data komentar tanpa filter pencarian (sesuai dengan permintaan)
+        $komentar = KomentarBerita::with('berita')
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPageKomentar, ['*'], 'komentar_page');
+
+        // Menambahkan parameter pencarian dan perPage ke pagination links
+        $berita->appends(['search' => $search, 'perPageBerita' => $perPageBerita]);
+        $komentar->appends(['perPageKomentar' => $perPageKomentar]);
+
+        return view('admin.berita', [
             'berita' => $berita,
             'komentar' => $komentar,
+            'search' => $search,
+            'perPageBerita' => $perPageBerita,
+            'perPageKomentar' => $perPageKomentar,
             "title" => "Admin Berita"
         ]);
     }
 
-    public function show()
+    public function show(Request $request)
     {
-        $berita = Berita::with('kategori', 'gambar')->orderBy('created_at', 'desc')->get();
-        return view('guest/berita', [
+        $search = $request->query('search');
+        $nama_kategori = $request->query('nama_kategori');
+        $perPage = $request->query('perPage') ?? 6;
+
+        $query = Berita::with('kategori', 'gambar')->orderBy('created_at', 'desc');
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('judul_berita', 'like', '%' . $search . '%')
+                    ->orWhereHas('kategori', function ($q) use ($search) {
+                        $q->where('nama_kategori', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+
+        if ($nama_kategori) {
+            $query->whereHas('kategori', function ($q) use ($nama_kategori) {
+                $q->where('nama_kategori', $nama_kategori);
+            });
+        }
+
+        $berita = $query->paginate($perPage);
+        $berita->appends([
+            'search' => $search,
+            'perPage' => $perPage,
+            'nama_kategori' => $nama_kategori
+        ]);
+
+        $kategoriBerita = KategoriBerita::select('nama_kategori')->distinct()->get();
+
+        return view('guest.berita', [
             'berita' => $berita,
-            "title" => "Berita"
+            'title' => 'Berita',
+            'kategoriBerita' => $kategoriBerita
         ]);
     }
+
 
     public function showTemplate($id_berita)
     {

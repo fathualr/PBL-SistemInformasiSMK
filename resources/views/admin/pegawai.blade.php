@@ -2,35 +2,46 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-lg rounded-md px-4">
 
-    @include('shared.success-message')
-    @include('shared.error-message')
-    <!-- Title -->
-    <div class="col-span-2 my-4 mx-5 row-start-2">
-        <h3 class="font-bold text-lg">Direktori Pegawai</h3>
-    </div>
-    <!-- Title -->
 
-    <!-- Modal -->
-    <div class="col-span-3 row-start-3 mx-5">
-        <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
+@include('shared.success-message')
+@include('shared.error-message')
+<!-- Title -->
+<div class="col-span-2 my-4 mx-5 row-start-2">
+    <h3 class="font-bold text-lg">Direktori Pegawai</h3>
+</div>
+<!-- Title -->
+
+<!-- Modal -->
+<div class="flex justify-between items-center mx-5">
+    <div class="flex items-center">
+        <button class="btn btn-outline hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-user-plus"></i>
-            Tambah
+            Tambah Pegawai
         </button>
     </div>
-    <!-- Modal -->
-
-    <!-- Search Bar -->
-    <div class="col-span-2 row-start-3 col-start-7">
-        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
-            <i class="fas fa-magnifying-glass"></i>
-            <input type="text" class="grow" placeholder="Cari" />
-        </label>
+    <div class="flex items-center">
+        <div class="relative hidden md:flex mr-2">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('admin.direktoriPegawai.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.direktoriPegawai.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.direktoriPegawai.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.direktoriPegawai.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.direktoriPegawai.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+            </select>
+        </div>
+        <form action="{{ route('admin.direktoriPegawai.index') }}" method="GET">
+            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" class="grow" name="search" placeholder="Cari Nama" />
+            </label>
+        </form>
     </div>
-    <!-- Search Bar -->
+</div>
+<!-- Search Bar -->
 
-    <!-- Content -->
+<!-- Content -->
+<div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
     <div class="col-span-9 row-start-4">
         <div class="mt-5">
             <table class="table border text-center">
@@ -112,41 +123,40 @@
                     </tr>
                 </tfoot>
             </table>
-
-            <!-- Pagination -->
-            <div class="join flex justify-center my-5">
-                @if($pegawai->previousPageUrl())
-                <a href="{{ $pegawai->previousPageUrl() }}" class="join-item btn">«</a>
-                @else
-                <button class="join-item btn disabled">«</button>
-                @endif
-                <button class="join-item btn">Page {{ $pegawai->currentPage() }}</button>
-                @if($pegawai->nextPageUrl())
-                <a href="{{ $pegawai->nextPageUrl() }}" class="join-item btn">»</a>
-                @else
-                <button class="join-item btn disabled">»</button>
-                @endif
-            </div>
-
         </div>
     </div>
-    <!-- Content -->
 </div>
+
+<!-- Pagination -->
+<div class="join flex justify-center my-5">
+    @if($pegawai->previousPageUrl())
+    <a href="{{ $pegawai->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $pegawai->currentPage() }}</button>
+    @if($pegawai->nextPageUrl())
+    <a href="{{ $pegawai->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
+
 
 <dialog id="my_modal_add" class="modal">
     <div class="modal-box w-11/12 max-w-5xl py-0">
         <div class="sticky top-0 bg-white pt-5">
-            <form method="dialog">
-                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </form>
             <h3 class="font-bold text-lg">Tambah Staff</h3>
             <div class="grid grid-cols-3 w-52 -mt-5">
                 <div class="divider"></div>
                 <div class="divider divider-primary"></div>
                 <div class="divider"></div>
             </div>
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-2">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </form>
         </div>
 
         <form action="{{ route('DirektoriPegawai.store') }}" method="post" enctype="multipart/form-data">
@@ -219,19 +229,15 @@
 <!-- Edit Modal -->
 @foreach($pegawai as $key => $pgw)
 <dialog id="my_modal_edit{{ $pgw->id_pegawai }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl py-0">
-        <div class="sticky top-0 bg-white pt-5">
-            <form method="dialog">
-                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </form>
-            <h3 class="font-bold text-lg">Edit Data</h3>
-            <div class="grid grid-cols-8 w-52 -mt-5">
-                <div class="divider"></div>
-                <div class="divider divider-primary"></div>
-                <div class="divider"></div>
-            </div>
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Edit Data</h3>
+        <div class="grid grid-cols-8 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-primary"></div>
+            <div class="divider"></div>
         </div>
 
         <form action="{{ route('DirektoriPegawai.update', $pgw->id_pegawai) }}" method="post" enctype="multipart/form-data">
@@ -286,7 +292,7 @@
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
             </label>
-            <div class="flex justify-end items-end my-10 gap-4">
+            <div class="flex justify-end items-end mt-20 gap-4">
                 <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
                     Edit
@@ -302,21 +308,16 @@
 
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $pgw->id_pegawai }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl py-0">
-        <div class="sticky top-0 bg-white pt-5">
-            <form method="dialog">
-                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
-                    <i class="fas fa-times text-2xl"></i>
-                </button>
-            </form>
-            <h3 class="font-bold text-lg">Info Detail Data</h3>
-            <div class="grid grid-cols-8 w-52 -mt-5">
-                <div class="divider"></div>
-                <div class="divider divider-primary"></div>
-                <div class="divider"></div>
-            </div>
+    <div class="modal-box w-11/12 max-w-5xl">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="font-bold text-lg">Info Detail Data</h3>
+        <div class="grid grid-cols-8 w-52 -mt-5">
+            <div class="divider"></div>
+            <div class="divider divider-primary"></div>
+            <div class="divider"></div>
         </div>
-
         <div class="avatar flex justify-center items-center my-5">
             <div class="mask mask-squircle w-36 h-36">
                 <img src="{{ asset('storage/'.$pgw->gambar_pegawai) }}" alt="Avatar Tailwind CSS Component" />
@@ -372,9 +373,7 @@
 <dialog id="my_modal_delete{{ $pgw->id_pegawai }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">

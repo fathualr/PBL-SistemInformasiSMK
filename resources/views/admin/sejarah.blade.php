@@ -2,29 +2,23 @@
 
 @section('main-content')
 <!-- Third Content -->
-<div class="grid grid-cols-9 shadow-lg rounded-md px-4 mt-10">
-    @include('shared.success-message')
-    @include('shared.error-message')
-    <!-- Title -->
-    <div class="col-span-2 my-4 mx-5 row-start-2">
-        <h3 class="font-bold text-lg">Sejarah Sekolah</h3>
-    </div>
-    <!-- Title -->
+@include('shared.success-message')
+@include('shared.error-message')
+<!-- Title -->
+<div>
+    <h3 class="text-black font-bold text-xl mx-5 my-2">Sejarah Sekolah</h3>
+</div>
 
-    <!-- Modal -->
-    <div class="col-span-3 row-start-3 mx-5">
+<div class="flex justify-start items-center w-64 mx-5">
+    <button class="btn btn-outline w-full hover:animate-pulse" onclick="modal_add_sejarah.showModal()">
+        <i class="fas fa-plus text-xl"></i>
+        Tambah Deskripsi Sejarah
+    </button>
+</div>
 
-        <button class="btn btn-outline w-full hover:animate-pulse" onclick="modal_add_sejarah.showModal()">
-            <i class="fas fa-plus text-xl"></i>
-            Tambah Deskripsi Sejarah
-        </button>
-
-    </div>
-    <!-- Modal -->
-
-    <!-- Content -->
+<div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
     <div class="col-span-9 row-start-4">
-        <div class=" mt-5">
+        <div class="mt-5">
             <table class="table border text-center">
                 <!-- head -->
                 <thead>
@@ -95,26 +89,26 @@
                     </tr>
                 </tfoot>
             </table>
-
-            <!-- Pagination -->
-            <div class="join flex justify-center my-5">
-                @if($sejarahSekolah->previousPageUrl())
-                <a href="{{ $sejarahSekolah->previousPageUrl() }}" class="join-item btn">«</a>
-                @else
-                <button class="join-item btn disabled">«</button>
-                @endif
-                <button class="join-item btn">Page {{ $sejarahSekolah->currentPage() }}</button>
-                @if($sejarahSekolah->nextPageUrl())
-                <a href="{{ $sejarahSekolah->nextPageUrl() }}" class="join-item btn">»</a>
-                @else
-                <button class="join-item btn disabled">»</button>
-                @endif
-            </div>
-
         </div>
     </div>
-    <!-- Content -->
 </div>
+
+<!-- Pagination -->
+<div class="join flex justify-center my-5">
+    @if($sejarahSekolah->previousPageUrl())
+    <a href="{{ $sejarahSekolah->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $sejarahSekolah->currentPage() }}</button>
+    @if($sejarahSekolah->nextPageUrl())
+    <a href="{{ $sejarahSekolah->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
+
+
 
 <dialog id="modal_add_sejarah" class="modal">
     <div class="modal-box w-11/12 max-w-5xl py-0">
@@ -159,7 +153,7 @@
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" required />
             </label>
-            <div class="flex justify-end items-end my-10 gap-4">
+            <div class="flex justify-end items-end mt-20 gap-4">
                 <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
@@ -222,7 +216,7 @@
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" />
             </label>
-            <div class="flex justify-end items-end my-10 gap-4">
+            <div class="flex justify-end items-end mt-20 gap-4">
                 <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
                     Edit

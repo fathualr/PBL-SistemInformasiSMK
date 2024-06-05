@@ -2,26 +2,46 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-9 shadow-lg px-4 rounded-md">
 
-    @include('shared.success-message')
-    @include('shared.error-message')
-    <!-- Title -->
-    <div class="col-span-3 my-4 mx-5 row-start-2">
-        <h3 class="font-bold text-lg">Program Keahlian</h3>
-    </div>
-    <!-- Title -->
 
-    <!-- Modal -->
-    <div class="col-span-3 row-start-3 mx-5">
-        <button class="btn btn-outline w-full hover:animate-pulse" onclick="my_modal_add.showModal()">
-            <i class="fas fa-plus text-xl"></i>
-            Tambah Program
+@include('shared.success-message')
+@include('shared.error-message')
+<!-- Title -->
+<div class="col-span-3 my-4 mx-5 row-start-2">
+    <h3 class="font-bold text-lg">Program Keahlian</h3>
+</div>
+<!-- Title -->
+
+<!-- Modal -->
+<div class="flex justify-between items-center mx-5">
+    <div class="flex items-center">
+        <button class="btn btn-outline hover:animate-pulse" onclick="my_modal_add.showModal()">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Tambah Program Keahlian
         </button>
     </div>
-    <!-- Modal -->
+    <div class="flex items-center">
+        <div class="relative hidden md:flex mr-2">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+            </select>
+        </div>
+        <form action="{{ route('admin.programKeahlian.index') }}" method="GET">
+            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" class="grow" name="search" placeholder="Cari Program Keahlian" />
+            </label>
+        </form>
+    </div>
+</div>
+<!-- Modal -->
 
-    <!-- Content -->
+<!-- Content -->
+<div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
     <div class="col-span-9 row-start-4">
         <div class="mt-5">
             <table class="table border text-center">
@@ -98,25 +118,25 @@
                 </tfoot>
             </table>
 
-            <!-- Pagination -->
-            <div class="join flex justify-center my-5">
-                @if($programKeahlian->previousPageUrl())
-                <a href="{{ $programKeahlian->previousPageUrl() }}" class="join-item btn">«</a>
-                @else
-                <button class="join-item btn disabled">«</button>
-                @endif
-                <button class="join-item btn">Page {{ $programKeahlian->currentPage() }}</button>
-                @if($programKeahlian->nextPageUrl())
-                <a href="{{ $programKeahlian->nextPageUrl() }}" class="join-item btn">»</a>
-                @else
-                <button class="join-item btn disabled">»</button>
-                @endif
-            </div>
-
         </div>
     </div>
-    <!-- Content -->
 </div>
+
+<!-- Pagination -->
+<div class="join flex justify-center my-5">
+    @if($programKeahlian->previousPageUrl())
+    <a href="{{ $programKeahlian->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $programKeahlian->currentPage() }}</button>
+    @if($programKeahlian->nextPageUrl())
+    <a href="{{ $programKeahlian->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
+
 
 <!-- Tambah Program Keahlian -->
 <dialog id="my_modal_add" class="modal">

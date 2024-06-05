@@ -5,16 +5,26 @@
 <div class="divider">
     <p class="font-bold text-xl">DIREKTORI PEGAWAI</p>
 </div>
+
 <div class="flex justify-end">
-    <label class="input input-bordered flex justify-between items-center gap-2">
-        <input type="text" class="grow" placeholder="Cari Pegawai" />
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-            <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
-        </svg>
-    </label>
+    <div class="relative hidden md:flex mr-2">
+        <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 12])) }}" {{ request()->get('perPage') == 12 ? 'selected' : '' }}>12</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 24])) }}" {{ request()->get('perPage') == 24 ? 'selected' : '' }}>24</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 36])) }}" {{ request()->get('perPage') == 36 ? 'selected' : '' }}>36</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 60])) }}" {{ request()->get('perPage') == 60 ? 'selected' : '' }}>60</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 96])) }}" {{ request()->get('perPage') == 96 ? 'selected' : '' }}>96</option>
+        </select>
+    </div>
+    <form action="{{ route('guest.pegawai.index') }}" method="GET">
+        <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+            <i class="fas fa-magnifying-glass"></i>
+            <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
+        </label>
+    </form>
 </div>
 
-<div class="grid grid-cols-4 gap-3 gap-y-10 my-24">
+<div class="grid {{ count($direktoriPegawai) > 3 ? 'grid-cols-4' : (count($direktoriPegawai) > 2 ? 'grid-cols-3' : (count($direktoriPegawai) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-16 mx-auto">
     @foreach ( $direktoriPegawai as $pegawai )
     <div class="mx-auto">
         <button class="hover:scale-110 transition-all duration-300" onclick="window['my_modal_view{{ $pegawai->id_pegawai }}'].showModal()">
@@ -147,9 +157,17 @@
 </div>
 
 <div class="join flex justify-center my-5">
-    <button class="join-item btn">«</button>
-    <button class="join-item btn">Page 1</button>
-    <button class="join-item btn">»</button>
+    @if($direktoriPegawai->previousPageUrl())
+    <a href="{{ $direktoriPegawai->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $direktoriPegawai->currentPage() }}</button>
+    @if($direktoriPegawai->nextPageUrl())
+    <a href="{{ $direktoriPegawai->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
 </div>
 
 @endsection

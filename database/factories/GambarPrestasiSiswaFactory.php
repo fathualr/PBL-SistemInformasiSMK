@@ -20,7 +20,7 @@ class GambarPrestasiSiswaFactory extends Factory
         ];
 
         return [
-            'id_prestasi' => $this->faker->numberBetween(1, 5), // This will create a PrestasiSiswa and get its id
+            'id_prestasi' => $this->faker->numberBetween(1, 15), // This will create a PrestasiSiswa and get its id
             'gambar' => $this->faker->randomElement($images),
         ];
     }

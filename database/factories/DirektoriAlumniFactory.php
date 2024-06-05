@@ -20,7 +20,7 @@ class DirektoriAlumniFactory extends Factory
             'jenis_kelamin_alumni' => $this->faker->randomElement(['Laki - Laki', 'Perempuan']),
             'TTL_alumni' => $this->faker->dateTimeBetween('-50 years', '-25 years')->format('Y-m-d'),
             'tempat_lahir_alumni' => $this->faker->city,
-            'tahun_kelulusan_alumni' => $this->faker->numberBetween(2000, 2020),
+            'tahun_kelulusan_alumni' => $this->faker->numberBetween(2010, 2020),
             'gambar_alumni' => 'image/gambarAlumni/73BG0LSbI3hfbUDoVcQeBoumMOOaW4c0A4hYHEmg.png',
             'alamat_alumni' => $this->faker->address,
         ];

@@ -6,39 +6,47 @@
     <p class="font-bold text-xl">DIREKTORI ALUMNI</p>
 </div>
 
-<div class="grid grid-cols-8">
-
-    <!-- Category -->
-    <div class="col-span-2">
+<div class="flex justify-between items-center mx-5">
+    <div class="flex items-center">
         <div class="dropdown dropdown-hover">
             <div tabindex="0" role="button" class="btn btn-outline w-full m-1">
                 <i class="fas fa-list"></i>
                 Tahun Kelulusan
             </div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
-                @foreach($direktoriAlumni as $alumni)
-                <li><a href="" class="btn btn-ghost">{{ $alumni->tahun_kelulusan_alumni }}</a></li>
+                <li>
+                    <a href="{{ route('guest.alumni.index', array_merge(request()->query(), ['tahun_kelulusan' => null])) }}" class="font-bold">
+                        Tampilkan Semua
+                    </a>
+                </li>
+                @foreach($tahun_kelulusan_list as $tahun)
+                <li>
+                    <a href="{{ route('guest.alumni.index', array_merge(request()->query(), ['tahun_kelulusan' => $tahun])) }}">
+                        {{ $tahun }}
+                    </a>
+                </li>
                 @endforeach
             </ul>
         </div>
     </div>
-    <!-- Category -->
 
-    <!-- Search Box -->
-    <div class="col-span-1 col-start-8">
-        <div class="flex justify-end">
-            <label class="input input-bordered flex justify-between items-center gap-2">
-                <input type="text" class="grow" placeholder="Cari alumni" />
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                    class="w-4 h-4 opacity-70">
-                    <path fill-rule="evenodd"
-                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                        clip-rule="evenodd" />
-                </svg>
-            </label>
+    <div class="flex items-center">
+        <div class="relative hidden md:flex mr-2">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+            </select>
         </div>
+        <form action="{{ route('guest.alumni.index') }}" method="GET">
+            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
+            </label>
+        </form>
     </div>
-    <!-- Search Box -->
 </div>
 
 <!-- Content -->
@@ -60,13 +68,12 @@
                     <div class="flex justify-start items-start text-start gap-4">
                         <div class="avatar">
                             <div class="mask mask-squircle w-12 h-12">
-                                <img src="{{ asset('storage/'.$alumni->gambar_alumni) }}"
-                                    alt="Avatar Tailwind CSS Component" />
+                                <img src="{{ asset('storage/'.$alumni->gambar_alumni) }}" alt="Avatar Tailwind CSS Component" />
                             </div>
                         </div>
                         <div>
                             <div class="font-bold">{{ $alumni->nama_alumni }}</div>
-                            <div class="text-sm opacity-50">{{ $alumni->nisn_alumni }}</div>
+                            <div class="text-sm opacity-50">{{ $alumni->email_alumni }}</div>
                         </div>
                     </div>
                 </td>
@@ -91,7 +98,20 @@
         </tfoot>
     </table>
 </div>
-<!-- Content -->
+
+<div class="join flex justify-center my-5">
+    @if($direktoriAlumni->previousPageUrl())
+    <a href="{{ $direktoriAlumni->previousPageUrl() }}" class="join-item btn">«</a>
+    @else
+    <button class="join-item btn disabled">«</button>
+    @endif
+    <button class="join-item btn">Page {{ $direktoriAlumni->currentPage() }}</button>
+    @if($direktoriAlumni->nextPageUrl())
+    <a href="{{ $direktoriAlumni->nextPageUrl() }}" class="join-item btn">»</a>
+    @else
+    <button class="join-item btn disabled">»</button>
+    @endif
+</div>
 
 @foreach($direktoriAlumni as $alumni)
 <dialog id="my_modal_4{{ $alumni->id_alumni }}" class="modal">

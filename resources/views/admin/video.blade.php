@@ -9,18 +9,37 @@
     <h2 class="text-black font-bold text-xl mx-5 my-2">Galeri video</h2>
 </div>
 
-<div class="flex flex-col md:flex-row justify-between items-center mx-5">
-    <div class="w-full md:w-auto mb-2 md:mb-0">
-        <button class="btn btn-outline w-full md:w-auto hover:animate-pulse" onclick="my_modal_add.showModal()">
+<div class="flex justify-between items-center mx-5">
+    <div class="flex items-center">
+        <button class="btn btn-outline hover:animate-pulse" onclick="my_modal_add.showModal()">
             <i class="fas fa-plus"></i>
-            Tambahkan Video
+            Tambah Video
         </button>
+    </div>
+    <div class="flex items-center">
+        <div class="relative hidden md:flex mr-2">
+            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
+                <option value="{{ route('admin.video.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.video.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.video.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.video.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.video.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+            </select>
+        </div>
+        <form action="{{ route('admin.video.index') }}" method="GET">
+            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" class="grow" name="search" placeholder="Cari Nama Album" />
+            </label>
+        </form>
     </div>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-9 shadow-xl rounded-md mt-5">
-    <div class="col-span-9 row-start-2">
-        <table class="table table-pin-rows table-pin-cols w-full">
+
+<div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
+    <div class="col-span-9 row-start-4">
+        <div class="mt-5">
+            <table class="table border text-center">
             <thead>
                 <tr>
                     <th>No</th>
@@ -32,7 +51,7 @@
             <tbody>
                 @foreach($videos->chunk(10) as $chunk)
                 @foreach($chunk as $key => $video)
-                <tr>
+                <tr class="hover">
                     <td>{{ ($videos->currentPage() - 1) * $videos->perPage() + $key + 1 }}</td>
                     <td>{{ $video->album->nama_album }}</td>
                     <td>{{ $video->tautan_video }}</td>
@@ -74,6 +93,7 @@
             </tfoot>
         </table>
     </div>
+</div>
 </div>
 
 <dialog id="my_modal_add" class="modal" onclick="if (event.target === this) this.close()">
