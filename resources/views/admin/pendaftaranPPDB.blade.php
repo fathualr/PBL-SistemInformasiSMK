@@ -18,11 +18,16 @@
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 10]) }}"
+                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 25]) }}"
+                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 50]) }}"
+                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 75]) }}"
+                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.pendaftaranPPDB.index', ['perPage' => 100]) }}"
+                    {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
 
@@ -81,15 +86,18 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_view_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete_{{ $form_ppdb->id_pendaftaran }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -118,15 +126,19 @@
 
 @foreach ($forms as $form_ppdb)
 <dialog id="my_modal_view_{{ $form_ppdb->id_pendaftaran }}" class="modal">
-    <div class="modal-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Data</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5 z-40">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Info Detail Data</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100">
@@ -229,7 +241,7 @@
             </div>
         </div>
 
-        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2">
+        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2 mb-5">
             <div class="collapse-title font-medium">
                 Data Wali
             </div>
@@ -273,7 +285,7 @@
             </div>
         </div>
 
-        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2">
+        <div tabindex="0" class="collapse collapse-plus border border-base-300 bg-base-100 mt-2 mb-5">
             <div class="collapse-title font-medium">
                 Dokumen Tambahan
             </div>
@@ -288,7 +300,8 @@
                                         Dokumen</button>
                                 </a>
                                 @else
-                                <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
+                                <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed"
+                                    disabled>Tidak ada dokumen</button>
                                 @endif
                             </td>
                         </tr>
@@ -305,7 +318,9 @@
 <dialog id="my_modal_delete_{{ $form_ppdb->id_pendaftaran }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -318,7 +333,8 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>

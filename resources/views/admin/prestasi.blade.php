@@ -70,8 +70,7 @@
                             <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <!-- Edit -->
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_edit{{ $prestasi->id_prestasi }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit{{ $prestasi->id_prestasi }}'].showModal()">
                                         <i class="fas fa-pen-to-square"></i>
                                         Edit
                                     </button>
@@ -80,8 +79,7 @@
 
                                 <!-- View -->
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_view{{ $prestasi->id_prestasi }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $prestasi->id_prestasi }}'].showModal()">
                                         <i class="fas fa-circle-info"></i>
                                         Detail
                                     </button>
@@ -90,8 +88,7 @@
 
                                 <!-- Delete -->
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse"
-                                        onclick="window['my_modal_delete{{ $prestasi->id_prestasi }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $prestasi->id_prestasi }}'].showModal()">
                                         <i class="fas fa-trash"></i>
                                         Hapus
                                     </button>
@@ -137,38 +134,35 @@
 </div>
 
 <dialog id="my_modal_add" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Tambah Data Prestasi Siswa</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Tambah Data Prestasi Siswa</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <form action="{{ route('PrestasiSiswa.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <span class="label-text -mb-4">Nama Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Prestasi"
-                    name="nama_prestasi" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Prestasi" name="nama_prestasi" />
             </label>
             <span class="label-text -mb-4">Nama Siswa :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Siswa Prestasi"
-                    name="siswa_prestasi" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Siswa Prestasi" name="siswa_prestasi" />
             </label>
             <span class="label-text -mb-4">Deskripsi Prestasi :</span>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Prestasi" name="deskripsi_prestasi"></textarea>
+            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Prestasi" name="deskripsi_prestasi"></textarea>
             <span class="label-text -mb-4">Tanggal Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="date" class="grow bg-transparent border-b-2 py-2" name="tanggal_prestasi" />
             </label>
             <span class="label-text -mb-4">Kategori Prestasi :</span>
@@ -189,25 +183,22 @@
                 <option value="Internasional">Internasional</option>
             </select>
             <span class="label-text -mb-4">Gambar Prestasi :</span>
-            <div class="grid gap-2" id="fileInputsPrestasi">
-                <label
-                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+            <div class="grid gap-2 mb-5" id="fileInputsPrestasi">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                     <input type="file" name="gambar_prestasi" class="grow file-input file-input-success border-none bg-transparent py-2
                         file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="gambarPrestasi/*" />
                 </label>
             </div>
-            <button type="button" id="btnAddFilePrestasi" class="btn no-animation btn-sm mt-3 w-full">Tambah
+            <button type="button" id="btnAddFilePrestasi" class="btn bg-blue-400 text-white w-full hover:text-blue-400">Tambah
                 Gambar</button>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -222,42 +213,37 @@
 @foreach($prestasiSiswa as $prestasiIndex => $prestasi)
 <!-- Edit Modal -->
 <dialog id="my_modal_edit{{ $prestasi->id_prestasi }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Prestasi Siswa</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Prestasi Siswa</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
-        <form action="{{ route('PrestasiSiswa.update',  $prestasi->id_prestasi) }}" method="post"
-            enctype="multipart/form-data">
+
+        <form action="{{ route('PrestasiSiswa.update',  $prestasi->id_prestasi) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <span class="label-text -mb-4">Nama Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Prestasi" name="nama_prestasi"
-                    value="{{ $prestasi->nama_prestasi }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Prestasi" name="nama_prestasi" value="{{ $prestasi->nama_prestasi }}" />
             </label>
             <span class="label-text -mb-4">Nama Siswa :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent py-2" placeholder="Siswa Prestasi" name="siswa_prestasi"
-                    value="{{  $prestasi->siswa_prestasi}}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Siswa Prestasi" name="siswa_prestasi" value="{{  $prestasi->siswa_prestasi}}" />
             </label>
             <span class="label-text -mb-4">Deskripsi Prestasi :</span>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2 h-28"
-                placeholder="Deskripsi Prestasi"
-                name="deskripsi_prestasi">{{ $prestasi->deskripsi_prestasi }}</textarea>
+            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2 h-28" placeholder="Deskripsi Prestasi" name="deskripsi_prestasi">{{ $prestasi->deskripsi_prestasi }}</textarea>
             <span class="label-text -mb-4">Tanggal Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" class="grow bg-transparent py-2" name="tanggal_prestasi"
-                    value="{{ $prestasi->tanggal_prestasi }}" />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="date" class="grow bg-transparent py-2" name="tanggal_prestasi" value="{{ $prestasi->tanggal_prestasi }}" />
             </label>
             <span class="label-text -mb-4">Kategori Prestasi :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="kategori_prestasi">
@@ -287,8 +273,7 @@
             </select>
             <span class="label-text -mb-4">Gambar Prestasi :</span>
             <div class="grid gap-2">
-                <label
-                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
                     <input type="file" name="gambar_prestasi" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
@@ -296,15 +281,13 @@
                 </label>
             </div>
 
-            <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400"
-                onclick="window['my_modal_edit_gambar{{ $prestasi->id_prestasi }}'].showModal()">
+            <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400" onclick="window['my_modal_edit_gambar{{ $prestasi->id_prestasi }}'].showModal()">
                 <i class="fas fa-pen-to-square"></i>
                 Edit Gambar Prestasi Siswa
             </button>
 
-            <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-pen-to-square"></i>
                     Edit
                 </button>
@@ -318,15 +301,19 @@
 
 <!-- Edit Gambar -->
 <dialog id="my_modal_edit_gambar{{ $prestasi->id_prestasi }}" class="modal">
-    <div class="modal-box">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Gambar Ekstrakulikuler</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Gambar Ekstrakulikuler</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
         <div class="label">
             <span class="label-text">Gambar :</span>
@@ -337,34 +324,28 @@
                 @csrf
                 @method('DELETE')
                 <div class="flex gap-1">
-                    <input type="text" class="input input-bordered input-success w-full" placeholder="Gambar berita"
-                        value="{{ $gambar->gambar }}" name="gambar[]" disabled />
+                    <input type="text" class="input input-bordered input-success w-full" placeholder="Gambar berita" value="{{ $gambar->gambar }}" name="gambar[]" disabled />
                     <button class="btn btn-square btn-outline btn-error btn-remove">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
             </form>
             @endforeach
         </div>
-        <form action="{{ route('GambarPrestasi.update', $prestasi->id_prestasi) }}" method="POST"
-            enctype="multipart/form-data">
+        <form action="{{ route('GambarPrestasi.update', $prestasi->id_prestasi) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="label">
                 <span class="label-text">Tambah Gambar :</span>
             </div>
             <div class="flex gap-1">
-                <label
-                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
                     <input type="file" class="file-input py-2
                 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
-                        name="gambar" />
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita" name="gambar" />
                 </label>
                 <button type="submit" class="btn btn-square bg-blue-400 hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
@@ -380,64 +361,57 @@
 
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $prestasi->id_prestasi }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Detail Prestasi Siswa</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Detail Prestasi Siswa</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
+
         <div>
             <span class="label-text -mb-4">Nama Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="text" class="grow bg-transparent py-2" value="{{ $prestasi->nama_prestasi }}" readonly />
             </label>
             <span class="label-text -mb-4">Nama Siswa :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="text" class="grow bg-transparent py-2" value="{{  $prestasi->siswa_prestasi}}" readonly />
             </label>
             <span class="label-text -mb-4">Deskripsi Prestasi :</span>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 h-28 mb-5 w-full focus-within:outline-none grow py-2"
-                readonly>{{ $prestasi->deskripsi_prestasi }}</textarea>
+            <textarea class="input border-2 border-blue-400 flex items-center gap-2 h-28 mb-5 w-full focus-within:outline-none grow py-2" readonly>{{ $prestasi->deskripsi_prestasi }}</textarea>
             <span class="label-text -mb-4">Tanggal Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="date" class="grow bg-transparent py-2" value="{{ $prestasi->tanggal_prestasi }}"
-                    readonly />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="date" class="grow bg-transparent py-2" value="{{ $prestasi->tanggal_prestasi }}" readonly />
             </label>
             <span class="label-text -mb-4">Kategori Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent py-2" value="{{ $prestasi->kategori_prestasi }}"
-                    readonly />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" value="{{ $prestasi->kategori_prestasi }}" readonly />
             </label>
             <span class="label-text -mb-4">Tingkat Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent py-2" value="{{ $prestasi->tingkat_prestasi }}"
-                    readonly />
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" value="{{ $prestasi->tingkat_prestasi }}" readonly />
             </label>
             <span class="label-text -mb-4">Tautan Foto Thumbnail Prestasi :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="text" class="grow bg-transparent py-2" value="{{ $prestasi->gambar_prestasi }}" readonly />
             </label>
             <span class="label-text -mb-4">Tautan Foto Prestasi :</span>
-            <div class="grid gap-2">
+            <div class="grid gap-2 mb-10">
                 @if ($prestasi->gambar->isEmpty())
                 <div class="flex justify-center">
                     <p class="text-xs text-red-500">Tidak ada gambar yang tersedia.</p>
                 </div>
                 @else
                 @foreach ($prestasi->gambar as $gambar)
-                <input type="text" class="input input-bordered border-2 border-blue-400 w-full"
-                    placeholder="Kategori berita" value="{{ $gambar->gambar }}" name="tautan_gambar" readonly />
+                <input type="text" class="input input-bordered border-2 border-blue-400 w-full" placeholder="Kategori berita" value="{{ $gambar->gambar }}" name="tautan_gambar" readonly />
                 @endforeach
                 @endif
             </div>
@@ -453,7 +427,9 @@
 <dialog id="my_modal_delete{{ $prestasi->id_prestasi }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -466,14 +442,16 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>
             </div>
         </form>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- Delete Modal -->
 @endforeach

@@ -54,8 +54,11 @@ input[type=number] {
             <div class="flex flex-col items-center space-y-4">
                 <!-- Title -->
                 <div class="font-bold capitalize  hidden" id="normalTitle">
-                    <h1 class="-mt-7 text-center">Content management system</h1>
-                    <h1 class="mt-5 py-2 w-52 text-base border-b-2 border-white">SMK Muhammadiyah Plus Kota
+                    <img class="rounded-full w-32 h-32 mx-auto"
+                        src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}"
+                        alt="">
+                    <h1 class="mt-5 py-2 w-11/12 text-base border-b-2 border-white text-center mx-auto">SMK Muhammadiyah
+                        Plus Kota
                         Batam
                     </h1>
                 </div>

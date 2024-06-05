@@ -235,15 +235,19 @@
 
 <!-- Modal CREATE -->
 <dialog id="my_modal_add" class="modal">
-    <div class="modal-box max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Tambah Berita</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Tambah Berita</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
@@ -285,7 +289,8 @@
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
                 </div>
                 @enderror
-                <button type="button" id="btnAddFile" class="btn no-animation btn-sm mt-3">Tambah Gambar</button>
+                <button type="button" id="btnAddFile"
+                    class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Gambar</button>
                 <div class="label">
                     <span class="label-text">Isi Berita :</span>
                 </div>
@@ -306,7 +311,8 @@
                     </div>
                     @enderror
                 </div>
-                <button type="button" id="btnAddText" class="btn no-animation btn-sm mt-3">Tambah Kategori</button>
+                <button type="button" id="btnAddText"
+                    class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Kategori</button>
                 <div class="label">
                     <span class="label-text">Tanggal Berita :</span>
                 </div>
@@ -317,7 +323,7 @@
                 </div>
                 @enderror
             </div>
-            <div class="flex justify-end items-end mt-10 gap-4">
+            <div class="flex justify-end items-end my-10 gap-4">
                 <button type="reset"
                     class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
@@ -341,15 +347,19 @@
 @foreach($berita as $brt)
 <!-- Modal EDIT -->
 <dialog id="my_modal_edit_{{ $brt->id_berita }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Berita</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Berita</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <form action="{{ route('berita.update', $brt->id_berita) }}" method="POST" enctype="multipart/form-data">
@@ -388,7 +398,7 @@
                 <div class="label">
                     <span class="label-text">Gambar Berita :</span>
                 </div>
-                <button type="button" class="btn no-animation btn-sm"
+                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400"
                     onclick="my_modal_view_gambar{{ $brt->id_berita }}.showModal()">Edit Gambar</button>
 
                 <div class="label">
@@ -405,7 +415,7 @@
                 <div class="label">
                     <span class="label-text">Kategori :</span>
                 </div>
-                <button type="button" class="btn no-animation btn-sm"
+                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400"
                     onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
 
                 <div class="label">
@@ -420,7 +430,7 @@
                 @enderror
 
             </div>
-            <div class="flex justify-end items-end mt-10 gap-4">
+            <div class="flex justify-end items-end my-10 gap-4">
                 <button type="submit"
                     class="btn bg-elm w-60 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
@@ -550,19 +560,24 @@
     <form method="dialog" class="modal-backdrop">
         <button>close</button>
     </form>
-</dialog><!-- Modal EDIT Kategori end -->
+</dialog>
+<!-- Modal EDIT Kategori end -->
 
 <!-- Modal VIEW -->
 <dialog id="my_modal_view{{ $brt->id_berita }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Detail Berita</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Detail Berita</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <div class="grid">
@@ -620,7 +635,7 @@
             <div class="label">
                 <span class="label-text">Tanggal Berita :</span>
             </div>
-            <input type="date" class="input border-2 border-blue-400 w-full" value="{{ $brt->tanggal_berita }}"
+            <input type="date" class="input border-2 border-blue-400 w-full mb-10" value="{{ $brt->tanggal_berita }}"
                 name="tanggal_berita" readonly />
         </div>
     </div>
@@ -634,7 +649,9 @@
 <dialog id="my_modal_delete{{ $brt->id_berita }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data Berita</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -726,6 +743,9 @@
             </form>
         </div>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog><!-- Modal DELETE end -->
 <!-- Modal KOMENTAR BERITA end -->
 @endforeach

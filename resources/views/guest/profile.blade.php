@@ -18,23 +18,27 @@
     </div>
     <div class="col-span-2 mt-10">
         <a href="/guest/sejarah">
-            <button class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
+            <button
+                class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
                 Lanjut
             </button>
         </a>
     </div>
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96" src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
+            <iframe class="w-full h-full lg:h-96"
+                src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
         </div>
     </div>
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
+<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p
+        class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
 
 <div class="grid tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">
 
-    <div class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
+    <div
+        class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
         <!-- First Card -->
         <div class="card smartphone:w-60 tablet:w-60 lg:w-full h-96 mx-auto rounded-sm">
             <figure class="px-5 pt-5 mx-auto">
@@ -327,7 +331,8 @@
     @if(empty($konten->struktur_organisasi_sekolah))
     <p class="text-red-500 italic">$NULL</p>
     @else
-    <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}" alt="struktur_organisasi_sekolah">
+    <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}"
+        alt="struktur_organisasi_sekolah">
     @endif
 </div>
 
@@ -340,7 +345,7 @@
         <div class="w-full grid grid-cols-4 gap-4 justify-center items-center" style="min-width: 100%;">
             @foreach ($chunk as $prg)
             <div class="mx-auto">
-                <div class="card card-compact smartphone:w-72 laptop:w-72 h-80 shadow-xl bg-indigo-500">
+                <div class="card card-compact smartphone:w-72 laptop:w-68 h-80 shadow-xl bg-indigo-500">
                     <div class="avatar mx-auto h-28 -translate-y-10">
                         <div class="w-24 h-24 rounded-full">
                             <img src="{{ asset('storage/'.$prg->logo_program) }}" />
@@ -362,58 +367,62 @@
         @endforeach
         @endif
     </div>
-    <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform p-2 flex justify-center items-center" onclick="prevSlide()">
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform p-2 flex justify-center items-center"
+        onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
-    <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-5 top-1/2 transform p-2 flex justify-center items-center" onclick="nextSlide()">
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-5 top-1/2 transform p-2 flex justify-center items-center"
+        onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>
 </div>
 
 <script>
-    let currentIndex = 0;
-    let autoSlideInterval;
+let currentIndex = 0;
+let autoSlideInterval;
 
-    function showSlide(index) {
-        const slider = document.getElementById('slider');
-        const slides = slider.children;
-        const totalSlides = slides.length;
+function showSlide(index) {
+    const slider = document.getElementById('slider');
+    const slides = slider.children;
+    const totalSlides = slides.length;
 
-        if (index >= totalSlides) {
-            currentIndex = 0;
-        } else if (index < 0) {
-            currentIndex = totalSlides - 1;
-        } else {
-            currentIndex = index;
-        }
-
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    if (index >= totalSlides) {
+        currentIndex = 0;
+    } else if (index < 0) {
+        currentIndex = totalSlides - 1;
+    } else {
+        currentIndex = index;
     }
 
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
+function nextSlide() {
+    showSlide(currentIndex + 1);
+}
 
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 3000);
-    }
+function prevSlide() {
+    showSlide(currentIndex - 1);
+}
 
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        nextSlide();
+    }, 3000);
+}
 
-    document.addEventListener('DOMContentLoaded', () => {
-        showSlide(currentIndex);
-        startAutoSlide();
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
 
-        document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
-        document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentIndex);
+    startAutoSlide();
+
+    document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
+    document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+});
 </script>
 @endsection

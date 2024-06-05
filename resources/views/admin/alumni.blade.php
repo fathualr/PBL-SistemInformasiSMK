@@ -140,15 +140,19 @@
 
 <!-- Create Modal -->
 <dialog id="my_modal_add" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Tambah Alumni</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Tambah Alumni</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <form action="{{ route('DirektoriAlumni.store') }}" method="post" enctype="multipart/form-data">
@@ -202,7 +206,7 @@
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
             </label>
-            <div class="flex justify-end items-end mt-20 gap-4">
+            <div class="flex justify-end items-end my-10 gap-4">
                 <button type="reset"
                     class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
@@ -225,158 +229,165 @@
 <!-- Edit Modal -->
 @foreach($direktoriAlumni as $key => $alumni)
 <dialog id="my_modal_edit{{ $alumni->id_alumni }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data</h3>
-        <div class="grid grid-cols-8 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
-        </div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Data</h3>
+            <div class="grid grid-cols-8 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
 
-        <form action="{{ route('DirektoriAlumni.update', $alumni->id_alumni) }}" method="post"
-            enctype="multipart/form-data">
-            @csrf
-            @method('patch')
-            <span class="label-text -mb-4">Nama Alumni :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama" name="nama_alumni"
-                    value="{{ $alumni->nama_alumni }}" />
-            </label>
-            <span class="label-text -mb-4">Email Alumni :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_alumni"
-                    value="{{ $alumni->email_alumni }}" />
-            </label>
-            <span class="label-text -mb-4">No.Handphone Alumni :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_alumni"
-                    value="{{ $alumni->no_hp_alumni }}" />
-            </label>
-            <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
-                    name="tempat_lahir_alumni" value="{{ $alumni->tempat_lahir_alumni }}" />
-                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_alumni"
-                    value="{{ $alumni->TTL_alumni }}" />
-            </label>
-            <span class="label-text -mb-4">Jenis Kelamin Alumni :</span>
-            <select class="select border-blue-400 border-2 w-full mb-5" name="jenis_kelamin_alumni">
-                <option disabled>Pilih Jenis Kelamin</option>
-                <option value="Laki - Laki" {{ $alumni->jenis_kelamin_alumni === 'Laki - Laki' ? 'selected' : '' }}>Laki
-                    - Laki</option>
-                <option value="Perempuan" {{ $alumni->jenis_kelamin_alumni === 'Perempuan' ? 'selected' : '' }}>
-                    Perempuan</option>
-            </select>
-            <span class="label-text -mb-4">Tahun Kelulusan Alumni :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="Tahun Kelulusan"
-                    name="tahun_kelulusan_alumni" value="{{ $alumni->tahun_kelulusan_alumni }}" />
-            </label>
-            <span class="label-text -mb-4">Alamat Alumni :</span>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Alamat" name="alamat_alumni">{{ $alumni->alamat_alumni }}</textarea>
-            <span class="label-text -mb-4">Foto Alumni :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="file" name="gambar_alumni" accept="gambarAlumni/*" class="grow file-input file-input-success border-none bg-transparent py-2
+            <form action="{{ route('DirektoriAlumni.update', $alumni->id_alumni) }}" method="post"
+                enctype="multipart/form-data">
+                @csrf
+                @method('patch')
+                <span class="label-text -mb-4">Nama Alumni :</span>
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama" name="nama_alumni"
+                        value="{{ $alumni->nama_alumni }}" />
+                </label>
+                <span class="label-text -mb-4">Email Alumni :</span>
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email"
+                        name="email_alumni" value="{{ $alumni->email_alumni }}" />
+                </label>
+                <span class="label-text -mb-4">No.Handphone Alumni :</span>
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp"
+                        name="no_hp_alumni" value="{{ $alumni->no_hp_alumni }}" />
+                </label>
+                <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
+                        name="tempat_lahir_alumni" value="{{ $alumni->tempat_lahir_alumni }}" />
+                    <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir"
+                        name="TTL_alumni" value="{{ $alumni->TTL_alumni }}" />
+                </label>
+                <span class="label-text -mb-4">Jenis Kelamin Alumni :</span>
+                <select class="select border-blue-400 border-2 w-full mb-5" name="jenis_kelamin_alumni">
+                    <option disabled>Pilih Jenis Kelamin</option>
+                    <option value="Laki - Laki" {{ $alumni->jenis_kelamin_alumni === 'Laki - Laki' ? 'selected' : '' }}>
+                        Laki
+                        - Laki</option>
+                    <option value="Perempuan" {{ $alumni->jenis_kelamin_alumni === 'Perempuan' ? 'selected' : '' }}>
+                        Perempuan</option>
+                </select>
+                <span class="label-text -mb-4">Tahun Kelulusan Alumni :</span>
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="Tahun Kelulusan"
+                        name="tahun_kelulusan_alumni" value="{{ $alumni->tahun_kelulusan_alumni }}" />
+                </label>
+                <span class="label-text -mb-4">Alamat Alumni :</span>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                    placeholder="Alamat" name="alamat_alumni">{{ $alumni->alamat_alumni }}</textarea>
+                <span class="label-text -mb-4">Foto Alumni :</span>
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                    <input type="file" name="gambar_alumni" accept="gambarAlumni/*" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
-            </label>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
-                    <i class=" fas fa-pen-to-square"></i>
-                    Edit
-                </button>
-            </div>
+                </label>
+                <div class="flex justify-end items-end my-10 gap-4">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                        <i class=" fas fa-pen-to-square"></i>
+                        Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
         </form>
-    </div>
-    <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-    </form>
 </dialog>
 <!-- Edit Modal -->
 
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $alumni->id_alumni }}" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Data</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-success"></div>
-            <div class="divider"></div>
-        </div>
-        <div class="avatar flex justify-center items-center my-5">
-            <div class="mask mask-squircle w-36 h-36">
-                <img src="{{ asset('storage/'.$alumni->gambar_alumni) }}" alt="Avatar Tailwind CSS Component" />
+    <div class="modal-box w-11/12 max-w-5xl my-5 py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Info Detail Data</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
             </div>
+            <div class="avatar flex justify-center items-center my-5">
+                <div class="mask mask-squircle w-36 h-36">
+                    <img src="{{ asset('storage/'.$alumni->gambar_alumni) }}" alt="Avatar Tailwind CSS Component" />
+                </div>
+            </div>
+            <span class="label-text -mb-4">Tautan Foto :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="gambar_guru"
+                    class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarGuru/*"
+                    placeholder="Logo" value="{{ $alumni->gambar_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">Nama Alumni :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama" name="nama_alumni"
+                    value="{{ $alumni->nama_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">Email Alumni :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_alumni"
+                    value="{{ $alumni->email_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">No.Handphone Alumni :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_alumni"
+                    value="{{ $alumni->no_hp_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
+                    name="tempat_lahir_alumni" value="{{ $alumni->tempat_lahir_alumni }}" readonly />
+                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_alumni"
+                    value="{{ $alumni->TTL_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">Jenis Kelamin Alumni :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp"
+                    name="jenis_kelamin_alumni" value="{{ $alumni->jenis_kelamin_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">Tahun Kelulusan Alumni :</span>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Tahun Kelulusan"
+                    name="tahun_kelulusan_alumni" value="{{ $alumni->tahun_kelulusan_alumni }}" readonly />
+            </label>
+            <span class="label-text -mb-4">Alamat Alumni :</span>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 h-28 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Alamat" name="alamat_alumni" readonly>{{ $alumni->alamat_alumni }}</textarea>
         </div>
-        <span class="label-text -mb-4">Tautan Foto :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" name="gambar_guru"
-                class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarGuru/*"
-                placeholder="Logo" value="{{ $alumni->gambar_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">Nama Alumni :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama" name="nama_alumni"
-                value="{{ $alumni->nama_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">Email Alumni :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_alumni"
-                value="{{ $alumni->email_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">No.Handphone Alumni :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_alumni"
-                value="{{ $alumni->no_hp_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">Tempat, Tanggal Lahir Pegawai :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
-                name="tempat_lahir_alumni" value="{{ $alumni->tempat_lahir_alumni }}" readonly />
-            <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_alumni"
-                value="{{ $alumni->TTL_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">Jenis Kelamin Alumni :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp"
-                name="jenis_kelamin_alumni" value="{{ $alumni->jenis_kelamin_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">Tahun Kelulusan Alumni :</span>
-        <label
-            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Tahun Kelulusan"
-                name="tahun_kelulusan_alumni" value="{{ $alumni->tahun_kelulusan_alumni }}" readonly />
-        </label>
-        <span class="label-text -mb-4">Alamat Alumni :</span>
-        <textarea
-            class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-            placeholder="Alamat" name="alamat_alumni" readonly>{{ $alumni->alamat_alumni }}</textarea>
-    </div>
-    <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-    </form>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
 </dialog>
 <!-- View Modal -->
 
@@ -384,7 +395,9 @@
 <dialog id="my_modal_delete{{ $alumni->id_alumni }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">

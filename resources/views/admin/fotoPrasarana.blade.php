@@ -52,19 +52,22 @@
                             </summary>
                             <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit_{{ $foto_prasarana->id_foto_prasarana }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="window['my_modal_edit_{{ $foto_prasarana->id_foto_prasarana }}'].showModal()">
                                         <i class="fas fa-pen-to-square"></i>
                                         Edit
                                     </button>
                                 </li>
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_detail_{{ $foto_prasarana->id_foto_prasarana }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="window['my_modal_detail_{{ $foto_prasarana->id_foto_prasarana }}'].showModal()">
                                         <i class="fas fa-circle-info"></i>
                                         Detail
                                     </button>
                                 </li>
                                 <li>
-                                    <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $foto_prasarana->id_foto_prasarana }}'].showModal()">
+                                    <button class="btn btn-ghost w-full hover:animate-pulse"
+                                        onclick="window['my_modal_delete_{{ $foto_prasarana->id_foto_prasarana }}'].showModal()">
                                         <i class="fas fa-trash"></i>
                                         Hapus
                                     </button>
@@ -91,7 +94,9 @@
 <dialog id="my_modal_add" class="modal" onclick="if (event.target === this) this.close()">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Tambahkan Foto</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -102,7 +107,8 @@
         <form action="{{ route('admin.FotoPrasarana.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <span class="label-text -mb-4">Prasarana :</span>
-            <select name="id_prasarana" class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10" required>
+            <select name="id_prasarana"
+                class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10" required>
                 <option disabled selected>Nama prasarana || Tipe prasarana</option>
                 @foreach($prasaranas as $prasarana)
                 @if($prasarana->nama_prasarana)
@@ -118,18 +124,21 @@
                 @endforeach
             </select>
             <span class="label-text -mb-4">Tautan Prasarana :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="tautan_foto" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required placeholder="Logo" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -142,10 +151,13 @@
 </dialog>
 
 @foreach($foto_prasaranas as $foto_prasarana)
-<dialog id="my_modal_edit_{{ $foto_prasarana->id_foto_prasarana }}" class="modal" onclick="if (event.target === this) this.close()">
+<dialog id="my_modal_edit_{{ $foto_prasarana->id_foto_prasarana }}" class="modal"
+    onclick="if (event.target === this) this.close()">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Edit Foto</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -153,11 +165,13 @@
             <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
-        <form action="{{ route('admin.FotoPrasarana.update', $foto_prasarana->id_foto_prasarana) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.FotoPrasarana.update', $foto_prasarana->id_foto_prasarana) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <span class="label-text -mb-4">Prasarana :</span>
-            <select name="id_prasarana" class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10" required>
+            <select name="id_prasarana"
+                class="select border-b-2 border-blue-400 w-full gap-2 mb-5 focus-within:outline-none px-10" required>
                 <option disabled selected>Nama prasarana || Tipe prasarana</option>
                 @foreach($prasaranas as $prasarana)
                 @if($prasarana->nama_prasarana )
@@ -169,14 +183,16 @@
             </select>
 
             <span class="label-text -mb-4">Tautan Prasarana :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="tautan_foto" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required placeholder="Logo" />
             </label>
 
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-pen-to-square"></i>
                     Edit
                 </button>
@@ -188,10 +204,13 @@
     </form>
 </dialog>
 
-<dialog id="my_modal_detail_{{ $foto_prasarana->id_foto_prasarana }}" class="modal" onclick="if (event.target === this) this.close()">
+<dialog id="my_modal_detail_{{ $foto_prasarana->id_foto_prasarana }}" class="modal"
+    onclick="if (event.target === this) this.close()">
     <div class="modal-box w-11/12 max-w-5xl">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <div>
             <h3 class="font-bold text-lg">Detail Foto</h3>
@@ -200,10 +219,13 @@
                 <div class="divider divider-primary"></div>
                 <div class="divider"></div>
             </div>
-            <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg mx-auto" src="{{ asset('storage/' . $foto_prasarana->tautan_foto) }}" alt="gallery foto" />
+            <img class="object-cover object-center w-96 h-44 max-w-full rounded-lg mx-auto"
+                src="{{ asset('storage/' . $foto_prasarana->tautan_foto) }}" alt="gallery foto" />
             <span class="label-text -mb-4">Tautan Foto :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album" value="{{ $foto_prasarana->tautan_foto }}" readonly />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" name="nama_album" class="grow bg-transparent py-2" placeholder="Nama Album"
+                    value="{{ $foto_prasarana->tautan_foto }}" readonly />
             </label>
         </div>
     </div>
@@ -212,10 +234,13 @@
     </form>
 </dialog>
 
-<dialog id="my_modal_delete_{{ $foto_prasarana->id_foto_prasarana }}" class="modal" onclick="if (event.target === this) this.close()">
+<dialog id="my_modal_delete_{{ $foto_prasarana->id_foto_prasarana }}" class="modal"
+    onclick="if (event.target === this) this.close()">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data Foto Prasarana</h3>
 
@@ -229,7 +254,8 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>

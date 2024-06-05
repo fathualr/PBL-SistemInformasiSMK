@@ -53,10 +53,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content menu p-2 z-[1] shadow bg-base-100 rounded-box w-max absolute">
+                                <ul tabindex="0"
+                                    class="dropdown-content menu p-2 z-[1] shadow bg-base-100 rounded-box w-max absolute">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit{{ $program->id_program }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_edit{{ $program->id_program }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -64,7 +66,8 @@
                                     <!-- Edit -->
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $program->id_program }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_view{{ $program->id_program }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -72,7 +75,8 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $program->id_program }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete{{ $program->id_program }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -116,96 +120,143 @@
 
 <!-- Tambah Program Keahlian -->
 <dialog id="my_modal_add" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Tambah Program Keahlian</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-11/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Tambah Program Keahlian</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <form action="{{ route('ProgramKeahlian.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="text" name="nama_program" class="grow bg-transparent py-2" placeholder="Nama Program" />
             </label>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Program" name="deskripsi_program"></textarea>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Peluang Kerja" name="deskripsi_peluang_kerja"></textarea>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Visi" name="visi_program"></textarea>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Misi" name="misi_program"></textarea>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Tujuan Program" name="tujuan_program"></textarea>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Sasaran Program" name="sasaran_program"></textarea>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Program" name="deskripsi_program"></textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Peluang Kerja" name="deskripsi_peluang_kerja"></textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Visi" name="visi_program"></textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Misi" name="misi_program"></textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Tujuan Program" name="tujuan_program"></textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Sasaran Program" name="sasaran_program"></textarea>
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="logo_program" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
             </label>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
             </div>
         </form>
-
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- Tambah Program Keahlian -->
 
 <!-- Edit Modal -->
 @foreach($programKeahlian as $index => $program)
 <dialog id="my_modal_edit{{ $program->id_program }}" class="modal">
-    <div class="modal-box w-12/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Program Keahlian</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-12/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Data Program Keahlian</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
-        <form action="{{ route('ProgramKeahlian.update', $program->id_program)}}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('ProgramKeahlian.update', $program->id_program)}}" method="post"
+            enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="grid gap-5">
                 <span class="label-text -mb-4">Nama Program :</span>
-                <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
-                    <input type="text" name="nama_program" class="grow bg-transparent py-2" placeholder="Nama Program" value="{{ $program->nama_program }}" />
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                    <input type="text" name="nama_program" class="grow bg-transparent py-2" placeholder="Nama Program"
+                        value="{{ $program->nama_program }}" />
                 </label>
                 <span class="label-text -mb-4">Deskripsi Program Keahlian :</span>
-                <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2" placeholder="Deskripsi Program" name="deskripsi_program">{{ $program->deskripsi_program }}</textarea>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
+                    placeholder="Deskripsi Program"
+                    name="deskripsi_program">{{ $program->deskripsi_program }}</textarea>
                 <span class="label-text -mb-4">Deskripsi Peluang Kerja :</span>
-                <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2" placeholder="Deskripsi Peluang Kerja" name="deskripsi_peluang_kerja">{{ $program->deskripsi_peluang_kerja }}</textarea>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
+                    placeholder="Deskripsi Peluang Kerja"
+                    name="deskripsi_peluang_kerja">{{ $program->deskripsi_peluang_kerja }}</textarea>
                 <span class="label-text -mb-4">Visi Program :</span>
-                <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2" placeholder="Visi" name="visi_program">{{ $program->visi_program }}</textarea>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
+                    placeholder="Visi" name="visi_program">{{ $program->visi_program }}</textarea>
                 <span class="label-text -mb-4">Misi Program :</span>
-                <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2" placeholder="Misi" name="misi_program">{{ $program->misi_program }}</textarea>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
+                    placeholder="Misi" name="misi_program">{{ $program->misi_program }}</textarea>
                 <span class="label-text -mb-4">Tujuan Program :</span>
-                <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2" placeholder="Tujuan Program" name="tujuan_program">{{ $program->tujuan_program }}</textarea>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
+                    placeholder="Tujuan Program" name="tujuan_program">{{ $program->tujuan_program }}</textarea>
                 <span class="label-text -mb-4">Sasaran Program :</span>
-                <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2" placeholder="Sasaran Program" name="sasaran_program">{{ $program->sasaran_program }}</textarea>
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
+                    placeholder="Sasaran Program" name="sasaran_program">{{ $program->sasaran_program }}</textarea>
                 <span class="label-text -mb-4">Logo Program :</span>
-                <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                     <input type="file" name="logo_program" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
                 </label>
-                <button type="button" class="btn no-animation btn-sm w-full" onclick="my_modal_edit_capaian{{ $program->id_program }}.showModal()">Edit Capaian
+                <button type="button" class="btn bg-blue-400 text-white hover:text-blue-400 w-full"
+                    onclick="my_modal_edit_capaian{{ $program->id_program }}.showModal()">Edit Capaian
                     Pembelajaran</button>
-                <button type="button" class="btn no-animation btn-sm w-full" onclick="my_modal_edit_peluang{{ $program->id_program }}.showModal()">Edit Peluang Kerja</button>
-                <div class="flex justify-end items-end mt-20 gap-4">
-                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="button" class="btn bg-blue-400 text-white hover:text-blue-400 w-full"
+                    onclick="my_modal_edit_peluang{{ $program->id_program }}.showModal()">Edit Peluang Kerja</button>
+                <div class="flex justify-end items-end my-10 gap-4">
+                    <button type="submit"
+                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                         <i class=" fas fa-pen-to-square"></i>
                         Edit
                     </button>
@@ -220,32 +271,51 @@
 
 <!-- Edit Capaian Modal -->
 <dialog id="my_modal_edit_capaian{{ $program->id_program }}" class="modal">
-    <div class="modal-box w-12/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Capaian Pembelajaran</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-12/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Data Capaian Pembelajaran</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
 
         <form action="{{ route('CapaianPembelajaran.update', $program->id_program) }}" method="post">
             @csrf
             @method('patch')
             <span class="label-text -mb-4">Deskripsi Capaian Pembelajaran :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2" placeholder="Deskripsi Capaian Pembelajaran" name="deskripsi_capaian_pembelajaran">{{ $program->capaianPembelajaran->deskripsi_capaian_pembelajaran }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Capaian Pembelajaran"
+                name="deskripsi_capaian_pembelajaran">{{ $program->capaianPembelajaran->deskripsi_capaian_pembelajaran }}</textarea>
             <span class="label-text -mb-4">Aspek Sikap :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2" placeholder="Aspek Sikap" name="aspek_sikap">{{ $program->capaianPembelajaran->aspek_sikap }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+                placeholder="Aspek Sikap" name="aspek_sikap">{{ $program->capaianPembelajaran->aspek_sikap }}</textarea>
             <span class="label-text -mb-4">Aspek Pengetahuan :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2" placeholder="Aspek Pengetahuan" name="aspek_pengetahuan">{{ $program->capaianPembelajaran->aspek_pengetahuan }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+                placeholder="Aspek Pengetahuan"
+                name="aspek_pengetahuan">{{ $program->capaianPembelajaran->aspek_pengetahuan }}</textarea>
             <span class="label-text -mb-4">Aspek Keterampilan Umum :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2" placeholder="Aspek Keterampilan Umum" name="aspek_keterampilan_umum">{{ $program->capaianPembelajaran->aspek_keterampilan_umum }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+                placeholder="Aspek Keterampilan Umum"
+                name="aspek_keterampilan_umum">{{ $program->capaianPembelajaran->aspek_keterampilan_umum }}</textarea>
             <span class="label-text -mb-4">Aspek Keterampilan Khusus :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2" placeholder="Aspek Keterampilan Khusus" name="aspek_keterampilan_khusus">{{ $program->capaianPembelajaran->aspek_keterampilan_khusus }}</textarea>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+                placeholder="Aspek Keterampilan Khusus"
+                name="aspek_keterampilan_khusus">{{ $program->capaianPembelajaran->aspek_keterampilan_khusus }}</textarea>
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-pen-to-square"></i>
                     Simpan
                 </button>
@@ -259,15 +329,19 @@
 
 <!-- Edit Peluang Modal -->
 <dialog id="my_modal_edit_peluang{{ $program->id_program }}" class="modal">
-    <div class="modal-box w-12/12 max-w-5xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Edit Data Peluang Kerja</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-12/12 max-w-5xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Edit Data Peluang Kerja</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
         <div class="grid gap-2">
             <table class="table text-center">
@@ -304,13 +378,17 @@
             @csrf
             @method('PATCH')
             <span class="label-text -mb-4">Tambah Peluang :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                 <input type="text" name="peluang_kerja" class="grow bg-transparent py-2" placeholder="Peluang Kerja" />
             </label>
             <span class="label-text -mb-4">Deskripsi Peluang Kerja :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Pekerjaan" name="deskripsi_pekerjaan"></textarea>
-            <div class="flex justify-end items-end gap-4">
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Pekerjaan" name="deskripsi_pekerjaan"></textarea>
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-plus"></i>
                     Tambah
                 </button>
@@ -325,15 +403,19 @@
 
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $program->id_program }}" class="modal">
-    <div class="modal-box w-12/12 max-w-7xl">
-        <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-        </form>
-        <h3 class="font-bold text-lg">Info Detail Data</h3>
-        <div class="grid grid-cols-3 w-52 -mt-5">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
+    <div class="modal-box w-12/12 max-w-7xl py-0">
+        <div class="sticky top-0 bg-white pt-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </form>
+            <h3 class="font-bold text-lg">Info Detail Data</h3>
+            <div class="grid grid-cols-3 w-52 -mt-5">
+                <div class="divider"></div>
+                <div class="divider divider-primary"></div>
+                <div class="divider"></div>
+            </div>
         </div>
         <div class="grid">
             <!-- Program Keahlian -->
@@ -346,38 +428,68 @@
                 </div>
             </figure>
             <span class="my-3">Tautan Foto</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                 <i class="fas fa-link"></i>
-                <input type="text" name="nama_program" class="grow bg-transparent py-2" value="{{ $program->logo_program }}" readonly />
+                <input type="text" name="nama_program" class="grow bg-transparent py-2"
+                    value="{{ $program->logo_program }}" readonly />
             </label>
             <span class="my-3">Nama Program Keahlian</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
-                <input type="text" name="nama_program" class="grow bg-transparent py-2" value="{{ $program->nama_program }}" readonly />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                <input type="text" name="nama_program" class="grow bg-transparent py-2"
+                    value="{{ $program->nama_program }}" readonly />
             </label>
             <span class="my-3">Deskripsi Program Keahlian</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->deskripsi_program }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Program" name="deskripsi_program"
+                readonly>{{ $program->deskripsi_program }}</textarea>
             <span class="my-3">Deskripsi Peluang Kerja</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Peluang Kerja" name="deskripsi_peluang_kerja" readonly>{{ $program->deskripsi_peluang_kerja }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Peluang Kerja" name="deskripsi_peluang_kerja"
+                readonly>{{ $program->deskripsi_peluang_kerja }}</textarea>
             <span class="my-3">Visi Program Keahlian</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Visi" name="visi_program" readonly>{{ $program->visi_program }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Visi" name="visi_program" readonly>{{ $program->visi_program }}</textarea>
             <span class="my-3">Misi Program Keahlian</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Misi" name="misi_program" readonly>{{ $program->misi_program }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Misi" name="misi_program" readonly>{{ $program->misi_program }}</textarea>
             <span class="my-3">Tujuan Program Keahlian</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Tujuan Program" name="tujuan_program" readonly>{{ $program->tujuan_program }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Tujuan Program" name="tujuan_program" readonly>{{ $program->tujuan_program }}</textarea>
             <span class="my-3">Sasaran Program Keahlian</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2" placeholder="Sasaran Program" name="sasaran_program" readonly>{{ $program->sasaran_program }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow py-2"
+                placeholder="Sasaran Program" name="sasaran_program" readonly>{{ $program->sasaran_program }}</textarea>
             <!-- Program Keahlian -->
 
             <!-- Capaian Pembelajaran -->
             <h3 class="font-bold text-lg text-center my-5 divider">Capaian Pembelajaran</h3>
             <h1 class="mx-5 text-base">ASPEK SIKAP</h1>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2" placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran->aspek_sikap }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Program" name="deskripsi_program"
+                readonly>{{ $program->capaianPembelajaran->aspek_sikap }}</textarea>
             <h1 class="mx-5 text-base">ASPEK PENGETAHUAN</h1>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2" placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran->aspek_pengetahuan }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Program" name="deskripsi_program"
+                readonly>{{ $program->capaianPembelajaran->aspek_pengetahuan }}</textarea>
             <h1 class="mx-5 text-base">ASPEK KETERAMPILAN UMUM</h1>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2" placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran->aspek_keterampilan_umum }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Program" name="deskripsi_program"
+                readonly>{{ $program->capaianPembelajaran->aspek_keterampilan_umum }}</textarea>
             <h1 class="mx-5 text-base">ASPEK KETERAMPILAN KHUSUS</h1>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2" placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran->aspek_keterampilan_khusus }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
+                placeholder="Deskripsi Program" name="deskripsi_program"
+                readonly>{{ $program->capaianPembelajaran->aspek_keterampilan_khusus }}</textarea>
         </div>
     </div>
     <form method="dialog" class="modal-backdrop">
@@ -390,7 +502,9 @@
 <dialog id="my_modal_delete{{ $program->id_program }}" class="modal">
     <div class="modal-box">
         <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-3">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
         </form>
         <h3 class="font-bold text-lg">Hapus Data</h3>
         <div class="grid grid-cols-3 w-52 -mt-5">
@@ -404,7 +518,8 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class=" fas fa-trash"></i>
                     Hapus
                 </button>
