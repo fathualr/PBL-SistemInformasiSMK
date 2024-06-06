@@ -295,8 +295,7 @@
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
                 </div>
                 @enderror
-                <button type="button" id="btnAddFile"
-                    class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Gambar</button>
+                <button type="button" id="btnAddFile" class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Gambar</button>
                 <div class="label">
                     <span class="label-text">Isi Berita :</span>
                 </div>
@@ -316,8 +315,7 @@
                     </div>
                     @enderror
                 </div>
-                <button type="button" id="btnAddText"
-                    class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Kategori</button>
+                <button type="button" id="btnAddText" class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Kategori</button>
                 <div class="label">
                     <span class="label-text">Tanggal Berita :</span>
                 </div>
@@ -328,7 +326,7 @@
                 </div>
                 @enderror
             </div>
-            <div class="flex justify-end items-end mt-10 gap-4">
+            <div class="flex justify-end items-end my-10 gap-4">
                 <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
@@ -403,7 +401,7 @@
                 <div class="label">
                     <span class="label-text">Isi Berita :</span>
                 </div>
-                <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Isi berita" name="isi_berita">{{ $brt->isi_berita }}</textarea>
+                <textarea class="textarea border-2 border-blue-400 w-full" id="editor2" placeholder="Isi berita" name="isi_berita">{{ $brt->isi_berita }}</textarea>
                 @error('isi_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -426,7 +424,7 @@
                 @enderror
 
             </div>
-            <div class="flex justify-end items-end mt-10 gap-4">
+            <div class="flex justify-end items-end my-10 gap-4">
                 <button type="submit" class="btn bg-elm w-60 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
                     Edit
@@ -595,8 +593,9 @@
             <div class="label">
                 <span class="label-text">Isi Berita :</span>
             </div>
-            <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Isi berita" name="isi_berita" readonly>{{ $brt->isi_berita }}</textarea>
-
+            <label class="input bg-transparent border-2 border-blue-400 gap-2 mb-5 w-full h-max p-5 focus-within:outline-none">
+                <p>{!! $brt->isi_berita !!}</p>
+            </label>
             <div class="label">
                 <span class="label-text">Kategori :</span>
             </div>
@@ -615,7 +614,7 @@
             <div class="label">
                 <span class="label-text">Tanggal Berita :</span>
             </div>
-            <input type="date" class="input border-2 border-blue-400 w-full" value="{{ $brt->tanggal_berita }}" name="tanggal_berita" readonly />
+            <input type="date" class="input border-2 border-blue-400 w-full mb-10" value="{{ $brt->tanggal_berita }}" name="tanggal_berita" readonly />
         </div>
     </div>
     <form method="dialog" class="modal-backdrop">

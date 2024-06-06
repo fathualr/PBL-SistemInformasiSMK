@@ -9,9 +9,10 @@ use App\Models\ProgramKeahlian;
 
 class FrontEndController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $berita = Berita::with('kategori', 'gambar')->inRandomOrder()->limit(6)->get();
-        $album = Album::inRandomOrder()->limit(6)->get();
+        $album = Album::inRandomOrder()->get();
         return view('/home', [
             "berita" => $berita,
             "album" => $album,
@@ -19,7 +20,8 @@ class FrontEndController extends Controller
         ]);
     }
 
-    public function profile(){
+    public function profile()
+    {
         $programKeahlian = ProgramKeahlian::inRandomOrder()->get();
         return view('guest/profile', [
             "programKeahlian" => $programKeahlian,

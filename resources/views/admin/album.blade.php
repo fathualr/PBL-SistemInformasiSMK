@@ -19,11 +19,16 @@
     <div class="flex items-center">
         <div class="relative hidden md:flex mr-2">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.album.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.album.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.album.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.album.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.album.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.album.index', ['perPage' => 10]) }}"
+                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.album.index', ['perPage' => 25]) }}"
+                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.album.index', ['perPage' => 50]) }}"
+                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.album.index', ['perPage' => 75]) }}"
+                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.album.index', ['perPage' => 100]) }}"
+                    {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
         <form action="{{ route('admin.album.index') }}" method="GET">
@@ -66,21 +71,25 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit_{{ $album->id_album }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_edit_{{ $album->id_album }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_detail_{{ $album->id_album }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_detail_{{ $album->id_album }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
                                     </li>
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete_{{ $album->id_album }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete_{{ $album->id_album }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -147,12 +156,9 @@
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" />
             </label>
             <span class="label-text -mb-4">Deskripsi Album :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2"
-                    placeholder="Deskripsi Album" />
-            </label>
-            <span class="label-text -mb-4">Tanggal Unggah Album :</span>
+            <textarea class="textarea textarea-bordered border-2 border-blue-400 w-full mb-5"
+                placeholder="Deskripsi Album" name="deskripsi_album"></textarea>
+            <span class="label-text -mb-6">Tanggal Unggah Album :</span>
             <label
                 class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="date" name="tanggal_unggah" class="grow bg-transparent py-2"
@@ -222,11 +228,8 @@
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" />
             </label>
             <span class="label-text -mb-4">Deskripsi Album :</span>
-            <label
-                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" name="deskripsi_album" class="grow bg-transparent py-2" placeholder="Deskripsi Album"
-                    value="{{ $album->deskripsi_album }}" />
-            </label>
+            <textarea class="textarea textarea-bordered border-2 border-blue-400 w-full mb-5"
+                placeholder="Deskripsi Album" name="deskripsi_album">{{ $album->deskripsi_album }}</textarea>
             <span class="label-text -mb-4">Tanggal Unggah Album :</span>
             <label
                 class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">

@@ -56,14 +56,16 @@
     @else
     @foreach ($berita as $brt)
     <div class="card w-96 bg-base-100 rounded-sm shadow-lg">
-        <figure>
-            <img src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar">
+        <figure class="h-full overflow-hidden">
+            <img src="{{ asset('storage/'.$brt->gambar_headline) }}" class="object-cover h-full" alt="Nama Gambar">
         </figure>
         <div class="card-body">
-            <h2 class="card-title">{{ $brt->judul_berita }}</h2>
-            <p class="truncate text-gray-700">
-                {{ $brt->isi_berita }}
-            </p>
+            <h2 class="font-bold text-xl truncate w-full">{{ $brt->judul_berita }}</h2>
+            <div class="h-24 overflow-y-hidden">
+                <p class="truncate  text-gray-700">
+                    {!! $brt->isi_berita !!}
+                </p>
+            </div>
             <a href="/guest/berita-template/{{ $brt->id_berita }}" class="text-blue-500 hover:underline">Read more</a>
         </div>
     </div>

@@ -3,7 +3,7 @@
 @section('Main')
 
 <!-- Main Section -->
-<section class="py-16">
+<section class="">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h1 class="font-bold text-2xl text-center">{{ $ekstrakulikuler->nama_ekstrakurikuler }}</h1>
@@ -19,20 +19,41 @@
             <div class="container mx-auto flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
                     <h2 class="text-2xl font-bold mb-4">Tentang Ekstrakurikuler Ini</h2>
-                    <p class="text-gray-700 overflow-auto h-72">{{ $ekstrakulikuler->deskripsi_ekstrakurikuler }}</p>
+                    <div class="h-72 overflow-y-auto border-b-2 border-slate-800 py-4">
+                        <p class="text-gray-700">{!! $ekstrakulikuler->deskripsi_ekstrakurikuler !!}
+                        </p>
+                    </div>
+                    <table class="table my-5">
+                        <tr>
+                            <td class="font-bold">Pembimbing</td>
+                            <td>:</td>
+                            <td>{{ $ekstrakulikuler->guru->nama_guru }}</td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Tempat</td>
+                            <td>:</td>
+                            <td class="w-64">
+                                <p class="">{{ $ekstrakulikuler->tempat_ekstrakurikuler }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">Jadwal</td>
+                            <td>:</td>
+                            <td>{{ $ekstrakulikuler->jadwal_ekstrakurikuler }}</td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="md:w-1/2 flex justify-center md:justify-end">
                     <div class="flex space-x-4">
                         <div class="h-48 w-48">
                             <!-- Logo Ekstrakurikuler -->
                             <p class="text-gray-400 text-center">Logo Ekstrakurikuler</p>
-                            <img class="mask mask-squircle mx-auto w-40 h-40" src="{{ asset('storage/'. $ekstrakulikuler->gambar_profil_ekstrakurikuler) }}" />
+                            <img class="mask mask-circle mx-auto w-44 h-44" src="{{ asset('storage/'. $ekstrakulikuler->gambar_profil_ekstrakurikuler) }}" />
                         </div>
                         <div class="h-48 w-48 items-center justify-center">
                             <!-- Foto Pembimbing -->
                             <p class="text-gray-400 text-center">Guru Pembimbing</p>
-                            <img class="mask mask-squircle mx-auto w-40 h-40" src="{{ asset('storage/'.$ekstrakulikuler->guru->gambar_guru) }}" />
-                            <p class="text-gray-400 text-center">{{ $ekstrakulikuler->guru->nama_guru }}</p>
+                            <img class="mask mask-circle mx-auto w-44 h-44" src="{{ asset('storage/'.$ekstrakulikuler->guru->gambar_guru) }}" />
                         </div>
                     </div>
                 </div>

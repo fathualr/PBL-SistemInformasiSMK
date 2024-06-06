@@ -52,7 +52,7 @@
     @foreach($PrestasiSiswa as $prestasi)
     <div class="card lg:card-side bg-base-100 shadow-xl">
         <figure class="h-full w-80 overflow-hidden">
-            <img class="object-cover w-[30rem] h-72" src="{{ asset('storage/'.$prestasi->gambar_prestasi) }}" alt="Album" />
+            <img class="object-cover w-[30rem] h-full" src="{{ asset('storage/'.$prestasi->gambar_prestasi) }}" alt="Album" />
         </figure>
         <div class="card-body">
             <h2 class="text-2xl font-bold truncate w-[25rem]">{{ $prestasi->nama_prestasi }}</h2>
@@ -60,9 +60,11 @@
                 <div class="px-2 py-1 text-white bg-gray-500 rounded-full">{{ $prestasi->kategori_prestasi }}</div>
                 <div class="px-2 py-1 text-white bg-gray-500 rounded-full">{{ $prestasi->tingkat_prestasi }}</div>
             </div>
-            <p class="truncate w-[50rem] mt-5">
-                {{ $prestasi->deskripsi_prestasi }}
-            </p>
+            <div class="h-28 overflow-y-hidden w-[50rem]">
+                <p class="truncate mt-5">
+                    {!! $prestasi->deskripsi_prestasi !!}
+                </p>
+            </div>
             <div class="card-actions justify-end">
                 <a href="/guest/prestasi-siswa-template/{{ $prestasi->id_prestasi }}">
                     <button class="btn bg-blue-400 mx-auto md:mx-0 md:w-full h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">

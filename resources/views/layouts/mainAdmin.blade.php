@@ -13,6 +13,7 @@
         rel="stylesheet">
     <title>Admin SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+    <script src="{{ asset('assets/vendor/ckeditor5/build/ckeditor.js') }}"></script>
     @vite('resources/css/app.css')
 </head>
 <style>
@@ -427,362 +428,67 @@ input[type=number] {
                         Welcome {{ auth('admin')->user()->nama }}
                     </h1>
                     <div class="card-actions text-xl absolute right-6 top-5 gap-6 text-slate-500">
-
-                        <form id="logout-form" action="{{ route('account.logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="bg-transparent border-0 cursor-pointer">
-                                <i class="fas fa-arrow-right-from-bracket"></i>
-                            </button>
-                        </form>
+                        <button type="button" class="bg-transparent border-0 cursor-pointer"
+                            onclick="logout.showModal()">
+                            <i class="fas fa-arrow-right-from-bracket"></i>
+                        </button>
 
                     </div>
                 </div>
             </div>
+
+            <dialog id="logout" class="modal">
+                <div class="modal-box">
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </form>
+                    <h3 class="font-bold text-lg">Konfirmasi Logout</h3>
+                    <div class="grid grid-cols-3 w-52 -mt-5">
+                        <div class="divider"></div>
+                        <div class="divider divider-error"></div>
+                        <div class="divider"></div>
+                    </div>
+
+                    <h3 class="font-bold text-lg flex justify-center items-center">Apakah Anda Yakin Ingin Logout</h3>
+
+                    <div class="flex justify-center items-center mt-20 gap-4">
+                        <form id="logout-form" action="{{ route('account.logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn w-40 bg-elm text-white hover:text-elm cursor-pointer">
+                                <i class="fas fa-check"></i>Ya
+                            </button>
+                        </form>
+
+                        <form method="dialog">
+                            <button class="btn w-40 bg-error text-white hover:text-error cursor-pointer">
+                                <i class="fas fa-times"></i>
+                                Tidak
+                            </button>
+                        </form>
+
+
+                    </div>
+
+                </div>
+                <form method="dialog" class="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
 
             <div class="my-20 mx-auto">
                 @yield('main-content')
             </div>
             <!-- Content -->
         </div>
-
         <!-- Navbar -->
-        <script>
-        // Sidebar
-        document.addEventListener('DOMContentLoaded', function() {
-            var sidebar = document.querySelector(".bg-blue-500");
-            var icon = document.getElementById("toggleIcon");
-            var normalTitle = document.getElementById("normalTitle");
-            var menu = document.getElementById("menu");
-            var dropdown = document.querySelectorAll("#dropdown");
-            var navTitles = document.querySelectorAll("#navTitle");
-
-            // Function to open sidebar
-            function openSidebar() {
-                sidebar.classList.add("w-72");
-                sidebar.classList.remove("w-20");
-                document.getElementById("toggleButton").classList.remove("left-[0.85rem]");
-                document.getElementById("toggleButton").classList.add("left-[16.5rem]");
-                icon.classList.add("rotate-180");
-                icon.classList.remove("fa-bars");
-                icon.classList.add("fa-x");
-                normalTitle.classList.remove("hidden");
-                menu.classList.remove("flex");
-                menu.classList.remove("justify-center");
-                menu.classList.remove("items-center");
-                dropdown.forEach(function(dropdown) {
-                    dropdown.classList.add("hidden");
-                });
-                navTitles.forEach(function(navTitle) {
-                    navTitle.classList.remove("hidden");
-                });
-            }
-
-            // Function to close sidebar
-            function closeSidebar() {
-                sidebar.classList.remove("w-72");
-                sidebar.classList.add("w-20");
-                document.getElementById("toggleButton").classList.add("left-[0.85rem]");
-                document.getElementById("toggleButton").classList.remove("left-[16.5rem]");
-                icon.classList.remove("rotate-180");
-                icon.classList.remove("fa-x");
-                icon.classList.add("fa-bars");
-                normalTitle.classList.add("hidden");
-                menu.classList.add("flex");
-                menu.classList.add("justify-center");
-                menu.classList.add("items-center");
-                dropdown.forEach(function(dropdown) {
-                    dropdown.classList.remove("hidden");
-                });
-                navTitles.forEach(function(navTitle) {
-                    navTitle.classList.add("hidden");
-                });
-            }
-
-            // Initial state: open sidebar
-            openSidebar();
-
-            document.getElementById("toggleButton").addEventListener("click", function() {
-                if (sidebar.classList.contains("w-72")) {
-                    closeSidebar();
-                } else {
-                    openSidebar();
-                }
-            });
-        });
-        // Sidebar
 
 
-        // Action Button
-        const buttons = document.querySelectorAll('.button');
-
-        const handleMouseEnter = (button) => {
-            button.querySelector('.circle-1').classList.add('translate-x-4');
-            button.querySelector('.circle-3').classList.add('-translate-x-4');
-            button.querySelector('.circle-2').classList.add('animate-ping');
-        };
-
-        const handleMouseLeave = (button) => {
-            clearTimeout(button.dataset.timer);
-            button.querySelector('.circle-1').classList.remove('translate-x-4');
-            button.querySelector('.circle-3').classList.remove('-translate-x-4');
-            button.querySelector('.circle-2').classList.remove('animate-ping');
-        };
-
-        const handleClick = (button) => {
-            if (!button.dataset.clicked || button.dataset.clicked === 'false') {
-                button.dataset.clicked = 'true';
-                button.querySelector('.fa-times').classList.remove('hidden');
-                button.querySelector('.fa-times').classList.add('animate-pulse');
-                button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.add('hidden'));
-            } else {
-                button.dataset.clicked = 'false';
-                button.querySelector('.fa-times').classList.add('hidden');
-                button.querySelectorAll('.fa-circle').forEach(circle => circle.classList.remove('hidden'));
-            }
-        };
-
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => handleMouseEnter(button));
-            button.addEventListener('mouseleave', () => handleMouseLeave(button));
-            button.addEventListener('click', () => handleClick(button));
-        });
-
-        function rotateIcon() {
-            var icon = document.getElementById('plus-icon');
-            icon.classList.toggle('rotate-45');
-        }
-        // Action Button
-
-        // Password
-        document.addEventListener("DOMContentLoaded", function() {
-            const togglePassword = document.getElementById("togglePassword");
-            const passwordInput = document.getElementById("passwordInput");
-
-            togglePassword.addEventListener("click", function() {
-                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-                passwordInput.setAttribute("type", type);
-
-                if (type === "password") {
-                    togglePassword.classList.remove("fa-eye-slash");
-                    togglePassword.classList.add("fa-eye");
-                } else {
-                    togglePassword.classList.remove("fa-eye");
-                    togglePassword.classList.add("fa-eye-slash");
-                }
-            });
-        });
-        // Password
-
-        // Obeject Load
-        window.addEventListener('scroll', function() {
-            var section = document.getElementById('.section');
-            var button = document.getElementById('button');
-
-            var sectionRect = section.getBoundingClientRect();
-
-            if (sectionRect.top <= window.innerHeight) {
-                button.classList.remove('hidden');
-                button.classList.add('animate-slideInFromTop');
-            } else {
-                button.classList.add('hidden');
-            }
-        });
-        // Obeject Load
-
-        // Duplicate input file & text
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInputsContainer = document.getElementById('fileInputs');
-            const btnAddFile = document.getElementById('btnAddFile');
-            let fileInputCount = 1;
-
-            const textInputContainer = document.getElementById('textInputContainer');
-            const btnAddText = document.getElementById('btnAddText');
-            let textInputCount = 1;
-
-            btnAddFile.addEventListener('click', function() {
-                const fileInputWrapper = document.createElement('div');
-                fileInputWrapper.classList.add('flex', 'gap-1');
-
-                const newLabel = document.createElement('label');
-                newLabel.classList.add('input', 'bg-transparent', 'border-2', 'border-blue-400', 'flex',
-                    'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
-
-                const newFileInput = document.createElement('input');
-                newFileInput.setAttribute('type', 'file');
-                newFileInput.classList.add('grow', 'file-input', 'file-input-success',
-                    'border-none', 'bg-transparent', 'py-2', 'file:mr-4', 'file:px-4',
-                    'file:rounded-full', 'file:border-0', 'file:text-sm', 'file:font-semibold',
-                    'file:bg-blue-500', 'file:text-white', 'hover:file:bg-transparent',
-                    'hover:file:text-blue-400');
-                newFileInput.setAttribute('placeholder', 'Pilih gambar berita');
-                newFileInput.setAttribute('name', `gambar_berita[]`);
-
-                const btnRemove = document.createElement('button');
-                btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-error',
-                    'btn-remove');
-                btnRemove.innerHTML = `<i class='fas fa-times text-lg'></i>`;
-                btnRemove.addEventListener('click', function() {
-                    fileInputWrapper.remove();
-                });
-
-                newLabel.appendChild(newFileInput);
-                fileInputWrapper.appendChild(newLabel);
-                fileInputWrapper.appendChild(btnRemove);
-                fileInputsContainer.appendChild(fileInputWrapper);
-
-                fileInputCount++;
-            });
-
-            btnAddText.addEventListener('click', function() {
-                const textInputWrapper = document.createElement('div');
-                textInputWrapper.classList.add('flex', 'gap-1');
-
-                const newTextInput = document.createElement('input');
-                newTextInput.setAttribute('type', 'text');
-                newTextInput.classList.add('input', 'input-bordered', 'border-2', 'border-blue-400',
-                    'w-full');
-                newTextInput.setAttribute('placeholder', 'Kategori Berita');
-                newTextInput.setAttribute('name', `kategori_berita[]`);
-
-                const btnRemove = document.createElement('button');
-                btnRemove.classList.add('btn', 'btn-square', 'btn-outline', 'btn-error',
-                    'btn-remove');
-                btnRemove.innerHTML =
-                    `<i class='fas fa-times text-lg'></i>`;
-                btnRemove.addEventListener('click', function() {
-                    textInputWrapper.remove();
-                });
-
-                textInputWrapper.appendChild(newTextInput);
-                textInputWrapper.appendChild(btnRemove);
-                textInputContainer.appendChild(textInputWrapper);
-
-                textInputCount++;
-            });
-        });
-
-        // Ekstrakurikuler
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInputsEkskul = document.getElementById('fileInputsEkskul');
-            const btnAddFileEkskul = document.getElementById('btnAddFileEkskul');
-            let fileInputEkskulCount = 1;
-
-            btnAddFileEkskul.addEventListener('click', function() {
-                const fileInputEkskulWrapper = document.createElement('div');
-                fileInputEkskulWrapper.classList.add('flex', 'gap-1');
-
-                const newLabelEkskul = document.createElement('label');
-                newLabelEkskul.classList.add('input', 'bg-transparent', 'border-2', 'border-blue-400',
-                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
-
-                const newFileInputEkskul = document.createElement('input');
-                newFileInputEkskul.setAttribute('type', 'file');
-                newFileInputEkskul.classList.add('grow', 'file-input', 'file-input-success',
-                    'border-none', 'bg-transparent', 'py-2', 'file:mr-4', 'file:px-4',
-                    'file:rounded-full', 'file:border-0', 'file:text-sm', 'file:font-semibold',
-                    'file:bg-blue-500', 'file:text-white', 'hover:file:bg-transparent',
-                    'hover:file:text-blue-400');
-                newFileInputEkskul.setAttribute('placeholder', 'Pilih gambar berita');
-                newFileInputEkskul.setAttribute('name', `gambar_ekstrakurikuler[]`);
-
-                const btnRemoveEkskul = document.createElement('button');
-                btnRemoveEkskul.classList.add('btn', 'btn-square', 'btn-outline', 'btn-error',
-                    'btn-remove');
-                btnRemoveEkskul.innerHTML = `<i class='fas fa-times text-lg'></i>`;
-                btnRemoveEkskul.addEventListener('click', function() {
-                    fileInputEkskulWrapper.remove();
-                });
-
-                newLabelEkskul.appendChild(newFileInputEkskul);
-                fileInputEkskulWrapper.appendChild(newLabelEkskul);
-                fileInputEkskulWrapper.appendChild(btnRemoveEkskul);
-                fileInputsEkskul.appendChild(fileInputEkskulWrapper);
-
-                fileInputEkskulCount++;
-            });
-        });
-        // Ekstrakurikuler
-        // Prestasi Siswa
-        document.addEventListener("DOMContentLoaded", function() {
-            const fileInputsPrestasi = document.getElementById('fileInputsPrestasi');
-            const btnAddFilePrestasi = document.getElementById('btnAddFilePrestasi');
-            let fileInputPrestasiCount = 1;
-
-            btnAddFilePrestasi.addEventListener('click', function() {
-                const fileInputPrestasiWrapper = document.createElement('div');
-                fileInputPrestasiWrapper.classList.add('flex', 'gap-1');
-
-                const newLabelPrestasi = document.createElement('label');
-                newLabelPrestasi.classList.add('input', 'bg-transparent', 'border-2', 'border-blue-400',
-                    'flex', 'items-center', 'gap-2', 'w-full', 'focus-within:outline-none');
-
-                const newFileInputPrestasi = document.createElement('input');
-                newFileInputPrestasi.setAttribute('type', 'file');
-                newFileInputPrestasi.classList.add('grow', 'file-input', 'file-input-success',
-                    'border-none', 'bg-transparent', 'py-2', 'file:mr-4', 'file:px-4',
-                    'file:rounded-full', 'file:border-0', 'file:text-sm', 'file:font-semibold',
-                    'file:bg-blue-500', 'file:text-white', 'hover:file:bg-transparent',
-                    'hover:file:text-blue-400');
-                newFileInputPrestasi.setAttribute('placeholder', 'Pilih gambar berita');
-                newFileInputPrestasi.setAttribute('name', `gambar[]`);
-
-                const btnRemovePrestasi = document.createElement('button');
-                btnRemovePrestasi.classList.add('btn', 'btn-square', 'btn-outline', 'btn-error',
-                    'btn-remove');
-                btnRemovePrestasi.innerHTML = `<i class='fas fa-times text-lg'></i>`;
-                btnRemovePrestasi.addEventListener('click', function() {
-                    fileInputPrestasiWrapper.remove();
-                });
-
-                newLabelPrestasi.appendChild(newFileInputPrestasi);
-                fileInputPrestasiWrapper.appendChild(newLabelPrestasi);
-                fileInputPrestasiWrapper.appendChild(btnRemovePrestasi);
-                fileInputsPrestasi.appendChild(fileInputPrestasiWrapper);
-
-                fileInputPrestasiCount++;
-            });
-        });
-        // Prestasi Siswa
-
-        //Duplicate foto
-        function duplicateInput() {
-            const container = document.getElementById('imageInputsContainer');
-            const clone = container.firstElementChild.cloneNode(true);
-            container.appendChild(clone);
-            // Show the remove button of the newly added input
-            clone.querySelector('.btn-remove').classList.remove('hidden');
-        }
-
-        function removeInput(btn) {
-            const inputDiv = btn.parentNode.parentNode;
-            inputDiv.parentNode.removeChild(inputDiv);
-        }
-
-        //Rich Text Editor (CKEDITOR5)
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-        //Rich Text Editor (CKEDITOR5)
-        </script>
-
-        <script>
-        // fungsi checkbox select all
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectAllCheckboxes = document.querySelectorAll('#select-all, #select-all-footer');
-            const itemCheckboxes = document.querySelectorAll('.select-item');
-
-            selectAllCheckboxes.forEach(selectAllCheckbox => {
-                selectAllCheckbox.addEventListener('change', function(e) {
-                    const isChecked = e.target.checked;
-                    itemCheckboxes.forEach(checkbox => {
-                        checkbox.checked = isChecked;
-                    });
-                });
-            });
-        });
-        </script>
+        @include('script.sidebar')
+        @include('script.actionButton')
+        @include('script.editor')
+        @include('script.duplicateInput')
 </body>
 
 </html>

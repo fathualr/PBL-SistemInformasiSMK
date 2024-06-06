@@ -170,7 +170,9 @@
                 <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Siswa Prestasi" name="siswa_prestasi" />
             </label>
             <span class="label-text -mb-4">Deskripsi Prestasi :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Deskripsi Prestasi" name="deskripsi_prestasi"></textarea>
+            <div class="mb-5">
+                <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" id="editor" placeholder="Deskripsi Prestasi" name="deskripsi_prestasi"></textarea>
+            </div>
             <span class="label-text -mb-4">Tanggal Prestasi :</span>
             <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="date" class="grow bg-transparent border-b-2 py-2" name="tanggal_prestasi" />
@@ -245,7 +247,9 @@
                 <input type="text" class="grow bg-transparent py-2" placeholder="Siswa Prestasi" name="siswa_prestasi" value="{{  $prestasi->siswa_prestasi}}" />
             </label>
             <span class="label-text -mb-4">Deskripsi Prestasi :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2 h-28" placeholder="Deskripsi Prestasi" name="deskripsi_prestasi">{{ $prestasi->deskripsi_prestasi }}</textarea>
+            <div class="mb-5">
+                <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" id="editor2" placeholder="Deskripsi Prestasi" name="deskripsi_prestasi">{{ $prestasi->deskripsi_prestasi }}</textarea>
+            </div>
             <span class="label-text -mb-4">Tanggal Prestasi :</span>
             <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="date" class="grow bg-transparent py-2" name="tanggal_prestasi" value="{{ $prestasi->tanggal_prestasi }}" />

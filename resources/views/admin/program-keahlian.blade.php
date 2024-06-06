@@ -16,18 +16,23 @@
 <div class="flex justify-between items-center mx-5">
     <div class="flex items-center">
         <button class="btn btn-outline hover:animate-pulse" onclick="my_modal_add.showModal()">
-            <i class="fa-solid fa-graduation-cap"></i>
+            <i class="fa-solid fa-plus"></i>
             Tambah Program Keahlian
         </button>
     </div>
     <div class="flex items-center">
         <div class="relative hidden md:flex mr-2">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 10]) }}"
+                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 25]) }}"
+                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 50]) }}"
+                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 75]) }}"
+                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.programKeahlian.index', ['perPage' => 100]) }}"
+                    {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
         <form action="{{ route('admin.programKeahlian.index') }}" method="GET">
@@ -157,28 +162,40 @@
 
         <form action="{{ route('ProgramKeahlian.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+            <span class="label-text -mb-4">Nama Program :</span>
             <label
                 class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="text" name="nama_program" class="grow bg-transparent py-2" placeholder="Nama Program" />
             </label>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Program" name="deskripsi_program"></textarea>
-            <textarea
-                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Peluang Kerja" name="deskripsi_peluang_kerja"></textarea>
+            <span class="label-text -mb-4">Deskripsi Program Keahlian :</span>
+            <div class="mb-5">
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                    placeholder="Deskripsi Program" id="editor" name="deskripsi_program"></textarea>
+            </div>
+            <span class="label-text -mb-4">Deskripsi Peluang Kerja :</span>
+            <div class="mb-5">
+                <textarea
+                    class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                    placeholder="Deskripsi Peluang Kerja" id="editor2" name="deskripsi_peluang_kerja"></textarea>
+            </div>
+            <span class="label-text -mb-4">Visi Program :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
                 placeholder="Visi" name="visi_program"></textarea>
+            <span class="label-text -mb-4">Misi Program :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
                 placeholder="Misi" name="misi_program"></textarea>
+            <span class="label-text -mb-4">Tujuan Program :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
                 placeholder="Tujuan Program" name="tujuan_program"></textarea>
+            <span class="label-text -mb-4">Sasaran Program :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
                 placeholder="Sasaran Program" name="sasaran_program"></textarea>
+            <span class="label-text -mb-4">Logo Program :</span>
             <label
                 class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="logo_program" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
@@ -238,12 +255,12 @@
                 <span class="label-text -mb-4">Deskripsi Program Keahlian :</span>
                 <textarea
                     class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
-                    placeholder="Deskripsi Program"
+                    placeholder="Deskripsi Program" id="editor3"
                     name="deskripsi_program">{{ $program->deskripsi_program }}</textarea>
                 <span class="label-text -mb-4">Deskripsi Peluang Kerja :</span>
                 <textarea
                     class="input border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none grow h-28 py-2"
-                    placeholder="Deskripsi Peluang Kerja"
+                    placeholder="Deskripsi Peluang Kerja" id="editor4"
                     name="deskripsi_peluang_kerja">{{ $program->deskripsi_peluang_kerja }}</textarea>
                 <span class="label-text -mb-4">Visi Program :</span>
                 <textarea
@@ -267,7 +284,7 @@
                     <input type="file" name="logo_program" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
+                    hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" />
                 </label>
                 <button type="button" class="btn bg-blue-400 text-white hover:text-blue-400 w-full"
                     onclick="my_modal_edit_capaian{{ $program->id_program }}.showModal()">Edit Capaian
@@ -312,7 +329,7 @@
             <span class="label-text -mb-4">Deskripsi Capaian Pembelajaran :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Capaian Pembelajaran"
+                id="editor5" placeholder="Deskripsi Capaian Pembelajaran"
                 name="deskripsi_capaian_pembelajaran">{{ $program->capaianPembelajaran->deskripsi_capaian_pembelajaran }}</textarea>
             <span class="label-text -mb-4">Aspek Sikap :</span>
             <textarea

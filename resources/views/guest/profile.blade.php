@@ -44,7 +44,7 @@
             <figure class="px-5 pt-5 mx-auto">
                 <div class="avatar rounded-full bg-white">
                     <div class="size-20 p-5 shadow-md rounded-full">
-                        <img src="{{ asset('assets/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                        <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
                     </div>
                 </div>
             </figure>
@@ -70,7 +70,7 @@
             <figure class="px-5 pt-5 mx-auto">
                 <div class="avatar rounded-full bg-white">
                     <div class="size-20 p-5 shadow-md rounded-full">
-                        <img src="{{ asset('assets/Group 31.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                        <img src="{{ asset('assetIcon/Group 31.svg') }}" alt="Lokasi" class="rounded-full size-5" />
                     </div>
                 </div>
             </figure>
@@ -89,7 +89,7 @@
             <figure class="px-5 pt-5 mx-auto">
                 <div class="avatar rounded-full bg-white">
                     <div class="size-20 p-5 shadow-md rounded-full">
-                        <img src="{{ asset('assets/Group 195.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                        <img src="{{ asset('assetIcon/Group 195.svg') }}" alt="Lokasi" class="rounded-full size-5" />
                     </div>
                 </div>
             </figure>
@@ -118,7 +118,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -145,7 +146,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 196.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 196.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -172,7 +174,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 198.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 198.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -205,7 +208,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 199.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 199.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -238,7 +242,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -263,7 +268,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assets/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -338,16 +344,17 @@
 
 <h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">KOMPETENSI KEAHLIAN</h1>
 
-<div class="relative w-full overflow-hidden my-10">
+<div class="relative w-[75rem] overflow-hidden my-10">
     <div class="flex transition-transform duration-500" id="slider">
         @if($programKeahlian->isNotEmpty())
         @foreach ($programKeahlian->chunk(4) as $chunk)
-        <div class="w-full grid grid-cols-4 gap-4 justify-center items-center" style="min-width: 100%;">
+        <div class="w-full grid grid-cols-4 justify-center items-center p-10" style="min-width: 100%;">
             @foreach ($chunk as $prg)
             <div class="mx-auto">
-                <div class="card card-compact smartphone:w-72 laptop:w-68 h-80 shadow-xl bg-indigo-500">
-                    <div class="avatar mx-auto h-28 -translate-y-10">
-                        <div class="w-24 h-24 rounded-full">
+                <div class="card card-compact smartphone:w-72 laptop:w-60 h-80 shadow-xl mx-auto"
+                    style="background-image: url('{{ asset('storage/' . $prg->logo_program) }}'); background-size: cover; background-position: center;">
+                    <div class="avatar mx-auto h-28 translate-y-10">
+                        <div class="w-28 h-28 rounded-full border-2 border-blue-400">
                             <img src="{{ asset('storage/'.$prg->logo_program) }}" />
                         </div>
                     </div>
@@ -368,17 +375,16 @@
         @endif
     </div>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute -left-0 top-1/2 transform p-2 flex justify-center items-center"
         onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-5 top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-70 bg-blue-600 rounded-full w-10 h-10 absolute -right-0 top-1/2 transform p-2 flex justify-center items-center"
         onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>
 </div>
-
 <script>
 let currentIndex = 0;
 let autoSlideInterval;

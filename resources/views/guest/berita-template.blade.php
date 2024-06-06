@@ -25,7 +25,7 @@
             <!-- Kategori -->
 
             <!-- Status -->
-            <div class="flex justify-end items-center">
+            <div class="col-start-2 flex justify-end items-center">
                 <span class="badge gap-4 text-lg bg-transparent border-none">
                     <i class="far fa-message"></i>
                     12.5K
@@ -44,7 +44,7 @@
         <!-- Text -->
         <div class="col-span-2 h-full w-full mb-5">
             <p>
-                {{ $berita->isi_berita }}
+                {!! $berita->isi_berita !!}
             </p>
 
             <div class="relative w-full overflow-hidden my-10">

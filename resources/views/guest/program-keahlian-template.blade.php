@@ -11,7 +11,7 @@
 </div>
 
 <p class="text-center">
-    {{ $program->deskripsi_program }}
+    {!! $program->deskripsi_program !!}
 </p>
 
 <div class="grid grid-rows-3 grid-cols-2 grid-flow-col gap-2 mx-auto my-32 bg-slate-200">
@@ -68,7 +68,7 @@
 </div>
 
 <p class="text-center">
-    {{ $program->capaianPembelajaran->deskripsi_capaian_pembelajaran }}
+    {!! $program->capaianPembelajaran->deskripsi_capaian_pembelajaran !!}
 </p>
 
 <div class="grid grid-cols-2">
@@ -150,7 +150,7 @@
 </div>
 
 <p class="text-center">
-    {{ $program->deskripsi_peluang_kerja }}
+    {!! $program->deskripsi_peluang_kerja !!}
 </p>
 
 <div class="grid grid-cols-9 gap-2 my-10 bg-slate-200">
