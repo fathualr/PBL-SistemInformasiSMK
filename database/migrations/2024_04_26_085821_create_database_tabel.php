@@ -156,7 +156,7 @@ return new class extends Migration
         // Tabel untuk direktori_siswa
         Schema::create('direktori_siswa', function (Blueprint $table) {
             $table->id('id_siswa');
-            $table->unsignedBigInteger('id_program')->notNullable();
+            $table->unsignedBigInteger('id_program')->nullable();
             $table->string('nama_siswa')->notNullable();
             $table->string('nisn_siswa')->unique()->notNullable();
             $table->enum('jenis_kelamin_siswa', ['Laki - Laki', 'Perempuan'])->nullable();
@@ -169,13 +169,13 @@ return new class extends Migration
             $table->string('gambar_siswa')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
+            $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('set null');
         });
 
         // Tabel untuk direktori_guru
         Schema::create('direktori_guru', function (Blueprint $table) {
             $table->id('id_guru');
-            $table->unsignedBigInteger('id_program')->notNullable();
+            $table->unsignedBigInteger('id_program')->nullable();
             $table->string('nama_guru')->notNullable();
             $table->string('nik_guru')->unique()->notNullable();
             $table->string('jabatan_guru')->notNullable();
@@ -189,7 +189,7 @@ return new class extends Migration
             $table->string('email_guru')->unique()->notNullable();
             $table->timestamps();
 
-            $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade');
+            $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('set null');
         });
 
         // Tabel untuk informasi pendaftaran siswa PPDB
@@ -227,7 +227,7 @@ return new class extends Migration
             $table->enum('status', ['Diterima', 'Ditolak', 'Dalam Proses'])->Nullable()->default('Dalam Proses');
             $table->timestamps();
 
-            $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('cascade')->nullable();
+            $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('set null');
         });
 
         // Tabel untuk pengumuman hasil pendaftaran PPDB
@@ -246,7 +246,6 @@ return new class extends Migration
             $table->longText('aspek_pengetahuan')->nullable();
             $table->longText('aspek_keterampilan_umum')->nullable();
             $table->longText('aspek_keterampilan_khusus')->nullable();
-            $table->text('capaian')->nullable();
             $table->timestamps();
 
             // Menambahkan foreign key constraint
@@ -276,7 +275,7 @@ return new class extends Migration
             $table->string('gambar_profil_ekstrakurikuler')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_guru')->references('id_guru')->on('direktori_guru')->onDelete('cascade');
+            $table->foreign('id_guru')->references('id_guru')->on('direktori_guru')->onDelete('set null');
         });
 
         // Tabel untuk gambar ekstrakurikuler

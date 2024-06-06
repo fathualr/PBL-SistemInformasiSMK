@@ -9,13 +9,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Seed program keahlian with some example data
-        \App\Models\ProgramKeahlian::factory(5)->create();
+        \App\Models\ProgramKeahlian::factory(8)->create();
 
         // Seed capaian pembelajaran with some example data
-        \App\Models\CapaianPembelajaran::factory(5)->create();
+        \App\Models\CapaianPembelajaran::factory(8)->create();
 
         // Seed peluang kerja with some example data
-        \App\Models\PeluangKerja::factory(5)->create();
+        \App\Models\PeluangKerja::factory(16)->create();
 
         // Seed form_ppdb with 100 entries
         \App\Models\FormPPDB::factory(500)->create();

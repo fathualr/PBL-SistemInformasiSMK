@@ -27,7 +27,7 @@
                         <tr>
                             <td class="font-bold">Pembimbing</td>
                             <td>:</td>
-                            <td>{{ $ekstrakulikuler->guru->nama_guru }}</td>
+                            <td>{{ $ekskul->guru->nama_guru ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="font-bold">Tempat</td>
@@ -53,7 +53,11 @@
                         <div class="h-48 w-48 items-center justify-center">
                             <!-- Foto Pembimbing -->
                             <p class="text-gray-400 text-center">Guru Pembimbing</p>
-                            <img class="mask mask-circle mx-auto w-44 h-44" src="{{ asset('storage/'.$ekstrakulikuler->guru->gambar_guru) }}" />
+                            @if($ekstrakulikuler->guru)
+                            <img src="{{ asset('storage/'.$ekstrakulikuler->guru->gambar_guru) }}" alt="Gambar Guru">
+                            @else
+                            <img src="{{ asset('image/No_Image_available.svg.png') }}" alt="No Image Available">
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -85,9 +89,15 @@
                 @endforeach
             </div>
             @endforeach
+            @else
+            <div class="flex justify-center items-center artboard artboard-horizontal phone-1">
+                <img src="{{ asset('image/no-image.png') }}" alt="Placeholder" class="w-full h-64 object-cover rounded-sm mx-auto">
+            </div>
             @endif
         </div>
     </div>
+
+
     <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform p-2 flex justify-center items-center" onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>

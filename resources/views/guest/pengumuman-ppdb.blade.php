@@ -3,7 +3,7 @@
 @section('Main')
 
 <div class="divider">
-    <h4 class="font-bold text-xl">PENGUMUMAN PPDB</h4>
+    <h4 class="font-bold text-2xl">PENGUMUMAN PPDB</h4>
 </div>
 <div class="text-center"><Span>{{ $informasi->deskripsi_pengumuman }}</Span></div>
 
@@ -16,7 +16,6 @@
     @else
     <button class="bg-gray-500 text-white px-4 py-2 rounded cursor-not-allowed" disabled>Tidak ada dokumen</button>
     @endif
-
 
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
@@ -40,11 +39,13 @@
         </div>
     </div>
 </div>
-
+<div class="divider my-5">
+    <h4 class="font-bold text-2xl">DATA SISWA</h4>
+</div>
 <div class="grid grid-cols-9 shadow-xl rounded-md mt-5">
     <div class="col-span-9 row-start-2">
         <div class="mt-5">
-            <table class="table table-md text-center">
+            <table class="table table-md border text-center">
                 <thead>
                     <tr>
                         <th>No.</th>

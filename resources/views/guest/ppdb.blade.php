@@ -5,12 +5,12 @@
 <div class="mx-auto bg-white rounded-md ">
     <!-- Informasi PPDB -->
     <div class="divider">
-        <h4 class="font-bold text-xl">INFORMASI PPDB</h4>
+        <h4 class="font-bold text-2xl">INFORMASI PPDB</h4>
     </div>
     <div class="text-center"><span>{{ $informasi->deskripsi_ppdb }}</span></div>
     <!-- ALur PPDB -->
     <div class="divider">
-        <h4 class="font-bold text-xl">ALUR PPDB</h4>
+        <h4 class="font-bold text-2xl">ALUR PPDB</h4>
     </div>
     <div>
         <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
@@ -45,7 +45,7 @@
     </div>
     <!-- Form PPDB -->
     <div class="divider">
-        <h4 class="font-bold text-xl">FORM PPDB</h4>
+        <h4 class="font-bold text-2xl">FORM PPDB</h4>
     </div>
 
     @include('shared.success-message')

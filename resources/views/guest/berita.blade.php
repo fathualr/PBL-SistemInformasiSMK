@@ -2,7 +2,7 @@
 @section('Main')
 
 <div class="divider">
-    <p class="font-bold text-xl">Berita</p>
+    <p class="font-bold text-2xl">BERITA</p>
 </div>
 
 <div class="flex justify-between items-center mx-5">

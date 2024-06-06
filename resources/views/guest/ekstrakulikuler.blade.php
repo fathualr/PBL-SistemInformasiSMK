@@ -3,7 +3,7 @@
 @section('Main')
 
 <div class="divider">
-    <p class="font-bold text-xl">EKSTRAKULIKULER</p>
+    <p class="font-bold text-2xl">EKSTRAKULIKULER</p>
 </div>
 
 <div class="flex justify-end">
@@ -33,7 +33,7 @@
                         <tr>
                             <td class="font-bold">Pembimbing</td>
                             <td>:</td>
-                            <td>{{ $ekskul->guru->nama_guru }}</td>
+                            <td>{{ $ekskul->guru->nama_guru ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="font-bold">Tempat</td>

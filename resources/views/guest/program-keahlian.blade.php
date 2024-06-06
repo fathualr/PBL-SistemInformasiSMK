@@ -2,7 +2,7 @@
 
 @section('Main')
 
-<h2 class="text-xl font-bold text-center divider">Program Keahlian</h2>
+<h2 class="text-2xl font-bold text-center divider">PROGRAM KEAHLIAN</h2>
 <div class="grid tablet:grid-cols-2 laptop:grid-cols-4 gap-y-16 laptop:gap-y-7 tablet:gap-y-28 tablet:gap-2 my-16 px-7">
 
     @forelse($programKeahlian as $program)

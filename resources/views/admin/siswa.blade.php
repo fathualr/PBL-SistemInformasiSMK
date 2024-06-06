@@ -74,7 +74,7 @@
                         </td>
                         <td>{{ $ssw->nama_siswa }}</td>
                         <td>{{ $ssw->nisn_siswa }}</td>
-                        <td>{{ $ssw->programKeahlian->nama_program }}</td>
+                        <td>{{ $ssw->programKeahlian ? $ssw->programKeahlian->nama_program : '-' }}</td>
                         <td>
                             <details class="dropdown">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">

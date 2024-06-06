@@ -11,7 +11,7 @@ class ProgramKeahlianFactory extends Factory
 
     public function definition()
     {
-        $programs = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Elektro', 'Teknik Multemedia', 'Teknik Memasak'];
+        $programs = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Elektro', 'Teknik Multemedia', 'Teknik Memasak', 'Teknik Memancing', 'Teknik Penerbangan', 'Teknik fabrikasi'];
 
         $images = [
             'image/logoProgram/8Jd5x75BOYJcxaYPH4E0gLapZcYNF0KoWFrRed9E.png',

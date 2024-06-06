@@ -12,7 +12,7 @@ class DirektoriGuruFactory extends Factory
     public function definition()
     {
         return [
-            'id_program' => $this->faker->numberBetween(1, 5),
+            'id_program' => $this->faker->numberBetween(1, 8),
             'nama_guru' => $this->faker->name,
             'nik_guru' => $this->faker->unique()->numerify('############'),
             'jabatan_guru' => $this->faker->jobTitle,

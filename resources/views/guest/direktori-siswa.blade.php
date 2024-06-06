@@ -2,7 +2,7 @@
 
 @section('Main')
 <div class="divider">
-    <p class="font-bold text-xl">DIREKTORI SISWA</p>
+    <p class="font-bold text-2xl">DIREKTORI SISWA</p>
 </div>
 
 <div class="flex justify-between items-center mx-5">
@@ -78,7 +78,7 @@
                     </div>
                 </td>
                 <td>{{ $siswa->alamat_siswa }}</td>
-                <td>{{ $siswa->programKeahlian->nama_program }}</td>
+                <td>{{ $siswa->programKeahlian ? $siswa->programKeahlian->nama_program : '-' }}</td>
                 <td>{{ $siswa->tahun_angkatan_siswa }}</td>
                 <th>
                     <button class="btn" onclick="window['my_modal_4{{ $siswa->id_siswa }}'].showModal()">
@@ -160,7 +160,7 @@
                     <tr>
                         <td>Program Keahlian</td>
                         <td>:</td>
-                        <td>{{ $siswa->programKeahlian->nama_program }}</td>
+                        <td>{{ $siswa->programKeahlian ? $siswa->programKeahlian->nama_program : '-' }}</td>
                     </tr>
                     <tr>
                         <td>Tempat, Tanggal Lahir</td>

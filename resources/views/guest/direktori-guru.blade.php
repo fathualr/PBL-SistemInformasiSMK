@@ -3,7 +3,7 @@
 @section('Main')
 
 <div class="divider">
-    <p class="font-bold text-xl">DIREKTORI GURU</p>
+    <p class="font-bold text-2xl">DIREKTORI GURU</p>
 </div>
 
 <div class="flex justify-between items-center mx-5">
@@ -63,7 +63,7 @@
                     <div class="card-body bg-base-100">
                         <h2 class="text-center font-bold text-xl mt-16 truncate w-48 mx-auto">{{ $guru->nama_guru }}
                         </h2>
-                        <p class="text-center">{{ $guru->programKeahlian->nama_program }}</p>
+                        <p class="text-center">{{ $guru->programKeahlian ? $guru->programKeahlian->nama_program : '-' }}</p>
                         <p class="text-center">{{ $guru->nik_guru }}</p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                             <td>Program Keahlian</td>
                             <td>:</td>
                             <td>
-                                {{ $guru->programKeahlian->nama_program }}
+                                {{ $guru->programKeahlian ? $guru->programKeahlian->nama_program : '-' }}
                             </td>
                         </tr>
                         <tr>

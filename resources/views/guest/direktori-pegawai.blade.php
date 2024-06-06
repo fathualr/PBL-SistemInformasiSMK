@@ -3,7 +3,7 @@
 @section('Main')
 
 <div class="divider">
-    <p class="font-bold text-xl">DIREKTORI PEGAWAI</p>
+    <p class="font-bold text-2xl">DIREKTORI PEGAWAI</p>
 </div>
 
 <div class="flex justify-end">

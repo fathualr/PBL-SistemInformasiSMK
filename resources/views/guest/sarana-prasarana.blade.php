@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('Main')
-<h2 class="text-xl font-bold mb-8 text-center divider">Sarana Prasarana</h2>
+<h2 class="text-2xl font-bold mb-8 text-center divider">SARANA PRASARANA</h2>
 <Span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia maxime ratione assumenda facilis placeat voluptatibus necessitatibus perspiciatis, distinctio sunt consequuntur aliquid mollitia perferendis quos qui architecto eos quas repudiandae non.</Span>
 <div class="mt-10">
     @foreach ($prasaranas as $prasarana)
     <div class="collapse collapse-arrow border bg-base-100 mb-5">
-        <input type="checkbox"/>
+        <input type="checkbox" />
         <div class="collapse-title text-xl font-medium">
             {{ $prasarana->nama_prasarana }}
         </div>
@@ -18,7 +18,7 @@
                     <img class="object-cover object-center w-full h-44 max-w-full rounded-lg mx-auto mt-3" src="{{ asset('storage/' . $foto_prasarana->tautan_foto) }}" alt="gallery foto" />
                     @endforeach
                     @else
-                    <div class="artboard artboard-horizontal phone-1 bg-slate-400 text-center">No image available</div>
+                    <div class="artboard artboard-horizontal phone-1 bg-slate-400 text-center"><img src="{{ asset('image/no-image.png') }}" alt="Placeholder" class="w-full h-full object-cover rounded-sm mx-auto"></div>
                     @endif
                 </div>
                 <div class="divider lg:divider-horizontal"></div>

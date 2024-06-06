@@ -71,7 +71,7 @@
                             {{ $guru->nama_guru }}
                         </td>
                         <td>{{ $guru->nik_guru }}</td>
-                        <td class="w-64">{{ $guru->programKeahlian->nama_program }}</td>
+                        <td class="w-64">{{ $guru->programKeahlian ? $guru->programKeahlian->nama_program : '-' }}</td>
                         <td>
                             <details class="dropdown">
                                 <summary tabindex="0" role="button" class="btn btn-ghost button w-20">
@@ -371,7 +371,7 @@
         </label>
         <span class="label-text -mb-4">Bidang Program Keahlian :</span>
         <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nama_program" value="{{ $guru->programKeahlian->nama_program }}" readonly />
+            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nama_program" value="{{ $guru->programKeahlian ? $guru->programKeahlian->nama_program : '-' }}" readonly />
         </label>
         <span class="label-text -mb-4">Email Guru :</span>
         <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">

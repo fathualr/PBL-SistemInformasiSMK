@@ -2,7 +2,7 @@
 
 @section('Main')
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">SEJARAH SEKOLAH</h1>
+<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">SEJARAH SEKOLAH</h1>
 
 <div class="grid grid-rows-3 grid-cols-4 grid-flow-col gap-4">
     <div class="col-span-2">
@@ -299,7 +299,7 @@
 
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">VISI & MISI SEKOLAH</h1>
+<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">VISI & MISI SEKOLAH</h1>
 
 <div class="grid tablet:grid-cols-2 gap-y-4 tablet:gap-y-0 tablet:gap-4">
     <!-- Visi -->
@@ -331,7 +331,7 @@
     <!-- Misi -->
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">STRUKTUR ORGANISASI SEKOLAH</h1>
+<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">STRUKTUR ORGANISASI SEKOLAH</h1>
 
 <div class="col-span-2 my-5 w-full">
     @if(empty($konten->struktur_organisasi_sekolah))
@@ -342,7 +342,7 @@
     @endif
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">KOMPETENSI KEAHLIAN</h1>
+<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">KOMPETENSI KEAHLIAN</h1>
 
 <div class="relative w-[75rem] overflow-hidden my-10">
     <div class="flex transition-transform duration-500" id="slider">

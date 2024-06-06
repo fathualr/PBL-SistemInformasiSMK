@@ -2,7 +2,7 @@
 
 @section('Main')
 
-<h2 class="text-xl font-bold mb-8 text-center divider">Album Video</h2>
+<h2 class="text-2xl font-bold mb-8 text-center divider">ALBUM VIDEO</h2>
 <div class="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-14 lg:gap-y-8 lg:gap-4">
     @foreach($albums as $key => $album)
     @if($key % 6 == 0)

@@ -12,7 +12,7 @@ class DirektoriSiswaFactory extends Factory
     public function definition()
     {
         return [
-            'id_program' => $this->faker->numberBetween(1, 5),
+            'id_program' => $this->faker->numberBetween(1, 8),
             'nama_siswa' => $this->faker->name,
             'nisn_siswa' => $this->faker->unique()->numerify('##############'),
             'jenis_kelamin_siswa' => $this->faker->randomElement(['Laki - Laki', 'Perempuan']),

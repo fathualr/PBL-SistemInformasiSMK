@@ -4,13 +4,13 @@
 <div class="container mx-auto p-8">
 
     <!-- Maps -->
-    <h2 class="text-xl font-bold mb-8 text-center divider">Lokasi Sekolah</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center divider">LOKASI SEKOLAH</h2>
 
     <div class="artboard artboard-horizontal phone-5 flex justify-center mx-auto" id="map"></div>
     @include('layouts.map')
     <!-- Maps -->
 
-    <h2 class="text-xl font-bold mb-8 text-center my-5 divider">Temui Kami</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center my-5 divider">TEMUI KAMI</h2>
 
     <div class="grid grid-cols-4 grid-flow-col grid-rows-4 gap-y-5 my-10">
 
@@ -72,7 +72,7 @@
     </div>
 
 
-    <h2 class="text-2xl font-bold mb-8 text-center divider">Umpan Balik</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center divider">UMPAN BALIK</h2>
     <div class="grid grid-cols-2 gap-5">
         <div class="col-span-1">
             <form action="{{ route('UmpanBalik.store') }}" method="post" enctype="multipart/form-data">
