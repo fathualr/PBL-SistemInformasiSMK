@@ -19,11 +19,13 @@ class direktoriSiswaController extends Controller
         $query = DirektoriSiswa::with('programKeahlian');
 
         if ($search) {
-            $query->where('nama_siswa', 'like', '%' . $search . '%')
-                ->orWhereHas('programKeahlian', function ($q) use ($search) {
-                    $q->where('nama_program', 'like', '%' . $search . '%');
-                })
-                ->orWhere('tahun_angkatan_siswa', $search); // Pencarian berdasarkan tahun angkatan siswa
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_siswa', 'like', '%' . $search . '%')
+                    ->orWhereHas('programKeahlian', function ($q) use ($search) {
+                        $q->where('nama_program', 'like', '%' . $search . '%');
+                    })
+                    ->orWhere('tahun_angkatan_siswa', $search); // Search based on student enrollment year
+            });
         }
 
         if ($nama_program) {
@@ -36,12 +38,15 @@ class direktoriSiswaController extends Controller
             $query->where('tahun_angkatan_siswa', $tahun_angkatan);
         }
 
+        // Order by enrollment year in descending order
+        $query->orderBy('tahun_angkatan_siswa', 'desc');
+
         $direktoriSiswa = $query->paginate($perPage);
         $direktoriSiswa->appends([
             'search' => $search,
             'perPage' => $perPage,
             'nama_program' => $nama_program,
-            'tahun_angkatan' => $tahun_angkatan // Mengirim tahun_angkatan ke view
+            'tahun_angkatan' => $tahun_angkatan // Send enrollment year to view
         ]);
 
         $programKeahlian = ProgramKeahlian::all()->unique('nama_program');

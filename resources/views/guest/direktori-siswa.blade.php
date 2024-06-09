@@ -183,7 +183,7 @@
                         <td>{{ $siswa->no_hp_siswa }}</td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Tahun Angkatan</td>
                         <td>:</td>
                         <td>{{ $siswa->tahun_angkatan_siswa }}</td>
                     </tr>

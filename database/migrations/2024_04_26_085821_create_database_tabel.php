@@ -225,6 +225,7 @@ return new class extends Migration
             $table->string('penghasilan_wali')->notNullable();
             $table->string('tautan_dokumen')->notNullable();
             $table->enum('status', ['Diterima', 'Ditolak', 'Dalam Proses'])->Nullable()->default('Dalam Proses');
+            $table->string('program_diterima')->nullable();
             $table->timestamps();
 
             $table->foreign('id_program')->references('id_program')->on('program_keahlian')->onDelete('set null');

@@ -16,7 +16,7 @@ class direktoriAlumniController extends Controller
 
         $query = DirektoriAlumni::query();
 
-        // Filter berdasarkan pencarian
+        // Filter based on search
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('nama_alumni', 'like', '%' . $search . '%')
@@ -24,15 +24,18 @@ class direktoriAlumniController extends Controller
             });
         }
 
-        // Filter berdasarkan tahun kelulusan
+        // Filter based on graduation year
         if ($tahun_kelulusan) {
             $query->where('tahun_kelulusan_alumni', $tahun_kelulusan);
         }
 
-        // Ambil data tahun kelulusan yang unik
+        // Order by graduation year in descending order
+        $query->orderBy('tahun_kelulusan_alumni', 'desc');
+
+        // Get unique graduation years
         $tahun_kelulusan_list = DirektoriAlumni::pluck('tahun_kelulusan_alumni')->unique()->sort()->values();
 
-        // Paginasi hasil query
+        // Paginate the results
         $direktoriAlumni = $query->paginate($perPage);
         $direktoriAlumni->appends([
             'search' => $search,

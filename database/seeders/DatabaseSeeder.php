@@ -51,10 +51,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\DirektoriPegawai::factory(20)->create();
 
         // Seed direktorialumni with 10 entries
-        \App\Models\DirektoriAlumni::factory(20)->create();
+        \App\Models\DirektoriAlumni::factory(200)->create();
 
         // Seed direktorisiswa with 10 entries
-        \App\Models\DirektoriSiswa::factory(20)->create();
+        \App\Models\DirektoriSiswa::factory(200)->create();
         
         // Seed ekstrakulikuler with 10 entries
         \App\Models\Ekstrakulikuler::factory(10)->create();

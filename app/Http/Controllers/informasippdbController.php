@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\InformasiPPDB;
 use App\Models\AlurPPDB;
 use App\Models\CountdownSetting;
-use App\Models\FormPPDB;
 use App\Models\PengumumanPPDB;
 use App\Models\ProgramKeahlian;
 use Carbon\Carbon;
@@ -55,36 +54,6 @@ class InformasiPPDBController extends Controller
         ]);
     }
 
-    public function pengumuman(Request $request)
-    {
-        $search = $request->query('search');
-        $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
-        $informasi = InformasiPPDB::first();
-        $pengumuman_ppdb = PengumumanPPDB::first();
-
-        // Lakukan pengecekan apakah terdapat query pencarian
-        if ($search) {
-            // Jika ada, lakukan pencarian berdasarkan nama atau NISN
-            $forms = FormPPDB::where('nama_lengkap', 'like', '%' . $search . '%')
-                ->orWhere('nisn', 'like', '%' . $search . '%')
-                ->orWhere('tahun_pendaftaran', 'like', '%' . $search . '%')
-                ->paginate($perPage);
-        } else {
-            // Jika tidak ada query pencarian, tampilkan semua data
-            $forms = FormPPDB::orderBy('created_at', 'desc')->paginate($perPage);
-        }
-
-        $forms->appends(['search' => $search, 'perPage' => $perPage]);
-
-        return view('guest.pengumuman-ppdb', [
-            "title" => "Guest Pendaftaran PPDB",
-            "informasi" => $informasi,
-            "forms" => $forms,
-            "search" => $search, // Mengirimkan search ke view
-            "perPage" => $perPage, // Mengirimkan perPage ke view
-            'pengumuman_ppdb' => $pengumuman_ppdb
-        ]);
-    }
     // Fungsi untuk menampilkan halaman admin informasi PPDB
     public function adminInformasiPPDB()
     {

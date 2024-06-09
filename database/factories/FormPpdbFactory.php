@@ -22,7 +22,7 @@ class FormPpdbFactory extends Factory
             'no_hp' => $this->faker->phoneNumber(),
             'pilihan_1' => $this->faker->randomElement(['Teknik Informatika', 'Teknik Mesin', 'Teknik Elektro', 'Teknik Multemedia', 'Teknik Memasak', 'Teknik Memancing', 'Teknik Penerbangan', 'Teknik fabrikasi']),
             'pilihan_2' => $this->faker->randomElement(['Teknik Informatika', 'Teknik Mesin', 'Teknik Elektro', 'Teknik Multemedia', 'Teknik Memasak', 'Teknik Memancing', 'Teknik Penerbangan', 'Teknik fabrikasi']),
-            'tahun_pendaftaran' => $this->faker->numberBetween(2024, 2045),
+            'tahun_pendaftaran' => $this->faker->numberBetween(2024, 2034),
             'nama_sekolah_asal' => $this->faker->company(),
             'alamat' => $this->faker->address(),
             'no_rt' => $this->faker->numberBetween(1, 20),

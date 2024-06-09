@@ -25,8 +25,7 @@
             <form action="{{ route('admin.pengumumanPPDB.index') }}" method="GET">
                 <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
                     <i class="fas fa-magnifying-glass"></i>
-                    <input type="text" class="grow w-40" name="search" placeholder="Cari Nama" value="{{ request()->get('search') }}" />
-                    <input type="hidden" name="perPage" value="{{ request()->get('perPage') }}" />
+                    <input type="text" class="grow w-40" name="search" placeholder="Cari " value="{{ request()->get('search') }}" />
                 </label>
             </form>
         </div>
@@ -34,9 +33,16 @@
             <form id="updateStatusForm" action="{{ route('admin.pengumumanPPDB.updateBatch') }}" method="POST">
                 @csrf
                 <select name="status" class="select select-bordered w-32">
+                    <option disabled>Pilih Status</option>
                     <option value="Diterima">Diterima</option>
                     <option value="Ditolak">Ditolak</option>
                     <option value="Dalam Proses">Dalam Proses</option>
+                </select>
+
+                <select id="programSelection" name="program" class="select select-bordered">
+                    <option disabled>Pilih Program</option>
+                    <option value="pilihan_1">Pilihan 1</option>
+                    <option value="pilihan_2">Pilihan 2</option>
                 </select>
                 <button type="submit" class="btn bg-blue-400 text-white hover:text-blue-400">Update Status</button>
         </div>
@@ -58,6 +64,8 @@
                         <th>Nama</th>
                         <th class="p-2 hidden md:table-cell">NISN</th>
                         <th class="p-2 hidden md:table-cell">Tahun Pendaftaran</th>
+                        <th class="p-2 hidden md:table-cell">Pilihan 1</th>
+                        <th class="p-2 hidden md:table-cell">Pilihan 2</th>
                         <th class="p-2 hidden md:table-cell">Status</th>
                     </tr>
                 </thead>
@@ -73,6 +81,24 @@
                         <td class="p-2">{{ $form_ppdb->nama_lengkap }}</td>
                         <td class="p-2 hidden md:table-cell">{{ $form_ppdb->nisn }}</td>
                         <td class="p-2 hidden md:table-cell">{{ $form_ppdb->tahun_pendaftaran }}</td>
+                        <td class="p-2 hidden md:table-cell">
+                            @if ($form_ppdb->status == 'Diterima' && $form_ppdb->program_diterima && $form_ppdb->program_diterima == $form_ppdb->pilihan_1)
+                            {{ $form_ppdb->pilihan_1 }}
+                            @elseif ($form_ppdb->status == 'Diterima' && $form_ppdb->program_diterima && $form_ppdb->program_diterima != $form_ppdb->pilihan_1)
+                            -
+                            @else
+                            {{ $form_ppdb->pilihan_1 }}
+                            @endif
+                        </td>
+                        <td class="p-2 hidden md:table-cell">
+                            @if ($form_ppdb->status == 'Diterima' && $form_ppdb->program_diterima && $form_ppdb->program_diterima == $form_ppdb->pilihan_2)
+                            {{ $form_ppdb->pilihan_2 }}
+                            @elseif ($form_ppdb->status == 'Diterima' && $form_ppdb->program_diterima && $form_ppdb->program_diterima != $form_ppdb->pilihan_2)
+                            -
+                            @else
+                            {{ $form_ppdb->pilihan_2 }}
+                            @endif
+                        </td>
                         <td class="p-2 hidden md:table-cell">
                             @if ($form_ppdb->status == 'Diterima')
                             <span class="px-2 py-1 text-white bg-elm rounded-full">Diterima</span>
@@ -120,5 +146,19 @@
     <button class="join-item btn disabled">»</button>
     @endif
 </div>
+
+<script>
+    function toggleProgramSelection() {
+        var statusSelect = document.getElementById('statusSelect');
+        var programSelection = document.getElementById('programSelection');
+
+        if (statusSelect.value === 'Diterima') {
+            programSelection.classList.remove('hidden');
+        } else {
+            programSelection.classList.add('hidden');
+        }
+    }
+</script>
+
 
 @endsection

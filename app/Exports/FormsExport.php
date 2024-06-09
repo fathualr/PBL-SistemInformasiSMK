@@ -57,6 +57,7 @@ class FormsExport implements FromCollection, WithHeadings
             'Penghasilan Wali',
             'Tautan Dokumen',
             'Status',
+            'Program Diterima',
             'Created At',
             'Updated At'
         ];

@@ -12,15 +12,15 @@ class KontenWebsiteFactory extends Factory
     public function definition()
     {
         return [
-            'nama_sekolah' => $this->faker->company,
+            'nama_sekolah' => 'SMK MUHAMMADIYAH PLUS BATAM KOTA',
             'logo_sekolah' => 'image/gambarKontenWebsite/TfPmIsItmRv3NCcVZqKnhl7yOi8othk5zltvuPsp.png',
-            'alamat_sekolah' => $this->faker->address,
+            'alamat_sekolah' => 'Ruko Tunas Industri Blok F No. 5, Kel. Belian, Kec. Batam Kota – Kota Batam',
             'no_telepon_sekolah' => $this->faker->phoneNumber,
             'email_sekolah' => $this->faker->unique()->safeEmail,
             'nama_kepala_sekolah' => $this->faker->name,
             'sejarah' => $this->faker->paragraph,
             'tautan_video_sejarah' => 'https://www.youtube.com/embed/9dDzr5d2AiY?si=VSD_dM1KQhBQZgd_&amp;controls=0',
-            'sambutan' => $this->faker->paragraph,
+            'sambutan' => 'SMK Muhammadiyah Plus Batam Kota menawarkan berbagai program keahlian yang dirancang untuk memenuhi kebutuhan dunia industri dan pasar kerja saat ini. Dengan fasilitas yang memadai dan didukung oleh tenaga pendidik yang profesional, kami berkomitmen untuk memberikan pendidikan terbaik yang berorientasi pada keterampilan praktis dan pengembangan karakter. Di sini, kami tidak hanya fokus pada aspek akademik semata, tetapi juga mengedepankan pendidikan karakter yang berlandaskan nilai-nilai Islami. Kami percaya bahwa siswa-siswi yang memiliki integritas dan etika yang baik akan mampu menghadapi berbagai tantangan di masa depan dengan bijak dan penuh percaya diri.',
             'tautan_video_sambutan' => 'https://www.youtube.com/embed/c4F4hOHUi38?si=gemiodapqyF3QH7z&amp;controls=0',
             'visi' => $this->faker->paragraph,
             'misi' => $this->faker->paragraph,

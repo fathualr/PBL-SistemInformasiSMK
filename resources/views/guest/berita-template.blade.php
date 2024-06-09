@@ -8,7 +8,6 @@
         <div class="col-span-2 my-5 w-full">
             <img class="w-[55rem] h-[25rem] rounded-xl mx-auto" src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Nama Gambar">
         </div>
-        <!-- Image -->
 
         <div class="col-span-2 grid grid-cols-2 gap-4 justify-center items-center w-full">
             <!-- Kategori -->
@@ -22,16 +21,13 @@
                 @endforeach
             </div>
             @endif
-            <!-- Kategori -->
 
-            <!-- Status -->
             <div class="col-start-2 flex justify-end items-center">
                 <span class="badge gap-4 text-lg bg-transparent border-none">
                     <i class="far fa-message"></i>
-                    12.5K
+                    {{ $berita->komentar->count() }}
                 </span>
             </div>
-            <!-- Status -->
         </div>
 
         <!-- Title -->
@@ -39,9 +35,7 @@
             <h1 class="font-bold text-2xl">{{ $berita->judul_berita }}</h1>
             <p class="text-sm text-slate-600 mb-10">{{ $berita->created_at }}</p>
         </div>
-        <!-- Title -->
 
-        <!-- Text -->
         <div class="col-span-2 h-full w-full mb-5">
             <p>
                 {!! $berita->isi_berita !!}
@@ -88,54 +82,32 @@
     </dialog>
     @endforeach
 
-    <!-- Side -->
     <div class="col-start-3 ">
         <h2 class="font-bold text-xl ml-10 my-5">Berita Terbaru</h2>
         <div class="grid grid-rows-3 grid-flow-row ml-10 gap-4">
-
-            <div class="card w-68 h-64 bg-base-100 shadow-xl mx-auto">
-                <figure><img src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Shoes" />
-                </figure>
-                <div class="card-body h-20 p-5">
+            @foreach($latestBerita as $latest)
+            <div class="card w-68 h-64 bg-base-100 shadow-xl mx-auto transition-all duration-200 hover:scale-105">
+                <figure><img src="{{ asset('storage/'.$latest->gambar_headline) }}" alt="Gambar Berita" /></figure>
+                <div class="card-body h-24 p-5">
                     <div class="grid grid-cols-2 justify-center items-end">
                         <div class="w-full">
-                            <h2 class="font-bold text-lg truncate w-32">
-                                {{ $berita->judul_berita }}
+                            <h2 class="font-bold text-lg truncate">
+                                {{ $latest->judul_berita }}
                             </h2>
                         </div>
                         <div class="flex justify-end items-end">
                             <span class="badge gap-4 text-sm bg-transparent border-none">
                                 <i class="far fa-message"></i>
-                                12.5K
+                                {{ $latest->komentar->count() }}
                             </span>
                         </div>
                     </div>
+                    <a href="/guest/berita-template/{{ $latest->id_berita }}" class="text-blue-500 hover:underline text-sm">Read more</a>
                 </div>
             </div>
-
+            @endforeach
         </div>
     </div>
-    <!-- Side -->
-
-
-
-    <!-- Image -->
-    <!-- <div class="col-span-2 my-5 w-full">
-        <img class="w-full" src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Nama Gambar">
-    </div> -->
-    <!-- Image -->
-
-    <!-- Gambar -->
-    <!-- @if($berita->gambar->isNotEmpty())
-    <div class="col-span-2 h-full w-full mt-10">
-        @foreach ($berita->gambar as $gambar)
-        <div class="flex justify-center">
-            <img class="w-3/12" src="{{ asset('storage/'. $gambar->tautan_gambar) }}" alt="">
-        </div>
-        @endforeach
-    </div>
-    @endif -->
-    <!-- Gambar -->
 </div>
 
 <div class="divider my-5"></div>

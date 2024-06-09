@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Admin;
-use App\Models\Album;
-use App\Models\Foto;
-use App\Models\Video;
-use App\Models\InformasiPPDB;
-use App\Models\AlurPPDB;
+use App\Models\DirektoriSiswa;
+use App\Models\DirektoriGuru;
+use App\Models\FormPPDB;
 
 class adminController extends Controller
 {
@@ -19,12 +16,21 @@ class adminController extends Controller
         ]);
     }
 
-    public function dashboard()
-    {
-        return view('admin/dashboard', [
-            "title" => "Dashboard"
-        ]);
-    }
+    // public function dashboard()
+    // {
+    //     $siswaCount = DirektoriSiswa::count();
+    //     $staffCount = DirektoriGuru::count();
+    //     $ppdbCount = FormPPDB::count();
+    //     $lolosPpdbCount = FormPPDB::where('status', 'Diterima')->count();
+
+    //     return view('admin.dashboard', [
+    //         'title' => 'Dashboard',
+    //         'siswaCount' => $siswaCount,
+    //         'staffCount' => $staffCount,
+    //         'ppdbCount' => $ppdbCount,
+    //         'lolosPpdbCount' => $lolosPpdbCount
+    //     ]);
+    // }
 
     // public function admin(){
     //     $admin = Admin::all();

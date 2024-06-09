@@ -24,7 +24,7 @@ class FormController extends Controller
                 ->paginate($perPage);
         } else {
             // Jika tidak ada query pencarian, tampilkan semua data
-            $forms = FormPPDB::orderBy('created_at', 'desc')->paginate($perPage);
+            $forms = FormPPDB::orderBy('tahun_pendaftaran', 'desc')->paginate($perPage);
         }
 
         $forms->appends(['search' => $search, 'perPage' => $perPage]);

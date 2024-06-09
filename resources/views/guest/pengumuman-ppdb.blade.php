@@ -20,7 +20,6 @@
     <div class="flex items-center">
         <div class="relative mr-2 hidden md:flex">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
                 <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
                 <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
                 <option value="{{ route('guest.pengumuman-ppdb.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
@@ -52,6 +51,7 @@
                         <th>Nama</th>
                         <th class="p-2 hidden md:table-cell">NISN</th>
                         <th class="p-2 hidden md:table-cell">Tahun Pendaftaran</th>
+                        <th class="p-2 hidden md:table-cell">Program Diterima</th>
                         <th class="p-2 hidden md:table-cell">Status</th>
                     </tr>
                 </thead>
@@ -63,12 +63,19 @@
                         <td class="p-2 hidden md:table-cell">{{ $form_ppdb->nisn }}</td>
                         <td class="p-2 hidden md:table-cell">{{ $form_ppdb->tahun_pendaftaran }}</td>
                         <td class="p-2 hidden md:table-cell">
-                            @if ($form_ppdb->status == 'Diterima')
-                            <span class="px-2 py-1 text-white bg-green-500 rounded-full">Diterima</span>
-                            @elseif ($form_ppdb->status == 'Ditolak')
-                            <span class="px-2 py-1 text-white bg-red-500 rounded-full">Ditolak</span>
+                            @if ($form_ppdb->program_diterima)
+                            {{ $form_ppdb->program_diterima }}
                             @else
-                            <span class="px-2 py-1 text-white bg-gray-500 rounded-full">Dalam Proses</span>
+                            -
+                            @endif
+                        </td>
+                        <td class="p-2 hidden md:table-cell">
+                            @if ($form_ppdb->status == 'Diterima')
+                            <span class="px-2 py-1 text-white bg-elm rounded-full">Diterima</span>
+                            @elseif ($form_ppdb->status == 'Ditolak')
+                            <span class="px-2 py-1 text-white bg-error rounded-full">Ditolak</span>
+                            @else
+                            <span class="px-2 py-1  text-white bg-gray-500 rounded-full">Dalam Proses</span>
                             @endif
                         </td>
                     </tr>

@@ -5,6 +5,7 @@ use App\Http\Controllers\{
     Auth\LoginController,
     WebController,
     FrontEndController,
+    DashboardController,
     AdminController,
     AdminActionController,
     CarouselsActionController,
@@ -61,7 +62,7 @@ Route::get('guest/galeri-template/{id_album}', [AlbumFotoVideoController::class,
 Route::get('guest/galeri-template-video/{id_album}', [AlbumFotoVideoController::class, 'galeriTemplateVideo']);
 Route::get('guest/ppdb', [InformasippdbController::class, 'ppdb'])->name('guest.ppdb.index');
 Route::post('guest/ppdb', [formController::class, 'storePPDB'])->name('guest.ppdb.store');
-Route::get('guest/pengumuman-ppdb', [InformasippdbController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
+Route::get('guest/pengumuman-ppdb', [PengumumanController::class, 'pengumuman'])->name('guest.pengumuman-ppdb.index');
 Route::get('guest/sarana-prasarana', [PrasaranaController::class, 'saranaPrasarana']);
 Route::get('guest/prestasi-siswa', [prestasiSiswaController::class, 'index'])->name('guest.prestasi.index');
 Route::get('guest/prestasi-siswa-template/{id_prestasi}', [PrestasiSiswaController::class, 'showTemplate']);
@@ -86,7 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('account.logout');
 
     // Dashboard
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('index');
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('index');
     
     //Admin -----
     Route::get('admin', [adminActionController::class, 'index'])->name('admin.index')->middleware('master');

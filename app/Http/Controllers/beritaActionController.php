@@ -98,11 +98,17 @@ class beritaActionController extends Controller
         $berita = Berita::with(['kategori', 'gambar', 'komentar' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }])->findOrFail($id_berita);
+    
+        // Fetch the latest news articles
+        $latestBerita = Berita::orderBy('created_at', 'desc')->take(3)->get();
+    
         return view('guest/berita-template', [
             'berita' => $berita,
-            'title' => "Berita $berita->judul_berita"
+            'title' => "Berita $berita->judul_berita",
+            'latestBerita' => $latestBerita // Pass the latest news articles to the view
         ]);
     }
+    
 
     public function store(Request $request)
     {

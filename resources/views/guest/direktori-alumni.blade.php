@@ -52,7 +52,6 @@
 <!-- Content -->
 <div class="my-10">
     <table class="table text-center">
-        <!-- head -->
         <thead>
             <tr>
                 <th>Nama</th>
@@ -87,7 +86,6 @@
             </tr>
             @endforeach
         </tbody>
-
         <tfoot>
             <tr>
                 <th>Nama</th>
