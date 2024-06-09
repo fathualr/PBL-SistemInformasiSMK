@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DirektoriAlumni;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class direktoriAlumniController extends Controller
@@ -14,6 +15,7 @@ class direktoriAlumniController extends Controller
         $tahun_kelulusan = $request->query('tahun_kelulusan');
         $perPage = $request->query('perPage') ?? 10;
 
+        $medsos = MediaSosial::first();
         $query = DirektoriAlumni::query();
 
         // Filter based on search
@@ -47,6 +49,7 @@ class direktoriAlumniController extends Controller
             'title' => 'Direktori Alumni',
             'direktoriAlumni' => $direktoriAlumni,
             'tahun_kelulusan_list' => $tahun_kelulusan_list,
+            "medsos" => $medsos
         ]);
     }
 

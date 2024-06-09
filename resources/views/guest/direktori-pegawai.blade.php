@@ -9,11 +9,16 @@
 <div class="flex justify-end">
     <div class="relative hidden md:flex mr-2">
         <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 12])) }}" {{ request()->get('perPage') == 12 ? 'selected' : '' }}>12</option>
-            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 24])) }}" {{ request()->get('perPage') == 24 ? 'selected' : '' }}>24</option>
-            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 36])) }}" {{ request()->get('perPage') == 36 ? 'selected' : '' }}>36</option>
-            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 60])) }}" {{ request()->get('perPage') == 60 ? 'selected' : '' }}>60</option>
-            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 96])) }}" {{ request()->get('perPage') == 96 ? 'selected' : '' }}>96</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 12])) }}"
+                {{ request()->get('perPage') == 12 ? 'selected' : '' }}>12</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 24])) }}"
+                {{ request()->get('perPage') == 24 ? 'selected' : '' }}>24</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 36])) }}"
+                {{ request()->get('perPage') == 36 ? 'selected' : '' }}>36</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 60])) }}"
+                {{ request()->get('perPage') == 60 ? 'selected' : '' }}>60</option>
+            <option value="{{ route('guest.pegawai.index', array_merge(request()->query(), ['perPage' => 96])) }}"
+                {{ request()->get('perPage') == 96 ? 'selected' : '' }}>96</option>
         </select>
     </div>
     <form action="{{ route('guest.pegawai.index') }}" method="GET">
@@ -24,13 +29,19 @@
     </form>
 </div>
 
-<div class="grid {{ count($direktoriPegawai) > 3 ? 'grid-cols-4' : (count($direktoriPegawai) > 2 ? 'grid-cols-3' : (count($direktoriPegawai) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-16 mx-auto">
+<div
+    class="grid {{ count($direktoriPegawai) > 3 ? 'grid-cols-4' : (count($direktoriPegawai) > 2 ? 'grid-cols-3' : (count($direktoriPegawai) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-3 gap-y-10 my-16 mx-auto">
     @foreach ( $direktoriPegawai as $pegawai )
     <div class="mx-auto">
-        <button class="hover:scale-110 transition-all duration-300" onclick="window['my_modal_view{{ $pegawai->id_pegawai }}'].showModal()">
+        <button class="hover:scale-110 transition-all duration-300"
+            onclick="window['my_modal_view{{ $pegawai->id_pegawai }}'].showModal()">
             <div class="card card-compact w-64 h-80 shadow-xl">
+                <figure>
+                    <img src="{{ asset('storage/' . $pegawai->gambar_pegawai) }}"
+                        class="h-28 w-full object-cover blur-sm" alt="Shoes" />
+                </figure>
                 <div class="h-2/5 bg-indigo-600 rounded-t-lg">
-                    <div class=" avatar mx-auto h-28 translate-y-[4rem]">
+                    <div class=" avatar absolute mx-auto h-28 -translate-y-12 -translate-x-16">
                         <div class="w-32 h-32 rounded-full">
                             <img src="{{ asset('storage/'.$pegawai->gambar_pegawai) }}" />
                         </div>
@@ -71,7 +82,8 @@
                 <div class="flex justify-center items-center">
                     <div class="avatar flex justify-center items-center my-5">
                         <div class="mask mask-squircle w-44 h-44">
-                            <img src="{{ asset('storage/'.$pegawai->gambar_pegawai) }}" alt="Avatar Tailwind CSS Component" />
+                            <img src="{{ asset('storage/'.$pegawai->gambar_pegawai) }}"
+                                alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
                     <div class="divider divider-horizontal translate-x-8"></div>

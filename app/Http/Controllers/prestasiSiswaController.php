@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PrestasiSiswa;
 use App\Models\GambarPrestasiSiswa;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class prestasiSiswaController extends Controller
 {
     public function index(Request $request)
     {
+        $medsos = MediaSosial::first();
         $query = PrestasiSiswa::with('gambar')->orderBy('created_at', 'desc');
 
         // Filter berdasarkan pencarian
@@ -37,6 +39,7 @@ class prestasiSiswaController extends Controller
         return view('guest/prestasi', [
             'PrestasiSiswa' => $PrestasiSiswa,
             'tingkatPrestasiDropdown' => $tingkatPrestasiDropdown,
+            "medsos" => $medsos,
             "title" => "Prestasi Siswa"
         ]);
     }
@@ -45,8 +48,10 @@ class prestasiSiswaController extends Controller
     public function showTemplate($id_prestasi)
     {
         $PrestasiSiswa = PrestasiSiswa::with('gambar')->findOrFail($id_prestasi);
+        $medsos = MediaSosial::first();
         return view('guest/prestasi-siswa-template', [
             "PrestasiSiswa" => $PrestasiSiswa,
+            "medsos" => $medsos,
             "title" => "Prestasi Siswa"
         ]);
     }

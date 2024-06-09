@@ -1,46 +1,22 @@
 <script>
-let currentIndex = 0;
-let autoSlideInterval;
+const carouselInner = document.querySelector('.carousels > .flex');
+const carouselItems = document.querySelectorAll('.carousel-items');
+let index = 0;
 
-function showSlide(index) {
-    const carousel = document.getElementById('carousel');
-    const slides = carousel.children;
-    const totalSlides = slides.length;
+const autoSlide = () => {
+    index = (index + 1) % carouselItems.length;
+    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+};
 
-    if (index >= totalSlides) {
-        currentIndex = 0;
-    } else if (index < 0) {
-        currentIndex = totalSlides - 1;
-    } else {
-        currentIndex = index;
-    }
+setInterval(autoSlide, 5000);
 
-    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-function nextSlide() {
-    showSlide(currentIndex + 1);
-}
-
-function prevSlide() {
-    showSlide(currentIndex - 1);
-}
-
-function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        nextSlide();
-    }, 2000);
-}
-
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentIndex);
-    startAutoSlide();
-
-    document.getElementById('carousel').addEventListener('mouseenter', stopAutoSlide);
-    document.getElementById('carousel').addEventListener('mouseleave', startAutoSlide);
+const title =
+    `Halaman {{ $title }} {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}`;
+new Typed('#element', {
+    strings: [title],
+    typeSpeed: 50,
+    showCursor: false,
+    loop: true,
+    loopCount: Infinity,
 });
 </script>

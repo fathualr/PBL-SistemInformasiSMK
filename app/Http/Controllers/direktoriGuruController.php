@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProgramKeahlian;
 use App\Models\DirektoriGuru;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class direktoriGuruController extends Controller
@@ -14,6 +15,7 @@ class direktoriGuruController extends Controller
         $search = $request->query('search');
         $nama_program = $request->query('nama_program');
         $programKeahlian = ProgramKeahlian::all();
+        $medsos = MediaSosial::first();
         $perPage = $request->query('perPage') ?? 12;
 
         $query = DirektoriGuru::with('programKeahlian');
@@ -43,7 +45,8 @@ class direktoriGuruController extends Controller
         return view('guest.direktori-guru', [
             'title' => 'Direktori Guru',
             'direktoriGuru' => $direktoriGuru,
-            'programKeahlian' => $programKeahlian
+            'programKeahlian' => $programKeahlian,
+            "medsos" => $medsos
         ]);
     }
 

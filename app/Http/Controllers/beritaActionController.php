@@ -7,6 +7,7 @@ use App\Models\Berita;
 use App\Models\GambarBerita;
 use App\Models\KategoriBerita;
 use App\Models\KomentarBerita;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class beritaActionController extends Controller
@@ -59,6 +60,7 @@ class beritaActionController extends Controller
         $nama_kategori = $request->query('nama_kategori');
         $perPage = $request->query('perPage') ?? 6;
 
+        $medsos = MediaSosial::first();
         $query = Berita::with('kategori', 'gambar')->orderBy('created_at', 'desc');
 
         if ($search) {
@@ -88,13 +90,15 @@ class beritaActionController extends Controller
         return view('guest.berita', [
             'berita' => $berita,
             'title' => 'Berita',
-            'kategoriBerita' => $kategoriBerita
+            'kategoriBerita' => $kategoriBerita,
+            "medsos" => $medsos
         ]);
     }
 
 
     public function showTemplate($id_berita)
     {
+        $medsos = MediaSosial::first();
         $berita = Berita::with(['kategori', 'gambar', 'komentar' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }])->findOrFail($id_berita);
@@ -105,6 +109,7 @@ class beritaActionController extends Controller
         return view('guest/berita-template', [
             'berita' => $berita,
             'title' => "Berita $berita->judul_berita",
+            "medsos" => $medsos,
             'latestBerita' => $latestBerita // Pass the latest news articles to the view
         ]);
     }

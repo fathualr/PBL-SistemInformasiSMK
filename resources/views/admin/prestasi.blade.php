@@ -63,9 +63,11 @@
                             {{ $prestasi->nama_prestasi }}
                         </td>
                         <td>
-                            <p class="truncate w-48 mx-auto">
-                                {{ $prestasi->deskripsi_prestasi }}
-                            </p>
+                            <div class=" truncate w-48 mx-auto">
+                                <p>
+                                    {!! $prestasi->deskripsi_prestasi !!}
+                                </p>
+                            </div>
                         </td>
                         <td>{{ $prestasi->tanggal_prestasi }}</td>
                         <td>{{ $prestasi->kategori_prestasi }}</td>
@@ -203,9 +205,9 @@
                     hover:file:bg-transparent hover:file:text-blue-400" accept="gambarPrestasi/*" />
                 </label>
             </div>
-            <button type="button" id="btnAddFilePrestasi" class="btn bg-blue-400 text-white w-full hover:text-blue-400">Tambah
+            <button type="button" id="btnAddFilePrestasi" class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah
                 Gambar</button>
-            <div class="flex justify-end items-end mt-20 gap-4">
+            <div class="flex justify-end items-end my-10 gap-4">
                 <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset

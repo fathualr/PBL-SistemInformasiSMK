@@ -158,7 +158,8 @@ input[type=number] {
                         </div>
                         <!-- W-20 -->
                         <details class="hidden" id="navTitle">
-                            <summary>
+                            <summary
+                                class="@if($title == 'Admin Guru' || $title == 'Admin Pegawai' || $title == 'Admin Siswa' || $title == 'Admin Alumni') bg-blue-600 rounded-md @endif">
                                 <div class="w-3 flex justify-center items-center">
                                     <i class="fas fa-folder-open text-2xl text-center font-bold"></i>
                                 </div>
@@ -224,7 +225,8 @@ input[type=number] {
                         </div>
                         <!-- W-20 -->
                         <details class="hidden" id="navTitle">
-                            <summary>
+                            <summary
+                                class="@if($title == 'Admin Album' || $title == 'Admin Foto' || $title == 'Admin Video' ) bg-blue-600 rounded-md @endif">
                                 <div class="w-3  flex justify-center items-center">
                                     <i class="fas fa-photo-film text-2xl text-center font-bold"></i>
                                 </div>
@@ -284,7 +286,8 @@ input[type=number] {
                         </div>
                         <!-- W-20 -->
                         <details class="hidden" id="navTitle">
-                            <summary>
+                            <summary
+                                class="@if($title == 'Admin Informasi PPDB' || $title == 'Admin Pendaftaran PPDB' || $title == 'Admin Pengumuman PPDB') bg-blue-600 rounded-md @endif">
                                 <div class="w-3 flex justify-center items-center">
                                     <i class="fas fa-file-lines text-2xl text-center font-bold"></i>
                                 </div>
@@ -345,7 +348,8 @@ input[type=number] {
                         </div>
                         <!-- W-20 -->
                         <details class="hidden" id="navTitle">
-                            <summary>
+                            <summary
+                                class="@if($title == 'Admin Sarana & Prasarana' || $title == 'Gambar Sarana & Prasarana') bg-blue-600 rounded-md @endif">
                                 <div class="w-3 flex justify-center items-center">
                                     <i class="fas fa-building text-2xl text-center font-bold"></i>
                                 </div>

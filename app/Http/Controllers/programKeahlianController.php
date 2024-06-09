@@ -6,27 +6,35 @@ use Illuminate\Http\Request;
 use App\Models\ProgramKeahlian;
 use App\Models\CapaianPembelajaran;
 use App\Models\PeluangKerja;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class programKeahlianController extends Controller
 {
-    public function program(){
+    public function program()
+    {
         $programKeahlian = ProgramKeahlian::all();
+        $medsos = MediaSosial::first();
         return view('guest/program-keahlian', [
             "title" => "Program Keahlian",
-            "programKeahlian" => $programKeahlian
+            "programKeahlian" => $programKeahlian,
+            "medsos" => $medsos
         ]);
     }
 
-    public function detailProgram($id){
+    public function detailProgram($id)
+    {
         $program = ProgramKeahlian::with('capaianPembelajaran', 'peluangKerja')->findOrFail($id);
+        $medsos = MediaSosial::first();
         return view('guest/program-keahlian-template', [
             "title" => "Detail Program Keahlian",
-            "program" => $program
+            "program" => $program,
+            "medsos" => $medsos
         ]);
     }
     // Perbaiki ^^^
-    public function adminProgramKeahlian(Request $request){
+    public function adminProgramKeahlian(Request $request)
+    {
         $search = $request->query('search');
         $perPage = $request->query('perPage') ?? 10;
 
@@ -38,7 +46,7 @@ class programKeahlianController extends Controller
             // Jika tidak ada query pencarian, tampilkan semua data
             $programKeahlian = ProgramKeahlian::paginate($perPage);
         }
-    
+
         // Menambahkan parameter pencarian dan perPage ke pagination links
         $programKeahlian->appends(['search' => $search, 'perPage' => $perPage]);
 
@@ -50,7 +58,8 @@ class programKeahlianController extends Controller
         ]);
     }
 
-    public function storeProgramKeahlian(Request $request){
+    public function storeProgramKeahlian(Request $request)
+    {
         $validate = $request->validate([
             'nama_program' => 'required',
             'logo_program' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -82,7 +91,8 @@ class programKeahlianController extends Controller
         }
     }
 
-    public function updateProgramKeahlian(Request $request, $id_program){
+    public function updateProgramKeahlian(Request $request, $id_program)
+    {
         $programKeahlian = ProgramKeahlian::findOrFail($id_program);
 
         $validate = $request->validate([
@@ -112,7 +122,8 @@ class programKeahlianController extends Controller
         }
     }
 
-    public function destroyProgramKeahlian($id_program){
+    public function destroyProgramKeahlian($id_program)
+    {
         $program = ProgramKeahlian::findOrFail($id_program);
 
         if ($program->logo_program) {
@@ -127,7 +138,8 @@ class programKeahlianController extends Controller
         }
     }
 
-    public function updateCapaianPembelajaran(Request $request, $id_program){
+    public function updateCapaianPembelajaran(Request $request, $id_program)
+    {
         $program = ProgramKeahlian::findOrFail($id_program);
 
         $validatedData = $request->validate([
@@ -137,7 +149,7 @@ class programKeahlianController extends Controller
             'aspek_keterampilan_umum' => 'nullable',
             'aspek_keterampilan_khusus' => 'nullable',
         ]);
-    
+
         $capaianPembelajaran = $program->capaianPembelajaran;
         $status = $capaianPembelajaran->update($validatedData);
         if ($status) {
@@ -147,25 +159,26 @@ class programKeahlianController extends Controller
         }
     }
 
-    public function updatePeluangKerja(Request $request, $id_program){
+    public function updatePeluangKerja(Request $request, $id_program)
+    {
         $program = ProgramKeahlian::findOrFail($id_program);
-    
+
         $validate = $request->validate([
             'peluang_kerja' => 'required|string|max:255',
-            'deskripsi_pekerjaan' => 'required|string|max:255',
+            'deskripsi_pekerjaan' => 'required|string',
         ]);
         $validate['id_program'] = $program->id_program;
 
         $status = PeluangKerja::create($validate);
-        if($status){
+        if ($status) {
             return redirect()->back()->with('success', 'Peluang Kerja berhasil ditambahkan!');
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Peluang Kerja gagal ditambahkan!');
         }
     }
 
-    public function destroyPeluangKerja($id){
+    public function destroyPeluangKerja($id)
+    {
         $peluangKerja = PeluangKerja::findOrFail($id);
         $status = $peluangKerja->delete();
         if ($status) {

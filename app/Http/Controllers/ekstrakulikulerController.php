@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ekstrakulikuler;
 use App\Models\GambarEkstrakurikuler;
 use App\Models\DirektoriGuru;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class ekstrakulikulerController extends Controller
@@ -15,6 +16,7 @@ class ekstrakulikulerController extends Controller
         $search = $request->query('search');
         $perPage = $request->query('perPage') ?? 6; // Ubah menjadi 6
 
+        $medsos = MediaSosial::first();
         $query = Ekstrakulikuler::with("guru", "gambar");
 
         if ($search) {
@@ -34,7 +36,8 @@ class ekstrakulikulerController extends Controller
 
         return view('guest.ekstrakulikuler', [
             "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler
+            "ekstrakulikuler" => $ekstrakulikuler,
+            "medsos" => $medsos
         ]);
     }
 
@@ -42,9 +45,11 @@ class ekstrakulikulerController extends Controller
     public function ekstrakulikulerTemplate($id_ekstrakurikuler)
     {
         $ekstrakulikuler = Ekstrakulikuler::with("guru", "gambar")->findOrFail($id_ekstrakurikuler);
+        $medsos = MediaSosial::first();
         return view('guest/ekstrakulikuler-template', [
             "title" => "Ekstrakulikuler",
-            "ekstrakulikuler" => $ekstrakulikuler
+            "ekstrakulikuler" => $ekstrakulikuler,
+            "medsos" => $medsos
         ]);
     }
 

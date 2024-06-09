@@ -8,6 +8,7 @@ use App\Models\AlurPPDB;
 use App\Models\CountdownSetting;
 use App\Models\PengumumanPPDB;
 use App\Models\ProgramKeahlian;
+use App\Models\MediaSosial;
 use Carbon\Carbon;
 
 class InformasiPPDBController extends Controller
@@ -31,6 +32,7 @@ class InformasiPPDBController extends Controller
         $informasi = InformasiPPDB::first();
         $alurs = AlurPPDB::all();
         $programs = ProgramKeahlian::all();
+        $medsos = MediaSosial::first();
         $countdownStart = CountdownSetting::where('key', 'countdown_start')->value('value');
         $countdownEnd = CountdownSetting::where('key', 'countdown_end')->value('value');
 
@@ -42,10 +44,11 @@ class InformasiPPDBController extends Controller
         $registrationClosed = !$countdownEndSet || $currentDate->greaterThan(Carbon::parse($countdownEnd));
 
         return view('guest.ppdb', [
-            "title" => "Guest PPDB",
+            "title" => "PPDB",
             "informasi" => $informasi,
             "alurs" => $alurs,
             "programs" => $programs,
+            "medsos" => $medsos,
             "countdownStart" => $countdownStartSet ? $countdownStart : '',
             "countdownEnd" => $countdownEndSet ? $countdownEnd : '',
             "registrationClosed" => $registrationClosed,
@@ -54,6 +57,38 @@ class InformasiPPDBController extends Controller
         ]);
     }
 
+    public function pengumuman(Request $request)
+    {
+        $search = $request->query('search');
+        $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
+        $informasi = InformasiPPDB::first();
+        $pengumuman_ppdb = PengumumanPPDB::first();
+        $medsos = MediaSosial::first();
+
+        // Lakukan pengecekan apakah terdapat query pencarian
+        if ($search) {
+            // Jika ada, lakukan pencarian berdasarkan nama atau NISN
+            $forms = FormPPDB::where('nama_lengkap', 'like', '%' . $search . '%')
+                ->orWhere('nisn', 'like', '%' . $search . '%')
+                ->orWhere('tahun_pendaftaran', 'like', '%' . $search . '%')
+                ->paginate($perPage);
+        } else {
+            // Jika tidak ada query pencarian, tampilkan semua data
+            $forms = FormPPDB::orderBy('created_at', 'desc')->paginate($perPage);
+        }
+
+        $forms->appends(['search' => $search, 'perPage' => $perPage]);
+
+        return view('guest.pengumuman-ppdb', [
+            "title" => "Pengumuman PPDB",
+            "informasi" => $informasi,
+            "forms" => $forms,
+            "medsos" => $medsos,
+            "search" => $search, // Mengirimkan search ke view
+            "perPage" => $perPage, // Mengirimkan perPage ke view
+            'pengumuman_ppdb' => $pengumuman_ppdb
+        ]);
+    }
     // Fungsi untuk menampilkan halaman admin informasi PPDB
     public function adminInformasiPPDB()
     {

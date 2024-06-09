@@ -29,6 +29,7 @@ export default {
                 tablet: "640px",
                 laptop: "1024px",
                 desktop: "1280px",
+                computer: "2560px",
             },
             fontFamily: {
                 poppins: ["Poppins", "mono"],
