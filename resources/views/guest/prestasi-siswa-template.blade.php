@@ -23,7 +23,7 @@
             {!! $PrestasiSiswa->deskripsi_prestasi !!}
         </p>
 
-        <div class="relative w-full overflow-hidden my-10">
+        <div class="relative w-full overflow-hidden my-10 px-16 py-16">
             <div class="flex transition-transform duration-500" id="slider">
                 @if($PrestasiSiswa->gambar->isNotEmpty())
                 @foreach ($PrestasiSiswa->gambar->chunk(4) as $chunk)

@@ -257,7 +257,7 @@ return new class extends Migration
             $table->id('id_peluang_kerja');
             $table->unsignedBigInteger('id_program')->notNullable();
             $table->text('peluang_kerja')->nullable();
-            $table->text('deskripsi_pekerjaan')->nullable();
+            $table->longText('deskripsi_pekerjaan')->nullable();
             $table->timestamps();
 
             // Menambahkan foreign key constraint
@@ -466,7 +466,7 @@ return new class extends Migration
         Schema::dropIfExists('berita');
         Schema::dropIfExists('carousels');
     }
-    
+
     protected function call($class)
     {
         (new $class)->run();

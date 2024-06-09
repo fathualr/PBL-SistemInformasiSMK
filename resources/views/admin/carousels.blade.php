@@ -139,8 +139,9 @@
     </div>
     </form>
     <!--END Form CREATE admin-->
-
-    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 
 @foreach($carousel as $crs)
@@ -159,6 +160,9 @@
             <img class="w-full" src="{{ asset('storage/'. $crs->image) }}" alt="">
         </div>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 
 <dialog id="my_modal_delete_{{ $crs->id_carousels }}" class="modal">
@@ -187,6 +191,9 @@
             </div>
         </form>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 @endforeach
 

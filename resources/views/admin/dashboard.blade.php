@@ -2,7 +2,7 @@
 
 @section('main-content')
 
-<div class="grid grid-cols-4 rounded-lg shadow-xl bg-slate-200">
+<div class="grid grid-cols-4 w-full max-w-5xl rounded-lg shadow-xl bg-slate-200">
     <!-- First Card -->
     <div class="card w-full">
         <div class="card-body">
@@ -29,7 +29,7 @@
                     <i class="fas fa-chalkboard-user text-2xl text-white"></i>
                 </div>
                 <div>
-                    <p>Staff Pengajar</p>
+                    <p>Staff</p>
                     <h2 class="text-2xl font-bold text-blue-700">
                         200
                     </h2>
@@ -77,6 +77,8 @@
 
 </div>
 
-@include('layouts.chart')
+<div class="max-w-xl">
+    @include('layouts.chart')
+</div>
 
 @endsection

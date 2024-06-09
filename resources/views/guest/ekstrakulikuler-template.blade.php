@@ -48,7 +48,8 @@
                         <div class="h-48 w-48">
                             <!-- Logo Ekstrakurikuler -->
                             <p class="text-gray-400 text-center">Logo Ekstrakurikuler</p>
-                            <img class="mask mask-circle mx-auto w-44 h-44" src="{{ asset('storage/'. $ekstrakulikuler->gambar_profil_ekstrakurikuler) }}" />
+                            <img class="mask mask-circle mx-auto w-44 h-44"
+                                src="{{ asset('storage/'. $ekstrakulikuler->gambar_profil_ekstrakurikuler) }}" />
                         </div>
                         <div class="h-48 w-48 items-center justify-center">
                             <!-- Foto Pembimbing -->
@@ -77,31 +78,39 @@
             <div class="divider"></div>
         </div>
     </div>
-    <div class="relative w-full overflow-hidden my-10">
+    <div class="relative w-[75rem] overflow-hidden my-10">
         <div class="flex transition-transform duration-500" id="slider">
             @if($ekstrakulikuler->gambar->isNotEmpty())
             @foreach ($ekstrakulikuler->gambar->chunk(4) as $chunk)
-            <div class="w-full grid grid-cols-4 justify-center items-center" style="min-width: 100%;">
+            <div class="w-full grid grid-cols-4 justify-center items-center pr-16 pl-10" style="min-width: 100%;">
                 @foreach ($chunk as $gambar)
-                <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110" onclick="window['my_modal_view{{ $gambar->id_gambar_ekstrakurikuler }}'].showModal()">
-                    <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image {{ $gambar->id_ekstrakurikuler }}">
-                </button>
+                <div class="mx-auto">
+                    <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110"
+                        onclick="window['my_modal_view{{ $gambar->id_gambar_ekstrakurikuler }}'].showModal()">
+                        <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}"
+                            class="w-full h-64 object-cover rounded-sm mx-auto"
+                            alt="Image {{ $gambar->id_ekstrakurikuler }}">
+                    </button>
+                </div>
                 @endforeach
             </div>
             @endforeach
             @else
             <div class="flex justify-center items-center artboard artboard-horizontal phone-1">
-                <img src="{{ asset('image/no-image.png') }}" alt="Placeholder" class="w-full h-64 object-cover rounded-sm mx-auto">
+                <img src="{{ asset('image/no-image.png') }}" alt="Placeholder"
+                    class="w-full h-64 object-cover rounded-sm mx-auto">
             </div>
             @endif
         </div>
     </div>
-
-
-    <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform p-2 flex justify-center items-center" onclick="prevSlide()">
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform p-2 flex justify-center items-center"
+        onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
-    <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-5 top-1/2 transform p-2 flex justify-center items-center" onclick="nextSlide()">
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform p-2 flex justify-center items-center"
+        onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>
 </div>
@@ -114,59 +123,13 @@
                 <i class="fas fa-times text-2xl text-white"></i>
             </button>
         </form>
-        <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}" class="w-11/12 h-1/2 object-cover rounded-sm mx-auto" alt="Image 1">
+        <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}"
+            class="w-11/12 h-1/2 object-cover rounded-sm mx-auto" alt="Image 1">
     </div>
     <form method="dialog" class="modal-backdrop">
         <button>close</button>
     </form>
 </dialog>
 @endforeach
-
-<script>
-    let currentIndex = 0;
-    let autoSlideInterval;
-
-    function showSlide(index) {
-        const slider = document.getElementById('slider');
-        const slides = slider.children;
-        const totalSlides = slides.length;
-
-        if (index >= totalSlides) {
-            currentIndex = 0;
-        } else if (index < 0) {
-            currentIndex = totalSlides - 1;
-        } else {
-            currentIndex = index;
-        }
-
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
-
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 2000);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        showSlide(currentIndex);
-        startAutoSlide();
-
-        document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
-        document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
-    });
-</script>
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DirektoriPegawai;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class direktoriPegawaiController extends Controller
@@ -13,6 +14,7 @@ class direktoriPegawaiController extends Controller
         $search = $request->query('search');
         $perPage = $request->query('perPage') ?? 12;
 
+        $medsos = MediaSosial::first();
         $query = DirektoriPegawai::query();
 
         if ($search) {
@@ -31,7 +33,8 @@ class direktoriPegawaiController extends Controller
 
         return view('guest.direktori-pegawai', [
             'title' => 'Direktori Pegawai',
-            'direktoriPegawai' => $direktoriPegawai
+            'direktoriPegawai' => $direktoriPegawai,
+            "medsos" => $medsos
         ]);
     }
 

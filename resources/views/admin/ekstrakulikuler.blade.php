@@ -20,11 +20,16 @@
     <div class="flex items-center">
         <div class="relative hidden md:flex mr-2">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 10]) }}"
+                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 25]) }}"
+                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 50]) }}"
+                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 75]) }}"
+                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.ekstrakulikuler.index', ['perPage' => 100]) }}"
+                    {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
         <form action="{{ route('admin.ekstrakulikuler.index') }}" method="GET">
@@ -59,7 +64,8 @@
                         <th>{{ ($ekstrakulikuler->currentPage() - 1) * $ekstrakulikuler->perPage() + $key + 1 }}</th>
                         <td class="flex justify-center w-48">
                             <figure class="max-w-40 max-h-40">
-                                <img src="{{ asset('storage/'. $ekskul->gambar_profil_ekstrakurikuler) }}" alt="Rojek naek gojek" />
+                                <img src="{{ asset('storage/'. $ekskul->gambar_profil_ekstrakurikuler) }}"
+                                    alt="Rojek naek gojek" />
                             </figure>
                         </td>
                         <td class="w-52">{{ $ekskul->nama_ekstrakurikuler }}</td>
@@ -72,10 +78,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_edit{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -83,7 +91,8 @@
                                     <!-- Edit -->
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_view{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -91,7 +100,8 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -156,16 +166,19 @@
             @csrf
             <div class="grid gap-y-5">
                 <span class="label-text -mb-4">Nama Ekstrakurikuler :</span>
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler"
+                    name="nama_ekstrakurikuler" />
                 <span class="label-text -mb-4">Gambar Headline Ekstrakurikuler :</span>
                 <div class="grid gap-2" id="fileInputsEkskul">
-                    <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                    <label
+                        class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                         <input type="file" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="gambarEkskul/*" placeholder="Logo" />
                     </label>
                 </div>
-                <button type="button" id="btnAddFileEkskul" class="btn bg-blue-400 text-white w-full hover:text-blue-400">Tambah Gambar</button>
+                <button type="button" id="btnAddFileEkskul"
+                    class="btn bg-blue-400 text-white w-full hover:text-blue-400">Tambah Gambar</button>
                 <span class="label-text -mb-4">Guru Pembimbing :</span>
                 <select class="select border-b-2 border-blue-400 w-full" name="id_guru">
                     <option value="" selected>Pembimbing Ekstrakulikuler</option>
@@ -176,18 +189,23 @@
 
                 </select>
                 <span class="label-text -mb-4">Deskripsi Ekstrakurikuler :</span>
-                <textarea class="textarea border-2 border-blue-400 w-full" id="editor" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler"></textarea>
+                <textarea class="textarea border-2 border-blue-400 w-full" id="editor"
+                    placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler"></textarea>
                 <span class="label-text -mb-4">Tempat Kegiatan Ekstrakurikuler :</span>
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler"
+                    name="tempat_ekstrakurikuler" />
                 <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler"
+                    name="jadwal_ekstrakurikuler" />
             </div>
             <div class="flex justify-end items-end my-10 gap-4">
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -218,21 +236,26 @@
             </div>
         </div>
 
-        <form action="{{ route('ekstrakurikuler.update',  $ekskul->id_ekstrakurikuler) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('ekstrakurikuler.update',  $ekskul->id_ekstrakurikuler) }}" method="post"
+            enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="grid gap-y-5">
                 <span class="label-text -mb-4">Nama Ekstrakurikuler :</span>
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakurikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler"
+                    name="nama_ekstrakurikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" />
                 <span class="label-text -mb-4">Gambar Headline Ekstrakurikuler :</span>
                 <div class="grid gap-2">
-                    <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                    <label
+                        class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                         <input type="file" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" accept="gambarEkskul/*" placeholder="Logo" value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" />
+                    hover:file:bg-transparent hover:file:text-blue-400" accept="gambarEkskul/*" placeholder="Logo"
+                            value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" />
                     </label>
                 </div>
-                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400" onclick="window['my_modal_edit_gambar{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
+                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400"
+                    onclick="window['my_modal_edit_gambar{{ $ekskul->id_ekstrakurikuler }}'].showModal()">
                     <i class="fas fa-pen-to-square"></i>
                     Edit Gambar Ekstrakulikuler
                 </button>
@@ -248,14 +271,19 @@
 
                 </select>
                 <span class="label-text -mb-4">Deskripsi Ekstrakurikuler :</span>
-                <textarea class="textarea border-2 border-blue-400 w-full" id="editor2" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler">{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
+                <textarea class="textarea border-2 border-blue-400 w-full" id="editor2"
+                    placeholder="Deskripsi Ekstrakulikuler"
+                    name="deskripsi_ekstrakurikuler">{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
                 <span class="label-text -mb-4">Tempat Kegiatan Ekstrakurikuler :</span>
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakurikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler"
+                    name="tempat_ekstrakurikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" />
                 <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakurikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler"
+                    name="jadwal_ekstrakurikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" />
             </div>
             <div class="flex justify-end items-end my-10 gap-4">
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class="fas fa-pen-to-square"></i>
                     Edit
                 </button>
@@ -289,10 +317,13 @@
                 @csrf
                 @method('DELETE')
                 <div class="flex gap-1">
-                    <input type="text" class="input input-success w-full" placeholder="Gambar berita" value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" disabled />
+                    <input type="text" class="input input-success w-full" placeholder="Gambar berita"
+                        value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" disabled />
                     <button class="btn btn-square btn-outline btn-error btn-remove">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -300,17 +331,20 @@
             @endforeach
 
         </div>
-        <form action="{{ route('gambarEkskul.update', $ekskul->id_ekstrakurikuler) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('gambarEkskul.update', $ekskul->id_ekstrakurikuler) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="label">
                 <span class="label-text">Tambah Gambar:</span>
             </div>
             <div class="flex gap-1">
-                <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                <label
+                    class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
                     <input type="file" class="file-input w-full py-2 file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita" name="gambar_ekstrakurikuler" />
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
+                        name="gambar_ekstrakurikuler" />
                 </label>
                 <button type="submit" class="btn btn-square bg-blue-400 text-white hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
@@ -328,7 +362,7 @@
 <!-- View Modal -->
 <dialog id="my_modal_view{{ $ekskul->id_ekstrakurikuler }}" class="modal">
     <div class="modal-box w-11/12 max-w-5xl py-0">
-        <div class="sticky top-0 bg-white pt-5">
+        <div class="sticky top-0 bg-white pt-5 z-40">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
                     <i class="fas fa-times text-2xl"></i>
@@ -345,27 +379,39 @@
         <div class="grid gap-y-5 mb-10">
             <div class="avatar flex justify-center items-center my-5">
                 <div class="mask mask-squircle w-36 h-36">
-                    <img src="{{ asset('storage/'.$ekskul->gambar_profil_ekstrakurikuler) }}" alt="Avatar Tailwind CSS Component" />
+                    <img src="{{ asset('storage/'.$ekskul->gambar_profil_ekstrakurikuler) }}"
+                        alt="Avatar Tailwind CSS Component" />
                 </div>
             </div>
             <span class="label-text -mb-4">Tautan Foto Headline Ekstrakurikuler :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
-                <input type="text" name="gambar_profil_ekstrakurikuler" class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarEkskul/*" placeholder="Logo" value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" readonly />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 w-full focus-within:outline-none">
+                <input type="text" name="gambar_profil_ekstrakurikuler"
+                    class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarEkskul/*"
+                    placeholder="Logo" value="{{ $ekskul->gambar_profil_ekstrakurikuler }}" readonly />
             </label>
             <span class="label-text -mb-4">Nama Ekstrakurikuler :</span>
-            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler" name="nama_ekstrakulikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Nama Ekstrakulikuler"
+                name="nama_ekstrakulikuler" value="{{ $ekskul->nama_ekstrakurikuler }}" readonly />
             <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
-            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="id_guru" value="{{ $ekskul->guru->nama_guru ?? '-' }}" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler"
+                name="id_guru" value="{{ $ekskul->guru->nama_guru ?? '-' }}" readonly />
             <span class="label-text -mb-4">Deskripsi Ekstrakurikuler :</span>
-            <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Deskripsi Ekstrakulikuler" name="deskripsi_ekstrakurikuler" readonly>{{ $ekskul->deskripsi_ekstrakurikuler }}</textarea>
+            <label
+                class="input bg-transparent border-2 border-blue-400 gap-2 mb-5 w-full h-max p-5 focus-within:outline-none">
+                <p>{!! $ekskul->deskripsi_ekstrakurikuler !!}</p>
+            </label>
             <span class="label-text -mb-4">Tempat Ekstrakurikuler :</span>
-            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler" name="tempat_ekstrakulikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Tempat Ekstrakulikuler"
+                name="tempat_ekstrakulikuler" value="{{ $ekskul->tempat_ekstrakurikuler }}" readonly />
             <span class="label-text -mb-4">Jadwal Ekstrakurikuler :</span>
-            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler" name="jadwal_ekstrakulikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Jadwal Ekstrakulikuler"
+                name="jadwal_ekstrakulikuler" value="{{ $ekskul->jadwal_ekstrakurikuler }}" readonly />
 
             <span class="label-text -mb-4">Tautan Foto Ekstrakurikuler :</span>
             @foreach ($ekskul->gambar as $gambar)
-            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Gambar berita" value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Gambar berita"
+                value="{{ $gambar->gambar_ekstrakurikuler }}" name="gambar_ekstrakurikuler[]" readonly />
             @endforeach
         </div>
     </div>
@@ -395,7 +441,8 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-trash"></i>
                     Hapus
                 </button>

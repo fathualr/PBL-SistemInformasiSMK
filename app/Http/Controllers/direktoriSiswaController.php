@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DirektoriSiswa;
 use App\Models\ProgramKeahlian;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 
 class direktoriSiswaController extends Controller
@@ -16,6 +17,7 @@ class direktoriSiswaController extends Controller
         $tahun_angkatan = $request->query('tahun_angkatan');
         $perPage = $request->query('perPage') ?? 10;
 
+        $medsos = MediaSosial::first();
         $query = DirektoriSiswa::with('programKeahlian');
 
         if ($search) {
@@ -50,6 +52,7 @@ class direktoriSiswaController extends Controller
             'title' => 'Direktori Siswa',
             'direktoriSiswa' => $direktoriSiswa,
             'programKeahlian' => $programKeahlian,
+            "medsos" => $medsos
         ]);
     }
 

@@ -21,11 +21,16 @@
     <div class="flex items-center">
         <div class="relative hidden md:flex mr-2">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 10]) }}"
+                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 25]) }}"
+                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 50]) }}"
+                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 75]) }}"
+                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('admin.direktoriGuru.index', ['perPage' => 100]) }}"
+                    {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
             </select>
         </div>
         <form action="{{ route('admin.direktoriGuru.index') }}" method="GET">
@@ -63,7 +68,8 @@
                         <td class="w-56">
                             <div class="avatar">
                                 <div class="mask mask-squircle w-16 h-16">
-                                    <img src="{{ asset('storage/'.$guru->gambar_guru) }}" alt="Avatar Tailwind CSS Component" />
+                                    <img src="{{ asset('storage/'.$guru->gambar_guru) }}"
+                                        alt="Avatar Tailwind CSS Component" />
                                 </div>
                             </div>
                         </td>
@@ -80,10 +86,12 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0"
+                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_edit{{ $guru->id_guru }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_edit{{ $guru->id_guru }}'].showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -91,7 +99,8 @@
                                     <!-- Edit -->
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_view{{ $guru->id_guru }}'].showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -99,7 +108,8 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="window['my_modal_delete{{ $guru->id_guru }}'].showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse"
+                                            onclick="window['my_modal_delete{{ $guru->id_guru }}'].showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -166,11 +176,14 @@
             @csrf
             @method('POST')
             <span class="label-text -mb-4">Nama Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-none py-2" placeholder="Nama Guru" name="nama_guru" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-none py-2" placeholder="Nama Guru"
+                    name="nama_guru" />
             </label>
             <span class="label-text -mb-4">NIP Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="number" class="grow bg-transparent border-none py-2" placeholder="NIP" name="nik_guru" />
             </label>
             <span class="label-text -mb-4">Bidang Program Keahlian :</span>
@@ -183,16 +196,20 @@
 
             </select>
             <span class="label-text -mb-4">Email Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_guru" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="email" class="grow bg-transparent py-2" placeholder="Email" name="email_guru" />
             </label>
             <span class="label-text -mb-4">No.Handphone Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_guru" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="number" class="grow bg-transparent py-2" placeholder="No.Hp" name="no_hp_guru" />
             </label>
             <span class="label-text -mb-4">Tempat, Tanggal Lahir Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir" name="tempat_lahir_guru" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
+                    name="tempat_lahir_guru" />
                 <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_guru" />
             </label>
             <span class="label-text -mb-4">Jenis Kelamin Guru :</span>
@@ -202,10 +219,13 @@
                 <option value="Perempuan">Perempuan</option>
             </select>
             <span class="label-text -mb-4">Alamat Guru :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Alamat" name="alamat_guru"></textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2"
+                placeholder="Alamat" name="alamat_guru"></textarea>
             <span class="label-text -mb-4">Jabatan Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan" name="jabatan_guru" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Jabatan" name="jabatan_guru" />
             </label>
             <span class="label-text -mb-4">Status Guru :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="status_guru">
@@ -216,18 +236,21 @@
                 <option value="Resign">Resign</option>
             </select>
             <span class="label-text -mb-4">Foto Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="gambar_guru" accept="gambarGuru/*" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" required />
             </label>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="reset"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -261,35 +284,47 @@
             @csrf
             @method('patch')
             <span class="label-text -mb-4">Nama Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Guru" name="nama_guru" value="{{ $guru->nama_guru }}" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Nama Guru" name="nama_guru"
+                    value="{{ $guru->nama_guru }}" />
             </label>
             <span class="label-text -mb-4">NIP Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="number" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_guru" value="{{ $guru->nik_guru }}" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="number" class="grow bg-transparent py-2" placeholder="NIP" name="nik_guru"
+                    value="{{ $guru->nik_guru }}" />
             </label>
             <span class="label-text -mb-4">Bidang Program Keahlian :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="id_program">
                 <option disabled selected>Pilih Program Keahlian</option>
 
                 @foreach($programKeahlian as $program)
-                <option value="{{ $program->id_program }}" {{ $guru->id_program === $program->id_program ? 'selected' : '' }}>{{ $program->nama_program }}
+                <option value="{{ $program->id_program }}"
+                    {{ $guru->id_program === $program->id_program ? 'selected' : '' }}>{{ $program->nama_program }}
                 </option>
                 @endforeach
 
             </select>
             <span class="label-text -mb-4">Email Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_guru" value="{{ $guru->email_guru }}" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="email" class="grow bg-transparent py-2" placeholder="Email" name="email_guru"
+                    value="{{ $guru->email_guru }}" />
             </label>
             <span class="label-text -mb-4">No.Handphone Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_guru" value="{{ $guru->no_hp_guru }}" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="No.Hp" name="no_hp_guru"
+                    value="{{ $guru->no_hp_guru }}" />
             </label>
             <span class="label-text -mb-4">Tempat, Tanggal Lahir Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir" name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" />
-                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_guru" value="{{ $guru->TTL_guru }}" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
+                    name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" />
+                <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_guru"
+                    value="{{ $guru->TTL_guru }}" />
             </label>
             <span class="label-text -mb-4">Jenis Kelamin Guru :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="jenis_kelamin">
@@ -300,10 +335,14 @@
                 </option>
             </select>
             <span class="label-text -mb-4">Alamat Guru :</span>
-            <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Alamat" name="alamat_guru">{{ $guru->alamat_guru }}</textarea>
+            <textarea
+                class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+                placeholder="Alamat" name="alamat_guru">{{ $guru->alamat_guru }}</textarea>
             <span class="label-text -mb-4">Jabatan Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-                <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan" name="jabatan_guru" value="{{ $guru->jabatan_guru }}" />
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                <input type="text" class="grow bg-transparent py-2" placeholder="Jabatan" name="jabatan_guru"
+                    value="{{ $guru->jabatan_guru }}" />
             </label>
             <span class="label-text -mb-4">Status Guru :</span>
             <select class="select border-blue-400 border-2 w-full mb-5" name="status_guru">
@@ -314,14 +353,16 @@
                 <option value="Resign" {{ $guru->status_guru === 'Resign' ? 'selected' : '' }}>Resign</option>
             </select>
             <span class="label-text -mb-4">Foto Guru :</span>
-            <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <label
+                class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                 <input type="file" name="gambar_guru" accept="gambarGuru/*" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
                     hover:file:bg-transparent hover:file:text-blue-400" accept="image/*" />
             </label>
-            <div class="flex justify-end items-end mt-20 gap-4">
-                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+            <div class="flex justify-end items-end my-10 gap-4">
+                <button type="submit"
+                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
                     Simpan
                 </button>
@@ -357,48 +398,72 @@
             </div>
         </div>
         <span class="label-text -mb-4">Tautan Foto Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
             <i class="fas fa-link"></i>
-            <input type="text" name="gambar_guru" class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarGuru/*" placeholder="Logo" value="{{ $guru->gambar_guru }}" />
+            <input type="text" name="gambar_guru"
+                class="grow file-input file-input-success border-none bg-transparent py-2" accept="gambarGuru/*"
+                placeholder="Logo" value="{{ $guru->gambar_guru }}" />
         </label>
         <span class="label-text -mb-4">Nama Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Nama Guru" name="nama_guru" value="{{ $guru->nama_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="Nama Guru" name="nama_guru"
+                value="{{ $guru->nama_guru }}" readonly />
         </label>
         <span class="label-text -mb-4">NIP Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nik_guru" value="{{ $guru->nik_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="NIP" name="nik_guru"
+                value="{{ $guru->nik_guru }}" readonly />
         </label>
         <span class="label-text -mb-4">Bidang Program Keahlian :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="NIP" name="nama_program" value="{{ $guru->programKeahlian ? $guru->programKeahlian->nama_program : '-' }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="NIP" name="nama_program"
+                value="{{ $guru->programKeahlian ? $guru->programKeahlian->nama_program : '-' }}" readonly />
         </label>
         <span class="label-text -mb-4">Email Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="email" class="grow bg-transparent border-b-2 py-2" placeholder="Email" name="email_guru" value="{{ $guru->email_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="email" class="grow bg-transparent py-2" placeholder="Email" name="email_guru"
+                value="{{ $guru->email_guru }}" readonly />
         </label>
         <span class="label-text -mb-4">No.Handphone Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="no_hp_guru" value="{{ $guru->no_hp_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="No.Hp" name="no_hp_guru"
+                value="{{ $guru->no_hp_guru }}" readonly />
         </label>
         <span class="label-text -mb-4">Tempat, Tanggal Lahir Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir" name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" readonly />
-            <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_guru" value="{{ $guru->TTL_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent border-r-2 py-2" placeholder="Tempat Lahir"
+                name="tempat_lahir_guru" value="{{ $guru->tempat_lahir_guru }}" readonly />
+            <input type="date" class="grow bg-transparent py-2 w-16" placeholder="Tanggal Lahir" name="TTL_guru"
+                value="{{ $guru->TTL_guru }}" readonly />
         </label>
         <span class="label-text -mb-4">Jenis Kelamin Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="jenis_kelamin" value="{{ $guru->jenis_kelamin }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="No.Hp" name="jenis_kelamin"
+                value="{{ $guru->jenis_kelamin }}" readonly />
         </label>
         <span class="label-text -mb-4">Alamat Guru :</span>
-        <textarea class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none grow py-2" placeholder="Alamat" name="alamat_guru" readonly>{{ $guru->alamat_guru }}</textarea>
+        <textarea
+            class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
+            placeholder="Alamat" name="alamat_guru" readonly>{{ $guru->alamat_guru }}</textarea>
         <span class="label-text -mb-4">Jabatan Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="Jabatan" name="jabatan_guru" value="{{ $guru->jabatan_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="Jabatan" name="jabatan_guru"
+                value="{{ $guru->jabatan_guru }}" readonly />
         </label>
         <span class="label-text -mb-4">Status Guru :</span>
-        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
-            <input type="text" class="grow bg-transparent border-b-2 py-2" placeholder="No.Hp" name="status_guru" value="{{ $guru->status_guru }}" readonly />
+        <label
+            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+            <input type="text" class="grow bg-transparent py-2" placeholder="No.Hp" name="status_guru"
+                value="{{ $guru->status_guru }}" readonly />
         </label>
     </div>
     <form method="dialog" class="modal-backdrop">
@@ -426,13 +491,17 @@
             @method('DELETE')
             <h3 class="font-bold text-lg flex justify-center items-center">Yakin Ingin Menghapus Data Ini ?</h3>
             <div class="flex justify-end items-end mt-10 gap-4">
-                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit"
+                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class=" fas fa-trash"></i>
                     Hapus
                 </button>
             </div>
         </form>
     </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
 </dialog>
 <!-- Delete Modal -->
 @endforeach

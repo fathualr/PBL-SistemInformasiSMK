@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var navbarText = document.getElementById("nav-text");
 
     window.addEventListener("scroll", function () {
-        if (window.scrollY > document.querySelector(".carousel").offsetHeight) {
+        if (
+            window.scrollY > document.querySelector(".carousels").offsetHeight
+        ) {
             navbar.classList.remove("bg-transparent");
             navbar.classList.remove("backdrop-blur");
             navbar.classList.add("bg-blue-300");

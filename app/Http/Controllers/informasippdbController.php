@@ -9,6 +9,7 @@ use App\Models\CountdownSetting;
 use App\Models\FormPPDB;
 use App\Models\PengumumanPPDB;
 use App\Models\ProgramKeahlian;
+use App\Models\MediaSosial;
 use Carbon\Carbon;
 
 class InformasiPPDBController extends Controller
@@ -32,6 +33,7 @@ class InformasiPPDBController extends Controller
         $informasi = InformasiPPDB::first();
         $alurs = AlurPPDB::all();
         $programs = ProgramKeahlian::all();
+        $medsos = MediaSosial::first();
         $countdownStart = CountdownSetting::where('key', 'countdown_start')->value('value');
         $countdownEnd = CountdownSetting::where('key', 'countdown_end')->value('value');
 
@@ -43,10 +45,11 @@ class InformasiPPDBController extends Controller
         $registrationClosed = !$countdownEndSet || $currentDate->greaterThan(Carbon::parse($countdownEnd));
 
         return view('guest.ppdb', [
-            "title" => "Guest PPDB",
+            "title" => "PPDB",
             "informasi" => $informasi,
             "alurs" => $alurs,
             "programs" => $programs,
+            "medsos" => $medsos,
             "countdownStart" => $countdownStartSet ? $countdownStart : '',
             "countdownEnd" => $countdownEndSet ? $countdownEnd : '',
             "registrationClosed" => $registrationClosed,
@@ -61,6 +64,7 @@ class InformasiPPDBController extends Controller
         $perPage = $request->query('perPage') ?? 10; // Mengambil nilai 'perPage' dari query string atau default 10 jika tidak ada
         $informasi = InformasiPPDB::first();
         $pengumuman_ppdb = PengumumanPPDB::first();
+        $medsos = MediaSosial::first();
 
         // Lakukan pengecekan apakah terdapat query pencarian
         if ($search) {
@@ -77,9 +81,10 @@ class InformasiPPDBController extends Controller
         $forms->appends(['search' => $search, 'perPage' => $perPage]);
 
         return view('guest.pengumuman-ppdb', [
-            "title" => "Guest Pendaftaran PPDB",
+            "title" => "Pengumuman PPDB",
             "informasi" => $informasi,
             "forms" => $forms,
+            "medsos" => $medsos,
             "search" => $search, // Mengirimkan search ke view
             "perPage" => $perPage, // Mengirimkan perPage ke view
             'pengumuman_ppdb' => $pengumuman_ppdb

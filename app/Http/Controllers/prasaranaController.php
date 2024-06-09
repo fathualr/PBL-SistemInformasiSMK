@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prasarana;
 use App\Models\FotoPrasarana;
+use App\Models\MediaSosial;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
@@ -23,9 +24,11 @@ class PrasaranaController extends Controller
     public function saranaPrasarana()
     {
         $prasaranas = Prasarana::with('foto_prasarana')->paginate(10);
+        $medsos = MediaSosial::first();
         return view('guest.sarana-prasarana', [
             'title' => 'Sarana & Prasarana',
             'prasaranas' => $prasaranas,
+            "medsos" => $medsos
         ]);
     }
 

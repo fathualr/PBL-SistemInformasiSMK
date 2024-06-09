@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Foto;
 use App\Models\Video;
+use App\Models\MediaSosial;
 
 class AlbumFotoVideoController extends Controller
 {
@@ -99,19 +100,24 @@ class AlbumFotoVideoController extends Controller
     public function foto()
     {
         $albums = Album::where('tipe_album', 'Foto')->paginate(6);
+        $medsos = MediaSosial::first();
 
         return view('guest.foto', [
             'title' => 'Galeri Foto',
             'albums' => $albums,
+            "medsos" => $medsos
         ]);
     }
 
     public function video()
     {
         $albums = Album::where('tipe_album', 'Video')->paginate(6);
+        $medsos = MediaSosial::first();
+
         return view('guest.video', [
             'title' => 'Galeri Video',
             'albums' => $albums,
+            "medsos" => $medsos
         ]);
     }
 
@@ -119,11 +125,13 @@ class AlbumFotoVideoController extends Controller
     {
         $fotos = Foto::where('id_album', $id_album)->paginate(16); // Mengambil semua foto berdasarkan id_album
         $albums = Album::where('id_album', $id_album)->get();
+        $medsos = MediaSosial::first();
 
         return view('guest.galeri-template', [
             "title" => "Galeri Foto",
             "fotos" => $fotos, // Meneruskan data foto ke tampilan blade
             'albums' => $albums,
+            "medsos" => $medsos
         ]);
     }
 
@@ -131,11 +139,13 @@ class AlbumFotoVideoController extends Controller
     {
         $videos = Video::where('id_album', $id_album)->paginate(6); // Mengambil semua vidio berdasarkan id_album
         $albums = Album::where('id_album', $id_album)->get();
+        $medsos = MediaSosial::first();
 
         return view('guest.galeri-template-video', [
             "title" => "Galeri Video",
             "videos" => $videos, // Meneruskan data foto ke tampilan blade
             'albums' => $albums,
+            "medsos" => $medsos
         ]);
     }
 

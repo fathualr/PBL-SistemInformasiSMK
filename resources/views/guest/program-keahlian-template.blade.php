@@ -10,13 +10,15 @@
     <div class="divider"></div>
 </div>
 
-<p class="text-center">
-    {!! $program->deskripsi_program !!}
-</p>
+<div class="text-center">
+    <p class="text-center">
+        {!! $program->deskripsi_program !!}
+    </p>
+</div>
 
 <div class="grid grid-rows-3 grid-cols-2 grid-flow-col gap-2 mx-auto my-32 bg-slate-200">
     <div class="row-span-3 my-24">
-        <h1 class="font-bold text-xl my-10 text-center">V.M.T.S {{ $program->nama_program }}</h1>
+        <h1 class="font-bold text-2xl my-10 text-center">V.M.T.S {{ $program->nama_program }}</h1>
         <div class="collapse collapse-arrow bg-base-200 mb-5 ml-10">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
@@ -55,7 +57,7 @@
         </div>
     </div>
     <div class="row-span-3 flex items-center justify-center my-24">
-        <img src="{{ asset('image/Humans.png') }}" alt="" class="mx-auto">
+        <img src="{{ asset('image/human.svg') }}" alt="" class="w-8/12 mx-auto">
     </div>
 </div>
 
@@ -67,6 +69,7 @@
     <div class="divider"></div>
 </div>
 
+<div class="text-center"></div>
 <p class="text-center">
     {!! $program->capaianPembelajaran->deskripsi_capaian_pembelajaran !!}
 </p>
@@ -77,10 +80,8 @@
         <div class="collapse collapse-arrow bg-base-200 mb-5">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK SIKAP</h1>
             </div>
@@ -93,10 +94,8 @@
         <div class="collapse collapse-arrow bg-base-200 mb-5">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK PENGETAHUAN</h1>
             </div>
@@ -109,10 +108,8 @@
         <div class="collapse collapse-arrow bg-base-200 mb-5">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK KETERAMPILAN UMUM</h1>
             </div>
@@ -125,10 +122,8 @@
         <div class="collapse collapse-arrow bg-base-200">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK KETERAMPILAN KHUSUS</h1>
             </div>
@@ -149,17 +144,19 @@
     <div class="divider"></div>
 </div>
 
-<p class="text-center">
-    {!! $program->deskripsi_peluang_kerja !!}
-</p>
+<div class="text-center">
+    <p class="text-center">
+        {!! $program->deskripsi_peluang_kerja !!}
+    </p>
+</div>
 
-<div class="grid grid-cols-9 gap-2 my-10 bg-slate-200">
+<div class="grid {{ (count($program->peluangKerja) > 2 ? 'grid-cols-3' : (count($program->peluangKerja) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-x-2 my-10 bg-slate-200">
     @forelse ($program->peluangKerja as $peluang)
-    <div class="col-span-3 my-10 mx-auto">
-        <div class="card w-96 h-96 bg-base-100 shadow-xl rounded-none">
-            <div class="card-body">
+    <div class="my-5 mx-auto">
+        <div class="card w-[22rem] h-96 bg-base-100 shadow-xl rounded-none pb-7">
+            <div class="card-body overflow-y-auto h-20">
                 <h2 class="card-title font-bold my-5">{{ $peluang->peluang_kerja }}</h2>
-                <p class="overflow-y-auto h-20">
+                <p class="">
                     {{ $peluang->deskripsi_pekerjaan }}
                 </p>
             </div>

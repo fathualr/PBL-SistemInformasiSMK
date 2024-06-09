@@ -67,8 +67,10 @@
                             {{ ($programKeahlian->currentPage() - 1) * $programKeahlian->perPage() + $key + 1 }}
                         </th>
                         <td class="w-64">{{ $program->nama_program }}</td>
-                        <td class="">
-                            <p class="truncate w-48 mx-auto">{{ $program->deskripsi_program }}</p>
+                        <td>
+                            <div class="truncate w-48 mx-auto">
+                                <p>{!! $program->deskripsi_program !!}</p>
+                            </div>
                         </td>
                         <td class="">
                             <details class="dropdown mx-auto">
@@ -329,32 +331,28 @@
             <span class="label-text -mb-4">Deskripsi Capaian Pembelajaran :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
-                id="editor5" placeholder="Deskripsi Capaian Pembelajaran"
-                name="deskripsi_capaian_pembelajaran">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->deskripsi_capaian_pembelajaran : '' }}
-                </textarea>
+                id="editor5" placeholder="Deskripsi Capaian Pembelajaran" name="deskripsi_capaian_pembelajaran">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->deskripsi_capaian_pembelajaran : '' }}
+            </textarea>
             <span class="label-text -mb-4">Aspek Sikap :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
                 placeholder="Aspek Sikap" name="aspek_sikap">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_sikap : '-' }}
-                </textarea>
+            </textarea>
             <span class="label-text -mb-4">Aspek Pengetahuan :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
-                placeholder="Aspek Pengetahuan"
-                name="aspek_pengetahuan">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_pengetahuan : '-' }}
-                </textarea>
+                placeholder="Aspek Pengetahuan" name="aspek_pengetahuan">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_pengetahuan : '-' }}
+            </textarea>
             <span class="label-text -mb-4">Aspek Keterampilan Umum :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
-                placeholder="Aspek Keterampilan Umum"
-                name="aspek_keterampilan_umum">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_umum : '-' }}
-                </textarea>
+                placeholder="Aspek Keterampilan Umum" name="aspek_keterampilan_umum">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_umum : '-' }}
+            </textarea>
             <span class="label-text -mb-4">Aspek Keterampilan Khusus :</span>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-28 focus-within:outline-none grow py-2"
-                placeholder="Aspek Keterampilan Khusus"
-                name="aspek_keterampilan_khusus">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_khusus : '-' }}
-                </textarea>
+                placeholder="Aspek Keterampilan Khusus" name="aspek_keterampilan_khusus">{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_khusus : '-' }}
+            </textarea>
             <div class="flex justify-end items-end my-10 gap-4">
                 <button type="submit"
                     class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
@@ -520,21 +518,18 @@
             <h1 class="mx-5 text-base">ASPEK PENGETAHUAN</h1>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Program" name="deskripsi_program"
-                readonly>{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_pengetahuan : '-' }}
-                </textarea>
+                placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_pengetahuan : '-' }}
+            </textarea>
             <h1 class="mx-5 text-base">ASPEK KETERAMPILAN UMUM</h1>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Program" name="deskripsi_program"
-                readonly>{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_umum : '-' }}
-                </textarea>
+                placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_umum : '-' }}
+            </textarea>
             <h1 class="mx-5 text-base">ASPEK KETERAMPILAN KHUSUS</h1>
             <textarea
                 class="input border-2 border-blue-400 flex items-center gap-2 mb-5 w-full h-48 focus-within:outline-none grow py-2"
-                placeholder="Deskripsi Program" name="deskripsi_program"
-                readonly>{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_khusus : '-' }}
-                </textarea>
+                placeholder="Deskripsi Program" name="deskripsi_program" readonly>{{ $program->capaianPembelajaran ? $program->capaianPembelajaran->aspek_keterampilan_khusus : '-' }}
+            </textarea>
         </div>
     </div>
     <form method="dialog" class="modal-backdrop">
