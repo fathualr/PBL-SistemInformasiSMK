@@ -320,21 +320,21 @@
             <h6 class="footer-title">Media Sosial</h6>
             <ul class="flex gap-4">
                 <li>
-                    <a href="{{ $medsos->facebook }}" class="link link-hover">
+                    <a href="{{ $medsos->facebook ?? '-' }}" class="link link-hover">
                         <button class="btn btn-outline hover:bg-transparent">
                             <i class="fa-brands fa-facebook text-2xl"></i>
                         </button>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ $medsos->instagram }}" class="link link-hover">
+                    <a href="{{ $medsos->instagram ?? '-'  }}" class="link link-hover">
                         <button class="btn btn-outline hover:bg-transparent">
                             <i class="fa-brands fa-instagram text-2xl"></i>
                         </button>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ $medsos->youtube }}" class="link link-hover">
+                    <a href="{{ $medsos->youtube ?? '-'  }}" class="link link-hover">
                         <button class="btn btn-outline hover:bg-transparent">
                             <i class="fa-brands fa-youtube text-2xl"></i>
                         </button>

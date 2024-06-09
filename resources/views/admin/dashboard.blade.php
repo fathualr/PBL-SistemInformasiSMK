@@ -1,40 +1,20 @@
 @extends('layouts.mainAdmin')
 
 @section('main-content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts" />
 
-<div class="grid grid-cols-4 w-full max-w-5xl rounded-lg shadow-xl bg-slate-200">
-    <!-- First Card -->
-    <div class="card w-full">
-        <div class="card-body">
-            <div class="flex items-center space-x-4">
-                <div class="rounded-full bg-blue-700 w-20 h-20 flex justify-center items-center">
-                    <i class="far fa-user text-2xl text-white"></i>
-                </div>
-                <div>
-                    <p>Siswa Aktif</p>
-                    <h2 class="text-2xl font-bold text-blue-700">
-                        200
-                    </h2>
-                </div>
-            </div>
-        </div>
+<div class="grid bg-white p-4 rounded shadow mb-5">
+    <div class="grid-cols-1">
+        <div id="chartPPDB"></div>
     </div>
-    <!-- First Card -->
+</div>
 
-    <!-- Second Card -->
-    <div class="card w-full">
-        <div class="card-body">
-            <div class="flex items-center space-x-4">
-                <div class="rounded-full bg-blue-700 w-20 h-20 flex justify-center items-center">
-                    <i class="fas fa-chalkboard-user text-2xl text-white"></i>
-                </div>
-                <div>
-                    <p>Staff</p>
-                    <h2 class="text-2xl font-bold text-blue-700">
-                        200
-                    </h2>
-                </div>
-            </div>
+<div class="grid grid-cols-2 gap-4">
+    <!-- First Column -->
+    <div class="grid grid-rows-2 w-auto gap-4">
+        <!-- First Row in First Column -->
+        <div class="bg-white p-4 rounded shadow">
+            <div id="chartStatusPPDB"></div>
         </div>
         <!-- Second Row in First Column -->
         <div class="bg-white p-4 rounded shadow">
@@ -52,8 +32,7 @@
 <div class="flex mx-auto">
 </div>
 
-<div class="max-w-xl">
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Data for PPDB chart
@@ -171,6 +150,5 @@
     });
 </script>
 
-</div>
 
 @endsection
