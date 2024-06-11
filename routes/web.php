@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     Auth\LoginController,
-    WebController,
     FrontEndController,
     DashboardController,
-    AdminController,
     AdminActionController,
     CarouselsActionController,
     SejarahSekolahController,
@@ -78,7 +76,7 @@ Route::post('/umpanBalik', [umpanBalikController::class, 'storeUmpanBalik'])->na
 
 
 // -----
-Route::get('admin/login', [adminController::class, 'login'])->name('login')->middleware('guest');
+Route::get('admin/login', [loginController::class, 'login'])->name('login')->middleware('guest');
 // Auth
 Route::post('admin/authenticate', [loginController::class, 'authenticate'])->name('account.auth');
 //-----
