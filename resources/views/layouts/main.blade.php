@@ -37,6 +37,15 @@
         min-width: 100%;
         transition: transform 0.5s ease-in-out;
     }
+
+    /* Tambahkan CSS khusus untuk menghilangkan truncate pada tampilan laptop */
+    @media (min-width: 1024px) {
+        .laptop\:not-truncate {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+        }
+    }
     </style>
     <title>SMK Muhammadiyah Plus Kota Batam | {{ $title }}</title>
 </head>
@@ -48,12 +57,11 @@
         <div class="navbar-start lg:hidden">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                    <img src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}"
-                        class="h-5 w-5" alt="logo_sekolah">
+                    <i class="fas fa-bars"></i>
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content text-black mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li class="@if($title == 'Home') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
+                    <li class="@if($title == 'Beranda') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
                     <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/guest/profile">Profile
                             Sekolah</a></li>
                     <li>
@@ -146,7 +154,7 @@
                         <a href="/">Beranda</a>
                     </li>
                     <li
-                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Profile') bg-blue-400 rounded-md @endif">
+                        class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Profile' || $title == 'Sejarah') bg-blue-400 rounded-md @endif">
                         <a href="/guest/profile">Profile
                             Sekolah</a>
                     </li>
@@ -261,9 +269,10 @@
                 <div class="carousel-items w-full flex-shrink-0" id="items">
                     <img src="{{ asset('storage/'. $crs->image) }}" class="w-full h-[35rem] object-cover" />
                     @if ($key === 0)
-                    <div class="absolute inset-0 flex justify-center items-center">
+                    <div
+                        class="absolute smartphone:bottom-1/2 tablet:bottom-0 inset-0 flex justify-center items-center">
                         <div class="p-4 text-white text-center w-[30rem]">
-                            <p class="text-3xl font-bold" id="element"></p>
+                            <p class="smartphone:text-xl tablet:text-3xl font-bold" id="element"></p>
                         </div>
                     </div>
                     @endif

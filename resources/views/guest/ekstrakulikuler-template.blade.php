@@ -6,7 +6,9 @@
 <section class="">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-            <h1 class="font-bold text-2xl text-center">{{ $ekstrakulikuler->nama_ekstrakurikuler }}</h1>
+            <h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center">
+                {{ $ekstrakulikuler->nama_ekstrakurikuler }}
+            </h1>
 
             <div class="grid grid-cols-3 w-6/12 mx-auto">
                 <div class="divider"></div>
@@ -18,7 +20,8 @@
         <section class="p-8 bg-gray-100">
             <div class="container mx-auto flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h2 class="text-2xl font-bold mb-4">Tentang Ekstrakurikuler Ini</h2>
+                    <h2 class="smartphone:text-lg tablet:text-2xl text-center font-bold mb-4">Tentang Ekstrakurikuler
+                        Ini</h2>
                     <div class="h-72 overflow-y-auto border-b-2 border-slate-800 py-4">
                         <p class="text-gray-700">{!! $ekstrakulikuler->deskripsi_ekstrakurikuler !!}
                         </p>
@@ -45,71 +48,74 @@
                 </div>
                 <div class="md:w-1/2 flex justify-center md:justify-end">
                     <div class="flex space-x-4">
-                        <div class="h-48 w-48">
+                        <div class="smartphone:h-28 smartphone:w-28 laptop:h-48 laptop:w-48">
                             <!-- Logo Ekstrakurikuler -->
                             <p class="text-gray-400 text-center">Logo Ekstrakurikuler</p>
                             <img class="mask mask-circle mx-auto w-44 h-44"
                                 src="{{ asset('storage/'. $ekstrakulikuler->gambar_profil_ekstrakurikuler) }}" />
                         </div>
-                        <div class="h-48 w-48 items-center justify-center">
+                        <div
+                            class="smartphone:h-28 smartphone:w-28 laptop:h-48 laptop:w-48 items-center justify-center">
                             <!-- Foto Pembimbing -->
                             <p class="text-gray-400 text-center">Guru Pembimbing</p>
                             @if($ekstrakulikuler->guru)
-                            <img src="{{ asset('storage/'.$ekstrakulikuler->guru->gambar_guru) }}" alt="Gambar Guru">
+                            <img class="mask mask-circle mx-auto w-44 h-44"
+                                src="{{ asset('storage/'.$ekstrakulikuler->guru->gambar_guru) }}" alt="Gambar Guru">
                             @else
-                            <img src="{{ asset('image/No_Image_available.svg.png') }}" alt="No Image Available">
+                            <img class="mask mask-circle mx-auto w-44 h-44"
+                                src="{{ asset('image/No_Image_available.svg.png') }}" alt="No Image Available">
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </div>
 </section>
 
-<div class="relative w-full overflow-hidden">
-    <div class="text-center">
-        <h1 class="font-bold text-2xl text-center">Foto Kegiatan</h1>
+<div class="text-center smartphone:mt-20 tablet:mt-0">
+    <h1 class="font-bold text-2xl text-center">Foto Kegiatan</h1>
 
-        <div class="grid grid-cols-3 w-6/12 mx-auto">
-            <div class="divider"></div>
-            <div class="divider divider-primary"></div>
-            <div class="divider"></div>
-        </div>
+    <div class="grid grid-cols-3 w-6/12 mx-auto">
+        <div class="divider"></div>
+        <div class="divider divider-primary"></div>
+        <div class="divider"></div>
     </div>
-    <div class="relative w-[75rem] overflow-hidden my-10">
-        <div class="flex transition-transform duration-500" id="slider">
-            @if($ekstrakulikuler->gambar->isNotEmpty())
-            @foreach ($ekstrakulikuler->gambar->chunk(4) as $chunk)
-            <div class="w-full grid grid-cols-4 justify-center items-center pr-16 pl-10" style="min-width: 100%;">
-                @foreach ($chunk as $gambar)
-                <div class="mx-auto">
-                    <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110"
-                        onclick="window['my_modal_view{{ $gambar->id_gambar_ekstrakurikuler }}'].showModal()">
-                        <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}"
-                            class="w-full h-64 object-cover rounded-sm mx-auto"
-                            alt="Image {{ $gambar->id_ekstrakurikuler }}">
-                    </button>
-                </div>
-                @endforeach
+</div>
+
+<div
+    class="relative smartphone:w-screen laptop:w-[75rem] smartphone:-translate-x-9 tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center laptop:my-10">
+    <div class="flex transition-transform duration-500" id="slider">
+        @if($ekstrakulikuler->gambar->isNotEmpty())
+        @foreach ($ekstrakulikuler->gambar->chunk(4) as $chunk)
+        <div
+            class="smartphone:w-screen grid smartphone:grid-cols-1 smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
+            @foreach ($chunk as $gambar)
+            <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
+                <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110"
+                    onclick="window['my_modal_view{{ $gambar->id_gambar_ekstrakurikuler }}'].showModal()">
+                    <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}"
+                        class="w-full h-64 object-cover rounded-sm mx-auto"
+                        alt="Image {{ $gambar->id_ekstrakurikuler }}">
+                </button>
             </div>
             @endforeach
-            @else
-            <div class="flex justify-center items-center artboard artboard-horizontal phone-1">
-                <img src="{{ asset('image/no-image.png') }}" alt="Placeholder"
-                    class="w-full h-64 object-cover rounded-sm mx-auto">
-            </div>
-            @endif
         </div>
+        @endforeach
+        @else
+        <div class="flex justify-center items-center artboard artboard-horizontal phone-1">
+            <img src="{{ asset('image/no-image.png') }}" alt="Placeholder"
+                class="w-full h-64 object-cover rounded-sm mx-auto">
+        </div>
+        @endif
     </div>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 smartphone:top-36 tablet:top-1/2 transform p-2 flex justify-center items-center"
         onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 smartphone:top-36 tablet:top-1/2 transform p-2 flex justify-center items-center"
         onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>

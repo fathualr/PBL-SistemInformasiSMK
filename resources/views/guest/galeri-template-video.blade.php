@@ -4,7 +4,7 @@
 
 <div class="flex flex-col w-full border-opacity-50 mb-10">
     @foreach($albums as $album)
-    <div class="divider text-3xl font-bold">{{ $album->nama_album }}</div>
+    <div class="divider smartphone:text-lg tablet:text-2xl font-bold">{{ $album->nama_album }}</div>
     <p class="my-5 text-center mx-auto">{{ $album->deskripsi_album }}</p>
     @endforeach
 </div>
@@ -12,8 +12,8 @@
 <div class="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-14 lg:gap-y-8 lg:gap-6">
     @foreach($videos->chunk(6) as $chunk)
     @foreach($chunk as $video)
-    <div class="w-96 h-52">
-        <iframe class="w-96 h-52" src="{{ $video->embed_link }}" allowfullscreen></iframe>
+    <div class="smartphone:w-80 laptop:w-96 h-52">
+        <iframe class="smartphone:w-80 laptop:w-96 h-52" src="{{ $video->embed_link }}" allowfullscreen></iframe>
     </div>
     @endforeach
     @endforeach

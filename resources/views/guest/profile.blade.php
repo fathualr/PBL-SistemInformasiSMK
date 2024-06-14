@@ -2,39 +2,46 @@
 
 @section('Main')
 
-<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">SEJARAH SEKOLAH</h1>
+<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider">SEJARAH SEKOLAH</h1>
 
-<div class="grid grid-rows-3 grid-cols-4 grid-flow-col gap-4">
-    <div class="col-span-2">
-        <h1 class="font-bold text-2xl">
+<div class="grid tablet:grid-rows-3 smartphone:grid-cols-1 tablet:grid-cols-4 grid-flow-col tablet:gap-4">
+    <div
+        class="smartphone:w-72 smartphone:translate-x-5 smartphone:text-center tablet:text-start tablet:col-span-2 laptop:translate-x-0 laptop:w-96">
+        <h1 class="font-bold smartphone:text-lg tablet:text-2xl">
             {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}
         </h1>
     </div>
-    <div class="col-span-2">
-        <p class="-mt-10">
+    <div class="smartphone:translate-x-7 smartphone:row-start-2 tablet:col-span-2 laptop:translate-x-0">
+        <p
+            class="smartphone:w-64 smartphone:h-40 smartphone:text-center smartphone:my-5 tablet:h-52 tablet:text-start tablet:-mt-20 laptop:w-[25rem] laptop:-mt-20 overflow-y-auto">
             {!! empty($konten->sejarah) ? '
         <p class="text-red-500 italic">$NULL</p>' : $konten->sejarah !!}
         </p>
     </div>
-    <div class="col-span-2 mt-10">
+    <div
+        class="smartphone:row-start-4 smartphone:translate-x-16 tablet:col-span-2 smartphone:mt-10 tablet:-mt-36 laptop:translate-x-0 laptop:-mt-40">
         <a href="/guest/sejarah">
-            <button class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
+            <button
+                class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400">Lebih
                 Lanjut
             </button>
         </a>
     </div>
-    <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
+    <div class="smartphone:row-start-3 tablet:row-span-3 col-span-2 mx-auto tablet:mx-0">
         <div class="aspect-w-16 aspect-h-9">
-            <iframe class="w-full h-full lg:h-96" src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
+            <iframe class="w-full h-full tablet:h-96"
+                src="{!! empty($konten->tautan_video_sejarah) ? 'https://www.youtube.com/' : $konten->tautan_video_sejarah !!}"></iframe>
         </div>
     </div>
 </div>
 
-<h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1>
+<!-- <h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p
+        class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1> -->
 
-<div class="grid tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">
+<div class="grid smartphone:mt-10 tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">
 
-    <div class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
+    <div
+        class="tablet:col-span-3 tablet:grid tablet:grid-cols-3 laptop:grid-cols-none laptop:col-span-2 bg-blue-500 rounded-sm">
         <!-- First Card -->
         <div class="card smartphone:w-60 tablet:w-60 lg:w-full h-96 mx-auto rounded-sm">
             <figure class="px-5 pt-5 mx-auto">
@@ -91,11 +98,10 @@
             </figure>
             <div class="card-body text-center text-white">
                 <h2 class="card-title mx-auto mb-3">Email Sekolah</h2>
-                <p class="">
+                <p class="smartphone:-translate-x-7 tablet:-translate-x-8 laptop:translate-x-0">
                     {!! empty($konten->email_sekolah) ? '
                 <p class="text-red-500 italic">$NULL</p>' : $konten->email_sekolah !!}
                 </p>
-
                 <h2 class="card-title mx-auto mb-3">No.telp Sekolah</h2>
                 <p class="">
                     {!! empty($konten->no_telepon_sekolah) ? '
@@ -114,7 +120,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -141,7 +148,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 196.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 196.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -168,7 +176,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 198.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 198.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -201,7 +210,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 199.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 199.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -234,7 +244,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -259,7 +270,8 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi" class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
+                                class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
@@ -289,15 +301,15 @@
 
 </div>
 
-<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">VISI & MISI SEKOLAH</h1>
+<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider">VISI & MISI SEKOLAH</h1>
 
 <div class="grid tablet:grid-cols-2 gap-y-4 tablet:gap-y-0 tablet:gap-4">
     <!-- Visi -->
     <div class="mx-auto">
-        <div class="card w-72 laptop:w-96 bg-slate-100">
+        <div class="card smartphone:w-64 tablet:w-72 laptop:w-96 bg-slate-100">
             <h2 class="text-center font-bold text-white text-xl bg-blue-400 w-full mt-10">VISI</h2>
             <div class="card-body items-center text-center h-40">
-                <p>
+                <p class="overflow-y-auto">
                     {!! empty($konten->visi) ? '
                 <p class="text-red-500 italic">$NULL</p>' : $konten->visi !!}
                 </p>
@@ -308,7 +320,7 @@
 
     <!-- Misi -->
     <div class="mx-auto">
-        <div class="card w-72 laptop:w-96 bg-slate-100">
+        <div class="card smartphone:w-64 tablet:w-72 laptop:w-96 bg-slate-100">
             <h2 class="text-center font-bold text-white text-xl bg-blue-400 w-full mt-10">MISI</h2>
             <div class="card-body items-center text-center h-40">
                 <p class="overflow-y-auto">
@@ -321,30 +333,34 @@
     <!-- Misi -->
 </div>
 
-<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">STRUKTUR ORGANISASI SEKOLAH</h1>
+<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider">STRUKTUR ORGANISASI SEKOLAH</h1>
 
 <div class="col-span-2 my-5 w-full">
     @if(empty($konten->struktur_organisasi_sekolah))
     <p class="text-red-500 italic">$NULL</p>
     @else
-    <img class="w-full" src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}" alt="struktur_organisasi_sekolah">
+    <img class="smartphone:w-60 smartphone:mx-auto tablet:w-full"
+        src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}" alt="struktur_organisasi_sekolah">
     @endif
 </div>
 
-<h1 class="font-bold text-sm tablet:text-2xl text-center my-12 divider">KOMPETENSI KEAHLIAN</h1>
+@if($programKeahlian->isNotEmpty())
+<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center mt-12 divider">KOMPETENSI KEAHLIAN</h1>
 
-<div class="relative w-full overflow-hidden my-10 mx-auto flex justify-center items-center">
+<div
+    class="relative smartphone:w-screen laptop:w-[75rem] smartphone:-translate-x-9 tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center">
     <div class="flex transition-transform duration-500" id="slider">
-        @if($programKeahlian->isNotEmpty())
         @foreach ($programKeahlian->chunk(4) as $chunk)
-        <div class="w-full grid grid-cols-4 justify-center items-center p-10" style="min-width: 100%;">
+        <div
+            class="smartphone:w-screen grid smartphone:grid-cols-1 smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
             @foreach ($chunk as $prg)
-            <div class="mx-auto">
+            <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
                 <div class="card card-compact smartphone:w-72 laptop:w-60 h-80 shadow-xl mx-auto">
                     <figure>
-                        <img src="{{ asset('storage/' . $prg->logo_program) }}" class="h-28 w-full object-cover blur-sm" alt="Shoes" />
+                        <img src="{{ asset('storage/' . $prg->logo_program) }}" class="h-28 w-full object-cover blur-sm"
+                            alt="Shoes" />
                     </figure>
-                    <div class="avatar h-28 absolute translate-y-9 translate-x-16">
+                    <div class="avatar h-28 absolute translate-y-9 smartphone:translate-x-24 tablet:translate-x-16">
                         <div class="w-28 h-28 rounded-full">
                             <img src="{{ asset('storage/'.$prg->logo_program) }}" />
                         </div>
@@ -363,13 +379,17 @@
             @endforeach
         </div>
         @endforeach
-        @endif
     </div>
-    <button class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute left-0 top-1/2 transform p-2 flex justify-center items-center" onclick="prevSlide()">
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute left-0 top-1/2 transform p-2 flex justify-center items-center"
+        onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
-    <button class="border-none opacity-70 bg-blue-600 rounded-full w-10 h-10 absolute right-0 top-1/2 transform p-2 flex justify-center items-center" onclick="nextSlide()">
+    <button
+        class="border-none opacity-70 bg-blue-600 rounded-full w-10 h-10 absolute right-0 top-1/2 transform p-2 flex justify-center items-center"
+        onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>
 </div>
+@endif
 @endsection

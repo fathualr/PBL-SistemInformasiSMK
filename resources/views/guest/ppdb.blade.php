@@ -57,19 +57,19 @@
         <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
             <div class="flex flex-col items-center">
                 <span id="days" class="countdown font-mono text-5xl">10</span>
-                days
+                Hari
             </div>
             <div class="flex flex-col items-center">
                 <span id="hours" class="countdown font-mono text-5xl">15</span>
-                hours
+                Jam
             </div>
             <div class="flex flex-col items-center">
                 <span id="minutes" class="countdown font-mono text-5xl">30</span>
-                min
+                Menit
             </div>
             <div class="flex flex-col items-center">
                 <span id="seconds" class="countdown font-mono text-5xl">45</span>
-                sec
+                Detik
             </div>
         </div>
     </div>
@@ -344,12 +344,14 @@
                 <div class=" bg-blue-400 py-1">
                     <h2 class="text-white font-bold ml-2 mt-2 mb-2">Dokumen Tambahan</h2>
                 </div>
-                <div class="grid grid-cols-12 gap-4 items-center justify-center">
-                    <div class="col-span-4">
-                        <label class="block font-medium ml-2 -mt-3">File Dokumen(Prestasi,Nilai
+                <div class="grid smartphone:grid-cols-6 tablet:grid-cols-12 gap-4 items-center justify-center">
+                    <div class="smartphone:col-span-1 tablet:col-span-4">
+                        <label class="block font-medium ml-2 -mt-3">File
+                            Dokumen(Prestasi,
+                            Nilai
                             Sementara,dll...)</label>
                     </div>
-                    <div class="col-span-8">
+                    <div class="smartphone:col-span-3 smartphone:col-start-4 tablet:col-span-8">
                         <label
                             class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                             <input type="file" name="tautan_dokumen" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
