@@ -32,18 +32,22 @@
 
                     <form class="mt-12 font-poppins" action="{{ route('account.auth') }}" method="POST">
                         @csrf
-                        <label class="input bg-transparent border-none flex items-center gap-2 mb-5 w-1/2 mx-auto focus-within:outline-none">
+                        <label
+                            class="input bg-transparent border-none flex items-center gap-2 mb-5 w-1/2 mx-auto focus-within:outline-none">
                             <i class="fas fa-user"></i>
-                            <input type="text" class="grow bg-transparent border-b-2 border-blue-500 py-2" placeholder="Username" name="username"/>
+                            <input type="text" class="grow bg-transparent border-b-2 border-blue-500 py-2"
+                                placeholder="Username" name="username" />
                         </label>
                         @error('username')
                         <div class="label flex justify-center">
                             <span class="label-text-alt text-red-500">{{ $message }}</span>
                         </div>
                         @enderror
-                        <label class="input bg-transparent border-none flex items-center gap-2 w-1/2 mx-auto focus-within:outline-none">
+                        <label
+                            class="input bg-transparent border-none flex items-center gap-2 w-1/2 mx-auto focus-within:outline-none">
                             <i class="fas fa-lock"></i>
-                            <input type="password" class="grow border-b-2 border-blue-500 py-2" id="passwordInput" placeholder="Password" name="password" />
+                            <input type="password" class="grow border-b-2 border-blue-500 py-2" id="passwordInput"
+                                placeholder="Password" name="password" />
                             <i class="fas fa-eye absolute translate-x-60" id="togglePassword"></i>
                         </label>
                         @error('password')
@@ -52,13 +56,11 @@
                         </div>
                         @enderror
                         <div class="flex justify-center items-center mt-20">
-                            <button type="submit" class="btn bg-blue-500 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-500">
+                            <button type="submit"
+                                class="btn bg-blue-500 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-500">
                                 Login
                             </button>
                         </div>
-                        <a href="" class="flex justify-center items-center mt-5 text-sm text-blue-600">
-                            Lupa Password ?
-                        </a>
                     </form>
 
                 </div>

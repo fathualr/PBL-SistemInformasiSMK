@@ -59,7 +59,7 @@
                         <td>{{ ($fotos->currentPage() - 1) * $fotos->perPage() + $key + 1 }}</td>
                         <td>{{ $foto->album->nama_album }}</td>
                         <td>
-                            <p class="truncate w-64">
+                            <p class="truncate w-64 mx-auto">
                                 {{ $foto->tautan_foto }}
                             </p>
                         </td>

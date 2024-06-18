@@ -142,7 +142,7 @@
         </h3>
         <div class="grid grid-cols-8 w-[32rem] -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
         <div class="grid smartphone:grid-cols-1 tablet:grid-cols-3 my-10">
