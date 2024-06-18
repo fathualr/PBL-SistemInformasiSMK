@@ -17,9 +17,11 @@
 </div>
 
 <div class="grid grid-rows-3 grid-cols-2 grid-flow-col gap-2 mx-auto my-32 bg-slate-200">
-    <div class="row-span-3 my-24">
-        <h1 class="font-bold text-2xl my-10 text-center">V.M.T.S {{ $program->nama_program }}</h1>
-        <div class="collapse collapse-arrow bg-base-200 mb-5 ml-10">
+    <div class="smartphone:col-span-2 tablet:col-span-1 row-span-3 my-24 smartphone:px-5">
+        <h1 class="font-bold text-2xl smartphone:-mt-10 smartphone:mb-5 tablet:my-10 text-center">V.M.T.S
+            {{ $program->nama_program }}
+        </h1>
+        <div class="collapse collapse-arrow bg-base-200 mb-5 tablet:ml-10">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
                 Visi Program Keahlian
@@ -28,7 +30,7 @@
                 <p>{{ $program->visi_program }}</p>
             </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200 mb-5 ml-10">
+        <div class="collapse collapse-arrow bg-base-200 mb-5 tablet:ml-10">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
                 Misi Program Keahlian
@@ -37,7 +39,7 @@
                 <p>{{ $program->misi_program }}</p>
             </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200 mb-5 ml-10">
+        <div class="collapse collapse-arrow bg-base-200 mb-5 tablet:ml-10">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
                 Tujuan Program Keahlian
@@ -46,7 +48,7 @@
                 <p>{{ $program->tujuan_program }}</p>
             </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200 ml-10">
+        <div class="collapse collapse-arrow bg-base-200 tablet:ml-10">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
                 Sasaran Strategis Program Keahlian
@@ -56,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="row-span-3 flex items-center justify-center my-24">
+    <div class="row-span-3 tablet:flex items-center justify-center my-24 smartphone:hidden">
         <img src="{{ asset('image/human.svg') }}" alt="" class="w-8/12 mx-auto">
     </div>
 </div>
@@ -75,13 +77,15 @@
 </p>
 
 <div class="grid grid-cols-2">
-    <div class="col-span-2 w-[50rem] mx-auto my-7">
+    <div class="col-span-2 laptop:w-[50rem] mx-auto my-7">
         <!-- First Collapse -->
         <div class="collapse collapse-arrow bg-base-200 mb-5">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK SIKAP</h1>
             </div>
@@ -94,8 +98,10 @@
         <div class="collapse collapse-arrow bg-base-200 mb-5">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK PENGETAHUAN</h1>
             </div>
@@ -108,8 +114,10 @@
         <div class="collapse collapse-arrow bg-base-200 mb-5">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK KETERAMPILAN UMUM</h1>
             </div>
@@ -122,8 +130,10 @@
         <div class="collapse collapse-arrow bg-base-200">
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium flex">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="stroke-info shrink-0 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 <h1 class="mx-5 text-base">ASPEK KETERAMPILAN KHUSUS</h1>
             </div>
@@ -150,10 +160,11 @@
     </p>
 </div>
 
-<div class="grid {{ (count($program->peluangKerja) > 2 ? 'grid-cols-3' : (count($program->peluangKerja) > 1 ? 'grid-cols-2' : 'grid-cols-1')) }} gap-x-2 my-10 bg-slate-200">
+<div
+    class="grid {{ (count($program->peluangKerja) > 2 ? 'tablet:grid-cols-2 laptop:grid-cols-3' : (count($program->peluangKerja) > 1 ? 'laptop:grid-cols-2' : 'grid-cols-1')) }} laptop:gap-x-2 my-10 bg-slate-200">
     @forelse ($program->peluangKerja as $peluang)
-    <div class="my-5 mx-auto">
-        <div class="card w-[22rem] h-96 bg-base-100 shadow-xl rounded-none pb-7">
+    <div class="my-5 mx-auto smartphone:px-5">
+        <div class="card laptop:w-[22rem] h-96 bg-base-100 shadow-xl rounded-none pb-7">
             <div class="card-body overflow-y-auto h-20">
                 <h2 class="card-title font-bold my-5">{{ $peluang->peluang_kerja }}</h2>
                 <p class="">

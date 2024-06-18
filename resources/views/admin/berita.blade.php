@@ -20,16 +20,11 @@
     <div class="flex items-center">
         <div class="relative hidden md:flex mr-2">
             <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('berita.index', ['perPage' => 10]) }}"
-                    {{ request()->get('perPage') == 5 ? 'selected' : '' }}>5</option>
-                <option value="{{ route('berita.index', ['perPage' => 25]) }}"
-                    {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('berita.index', ['perPage' => 50]) }}"
-                    {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('berita.index', ['perPage' => 75]) }}"
-                    {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('berita.index', ['perPage' => 100]) }}"
-                    {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                <option value="{{ route('berita.index', ['perPage' => 10]) }}" {{ request()->get('perPage') == 5 ? 'selected' : '' }}>5</option>
+                <option value="{{ route('berita.index', ['perPage' => 25]) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                <option value="{{ route('berita.index', ['perPage' => 50]) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                <option value="{{ route('berita.index', ['perPage' => 75]) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                <option value="{{ route('berita.index', ['perPage' => 100]) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
             </select>
         </div>
         <form action="{{ route('berita.index') }}" method="GET">
@@ -82,12 +77,10 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- Edit -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_edit_{{ $brt->id_berita }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_edit_{{ $brt->id_berita }}.showModal()">
                                             <i class="fas fa-pen-to-square"></i>
                                             Edit
                                         </button>
@@ -95,8 +88,7 @@
                                     <!-- Edit -->
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view{{ $brt->id_berita }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view{{ $brt->id_berita }}.showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -104,8 +96,7 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete{{ $brt->id_berita }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete{{ $brt->id_berita }}.showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -195,12 +186,10 @@
                                     <i class="fas fa-circle text-[0.5rem] circle-3 transition-all duration-500"></i>
                                     <i class="fas fa-times font-bold text-xl hidden transition-all duration-500"></i>
                                 </summary>
-                                <ul tabindex="0"
-                                    class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
+                                <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-32">
                                     <!-- View -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_view_komentar{{ $kmt->id_komentar }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_view_komentar{{ $kmt->id_komentar }}.showModal()">
                                             <i class="fas fa-circle-info"></i>
                                             Detail
                                         </button>
@@ -208,8 +197,7 @@
                                     <!-- View -->
                                     <!-- Delete -->
                                     <li>
-                                        <button class="btn btn-ghost w-full hover:animate-pulse"
-                                            onclick="my_modal_delete_komentar{{ $kmt->id_komentar }}.showModal()">
+                                        <button class="btn btn-ghost w-full hover:animate-pulse" onclick="my_modal_delete_komentar{{ $kmt->id_komentar }}.showModal()">
                                             <i class="fas fa-trash"></i>
                                             Hapus
                                         </button>
@@ -277,8 +265,7 @@
                 <div class="label">
                     <span class="label-text">Judul Berita :</span>
                 </div>
-                <input type="text" class="input input-bordered border-2 border-blue-400 w-full"
-                    placeholder="Judul berita" name="judul_berita" />
+                <input type="text" class="input input-bordered border-2 border-blue-400 w-full" placeholder="Judul berita" name="judul_berita" />
                 @error('judul_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -287,13 +274,11 @@
                 <div class="label">
                     <span class="label-text">Gambar Headline :</span>
                 </div>
-                <label
-                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
                     <input type="file" class="file-input w-full py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
-                        name="gambar_headline" />
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita" name="gambar_headline" />
                 </label>
                 @error('gambar_headline')
                 <div class="label">
@@ -310,13 +295,11 @@
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
                 </div>
                 @enderror
-                <button type="button" id="btnAddFile"
-                    class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Gambar</button>
+                <button type="button" id="btnAddFile" class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Gambar</button>
                 <div class="label">
                     <span class="label-text">Isi Berita :</span>
                 </div>
-                <textarea class="textarea border-2 border-blue-400" id="editor" placeholder="Isi berita"
-                    name="isi_berita"></textarea>
+                <textarea class="textarea border-2 border-blue-400" id="editor" placeholder="Isi berita" name="isi_berita"></textarea>
                 @error('isi_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -332,8 +315,7 @@
                     </div>
                     @enderror
                 </div>
-                <button type="button" id="btnAddText"
-                    class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Kategori</button>
+                <button type="button" id="btnAddText" class="btn bg-blue-400 text-white w-full hover:text-blue-400 mt-5">Tambah Kategori</button>
                 <div class="label">
                     <span class="label-text">Tanggal Berita :</span>
                 </div>
@@ -345,13 +327,11 @@
                 @enderror
             </div>
             <div class="flex justify-end items-end my-10 gap-4">
-                <button type="reset"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="reset" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class="fas fa-times"></i>
                     Reset
                 </button>
-                <button type="submit"
-                    class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-plus"></i>
                     Tambah
                 </button>
@@ -369,7 +349,7 @@
 <!-- Modal EDIT -->
 <dialog id="my_modal_edit_{{ $brt->id_berita }}" class="modal">
     <div class="modal-box w-11/12 max-w-5xl py-0">
-        <div class="sticky top-0 bg-white pt-5">
+        <div class="sticky top-0 bg-white pt-5 z-40">
             <form method="dialog">
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-3">
                     <i class="fas fa-times text-2xl"></i>
@@ -391,8 +371,7 @@
                 <div class="label">
                     <span class="label-text">Judul :</span>
                 </div>
-                <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $brt->judul_berita }}"
-                    name="judul_berita" />
+                <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $brt->judul_berita }}" name="judul_berita" />
                 @error('judul_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -402,13 +381,11 @@
                 <div class="label">
                     <span class="label-text">Gambar Headline :</span>
                 </div>
-                <label
-                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
                     <input type="file" class="file-input w-full py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
-                        name="gambar_headline" />
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita" name="gambar_headline" />
                 </label>
                 @error('gambar_headline')
                 <div class="label">
@@ -419,14 +396,12 @@
                 <div class="label">
                     <span class="label-text">Gambar Berita :</span>
                 </div>
-                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400"
-                    onclick="my_modal_view_gambar{{ $brt->id_berita }}.showModal()">Edit Gambar</button>
+                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400" onclick="my_modal_view_gambar{{ $brt->id_berita }}.showModal()">Edit Gambar</button>
 
                 <div class="label">
                     <span class="label-text">Isi Berita :</span>
                 </div>
-                <textarea class="textarea border-2 border-blue-400 w-full" id="editor2" placeholder="Isi berita"
-                    name="isi_berita">{{ $brt->isi_berita }}</textarea>
+                <textarea class="textarea border-2 border-blue-400 w-full" id="editor2" placeholder="Isi berita" name="isi_berita">{{ $brt->isi_berita }}</textarea>
                 @error('isi_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -436,14 +411,12 @@
                 <div class="label">
                     <span class="label-text">Kategori :</span>
                 </div>
-                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400"
-                    onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
+                <button type="button" class="btn bg-blue-400 text-white w-full hover:text-blue-400" onclick="my_modal_view_kategori{{ $brt->id_berita }}.showModal()">Edit Kategori</button>
 
                 <div class="label">
                     <span class="label-text">Tanggal Berita :</span>
                 </div>
-                <input type="date" class="input border-2 border-blue-400 w-full" value="{{ $brt->tanggal_berita }}"
-                    name="tanggal_berita" />
+                <input type="date" class="input border-2 border-blue-400 w-full" value="{{ $brt->tanggal_berita }}" name="tanggal_berita" />
                 @error('tanggal_berita')
                 <div class="label">
                     <span class="label-text-alt text-red-500">{{ $message }}</span>
@@ -452,8 +425,7 @@
 
             </div>
             <div class="flex justify-end items-end my-10 gap-4">
-                <button type="submit"
-                    class="btn bg-elm w-60 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                <button type="submit" class="btn bg-elm w-60 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                     <i class=" fas fa-pen-to-square"></i>
                     Edit
                 </button>
@@ -488,13 +460,10 @@
                 @csrf
                 @method('DELETE')
                 <div class="flex gap-1">
-                    <input type="text" class="input input-bordered input-success w-full" placeholder="Gambar berita"
-                        value="{{ $gambar->tautan_gambar }}" name="gambar_berita[]" disabled />
+                    <input type="text" class="input input-bordered input-success w-full" placeholder="Gambar berita" value="{{ $gambar->tautan_gambar }}" name="gambar_berita[]" disabled />
                     <button class="btn btn-square btn-outline btn-error btn-remove">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -508,13 +477,11 @@
                 <span class="label-text">Tambah Gambar :</span>
             </div>
             <div class="flex gap-1">
-                <label
-                    class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
+                <label class="input bg-transparent border-2 border-blue-400 flex items-center mb-5 gap-2 w-full focus-within:outline-none">
                     <input type="file" class="file-input w-full py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
-                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita"
-                        name="tautan_gambar" />
+                    hover:file:bg-transparent hover:file:text-blue-400" placeholder="Pilih gambar berita" name="tautan_gambar" />
                 </label>
                 <button type="submit" class="btn btn-square bg-blue-400 text-white hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
@@ -545,18 +512,14 @@
         </div>
         <div class="grid gap-2" id="textInputContainer">
             @foreach ($brt->kategori as $kategori)
-            <form action="{{ route('kategoriBerita.destroy', $kategori->id_kategori) }}" method="POST"
-                enctype="multipart/form-data">
+            <form action="{{ route('kategoriBerita.destroy', $kategori->id_kategori) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="flex gap-1">
-                    <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
-                        value="{{ $kategori->nama_kategori }}" name="kategori_berita[]" disabled />
+                    <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita" value="{{ $kategori->nama_kategori }}" name="kategori_berita[]" disabled />
                     <button type="submit" class="btn btn-square btn-outline btn-error btn-remove">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -570,8 +533,7 @@
                 <span class="label-text">Tambah Kategori :</span>
             </div>
             <div class="flex gap-1">
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
-                    name="nama_kategori" />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita" name="nama_kategori" />
                 <button type="submit" class="btn btn-square bg-blue-400 text-white hover:text-blue-400">
                     <i class="fas fa-plus text-xl"></i>
                 </button>
@@ -606,14 +568,12 @@
             <div class="label">
                 <span class="label-text">Judul :</span>
             </div>
-            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $brt->judul_berita }}"
-                name="judul_berita" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $brt->judul_berita }}" name="judul_berita" readonly />
 
             <div class="label">
                 <span class="label-text">Gambar Headline :</span>
             </div>
-            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
-                value="{{ $brt->gambar_headline }}" name="gambar_headline" readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita" value="{{ $brt->gambar_headline }}" name="gambar_headline" readonly />
 
             <div class="label">
                 <span class="label-text">Gambar Berita :</span>
@@ -625,8 +585,7 @@
                 </div>
                 @else
                 @foreach ($brt->gambar as $gambar)
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
-                    value="{{ $gambar->tautan_gambar }}" name="tautan_gambar" readonly />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita" value="{{ $gambar->tautan_gambar }}" name="tautan_gambar" readonly />
                 @endforeach
                 @endif
             </div>
@@ -634,8 +593,7 @@
             <div class="label">
                 <span class="label-text">Isi Berita :</span>
             </div>
-            <label
-                class="input bg-transparent border-2 border-blue-400 gap-2 mb-5 w-full h-max p-5 focus-within:outline-none">
+            <label class="input bg-transparent border-2 border-blue-400 gap-2 mb-5 w-full h-max p-5 focus-within:outline-none">
                 <p>{!! $brt->isi_berita !!}</p>
             </label>
             <div class="label">
@@ -648,8 +606,7 @@
                 </div>
                 @else
                 @foreach ($brt->kategori as $kategori)
-                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita"
-                    value="{{ $kategori->nama_kategori }}" name="kategori_berita" readonly />
+                <input type="text" class="input border-2 border-blue-400 w-full" placeholder="Kategori berita" value="{{ $kategori->nama_kategori }}" name="kategori_berita" readonly />
                 @endforeach
                 @endif
             </div>
@@ -657,8 +614,7 @@
             <div class="label">
                 <span class="label-text">Tanggal Berita :</span>
             </div>
-            <input type="date" class="input border-2 border-blue-400 w-full mb-10" value="{{ $brt->tanggal_berita }}"
-                name="tanggal_berita" readonly />
+            <input type="date" class="input border-2 border-blue-400 w-full mb-10" value="{{ $brt->tanggal_berita }}" name="tanggal_berita" readonly />
         </div>
     </div>
     <form method="dialog" class="modal-backdrop">
@@ -689,8 +645,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="flex justify-end items-end mt-10 gap-4">
-                    <button type="submit"
-                        class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                    <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                         <i class="fas fa-trash"></i> Hapus
                     </button>
                 </div>
@@ -727,23 +682,19 @@
             <div class="label">
                 <span class="label-text">Judul :</span>
             </div>
-            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->berita->judul_berita }}"
-                readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->berita->judul_berita }}" readonly />
             <div class="label">
                 <span class="label-text">Nama :</span>
             </div>
-            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->nama_komentar }}"
-                readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full" value="{{ $kmt->nama_komentar }}" readonly />
             <div class="label">
                 <span class="label-text">Komentar :</span>
             </div>
-            <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Isi berita" name="isi_berita"
-                readonly>{{ $kmt->teks_komentar }}</textarea>
+            <textarea class="textarea border-2 border-blue-400 w-full" placeholder="Isi berita" name="isi_berita" readonly>{{ $kmt->teks_komentar }}</textarea>
             <div class="label">
                 <span class="label-text">Waktu :</span>
             </div>
-            <input type="text" class="input border-2 border-blue-400 w-full mb-10" value="{{ $kmt->created_at }}"
-                readonly />
+            <input type="text" class="input border-2 border-blue-400 w-full mb-10" value="{{ $kmt->created_at }}" readonly />
         </div>
     </div>
 </dialog>
@@ -767,8 +718,7 @@
             <form action="{{ route('komentarBerita.destroy', $kmt->id_komentar) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit"
-                    class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
+                <button type="submit" class="btn bg-error w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-error">
                     <i class=" fas fa-trash"></i>Hapus
                 </button>
             </form>

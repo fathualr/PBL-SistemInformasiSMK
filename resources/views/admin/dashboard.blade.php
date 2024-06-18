@@ -3,13 +3,13 @@
 @section('main-content')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts" />
 
-<div class="grid bg-white p-4 rounded shadow mb-5">
+<div class="grid max-w-4xl bg-white p-4 rounded shadow mb-5 mx-auto">
     <div class="grid-cols-1">
         <div id="chartPPDB"></div>
     </div>
 </div>
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 max-w-4xl gap-4 mx-auto">
     <!-- First Column -->
     <div class="grid grid-rows-2 w-auto gap-4">
         <!-- First Row in First Column -->

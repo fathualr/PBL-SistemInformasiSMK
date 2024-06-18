@@ -56,7 +56,7 @@ class PengumumanController extends Controller
         $forms->appends(['search' => $search, 'perPage' => $perPage]);
 
         return view('guest.pengumuman-ppdb', [
-            "title" => "Guest Pendaftaran PPDB",
+            "title" => "Pengumuman PPDB",
             "informasi" => $informasi,
             "forms" => $forms,
             "search" => $search, // Mengirimkan search ke view

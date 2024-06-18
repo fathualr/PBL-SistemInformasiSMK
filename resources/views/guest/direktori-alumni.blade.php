@@ -3,17 +3,17 @@
 @section('Main')
 
 <div class="divider">
-    <p class="font-bold text-2xl">DIREKTORI ALUMNI</p>
+    <p class="font-bold text-lg md:text-2xl">DIREKTORI ALUMNI</p>
 </div>
 
-<div class="flex justify-between items-center mx-5">
-    <div class="flex items-center">
-        <div class="dropdown dropdown-hover">
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mx-5 tablet:mt-5 laptop:mt-0">
+    <div class="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6 flex flex-wrap justify-between items-center">
+        <div class="dropdown dropdown-hover w-full md:w-auto">
             <div tabindex="0" role="button" class="btn btn-outline w-full m-1">
                 <i class="fas fa-list"></i>
                 Tahun Kelulusan
             </div>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full md:w-auto">
                 <li>
                     <a href="{{ route('guest.alumni.index', array_merge(request()->query(), ['tahun_kelulusan' => null])) }}" class="font-bold">
                         Tampilkan Semua
@@ -28,34 +28,34 @@
                 @endforeach
             </ul>
         </div>
-    </div>
 
-    <div class="flex items-center">
-        <div class="relative hidden md:flex mr-2">
-            <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
-                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
-            </select>
+        <div class="flex flex-wrap items-center mt-4 md:mt-0 space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
+            <div class="relative flex w-full md:w-auto">
+                <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300 w-full md:w-auto">
+                    <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                    <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                    <option value="{{ route('guest.alumni.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                </select>
+            </div>
+            <form action="{{ route('guest.alumni.index') }}" method="GET" class="w-full md:w-auto">
+                <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
+                </label>
+            </form>
         </div>
-        <form action="{{ route('guest.alumni.index') }}" method="GET">
-            <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
-                <i class="fas fa-magnifying-glass"></i>
-                <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
-            </label>
-        </form>
     </div>
 </div>
 
 <!-- Content -->
-<div class="my-10">
-    <table class="table text-center">
+<div class="my-10 smartphone:flex smartphone:justify-center">
+    <table class="table smartphone:table-xs text-center">
         <thead>
             <tr>
                 <th>Nama</th>
-                <th>Alamat</th>
+                <th class="hidden tablet:table-cell">Alamat</th>
                 <th>Tahun Kelulusan</th>
                 <th>Aksi</th>
             </tr>
@@ -72,11 +72,13 @@
                         </div>
                         <div>
                             <div class="font-bold">{{ $alumni->nama_alumni }}</div>
-                            <div class="text-sm opacity-50">{{ $alumni->email_alumni }}</div>
+                            <div class="text-sm opacity-50 smartphone:w-20 tablet:w-full truncate">
+                                {{ $alumni->email_alumni }}
+                            </div>
                         </div>
                     </div>
                 </td>
-                <td>{{ $alumni->alamat_alumni }}</td>
+                <td class="hidden tablet:table-cell">{{ $alumni->alamat_alumni }}</td>
                 <td>{{ $alumni->tahun_kelulusan_alumni }}</td>
                 <th>
                     <button class="btn" onclick="window['my_modal_4{{ $alumni->id_alumni }}'].showModal()">
@@ -89,7 +91,7 @@
         <tfoot>
             <tr>
                 <th>Nama</th>
-                <th>Alamat</th>
+                <th class="hidden tablet:table-cell">Alamat</th>
                 <th>Tahun Kelulusan</th>
                 <th>Aksi</th>
             </tr>
@@ -125,10 +127,10 @@
         </h3>
         <div class="grid grid-cols-8 w-[32rem] -mt-5">
             <div class="divider"></div>
-            <div class="divider divider-success"></div>
+            <div class="divider divider-primary"></div>
             <div class="divider"></div>
         </div>
-        <div class="grid grid-cols-3 my-10">
+        <div class="grid smartphone:grid-cols-1 tablet:grid-cols-3 my-10">
             <!-- Photo -->
             <div class="flex justify-center items-center">
                 <div class="avatar flex justify-center items-center my-5">
@@ -136,11 +138,11 @@
                         <img src="{{ asset('storage/'.$alumni->gambar_alumni) }}" alt="Avatar Tailwind CSS Component" />
                     </div>
                 </div>
-                <div class="divider divider-horizontal translate-x-8"></div>
+                <div class="laptop:divider laptop:divider-horizontal laptop:translate-x-8"></div>
             </div>
             <!-- Photo -->
             <!-- Information -->
-            <div class="col-span-2">
+            <div class="smartphone:text-xs tablet:text-base tablet:col-span-2">
                 <table class="w-full">
                     <tr>
                         <td>Nama</td>

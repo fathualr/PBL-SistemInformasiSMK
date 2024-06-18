@@ -3,14 +3,8 @@
 @section('Main')
 
 <!-- First Content -->
-<label
-    class="input input-bordered border-2 rounded-full mx-auto mt-20 w-[30rem] flex justify-center items-center focus-within:outline-none">
-    <input type="text" class="grow" placeholder="Cari" />
-    <i class="fas fa-magnifying-glass"></i>
-</label>
-
-<div class="divider mt-20 mb-10">
-    <p class="font-bold text-2xl">KATA SAMBUTAN</p>
+<div class="divider smartphone:mt-10 tablet:mt-20 mb-10">
+    <p class="font-bold smartphone:text-lg tablet:text-2xl">KATA SAMBUTAN</p>
 </div>
 <div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
@@ -19,28 +13,23 @@
                 src="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}"></iframe>
         </div>
     </div>
-    <!-- Title -->
+    <!-- Kata Sambutan -->
     <div class="col-span-2 overflow-x-auto">
-        <div class="card w-full ">
+        <div class="card w-full h-54">
             <div class="card-body">
                 <h1 class="card-title text-lg">
                     {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' :
                     $konten->nama_sekolah !!}
                 </h1>
+
+                <div class="overflow-y-auto h-[13.5rem] tablet:py-5">
+                    <p>
+                        {!! empty($konten->sambutan) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $konten->sambutan !!}
+                    </p>
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- Title -->
-    <!-- Description & Other -->
-    <div class="lg:row-span-2 col-span-2 -mt-20">
-        <div class="card w-full">
-            <div class="card-body overflow-y-auto h-52 py-5">
-                <p>
-                    {!! empty($konten->sambutan) ? '
-                <p class="text-red-500 italic">$NULL</p>' : $konten->sambutan !!}
-                </p>
-            </div>
-            <div class="card-actions justify-start items-start mx-5 mt-7">
+            <div class="card-actions justify-center items-center">
                 <a class="btn bg-blue-400 w-48 h-10 rounded-sm border-none text-white mt-auto hover:text-blue-400"
                     href="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}">
                     Lebih Lanjut
@@ -48,43 +37,42 @@
             </div>
         </div>
     </div>
-    <!-- Description & Other -->
+    <!-- Kata Sambutan -->
 </div>
 <!-- First Content -->
 
 <!-- Second Content -->
-<div class="divider mt-20 mb-10">
-    <p class="font-bold text-2xl">PROFILE SEKOLAH</p>
+<div class="divider smartphone:mt-10 tablet:mt-20 laptop:-mt-[40rem] tablet:mb-10">
+    <p class="font-bold smartphone:text-lg tablet:text-2xl">PROFIL SEKOLAH</p>
 </div>
 <div
-    class="grid grid-rows-1 desktop:grid-flow-col smartphone:grid-cols-2 desktop:grid-cols-5 lg:gap-4 w-full mx-auto md:bg-slate-100 my-10">
+    class="grid grid-rows-1 desktop:grid-flow-col desktop:grid-cols-5 laptop:gap-4 w-full mx-auto md:bg-slate-100 smartphone:-mt-7 tablet:my-10 justify-center items-center">
     <!-- School Profile -->
-    <div class="desktop:row-span-1 col-span-2 py-8 px-12 h-max ">
-
-        <div class="card w-full rounded-sm my-24 desktop:my-48 mx-auto lg:mx-10 desktop:border-r-2 border-gray-400">
+    <div class="desktop:row-span-1 tablet:col-span-2 py-8 px-12 h-max">
+        <div
+            class="card smartphone:w-72 tablet:w-full rounded-sm desktop:my-48 tablet:mx-auto lg:mx-10 desktop:border-r-2 border-gray-400">
             <div class="card-body">
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
-                <p class="overflow-y-auto h-32">
+                <p class="overflow-y-auto smartphone:h-44 tablet:h-32">
                     {!! empty($konten->teks_profile) ? '
                 <p class="text-red-500 italic">$NULL</p>' : $konten->teks_profile !!}
                 </p>
                 <div class="card-actions justify-center md:justify-start">
                     <a href="/guest/profile">
                         <button
-                            class="btn bg-blue-400 mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">Lebih
+                            class="btn bg-blue-400 mx-auto md:mx-0 smartphone:w-full md:w-48 h-10 rounded-sm border-none text-white tablet:mt-8 hover:text-blue-400">Lebih
                             Lanjut</button>
                     </a>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- School Profile -->
 
     <div
-        class="tablet:col-span-3 grid smartphone:grid-cols-1 tablet:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 desktop:gap-y-0 -mt-16 desktop:-mt-0">
+        class="tablet:col-span-3 grid smartphone:grid-cols-1 smartphone:justify-center smartphone:items-center tablet:grid-cols-2 grid-rows-1 py-20 px-10 gap-y-5 smartphone:-mt-32 tablet:-mt-16 desktop:-mt-0">
 
-        <div class="col-span-1">
+        <div class="col-span-1 smartphone:mx-auto tablet:mx-0">
             <!-- Facility School -->
             <a href="/guest/sarana-prasarana">
                 <div
@@ -109,7 +97,7 @@
             <!-- Facility School -->
         </div>
 
-        <div class="col-span-1">
+        <div class="col-span-1 smartphone:mx-auto tablet:mx-0">
             <!-- School Location -->
             <a href="/guest/media-sosial">
                 <div
@@ -134,7 +122,7 @@
             <!-- School Location -->
         </div>
 
-        <div class="col-span-1">
+        <div class="col-span-1 smartphone:mx-auto tablet:mx-0">
             <!-- School History -->
             <a href="/guest/profile">
                 <div
@@ -159,7 +147,7 @@
             <!-- School History -->
         </div>
 
-        <div class="col-span-1">
+        <div class="col-span-1 smartphone:mx-auto tablet:mx-0">
             <!-- School Achievement -->
             <a href="/guest/prestasi-siswa">
                 <div
@@ -189,40 +177,42 @@
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="divider mt-20 mb-10">
-    <p class="font-bold text-2xl">BERITA SEKOLAH</p>
+<div class="divider smartphone:-mt-10 smartphone:mb-10 tablet:mt-20 tablet:mb-10">
+    <p class="font-bold smartphone:text-lg tablet:text-2xl">BERITA SEKOLAH</p>
 </div>
-<div class="grid md:grid-rows-3 smartphone:grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-6">
-    {{-- <div class="smartphone:col-span-1 md:col-span-2">
-        <h1 class="font-bold text-xl text-center">Berita Dan Agenda</h1>
-    </div> --}}
+<div class="grid md:grid-rows-3 smartphone:grid-cols-1 laptop:grid-cols-2 laptop:grid-flow-col gap-6">
     @foreach ($berita as $brt)
-    <div class="smartphone:col-span-1 md:mx-auto">
-        <div class="card card-side bg-base-100 shadow-xl w-[35rem] h-32 lg:h-60">
+    <div class="smartphone:col-span-1 tablet:mx-auto">
+        <div
+            class="card card-side bg-base-100 shadow-xl smartphone:w-full tablet:w-[35rem] smartphone:h-40 tablet:h-32 lg:h-60">
             <figure class="h-full overflow-hidden">
-                <img class="object-cover w-72 h-full" src="{{ asset('storage/'.$brt->gambar_headline) }}"
-                    alt="Nama Gambar">
+                <img class="object-cover smartphone:w-64 laptop:w-72 h-full"
+                    src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar">
             </figure>
-            <div class="card-body w-60 lg:w-full">
-                <h2 class="text-xl font-bold -mt-5 lg:-mt-0 truncate w-72 h-16">
+            <div class="card-body laptop:w-60">
+                <h2
+                    class="smartphone:text-sm tablet:text-xl font-bold smartphone:-mt-16 tablet:-mt-5 lg:-mt-0 truncate smartphone:w-32 smartphone:py-10 tablet:py-0 tablet:w-72 laptop:w-52 h-16">
                     {{ $brt->judul_berita }}
                 </h2>
-                <div class="h-[8rem] overflow-y-hidden">
-                    <p class="w-28 py-5 -my-3 lg:py-0 lg:-my-0 lg:w-72">
+                <div
+                    class="smartphone:h-[3.75rem] smartphone:w-20 tablet:w-60 smartphone:-mt-7 tablet:-mt-2 laptop:h-[8rem] overflow-y-hidden">
+                    <p
+                        class="smartphone:w-28 tablet:w-52 py-5 -my-3 laptop:py-0 laptop:-my-0 laptop:w-52 smartphone:truncate tablet:truncate laptop:not-truncate">
                         {!! $brt->isi_berita !!}
                     </p>
                 </div>
-                <div class="card-actions justify-end">
+
+                <div class="card-actions justify-end smartphone:h-5">
                     <a class="btn btn-ghost" href="/guest/berita-template/{{ $brt->id_berita }}">
-                        <i class="fas fa-arrow-right text-lg"></i>
+                        <i class="fas fa-arrow-right smartphone:text-sm tablet:text-lg laptop:text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
-
 </div>
+
 <div class="flex justify-center mx-auto w-full">
     <a href="/guest/berita">
         <button
@@ -233,23 +223,24 @@
 <!-- Third Content -->
 
 <!-- Fourth Content -->
-<div class="divider mt-20">
-    <p class="font-bold text-2xl">ALBUM SEKOLAH</p>
+@if($album->isNotEmpty())
+<div class="divider smartphone:mt-10 tablet:mt-20 tablet:mb-10">
+    <p class="font-bold smartphone:text-lg tablet:text-2xl">ALBUM SEKOLAH</p>
 </div>
-<div class="grid gap-5 lg:grid-rows-2 grid-cols-2 lg:grid-cols-3 lg:grid-flow-row">
-
-
-    <div class="relative w-[75rem] overflow-hidden">
+<div
+    class="grid gap-5 laptop:grid-rows-2 tablet:grid-cols-2 laptop:grid-flow-row smartphone:mb-60 justify-center items-center">
+    <div
+        class="relative smartphone:w-screen laptop:w-[75rem] tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center">
         <div class="flex transition-transform duration-500" id="slider">
-            @if($album->isNotEmpty())
             @foreach ($album->chunk(4) as $chunk)
-            <div class="w-full grid grid-cols-4 justify-center items-center p-10" style="min-width: 100%;">
+            <div
+                class="smartphone:w-screen grid smartphone:grid-cols-1 smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
                 @foreach ($chunk as $abm)
-                <div class="">
-                    <div class="card md:mx-auto rounded-b-xl w-64 h-72 bg-cover"
+                <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
+                    <div class="card smartphone:mx-auto rounded-b-xl smartphone:w-64 h-72 bg-cover"
                         style="background-image: url('{{ asset('storage/' . $abm->gambar_album) }}');">
                         <div
-                            class=" bg-teal-50/70 rounded-none rounded-b-xl py-3 translate-y-[12.4rem] lg:py-3 lg:translate-y-[10.4rem]">
+                            class="bg-teal-50/70 rounded-none rounded-b-xl py-3 smartphone:translate-y-[10.4rem]  lg:py-3 lg:translate-y-[10.4rem]">
                             <h2 class="card-title px-5 text-black/80">
                                 <p class="truncate w-80">{{ $abm->nama_album }}</p>
                             </h2>
@@ -267,27 +258,27 @@
                 @endforeach
             </div>
             @endforeach
-            @endif
         </div>
         <button
-            class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform p-2 flex justify-center items-center"
+            class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute left-3 top-1/2 transform p-2 flex justify-center items-center"
             onclick="prevSlide()">
             <i class="fas fa-angle-left text-white"></i>
         </button>
         <button
-            class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform p-2 flex justify-center items-center"
+            class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute right-3 top-1/2 transform p-2 flex justify-center items-center"
             onclick="nextSlide()">
             <i class="fas fa-angle-right text-white"></i>
         </button>
     </div>
 </div>
-<div class="flex justify-center items-center -mt-[27rem] mb-28 mx-auto w-full">
+<div class="flex justify-center items-center smartphone:-mt-64 laptop:-mt-[40rem] mb-28 mx-auto w-full">
     <a href="/guest/galeri-foto">
         <button
             class="btn bg-blue-400 mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">Lainnya
         </button>
     </a>
 </div>
+@endif
 <!-- Fourth Content -->
 
 

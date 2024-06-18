@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('Main')
-<h2 class="text-2xl font-bold mb-8 text-center divider">SARANA PRASARANA</h2>
+<h2 class="smartphone:text-lg tablet:text-2xl font-bold mb-8 text-center divider">SARANA PRASARANA</h2>
 <div class="mt-10">
     @foreach ($prasaranas as $prasarana)
     <div class="collapse collapse-arrow border bg-base-100 mb-5">
         <input type="checkbox" />
-        <div class="collapse-title text-xl font-medium">
+        <div class="collapse-title smartphone:text-lg tablet:text-xl font-medium">
             {{ $prasarana->nama_prasarana }}
         </div>
         <div class="collapse-content w-full">
