@@ -51,7 +51,6 @@
 </head>
 
 <body class="font-poppins">
-
     <!-- Navbar -->
     <div class="navbar bg-transparent backdrop-blur  text-slate-300 fixed top-0 z-[999]" id="navbar">
         <div class="navbar-start lg:hidden">

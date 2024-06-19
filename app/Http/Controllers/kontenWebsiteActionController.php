@@ -8,14 +8,16 @@ use Illuminate\Support\Facades\Storage;
 
 class kontenWebsiteActionController extends Controller
 {
-    public function __construct(){
-        if(KontenWebsite::count() === 0) {
+    public function __construct()
+    {
+        if (KontenWebsite::count() === 0) {
             $konten = new KontenWebsite;
             $konten->save();
         }
     }
 
-    public function index(){
+    public function index()
+    {
         $konten = KontenWebsite::first();
         return view('admin/profile', [
             "konten" => $konten,
@@ -23,9 +25,10 @@ class kontenWebsiteActionController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id, $field){
+    public function update(Request $request, $id, $field)
+    {
         $konten = KontenWebsite::findOrFail($id);
-        
+
         $validateRules = [
             'nama_sekolah' => 'required|string|max:255',
             'logo_sekolah' => 'required|image|mimes:jpeg,png,jpg|max:2048',
@@ -59,13 +62,13 @@ class kontenWebsiteActionController extends Controller
             'teks_sejarah' => 'required',
             'teks_prestasi' => 'required',
         ];
-    
+
         $validate = $request->validate([
             $field => $validateRules[$field],
         ]);
-    
-        if($request->hasFile($field)){
-            if($konten->$field){
+
+        if ($request->hasFile($field)) {
+            if ($konten->$field) {
                 Storage::disk('public')->delete($konten->$field);
             }
             $validate[$field] = $request->file($field)->store('image/KontenWebsite', 'public');
@@ -75,13 +78,12 @@ class kontenWebsiteActionController extends Controller
             $videoId = $this->getYouTubeVideoId($request->$field);
             $validate[$field] = "https://www.youtube.com/embed/{$videoId}";
         }
-    
+
         $status = $konten->fill($validate)->save();
-        
-        if($status){
+
+        if ($status) {
             return redirect()->back()->with('success', 'Konten berhasil diubah!');
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Konten gagal diubah!');
         }
     }

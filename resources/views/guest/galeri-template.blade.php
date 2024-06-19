@@ -4,7 +4,9 @@
 
 <div class="flex flex-col w-full border-opacity-50 mb-10">
     @foreach($albums as $album)
-    <div class="divider smartphone:text-lg tablet:text-2xl font-bold">{{ $album->nama_album }}</div>
+    <div class="tablet:divider smartphone:text-center smartphone:text-lg tablet:text-2xl font-bold">
+        {{ $album->nama_album }}
+    </div>
     <p class="my-5 text-center mx-auto">{{ $album->deskripsi_album }}</p>
     @endforeach
 </div>

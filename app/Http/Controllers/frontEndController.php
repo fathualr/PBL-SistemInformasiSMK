@@ -7,6 +7,9 @@ use App\Models\Berita;
 use App\Models\Album;
 use App\Models\ProgramKeahlian;
 use App\Models\MediaSosial;
+use App\Models\DirektoriPegawai;
+use App\Models\DirektoriGuru;
+use App\Models\DirektoriSiswa;
 
 class FrontEndController extends Controller
 {
@@ -27,9 +30,14 @@ class FrontEndController extends Controller
     {
         $programKeahlian = ProgramKeahlian::inRandomOrder()->get();
         $medsos = MediaSosial::first();
+        $totalGuru = DirektoriGuru::count();
+        $totalPegawai = DirektoriPegawai::count();
+        $totalSiswa = DirektoriSiswa::count();
         return view('guest/profile', [
             "programKeahlian" => $programKeahlian,
             "medsos" => $medsos,
+            "totalStaff" => $totalGuru + $totalPegawai,
+            "totalSiswa" => $totalSiswa,
             "title" => "Profile"
         ]);
     }
