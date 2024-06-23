@@ -3,14 +3,17 @@
 @section('Main')
 
 <!-- First Content -->
-<div class="divider smartphone:mt-10 tablet:mt-20 mb-10">
+@if(is_null($konten))
+@else
+<div class=" divider smartphone:mt-10 tablet:mt-20 mb-10">
     <p class="font-bold smartphone:text-lg tablet:text-2xl">KATA SAMBUTAN</p>
 </div>
-<div class="grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
+<div class=" grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
     <div class=" lg:row-span-3 col-span-2 mx-auto lg:mx-0">
         <div class="aspect-w-16 aspect-h-9">
             <iframe class="w-full h-full lg:h-96"
-                src="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}"></iframe>
+                src="{!! empty($konten->tautan_video_sambutan) ? 'https://www.youtube.com/' : $konten->tautan_video_sambutan !!}"
+                loading="lazy"></iframe>
         </div>
     </div>
     <!-- Kata Sambutan -->
@@ -48,7 +51,7 @@
 <div
     class="grid grid-rows-1 desktop:grid-flow-col desktop:grid-cols-5 laptop:gap-4 w-full mx-auto md:bg-slate-100 smartphone:-mt-7 tablet:my-10 justify-center items-center">
     <!-- School Profile -->
-    <div class="desktop:row-span-1 tablet:col-span-2 py-8 px-12 h-max">
+    <div class=" desktop:row-span-1 tablet:col-span-2 py-8 px-12 h-max">
         <div
             class="card smartphone:w-72 tablet:w-full rounded-sm desktop:my-48 tablet:mx-auto lg:mx-10 desktop:border-r-2 border-gray-400">
             <div class="card-body">
@@ -81,7 +84,7 @@
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
                                 <img src="{{ asset('assetIcon/Group 30.svg') }}" alt="Fasilitas"
-                                    class="object-contain rounded-full w-5 h-5" />
+                                    class="object-contain rounded-full w-5 h-5" loading="lazy" />
                             </div>
                         </div>
                     </figure>
@@ -106,7 +109,7 @@
                         <div class="avatar rounded-full">
                             <div class="size-20 p-5 shadow-md rounded-full">
                                 <img src="{{ asset('assetIcon/Group 31.svg') }}" alt="Lokasi"
-                                    class="rounded-full size-5" />
+                                    class="rounded-full size-5" loading="lazy" />
                             </div>
                         </div>
                     </figure>
@@ -122,7 +125,7 @@
             <!-- School Location -->
         </div>
 
-        <div class="col-span-1 smartphone:mx-auto tablet:mx-0">
+        <div class=" col-span-1 smartphone:mx-auto tablet:mx-0">
             <!-- School History -->
             <a href="/guest/profile">
                 <div
@@ -131,7 +134,7 @@
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
                                 <img src="{{ asset('assetIcon/Group 32.svg') }}" alt="Sejarah"
-                                    class="object-cover rounded-full w-5 h-5" />
+                                    class="object-cover rounded-full w-5 h-5" loading="lazy" />
                             </div>
                         </div>
                     </figure>
@@ -147,7 +150,7 @@
             <!-- School History -->
         </div>
 
-        <div class="col-span-1 smartphone:mx-auto tablet:mx-0">
+        <div class=" col-span-1 smartphone:mx-auto tablet:mx-0">
             <!-- School Achievement -->
             <a href="/guest/prestasi-siswa">
                 <div
@@ -156,7 +159,7 @@
                         <div class="avatar rounded-full shadow-md">
                             <div class="size-20 p-5  rounded-full">
                                 <img src="{{ asset('assetIcon/Group 33.svg') }}" alt="Prestasi"
-                                    class="object-cover rounded-full w-5 h-5" />
+                                    class="object-cover rounded-full w-5 h-5" loading="lazy" />
                             </div>
                         </div>
                     </figure>
@@ -174,20 +177,22 @@
 
     </div>
 </div>
+@endif
 <!-- Second Content -->
 
 <!-- Third Content -->
-<div class="divider smartphone:-mt-10 smartphone:mb-10 tablet:mt-20 tablet:mb-10">
+@if($berita->isNotEmpty())
+<div class=" divider smartphone:-mt-10 smartphone:mb-10 tablet:mt-20 tablet:mb-10" loading="lazy">
     <p class="font-bold smartphone:text-lg tablet:text-2xl">BERITA SEKOLAH</p>
 </div>
-<div class="grid md:grid-rows-3 smartphone:grid-cols-1 laptop:grid-cols-2 laptop:grid-flow-col gap-6">
+<div class=" grid md:grid-rows-3 smartphone:grid-cols-1 laptop:grid-cols-2 laptop:grid-flow-col gap-6" loading="lazy">
     @foreach ($berita as $brt)
-    <div class="smartphone:col-span-1 tablet:mx-auto">
+    <div class=" smartphone:col-span-1 tablet:mx-auto">
         <div
             class="card card-side bg-base-100 shadow-xl smartphone:w-full tablet:w-[35rem] smartphone:h-40 tablet:h-32 lg:h-60">
             <figure class="h-full overflow-hidden">
                 <img class="object-cover smartphone:w-64 laptop:w-72 h-full"
-                    src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar">
+                    src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar" loading="lazy">
             </figure>
             <div class="card-body laptop:w-60">
                 <h2
@@ -220,24 +225,25 @@
         </button>
     </a>
 </div>
+@endif
 <!-- Third Content -->
 
 <!-- Fourth Content -->
 @if($album->isNotEmpty())
-<div class="divider smartphone:mt-10 tablet:mt-20 tablet:mb-10">
+<div class=" divider smartphone:mt-10 tablet:mt-20 tablet:mb-10" loading="lazy">
     <p class="font-bold smartphone:text-lg tablet:text-2xl">ALBUM SEKOLAH</p>
 </div>
-<div
-    class="grid gap-5 laptop:grid-rows-2 tablet:grid-cols-2 laptop:grid-flow-row smartphone:mb-60 justify-center items-center">
+<div class="grid gap-5 laptop:grid-rows-2 tablet:grid-cols-2 laptop:grid-flow-row smartphone:mb-60 justify-center items-center"
+    loading="lazy">
     <div
         class="relative smartphone:w-screen laptop:w-[75rem] tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center">
         <div class="flex transition-transform duration-500" id="slider">
             @foreach ($album->chunk(4) as $chunk)
             <div
-                class="smartphone:w-screen grid smartphone:grid-cols-1 smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
+                class=" smartphone:w-screen grid smartphone:grid-cols-1 smartphone:auto-cols-max smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
                 @foreach ($chunk as $abm)
                 <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
-                    <div class="card smartphone:mx-auto rounded-b-xl smartphone:w-64 h-72 bg-cover"
+                    <div class="lazy-bg card smartphone:mx-auto rounded-b-xl smartphone:w-64 h-72 bg-cover"
                         style="background-image: url('{{ asset('storage/' . $abm->gambar_album) }}');">
                         <div
                             class="bg-teal-50/70 rounded-none rounded-b-xl py-3 smartphone:translate-y-[10.4rem]  lg:py-3 lg:translate-y-[10.4rem]">
@@ -249,7 +255,7 @@
                                 <a href="/guest/galeri-template/{{ $abm->id_album }}"
                                     class="btn bg-transparent hover:bg-transparent border-none">
                                     <img src="{{ asset('assetIcon/Arrow-Foto.svg') }}"
-                                        class="object-cover rounded-full w-8 h-8 mt-3" />
+                                        class="object-cover rounded-full w-8 h-8 mt-3 brightness-50" loading="lazy" />
                                 </a>
                             </div>
                         </div>

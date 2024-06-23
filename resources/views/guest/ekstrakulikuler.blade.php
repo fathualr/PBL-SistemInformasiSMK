@@ -6,11 +6,13 @@
     <p class="font-bold smartphone:text-lg tablet:text-2xl">EKSTRAKULIKULER</p>
 </div>
 
+@if($ekstrakulikuler->isNotEmpty())
 <div class="flex smartphone:justify-center tablet:justify-end">
     <form action="{{ route('guest.ekstrakulikuler.index') }}" method="GET">
         <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
             <i class="fas fa-magnifying-glass"></i>
-            <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari Ekstrakulikuler" />
+            <input type="text" class="grow" name="search" value="{{ request()->get('search') }}"
+                placeholder="Cari Ekstrakulikuler" />
         </label>
     </form>
 </div>
@@ -19,11 +21,14 @@
     @foreach ($ekstrakulikuler as $ekskul )
     <div class="mx-auto mt-6">
         <a href="/guest/ekstrakulikuler-template/{{ $ekskul->id_ekstrakurikuler }}">
-            <div class="card card-compact mx-auto smartphone:w-10/12 tablet:w-11/12 bg-base-100 shadow-xl transition-all duration-300 hover:scale-110">
+            <div
+                class="card card-compact mx-auto smartphone:w-10/12 tablet:w-11/12 bg-base-100 shadow-xl transition-all duration-300 hover:scale-110">
                 <figure class="">
-                    <img src="{{ asset('storage/'. $ekskul->gambar_profil_ekstrakurikuler) }}" class="h-64 w-96" alt="Shoes" />
+                    <img src="{{ asset('storage/'. $ekskul->gambar_profil_ekstrakurikuler) }}" class="h-64 w-96"
+                        alt="Shoes" />
                 </figure>
-                <div class="px-2 absolute smartphone:bottom-28 tablet:bottom-24 bg-teal-50/70 w-full h-12 flex items-center">
+                <div
+                    class="px-2 absolute smartphone:bottom-28 tablet:bottom-24 bg-teal-50/70 w-full h-12 flex items-center">
                     <p class="font-bold text-black">{{ $ekskul->nama_ekstrakurikuler }}</p>
                 </div>
                 <div class="card-body">
@@ -67,6 +72,6 @@
     <button class="join-item btn disabled">»</button>
     @endif
 </div>
-
+@endif
 
 @endsection

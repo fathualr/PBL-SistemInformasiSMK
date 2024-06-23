@@ -186,7 +186,7 @@ class prestasiSiswaController extends Controller
             'gambar' => $image->store('image/Prestasi', 'public'),
         ]);
         if ($status) {
-            return redirect()->back()->with('success', 'Gambar prestasu berhasil ditambahkan.');
+            return redirect()->back()->with('success', 'Gambar prestasi berhasil ditambahkan.');
         } else {
             return redirect()->back()->with('error', 'Gambar prestasi gagal ditambahkan.');
         }

@@ -5,6 +5,7 @@
     <p class="font-bold text-lg md:text-2xl">BERITA</p>
 </div>
 
+@if($berita->isNotEmpty())
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mx-5 tablet:mt-5 laptop:mt-0">
     <div class="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6 flex flex-wrap justify-between items-center">
         <div class="dropdown dropdown-hover w-full md:w-auto">
@@ -14,13 +15,15 @@
             </div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full md:w-auto">
                 <li>
-                    <a href="{{ route('berita.show', array_merge(request()->query(), ['nama_kategori' => null])) }}" class="font-bold">
+                    <a href="{{ route('berita.show', array_merge(request()->query(), ['nama_kategori' => null])) }}"
+                        class="font-bold">
                         Tampilkan Semua
                     </a>
                 </li>
                 @foreach ($kategoriBerita as $kategori)
                 <li>
-                    <a href="{{ route('berita.show', array_merge(request()->query(), ['nama_kategori' => $kategori->nama_kategori])) }}">
+                    <a
+                        href="{{ route('berita.show', array_merge(request()->query(), ['nama_kategori' => $kategori->nama_kategori])) }}">
                         {{ $kategori->nama_kategori }}
                     </a>
                 </li>
@@ -30,18 +33,25 @@
 
         <div class="flex flex-wrap items-center mt-4 md:mt-0 space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
             <div class="relative flex w-full md:w-auto">
-                <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300 w-full md:w-auto">
-                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 6])) }}" {{ request()->get('perPage') == 6 ? 'selected' : '' }}>6</option>
-                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 12])) }}" {{ request()->get('perPage') == 12 ? 'selected' : '' }}>12</option>
-                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 18])) }}" {{ request()->get('perPage') == 18 ? 'selected' : '' }}>18</option>
-                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 24])) }}" {{ request()->get('perPage') == 24 ? 'selected' : '' }}>24</option>
-                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 30])) }}" {{ request()->get('perPage') == 30 ? 'selected' : '' }}>30</option>
+                <select onchange="window.location.href=this.value"
+                    class="select border-b-2 border-base-300 w-full md:w-auto">
+                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 6])) }}"
+                        {{ request()->get('perPage') == 6 ? 'selected' : '' }}>6</option>
+                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 12])) }}"
+                        {{ request()->get('perPage') == 12 ? 'selected' : '' }}>12</option>
+                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 18])) }}"
+                        {{ request()->get('perPage') == 18 ? 'selected' : '' }}>18</option>
+                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 24])) }}"
+                        {{ request()->get('perPage') == 24 ? 'selected' : '' }}>24</option>
+                    <option value="{{ route('berita.show', array_merge(request()->query(), ['perPage' => 30])) }}"
+                        {{ request()->get('perPage') == 30 ? 'selected' : '' }}>30</option>
                 </select>
             </div>
             <form action="{{ route('berita.show') }}" method="GET" class="w-full md:w-auto">
                 <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
                     <i class="fas fa-magnifying-glass"></i>
-                    <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
+                    <input type="text" class="grow" name="search" value="{{ request()->get('search') }}"
+                        placeholder="Cari" />
                 </label>
             </form>
         </div>
@@ -87,5 +97,6 @@
     <button class="join-item btn disabled">»</button>
     @endif
 </div>
+@endif
 
 @endsection

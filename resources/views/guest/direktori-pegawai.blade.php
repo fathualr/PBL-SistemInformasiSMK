@@ -6,6 +6,7 @@
     <p class="font-bold text-lg md:text-2xl">DIREKTORI PEGAWAI</p>
 </div>
 
+@if($direktoriPegawai->isNotEmpty())
 <div class="flex smartphone:justify-center tablet:justify-end">
     <div class="relative flex mr-2">
         <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300">
@@ -183,5 +184,6 @@
     <button class="join-item btn disabled">»</button>
     @endif
 </div>
+@endif
 
 @endsection

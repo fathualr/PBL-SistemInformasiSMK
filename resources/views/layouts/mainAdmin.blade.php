@@ -37,9 +37,82 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    z-index: 1000;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#3b82f6 50px, transparent 0),
+        linear-gradient(#3b82f6 50px, transparent 0),
+        linear-gradient(#3b82f6 50px, transparent 0),
+        linear-gradient(#3b82f6 50px, transparent 0),
+        linear-gradient(#3b82f6 50px, transparent 0),
+        linear-gradient(#3b82f6 50px, transparent 0);
+    background-position: 0px center, 15px center, 30px center, 45px center, 60px center, 75px center, 90px center;
+    animation: rikSpikeRoll 0.65s linear infinite alternate;
+}
+
+@keyframes rikSpikeRoll {
+    0% {
+        background-size: 10px 3px;
+    }
+
+    16% {
+        background-size: 10px 50px, 10px 3px, 10px 3px, 10px 3px, 10px 3px, 10px 3px
+    }
+
+    33% {
+        background-size: 10px 30px, 10px 50px, 10px 3px, 10px 3px, 10px 3px, 10px 3px
+    }
+
+    50% {
+        background-size: 10px 10px, 10px 30px, 10px 50px, 10px 3px, 10px 3px, 10px 3px
+    }
+
+    66% {
+        background-size: 10px 3px, 10px 10px, 10px 30px, 10px 50px, 10px 3px, 10px 3px
+    }
+
+    83% {
+        background-size: 10px 3px, 10px 3px, 10px 10px, 10px 30px, 10px 50px, 10px 3px
+    }
+
+    100% {
+        background-size: 10px 3px, 10px 3px, 10px 3px, 10px 10px, 10px 30px, 10px 50px
+    }
+}
+
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Hide loader after page load */
+body.loaded .loader-wrapper {
+    display: none;
+}
 </style>
 
 <body class="font-poppins">
+    <!-- Loader -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+    <!-- Loader -->
 
     <!-- Navbar -->
     <div class="flex h-max">
@@ -493,6 +566,7 @@ input[type=number] {
         @include('script.actionButton')
         @include('script.editor')
         @include('script.duplicateInput')
+        @include('script.loader')
 </body>
 
 </html>

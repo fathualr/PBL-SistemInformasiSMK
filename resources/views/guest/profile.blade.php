@@ -2,9 +2,12 @@
 
 @section('Main')
 
-<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider">SEJARAH SEKOLAH</h1>
+@if(is_null($konten))
+@else
+<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider" loading="lazy">SEJARAH SEKOLAH</h1>
 
-<div class="grid tablet:grid-rows-3 smartphone:grid-cols-1 tablet:grid-cols-4 grid-flow-col tablet:gap-4">
+<div class="grid tablet:grid-rows-3 smartphone:grid-cols-1 tablet:grid-cols-4 grid-flow-col tablet:gap-4"
+    loading="lazy">
     <div
         class="smartphone:w-72 smartphone:translate-x-5 smartphone:text-center tablet:text-start tablet:col-span-2 laptop:translate-x-0 laptop:w-96">
         <h1 class="font-bold smartphone:text-lg tablet:text-2xl">
@@ -34,9 +37,6 @@
         </div>
     </div>
 </div>
-
-<!-- <h1 class="font-bold text-sm tablet:text-xl text-center my-12 divider">{!! empty($konten->nama_sekolah) ? '<p
-        class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}</h1> -->
 
 <div class="grid smartphone:mt-10 tablet:grid-cols-3 laptop:grid-cols-6 tablet:gap-4">
 
@@ -344,6 +344,7 @@
         src="{{ asset('storage/'.$konten->struktur_organisasi_sekolah) }}" alt="struktur_organisasi_sekolah">
     @endif
 </div>
+@endif
 
 @if($programKeahlian->isNotEmpty())
 <h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center mt-12 divider">KOMPETENSI KEAHLIAN</h1>
