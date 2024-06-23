@@ -244,20 +244,21 @@
                 <figure class="px-5 pt-5 mx-auto">
                     <div class="avatar rounded-full bg-white">
                         <div class="size-20 p-5 shadow-md rounded-full">
-                            <img src="{{ asset('assetIcon/Group 194.svg') }}" alt="Lokasi"
-                                class="rounded-full size-5" />
+                            <img src="{{ asset('assetIcon/users.svg') }}" alt="Lokasi" class="rounded-full size-5" />
                         </div>
                     </div>
                 </figure>
                 <div class="card-body text-center">
                     <h2 class="text-md mx-auto mb-3 font-bold">Jumlah Staff</h2>
                     <p class="">
-                        $count::Pegawai
+                        {!! empty($totalStaff) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $totalStaff !!}
                     </p>
 
                     <h2 class="text-md mx-auto mb-3 font-bold">Jumlah Siswa</h2>
                     <p class="">
-                        $count::Siswa
+                        {!! empty($totalSiswa) ? '
+                    <p class="text-red-500 italic">$NULL</p>' : $totalSiswa !!}
                     </p>
                 </div>
             </div>

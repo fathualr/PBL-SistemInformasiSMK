@@ -15,7 +15,7 @@
     </form>
 </div>
 
-<div class="grid tablet:grid-cols-3 gap-4 grid-flow-row my-10">
+<div class="grid tablet:grid-cols-2 laptop:grid-cols-3 gap-4 grid-flow-row my-10">
     @foreach ($ekstrakulikuler as $ekskul )
     <div class="mx-auto mt-6">
         <a href="/guest/ekstrakulikuler-template/{{ $ekskul->id_ekstrakurikuler }}">
@@ -37,7 +37,7 @@
                             <td class="font-bold">Tempat</td>
                             <td>:</td>
                             <td class="w-64">
-                                <p class="truncate smartphone:w-32 tablet:w-56">{{ $ekskul->tempat_ekstrakurikuler }}
+                                <p class="truncate smartphone:w-32 tablet:w-40">{{ $ekskul->tempat_ekstrakurikuler }}
                                 </p>
                             </td>
                         </tr>

@@ -7,11 +7,14 @@
 
     @forelse($programKeahlian as $program)
     <div class="mx-auto">
-        <div class="card card-compact smartphone:w-72 laptop:w-64 h-80 shadow-xl transition-all duration-200 hover:scale-105">
+        <div
+            class="card card-compact smartphone:w-72 laptop:w-64 h-80 shadow-xl transition-all duration-200 hover:scale-105">
             <figure>
-                <img src="{{ asset('storage/' . $program->logo_program) }}" class="h-28 w-full object-cover blur-sm" alt="Shoes" />
+                <img src="{{ asset('storage/' . $program->logo_program) }}" class="h-28 w-full object-cover blur-sm"
+                    alt="Shoes" />
             </figure>
-            <div class="avatar absolute mx-auto h-28 translate-x-[4.5rem] translate-y-7">
+            <div
+                class="avatar absolute mx-auto h-28 smartphone:translate-x-[5.5rem] laptop:translate-x-[4.5rem] translate-y-7">
                 <div class="w-28 h-28 rounded-full">
                     <img src="{{ asset('storage/'.$program->logo_program) }}" />
                 </div>

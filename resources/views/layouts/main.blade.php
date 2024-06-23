@@ -51,7 +51,6 @@
 </head>
 
 <body class="font-poppins">
-
     <!-- Navbar -->
     <div class="navbar bg-transparent backdrop-blur  text-slate-300 fixed top-0 z-[999]" id="navbar">
         <div class="navbar-start lg:hidden">
@@ -61,21 +60,30 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content text-black mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li class="@if($title == 'Beranda') bg-celadon rounded-md @endif"><a href="/">Beranda</a></li>
-                    <li class="@if($title == 'Profile') bg-celadon rounded-md @endif"><a href="/guest/profile">Profile
-                            Sekolah</a></li>
+                    <li class="@if($title == 'Beranda') bg-blue-400 text-white rounded-md @endif"><a
+                            href="/">Beranda</a></li>
+                    <li
+                        class="@if($title == 'Profile' || $title == 'Sejarah') bg-blue-400 text-white rounded-md @endif">
+                        <a href="/guest/profile">Profile
+                            Sekolah</a>
+                    </li>
                     <li>
-                    <li class="@if($title == 'Program Keahlian') bg-celadon rounded-md @endif"><a
-                            href="/guest/program-keahlian">
-                            Program Keahlian</a></li>
+                    <li
+                        class="@if($title == 'Program Keahlian' || $title == 'Detail Program Keahlian') bg-blue-400 text-white rounded-md @endif">
+                        <a href="/guest/program-keahlian">
+                            Program Keahlian</a>
+                    </li>
                     <li>
                         <details>
-                            <summary>PPDB</summary>
+                            <summary
+                                class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'PPDB' || $title == 'Pengumuman PPDB') bg-blue-400 text-white rounded-md @endif">
+                                PPDB</summary>
                             <ul class="p-2">
-                                <li class="text-black @if($title == 'PPDB') bg-celadon rounded-md @endif">
+                                <li class="text-black @if($title == 'PPDB') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/ppdb">Pendaftaran</a>
                                 </li>
-                                <li class="text-black @if($title == 'Pengumuman PPDB') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-black @if($title == 'Pengumuman PPDB') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/pengumuman-ppdb">Pengumuman</a>
                                 </li>
                             </ul>
@@ -83,18 +91,24 @@
                     </li>
                     <li>
                         <details>
-                            <summary>Direktori</summary>
+                            <summary
+                                class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Direktori Guru' || $title == 'Direktori Pegawai' || $title == 'Direktori Siswa' || $title == 'Direktori Alumni') bg-blue-400 text-white rounded-md @endif">
+                                Direktori</summary>
                             <ul class="">
-                                <li class="text-black @if($title == 'Direktori Guru') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-black @if($title == 'Direktori Guru') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/direktori-guru">Guru</a>
                                 </li>
-                                <li class="text-black @if($title == 'Direktori Pegawai') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-black @if($title == 'Direktori Pegawai') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/direktori-pegawai">Pegawai</a>
                                 </li>
-                                <li class="text-black @if($title == 'Direktori Siswa') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-black @if($title == 'Direktori Siswa') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/direktori-siswa">Siswa</a>
                                 </li>
-                                <li class="text-black @if($title == 'Direktori Alumni') bg-celadon rounded-md @endif">
+                                <li
+                                    class="text-black @if($title == 'Direktori Alumni') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/direktori-alumni">Alumni</a>
                                 </li>
                             </ul>
@@ -102,28 +116,38 @@
                     </li>
                     <li>
                         <details>
-                            <summary>Galeri</summary>
+                            <summary
+                                class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Galeri Foto' || $title == 'Galeri Video') bg-blue-400 text-white rounded-md @endif">
+                                Galeri</summary>
                             <ul class="p-2">
-                                <li class="text-black @if($title == 'Galeri Foto') bg-celadon rounded-md @endif"><a
-                                        href="/guest/galeri-foto">Foto</a></li>
-                                <li class="text-black @if($title == 'Galeri Video') bg-celadon rounded-md @endif"><a
-                                        href="/guest/galeri-video">Video</a></li>
+                                <li
+                                    class="text-black @if($title == 'Galeri Foto') bg-blue-400 text-white rounded-md @endif">
+                                    <a href="/guest/galeri-foto">Foto</a>
+                                </li>
+                                <li
+                                    class="text-black @if($title == 'Galeri Video') bg-blue-400 text-white rounded-md @endif">
+                                    <a href="/guest/galeri-video">Video</a>
+                                </li>
                             </ul>
                         </details>
                     </li>
-                    <li class="@if($title == 'Sarana & Prasarana') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Sarana & Prasarana') bg-blue-400 text-white rounded-md @endif"><a
                             href="/guest/sarana-prasarana">Sarana & Prasarana</a></li>
-                    <li class="@if($title == 'Prestasi Siswa') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Prestasi Siswa') bg-blue-400 text-white rounded-md @endif"><a
                             href="/guest/prestasi-siswa">Prestasi Siswa</a></li>
-                    <li class="@if($title == 'Ekstrakulikuler') bg-celadon rounded-md @endif"><a
+                    <li class="@if($title == 'Ekstrakulikuler') bg-blue-400 text-white rounded-md @endif"><a
                             href="/guest/ekstrakulikuler">Ekstrakulikuler</a></li>
                     <li>
                         <details>
-                            <summary>Lainnya</summary>
+                            <summary
+                                class="hover:bg-blue-400 hover:rounded-md transition-all duration-300 @if($title == 'Berita' || $title == 'Media Sosial') bg-blue-400 text-white rounded-md @endif">
+                                Lainnya</summary>
                             <ul class="p-2">
-                                <li class="text-black @if($title == 'Berita') bg-celadon rounded-md @endif"><a
-                                        href="/guest/berita">Berita</a></li>
-                                <li class="text-black @if($title == 'Media Sosial') bg-celadon rounded-md @endif">
+                                <li class="text-black @if($title == 'Berita') bg-blue-400 text-white rounded-md @endif">
+                                    <a href="/guest/berita">Berita</a>
+                                </li>
+                                <li
+                                    class="text-black @if($title == 'Media Sosial') bg-blue-400 text-white rounded-md @endif">
                                     <a href="/guest/media-sosial">Informasi Lainnya</a>
                                 </li>
                             </ul>

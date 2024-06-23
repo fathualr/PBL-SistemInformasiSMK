@@ -57,10 +57,10 @@ input[type=number] {
                 <div class="font-bold capitalize  hidden" id="normalTitle">
                     <img class="rounded-full w-32 h-32 mx-auto"
                         src="{{ !empty($konten->logo_sekolah) ? asset('storage/'.$konten->logo_sekolah) : asset('image/null.png') }}"
-                        alt="">
-                    <h1 class="mt-5 py-2 w-11/12 text-base border-b-2 border-white text-center mx-auto">SMK Muhammadiyah
-                        Plus Kota
-                        Batam
+                        alt="" class="object-center">
+                    <h1 class="mt-5 py-2 w-11/12 text-base border-b-2 border-white text-center mx-auto">
+                        {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' :
+                        $konten->nama_sekolah !!}
                     </h1>
                 </div>
                 <!-- Title -->
