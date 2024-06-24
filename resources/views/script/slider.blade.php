@@ -1,46 +1,46 @@
 <script>
-    let currentIndex = 0;
-    let autoSlideInterval;
+let currentIndex = 0;
+let autoSlideInterval;
 
-    function showSlide(index) {
-        const slider = document.getElementById('slider');
-        const slides = slider.children;
-        const totalSlides = slides.length;
+function showSlide(index) {
+    const slider = document.getElementById('slider');
+    const slides = slider.children;
+    const totalSlides = slides.length;
 
-        if (index >= totalSlides) {
-            currentIndex = 0;
-        } else if (index < 0) {
-            currentIndex = totalSlides - 1;
-        } else {
-            currentIndex = index;
-        }
-
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    if (index >= totalSlides) {
+        currentIndex = 0;
+    } else if (index < 0) {
+        currentIndex = totalSlides - 1;
+    } else {
+        currentIndex = index;
     }
 
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
+function nextSlide() {
+    showSlide(currentIndex + 1);
+}
 
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 2000);
-    }
+function prevSlide() {
+    showSlide(currentIndex - 1);
+}
 
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        nextSlide();
+    }, 2500);
+}
 
-    document.addEventListener('DOMContentLoaded', () => {
-        showSlide(currentIndex);
-        startAutoSlide();
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
 
-        document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
-        document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentIndex);
+    startAutoSlide();
+
+    document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
+    document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
+});
 </script>

@@ -6,6 +6,7 @@
     <p class="font-bold text-lg md:text-2xl">DIREKTORI ALUMNI</p>
 </div>
 
+@if($direktoriAlumni->isNotEmpty())
 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mx-5 tablet:mt-5 laptop:mt-0">
     <div class="col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6 flex flex-wrap justify-between items-center">
         <div class="dropdown dropdown-hover w-full md:w-auto">
@@ -112,6 +113,7 @@
     <button class="join-item btn disabled">»</button>
     @endif
 </div>
+@endif
 
 @foreach($direktoriAlumni as $alumni)
 <dialog id="my_modal_4{{ $alumni->id_alumni }}" class="modal">

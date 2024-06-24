@@ -34,7 +34,7 @@
         </div>
     </div>
     @empty
-    <div class="col-start-2">
+    <div class="col-span-2 laptop:col-start-2">
         <h2 class="text-center text-2xl capitalize font-bold">Tidak ada data program Keahlian yang tersedia.</h2>
     </div>
     @endforelse

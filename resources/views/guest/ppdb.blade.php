@@ -22,9 +22,7 @@
                 @endif
                 <div class="timeline-middle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-                        <path fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
                     </svg>
                 </div>
                 @if ($key % 2 == 0)
@@ -93,8 +91,7 @@
                         <label class="block font-medium ml-2">Nama Lengkap</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="nama_lengkap" name="nama_lengkap" class="input input-bordered w-full"
-                            placeholder="Nama Lengkap" required>
+                        <input type="text" id="nama_lengkap" name="nama_lengkap" class="input input-bordered w-full" placeholder="Nama Lengkap" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -114,8 +111,7 @@
                         <label class="block font-medium ml-2">NISN</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="nisn" name="nisn" class="input input-bordered w-full" placeholder="NISN"
-                            required>
+                        <input type="text" id="nisn" name="nisn" class="input input-bordered w-full" placeholder="NISN" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -123,8 +119,7 @@
                         <label class="block font-medium ml-2">Agama</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="agama" name="agama" class="input input-bordered w-full"
-                            placeholder="Agama" required>
+                        <input type="text" id="agama" name="agama" class="input input-bordered w-full" placeholder="Agama" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -132,10 +127,8 @@
                         <label class="block font-medium ml-2">TTL Calon Siswa</label>
                     </div>
                     <div class="grid grid-cols-2 gap-4 col-span-8 ">
-                        <input type="text" id="tempat_lahir" name="tempat_lahir" class="input input-bordered w-full"
-                            placeholder="Tempat Lahir" required>
-                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="input input-bordered w-full"
-                            placeholder="Tanggal Lahir" required>
+                        <input type="text" id="tempat_lahir" name="tempat_lahir" class="input input-bordered w-full" placeholder="Tempat Lahir" required>
+                        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="input input-bordered w-full" placeholder="Tanggal Lahir" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -143,8 +136,7 @@
                         <label class="block font-medium ml-2">No Handphone Casis</label>
                     </div>
                     <div class="col-span-8">
-                        <input type="text" id="no_hp" name="no_hp" class="input input-bordered w-full"
-                            placeholder="No Handphone Casis" required>
+                        <input type="text" id="no_hp" name="no_hp" class="input input-bordered w-full" placeholder="No Handphone Casis" required>
                     </div>
                 </div>
 
@@ -182,8 +174,7 @@
                         <label class="block font-medium ml-2">Tahun Pendaftaran</label>
                     </div>
                     <div class="col-span-8">
-                        <input type="text" id="tahun_pendaftaran" name="tahun_pendaftaran"
-                            class="input input-bordered w-full" placeholder="Contoh: 2022, 2024" required>
+                        <input type="text" id="tahun_pendaftaran" name="tahun_pendaftaran" class="input input-bordered w-full" placeholder="Contoh: 2022, 2024" required>
                     </div>
                 </div>
 
@@ -196,8 +187,7 @@
                         <label class="block font-medium ml-2">Nama Sekolah Asal</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="nama_sekolah_asal" name="nama_sekolah_asal"
-                            class="input input-bordered w-full" placeholder="Nama Sekolah Asal" required>
+                        <input type="text" id="nama_sekolah_asal" name="nama_sekolah_asal" class="input input-bordered w-full" placeholder="Nama Sekolah Asal" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -205,8 +195,7 @@
                         <label class="block font-medium ml-2">Alamat</label>
                     </div>
                     <div class="col-span-8 ">
-                        <textarea id="alamat" name="alamat" class="textarea textarea-bordered w-full"
-                            placeholder="Alamat" required></textarea>
+                        <textarea id="alamat" name="alamat" class="textarea textarea-bordered w-full" placeholder="Alamat" required></textarea>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -214,8 +203,7 @@
                         <label class="block font-medium ml-2">No. RT</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="no_rt" name="no_rt" class="input input-bordered w-full"
-                            placeholder="No. RT" required>
+                        <input type="text" id="no_rt" name="no_rt" class="input input-bordered w-full" placeholder="No. RT" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -223,8 +211,7 @@
                         <label class="block font-medium ml-2">No. RW</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="no_rw" name="no_rw" class="input input-bordered w-full"
-                            placeholder="No. RW" required>
+                        <input type="text" id="no_rw" name="no_rw" class="input input-bordered w-full" placeholder="No. RW" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -232,8 +219,7 @@
                         <label class="block font-medium ml-2">Kelurahan</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="kelurahan" name="kelurahan" class="input input-bordered w-full"
-                            placeholder="Kelurahan" required>
+                        <input type="text" id="kelurahan" name="kelurahan" class="input input-bordered w-full" placeholder="Kelurahan" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -241,8 +227,7 @@
                         <label class="block font-medium ml-2">Kecamatan</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="kecamatan" name="kecamatan" class="input input-bordered w-full"
-                            placeholder="Kecamatan" required>
+                        <input type="text" id="kecamatan" name="kecamatan" class="input input-bordered w-full" placeholder="Kecamatan" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -250,8 +235,7 @@
                         <label class="block font-medium ml-2">Kota</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="kota" name="kota" class="input input-bordered w-full" placeholder="Kota"
-                            required>
+                        <input type="text" id="kota" name="kota" class="input input-bordered w-full" placeholder="Kota" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -259,8 +243,7 @@
                         <label class="block font-medium ml-2">Provinsi</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="provinsi" name="provinsi" class="input input-bordered w-full"
-                            placeholder="Provinsi" required>
+                        <input type="text" id="provinsi" name="provinsi" class="input input-bordered w-full" placeholder="Provinsi" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -268,8 +251,7 @@
                         <label class="block font-medium ml-2">Kode Pos</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="kode_pos" name="kode_pos" class="input input-bordered w-full"
-                            placeholder="Kode Pos" required>
+                        <input type="text" id="kode_pos" name="kode_pos" class="input input-bordered w-full" placeholder="Kode Pos" required>
                     </div>
                 </div>
                 <!-- Data Wali -->
@@ -281,8 +263,7 @@
                         <label class="block font-medium ml-2">Nama Wali</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="nama_wali" name="nama_wali" class="input input-bordered w-full"
-                            placeholder="Nama Wali" required>
+                        <input type="text" id="nama_wali" name="nama_wali" class="input input-bordered w-full" placeholder="Nama Wali" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -290,8 +271,7 @@
                         <label class="block font-medium ml-2">Agama Wali</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="agama_wali" name="agama_wali" class="input input-bordered w-full"
-                            placeholder="Agama Wali" required>
+                        <input type="text" id="agama_wali" name="agama_wali" class="input input-bordered w-full" placeholder="Agama Wali" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -299,8 +279,7 @@
                         <label class="block font-medium ml-2">Alamat Wali</label>
                     </div>
                     <div class="col-span-8 ">
-                        <textarea id="alamat_wali" name="alamat_wali" class="textarea textarea-bordered w-full"
-                            placeholder="Alamat Wali" required></textarea>
+                        <textarea id="alamat_wali" name="alamat_wali" class="textarea textarea-bordered w-full" placeholder="Alamat Wali" required></textarea>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -308,8 +287,7 @@
                         <label class="block font-medium ml-2">No Handphone Wali</label>
                     </div>
                     <div class="col-span-8 ">
-                        <textarea id="no_hp_wali" name="no_hp_wali" class="textarea textarea-bordered w-full"
-                            placeholder="No Handphone Wali" required></textarea>
+                        <textarea id="no_hp_wali" name="no_hp_wali" class="textarea textarea-bordered w-full" placeholder="No Handphone Wali" required></textarea>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -317,10 +295,8 @@
                         <label class="block font-medium ml-2">TTL Wali</label>
                     </div>
                     <div class="grid grid-cols-2 gap-4 col-span-8 ">
-                        <input type="text" id="tempat_lahir_wali" name="tempat_lahir_wali"
-                            class="input input-bordered w-full" placeholder="Tempat Lahir Wali">
-                        <input type="date" id="tanggal_lahir_wali" name="tanggal_lahir_wali"
-                            class="input input-bordered w-full" placeholder="Tanggal Lahir Wali">
+                        <input type="text" id="tempat_lahir_wali" name="tempat_lahir_wali" class="input input-bordered w-full" placeholder="Tempat Lahir Wali">
+                        <input type="date" id="tanggal_lahir_wali" name="tanggal_lahir_wali" class="input input-bordered w-full" placeholder="Tanggal Lahir Wali">
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -328,8 +304,7 @@
                         <label class="block font-medium ml-2">Pekerjaan Wali</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" class="input input-bordered w-full"
-                            placeholder="Pekerjaan Wali" required>
+                        <input type="text" id="pekerjaan_wali" name="pekerjaan_wali" class="input input-bordered w-full" placeholder="Pekerjaan Wali" required>
                     </div>
                 </div>
                 <div class="grid grid-cols-12 gap-4">
@@ -337,8 +312,7 @@
                         <label class="block font-medium ml-2">Penghasilan Wali</label>
                     </div>
                     <div class="col-span-8 ">
-                        <input type="text" id="penghasilan_wali" name="penghasilan_wali"
-                            class="input input-bordered w-full" placeholder="Penghasilan Wali" required>
+                        <input type="text" id="penghasilan_wali" name="penghasilan_wali" class="input input-bordered w-full" placeholder="Penghasilan Wali" required>
                     </div>
                 </div>
                 <div class=" bg-blue-400 py-1">
@@ -352,8 +326,7 @@
                             Sementara,dll...)</label>
                     </div>
                     <div class="smartphone:col-span-3 smartphone:col-start-4 tablet:col-span-8">
-                        <label
-                            class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                        <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                             <input type="file" name="tautan_dokumen" id="tautan_dokumen" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
