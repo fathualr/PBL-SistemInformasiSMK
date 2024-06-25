@@ -88,19 +88,6 @@ input[type=number] {
     }
 }
 
-.loader-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
 /* Hide loader after page load */
 body.loaded .loader-wrapper {
     display: none;
@@ -109,8 +96,9 @@ body.loaded .loader-wrapper {
 
 <body class="font-poppins">
     <!-- Loader -->
-    <div class="loader-wrapper">
-        <div class="loader"></div>
+    <div class="loader-wrapper fixed top-0 left-0 bg-white flex justify-center items-center w-full h-full z-[9999]">
+        <div class="loader mx-auto">
+        </div>
     </div>
     <!-- Loader -->
 

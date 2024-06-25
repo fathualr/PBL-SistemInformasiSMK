@@ -5,7 +5,7 @@
 <!-- First Content -->
 @if(is_null($konten))
 @else
-<div class=" divider smartphone:mt-10 tablet:mt-20 mb-10">
+<div class=" divider smartphone:mt-10 tablet:mt-20 2xl:-mt-20 mb-10">
     <p class="font-bold smartphone:text-lg tablet:text-2xl">KATA SAMBUTAN</p>
 </div>
 <div class=" grid lg:grid-rows-3 grid-cols-2 lg:grid-cols-4 lg:grid-flow-col lg:gap-4 mt-8">
@@ -187,22 +187,22 @@
 </div>
 <div class=" grid md:grid-rows-3 smartphone:grid-cols-1 laptop:grid-cols-2 laptop:grid-flow-col gap-6" loading="lazy">
     @foreach ($berita as $brt)
-    <div class=" smartphone:col-span-1 tablet:mx-auto">
+    <div class="smartphone:col-span-1 tablet:mx-auto flex">
         <div
-            class="card card-side bg-base-100 shadow-xl smartphone:w-full tablet:w-[35rem] smartphone:h-40 tablet:h-32 lg:h-60">
+            class="card card-side bg-base-100 shadow-xl smartphone:w-full tablet:w-[35rem] laptop:w-[30rem] 2xl:w-[40rem] smartphone:h-40 tablet:h-32 lg:h-60 shrink">
             <figure class="h-full overflow-hidden">
                 <img class="object-cover smartphone:w-64 laptop:w-72 h-full"
                     src="{{ asset('storage/'.$brt->gambar_headline) }}" alt="Nama Gambar" loading="lazy">
             </figure>
             <div class="card-body laptop:w-60">
                 <h2
-                    class="smartphone:text-sm tablet:text-xl font-bold smartphone:-mt-16 tablet:-mt-5 lg:-mt-0 truncate smartphone:w-32 smartphone:py-10 tablet:py-0 tablet:w-72 laptop:w-52 h-16">
+                    class="smartphone:text-sm tablet:text-xl font-bold smartphone:-mt-16 tablet:-mt-5 lg:-mt-0 truncate smartphone:w-32 smartphone:py-10 tablet:py-0 tablet:w-72 laptop:w-48 h-16">
                     {{ $brt->judul_berita }}
                 </h2>
                 <div
                     class="smartphone:h-[3.75rem] smartphone:w-20 tablet:w-60 smartphone:-mt-7 tablet:-mt-2 laptop:h-[8rem] overflow-y-hidden">
                     <p
-                        class="smartphone:w-28 tablet:w-52 py-5 -my-3 laptop:py-0 laptop:-my-0 laptop:w-52 smartphone:truncate tablet:truncate laptop:not-truncate">
+                        class="smartphone:w-28 tablet:w-52 py-5 -my-3 laptop:py-0 laptop:-my-0 laptop:w-48 smartphone:truncate tablet:truncate laptop:not-truncate">
                         {!! $brt->isi_berita !!}
                     </p>
                 </div>
@@ -218,7 +218,7 @@
     @endforeach
 </div>
 
-<div class="flex justify-center mx-auto w-full">
+<div class="flex justify-center mx-auto w-full desktop:mt-10">
     <a href="/guest/berita">
         <button
             class="btn bg-blue-400 mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">Lainnya
@@ -233,51 +233,46 @@
 <div class=" divider smartphone:mt-10 tablet:mt-20 tablet:mb-10" loading="lazy">
     <p class="font-bold smartphone:text-lg tablet:text-2xl">ALBUM SEKOLAH</p>
 </div>
-<div class="grid gap-5 laptop:grid-rows-2 tablet:grid-cols-2 laptop:grid-flow-row smartphone:mb-60 justify-center items-center"
-    loading="lazy">
-    <div
-        class="relative smartphone:w-screen laptop:w-[75rem] tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center">
-        <div class="flex transition-transform duration-500" id="slider">
-            @foreach ($album->chunk(4) as $chunk)
-            <div
-                class=" smartphone:w-screen grid smartphone:grid-cols-1 smartphone:auto-cols-max smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
-                @foreach ($chunk as $abm)
-                <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
-                    <div class="lazy-bg card smartphone:mx-auto rounded-b-xl smartphone:w-64 h-72 bg-cover"
-                        style="background-image: url('{{ asset('storage/' . $abm->gambar_album) }}');">
-                        <div
-                            class="bg-teal-50/70 rounded-none rounded-b-xl py-3 smartphone:translate-y-[10.4rem]  lg:py-3 lg:translate-y-[10.4rem]">
-                            <h2 class="card-title px-5 text-black/80">
-                                <p class="truncate w-80">{{ $abm->nama_album }}</p>
-                            </h2>
-                            <p class="px-5 text-black/50 truncate w-64">{{ $abm->deskripsi_album }}</p>
-                            <div class="card-actions justify-end">
-                                <a href="/guest/galeri-template/{{ $abm->id_album }}"
-                                    class="btn bg-transparent hover:bg-transparent border-none">
-                                    <img src="{{ asset('assetIcon/Arrow-Foto.svg') }}"
-                                        class="object-cover rounded-full w-8 h-8 mt-3 brightness-50" loading="lazy" />
-                                </a>
-                            </div>
+
+<div class="relative w-full overflow-hidden justify-center items-center my-10" loading="lazy">
+    <div class="flex transition-transform duration-500" id="slider">
+        @foreach ($album as $abm)
+        <div class="w-full flex-shrink-0">
+            <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
+                <div class="card smartphone:mx-7 tablet:mx-[3.7rem] laptop:mx-auto rounded-b-xl smartphone:w-64 laptop:w-60 h-72 bg-cover"
+                    style="background-image: url('{{ asset('storage/' . $abm->gambar_album) }}');">
+                    <div
+                        class="bg-teal-50/70 rounded-none rounded-b-xl py-3 smartphone:translate-y-[10.4rem] lg:py-3 lg:translate-y-[10.4rem]">
+                        <h2 class="card-title px-5 text-black/80">
+                            <p class="truncate w-80">{{ $abm->nama_album }}</p>
+                        </h2>
+                        <p class="px-5 text-black/50 truncate w-64">{{ $abm->deskripsi_album }}</p>
+                        <div class="card-actions justify-end">
+                            <a href="/guest/galeri-template/{{ $abm->id_album }}"
+                                class="btn bg-transparent hover:bg-transparent border-none">
+                                <img src="{{ asset('assetIcon/Arrow-Foto.svg') }}"
+                                    class="object-cover rounded-full w-8 h-8 mt-3 brightness-50" loading="lazy" />
+                            </a>
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
-            @endforeach
         </div>
-        <button
-            class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute left-3 top-1/2 transform p-2 flex justify-center items-center"
-            onclick="prevSlide()">
-            <i class="fas fa-angle-left text-white"></i>
-        </button>
-        <button
-            class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute right-3 top-1/2 transform p-2 flex justify-center items-center"
-            onclick="nextSlide()">
-            <i class="fas fa-angle-right text-white"></i>
-        </button>
+        @endforeach
     </div>
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
+        onclick="prevSlide()">
+        <i class="fas fa-angle-left text-white"></i>
+    </button>
+    <button
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
+        onclick="nextSlide()">
+        <i class="fas fa-angle-right text-white"></i>
+    </button>
 </div>
-<div class="flex justify-center items-center smartphone:-mt-64 laptop:-mt-[40rem] mb-28 mx-auto w-full">
+
+<div class="flex justify-center items-center mt-10 mb-28 mx-auto w-full">
     <a href="/guest/galeri-foto">
         <button
             class="btn bg-blue-400 mx-auto md:mx-0 md:w-48 h-10 rounded-sm border-none text-white mt-8 hover:text-blue-400">Lainnya
@@ -286,6 +281,4 @@
 </div>
 @endif
 <!-- Fourth Content -->
-
-
 @endsection

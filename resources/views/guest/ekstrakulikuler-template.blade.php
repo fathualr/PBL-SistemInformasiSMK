@@ -83,23 +83,17 @@
     </div>
 </div>
 
-<div
-    class="relative smartphone:w-screen laptop:w-[75rem] smartphone:-translate-x-9 tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center laptop:my-10">
+<div class="relative w-full overflow-hidden justify-center items-center my-10" loading="lazy">
     <div class="flex transition-transform duration-500" id="slider">
         @if($ekstrakulikuler->gambar->isNotEmpty())
-        @foreach ($ekstrakulikuler->gambar->chunk(4) as $chunk)
-        <div
-            class="smartphone:w-screen grid smartphone:grid-cols-1 smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
-            @foreach ($chunk as $gambar)
-            <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
-                <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110"
-                    onclick="window['my_modal_view{{ $gambar->id_gambar_ekstrakurikuler }}'].showModal()">
-                    <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}"
-                        class="w-full h-64 object-cover rounded-sm mx-auto"
-                        alt="Image {{ $gambar->id_ekstrakurikuler }}">
-                </button>
-            </div>
-            @endforeach
+        @foreach ($ekstrakulikuler->gambar as $gambar)
+        <div class="w-full flex-shrink-0">
+            <button
+                class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110 transition-transform duration-300"
+                onclick="window['my_modal_view{{ $gambar->id_gambar_ekstrakurikuler }}'].showModal()">
+                <img src="{{ asset('storage/'. $gambar->gambar_ekstrakurikuler) }}"
+                    class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image {{ $gambar->id_ekstrakurikuler }}">
+            </button>
         </div>
         @endforeach
         @else
@@ -110,12 +104,12 @@
         @endif
     </div>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 smartphone:top-36 tablet:top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
         onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 smartphone:top-36 tablet:top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
         onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>

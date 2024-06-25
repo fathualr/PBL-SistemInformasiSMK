@@ -24,25 +24,20 @@
                             <span class="label-text font-bold">Nama Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nama_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nama_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->nama_sekolah))
-                                    <textarea class="textarea textarea-bordered bg-white"
-                                        disabled>{{ $konten->nama_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered bg-white" disabled>{{ $konten->nama_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="nama_sekolah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="nama_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -60,21 +55,17 @@
                             <span class="label-text font-bold">Logo Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'logo_sekolah']) }}"
-                                method="POST" class="grid gap-2" enctype="multipart/form-data">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'logo_sekolah']) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->logo_sekolah))
-                                    <textarea class="textarea textarea-bordered bg-white"
-                                        disabled>{{ $konten->logo_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered bg-white" disabled>{{ $konten->logo_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <label
-                                        class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
+                                    <label class="input bg-transparent border-2 border-blue-400 flex items-center gap-2 mb-5 w-full focus-within:outline-none">
                                         <input type="file" class="grow file-input file-input-success border-none bg-transparent py-2
                     file:mr-4 file:px-4 file:rounded-full file:border-0
                     file:text-sm file:font-semibold file:bg-blue-500 file:text-white
@@ -82,8 +73,7 @@
                                     </label>
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -101,25 +91,20 @@
                             <span class="label-text font-bold">Alamat Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'alamat_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'alamat_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->alamat_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->alamat_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->alamat_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="alamat_sekolah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="alamat_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -141,25 +126,20 @@
                             <span class="label-text font-bold">Teks Sambutan</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sambutan']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sambutan']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->sambutan))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->sambutan }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->sambutan }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="sambutan" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="sambutan" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -177,25 +157,20 @@
                             <span class="label-text font-bold">Tautan Video Sambutan</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tautan_video_sambutan']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tautan_video_sambutan']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->tautan_video_sambutan))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->tautan_video_sambutan }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->tautan_video_sambutan }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="tautan_video_sambutan" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="tautan_video_sambutan" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -213,25 +188,20 @@
                             <span class="label-text font-bold">Teks Profil</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_profile']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_profile']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->teks_profile))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->teks_profile }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_profile }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="teks_profile" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="teks_profile" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -249,25 +219,20 @@
                             <span class="label-text font-bold">Teks Fasilitas</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_fasilitas']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_fasilitas']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->teks_fasilitas))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->teks_fasilitas }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_fasilitas }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="teks_fasilitas" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="teks_fasilitas" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -285,25 +250,20 @@
                             <span class="label-text font-bold">Teks Lokasi</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_lokasi']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_lokasi']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->teks_lokasi))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->teks_lokasi }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_lokasi }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="teks_lokasi" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="teks_lokasi" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -321,25 +281,20 @@
                             <span class="label-text font-bold">Teks Sejarah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_sejarah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_sejarah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->teks_sejarah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->teks_sejarah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_sejarah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="teks_sejarah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="teks_sejarah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -357,25 +312,20 @@
                             <span class="label-text font-bold">Teks Prestasi</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_prestasi']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'teks_prestasi']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->teks_prestasi))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->teks_prestasi }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->teks_prestasi }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="teks_prestasi" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="teks_prestasi" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -398,25 +348,20 @@
                             <span class="label-text font-bold">Teks Sejarah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sejarah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sejarah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->sejarah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->sejarah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->sejarah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="sejarah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="sejarah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -434,25 +379,20 @@
                             <span class="label-text font-bold">Tautan Video Sejarah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tautan_video_sejarah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tautan_video_sejarah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->tautan_video_sejarah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->tautan_video_sejarah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->tautan_video_sejarah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="tautan_video_sejarah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="tautan_video_sejarah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -470,25 +410,20 @@
                             <span class="label-text font-bold">No Telp Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_telepon_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_telepon_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->no_telepon_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->no_telepon_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_telepon_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="number" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="no_telepon_sekolah" />
+                                    <input type="number" placeholder="Ketik Disini" class="input input-bordered w-full" name="no_telepon_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -506,25 +441,20 @@
                             <span class="label-text font-bold">Email Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'email_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'email_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->email_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->email_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->email_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="email" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="email_sekolah" />
+                                    <input type="email" placeholder="Ketik Disini" class="input input-bordered w-full" name="email_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -542,25 +472,20 @@
                             <span class="label-text font-bold">Nama Kepala Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nama_kepala_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nama_kepala_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->nama_kepala_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->nama_kepala_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->nama_kepala_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="nama_kepala_sekolah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="nama_kepala_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -578,9 +503,7 @@
                             <span class="label-text font-bold">Teks Visi</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'visi']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'visi']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
@@ -590,12 +513,10 @@
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="visi" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="visi" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -613,9 +534,7 @@
                             <span class="label-text font-bold">Teks Misi</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'misi']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'misi']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
@@ -624,12 +543,10 @@
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
-                                    @endif<input type="text" placeholder="Ketik Disini"
-                                        class="input input-bordered w-full" name="misi" />
+                                    @endif<input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="misi" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -647,8 +564,7 @@
                             <span class="label-text font-bold">NIS</span>
                         </div>
                         <div class="collapse-content">
-                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nis']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'nis']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
@@ -658,12 +574,10 @@
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="number" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="nis" />
+                                    <input type="number" placeholder="Ketik Disini" class="input input-bordered w-full" name="nis" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -681,15 +595,12 @@
                             <span class="label-text font-bold">Status Akreditasi Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_akreditasi_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_akreditasi_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->status_akreditasi_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->status_akreditasi_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->status_akreditasi_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
@@ -703,8 +614,7 @@
                                     </select>
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -722,25 +632,20 @@
                             <span class="label-text font-bold">Struktur Organisasi Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'struktur_organisasi_sekolah']) }}"
-                                method="POST" class="grid gap-2" enctype="multipart/form-data">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'struktur_organisasi_sekolah']) }}" method="POST" class="grid gap-2" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->struktur_organisasi_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->struktur_organisasi_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->struktur_organisasi_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="file" class="file-input file-input-bordered w-full"
-                                        name="struktur_organisasi_sekolah" />
+                                    <input type="file" class="file-input file-input-bordered w-full" name="struktur_organisasi_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -758,25 +663,20 @@
                             <span class="label-text font-bold">Status Kepemilikan Tanah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_kepemilikan_tanah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_kepemilikan_tanah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->status_kepemilikan_tanah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->status_kepemilikan_tanah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->status_kepemilikan_tanah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="status_kepemilikan_tanah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="status_kepemilikan_tanah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -794,25 +694,20 @@
                             <span class="label-text font-bold">Tahun Didirikan</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tahun_didirikan']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tahun_didirikan']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->tahun_didirikan))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->tahun_didirikan }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->tahun_didirikan }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="year" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="tahun_didirikan" />
+                                    <input type="year" placeholder="Ketik Disini" class="input input-bordered w-full" name="tahun_didirikan" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -830,25 +725,20 @@
                             <span class="label-text font-bold">Tahun Operasional</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tahun_operasional']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'tahun_operasional']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->tahun_operasional))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->tahun_operasional }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->tahun_operasional }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="tahun_operasional" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="tahun_operasional" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -866,25 +756,20 @@
                             <span class="label-text font-bold">Nomor Statistik Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_statistik_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_statistik_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->no_statistik_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->no_statistik_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_statistik_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="no_statistik_sekolah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="no_statistik_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -902,25 +787,20 @@
                             <span class="label-text font-bold">Fasilitas Lainnya</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'fasilitas_lainnya']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'fasilitas_lainnya']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->fasilitas_lainnya))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->fasilitas_lainnya }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->fasilitas_lainnya }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="fasilitas_lainnya" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="fasilitas_lainnya" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -938,25 +818,20 @@
                             <span class="label-text font-bold">Luas Tanah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'luas_tanah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'luas_tanah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->luas_tanah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->luas_tanah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->luas_tanah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="luas_tanah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="luas_tanah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -974,25 +849,20 @@
                             <span class="label-text font-bold">Nomor Sertifikat</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_sertifikat']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_sertifikat']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->no_sertifikat))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->no_sertifikat }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_sertifikat }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="no_sertifikat" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="no_sertifikat" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -1010,25 +880,20 @@
                             <span class="label-text font-bold">Nomor Pendirian Sekolah</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_pendirian_sekolah']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'no_pendirian_sekolah']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->no_pendirian_sekolah))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->no_pendirian_sekolah }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->no_pendirian_sekolah }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="no_pendirian_sekolah" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="no_pendirian_sekolah" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -1046,25 +911,20 @@
                             <span class="label-text font-bold">Status Kepemilikan Bangunan</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_kepemilikan_bangunan']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'status_kepemilikan_bangunan']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->status_kepemilikan_bangunan))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->status_kepemilikan_bangunan }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->status_kepemilikan_bangunan }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="status_kepemilikan_bangunan" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="status_kepemilikan_bangunan" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -1082,25 +942,20 @@
                             <span class="label-text font-bold">Sisa Lahan Seluruhnya</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sisa_lahan_seluruhnya']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'sisa_lahan_seluruhnya']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->sisa_lahan_seluruhnya))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->sisa_lahan_seluruhnya }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->sisa_lahan_seluruhnya }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="sisa_lahan_seluruhnya" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="sisa_lahan_seluruhnya" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>
@@ -1118,25 +973,20 @@
                             <span class="label-text font-bold">Luas Lahan Keseluruhan</span>
                         </div>
                         <div class="collapse-content">
-                            <form
-                                action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'luas_lahan_keseluruhan']) }}"
-                                method="POST" class="grid gap-2">
+                            <form action="{{ route('konten.update', ['id' => $konten->id_sekolah, 'field' => 'luas_lahan_keseluruhan']) }}" method="POST" class="grid gap-2">
                                 @csrf
                                 @method('PATCH')
                                 <label class="form-control w-full gap-2">
                                     @if(!empty($konten->luas_lahan_keseluruhan))
-                                    <textarea class="textarea textarea-bordered"
-                                        disabled>{{ $konten->luas_lahan_keseluruhan }}</textarea>
+                                    <textarea class="textarea textarea-bordered" disabled>{{ $konten->luas_lahan_keseluruhan }}</textarea>
                                     @else
                                     <p class="text-red-500">Maaf, konten belum tersedia untuk bagian ini. Tolong isi
                                         konten agar dapat ditampilkan.</p>
                                     @endif
-                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full"
-                                        name="luas_lahan_keseluruhan" />
+                                    <input type="text" placeholder="Ketik Disini" class="input input-bordered w-full" name="luas_lahan_keseluruhan" />
                                 </label>
                                 <div class="flex justify-end items-endgap-4 gap-2">
-                                    <button type="submit"
-                                        class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
+                                    <button type="submit" class="btn bg-elm w-32 h-10 rounded-sm border-none text-white mt-auto hover:text-elm">
                                         <i class=" fas fa-plus"></i>
                                         Simpan
                                     </button>

@@ -6,8 +6,7 @@
     <div class="col-span-2">
         <!-- Image -->
         <div class="tablet:col-span-2 my-5 w-full">
-            <img class="smartphone:w-80 smartphone:h-40 tablet:w-[55rem] tablet:h-[25rem] rounded-xl mx-auto"
-                src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Nama Gambar">
+            <img class="smartphone:w-80 smartphone:h-40 tablet:w-[55rem] tablet:h-[25rem] rounded-xl mx-auto" src="{{ asset('storage/'.$berita->gambar_headline) }}" alt="Nama Gambar">
         </div>
 
         <div class="col-span-2 grid grid-cols-2 gap-4 justify-center items-center w-full">
@@ -42,35 +41,30 @@
                 {!! $berita->isi_berita !!}
             </p>
 
-            <div
-                class="relative smartphone:w-screen laptop:w-full smartphone:-translate-x-9 tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center my-10">
-                <div class="flex transition-transform duration-500 w-full" id="slider">
+            <div class="relative w-full overflow-hidden justify-center items-center my-10" loading="lazy">
+                <div class="flex transition-transform duration-500" id="sliderBerita">
                     @if($berita->gambar->isNotEmpty())
-                    @foreach ($berita->gambar->chunk(2) as $chunk)
-                    <div class="w-full grid tablet:grid-cols-2 justify-center items-center min-w-full">
-                        @foreach ($chunk as $gambar)
-                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110"
-                            onclick="window['my_modal_view{{ $gambar->id_gambar }}'].showModal()">
-                            <img src="{{ asset('storage/'. $gambar->tautan_gambar) }}"
-                                class="w-full h-64 object-cover rounded-sm mx-auto"
-                                alt="Image {{ $gambar->berita_id }}">
+                    @foreach ($berita->gambar as $gambar)
+                    <div class="w-full flex-shrink-0">
+                        <button class="btn bg-transparent border-none hover:bg-transparent w-full h-max hover:scale-110 transition-transform duration-300" onclick="window['my_modal_view{{ $gambar->id_gambar }}'].showModal()">
+                            <img src="{{ asset('storage/'. $gambar->tautan_gambar) }}" class="w-full h-64 object-cover rounded-sm mx-auto" alt="Image {{ $gambar->id_ekstrakurikuler }}">
                         </button>
-                        @endforeach
                     </div>
                     @endforeach
+                    @else
+                    <div class="flex justify-center items-center artboard artboard-horizontal phone-1">
+                        <img src="{{ asset('image/no-image.png') }}" alt="Placeholder" class="w-full h-64 object-cover rounded-sm mx-auto">
+                    </div>
                     @endif
                 </div>
-                <button
-                    class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-5 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
-                    onclick="prevSlide()">
+                <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center" onclick="prevSlide()">
                     <i class="fas fa-angle-left text-white"></i>
                 </button>
-                <button
-                    class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-5 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
-                    onclick="nextSlide()">
+                <button class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center" onclick="nextSlide()">
                     <i class="fas fa-angle-right text-white"></i>
                 </button>
             </div>
+
         </div>
         <!-- Text -->
     </div>
@@ -83,8 +77,7 @@
                     <i class="fas fa-times text-2xl text-white"></i>
                 </button>
             </form>
-            <img src="{{ asset('storage/'. $gambar->tautan_gambar) }}"
-                class="w-11/12 h-1/2 object-cover rounded-sm mx-auto" alt="Image 1">
+            <img src="{{ asset('storage/'. $gambar->tautan_gambar) }}" class="w-11/12 h-1/2 object-cover rounded-sm mx-auto" alt="Image 1">
         </div>
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
@@ -93,12 +86,11 @@
     @endforeach
 
     <div class="smartphone:col-span-2 tablet:col-span-1 tablet:col-start-3 w-full">
-        <h2 class="font-bold smartphone:text-lg tablet:text-2xl tablet:ml-10 my-5 smartphone:w-full text-center">
+        <h2 class="font-bold smartphone:text-lg tablet:text-2xl tablet:ml-10 my-5 smartphone:w-full text-center laptop:-ml-6">
             Berita Terbaru</h2>
         <div class="grid tablet:grid-rows-3 grid-flow-row tablet:ml-10 gap-4">
             @foreach($latestBerita as $latest)
-            <div
-                class="card smartphone:w-64 tablet:w-52 laptop:w-72 tablet:h-64 bg-base-100 shadow-xl mx-auto transition-all duration-200 hover:scale-105">
+            <div class="card smartphone:w-64 tablet:w-52 laptop:w-72 tablet:h-64 bg-base-100 shadow-xl mx-auto transition-all duration-200 hover:scale-105">
                 <figure><img src="{{ asset('storage/'.$latest->gambar_headline) }}" alt="Gambar Berita" /></figure>
                 <div class="card-body h-24 p-5">
                     <div class="grid grid-cols-2 justify-center items-end">
@@ -114,8 +106,7 @@
                             </span>
                         </div>
                     </div>
-                    <a href="/guest/berita-template/{{ $latest->id_berita }}"
-                        class="text-blue-500 hover:underline text-sm">Baca Lebih
+                    <a href="/guest/berita-template/{{ $latest->id_berita }}" class="text-blue-500 hover:underline text-sm">Baca Lebih
                         Lanjut</a>
                 </div>
             </div>
@@ -138,8 +129,7 @@
                 <span class="label-text font-bold text-xl">Komentar</span>
             </div>
             <input type="text" placeholder="Nama Anda" class="input input-bordered w-full" name="nama_komentar" />
-            <textarea class="textarea textarea-bordered textarea-lg w-full h-32"
-                placeholder="Tulis Komentar Anda Disini" name="teks_komentar"></textarea>
+            <textarea class="textarea textarea-bordered textarea-lg w-full h-32" placeholder="Tulis Komentar Anda Disini" name="teks_komentar"></textarea>
         </label>
         <div class="flex justify-end my-5">
             <button type="submit" class="btn btn-outline btn-accent font-bold">
@@ -178,50 +168,64 @@
 <!-- Show Others Comments -->
 
 <script>
-let currentIndex = 0;
-let autoSlideInterval;
+    let currentIndex = 0;
+    let autoSlideInterval;
 
-function showSlide(index) {
-    const slider = document.getElementById('slider');
-    const slides = slider.children;
-    const totalSlides = slides.length;
+    function showSlide(index) {
+        const slider = document.getElementById('sliderBerita');
+        const slides = Array.from(slider.children);
+        const totalSlides = slides.length;
 
-    if (index >= totalSlides) {
-        currentIndex = 0;
-    } else if (index < 0) {
-        currentIndex = totalSlides - 1;
-    } else {
-        currentIndex = index;
+        // Determine the number of slides per view based on screen size
+        let slidesPerView = 1; // Default for mobile
+        if (window.innerWidth >= 1024) {
+            slidesPerView = 4; // For desktop
+        } else if (window.innerWidth >= 640) {
+            slidesPerView = 2; // For tablet
+        }
+
+        if (index >= totalSlides / slidesPerView) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = Math.ceil(totalSlides / slidesPerView) - 1;
+        } else {
+            currentIndex = index;
+        }
+
+        const slideWidth = 100 / slidesPerView;
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+
+        slides.forEach((slide) => {
+            slide.style.flex = `0 0 ${slideWidth}%`;
+        });
     }
 
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
 
-function nextSlide() {
-    showSlide(currentIndex + 1);
-}
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
 
-function prevSlide() {
-    showSlide(currentIndex - 1);
-}
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 2500);
+    }
 
-function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        nextSlide();
-    }, 2000);
-}
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
 
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-}
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentIndex);
+        startAutoSlide();
 
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentIndex);
-    startAutoSlide();
+        const slider = document.getElementById('sliderBerita');
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
 
-    document.getElementById('slider').addEventListener('mouseenter', stopAutoSlide);
-    document.getElementById('slider').addEventListener('mouseleave', startAutoSlide);
-});
+        window.addEventListener('resize', () => showSlide(currentIndex));
+    });
 </script>
-
 @endsection

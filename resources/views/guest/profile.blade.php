@@ -4,19 +4,20 @@
 
 @if(is_null($konten))
 @else
-<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider" loading="lazy">SEJARAH SEKOLAH</h1>
+<h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center my-12 divider 2xl:-mt-20" loading="lazy">SEJARAH
+    SEKOLAH</h1>
 
 <div class="grid tablet:grid-rows-3 smartphone:grid-cols-1 tablet:grid-cols-4 grid-flow-col tablet:gap-4"
     loading="lazy">
     <div
-        class="smartphone:w-72 smartphone:translate-x-5 smartphone:text-center tablet:text-start tablet:col-span-2 laptop:translate-x-0 laptop:w-96">
+        class="smartphone:w-72 smartphone:translate-x-5 smartphone:text-center tablet:text-start tablet:col-span-2 laptop:translate-x-0 laptop:w-96 desktop:w-full">
         <h1 class="font-bold smartphone:text-lg tablet:text-2xl">
             {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' : $konten->nama_sekolah !!}
         </h1>
     </div>
     <div class="smartphone:translate-x-7 smartphone:row-start-2 tablet:col-span-2 laptop:translate-x-0">
         <p
-            class="smartphone:w-64 smartphone:h-40 smartphone:text-center smartphone:my-5 tablet:h-52 tablet:text-start tablet:-mt-20 laptop:w-[25rem] laptop:-mt-20 overflow-y-auto">
+            class="smartphone:w-64 smartphone:h-40 smartphone:text-center smartphone:my-5 tablet:h-52 tablet:text-start tablet:-mt-20 laptop:w-[25rem] desktop:w-[35rem] laptop:-mt-20 desktop:-mt-24 overflow-y-auto">
             {!! empty($konten->sejarah) ? '
         <p class="text-red-500 italic">$NULL</p>' : $konten->sejarah !!}
         </p>
@@ -349,20 +350,19 @@
 @if($programKeahlian->isNotEmpty())
 <h1 class="font-bold smartphone:text-lg tablet:text-2xl text-center mt-12 divider">KOMPETENSI KEAHLIAN</h1>
 
-<div
-    class="relative smartphone:w-screen laptop:w-[75rem] smartphone:-translate-x-9 tablet:-translate-x-7 laptop:-translate-x-3 overflow-hidden justify-center items-center">
+<div class="relative w-full overflow-hidden justify-center items-center my-10" loading="lazy">
     <div class="flex transition-transform duration-500" id="slider">
-        @foreach ($programKeahlian->chunk(4) as $chunk)
-        <div
-            class="smartphone:w-screen grid smartphone:grid-cols-1 smartphone:grid-flow-col tablet:grid-cols-2 laptop:grid-cols-4 justify-center items-center p-10 laptop:min-w-full">
-            @foreach ($chunk as $prg)
+        @foreach ($programKeahlian as $prg)
+        <div class="w-full flex-shrink-0">
             <div class="mx-auto smartphone:w-screen tablet:w-[25rem] laptop:w-full">
-                <div class="card card-compact smartphone:w-72 laptop:w-60 h-80 shadow-xl mx-auto">
+                <div
+                    class="card card-compact smartphone:mx-4 tablet:mx-10 laptop:mx-auto smartphone:w-72 laptop:w-60 h-80 shadow-xl mx-auto">
                     <figure>
                         <img src="{{ asset('storage/' . $prg->logo_program) }}" class="h-28 w-full object-cover blur-sm"
                             alt="Shoes" />
                     </figure>
-                    <div class="avatar h-28 absolute translate-y-9 smartphone:translate-x-24 tablet:translate-x-16">
+                    <div
+                        class="avatar h-28 absolute translate-y-9 smartphone:translate-x-24 tablet:translate-x-24 laptop:translate-x-16">
                         <div class="w-28 h-28 rounded-full">
                             <img src="{{ asset('storage/'.$prg->logo_program) }}" />
                         </div>
@@ -378,20 +378,21 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
         @endforeach
     </div>
     <button
-        class="border-none opacity-75 bg-blue-600 rounded-full w-10 h-10 absolute left-0 top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute left-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
         onclick="prevSlide()">
         <i class="fas fa-angle-left text-white"></i>
     </button>
     <button
-        class="border-none opacity-70 bg-blue-600 rounded-full w-10 h-10 absolute right-0 top-1/2 transform p-2 flex justify-center items-center"
+        class="border-none opacity-75 bg-blue-600 rounded-full w-12 h-12 absolute right-0 top-1/2 transform -translate-y-1/2 p-2 flex justify-center items-center"
         onclick="nextSlide()">
         <i class="fas fa-angle-right text-white"></i>
     </button>
 </div>
+
 @endif
+
 @endsection
