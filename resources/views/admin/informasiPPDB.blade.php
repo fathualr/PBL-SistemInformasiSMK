@@ -2,9 +2,6 @@
 
 @section('main-content')
 
-@include('shared.success-message')
-@include('shared.error-message')
-
 <div role="tablist" class="tabs tabs-lifted">
     <input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="Informasi PPDB" checked />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
