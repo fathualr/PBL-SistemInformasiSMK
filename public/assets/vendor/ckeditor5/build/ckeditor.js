@@ -66054,8 +66054,7 @@
                         "fontFamily",
                         "fontColor",
                         "alignment",
-                        "fontBackgroundColor",
-                        "fontSize",
+                        "fontBackgroundColor"
                     ],
                 },
                 language: "en",
