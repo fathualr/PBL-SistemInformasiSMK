@@ -90,7 +90,7 @@
     @else
     <button class="join-item btn disabled">«</button>
     @endif
-    <button class="join-item btn">Page {{ $berita->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $berita->currentPage() }}</button>
     @if($berita->nextPageUrl())
     <a href="{{ $berita->nextPageUrl() }}" class="join-item btn">»</a>
     @else

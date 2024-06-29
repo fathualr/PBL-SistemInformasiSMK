@@ -28,7 +28,7 @@
     <a href="{{ $videos->previousPageUrl() }}" class="join-item btn">«</a>
     @endif
 
-    <button class="join-item btn">Page {{ $videos->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $videos->currentPage() }}</button>
 
     @if ($videos->hasMorePages())
     <a href="{{ $videos->nextPageUrl() }}" class="join-item btn">»</a>

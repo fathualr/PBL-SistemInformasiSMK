@@ -212,7 +212,7 @@
     @else
     <button class="join-item btn disabled">«</button>
     @endif
-    <button class="join-item btn">Page {{ $direktoriGuru->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $direktoriGuru->currentPage() }}</button>
     @if($direktoriGuru->nextPageUrl())
     <a href="{{ $direktoriGuru->nextPageUrl() }}" class="join-item btn">»</a>
     @else

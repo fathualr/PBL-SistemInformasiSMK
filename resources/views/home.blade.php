@@ -21,14 +21,14 @@
         <div class="card w-full h-54">
             <div class="card-body">
                 <h1 class="card-title text-lg">
-                    {!! empty($konten->nama_sekolah) ? '<p class="text-red-500 italic">$NULL</p>' :
+                    {!! empty($konten->nama_sekolah) ? '<p class="text-slate-400 italic">Konten Belum Tersedia</p>' :
                     $konten->nama_sekolah !!}
                 </h1>
 
                 <div class="overflow-y-auto h-[13.5rem] tablet:py-5">
                     <p>
                         {!! empty($konten->sambutan) ? '
-                    <p class="text-red-500 italic">$NULL</p>' : $konten->sambutan !!}
+                    <p class="text-slate-400 italic">Konten Belum Tersedia</p>' : $konten->sambutan !!}
                     </p>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 <h2 class="card-title font-bold mb-3">Profil Sekolah</h2>
                 <p class="overflow-y-auto smartphone:h-44 tablet:h-32">
                     {!! empty($konten->teks_profile) ? '
-                <p class="text-red-500 italic">$NULL</p>' : $konten->teks_profile !!}
+                <p class="text-slate-400 italic">Konten Belum Tersedia</p>' : $konten->teks_profile !!}
                 </p>
                 <div class="card-actions justify-center md:justify-start">
                     <a href="/guest/profile">
@@ -92,7 +92,7 @@
                         <h2 class="card-title">Fasilitas</h2>
                         <p class="overflow-y-auto h-20">
                             {!! empty($konten->teks_fasilitas) ? '
-                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_fasilitas !!}
+                        <p class="text-slate-400 italic">Konten Belum Tersedia</p>' : $konten->teks_fasilitas !!}
                         </p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                         <h2 class="card-title">Lokasi</h2>
                         <p class="overflow-y-auto h-20">
                             {!! empty($konten->teks_lokasi) ? '
-                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_lokasi !!}
+                        <p class="text-slate-400 italic">Konten Belum Tersedia</p>' : $konten->teks_lokasi !!}
                         </p>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                         <h2 class="card-title">Sejarah</h2>
                         <p class="overflow-y-auto h-20">
                             {!! empty($konten->teks_sejarah) ? '
-                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_sejarah !!}
+                        <p class="text-slate-400 italic">Konten Belum Tersedia</p>' : $konten->teks_sejarah !!}
                         </p>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                         <h2 class="card-title">Prestasi</h2>
                         <p class="overflow-y-auto h-20">
                             {!! empty($konten->teks_prestasi) ? '
-                        <p class="text-red-500 italic">$NULL</p>' : $konten->teks_prestasi !!}
+                        <p class="text-slate-400 italic">Konten Belum Tersedia</p>' : $konten->teks_prestasi !!}
                         </p>
                     </div>
                 </div>

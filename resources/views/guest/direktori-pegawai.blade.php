@@ -177,7 +177,7 @@
     @else
     <button class="join-item btn disabled">«</button>
     @endif
-    <button class="join-item btn">Page {{ $direktoriPegawai->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $direktoriPegawai->currentPage() }}</button>
     @if($direktoriPegawai->nextPageUrl())
     <a href="{{ $direktoriPegawai->nextPageUrl() }}" class="join-item btn">»</a>
     @else

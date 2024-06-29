@@ -65,7 +65,7 @@
     @else
     <button class="join-item btn disabled">«</button>
     @endif
-    <button class="join-item btn">Page {{ $ekstrakulikuler->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $ekstrakulikuler->currentPage() }}</button>
     @if($ekstrakulikuler->nextPageUrl())
     <a href="{{ $ekstrakulikuler->nextPageUrl() }}" class="join-item btn">»</a>
     @else

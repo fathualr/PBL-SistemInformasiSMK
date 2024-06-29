@@ -15,13 +15,15 @@
             </div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full md:w-auto">
                 <li>
-                    <a href="{{ route('guest.siswa.index', array_merge(request()->query(), ['nama_program' => null])) }}" class="font-bold">
+                    <a href="{{ route('guest.siswa.index', array_merge(request()->query(), ['nama_program' => null])) }}"
+                        class="font-bold">
                         Tampilkan Semua
                     </a>
                 </li>
                 @foreach($programKeahlian as $program)
                 <li>
-                    <a href="{{ route('guest.siswa.index', array_merge(request()->query(), ['nama_program' => $program->nama_program])) }}">
+                    <a
+                        href="{{ route('guest.siswa.index', array_merge(request()->query(), ['nama_program' => $program->nama_program])) }}">
                         {{ $program->nama_program }}
                     </a>
                 </li>
@@ -31,19 +33,27 @@
 
         <div class="flex flex-wrap items-center mt-4 md:mt-0 space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
             <div class="relative flex w-full md:w-auto">
-                <select onchange="window.location.href=this.value" class="select border-b-2 border-base-300 w-full md:w-auto">
+                <select onchange="window.location.href=this.value"
+                    class="select border-b-2 border-base-300 w-full md:w-auto">
                     <option selected disabled>Jumlah Data</option>
-                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 10])) }}" {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
-                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 25])) }}" {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
-                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 50])) }}" {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
-                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 75])) }}" {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
-                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 100])) }}" {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
+                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 10])) }}"
+                        {{ request()->get('perPage') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 25])) }}"
+                        {{ request()->get('perPage') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 50])) }}"
+                        {{ request()->get('perPage') == 50 ? 'selected' : '' }}>50</option>
+                    <option value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 75])) }}"
+                        {{ request()->get('perPage') == 75 ? 'selected' : '' }}>75</option>
+                    <option
+                        value="{{ route('guest.siswa.index', array_merge(request()->query(), ['perPage' => 100])) }}"
+                        {{ request()->get('perPage') == 100 ? 'selected' : '' }}>100</option>
                 </select>
             </div>
             <form action="{{ route('guest.siswa.index') }}" method="GET" class="w-full md:w-auto">
                 <label class="input input-bordered flex items-center gap-2 focus-within:outline-none">
                     <i class="fas fa-magnifying-glass"></i>
-                    <input type="text" class="grow" name="search" value="{{ request()->get('search') }}" placeholder="Cari" />
+                    <input type="text" class="grow" name="search" value="{{ request()->get('search') }}"
+                        placeholder="Cari" />
                 </label>
             </form>
         </div>
@@ -70,7 +80,8 @@
                     <div class="flex justify-start items-start text-start gap-4">
                         <div class="avatar">
                             <div class="mask mask-squircle w-12 h-12">
-                                <img src="{{ asset('storage/'.$siswa->gambar_siswa) }}" alt="Avatar Tailwind CSS Component" />
+                                <img src="{{ asset('storage/'.$siswa->gambar_siswa) }}"
+                                    alt="Avatar Tailwind CSS Component" />
                             </div>
                         </div>
                         <div>
@@ -109,7 +120,7 @@
     @else
     <button class="join-item btn disabled">«</button>
     @endif
-    <button class="join-item btn">Page {{ $direktoriSiswa->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $direktoriSiswa->currentPage() }}</button>
     @if($direktoriSiswa->nextPageUrl())
     <a href="{{ $direktoriSiswa->nextPageUrl() }}" class="join-item btn">»</a>
     @else

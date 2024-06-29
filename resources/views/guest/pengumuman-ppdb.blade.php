@@ -81,16 +81,16 @@
                             -
                             @endif
                         </td>
-                        <td class="tablet:p-2 table-cell">
+                        <td class="smartphone:p-5 tablet:p-2 table-cell">
                             @if ($form_ppdb->status == 'Diterima')
                             <span
-                                class="smartphone:w-20 smartphone:text-xs tablet:px-2 py-1 text-white bg-elm rounded-full">Diterima</span>
+                                class="smartphone:w-20 smartphone:text-xs smartphone:px-3 tablet:px-2 smartphone:py-2 text-white bg-elm rounded-full">Diterima</span>
                             @elseif ($form_ppdb->status == 'Ditolak')
                             <span
-                                class="smartphone:w-20 smartphone:text-xs tablet:px-2 py-1 text-white bg-error rounded-full">Ditolak</span>
+                                class="smartphone:w-20 smartphone:text-xs smartphone:px-3 tablet:px-2 smartphone:py-2 text-white bg-error rounded-full">Ditolak</span>
                             @else
                             <span
-                                class="smartphone:w-20 smartphone:text-xs tablet:px-2 py-1  text-white bg-gray-500 rounded-full">Dalam
+                                class="smartphone:w-20 smartphone:text-[0.5rem] tablet:text-xs tablet:text-nowrap smartphone:px-3 tablet:px-1 laptop:px-2 smartphone:py-2 tablet:py-1  text-white bg-gray-500 rounded-full">Dalam
                                 Proses</span>
                             @endif
                         </td>
@@ -119,7 +119,7 @@
     <button class="join-item btn disabled">«</button>
     @endif
 
-    <button class="join-item btn">Page {{ $forms->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $forms->currentPage() }}</button>
 
     @if($forms->nextPageUrl())
     <a href="{{ $forms->nextPageUrl() }}&perPage={{ request()->get('perPage') }}" class="join-item btn">»</a>

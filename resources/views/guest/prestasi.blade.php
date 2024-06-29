@@ -101,7 +101,7 @@
     @else
     <button class="join-item btn disabled">«</button>
     @endif
-    <button class="join-item btn">Page {{ $PrestasiSiswa->currentPage() }}</button>
+    <button class="join-item btn">Halaman {{ $PrestasiSiswa->currentPage() }}</button>
     @if($PrestasiSiswa->nextPageUrl())
     <a href="{{ $PrestasiSiswa->nextPageUrl() }}" class="join-item btn">»</a>
     @else
